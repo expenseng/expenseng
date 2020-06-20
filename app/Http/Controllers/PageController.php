@@ -42,4 +42,8 @@ class PageController extends Controller
     {
         return view('pages.companysearch');
     }
+
+    public function aboutUs(){
+        return view('pages.about');
+    }
 }
