@@ -23,7 +23,7 @@ body{
     
 }
 .banner{
-    background: linear-gradient( rgba(0, 0, 0, 0.568), rgba(0, 0, 0, 0.623) ), url(../img/images28.svg);
+    background: linear-gradient( rgba(0, 0, 0, 0.568), rgba(0, 0, 0, 0.623) ), url('/img/images28.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -76,7 +76,7 @@ text-align: center;
 .left-image{
     width: 100%;
     height: 220px;
-    background: url(../img/Rectangle\ 331.svg);
+    background: url('/img/Rectangle 331.svg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;  
@@ -85,7 +85,7 @@ text-align: center;
     width: 100%;
     height: 240px;
     margin-top: 20px;
-    background: url(../img/exec.jpeg);
+    background: url('/img/exec.jpeg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat; 
