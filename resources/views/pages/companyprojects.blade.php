@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projects</title>
-    <link rel="stylesheet" href="css/companyprojects.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <script
-      src="https://kit.fontawesome.com/8f691340fb.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
+@extends('layouts.master')
+@section('content')
     <div class="project-container">
       <div class="project-top">
         <div class="project-title"><h3>Profile</h3></div>
@@ -153,5 +141,4 @@
         </div>
       </div>
     </div>
-  </body>
-</html>
+@endsection
