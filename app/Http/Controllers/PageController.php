@@ -21,4 +21,20 @@ class PageController extends Controller
     public function ministryProfileSearch(){
         return view('pages.ministry_profile');
     }
+
+    public function contactUs(){
+        return view('pages.contact');
+    }
+
+    public function quickContact(){
+        return view('pages.quick_contacts');
+    }
+
+    public function companyProfile(){
+        return view('pages.companyprofile');
+    }
+
+    public function companyReport(){
+        return view('pages.companyprojects');
+    }
 }
