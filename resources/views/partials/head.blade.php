@@ -10,5 +10,3 @@
     <link href="https://fonts.googleapis.com/css?family=Mukta:700|Roboto+Slab&display=swap" rel="stylesheet" />
     <title>ExpenseNg</title>
 </head>
-
-</head>
