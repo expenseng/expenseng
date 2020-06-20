@@ -1,0 +1,134 @@
+@font-face{
+    font-family: Lato1;
+    src: url(Lato-Regular.ttf);
+}
+
+body{
+    font-family: Lato1;
+}
+
+.bio1,.bio2,.bio3{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.avatar{
+    margin: 10px;
+}
+#header{
+background-color: #00945E;
+    padding: 0.7%;
+    padding-left: 10%;
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.jumbotron{
+    background-image: url(../img/ministers.png)
+}
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+.banner-text{
+ color: white;
+    font-size: 1.6vw;
+}
+@media(max-width:650px){
+    .banner-text{
+        font-size: 4vw;
+    }
+}
+.banner{
+    margin-top: -16px;
+}
+
+.tab-button{
+    position: relative;
+    top: 4.02em;
+    border:0px solid black;
+    padding: 0.5% 1.5%;
+    background-color: gainsboro;
+}
+
+.tab-button:focus{
+    outline: none;
+    background-color: white;
+    border-bottom: 0px solid black;
+}
+
+@media(max-width:575px){
+    .tab-button{
+    position: relative;
+    top: 2em;}
+}
+.button1{
+    margin-left: 10%;
+}
+.filter{
+    float: right;
+}
+
+.tabcontent {
+  display: none;
+}
+.pagination{
+    float: right;
+}
+
+.pagination a {
+  color: black;
+  padding: 3px 10px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+
+.pagination a.active {
+  background-color: #00945E;
+  color: white;
+}
+
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+
+
+.index{
+    color:#00945E;
+
+}
+.back{
+    background-color: gainsboro;
+}
+span{
+    margin-left: 10px;
+}
+.table-div{
+    overflow-x: auto;
+}
+.icon{
+    margin: 2%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#funds{
+    margin-left: 9%;
+}
+
+#deep-funds{
+    margin-left: 2%;
+    font-weight: 600;
+}
+
+#table-border{
+    padding: 3%;
+    margin: 0 4%;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.head-names{
+    font-weight: 600;
+}
