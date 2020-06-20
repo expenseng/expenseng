@@ -12,7 +12,7 @@
         <ul>
             <li><a href="#" id="onlink">Profile</a></li>
             <li><a href="#">Company Board</a></li>
-            <li><a href="companyprojects.html">Projects</a></li>
+            <li><a href="{{route('company_report)}}">Projects</a></li>
         </ul>
     </div>
 </div>
