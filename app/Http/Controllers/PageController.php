@@ -37,4 +37,9 @@ class PageController extends Controller
     public function companyReport(){
         return view('pages.companyprojects');
     }
+
+    public function companySearch()
+    {
+        return view('pages.companysearch');
+    }
 }
