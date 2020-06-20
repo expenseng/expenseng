@@ -1,8 +1,8 @@
 <header>
     <div class="logo">
         <a href="{{ route('home') }}">
-            <img src="{{ asset('img/Group 380.svg') }}" class="logo1" alt="logo" srcset="">
-            <img src="{{ asset('img/Frame 384.svg') }}" class="logo2" alt="logo" srcset="">
+            <img src="{{ asset('img/Group380.svg') }}" class="logo1" alt="logo" srcset="">
+            <img src="{{ asset('img/Frame384.svg') }}" class="logo2" alt="logo" srcset="">
         </a>
     </div>  
     <a href="#"><i class="fa fa-2x fa-bars menu-toggle" id="menu" aria-hidden="true"></i></a>
