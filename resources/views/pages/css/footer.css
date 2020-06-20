@@ -1,0 +1,408 @@
+/* @keyframes Slide_right{
+  0%{
+      transform: translateX(-400px);
+  }
+  100%{
+      transform: translateX(0);
+  }
+}
+@keyframes Slide_left{
+  0%{
+      transform: translateX(400px);
+  }
+  100%{
+      transform: translateX(0);
+  }
+} */
+
+
+body{
+    margin: 0;
+    overflow-x: hidden;
+}
+
+footer {
+  font-family: 'Lato', sans-serif;
+}
+
+.main-footer-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding-bottom: 60px;
+  background: #323E48;
+  font-family: 'Lato', sans-serif;
+  animation: Slide_left 1.1s ease-in;
+}
+
+
+.main-box1 {
+  color: whitesmoke;
+  padding-left: 20px;
+  height: 200px;
+}
+
+.brand-logo img {
+  margin-top: 40px;
+  margin-left: 55px;
+}
+
+.twitter img {
+  margin-top: 65px;
+  margin-left: 60px;
+}
+
+.twitter a{
+  position: relative;
+  top: 35px;
+  text-decoration: none;
+  color: #FFF;
+}
+.twitter a:hover{
+  text-decoration: none;
+  color: #d5dfdd;
+}
+
+.main-box2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.box2 {
+  margin-right: 95px;
+}
+
+.box1 {
+  margin-right: 40px;
+}
+
+.box1 h4, .box2 h4{
+  color: #EBF1EF;
+  font-weight: 500;
+  font-size: 23px;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.box1 a, .box2 a {
+  display: block;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  text-decoration: none;
+  color: #EBF1EF;
+  font-size: 16px;
+}
+
+.box1 a:hover, .box2 a:hover{
+  color: #d5dfdd;
+  text-decoration: none;
+
+}
+
+.last-footer{
+  background-color: #1F2430;
+  width: 100%;
+  height: 40px;
+  animation: Slide_right 1.1s ease-in;
+}
+
+.last-footer ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding-top: 10px;
+  padding-left: 80px;
+}
+
+.last-footer a{
+  text-decoration: none;
+  color: #FFF;
+  font-size: 12px;
+}
+
+.push{
+  margin-left: auto;
+  padding-right: 95px;
+}
+
+
+@media only screen and (width: 1024px) {
+  .main-footer-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding-bottom: 60px;
+    background: #323E48;
+    font-family: 'Lato', sans-serif;
+  }
+}
+  
+@media only screen and (max-width: 769px) {
+  .main-footer-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding-bottom: 35px;
+    background: #323E48;
+    font-family: 'Lato', sans-serif;
+  }
+    
+  .brand-logo img {
+    margin-top: 30px;
+    margin-left: 10px;
+  }
+    
+  .twitter img {
+    margin-top: 65px;
+    margin-left: 15px;
+  }
+
+  .main-box2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .box2 {
+    margin-right: 10px;
+  }
+  
+  .box1 {
+    margin-right: 30px;
+  }
+
+  .box1 h4, .box2 h4{
+    color: #EBF1EF;
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 25px;
+  }
+  
+  .box1 a, .box2 a {
+    color: #EBF1EF;
+    font-size: 13px;
+  }
+
+  .last-footer ul {
+    padding-left: 35px;
+  }
+  
+  .push{
+    padding-right: 55px;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .main-footer-wrapper {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    padding-bottom: 25px;
+  }
+
+  .main-box1 {
+    height: 127px;
+    padding-left: 0;
+  }
+
+  .main-box2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 14px;
+    
+  }
+
+  .box1{
+    margin-right: 0;
+    justify-self: center;
+  }
+
+  .box2 {
+    margin-right: 0;
+    justify-self: center;
+  }
+
+  .box1 h4, .box2 h4 {
+    margin-top: 5px;
+    font-size: 19px;
+    font-weight: bold;
+  }
+
+  .box1 a, .box2 a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    font-size: 14px;
+    padding-left: 0;
+  }
+
+  .brand-logo img {
+    margin-top: 20px;
+    width: 50%;
+    margin-left: 0;
+  }
+
+  .brand-logo {
+    text-align: center;
+  }
+
+  .twitter img {
+    margin-top: 15px;
+    margin-left: 148px;
+    width: 5%;
+  }
+
+  .twitter a{
+    position: relative;
+    top: 10px;
+    text-decoration: none;
+    color: #FFF;
+  }
+
+  .last-footer{
+    background-color: #1F2430;
+    width: 100%;
+    height: 53px;
+  }
+  
+  .last-footer ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding-top: 5px;
+    padding-left: 85px;
+  }
+  
+  .last-footer a{
+    text-decoration: none;
+    color: #FFF;
+    font-size: 10px;
+  }
+  
+  .push{
+    margin: 0 auto;
+    padding-right: 85px;
+  }
+  
+}
+
+@media only screen and (max-width: 375px) {
+  .main-footer-wrapper {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    padding-bottom: 30px;
+  }
+
+  .main-box1 {
+    height: 113px;
+  }
+
+  .main-box2 {
+    gap: 13px;
+  }
+
+  .brand-logo {
+    text-align: center;
+  }
+
+  .box1 h4, .box2 h4 {
+    font-size: 19px;
+    margin-bottom: 3px;
+  }
+
+  .box1 a, .box2 a {
+    font-size: 14px;
+    padding: 1px;
+    padding-left: 0;
+  }
+
+  .brand-logo img {
+    width: 55%;
+    margin-top: 21px;
+    margin-left: 0;
+  }
+
+  .twitter img {
+    width: 5%;
+    margin-top: 11px;
+    margin-left: 119px;
+  }
+
+  .twitter a{
+    position: relative;
+    top: 7px;
+  }
+
+  .last-footer {
+    height: 48px;
+  }
+  
+  .last-footer ul {
+    padding-top: 0;
+    padding-left: 65px;
+  }
+  
+  .push{
+    padding-right: 65px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .main-footer-wrapper {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .main-box1 {
+    height: 105px;
+  }
+
+  .main-box2 {
+    gap: 7px;
+  }
+
+  .brand-logo {
+    text-align: center;
+  }
+
+  .box1 h4, .box2 h4 {
+    font-size: 17px;
+  }
+
+  .box1 a, .box2 a {
+    font-size: 13px;
+    padding: 2px;
+    padding-left: 0;
+  }
+
+  .brand-logo img {
+    margin-top: 20px;
+    margin-left: 0;
+  }
+
+  .twitter img {
+    margin-top: 13px;
+    margin-left: 97px;
+  }
+
+  .twitter a{
+    position: relative;
+    top: 8px;
+    font-size: 14px;
+  }
+  
+  .last-footer ul {
+    padding-left: 29px;
+  }
+
+  .last-footer a {
+    font-size: 11px;
+  }
+  
+  .push{
+    padding-right: 29px;
+  }
+}
