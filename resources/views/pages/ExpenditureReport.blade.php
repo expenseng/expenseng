@@ -3,11 +3,11 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="css/style.css" />
-		<link rel="stylesheet" href="css/header.css" />
-		<link rel="stylesheet" href="css/footer.css" />
-		<link rel="stylesheet" href="css/contact.css" />
-		<link rel="stylesheet" href="css/expenditurereport.css" />
+		<link rel="stylesheet" href="{{asset('css/style.css')}}" />
+		<link rel="stylesheet" href="{{asset('css/header.css')}}" />
+		<link rel="stylesheet" href="{{asset('css/footer.css')}}" />
+		<link rel="stylesheet" href="{{asset('css/contact.css')}}" />
+		<link rel="stylesheet" href="{{asset('css/expenditurereport.css')}}" />
 		<link
 			rel="stylesheet"
 			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -34,11 +34,11 @@
 			<div class="container">
 				<a class="navbar-brand" href="#"
 					><img
-						src="img/Group 380.svg"
+						src="{{asset('img/Group380.svg')}}"
 						class="logo1"
 						alt="logo"
 						srcset="" /><img
-						src="img/Frame 384.svg"
+						src="{{asset('img/Frame384.svg')}}"
 						class="logo2"
 						alt="logo"
 						srcset=""
@@ -58,7 +58,7 @@
 				<div class="collapse navbar-collapse" id="navbarNavDropdown">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item">
-							<a class="nav-link" href="index.html">Home</a>
+							<a class="nav-link" href="{{route('home')}}">Home</a>
 						</li>
 						<li class="nav-item active">
 							<a class="nav-link" href="#"
@@ -72,7 +72,7 @@
 							<a class="nav-link" href="#">Company Info</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="contact.html">Reference</a>
+							<a class="nav-link" href="{{route('contact')}}">Reference</a>
 						</li>
 					</ul>
 				</div>
@@ -414,9 +414,9 @@
 		<footer>
 			<div class="main-footer-wrapper">
 				<div class="main-box1">
-					<div class="brand-logo"> <img src="img/logo.png" /><br /> </div>
+					<div class="brand-logo"> <img src="{{asset('img/logo.png')}}" /><br /> </div>
 					<div class="twitter">
-						<img src="img/twitter-logo.png" />
+						<img src="{{asset('img/twitter-logo.png')}}" />
 						<a href="#">@expenseng</a>
 					</div>
 				</div>
@@ -453,7 +453,7 @@
 
 		<!-- custom script -->
 
-		<script src="js/main.js"></script>
-		<script src="./js/ExpenditureScript.js"></script>
+		<script src="{{asset('js/main.js')}}"></script>
+		<script src="{{asset('./js/ExpenditureScript.js')}}"></script>
 	</body>
 </html>
