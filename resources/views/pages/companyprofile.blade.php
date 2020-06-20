@@ -1,23 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-    <link
-      href="https://fonts.googleapis.com/css?family=Mukta:700|Roboto+Slab&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" type="text/css" href="css/companyprofile.css">
-    <script
-      src="https://kit.fontawesome.com/8f691340fb.js"
-      crossorigin="anonymous"
-    ></script> 
-
-
-	<title>ExpensesNg</title>
-</head>
-<body>
+@extends('layouts.master')
+@section('content')
 <header>
     <div class="banner"><h3 class="responsive-div">Ministry Profile</h3></div>
 </header>
@@ -34,6 +16,8 @@
         </ul>
     </div>
 </div>
+{{-- @endsection
+@section('content') --}}
 <div class="main-container">
     <table class="table-div">
         <tr class="table-row">
@@ -57,7 +41,7 @@
     <i class="fa fa-instagram"></i>
     <i class="fa fa-linkedin"></i>
 </div>
-
+@endsection
 
 </div>
 </body>
