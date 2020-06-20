@@ -58,7 +58,7 @@
 				<div class="collapse navbar-collapse" id="navbarNavDropdown">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item">
-							<a class="nav-link" href="index.html">Home</a>
+							<a class="nav-link" href="{{route('home')}}">Home</a>
 						</li>
 						<li class="nav-item active">
 							<a class="nav-link" href="#"
@@ -72,7 +72,7 @@
 							<a class="nav-link" href="#">Company Info</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="contact.html">Reference</a>
+							<a class="nav-link" href="{{route('contact')}}">Reference</a>
 						</li>
 					</ul>
 				</div>
