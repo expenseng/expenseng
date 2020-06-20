@@ -1,11 +1,11 @@
 <header>
     <div class="logo">
-        <img src="img/Group 380.svg" class="logo1" alt="logo" srcset="">
-        <img src="img/Frame 384.svg" class="logo2" alt="logo" srcset="">
+        <img src="{{ asset('img/Group 380.svg') }}" class="logo1" alt="logo" srcset="">
+        <img src="{{ asset('img/Frame 384.svg') }}" class="logo2" alt="logo" srcset="">
     </div>  
     <a href="#"><i class="fa fa-2x fa-bars menu-toggle" id="menu" aria-hidden="true"></i></a>
     <ul class="nav " id="nav">
-        <li><a href="index.html"class="active">Home</a></li>
+        <li><a href="{{ route('home') }}"class="active">Home</a></li>
         <li><a href="ExpenditureReport.html">Expenditure Report</a></li>
         
         <li><a href="#">Ministry Info</a>

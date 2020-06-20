@@ -1,0 +1,203 @@
+body{
+    overflow-x: hidden;
+}
+@media only screen and (max-width: 599px){
+    /*Chart Header Row*/
+    #chart-header-row {
+        margin-top: 30px;
+    } 
+    h3{
+        font-weight: bold !important;
+        font-size: 23px !important;
+        /* line-height: 135.5% !important; */
+    }
+    /*Toggle Button Row*/
+    #toggle-button-row, #date-filter-row {
+        margin: 20px auto;
+    }
+
+    #chart-button, #table-button {
+        text-align: right;
+        margin: 10px 0;
+    }
+
+    /*
+    #chart-button i, #table-button i {
+        color: #00945E;//active
+        color: #757575;//inactive
+    }
+    */
+
+    /*Date & Filter Row*/
+    #report-date-row, #filter-button-row {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    #filter-button-row button {
+        background: #00945E; 
+        color: #FFFFFF;
+        padding: 10px 50px;
+    }
+
+    #filter-button-row i {
+        margin-left: 15px;
+    }
+
+    /*Chart Content Row*/
+    #data-presentation {
+        margin-bottom: 30px;
+    }
+    
+    #expenditure-chart {
+        margin-top: 20px;
+    }
+
+    #chart-key {
+        margin-left: 8px;
+    }
+
+    #chart-key div {
+        padding-left: 0;
+        margin-top: 10px;
+    }
+
+    .chart-key-items {
+        margin-left: 10px;
+    }
+
+    #chart-key-items li {
+        float: left;        
+    }
+
+    .january { fill: #1F2430; }
+    .february { fill: #6765EC; }
+    .march { fill: #42E8E0; }
+    .april { fill: #2196C4; }
+    .may { fill: #005D3B; }
+    .june { fill: #004583; }
+    .july { fill: #FF0000; }
+    .august { fill: #BC0A0A; }
+    .september { fill: #9EFF00; }
+    .october { fill: #423E85; }
+    .november { fill: #71CACE; }
+    .december { fill: #A4A4A4; }
+
+    /* Modal*/
+    .btn, .form-control {
+        border-radius: 0px;
+    }
+
+    .btn.active {
+        background-color:#00945E;
+        color: #FFFFFF;
+    }
+
+    .btn-pick {
+        border: 1px solid#00945E;
+        background-color: #EBF1EF;
+    }
+}
+
+@media only screen and (min-width: 1024px){
+    /*Chart Header Row*/
+    #chart-header-row {
+        margin-top: 30px;
+    }
+    h3{
+        font-weight: bold !important;
+        font-size: 36px !important;
+        line-height: 135.5% !important;
+    }
+    /*Toggle Button Row*/
+    #toggle-button-row, #date-filter-row {
+        margin: 20px auto;
+    }
+
+    #chart-button, #table-button {
+        text-align: right;
+    }
+
+    /*
+    #chart-button i, #table-button i {
+        color: #00945E;
+        color: #757575;
+    }
+    */
+
+    /*Date & Filter Row*/
+    #report-date-row {
+        text-align: right;
+    }
+
+    #filter-button-row, #filter-button-row button {
+        background: #00945E; 
+        color: #FFFFFF;
+    }
+
+    #filter-button-row {
+        padding: 0;
+    }
+
+    #filter-button-row i {
+        margin-left: 15px;
+    }
+
+    /*Chart Content Row*/
+    #data-presentation {
+        margin-bottom: 30px;
+    }
+
+    #expenditure-chart {
+        margin-top: 20px;
+    }
+
+    #x-axis ul {
+        margin-left: 20px;
+    }
+
+    #x-axis ul li{
+        float: left;
+        padding-right: 14px;
+    }
+
+    #chart-key {
+        margin-left: 8px;
+    }
+
+    #chart-key div {
+        padding-left: 0;
+    }
+
+    .chart-key-items {
+        margin-left: 10px;
+    }
+
+    .january { fill: #1F2430; }
+    .february { fill: #6765EC; }
+    .march { fill: #42E8E0; }
+    .april { fill: #2196C4; }
+    .may { fill: #005D3B; }
+    .june { fill: #004583; }
+    .july { fill: #FF0000; }
+    .august { fill: #BC0A0A; }
+    .september { fill: #9EFF00; }
+    .october { fill: #423E85; }
+    .november { fill: #71CACE; }
+    .december { fill: #A4A4A4; }
+
+    /* Modal*/
+    .btn, .form-control {
+        border-radius: 0px;
+    }
+
+    .btn.active {
+        background-color:#00945E;
+        color: #FFFFFF;
+    }
+
+    .btn-pick {
+        border: 1px solid#00945E;
+        background-color: #EBF1EF;
+    }
+}
