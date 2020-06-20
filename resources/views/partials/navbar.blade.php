@@ -19,7 +19,7 @@
         <li><a href="#">Company Info</a>
             <ul>
                 <li><a href="{{ route('company_report') }}"class="">Company Report</a></li>
-                <li><a href="{{ route('') }}" class="">Comapny Profile Search</a></li>
+                <li><a href="{{ route('company_profile') }}" class="">Comapny Profile Search</a></li>
             </ul>
         </li>
         <li><a href="#">Reference</a>
