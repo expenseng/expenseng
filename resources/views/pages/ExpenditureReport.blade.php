@@ -1,3 +1,16 @@
+@extends('layouts.master')
+
+@section('banner')
+    <div class="banner-section">
+        <div class="home-banner">Expenditure Report</div>
+        <div class="banner">
+            <h1>Expenditure Report <br</h1>
+            <p>Explore the amount allocated to every ministry in both graphical and tabular format. Increase your knowledge about how much each ministry gets allocated every month. and how much they spend.</p>
+        </div>
+    </div>
+@endsection
+
+@section('contents')
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -457,3 +470,4 @@
 		<script src="{{asset('./js/ExpenditureScript.js')}}"></script>
 	</body>
 </html>
+@endsection

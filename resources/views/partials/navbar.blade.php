@@ -7,8 +7,8 @@
     </div>  
     <a href="#"><i class="fa fa-2x fa-bars menu-toggle" id="menu" aria-hidden="true"></i></a>
     <ul class="nav " id="nav">
-        <li><a href="{{ route('home') }}"class="active">Home</a></li>
-        <li><a href="{{ route('expenditure_report') }}">Expenditure Report</a></li>
+        <li><a href="{{ route('home') }}"class="{{Route::current()->getName() ==('home')? 'active' : ''}}">Home</a></li>
+        <li><a href="{{ route('expenditure_report') }}" class="{{Route::current()->getName() == ('expenditure_report')? 'active' : ''}}">Expenditure Report</a></li>
         
         <li><a href="#">Ministry Info</a>
             <ul>
