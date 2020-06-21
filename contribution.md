@@ -7,11 +7,11 @@ Frontend developers will be working with Laravel's blade.
 The link takes you to Laravel's official documentation on Blade. If you have experience of Vue.js, please say so here.
 Blade is nothing different from the HTML and CSS you already write, it only allows you to embed server side code into your templates. So you only need to know the basics such:
 
-- Extending layouts
-- Creating layouts (most of you don't need this)
-- Including views
-- Stacks
-- Forms
+- [Extending layouts](https://laravel.com/docs/7.x/blade#extending-a-layout)
+- [Creating layouts](https://laravel.com/docs/7.x/blade#defining-a-layout) (most of you don't need this)
+- [Including views](https://laravel.com/docs/7.x/blade#including-subviews)
+- [Stacks](https://laravel.com/docs/7.x/blade#stacks)
+- [Forms](https://laravel.com/docs/7.x/blade#forms)
 
 In addition to embedding server side code, you also have super power of including other people's template into yours. For instance, we could have a file called `comment-form.blade.php` and that file can be included everywhere we need a comment form to appear. Without need to copy and paste the code or styling.
 
@@ -27,24 +27,27 @@ Now if you take a look at the `resources/sass/ folder`, you will find that we ha
 So when you work on `footer.blade.php` which you store in `resources/views/partials` you will also create your footer.`scss` file in `resources/sass/footer.scss.`
 And finally you will go to app.scss and your footer.scss file like so: 
 
-`...`
+````
+...
+...
+@import 'footer;
 
-`...`
-
-`@import 'footer;`
+````
 
 When you do that, it is automatically compiled into the app.css file which will be inserted into the page already so you don't have to link any css file to your templates again.
 
 A typical SCSS code targeting the child element in a ul will look like so:
 
-`ul{`
+````
+ul{
 
-  `li{`
+  li{
 
-      list-style: none;
-`}`
+     list-style: none;
+  }
 
-`}`
+}
+````
 
 The same thing in CSS will look like:
 
@@ -52,30 +55,29 @@ The same thing in CSS will look like:
 
 When adding images in your SCSS files, the right way to them is:
 
-`.header {`
+````
+.header {
 
-  `.logo{`
+  .logo{
 
      background: url('/img/logo.png'); 
-  `}`
+  }
 
-  `.logo h2{`
-
+  .logo h2{
      font-family: Lato 'sans-serif'; 
-   `} `
-
-`}`
+   }
+}
+````
 
 Please do not do this, it won't work and your `app.css` won't compile  
 
-`.header{`
-
-  `.logo{`
-
+````
+.header{
+  .logo{
     background: url('../img/logo.png')
-  `}`
-
-`}`
+  }
+}
+````
 
 To get your image showing up properly, make sure that you have it inside the `resources/img folder`.
 
