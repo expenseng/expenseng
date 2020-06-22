@@ -1,4 +1,4 @@
-## Contibution guide for frontend
+## Style Guide for Frontend Developers
 
 If you are a Frontend dev, please follow me
 Like I announced yesterday we will be using Laravel and I believe you should have setup your environment by now This is our new repo: https://github.com/hngi/expenseng
