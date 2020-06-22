@@ -47,7 +47,7 @@ We will be insisting on a minimal reproduction scenario in order to save maintai
 
 Unfortunately, we are not able to investigate / fix bugs without a minimal reproduction, so if we don't hear back from you, we are going to close an issue that doesn't have enough info to be reproduced.
 
-You can file new issues by selecting from our new issue templates and filling out the issue template.
+You can file new issues by selecting from our [new issue templates](https://github.com/hngi/expenseng/issues/new/choose) and filling out the issue template.
 
 ### Submitting a Pull Request (PR):
 
