@@ -59,7 +59,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
 
 3. Make sure you sign with the primary email address of the Git identity that has been granted access to the team repository.
 
-4. Fork repo.
+4. Fork repo. (Not necessary if you are a member of the FG Expense Tracker team.)
 
 5. Make your changes in a new git branch:
     ```
