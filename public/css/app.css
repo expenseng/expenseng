@@ -569,10 +569,19 @@ body {
     margin-top: 30px;
   }
 
-  h3 {
+  #chart-header-row h3 {
     font-weight: bold !important;
     font-size: 36px !important;
     line-height: 135.5% !important;
+  }
+
+  #chart-header-row h3::after {
+    content: "";
+    background: #00945E;
+    display: block;
+    height: 5px;
+    width: 80px;
+    margin: 3px auto 0;
   }
 
   /*Toggle Button Row*/
@@ -2277,11 +2286,6 @@ body {
   padding-bottom: 2rem;
 }
 
-.container {
-  display: flex;
-  justify-content: space-around;
-}
-
 .second h2 {
   text-align: center;
   margin: 2rem 0;
@@ -2389,3 +2393,233 @@ button {
     padding: 5px 8px;
   }
 }
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  font-size: 16px;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+#companySearchPage {
+  background-color: #00945E;
+  padding: 0.5em 2.5em;
+  font-size: 1.7rem;
+  color: #FFFFFF;
+}
+
+#searchBackground {
+  background-image: url(/images/oil-rig.jpg?30b5cb5ad3cf37c4bda3d35a630412f1);
+  background-size: cover;
+  background-position: center;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#searchBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  margin-top: 3em;
+  margin-bottom: 8em;
+}
+
+#myInput {
+  background-image: url(/images/searchicon.png?bcaebf2fb150d8a441df9fe16752dc8e);
+  background-position: 10px 12px;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position-x: 96%;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 0px 12px 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+#searchText {
+  font-size: 1.5rem;
+  color: #FFFFFF;
+  margin-top: 6em;
+}
+
+.inputdiv {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  margin-right: 2em;
+}
+
+.buttondiv {
+  width: 30%;
+}
+
+button {
+  padding-left: 3.3em;
+  padding-right: 3.3em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  background-color: #00945E;
+  border: none;
+  font-size: 1.2rem;
+  color: #FFFFFF;
+  border-radius: 5px;
+}
+
+/* #myInput:focus {
+    width: 50%;
+} */
+
+#myUL {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#myUL li a {
+  border: 1px solid #ddd;
+  margin-top: -1px;
+  /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block;
+}
+
+#myUL li a:hover:not(.header) {
+  background-color: #eee;
+}
+
+h3 {
+  margin: 0px;
+}
+
+@media (min-width: 300px) and (max-width: 425px) {
+  #searchBar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+  }
+
+  .inputdiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5em;
+    margin-right: 0px;
+  }
+
+  .buttondiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1em;
+  }
+
+  #companySearchPage {
+    font-size: 1rem;
+    padding: 0.2em 0.8em;
+  }
+
+  #searchText {
+    text-align: center;
+    font-size: 0.7rem;
+    margin-top: 3em;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  #myInput:focus {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  #searchBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 1em;
+  }
+
+  #companySearchPage {
+    padding-left: 1.2em;
+    font-size: 1.4rem;
+  }
+
+  #searchText {
+    font-size: 1.2rem;
+  }
+}
+
+body {
+  background-color: aqua;
+}
+
+.card-img-overlay {
+  text-align: center;
+  margin-top: 7%;
+}
+
+@media (max-width: 600px) {
+  .card-img-overlay {
+    margin-top: -2% !important;
+  }
+
+  .card-title {
+    font-size: 18px;
+  }
+
+  .card-text {
+    font-size: 15px;
+  }
+
+  .table {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  .card-title {
+    font-size: 14px;
+  }
+
+  .card-text {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 330px) {
+  .card-title {
+    font-size: 12px;
+  }
+
+  .card-text {
+    font-size: 10px;
+  }
+
+  .table {
+    font-size: 9px;
+  }
+}
+
+.remove-margin-top {
+  margin-top: -45px !important;
+}
+
