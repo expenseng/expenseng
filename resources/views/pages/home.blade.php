@@ -3,7 +3,7 @@
 @section('banner')
     <div class="banner-section">
         <div class="home-banner">Home</div>
-        <div class="banner">
+        <div class="banner remove-margin-top">
             <h1>Track Government <br>
                 Expenses easily</h1>
             <p>Expenseng.com tracks federal spending to ensure citizens can see how their money is being used in communities across Nigeria. It was created to promote transparency and accountability in government operations and transactions. 
@@ -20,7 +20,6 @@
                 <h3 class="Expenditure-heading">
                     Daily Expenditure in Real Time
                 </h3>
-                <hr class="dash">
             </div>
         </div>
         
@@ -291,10 +290,9 @@
     <div class="mainfeature-section">
         <div class="mainfeature-heading">
             <h3 >Our Main Features</h3>
-            <hr class="dash">
         </div>
 
-        <div class="mainfeature-item first">
+        <div class="mainfeature-item">
             <div class="left-image"></div>
         
             <div class="right-content">
@@ -306,7 +304,7 @@
             </div>
         </div>
 
-        <div class="mainfeature-item second">
+        <div class="mainfeature-item">
             <div class="left-content">
                 <h3 class="green-heading">Company Report</h3>
                 <p class="mb-5">When validation fails the api will return a 422 code and the errors object
