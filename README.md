@@ -4,10 +4,10 @@ An expense tracking app that aims to promote transparency in the handling of pub
 
 For quick navigation:
 
+-   [Code of Conduct](#coc)
 -   [Contribution Guide](#contribute)
 -   [Learning Laravel](#learn-laravel)
 -   [License](#license)
--   [Code of Conduct](#coc)
 
 ## <a name="coc"></a> Code of Conduct
 
