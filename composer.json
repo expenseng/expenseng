@@ -63,7 +63,7 @@
         "run-php-test": [
             "phpunit"
         ],
-        "run-php-sniffer-fix": [
+        "run-php-sniffer": [
             "phpcbf --standard=PSR2 --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers",
             "phpcs --standard=PSR2 --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers"
         ],

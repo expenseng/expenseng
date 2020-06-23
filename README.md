@@ -33,6 +33,16 @@ Now, follow this steps to start contributing:
 6. Run `php artisan serve` from your terminal and the app will be running on `http://127.0.0.1:8000/`
 7. This project makes use of Laravel mix, and so all scripts and stylesheets are in the resources folder. When you run `npm run dev`, they will be compiled and written to the `public` folder.
 
+### Tests and Code Consistency
+
+To ensure that only production-ready, properly tested and syntax error-free code is merged, this project uses PHP Sniffer to identify erroneous or error-prone PHP code, JsHint to identify javascript errors, and unit tests are run with PHPUnit. 
+This means a pull request(PR) that does not pass all these error checkers or breaks any existing unit tests will be rejected. Convenience composer scripts have been provided to enable you run these tests locally before pushing your changes or making a PR, to enable you fix these errors first. You are encouraged to run all these tests first before a commit or before pushing new commits:
+- `composer run-php-test` to run unit tests with PHPUnit
+- `composer run-php-sniffer` to run PHP sniffer to check for PHP syntax errors and repair auto-fixable errors
+- `composer run-js-test` or `npm run lint` to check for javascript errors
+- `composer run-all-tests` to run all 3 tests (Note: this is the same test that will be run on CI)
+
+
 ### Frontend Developers
 
 If you are new to Laravel, this [quick guide](https://laravel-news.com/your-first-laravel-application) will help you get started.
