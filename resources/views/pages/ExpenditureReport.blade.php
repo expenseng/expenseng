@@ -1,18 +1,29 @@
 @extends('layouts.master')
 
 @section('banner')
-    <div class="banner-section">
-        <div class="home-banner">Expenditure Report</div>
-        <div class="banner">
-            <h1>Expenditure Report <br</h1>
-            <p>Explore the amount allocated to every ministry in both graphical and tabular format. Increase your knowledge about how much each ministry gets allocated every month. and how much they spend.</p>
-        </div>
-    </div>
+    	<!-- banner -->
+		<div class="banner-section">
+			<div class="home-banner">
+				<div class="container">Expenditure Report</div>
+			</div>
+			<div class="banner">
+				<div class="container">
+					<h1>Expenditure Report</h1>
+					<p
+						>Explore the amount allocated to every ministry in both graphical
+						and tabular format. Increase your knowledge about how much each
+						ministry gets allocated every month. and how much they spend.</p
+					>
+				</div>
+			</div>
+		</div>
+
+		<br />
+		<br />
 @endsection
 
 @section('contents')
-<!DOCTYPE html>
-<html lang="en">
+
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -42,75 +53,9 @@
 		<title>ExpenseNg</title>
 	</head>
 	<body>
-		<!-- navbar -->
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<div class="container">
-				<a class="navbar-brand" href="#"
-					><img
-						src="{{asset('img/Group380.svg')}}"
-						class="logo1"
-						alt="logo"
-						srcset="" /><img
-						src="{{asset('img/Frame384.svg')}}"
-						class="logo2"
-						alt="logo"
-						srcset=""
-				/></a>
 
-				<button
-					class="navbar-toggler"
-					type="button"
-					data-toggle="collapse"
-					data-target="#navbarNavDropdown"
-					aria-controls="navbarNavDropdown"
-					aria-expanded="false"
-					aria-label="Toggle navigation"
-				>
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarNavDropdown">
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item">
-							<a class="nav-link" href="{{route('home')}}">Home</a>
-						</li>
-						<li class="nav-item active">
-							<a class="nav-link" href="#"
-								>Expenditure Report<span class="sr-only">(current)</span></a
-							>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Ministry Info</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Company Info</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{{route('contact')}}">Reference</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</nav>
 
-		<!-- banner -->
-		<div class="banner-section">
-			<div class="home-banner">
-				<div class="container">Expenditure Report</div>
-			</div>
-			<div class="banner">
-				<div class="container">
-					<h1>Expenditure Report</h1>
-					<p
-						>Explore the amount allocated to every ministry in both graphical
-						and tabular format. Increase your knowledge about how much each
-						ministry gets allocated every month. and how much they spend.</p
-					>
-				</div>
-			</div>
-		</div>
-
-		<br />
-		<br />
+	
 
 		<!-- The chart Begins -->
 		<section class="container">
@@ -469,5 +414,4 @@
 		<script src="{{asset('js/main.js')}}"></script>
 		<script src="{{asset('./js/ExpenditureScript.js')}}"></script>
 	</body>
-</html>
 @endsection
