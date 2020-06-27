@@ -1,18 +1,29 @@
 @extends('layouts.master')
 
 @section('banner')
-    <div class="banner-section">
-        <div class="home-banner">Expenditure Report</div>
-        <div class="banner">
-            <h1>Expenditure Report <br</h1>
-            <p>Explore the amount allocated to every ministry in both graphical and tabular format. Increase your knowledge about how much each ministry gets allocated every month. and how much they spend.</p>
-        </div>
-    </div>
+    	<!-- banner -->
+		<div class="banner-section">
+			<div class="home-banner">
+				<div class="container">Expenditure Report</div>
+			</div>
+			<div class="banner">
+				<div class="container">
+					<h1>Expenditure Report</h1>
+					<p
+						>Explore the amount allocated to every ministry in both graphical
+						and tabular format. Increase your knowledge about how much each
+						ministry gets allocated every month. and how much they spend.</p
+					>
+				</div>
+			</div>
+		</div>
+
+		<br />
+		<br />
 @endsection
 
 @section('contents')
-<!DOCTYPE html>
-<html lang="en">
+
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -42,6 +53,8 @@
 		<title>ExpenseNg</title>
 	</head>
 	<body>
+<<<<<<< HEAD
+=======
 		<!-- navbar -->
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
@@ -91,26 +104,10 @@
 				</div>
 			</div>
 		</nav>
+>>>>>>> upstream/develop
 
-		<!-- banner -->
-		<div class="banner-section">
-			<div class="home-banner">
-				<div class="container">Expenditure Report</div>
-			</div>
-			<div class="banner">
-				<div class="container">
-					<h1>Expenditure Report</h1>
-					<p
-						>Explore the amount allocated to every ministry in both graphical
-						and tabular format. Increase your knowledge about how much each
-						ministry gets allocated every month. and how much they spend.</p
-					>
-				</div>
-			</div>
-		</div>
 
-		<br />
-		<br />
+	
 
 		<!-- The chart Begins -->
 		<section class="container">
@@ -469,5 +466,4 @@
 		<script src="js/main.js"></script>
 		<script src="./js/ExpenditureScript.js"></script>
 	</body>
-</html>
 @endsection
