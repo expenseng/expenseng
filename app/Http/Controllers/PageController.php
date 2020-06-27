@@ -43,7 +43,7 @@ class PageController extends Controller
 
     public function companyReport()
     {
-        return view('pages.companyprojects');
+        return view('pages.companyReports');
     }
 
     public function companySearch()

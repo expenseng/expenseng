@@ -2,7 +2,7 @@
     <div class="main-footer-wrapper">
         <div class="main-box1">
             <div class="brand-logo">
-                <img src="{{secure_asset('img/logo.png')}}"><br>
+                <img src="{{asset('img/logo.png')}}"><br>
             </div>
             <div class="twitter">
                 <img src="{{ asset('/img/twitter-logo.png') }}">
