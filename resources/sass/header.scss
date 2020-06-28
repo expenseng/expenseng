@@ -45,7 +45,7 @@ header ul li ul li{
     width: 100%;
 }
 header ul li ul li a{
-    padding: 10px;
+    padding: 5px;
     background: #ebf1ef;
     text-align: center;
 }
@@ -74,6 +74,7 @@ header .menu-toggle{
 .active{
     font-weight: bold;
     color: black;
+    background: none !important;
 }
 
 @media only screen and (max-width: 750px){

@@ -15,7 +15,7 @@
 
 .home-banner {
   background-color: #00945E;
-  height: 40px;
+  height: 60px;
   color: #fff;
   text-align: left;
   padding-left: 15px;
@@ -27,7 +27,7 @@
 }
 
 .banner {
-  background: linear-gradient(rgba(0, 0, 0, 0.568), rgba(0, 0, 0, 0.623)), url("/img/images28.svg");
+  background: linear-gradient(rgba(0, 0, 0, 0.151), rgba(0, 0, 0, 0.199)), url("/img/images28.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -36,27 +36,29 @@
 }
 
 .banner h1 {
-  text-align: left;
+  /* height: 115px; */
+  text-align: center;
   font-size: 1.5em;
   font-weight: bold;
   padding-top: 25px;
   padding-left: 15px;
   padding-right: 20px;
-  margin-top: 21px;
+  margin-top: 11px;
   color: white;
   font-family: "Lato", sans-serif;
 }
 
 .banner p {
-  font-size: 12px;
-  text-align: left;
+  font-size: 13px;
+  text-align: center;
   color: white;
-  padding-right: 30px;
-  padding-left: 15px;
-  padding-bottom: 50px;
+  padding: 20px 30px;
+  padding-bottom: 55px;
   font-family: "Lato", sans-serif;
 }
-
+h3,span{
+  color: #00945E;
+}
 /* MAIN FEATURE  */
 
 .mainfeature-section {
@@ -147,8 +149,8 @@
   .home-banner {
     /* width: 100%; */
     margin-top: 10px;
-    height: 50px;
-    padding-top: 10px;
+    height: 70px;
+    padding-top: 15px;
     padding-left: 55px;
     font-weight: bold;
     font-weight: bold;
@@ -163,20 +165,20 @@
   }
 
   .banner h1 {
-    padding-top: 70px;
+    padding-top: 150px;
     font-size: 56px;
     line-height: 74px;
     font-weight: bolder;
     margin-left: 30px;
-    margin-top: 45px;
   }
 
   .banner p {
-    width: 40%;
     padding-left: 50px;
+    padding-right: 50px;
     font-weight: 600;
-    font-size: 1em;
-    line-height: 29px;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
   }
 
   .mainfeature-item {
@@ -192,6 +194,7 @@
 
   .dash {
     margin-top: -5px;
+    color: transparent;
   }
 
   .green-heading {
@@ -295,6 +298,7 @@ header * {
 
 .logo2 {
   margin-left: -1em;
+  margin-top: 25px;
   width: 150px;
 }
 
@@ -462,7 +466,8 @@ body {
   #filter-button-row button {
     background: #00945E;
     color: #FFFFFF;
-    padding: 10px 50px;
+    padding: 10px 40px;
+    width: 35%;
   }
 
   #filter-button-row i {
@@ -477,6 +482,7 @@ body {
 
   #expenditure-chart {
     margin-top: 20px;
+    padding: 0 15px;
   }
 
   #chart-key {
@@ -630,7 +636,8 @@ body {
   }
 
   #expenditure-chart {
-    margin-top: 20px;
+    margin-top: 30px;
+    margin-left: -35px;
   }
 
   #x-axis ul {
@@ -1737,7 +1744,6 @@ button {
 }
 
 .active {
-  background: white !important;
   color: #00945e;
 }
 
@@ -2303,7 +2309,7 @@ body {
 }
 
 span {
-  font-size: 13px;
+  font-size: 16px;
   margin-left: 1rem;
 }
 
