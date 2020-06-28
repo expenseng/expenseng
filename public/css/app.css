@@ -298,6 +298,7 @@ header * {
 
 .logo2 {
   margin-left: -1em;
+  margin-top: 25px;
   width: 150px;
 }
 
@@ -635,7 +636,8 @@ body {
   }
 
   #expenditure-chart {
-    margin-top: 20px;
+    margin-top: 30px;
+    margin-left: -35px;
   }
 
   #x-axis ul {
@@ -2307,7 +2309,7 @@ body {
 }
 
 span {
-  font-size: 13px;
+  font-size: 16px;
   margin-left: 1rem;
 }
 
