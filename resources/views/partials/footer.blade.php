@@ -11,17 +11,23 @@
         </div>
         <div class="main-box2">
             <div class="box1">
-                <h4>About Us</h4>
-                <a href="#">About Expenseng.com</a>
-                <a href="#">Contact Us</a>
-            </div>
-            <div class="box2">
                 <h4>Pages</h4>
                 <a href="#">Home</a>
-                <a href="#">Daily Payment Report</a>
-                <a href="#">Companies</a>
-                <a href="#">Ministry</a>
+                <a href="#">Daily Report</a>
+                <a href="#">Ministry Report</a>
+                <a href="#">Company Report</a>
             </div>
+            <div class="box2">
+                <h4>Profiles</h4>
+                <a href="#">Ministry Search</a>
+                <a href="#">Company Search</a>
+            </div>
+            {{-- <div class="box3">
+                <h4>References</h4>
+                <a href="#">Government Handles</a>
+                <a href="#">About Us</a>
+                <a href="#">Contact Us</a>
+            </div> --}}
         </div>
     </div>
     <div class="last-footer">
