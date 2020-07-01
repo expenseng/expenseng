@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'PageController@index')->name('home');
-Route::get('/reports/expenditure', 'PageController@expenditure')->name('expenditure_report');
+Route::get('/reports/expenditure', 'ExpendituresController@getExpenditures')->name('expenditure_report');
 Route::get('/ministry/reports', 'PageController@ministryReport')->name('ministry_report');
 Route::get('/ministry/profile', 'PageController@ministryProfileSearch')->name('ministry_profile_search');
 Route::get('/company/profile', 'PageController@companyProfile')->name('company_profile');
