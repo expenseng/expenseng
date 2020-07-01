@@ -19283,6 +19283,8 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module './main'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
 __webpack_require__(/*! ./chart */ "./resources/js/chart.js");
 
 /***/ }),
@@ -19433,8 +19435,6 @@ function toggleDataPresentation() {
     tableIcon.style.color = "#00945E"; //dataPresentation.display = ""
   }
 }
-
-;
 /*
 chartButton.addEventListener("click", toggleDataPresentation);//Set chart button click listener
 tableButton.addEventListener("click", toggleDataPresentation);//Set table button click listener
@@ -19460,8 +19460,8 @@ tableButton.addEventListener("click", toggleDataPresentation);//Set table button
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\team-granite\expenseng\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\team-granite\expenseng\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\User\Desktop\expenseng\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\User\Desktop\expenseng\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

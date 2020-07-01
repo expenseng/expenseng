@@ -222,6 +222,8 @@
                                 <th>Amount</th>
                                 <th>Date</th>
                             </tr>
+                            @if (count($expenditures) >0)
+                            @foreach($expenditures as $expenditure)
                             <tr>
                                 <td class="profileSummary">Rehabilitation of Lagos</td>
                                 <td>Transport</td>
@@ -229,7 +231,9 @@
                                 <td>₦806,650,320</td>
                                 <td>20th May, 2020</td>
                             </tr>
-                            <tr>
+                            @endforeach
+                            @endif
+                            <!--<tr>
                                 <td class="profileSummary">Building of Class Blocks</td>
                                 <td>Education</td>
                                 <td>Samsung</td>
@@ -319,7 +323,7 @@
                                 <td>Samsung</td>
                                 <td>₦806,650,320</td>
                                 <td>20th May, 2020</td>
-                            </tr>
+                            </tr>-->
                         </table>
                     </div>
                 </div>
