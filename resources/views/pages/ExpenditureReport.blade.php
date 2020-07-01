@@ -225,11 +225,11 @@
                             @if (count($expenditures) >0)
                             @foreach($expenditures as $expenditure)
                             <tr>
-                                <td class="profileSummary">Rehabilitation of Lagos</td>
-                                <td>Transport</td>
-                                <td>Julius Beger</td>
-                                <td>₦806,650,320</td>
-                                <td>20th May, 2020</td>
+                                <td class="profileSummary">{{$expenditure->description}}</td>
+                                <td>{{$expenditure->ministry}}</td>
+                                <td>{{$expenditure->company}}</td>
+                                <td>₦{{$expenditure->amount}}</td>
+                                <td>{{$expenditure->payment_date}}</td>
                             </tr>
                             @endforeach
                             @endif
