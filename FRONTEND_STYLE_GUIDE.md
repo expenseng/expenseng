@@ -15,7 +15,7 @@ Blade is nothing different from the HTML and CSS you already write, it only allo
 
 In addition to embedding server side code, you also have super power of including other people's template into yours. For instance, we could have a file called `comment-form.blade.php` and that file can be included everywhere we need a comment form to appear. Without need to copy and paste the code or styling.
 
-Blade naming uses the format: `name.blade.php` and blade files should be kept within the `resources/views folder`. If you check the current repo you'd see we have other folders withing this directory. We have the pages folder which will house the pages of the `website: home, about, contact, expenditures, etc`.
+Blade naming uses the format: `name.blade.php` and blade files should be kept within the `resources/views folder`. If you check the current repo you'd see we have other folders withing this directory. We have the `pages folder` which will house the pages of the `website: home, about, contact, expenditures, etc`.
 And we have the partials folder which will house the partial files like the `comment-form.blade.php` I described above. And lastly we have the layouts folder which will house the layouts of the project.
 Most of your work will be in the partials or pages folder.
 
