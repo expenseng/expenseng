@@ -25,7 +25,7 @@
         <div class="row d-flex align-items-center">
             <!-- Report Date -->
             <div id="report-date-row" class="col-md-8">
-                <h5>Selected date:<span>20th May, 2020</span></h5>
+                <h5>Selected date:<span>{{date('d, M ,Y')}}</span></h5>
             </div>
             <!-- Filter Button -->
             <div id="filter-button-row" class="col-md-4 filter-btn">
@@ -208,7 +208,7 @@
         <div class="main-table">
             <div class="table-top">
                 <h3>Daily Expenditure</h3>
-                <h5>20th May, 2020 &nbsp;
+                <h5>{{date('d,M,Y')}} &nbsp;
                     <button>Filter <i class="fas fa-filter"></i></button></h5>
             </div>
             <div class="table-data">
@@ -417,5 +417,5 @@
         </div>
     </div>
 </section>
-{{-- <script src="./js/ExpenditureScript.js"></script> --}}
+ {{--<script src="./js/ExpenditureScript.js"></script>--}}
 @endsection
