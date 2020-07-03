@@ -68,7 +68,7 @@ class PageController extends Controller
         return view('pages.ministry_profile');
     }
 
- 
+
 
     public function quickContact()
     {
@@ -87,7 +87,22 @@ class PageController extends Controller
 
     public function companySearch()
     {
+
         return view('pages.companysearch');
+    }
+
+    public function companySearchShow()
+    {
+        request()->validate([
+            'company' => 'required',
+
+        ]);
+
+
+        $search = '%' . request('company') . '%';
+        $company  = \App\Company::where('company_name', 'LIKE', $search)->get();
+
+        return $company;
     }
 
     public function aboutUs()
