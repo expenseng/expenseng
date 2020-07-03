@@ -6,10 +6,10 @@
               <a href="index.html">
                   <img src="{{'images/Frame 390.png'}}" class="ft">
               </a> <br><br>
-              <a href=""><i class="fab fa-twitter" aria-hidden="true"></i><small> @expenseng</small></a>               
+              <a href=""><i class="fab fa-twitter" aria-hidden="true"></i><small> @expenseng</small></a>
           </div>
           <div class="col-md-4">
-            
+
           </div>
           <div class="col-md-2">
               <h6>Pages</h6>
@@ -27,7 +27,7 @@
                       <a href="#"><small>Company Report</small></a>
                   </li>
               </ul>
-              
+
           </div>
           <div class=" col-md-2">
               <h6>Profile</h6>
@@ -36,7 +36,7 @@
                       <a  href="ministry_list/ministry_list_federal_ministries.html"><small>Ministry Search</small></a>
                   </li>
                   <li>
-                      <a href="facilities.html"><small>Company Search</small></a>
+                      <a href="/company/search"><small>Company Search</small></a>
                   </li>
               </ul>
           </div>
@@ -47,10 +47,10 @@
                       <a href="index.html"><small>Government handles</small></a>
                   </li>
                   <li>
-                      <a href=""><small>About us</small></a>     
+                      <a href=""><small>About us</small></a>
                   </li>
                   <li>
-        <a href=""><small>Contact us</small></a>                        
+        <a href=""><small>Contact us</small></a>
       </li>
               </ul>
           </div>
