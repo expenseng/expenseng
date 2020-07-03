@@ -15,11 +15,11 @@
     <div class="container mt-5">
         <div class="navigation">
             <ul>
-                <li class="ml-0"><a class="green-text" href="../index.html">Home</a></li>
+                <li class="ml-0"><a class="green-text" href="/">Home</a></li>
                 <span>.</span>
-                <li><a class="green-text" href="../ministry_report/ministry_report.html">Reports</a></li>
+                <li><a class="green-text" href="#">Reports</a></li>
                 <span>.</span>
-                <li><a class="green-text" href="../ministry_report/ministry_report_comments.html">Ministry Reports</a></li>
+                <li><a class="green-text" href="#">Ministry Reports</a></li>
             </ul>
         </div>
     </div>
@@ -53,7 +53,7 @@
             <div class="container">
                 <div class="row occupy">
                     <div class="col-sm-1 mt-1 row d-flex container">
-                        <img src="../assets/images/profile-image.svg"class="resize"alt="profile-image">
+                        <img src="/images/profile-image.svg"class="resize"alt="profile-image">
                         <div class="ml-3 mt-2 be-gone">
                             <p class="green-text">James Emmanuel<br>
                             <span class="mt-0 grey-text small mt-1">2mins ago</span></p>
@@ -87,7 +87,7 @@
             <div class="container">
                 <div class="row occupy">
                     <div class="col-sm-1 mt-1 row d-flex container">
-                        <img src="../assets/images/profile-image.svg"class="resize"alt="profile-image">
+                        <img src="/images/profile-image.svg"class="resize"alt="profile-image">
                         <div class="ml-3 mt-2 be-gone">
                             <p class="green-text">James Emmanuel<br>
                             <span class="mt-0 grey-text small mt-1">2mins ago</span></p>
@@ -121,7 +121,7 @@
             <div class="container">
                 <div class="row occupy">
                     <div class="col-sm-1 mt-1 row d-flex container">
-                        <img src="../assets/images/profile-image.svg"class="resize"alt="profile-image">
+                        <img src="/profile-image.svg"class="resize"alt="profile-image">
                         <div class="ml-3 mt-2 be-gone">
                             <p class="green-text">James Emmanuel<br>
                             <span class="mt-0 grey-text small mt-1">2mins ago</span></p>
@@ -154,7 +154,7 @@
             <div class="container">
                 <div class="row occupy">
                     <div class="col-sm-1 mt-1 row d-flex container">
-                        <img src="../assets/images/profile-image.svg"class="resize"alt="profile-image">
+                        <img src="/images/profile-image.svg"class="resize"alt="profile-image">
                         <div class="ml-3 mt-2 be-gone">
                             <p class="green-text">James Emmanuel<br>
                             <span class="mt-0 grey-text small mt-1">2mins ago</span></p>
@@ -182,7 +182,7 @@
                                 <div class="container">
                                     <div class="row container occupy">
                                         <div class="col-sm-1 mt-1 row d-flex container">
-                                            <img src="../assets/images/profile-image.svg"class="reduce"alt="profile-image">
+                                            <img src="/images/profile-image.svg"class="reduce"alt="profile-image">
                                             <div class="ml-3 mt-2 be-gone">
                                                 <p class="green-text">James Emmanuel<br>
                                                 <span class="mt-0 grey-text small mt-1">2mins ago</span></p>
