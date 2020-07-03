@@ -8,7 +8,7 @@ class PageController extends Controller
 {
     public function index()
     {
-        return view('pages.home'); 
+        return view('pages.home');
     }
 
     public function contactUs()
@@ -18,12 +18,12 @@ class PageController extends Controller
 
     public function ministryGraph()
     {
-        return view('pages.ministry-report-graph'); 
+        return view('pages.ministry-report-graph');
     }
 
     public function projectModal()
     {
-        return view('pages.project_details-filter_modal '); 
+        return view('pages.project_details-filter_modal ');
     }
 
     public function expenseGraph()
@@ -33,22 +33,22 @@ class PageController extends Controller
 
     public function directorBoard()
     {
-        return view('pages.director_board'); 
+        return view('pages.director_board');
     }
 
     public function blog()
     {
-        return view('pages.blog'); 
+        return view('pages.blog');
     }
 
     public function about()
     {
-        return view('pages.aboutUs'); 
+        return view('pages.aboutUs');
     }
 
     public function error404()
     {
-        return view('pages.404_error'); 
+        return view('pages.404_error');
     }
 
 
@@ -68,7 +68,7 @@ class PageController extends Controller
         return view('pages.ministry_profile');
     }
 
- 
+
 
     public function quickContact()
     {
@@ -87,7 +87,22 @@ class PageController extends Controller
 
     public function companySearch()
     {
+
         return view('pages.companysearch');
+    }
+
+    public function companySearchShow()
+    {
+        request()->validate([
+            'company' => 'required',
+
+        ]);
+
+
+        $search = '%' . request('company') . '%';
+        $company  = \App\Company::where('company_name', 'LIKE', $search)->get();
+
+        return $company;
     }
 
     public function aboutUs()
