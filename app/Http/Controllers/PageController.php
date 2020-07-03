@@ -36,6 +36,21 @@ class PageController extends Controller
         return view('pages.director_board'); 
     }
 
+    public function blog()
+    {
+        return view('pages.blog'); 
+    }
+
+    public function about()
+    {
+        return view('pages.aboutUs'); 
+    }
+
+    public function error404()
+    {
+        return view('pages.404_error'); 
+    }
+
 
 
     public function expenditure()

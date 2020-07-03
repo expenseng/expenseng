@@ -19,6 +19,10 @@ Route::get('/ministry-graph', 'PageController@ministryGraph')->name('ministry-gr
 Route::get('/expense-graph', 'PageController@expenseGraph')->name('expense-graph');
 Route::get('/project-modal', 'PageController@projectModal')->name('project-modal');
 Route::get('/director-board', 'PageController@directorBoard')->name('director-board');
+Route::get('/blog', 'PageController@blog')->name('blog');
+Route::get('/about', 'PageController@about')->name('about');
+Route::get('/404', 'PageController@error404')->name('404');
+
 
 Route::get('/reports/expenditure', 'ExpendituresController@getExpenditures')->name('expenditure_report');
 Route::get('/ministry/reports', 'PageController@ministryReport')->name('ministry_report');
