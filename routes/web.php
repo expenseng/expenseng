@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,5 +34,6 @@ Route::get('/company/reports', 'PageController@companyReport')->name('company_re
 Route::get('/company/search', 'PageController@companySearch')->name('company_search');
 Route::post('/company/show', 'PageController@companySearchShow');
 Route::get('/quick-contacts', 'PageController@quickContact')->name('quick_contacts');
-
-Route::get('/about-us', 'PageController@aboutUs')->name('about_us');
+Route::get('contract', 'PageController@contract')->name('contract');
+Route::get('/ministry', 'PageController@ministryList')->name('ministry');
+Route::get('/spending', 'PageController@ministrySpending')->name('spending');

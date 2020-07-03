@@ -43,7 +43,7 @@ class PageController extends Controller
 
     public function about()
     {
-        return view('pages.aboutUs');
+        return view('pages.aboutus');
     }
 
     public function error404()
@@ -100,8 +100,18 @@ class PageController extends Controller
         return 'Working on this, talk to @yanmifeakeju';
     }
 
-    public function aboutUs()
+    public function contract()
     {
-        return view('pages.about');
+        return view('pages.contracts_awarded');
+    }
+
+    public function ministryList()
+    {
+        return view('pages.ministry_list_federal_ministries');
+    }
+
+    public function ministrySpending()
+    {
+        return view('pages.ministry_report_table');
     }
 }

@@ -40,7 +40,7 @@
 
     <div class="user-profile">
       <h3 class="name">Julius Berger
-        <img src="{{ asset/images/image 13.png'}}" alt="">
+        <img src="{{ asset('images/image 13.png') }}" alt="">
       </h3>
       <div class="profile-overview mt-3">
         <div class="row">
