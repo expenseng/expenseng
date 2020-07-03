@@ -1,0 +1,175 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  color: #353A45;
+  ;
+}
+
+a {
+  text-decoration: none;
+}
+
+.company-name {
+  font-size: 40px;
+  font-weight: 800;
+  color: #323E48;
+}
+
+.contract-details {
+  display: flex !important;
+}
+
+.nav-item:nth(0) {
+  list-style-type: none;
+}
+
+.link {
+  color: #00945E;
+  font-size: 20px;
+  font-weight: bold;
+}
+.link:hover{
+  color: #00945eb9;
+}
+
+ul li:nth-child(1) {
+  list-style-type: none;
+  padding: 0;
+}
+
+.header-text {
+  font-weight: 500;
+  font-size: 20px;
+  color: #1F2430;
+}
+
+.company-twitter-handle {
+  font-size: 24px;
+  color: #6765EC;
+}
+
+.total-amount, .number-of-contracts, .comments {
+  font-size: 24px;
+}
+
+.total-amount, .number-of-contracts {
+  color: #00945E;
+  font-weight: bold;
+}
+
+.year {
+  font-size: 13px;
+  color: #1F2430;
+}
+
+.section-navbar>a {
+  font-weight: bold;
+  font-size: 18px;
+  color: #A1A3A8;
+  margin: 0.5rem;
+  position: relative;
+}
+
+.section-navbar>a.active-section {
+  color: #00945E;
+}
+
+.section-navbar>a.active-section::before {
+  background-color: #00945E;
+}
+
+.section-navbar a::before {
+  content: '';
+  position: absolute;
+  top: 48px;
+  width: 100%;
+  height: 2px;
+  background-color: #D5D9D8;
+}
+
+.username {
+  font-size: 20px;
+  margin: 0;
+}
+
+.text-green {
+  color: #005938;
+}
+
+.text-mute {
+  color: #a1a3a8;
+}
+
+.ellipsis {
+  color: #D6D9DF;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+i {
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+
+.time {
+  font-weight: 300;
+  font-size: 16px;
+  color: #62666E;
+}
+
+.card {
+  box-shadow: 2px 3px 1px rgba(0, 0, 0, 0.04);
+  border-radius: 6px;
+}
+
+::placeholder {
+  font-size: 24px;
+  color: #BCBDC1
+}
+
+
+@media(max-width:600px) {
+  .company-name {
+    font-size: 30px;
+  }
+  .header-text {
+    font-weight: 300;
+    font-size: 16px;
+  }
+  .company {
+    text-align: center;
+  }
+  .company-twitter-handle, .total-amount, .number-of-contracts {
+    font-size: 18px;
+  }
+  .nav-link {
+    font-size: 15px;
+  }
+  .section-navbar {
+    width: 100% !important;
+  }
+  .w-75 {
+    width: 100% !important;
+  }
+  .section-navbar a::before {
+    top: 75px;
+  }
+  .contract-details {
+    display: inline-block !important;
+    width: 100% !important;
+  }
+  .d-flex-sm {
+    display: flex;
+    justify-content: space-between;
+  }
+  .company-twitter-handle {
+    font-size: 16px;
+    color: #6765EC;
+  }
+  .navbar {
+    display: block !important;
+    list-style-type: none;
+  }
+}

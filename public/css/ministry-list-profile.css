@@ -1,0 +1,198 @@
+.nav-link{
+	color: black !important;
+}
+.nav-link:hover{
+	color: grey !important;
+}
+.navbar{
+	background-color: #ffff !important;
+}
+.my-footer ul {
+  list-style-type: none;
+  padding-left: 0;
+  color: white !important;
+}
+.my-footer .link small{
+  color: #fff !important;
+}
+.my-footer {
+  background-color: #323E48 !important;
+}
+h6{
+	color: white;
+	margin-top: 25px;
+}
+.fa-search{
+	color: grey !important;
+}
+.fa-search:hover{
+	color: black !important;
+}
+.ft{
+	margin-top: 25px;
+}
+.lower{
+	background-color: #1F2430;
+	padding: 10px;
+}
+
+.first-section{
+    background-color: #fff; 
+}
+
+.first-section i{
+    font-size: 4px;
+}
+
+.green span{
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 20px;
+    color: #00945E;
+}
+
+.second-part span{
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 38px;
+    color: #323E48;
+}
+
+.first-section .card{
+    background-color: #fff; 
+}
+
+.first-section .card-header{
+    background-color: #fff;
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #1F2430;
+}
+
+small{
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+    color: #1F2430;
+}
+
+.second-section .first-part .link{
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    color: #A1A3A8;
+}
+
+.second-section .first-part .link::after {
+    content: '';
+    height: 2px;
+    background: #A1A3A8; 
+    display:block;
+    margin-top: 20px;
+}
+
+.second-section .first-part .link:focus, .second-section .first-part .link:hover {
+    color: #00945E;
+    text-decoration: none;
+}
+
+.second-section .first-part .link:focus::after, .second-section .first-part .link:hover::after {
+    background: #00945E;
+}
+
+hr{
+    width: 100%;
+    border: 1px solid #D5D9D8;
+    margin-top: 0px;
+}
+
+.card .card-body .links{
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    color: #6765EC;
+}
+
+.second-section .card-img{
+    background-color: #E5E5E5;
+}
+
+.card-title{
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.card-text .green{
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.05em;
+    color: #005D3B;
+}
+
+.second-section .card .link{
+    color: #000000;
+}
+
+.card .social-handle .link{
+    color: #000000;
+}
+
+[class^='col-lg-3']{
+    margin-bottom: 20px;
+}
+
+@media (max-width: 900px){
+    .green span{
+        font-family: 'Lato', sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 14px;
+        color: #00945E;
+    }
+
+    .second-part img{
+        width: 50px;
+        height: 50px;
+    }
+
+    .second-part span{
+        font-family: 'Lato', sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 14px;
+        color: #323E48;
+    }
+
+    .first-section .card-header{
+        background-color: #fff;
+        font-family: 'Lato', sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 16px;
+        color: #1F2430;
+    }
+
+}
+

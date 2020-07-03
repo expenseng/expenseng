@@ -1,53 +1,75 @@
-<footer>
-    <div class="main-footer-wrapper">
-        <div class="main-box1">
-            <div class="brand-logo">
-                <img src="{{asset('img/logo.png')}}"><br>
+<!-------------Footer starts here-------------->
+<footer class="my-footer">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-2 footer-brand ">
+              <a href="index.html">
+                  <img src="{{'images/Frame 390.png'}}" class="ft">
+              </a> <br><br>
+              <a href=""><i class="fab fa-twitter" aria-hidden="true"></i><small> @expenseng</small></a>               
+          </div>
+          <div class="col-md-4">
+            
+          </div>
+          <div class="col-md-2">
+              <h6>Pages</h6>
+              <ul >
+                  <li>
+                      <a  href="index.html"><small>Home</small></a>
+                  </li>
+                  <li>
+                      <a  href="#"><small>Daily Report</small></a>
+                  </li>
+                  <li>
+                      <a href="#"><small>Ministry Report</small></a>
+                  </li>
+                  <li>
+                      <a href="#"><small>Company Report</small></a>
+                  </li>
+              </ul>
+              
+          </div>
+          <div class=" col-md-2">
+              <h6>Profile</h6>
+              <ul>
+                  <li>
+                      <a  href="ministry_list/ministry_list_federal_ministries.html"><small>Ministry Search</small></a>
+                  </li>
+                  <li>
+                      <a href="facilities.html"><small>Company Search</small></a>
+                  </li>
+              </ul>
+          </div>
+          <div class="col-md-2">
+              <h6>Reference</h6>
+              <ul >
+                  <li>
+                      <a href="index.html"><small>Government handles</small></a>
+                  </li>
+                  <li>
+                      <a href=""><small>About us</small></a>     
+                  </li>
+                  <li>
+        <a href=""><small>Contact us</small></a>                        
+      </li>
+              </ul>
+          </div>
+      </div><br><br>
+  </div>
+  <div class="container-fluid lower">
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-10">
+                <a href=""><small>Accessibility</small></a>-
+                <a href=""><small> | Privacy Policy</small></a>-
+                <a href=""><small> | Freedom of Information Act</small></a>
             </div>
-            <div class="twitter">
-                <img src="{{ asset('/img/twitter-logo.png') }}">
-                <a href="https://twitter.com/expenseng">@expenseng</a>
+            <div class="col-md-2">
+                <a href=""><small><span>&#169</span>2020EXPENSENG.com</small></a>
             </div>
         </div>
-        <div class="main-box2">
-            <div class="box1">
-                <h4>Pages</h4>
-                <a href="#">Home</a>
-                <a href="#">Daily Report</a>
-                <a href="#">Ministry Report</a>
-                <a href="#">Company Report</a>
-            </div>
-            <div class="box2">
-                <h4>Profiles</h4>
-                <a href="#">Ministry Search</a>
-                <a href="#">Company Search</a>
-            </div>
-            {{-- <div class="box3">
-                <h4>References</h4>
-                <a href="#">Government Handles</a>
-                <a href="#">About Us</a>
-                <a href="#">Contact Us</a>
-            </div> --}}
-        </div>
     </div>
-    <div class="last-footer">
-        <ul>
-            <li><a href="#">Accessibility |</a></li>
-            <li><a href="#">&nbspPrivacy Policy |</a></li>
-            <li><a href="#">&nbspFreedom of Information Act</a></li>
-            <li class="push">
-                <a href="#">&#169; 2020 EXPENSENG.com</a>
-            </li>
-        </ul>
-    </div>
+  </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-<script src="https://kit.fontawesome.com/ae3427d2c7.js" crossorigin="anonymous"></script>
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- custom script -->
-<script src="{{ asset('js/app.js') }}"></script>
+<!-------------Footer ends here-------------->

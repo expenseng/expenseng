@@ -1,0 +1,204 @@
+
+
+@font-face{
+    font-family: Lato;
+    src: url(../fonts/Lato.ttf);
+}
+
+body{
+    font-family: Lato;
+}
+
+.min-table-over{
+    margin-bottom: 10%;
+    margin-top: 10%;
+}
+
+#header{    
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+#minwrks{
+    color:#6765EC;
+}
+
+.amount{
+    color: #00945E;
+}
+
+.button{
+    border: none;
+    background-color: inherit;
+    border-bottom: 2px solid lightgray;
+    color: lightgray;
+    outline: none;
+    padding-bottom: 10px;
+    
+}
+
+.button:hover{
+    color: #00945E;
+    border-bottom: 2px solid  #00945E ;
+}
+
+.button:focus{
+    outline: none;
+}
+.btn-group{
+    border-bottom: 1px solid lightgray;
+    margin: 3% 0;
+}
+
+.btn-marg{
+     margin-left: 0.7%;
+}
+.thead{
+    border-bottom: 2px solid #00945E;
+}
+
+.intro{
+    margin-top:3%;
+}
+
+.minitable{
+    border: 2px solid #00945E;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.min-tab{
+    overflow-x: auto;
+}
+.minitable-inner{
+    border-right: 2px solid #00945E;
+}
+
+
+.first-th{
+    background-color: #00945E;
+}
+
+
+.min-pag-parent{
+    margin-left: 15%;
+}
+
+.index{
+    font-size: 2vw;
+}
+
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+@media(max-width:575px){
+    .tab-button{
+    position: relative;
+    top: 2em;}
+}
+.button1{
+    margin-left: 10%;
+}
+.filter{
+    float: right;
+}
+
+.pagination{
+float: right;
+}
+
+.pagination a,.mini-pagination a {
+  color: black;
+  padding: 3px 10px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+
+.pagination a.active,.mini-pagination a.active {
+  background-color: #00945E;
+  color: white;
+}
+
+
+.pagination a:hover:not(.active),.mini-pagination a:hover:not(.active) {background-color:#00945E;}
+
+th,td{
+    padding: 2%;
+}
+
+
+.back{
+    background-color: gainsboro;
+}
+.head-cont{
+    margin-left: 10px;
+}
+.table-div{
+    overflow-x: scroll;
+}
+
+#table-border{
+    padding: 3%;
+    margin: 0 4%;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media(max-width:600px){
+
+    #header{
+        font-size: 0.7rem;
+    }
+    
+    .bio{
+    font-size: 4vw;
+}
+    
+    .cards{
+    font-size: 1rem;
+        border-bottom: 2px solid #00945E;
+}
+
+.sub{
+    font-size:0.875rem;
+}
+
+
+    .min-pag-parent,.mini-pagination{
+text-align: center;
+    }
+    
+    .index{
+    font-size: 4vw;
+        margin-top: 7%;
+}
+    
+    .filter{
+   font-size: 0.8rem;
+        margin-bottom: 2%;
+}
+    .result{
+        text-align: center;
+    }
+    
+    .pagination{
+        float: none;
+         text-align: center;
+        margin-left: 5%;
+    }
+
+}
+
+@media(min-width:1000px){
+    
+    #first-btn{
+    margin-left: 7%;
+}
+    
+}
+/*Page 2*/

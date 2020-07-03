@@ -1,0 +1,369 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+.back{
+	margin-right: -20px;
+}
+
+:root{
+  --textxolor: #353A45;
+  --lightgray: #BCBDC1
+}
+
+.navbar{
+  background-color: #fff;
+}
+
+main{
+  margin-top: 118px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.hero{
+  width: 100%;
+  position: relative;
+}
+
+main .black_tr{
+  position: absolute;
+  top: 144.16px;
+  left: 670.01px;
+}
+
+main .green_bottom{
+  position: absolute;
+  top: 435px;
+  right: 250px;
+}
+
+main .green_right{
+  position: absolute;
+  top: 292px;
+  right: 120px;
+}
+.hero .left h1{
+height: 85px;
+  font-family: Lato;
+font-style: normal;
+font-weight: bold;
+font-size: 45px;
+line-height: 152%;
+color: var(--textxolor);
+}
+
+
+.hero .left p{
+  width: 750px;
+  max-width: 834px;
+height: 175px;
+  font-family: Lato;
+font-style: normal;
+font-weight: normal;
+font-size: 20px;
+line-height: 35px;
+color: var(--textxolor);
+
+
+
+}
+
+.hero .twitter{
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--lightgray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.hero .twitter img{
+  width: 60%;
+  transform:translate(1px, 1px);
+  -webkit-transform:translate(1px, 1px);
+  -moz-transform:translate(1px, 1px);
+  -ms-transform:translate(1px, 1px);
+  -o-transform:translate(1px, 1px);
+}
+
+
+
+.image_div{
+  transform: translate(-30px, 0px);
+  -webkit-transform: translate(-30px, 0px);
+  -moz-transform: translate(-30px, 0px);
+  -ms-transform: translate(-30px, 0px);
+  -o-transform: translate(-30px, 0px);
+}
+
+.overlay_section{
+  margin-top: 127px;
+  width: 100%;
+  height: 444px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(0deg, #005335, #005335), url(../img/aboutus/nigeria_assembly.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: hard-light;
+  background-attachment: fixed;
+}
+
+
+.overlay_section p{
+  width: 679px;
+height: 135px;
+font-family: Lato;
+font-style: normal;
+font-weight: 800;
+font-size: 30px;
+line-height: 45px;
+text-align: center;
+color: #FFFFFF;
+padding: 10px;
+}
+
+.mission_vision {
+  margin-top: 135px;
+}
+
+.mission_vision .row{
+  margin-bottom: 223px;
+}
+.mission_img::before, .vision_img::before{
+  content: "";
+  position: absolute;
+  bottom: -64px;
+  width: 235px;
+  height: 235px;
+  background: #00945E;
+  z-index: -1;
+}
+
+.mission_img::before{
+  left: -38px;
+}
+
+.vision_img::before{
+  right: -38px;
+}
+
+.mission_img img, .vision_img img{
+  width: 100%;
+  height: 100%;
+}
+
+.mission_img,
+.vision_img,
+.mission_text,
+.vision_text{
+  opacity: 0;
+  transition: all 4s .25s cubic-bezier(0,1,.3,1);
+  -webkit-transition: all 4s .25s cubic-bezier(0,1,.3,1);
+  -moz-transition: all 4s .25s cubic-bezier(0,1,.3,1);
+  -ms-transition: all 4s .25s cubic-bezier(0,1,.3,1);
+  -o-transition: all 4s .25s cubic-bezier(0,1,.3,1);
+}
+
+.mission_img, .vision_text{
+  transform: translateX(-20px);
+  -webkit-transform: translateX(-20px);
+  -moz-transform: translateX(-20px);
+  -ms-transform: translateX(-20px);
+  -o-transform: translateX(-20px);
+}
+
+.vision_img, .mission_text{
+  transform: translateX(20px);
+  -webkit-transform: translateX(20px);
+  -moz-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  -o-transform: translateX(20px);
+}
+
+.mission_img.is-visible,
+.vision_text.is-visible,
+.vision_img.is-visible,
+.mission_text.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+}
+
+/* .vision_img.is-visible, .mission_text.is-visible{
+  opacity: 1;
+  transform: translateX(0);
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+} */
+
+.mission_text h2,
+.vision_text h2,
+.policy h2{
+/* width: 165px; */
+height: 36px;
+font-family: Lato;
+font-style: normal;
+font-weight: 800;
+font-size: 30px;
+line-height: 36px;
+text-align: left;
+color: #353A45;
+position: relative;
+margin-bottom: 47px;
+}
+
+
+
+
+.mission_text h2::after,
+.vision_text h2::after,
+.policy h2::after{
+content: "";
+position: absolute;
+background: #00945E;
+width: 82px;
+height: 6px;
+bottom: -20px;
+left: 0px;
+
+}
+
+.policy h2{
+  margin-bottom: 62px;
+}
+
+
+.mission_text p,
+.vision_text p{
+  width: 463px;
+height: 175px;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 35px;
+  color: #353A45;
+
+
+}
+
+.policy {
+  width: 100%;
+display: flex;
+justify-content: flex-start;
+align-items: flex-start;
+flex-direction: column;
+margin-bottom: 159px;
+}
+
+.policy h3{
+  margin-bottom: 19px;
+  font-family: Lato;
+font-style: normal;
+font-weight: 800;
+font-size: 28px;
+line-height: 34px;
+color: #353A45;
+}
+
+.policy p{
+  font-family: Lato;
+font-style: normal;
+font-weight: normal;
+font-size: 20px;
+line-height: 35px;
+display: flex;
+align-items: center;
+
+color: #353A45;
+}
+
+
+.policy .contents{
+  opacity: 0;
+    transition: all 4s .25s cubic-bezier(0, 1, .3, 1);
+    -webkit-transition: all 4s .25s cubic-bezier(0, 1, .3, 1);
+    -moz-transition: all 4s .25s cubic-bezier(0, 1, .3, 1);
+    -ms-transition: all 4s .25s cubic-bezier(0, 1, .3, 1);
+    -o-transition: all 4s .25s cubic-bezier(0, 1, .3, 1);
+}
+
+.contents.is-visible{
+  opacity: 1;
+  margin-bottom: 50px;
+  /* transform: translateY(-20px); */
+}
+
+
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+.hero .left p{
+  width: unset;
+  max-width: unset;
+}
+
+.hero .left h1{
+  font-size: 35px;
+}
+
+
+main .black_tr{
+  display: none;
+}
+
+main .green_bottom{
+  display: none;
+}
+
+main .green_right{
+display: none;
+}
+
+.hero .right{
+  display: none;
+}
+
+.hero .twitter{
+  margin-top: 250px;
+}
+
+.mission_vision .row:last-child{
+  flex-direction: column-reverse;
+  margin-top: -70px;
+}
+
+.mission_text, .vision_text{
+  margin-top: 100px;
+}
+
+.mission_text p, .vision_text p{
+
+  width: unset;
+}
+
+.mission_img::before, .vision_img::before{
+  display: none;
+}
+
+.policy {
+  margin-top: -70px;
+}
+}

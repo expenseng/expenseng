@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body{
+  font-family: 'Lato', sans-serif;
+  overflow-x:hidden;
+}
+
+/*content 1 */
+.wrapper{
+  max-width:1440px;
+  margin:0 auto;
+}
+.content-1{
+  margin:1rem 0;
+}
+.content-1 ul{
+  list-style: none;
+}
+.content-1 ul li{
+  padding:1rem 0.4rem;
+}
+.content-1 ul li a{
+  text-decoration: none;
+  font-size:17px;
+  font-weight: bold;
+  color: #00945E;
+}
+.content-1 .circle-1{
+  width:10px;
+  height:10px;
+  background-color:#00945E;
+  border-radius:flex;
+  border-radius:50%;
+ display:inline-block;
+ margin:0 1rem;
+}
+/*content-1 */
+
+/*content-2 */
+.main-header{
+  margin:1rem 0;
+}
+.main-header p{
+  font-size:20px;
+}
+/*content-2 */
+
+/*content-3 */
+.money-spent{
+  margin:1rem 0;
+}
+.money-spent .paragraph{
+  position:relative;
+}
+.money-spent .paragraph p{
+  cursor:pointer;
+  padding:0 2rem;
+  color:#00945E;
+  font-weight:bold;
+}
+
+.money-spent .paragraph:before{
+  content:'';
+  position:absolute;
+  display: block;
+  width:50%;
+  top:98%;
+  height: 3px;
+  background-color:#00945E;
+  transition:.5s ease;
+}
+
+/*content-3 */
+
+/* last section with cards */
+.coat{
+  text-align:center;
+  padding:0rem 0;
+}
+.img{
+ text-align:center;
+ padding:1rem 0;
+ position:relative;
+}
+.vector{
+  position:absolute;
+  top:7%;
+}
+.cont-1{
+  width:100%;
+  margin:1rem auto;
+  padding:1rem;
+  border-top:none;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04),
+   0px 4px 8px rgba(0, 0, 0, 0.04),
+    0px 16px 24px rgba(0, 0, 0, 0.04), 0px 24px 32px rgba(0, 0, 0, 0.04);
+}
+.texts .num{
+  color: #33A97E;
+  font-size:25px;
+  font-weight:bold;
+  
+}
+.texts .year{
+  color: #1F2430;
+  font-weight:300;
+  font-size:18px;
+}
+.texts h3{
+  color: #1F2430;
+  font-weight:500;
+
+}
+.circle{
+  width:10px;
+  height:10px;
+  background: #00945E;
+  position:absolute;
+  border-radius:50%;
+  left:98%;
+  top:13%;
+}
+
+@media only screen and (min-width:770px){
+  .texts .num{
+    color: #33A97E;
+    font-size:15px;
+    font-weight:bold;
+    
+  }
+  .texts .year{
+    color: #1F2430;
+    font-weight:300;
+    font-size:11px;
+  }
+  .texts h3{
+    color: #1F2430;
+    font-weight:200;
+}
+.ministry h4{
+  font-size: 16px;
+}
+.circle{
+  top:15%;
+  left:99%;
+}
+.vector{
+  top:10%;
+}
+}
+
+@media only screen and (min-width:550px){
+  .money-spent .paragraph:before{
+    width:60%;
+  }
+}
+@media only screen and (min-width:800px){
+  .circle{
+    top:15%;
+    left:99%;
+  }
+  .vector{
+    top:10%;
+  }
+}
+@media only screen and (min-width:999px){
+  .vector{
+    top:7%;
+  }
+  .money-spent .paragraph:before{
+    width:30%;
+  }
+}
+@media only screen and (max-width:850px){
+  .sec-card .col{
+    flex:50%;
+  }
+}
+@media only screen and (max-width:500px){
+  .sec-card .col{
+    flex:100%;
+  }
+  .main-header p{
+    font-size:14px;
+  }
+  .money-spent .paragraph:before{
+    width:100%;
+  }
+  .cont-1{
+    width:90%;
+  }
+}
+
+@media only screen and (max-width:750px){
+  .circle{
+    top:15%;
+    left:99%;
+  }
+  .vector{
+    top:5%;
+  }
+  
+}
+@media only screen and (max-width:400px){
+  .main-header p{
+    font-size:14px;
+  }
+  .content-1 .circle-1{
+    width:8px;
+    height:8px;
+    
+   margin:0 0.4rem;
+  }
+  
+  .content-1 ul li a{
+    
+    font-size:14px;
+    
+  }
+  
+}
+
+
