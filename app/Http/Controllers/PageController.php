@@ -112,7 +112,8 @@ class PageController extends Controller
 
     public function ministryList()
     {
-        return view('pages.ministry_list_federal_ministries');
+        $ministries = Ministry::all();
+        return view('pages.ministry_list_federal_ministries')->with(['ministries'=> $ministries]);
     }
 
     public function ministrySpending()
@@ -120,10 +121,9 @@ class PageController extends Controller
         return view('pages.ministry_report_table');
     }
 
-    public function federalMinistries()
-    {
-        $ministries = Ministry::all();
-        return view('pages.ministry_list_federal_ministries')->with(['ministries'=> $ministries]);
-        // return view('pages.ministry_list_federal_ministries');
-    }
+    // public function federalMinistries()
+    // {
+        
+        
+    // }
 }

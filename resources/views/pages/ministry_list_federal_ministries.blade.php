@@ -321,7 +321,6 @@ $('#search-area').on('click', 'li', function(e){
     e.preventDefault()
     let ministry = $(this).text();
     $('#ministry_search').val(ministry);
-    // console.log('ministry', ministry)
     $('#ministryList').fadeOut();
     $.ajax({
             url: "{{ route('get_ministry_details') }}",
