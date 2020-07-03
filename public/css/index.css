@@ -1,0 +1,448 @@
+#main{
+   min-height: 100vh;
+   font-family: 'Lato', sans-serif;
+}
+
+.banner{
+    background: linear-gradient(0deg, rgba(50, 62, 72, 0.4), rgba(50, 62, 72, 0.4)), linear-gradient(0deg, rgba(0, 148, 94, 0.32), rgba(0, 148, 94, 0.32)), url(../images/flag.jpg);
+    height: 90%;
+    padding: 1rem 0rem 1rem 2rem;
+    color: white;
+    margin-bottom: 5rem;
+}
+.target{
+    margin-top: 3rem;
+}
+.carets{
+    display: flex;
+    padding-right: 3rem;
+    justify-content: flex-end;
+}
+.carets img{
+    width: 25px;
+    height: 25px;
+}
+.carets img:nth-child(1){
+    margin-right: 2rem;
+}
+
+#caret{
+   opacity: 0;
+}
+.slide-left{
+   transform: translateX(-90%);
+}
+.slide-right{
+   transform: translateX(0%);
+}
+.summary{
+    margin-right: 4rem;
+}
+.summary h4{
+    font-weight: 300;
+    font-size: 3rem;
+    line-height: 124.8%;
+}
+.summary p{
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 204.8%;
+}
+.gallery{
+    display: flex;
+    position: relative;
+    height:380px;
+    overflow-x: hidden;
+} 
+p.tag{
+    padding: 0.3rem 1rem;
+    color: #005938;
+    background-color: white;
+    font-weight: 700;
+    align-self: flex-start;
+    position: absolute;
+    left: 10%;
+    top: -3%;
+    z-index: 23;
+}
+.card{
+    background-size: 100% 100%;
+    position: absolute;
+    width: 70%;
+    height: 100%;
+    border: white 0.7px solid;
+    transition: ease-in-out all 0.5s;
+    padding: 0rem 1rem;   
+}
+.card1{
+    background-image: url(../images/card2.jpg);
+}
+.card2{
+    background-image: url(../images/card2.jpg);
+    left: 80%;
+}
+.project{
+    margin-top: auto;
+}
+.project p{
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: rgba(240, 240, 240, 0.945);
+}
+.project p#cost{
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+.warning{
+    font-size: 1rem;
+    color: crimson;
+    text-align: center;
+}
+.arrow-down{
+    width:  60px;
+    height: 60px;
+    margin: auto;
+    display: block;
+    border: green 2px solid;
+    background:green;
+    border-radius: 100%;
+    z-index: 777;
+    position: relative;
+    top: 3.6rem;
+}
+
+p.label{
+    background: #353A45;
+    width: 65%;
+    padding:0.3rem 3rem;
+    color: white;
+    font-size: 1rem;
+    line-height: 190%;
+    margin-bottom: 4rem;
+}
+
+div.expenses{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.expenses a{
+    color: #33A97E;
+}
+.exp-card{
+    width: 100%;
+    margin: 2%;
+    padding: 1.1rem;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04);
+    box-sizing: border-box;
+}
+
+ div.graph-cont{
+   position: relative;
+  
+}
+div.graph-cont img{
+    width: 100%;
+}
+div.graph-cont img:nth-child(1){
+    position: absolute;
+}
+
+
+p.exp-card1{
+     font-size: 1rem;
+     font-weight: 700;
+}
+
+p.exp-card2{
+     font-size: 1.1rem;
+     color: #33A97E;
+     font-weight: 700;
+}
+
+p.exp-card3{
+     font-size: 0.8rem;
+     line-height: 0%;
+     font-weight: 700;
+}
+
+.ministry{
+    width: 90%;
+    margin: auto;
+}
+.ministry-heading{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ministry-head{
+    display: flex;
+    margin-bottom: 2rem;
+    align-items: baseline;
+    width: 100%;
+    justify-content: space-between;
+    border-bottom: #33A97E 1px solid;
+}
+p.profile{
+    color: #33A97E;
+    border-bottom: #33A97E 1px solid;
+    cursor: pointer;  
+}
+.ministry-stat{
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    min-height: 450px;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04)
+}
+
+.ministry-stat .exp-card{
+    height: auto;
+}
+.stat-a{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.stat-b{
+    width: 100%;
+}
+
+.divide{
+  border-top: 1px solid gray;
+  border-bottom:1px solid gray ;
+}
+
+.explore{
+    background: linear-gradient(0deg, rgba(50, 62, 72, 0.33), rgba(50, 62, 72, 0.33)), rgba(0, 148, 94, 0.67);
+    padding: 1rem;
+    color: white;
+    margin: 4rem 0rem;
+ 
+}
+.explore p:nth-child(1){
+    font-size: 1.6rem;
+    line-height: 150%;
+    font-weight: 300;
+}
+.explore p:nth-child(2){
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+.explore button{
+   color:  #00945E;
+   padding: 0.4rem 3rem;
+   background: #FFFFFF;
+   border: none;
+   border-radius: 0.3rem;
+}
+
+.companies{
+   display: flex;
+   flex-wrap: wrap;
+   padding:1rem;
+   margin-bottom: 4rem;
+}
+.comp-card{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    box-shadow: 0px 0px 1.01639px rgba(0, 0, 0, 0.04), 0px 4.06557px 8.13115px rgba(0, 0, 0, 0.04), 0px 16.2623px 24.3934px rgba(0, 0, 0, 0.04), 0px 24.3934px 32.5246px rgba(0, 0, 0, 0.04);
+}
+.companies .comp-card:nth-child(even){
+    margin: 2rem 0rem;
+}
+.awarded{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+.profile p:nth-child(1){
+    font-size: .9rem;
+    font-weight: 700;
+    line-height: 30%;
+}
+
+.profile p:nth-child(2){
+    font-size: 1.1rem;
+    color: #33A97E;
+    line-height: 30%;
+    font-weight: 700;
+}
+.profile p:nth-child(3){
+    font-size: 0.7rem;
+    line-height: 30%;
+    font-weight: 700;
+}
+#handle{
+    font-size: 1rem;
+    color: #6765EC;
+}
+
+.convo{
+    padding: 1rem;
+    background: linear-gradient(0deg, rgba(50, 62, 72, 0.33), rgba(50, 62, 72, 0.33)), rgba(0, 148, 94, 0.67);
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+.tweet{
+    background-image: url(../images/twitter1.png);
+    height: 200px;
+    background-size: 100% 100%;
+    display: flex;
+    width: 45%;
+    margin: auto;
+}
+
+.query{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.query p:nth-child(1){
+    font-size: 1.6rem;
+    line-height: 200%;
+    text-align: center;
+}
+.query p:nth-child(2){
+     font-size: 0.9rem;
+}
+
+.twt-handle{
+    padding: 0.3rem 0.5rem;
+    background-color: white;
+    border-radius: 0.3rem;
+    margin: auto;
+    text-align: center;
+    width: auto;
+}
+.twt-handle img{
+   width: 20px;
+   height: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .target{
+    display:flex;
+  }
+  .summary{
+      width: 60%;
+  }
+  .gallery{
+    width: 40%;
+  }
+  p.label{
+      width: 47%;
+      font-size: 1.2rem;
+  }
+  .exp-card{
+      width: 44%;
+  }
+
+  .ministry-heading{
+      flex-direction: row;
+  }
+  .ministry-head{
+      width: 60%;
+  }
+  .query{
+    width: 50%;
+   }
+
+  .query p:nth-child(1){
+    text-align: left;
+  }
+  .convo{
+    flex-direction: row;
+    justify-content: space-between;
+    background-position: left;
+  }
+   .tweet{
+       width: 35%;
+   }
+   .banner{
+    padding: 2rem 0rem 2rem 4rem;
+   }
+   .ministry{
+       width: 80%;
+   }
+   .explore{
+       padding: 3rem;
+   }
+   .companies{
+       padding: 3rem;
+   }
+   .convo{
+       padding: 3rem;
+   }
+   #caret{
+      opacity: 1;
+   }
+   #caret-alt{
+        opacity: 0;
+   }
+}
+
+@media only screen and (min-width: 910px) {
+    p.label{
+        width: 35%;
+        font-size: 1.4rem;
+    }
+    .stat-a{
+        width: 40%;
+        border: none;
+        border-right: 1px solid gray;
+        margin-right: 2rem;
+    }
+    .stat-b{
+        width: 60%;
+    }
+    .stat-b img{
+        width: 25%;
+        margin-right: 2rem;
+    }
+    .ministry-stat{
+        flex-direction: row;
+    }
+    
+    .tweet{
+        width: 25%;
+    }
+    .exp-card{
+        width: 28%;
+    }
+}
+
+@media only screen and (min-width: 1020px) {
+    .comp-card{
+        flex-direction: row;
+        justify-content: space-between;
+        width: 49%;
+    }
+    .awarded{
+      width: 35%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+     }
+   
+    .companies .comp-card:nth-child(even){
+        margin: 0rem 0rem;
+    }
+    .companies .comp-card:nth-child(odd){
+        margin-right: 2%;
+    }
+    .companies .comp-card:nth-child(3){
+        margin-top: 2%;
+    }
+}
+
+   

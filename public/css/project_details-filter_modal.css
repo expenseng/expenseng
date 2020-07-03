@@ -1,0 +1,39 @@
+section {
+  display: flex;
+  justify-content: center;
+}
+
+p{
+    float: left;    
+    margin: 2 1.5%;
+    width: 26%;
+}      
+
+.social{
+    float: right;
+    width: 25%;
+}
+
+.social.tweet{
+    margin-right: 3rem;
+}
+
+.date{
+    margin-left: 1rem;
+}
+
+@media only screen and (min-width: 600px) {
+ p{
+    float: left;    
+    margin: 2 1.5%;
+    width: 30%;
+}      
+}
+
+@media only screen and (min-width: 768px) {
+    p{
+        float: left;    
+        margin: 2 1.5%;
+        width: 30%;
+    }         
+}

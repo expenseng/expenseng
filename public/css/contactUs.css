@@ -1,0 +1,78 @@
+body {
+	font-family: "Lato", sans-serif;
+}
+
+#banner {
+	margin: 200px 0px 200px 0px;
+}
+
+input,
+button {
+	margin: 50px 0px;
+}
+
+aside {
+	color: white;
+}
+
+hr {
+	width: 75%;
+	background-color: white;
+}
+
+.banner {
+	width: 90%;
+	background: linear-gradient(
+			0deg,
+			rgba(50, 62, 72, 0.33),
+			rgba(50, 62, 72, 0.33)
+		),
+		rgba(0, 148, 94, 0.67);
+	margin-left: 20px;
+}
+
+.align {
+	text-align: center;
+}
+
+h4 {
+	text-align: center;
+}
+
+.fa-map-marker,
+.fa-phone,
+.fa-envelope,
+.fa-facebook,
+.fa-twitter {
+	color: rgba(0, 148, 94, 0.67);
+}
+
+span {
+	margin-bottom: 20px;
+}
+
+.greenify {
+	margin-top: 100px;
+	margin-bottom: 100px;
+	padding: 40px;
+	background: linear-gradient(
+			0deg,
+			rgba(50, 62, 72, 0.33),
+			rgba(50, 62, 72, 0.33)
+		),
+		rgba(0, 148, 94, 0.67);
+}
+
+.twitter-back {
+	opacity: 0.2;
+	width: 320px;
+}
+
+.button {
+	border: none;
+	position: absolute;
+	top: 80px;
+	left: 100px;
+	padding: 5px 25px;
+	color: #55acee;
+}

@@ -1,0 +1,92 @@
+/* styles for desktop view */
+@media only screen and (min-width:961px){
+
+  /* styles for header container */
+.header-container{
+  display: flex;
+  justify-content: center;
+  width:100%;
+  margin:40px auto;
+}
+.main-heading{
+  color:var(--mainBlack);
+  font-size: 3rem;
+  text-align: center;
+  text-transform: capitalize;
+}
+/* end of styles for header container */
+/* ======================== */
+/* styles for error container */
+
+.error-container{
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  justify-content: center;
+  text-align: center;
+
+}
+.five-oh-oh-container{
+  display: flex;
+  width:100%;
+  justify-content: center;
+  text-align: center;
+}
+}
+.error-code{
+ font-size: 17rem;
+  width:35%;
+  font-family: 'Lato', sans-serif;
+  color:var(--mainBlack);
+
+}
+.error-text-container{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width:90%;
+  margin:10px auto;
+}
+.error-text{
+  color:var(--mainBlack);
+  font-size: 1.8rem;
+}
+/* end of styles for error container */
+/* ================================ */
+/* styles for back home btn */
+.btn-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* width:60%; */
+  margin:20px auto;
+}
+.back-home-btn{
+  font-family: 'Lato', sans-serif;
+  padding:1rem 2rem;
+  background: var(--mainGreen);
+  border:none;
+  color:var(--mainWhite);
+  text-transform: capitalize;
+  letter-spacing: var(--mainSpacing);
+  width:100%;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: var(--mainTransition);
+}
+.back-home-btn:active{
+  background: var(--mainSpacing);
+  color:var(--mainGreen);
+  border: 1px solid var(--mainGreen);
+}
+.back-home-btn:hover{
+  background: var(--mainSpacing);
+  color:var(--mainGreen);
+  border: 1px solid var(--mainGreen);
+}
+/* end of styles for back home btn */
+/* ============== */
+  /* ================== */
+}

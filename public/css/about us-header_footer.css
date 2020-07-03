@@ -1,0 +1,43 @@
+.back{
+	margin-right: -20px;
+}
+.sart{
+	margin-right: px;
+}
+.nav-link{
+	color: black !important;
+}
+.nav-item , .search{
+	background-color: #ffff !important;
+}
+.nav-link:hover{
+	color: grey !important;
+}
+.my-footer ul {
+  list-style-type: none;
+  padding-left: 0;
+  color: white;
+}.my-footer a {
+  color: #fff !important;
+}
+.my-footer {
+  background-color: #323E48 !important;
+}
+h6{
+	color: white;
+	margin-top: 25px;
+}
+.fa-search{
+	color: grey !important;
+}
+.fa-search:hover{
+	color: black !important;
+}
+.ft{
+	margin-top: 25px;
+}
+.lower{
+	background-color: #1F2430;
+	padding: 10px;
+	background:
+}
