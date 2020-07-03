@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('css')
-<link rel="stylesheet" href="../assets/css/about%20us-header_footer.css">
-<link rel="stylesheet" href="../assets/css/ministry_list_table.css">
+<link rel="stylesheet" href="/css/about%20us-header_footer.css">
+<link rel="stylesheet" href="/css/ministry_list_table.css">
 <title>FG Expense - Ministry List</title>
 @endsection
     
@@ -17,7 +17,7 @@
         
          <div class="row">
     
-        <h5 class="bio"> <img src="../assets/img/image_7.png" width="70px"height="70px"> Ministry of Works and Human Development</h5>
+        <h5 class="bio"> <img src="/img/image_7.png" width="70px"height="70px"> Ministry of Works and Human Development</h5>
        
       </div>
     <div class="row">
@@ -64,7 +64,7 @@
         </div>
             
             <div class="col">
-            <button type="button" class="btn btn-success filter"> Select Date  <img src="../assets/img/vector__2_.png"> </button>
+            <button type="button" class="btn btn-success filter"> Select Date  <img src="/img/vector__2_.png"> </button>
             </div>
         </div>
     </div>

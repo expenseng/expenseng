@@ -12,6 +12,6 @@ class ExpendituresController extends Controller
     {
         $expenditures = Expense::all();
 
-        return view('pages.ExpenditureReport')->with(['expenditures'=> $expenditures]);
+        return view('pages.expense_report')->with(['expenditures'=> $expenditures]);
     }
 }

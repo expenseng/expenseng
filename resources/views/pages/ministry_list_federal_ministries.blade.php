@@ -20,9 +20,9 @@
             <ul class="d-flex">
               <li class="items"><a href="#">HOME <span class="circle-1"></span></a></li>
 
-              <li class="items"><a href="../ministry_profile/ministry_profile_comment.html">PROFILES</a><span class="circle-1"></span></li>
+              <li class="items"><a href="#">PROFILES</a><span class="circle-1"></span></li>
 
-              <li class="items"><a href="./ministry_list_comment.html">MINISTRIES</a></li>
+              <li class="items"><a href="#">MINISTRIES</a></li>
             </ul>
           </div>
         </div>
