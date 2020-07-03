@@ -1,22 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@extends('layouts.master')
+@section('css')
   <title>505 error page</title>
   <!-- styles -->
-  <link rel="stylesheet" href="main.css">
-  <link rel="stylesheet" href="./responsiveStyles/desktop.css">
-  <link rel="stylesheet" href="./responsiveStyles/tablet.css">
-  <link rel="stylesheet" href="./responsiveStyles/mobile.css">
+  <link rel="stylesheet" href="{{ asset('css/main500.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/responsiveStyles/desktop.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/responsiveStyles/tablet.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/responsiveStyles/mobile.css') }}">
   <!-- end of styles -->
   <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@600&family=Lato:wght@700&display=swap"
       rel="stylesheet">
     <!-- end of google fonts -->
-</head>
-<body>
+@endsection
+
+@section('content')
   <!-- main section  -->
   <section class="container">
     <!-- ========================= -->
@@ -513,9 +511,5 @@
 
   </section>
 <!-- end of main section -->
+@endsection
 <!-- ============================ -->
-
-
-
-</body>
-</html>

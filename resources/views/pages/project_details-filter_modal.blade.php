@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('css')
   <title>FG Expense - Contact</title>
-  <link rel="stylesheet" href="{{asset('css/about us-header_footer.css')}}">
+  <link rel="stylesheet" href="{{ asset('css/about us-header_footer.css') }}">
   <link rel="stylesheet" href="{{ asset('css/project_details-filter_modal.css')}}">
 @endsection
 
@@ -70,5 +70,5 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <script src="{{asset('js/index.js')}}"></script>
+  <script src="{{ asset('js/index.js') }}"></script>
 @endsection

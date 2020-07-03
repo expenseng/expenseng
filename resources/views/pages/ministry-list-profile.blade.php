@@ -1,46 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="Description" content="Enter your description here"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../header_footer.html">
+@extends('layouts.master')
+@section('css')
 <link rel="stylesheet" href="../assets/css/header_footer.css">
-<link rel="stylesheet" href="../assets/css/ministry-list-profile.css">
+<link rel="stylesheet" href="{{ asset('css/ministry-list-profile.css') }}">
 <title>FG Expense - Ministry List</title>
-</head>
-<body>
-    <!-------------Header starts here-------------->
-	<nav class="navbar navbar-toggleable-md navbar-expand-md sticky-top shadow p-3 mb-5" role="navigation">
-		<div class="container">
-		<a class="navbar-brand" href="#"><img src="../assets/img/Logo.png"></a>
-		<button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
-            <span><i class="fa fa-bars" aria-hidden="true"></i></span>
-        </button>
-      	<div class="collapse navbar-collapse" id="navcol-1">
-            <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item mr-3" role="presentation">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item mr-3" role="presentation">
-                    <a class="nav-link" href="./expense_report/expense_report.html">Spending</a>
-                </li>
-                <li class="nav-item mr-3" role="presentation">
-                    <a class="nav-link active" href="./ministry_list/ministry_list.html">Ministries</a>
-                </li>
-                <li class="nav-item mr-3" role="presentation">
-                    <a class="nav-link" href="./contracts_awarded/contracts_awarded.html">Contractors</a>
-                </li>
-                <a class="nav-link" href=""><i class="fa fa-search inp"></i></a>
-            </ul>
-        </div>
-  		</div>
-    </nav><br>
-    <!-------------Header ends here-------------->
+@endsection
+
+@section('content')
     <section class="container-fluid first-section px-3">
         <div class="green pl-3">
             <span>Home</span>
@@ -52,7 +17,7 @@
             <span>Ministry Profile</span>
         </div>
         <div class="second-part mt-5 pl-3">
-            <img src="../assets/images/nglogo2.png" class="img-fluid img" width="" alt="Nigeria's Logo">
+            <img src="{{ asset('images/nglogo2.png') }}" class="img-fluid img" width="" alt="Nigeria's Logo">
             <span class="py-5">Ministry of Works and Human Development.</span>
         </div>
         <div class="row my-5 pl-3">
@@ -102,7 +67,7 @@
         <div class="row mt-5 pl-3 d-flex justify-content-lg-around">
             <div class="col-lg-3 card border-top-0 border-left-0 border-right-0">
                 <div class="card-img">
-                    <img src="../assets/images/img1.png" class="img-fluid" alt="Engr. Jafaru Damaluk">
+                    <img src="{{ asset('images/img1.png') }}" class="img-fluid" alt="Engr. Jafaru Damaluk">
                 </div>
                 <div class="card-body">
                     <div class="card-title">
@@ -121,7 +86,7 @@
             </div>
             <div class="col-lg-3 card border-top-0 border-left-0 border-right-0">
                 <div class="card-img">
-                    <img src="../assets/images/img2.png" class="img-fluid" alt="Alhaji Zubairu I. Bayi">
+                    <img src="{{ asset('images/img2.png') }}" class="img-fluid" alt="Alhaji Zubairu I. Bayi">
                 </div>
                 <div class="card-body">
                     <div class="card-title">
@@ -140,7 +105,7 @@
             </div>
             <div class="col-lg-3 card border-top-0 border-left-0 border-right-0">
                 <div class="card-img">
-                    <img src="../assets/images/img3.png" class="img-fluid" alt="Engr. Goni M. Sheikh">
+                    <img src="{{ asset('images/img3.png') }}" class="img-fluid" alt="Engr. Goni M. Sheikh">
                 </div>
                 <div class="card-body">
                     <div class="card-title">
@@ -159,83 +124,10 @@
             </div>
         </div>
     </section>
-    <!-------------Footer starts here-------------->
-    <footer class="my-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2 footer-brand ">
-                    <a href="index.html">
-                        <img src="../assets/img/Frame 390.png" class="ft">
-                    </a> <br><br>
-                    <a href=""  class="link"><i class="fab fa-twitter" aria-hidden="true"></i><small> @expenseng</small></a>               
-                </div>
-                <div class="col-md-4">
-                	
-                </div>
-                <div class="col-md-2">
-                    <h6>Pages</h6>
-                    <ul >
-                        <li>
-                            <a  href="#" class="link"><small>Home</small></a>
-                        </li>
-                        <li>
-                            <a  href="#" class="link"><small>Daily Report</small></a>
-                        </li>
-                        <li>
-                            <a href="#" class="link"><small>Ministry Report</small></a>
-                        </li>
-                        <li>
-                            <a href="#" class="link"><small>Company Report</small></a>
-                        </li>
-                    </ul>
-                    
-                </div>
-                <div class=" col-md-2">
-                    <h6>Profile</h6>
-                    <ul >
-                        <li>
-                            <a  href="About.html"  class="link"><small>Ministry Search</small></a>
-                        </li>
-                        <li>
-                            <a href="facilities.html" class="link"><small>Company Search</small></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-2">
-                    <h6>Reference</h6>
-                    <ul >
-                        <li>
-                            <a href="index.html"  class="link"><small>Government handles</small></a>
-                        </li>
-                        <li>
-                            <a href=""  class="link"><small>About us</small></a>     
-                        </li>
-                        <li>
-							<a href=""  class="link"><small>Contact us</small></a>                        
-						</li>
-                    </ul>
-                </div>
-            </div><br><br>
-        </div>
-        <div class="container-fluid lower">
-        	<div class="container">
-	            <div class="row ">
-	                <div class="col-md-10">
-	                    <a href=""  class="link"><small>Accessibility</small></a>-
-	                    <a href=""  class="link"><small> | Privacy Policy</small></a>-
-	                    <a href=""  class="link"><small> | Freedom of Information Act</small></a>
-	                </div>
-	                <div class="col-md-2">
-	                    <a href=""><small><span>&#169</span>2020EXPENSENG.com</small></a>
-	                </div>
-	            </div>
-        	</div>
-        </div>
-    </footer>
+@endsection
 
-    <!-------------Footer ends here-------------->
+@section('js')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-</body>
-</html>
+@endsection
