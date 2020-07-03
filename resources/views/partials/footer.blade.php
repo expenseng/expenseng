@@ -47,10 +47,10 @@
                       <a href="index.html"><small>Government handles</small></a>
                   </li>
                   <li>
-                      <a href=""><small>About us</small></a>
+                      <a href="{{ route('about') }}"><small>About us</small></a>
                   </li>
                   <li>
-        <a href=""><small>Contact us</small></a>
+        <a href="{{ route('contact') }}"><small>Contact us</small></a>
       </li>
               </ul>
           </div>
