@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Ministry;
 use Illuminate\Http\Request;
 
@@ -95,32 +96,6 @@ class PageController extends Controller
         return view('pages.about');
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     public function federalMinistries()
     {
         $ministries = Ministry::all();
