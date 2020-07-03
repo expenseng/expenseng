@@ -28,7 +28,7 @@ Route::get('/reports/expenditure', 'ExpendituresController@getExpenditures')->na
 Route::get('/ministry/reports', 'PageController@ministryReport')->name('ministry_report');
 Route::get('/ministry/profile', 'PageController@ministryProfileSearch')->name('ministry_profile_search');
 Route::get('/company/profile', 'PageController@companyProfile')->name('company_profile');
-Route::get('/company/reports', 'PageController@companyReport')->name('company_report');
+Route::get('/company/reports', 'CompanyReportController@getReport')->name('company_report');
 Route::get('/company/search','PageController@companySearch')->name('company_search');
 Route::get('/quick-contacts', 'PageController@quickContact')->name('quick_contacts');
 
