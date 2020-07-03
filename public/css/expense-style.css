@@ -1,0 +1,230 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+nav {
+    box-shadow: 5px 5px 7px #e5e5e5;
+    width: 100%;
+    z-index: 1;
+    background: #ffffff;
+}
+
+.jumbotron {
+    background: #ffffff;
+}
+
+.jumbotron ul li {
+    color: #00945E;
+    font-weight: bold;
+}
+
+.jumbotron ul li:first-child {
+    list-style-type: none;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.jumbotron p {
+    font-weight: normal;
+}
+
+.sector-btn {
+    color: #00945E;
+    font-size: 1.2em;
+    border: 1px solid #00945E;
+}
+
+.dropdown-item {
+    color: #00945E;
+}
+
+.calendar {
+    background: #00945E;
+    color: #ffffff;
+    padding: 10px;
+    width: 80%;
+    border: none;
+    border-radius: 5px;
+}
+
+/* **************** tab style ****************** */
+
+.tab-sidebar{
+    display: flex;
+    justify-content: space-between;
+}
+
+.tabs-button{
+    color: #A1A3A8;
+    border-bottom: 2px solid #A1A3A8;
+    outline: none;
+    cursor: pointer;
+    font-size: 1em;
+    background-color: transparent;
+}
+
+.tabs-button:active{
+    background: transparent;
+}
+
+.tabs-button--active{
+    font-weight: bold;
+    color: #00945E;
+    border-bottom: 2px solid #00945E;
+}
+
+.tabs-content{
+    padding: 15px;
+    font-size: 1em;
+    display: none;
+}
+
+.tabs-content--active{
+    display: block;
+}
+
+.tabs-content > :first-child{
+    margin-top: 0;
+}
+
+/* *************** Graph *************** */
+div.graph-cont{
+    position: relative;
+   
+ }
+ div.graph-cont img{
+     width: 100%;
+     padding: 0 0 0 10px;
+ }
+ 
+ .graph-border {
+     border-bottom: 2px solid black;
+     border-left: 2px solid black;
+ }
+ 
+ div.graph-cont img:nth-child(1){
+     position: absolute;
+ }
+ 
+ .ministry-stat{
+     padding: 1.5rem;
+     min-height: 350px;
+ }
+ 
+ .ministry-stat p {
+     font-size: .7em;
+ }
+ 
+ .rotate-text {
+     transform: rotate(-90deg);
+     position: absolute;
+     top: 120px;
+     left: 0;
+ }
+/* *************** Graph *************** */
+
+/* **************** tab style ****************** */
+
+footer {
+    background: #323E48;
+    color: #ffffff;
+    font-weight: 200;
+}
+
+.list-unstyled li a {
+    color: #ffffff;
+    font-size: .9em;
+}
+
+.copyright-list {
+    list-style-type: none;
+    border-right: 1px solid #ffffff;
+}
+
+.copyright-list:last-child {
+    border-right: none;
+}
+
+
+.footer-copyright, .twitter {
+    font-size: .8em;
+    font-weight: 100;
+}
+
+@media only screen and (max-width: 770px) {
+    .expense-tab {
+        font-size: .8em;
+        padding-bottom: 1px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .jumbotron ul li {
+        font-size: .75em;
+    }
+
+    .lead {
+        font-size: 1em;
+    }
+
+    .date {
+        font-size: .75em;
+    }
+
+    .btn-sm {
+        padding: 2px;
+        font-size: .75em;
+    }
+
+    .copyright-list {
+       font-size: .9em;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .rotate-text {
+        transform: rotate(-90deg);
+        position: absolute;
+        top: 60px;
+        left: 0;
+    }
+    
+    .ministry-stat p {
+          font-size: .4em;
+    }
+
+    .ministry-stat{
+        padding: 1.5rem;
+        min-height: 150px;
+    }
+}
+
+@media only screen and (min-width: 700px) {
+  
+    .exp-card{
+        width: 44%;
+    }
+
+    .rotate-text {
+        margin-left: -30px;
+        top: 100px;
+    }
+  }
+  
+  @media only screen and (min-width: 910px) {
+      .ministry-stat{
+          flex-direction: row;
+      }
+
+      .rotate-text {
+        margin-left: -30px;
+        top: 150px;
+    }
+  }

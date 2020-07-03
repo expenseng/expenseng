@@ -101,7 +101,7 @@ function toggleDataPresentation() {
         tableIcon.style.color = "#00945E";
         //dataPresentation.display = ""
     }
-};
+}
 
 /*
 chartButton.addEventListener("click", toggleDataPresentation);//Set chart button click listener

@@ -82,6 +82,89 @@
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/  // The module cache
+/******/  var installedModules = {};
+/******/
+/******/  // The require function
+/******/  function __webpack_require__(moduleId) {
+/******/
+/******/    // Check if module is in cache
+/******/    if(installedModules[moduleId]) {
+/******/      return installedModules[moduleId].exports;
+/******/    }
+/******/    // Create a new module (and put it into the cache)
+/******/    var module = installedModules[moduleId] = {
+/******/      i: moduleId,
+/******/      l: false,
+/******/      exports: {}
+/******/    };
+/******/
+/******/    // Execute the module function
+/******/    modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/    // Flag the module as loaded
+/******/    module.l = true;
+/******/
+/******/    // Return the exports of the module
+/******/    return module.exports;
+/******/  }
+/******/
+/******/
+/******/  // expose the modules object (__webpack_modules__)
+/******/  __webpack_require__.m = modules;
+/******/
+/******/  // expose the module cache
+/******/  __webpack_require__.c = installedModules;
+/******/
+/******/  // define getter function for harmony exports
+/******/  __webpack_require__.d = function(exports, name, getter) {
+/******/    if(!__webpack_require__.o(exports, name)) {
+/******/      Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/    }
+/******/  };
+/******/
+/******/  // define __esModule on exports
+/******/  __webpack_require__.r = function(exports) {
+/******/    if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/      Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/    }
+/******/    Object.defineProperty(exports, '__esModule', { value: true });
+/******/  };
+/******/
+/******/  // create a fake namespace object
+/******/  // mode & 1: value is a module id, require it
+/******/  // mode & 2: merge all properties of value into the ns
+/******/  // mode & 4: return value when already ns object
+/******/  // mode & 8|1: behave like require
+/******/  __webpack_require__.t = function(value, mode) {
+/******/    if(mode & 1) value = __webpack_require__(value);
+/******/    if(mode & 8) return value;
+/******/    if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/    var ns = Object.create(null);
+/******/    __webpack_require__.r(ns);
+/******/    Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/    if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/    return ns;
+/******/  };
+/******/
+/******/  // getDefaultExport function for compatibility with non-harmony modules
+/******/  __webpack_require__.n = function(module) {
+/******/    var getter = module && module.__esModule ?
+/******/      function getDefault() { return module['default']; } :
+/******/      function getModuleExports() { return module; };
+/******/    __webpack_require__.d(getter, 'a', getter);
+/******/    return getter;
+/******/  };
+/******/
+/******/  // Object.prototype.hasOwnProperty.call
+/******/  __webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/  // __webpack_public_path__
+/******/  __webpack_require__.p = "/";
+/******/
+/******/
+/******/  // Load entry module and return exports
+/******/  return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -19005,7 +19088,7 @@ module.exports = {
     !(__WEBPACK_AMD_DEFINE_RESULT__ = (function() {
       return _;
     }).call(exports, __webpack_require__, exports, module),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+        __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
   }
   // Check for `exports` after `define` in case a build optimizer adds it.
   else {}
@@ -19221,15 +19304,15 @@ var g;
 
 // This works in non-strict mode
 g = (function() {
-	return this;
+  return this;
 })();
 
 try {
-	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
+  // This works if eval is allowed (see CSP)
+  g = g || new Function("return this")();
 } catch (e) {
-	// This works if the window reference is available
-	if (typeof window === "object") g = window;
+  // This works if the window reference is available
+  if (typeof window === "object") g = window;
 }
 
 // g can still be undefined, but nothing to do about it...
@@ -19269,6 +19352,26 @@ module.exports = function(module) {
 		module.webpackPolyfill = 1;
 	}
 	return module;
+  if (!module.webpackPolyfill) {
+    module.deprecate = function() {};
+    module.paths = [];
+    // module.parent = undefined by default
+    if (!module.children) module.children = [];
+    Object.defineProperty(module, "loaded", {
+      enumerable: true,
+      get: function() {
+        return module.l;
+      }
+    });
+    Object.defineProperty(module, "id", {
+      enumerable: true,
+      get: function() {
+        return module.i;
+      }
+    });
+    module.webpackPolyfill = 1;
+  }
+  return module;
 };
 
 
@@ -19282,8 +19385,6 @@ module.exports = function(module) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-
-__webpack_require__(/*! ./chart */ "./resources/js/chart.js");
 
 /***/ }),
 
@@ -19319,129 +19420,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/chart.js":
-/*!*******************************!*\
-  !*** ./resources/js/chart.js ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/*
-*   
-* INITIALISE AND DRAW CHART USING CHART.JS
-*
-*
-*/
-var type = 'line'; //Set chart type
-//Set chart data
-
-var data = {
-  labels: ['', '', '', '', '', '', '', '', '', '', '', ''],
-  //labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-  datasets: [{
-    backgroundColor: 'rgba(0, 147, 93, 0.16)',
-    borderColor: 'rgba(0, 148, 94, 1)',
-    //Area border color
-    borderWidth: 2,
-    //Line width in pixels
-    data: [12, 9, 3, 5, 2, 3, 12, 2, 3, 50, 2, 3],
-    //Chart data
-    fill: 'origin',
-    lineTension: 0,
-    pointBackgroundColor: 'rgba(51, 129, 100, 1)',
-    pointBorderColor: 'rgba(51, 129, 100, 1)',
-    pointBorderWidth: 2
-  }]
-}; //Set chart display options
-
-var options = {
-  scales: {
-    yAxes: [{
-      ticks: {
-        beginAtZero: true,
-        maxTicksLimit: 10
-      },
-      scaleLabel: {
-        display: true,
-        labelString: 'Amount Spent (Billions)',
-        fontColor: '#474747'
-      }
-    }],
-    xAxes: [{
-      gridLines: {
-        offsetGridLines: true,
-        display: false,
-        tickMarkLength: 5
-      },
-      ticks: {
-        labelOffset: 5,
-        maxTicksLimit: 12
-      },
-      scaleLabel: {
-        display: false,
-        labelString: 'Months',
-        fontColor: '#474747'
-      }
-    }]
-  },
-  plugins: {
-    filler: {
-      propagate: true
-    }
-  },
-  legend: {
-    display: false
-  }
-};
-var chartCanvas = document.getElementById('expenditure-chart'); //Get the chart canvas
-
-var expenditureChart = new Chart(chartCanvas, {
-  type: type,
-  data: data,
-  options: options
-}); //Draw the chart
-
-/*
-*   
-* HANDLE DATA PRSENTATION - CHART/TABLE DISPLAY
-*
-*
-*/
-
-var dataPresentation = document.getElementById('data-presentation'); //Get data presentation div
-
-var chartButton = document.getElementById('chart-btn'); //Get chart button
-
-var tableButton = document.getElementById('table-btn'); //Get table button
-
-var chartIcon = chartButton.firstElementChild; //Get chart icon
-
-var tableIcon = tableButton.firstElementChild; //Get chart icon
-
-chartIcon.style.color = "#00945E"; //Set chart icon color - active
-
-tableIcon.style.color = "#757575"; //Set table icon color - inactive
-
-function toggleDataPresentation() {
-  if (event.srcElement.id == chartButton) {
-    console.log("Chart Icon Present");
-    chartIcon.style.color = "#00945E";
-    tableIcon.style.color = "#757575"; //dataPresentation.display = ""
-  } else if (event.srcElement.id == tableButton) {
-    console.log("Table Icon Present");
-    chartIcon.style.color = "#757575";
-    tableIcon.style.color = "#00945E"; //dataPresentation.display = ""
-  }
-}
-
-;
-/*
-chartButton.addEventListener("click", toggleDataPresentation);//Set chart button click listener
-tableButton.addEventListener("click", toggleDataPresentation);//Set table button click listener
-*/
-
-/***/ }),
-
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -19460,8 +19438,8 @@ tableButton.addEventListener("click", toggleDataPresentation);//Set table button
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\team-granite\expenseng\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\team-granite\expenseng\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\User\Desktop\expenseng\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\User\Desktop\expenseng\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

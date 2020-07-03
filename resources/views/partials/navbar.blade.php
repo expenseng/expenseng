@@ -1,33 +1,33 @@
-<header>
-    <div class="logo">
-        <a href="{{ route('home') }}">
-            <img src="{{ asset('img/Group380.svg') }}" class="logo1" alt="logo" srcset="">
-            <img src="{{ asset('img/Frame384.svg') }}" class="logo2" alt="logo" srcset="">
-        </a>
-    </div>  
-    <a href="#"><i class="fa fa-2x fa-bars menu-toggle" id="menu" aria-hidden="true"></i></a>
-    <ul class="nav " id="nav">
-        <li><a href="{{ route('home') }}"class="{{Route::current()->getName() ==('home')? 'active' : ''}}">Home</a></li>
-        <li><a href="{{ route('expenditure_report') }}" class="{{Route::current()->getName() == ('expenditure_report')? 'active' : ''}}">Expenditure Report</a></li>
-        
-        <li><a href="#">Ministry Info</a>
-            <ul>
-                <li><a href="{{ route('ministry_report') }}"class="">Ministry Report</a></li>
-                <li><a href="{{ route('ministry_profile_search') }}"class="">Ministry Profile Search</a></li>
-            </ul>
-        </li>
-        <li><a href="#">Company Info</a>
-            <ul>
-                <li><a href="{{ route('company_report') }}"class="">Company Report</a></li>
-                <li><a href="{{ route('company_profile') }}" class="">Comapny Profile Search</a></li>
-            </ul>
-        </li>
-        <li><a href="#">Reference</a>
-            <ul>
-                <li><a href="{{ route('quick_contacts') }}"class="">Government Twitter Handles </a></li>
-                <li><a href="{{ route('contact') }}"class="">Contact Us</a></li>
-                <li><a href="{{ route('about_us') }}" class="">About Us</a></li>
-            </ul>
-        </li>
-    </ul> 
-</header>
+<!-------------Header starts here-------------->
+<nav class="navbar navbar-toggleable-md navbar-expand-md shadow p-3" role="navigation">
+  <div class="container">
+  <a class="navbar-brand" href="/"><img src="{{asset('images/logo.png')}}"></a>
+  <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+          <span><i class="fa fa-bars" aria-hidden="true"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navcol-1">
+          <ul class="nav navbar-nav ml-auto back">
+              <li class="nav-item mr-6 sart" role="presentation">
+                  <a class="nav-link" href="{{ route('home') }}">Home</a>
+              </li>
+              <li class="nav-item mr-6 sart" role="presentation">
+                  <a class="nav-link" href="{{ route('spending') }}">Spending</a>
+              </li>
+              <li class="nav-item mr-6 sart" role="presentation">
+                  <a class="nav-link active" href="{{ route('ministry') }}">Ministries</a>
+              </li>
+              <li class="nav-item mr-6 sart" role="presentation">
+                  <a class="nav-link" href="{{ route('contract') }}">Contractors</a>
+              </li>
+              <li class="nav-item mr-6 sart" role="presentation">
+                  <a class="nav-link" href="{{ route('about') }}">About us</a>
+              </li>
+              <li class="nav-item mr-3" role="presentation">
+                  <a class="nav-link" href="{{ route('blog') }}">Blog</a>
+              </li>
+              <a class="nav-link" href=""><i class="fa fa-search inp"></i></a>
+          </ul>
+      </div>
+    </div>
+  </nav>
+  <!-------------Header ends here-------------->

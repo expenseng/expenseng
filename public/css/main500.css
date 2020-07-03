@@ -1,0 +1,27 @@
+/* default browser reset */
+*{
+  padding:0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/* == */
+:root{
+  --mainWhite:#fff;
+  --mainBlack:#2c2c2c;
+  --mainGreen:#00945E;
+  --mainTransition:all 0.3s linear;
+  --mainSpacing:0.1rem;
+}
+body{
+  font-family: 'Fira Code', monospace;
+}
+/* styles for main section */
+.container{
+  width:1366px;
+  max-width:calc(100% - 20px);
+  margin:0 auto;
+  padding:0 10px;
+  height: 100vh;
+}
+/* end of style for main section */
+/* ================ */

@@ -1,0 +1,196 @@
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+a {
+  color: #00945E;
+}
+
+.page-link {
+  color: #00945E;
+}
+
+#main {
+  margin: 5rem 0;
+}
+
+/* Scroll bar */
+/* width */
+::-webkit-scrollbar {
+  height: 4px;
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 148, 94, 0.62);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 148, 94, 0.82);
+}
+
+/* Navigation Links */
+.navigation-links ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+
+.navigation-links ul li {
+  display: inline-block;
+  margin: 2%;
+}
+
+.navigation-links ul li a {
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: bold;
+  transition: padding 0.3s;
+}
+
+.navigation-links ul li a:hover {
+  color: #00945e;
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid #00945e;
+}
+
+/* Section 1 */
+.user-profile {
+  text-align: center;
+  max-width: 768px;
+}
+
+.user-profile .name img {
+  width: 40px;
+}
+
+.twitter-handle {
+  color: #6765EC;
+}
+
+.twitter-handle:hover {
+  text-decoration: none;
+  color: #43419d;
+}
+
+.amount-rewarded, .contract-number {
+  color: #00945E;
+}
+
+.content-navigator {
+  max-width: 500px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.content-navigator a {
+  margin: 0.5rem;
+}
+
+.content-navigator a:hover {
+  text-decoration: none;
+  color: #00945E;
+}
+
+.content-navigator a::before {
+  content: '';
+  position: absolute;
+  top: 47px;
+  width: 100%;
+  height: 2px;
+  background-color: #D5D9D8;
+}
+
+.content-navigator a.active::before {
+  background-color: #00945E;
+}
+
+/* Section-2 */
+.date-btn {
+  background-color:  #00945E;
+  color: white;
+  transition: all 0.3s;
+}
+
+.date-btn:hover {
+  background-color: white;
+  color:  #00945E;
+  border: 1px solid  #00945E;
+}
+
+.date-btn i {
+  width: 15px;
+}
+
+.date-btn:hover i {
+  color: #00945E
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: white;
+}
+
+.section-2 thead, .section-2 tr:nth-child(even) {
+  background-color: #F2FAF7;
+}
+
+.section-2 .card-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.table-pagination {
+  text-align: center;
+}
+
+/* Section 3 */
+.section-3 .summary {
+  max-width: 768px;
+  margin: auto;
+}
+
+.section-3 .table {
+  font-size: 0.8rem;
+}
+
+@media screen and (max-width: 410px) {
+  .content-navigator a::before {
+    top: 71px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .section-2 .card-title {
+    flex-flow: column;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .user-profile, .navigation-links ul {
+    text-align: left;
+  }
+
+  .navigation-links ul li:first-child {
+    margin-left: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .section-2 .table-pagination, .section-3 .table-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .section-3 .table-pagination {
+    margin-top: 0 !important;
+  }
+}
