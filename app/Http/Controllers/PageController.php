@@ -97,7 +97,12 @@ class PageController extends Controller
             'company' => 'required',
 
         ]);
-        return 'Working on this, talk to @yanmifeakeju';
+
+
+        $search = '%' . request('company') . '%';
+        $company  = \App\Company::where('company_name', 'LIKE', $search)->get();
+
+        return $company;
     }
 
     public function contract()
