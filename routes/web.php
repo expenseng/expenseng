@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,20 +25,20 @@ Route::get('/about', 'PageController@about')->name('about');
 Route::get('/404', 'PageController@error404')->name('404');
 
 
+
 Route::get('/reports/expenditure', 'ExpendituresController@getExpenditures')->name('expenditure_report');
 Route::get('/ministry/reports', 'PageController@ministryReport')->name('ministry_report');
 Route::get('/ministry/profile', 'PageController@ministryProfileSearch')->name('ministry_profile_search');
 Route::get('/company/profile', 'PageController@companyProfile')->name('company_profile');
-Route::get('/company/reports', 'PageController@companyReport')->name('company_report');
+
+Route::get('/company/reports', 'CompanyReportController@getReport')->name('company_report');
 Route::get('/company/search','PageController@companySearch')->name('company_search');
+Route::get('/company/search', 'PageController@companySearch')->name('company_search');
+Route::post('/company/show', 'PageController@companySearchShow');
 Route::get('/quick-contacts', 'PageController@quickContact')->name('quick_contacts');
+Route::get('contract', 'PageController@contract')->name('contract');
+Route::get('/ministry', 'PageController@ministryList')->name('ministry');
+Route::get('/spending', 'PageController@ministrySpending')->name('spending');
 
-Route::get('/about-us', 'PageController@aboutUs')->name('about_us');
-
-
-
-
-
-Route::get('/ministry/Federal_ministries', 'PageController@federalMinistries')->name('Federal_ministries');
 Route::get('/ministry/details', 'MinistrySearchController@show')->name('get_ministry_details');
 Route::post('/ministry/autocomplete', 'MinistrySearchController@autocomplete')->name('ministry_autocomplete');
