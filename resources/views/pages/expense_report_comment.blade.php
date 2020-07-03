@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('css')
-<link rel="stylesheet" href="../assets/css/header_footer.css">
-<link rel="stylesheet" href="../assets/css/expense_report_comment.css">
+<link rel="stylesheet" href="{{ asset('css/header_footer.css') }}">
+<link rel="stylesheet" href="/css/expense_report_comment.css">
 <title>FG Expense - Expense Report</title>
 @endsection
 

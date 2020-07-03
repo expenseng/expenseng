@@ -1,8 +1,8 @@
-@extends('layouts.masster')
+@extends('layouts.master')
 @section('css')
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-<link rel="stylesheet" href="../assets/css/expense_report.css">
-<link rel="stylesheet" href="../assets/css/header_footer.css">
+<link rel="stylesheet" href="/css/expense_report.css">
+<link rel="stylesheet" href="/css/header_footer.css">
 <title>FG Expense - Expense Report</title>
 @endsection
 
@@ -67,90 +67,18 @@
           </tr>
         </thead>
         <tbody>
+          @if(count($expenditures)> 0)
+            @foreach( $expenditures as $expenditure)
           <tr>
-            <td class="px20 color-code-1">Transport</td>
-            <td class="px18">Julius Berger</td>
-            <td>Rehabilitation Of Lagos</td>
-            <td>N72,902,001,229</td>
-            <td>20th, May 2020</td>
+            <td class="px20 color-code-1">{{$expenditure->ministry}}</td>
+            <td class="px18">{{$expenditure->company}}</td>
+            <td>{{$expenditure->description}}</td>
+            <td>N{{$expenditure->amount}}</td>
+            <td>{{$expenditure->payment_date}}</td>
           </tr>
-          <tr>
-            <td class="px20 color-code-1">Education</td>
-            <td>Samsung</td>
-            <td>Building of Class Blocks</td>
-            <td>N72,902,001,229</td>
-            <td>20th, May 2020</td>
-          </tr>
-          <tr>
-            <td class="px20 color-code-1">Energy</td>
-            <td>CCNCC</td>
-            <td>Rehabilitation Of Lagos</td>
-            <td>N72,902,001,229</td>
-            <td>20th, May 2020</td>
-          </tr>
-          <tr>
-            <td class="px20 color-code-1">Labour</td>
-            <td>HNG</td>
-            <td>Building of Class Blocks</td>
-            <td>N72,902,001,229</td>
-            <td>20th, May 2020</td>
-          </tr>
-          <tr>
-            <td class="px20 color-code-1">Agriculture</td>
-            <td>Huawei</td>
-            <td>Building of Class Blocks</td>
-            <td>N72,902,001,229</td>
-            <td>20th, May 2020</td>
-          </tr>
-          <tr>
-            <td class="px20 color-code-1">Sector</td>
-            <td>MTN</td>
-            <td>Building of Class Blocks</td>
-            <td>N72,902,001,229</td>
-            <td>20th, May 2020</td>
-          </tr>
-          <tr>
-            <td class="px20 color-code-1">Sector</td>
-            <td>Amount</td>
-            <td>Building of Class Blocks</td>
-            <td>N72,902,001,229</td>
-            <td>20th, May 2020</td>
-          </tr>
-          <tr>
-            <td class="px20 color-code-1">Sector</td>
-            <td>Amount</td>
-            <td>Building of Class Blocks</td>
-            <td>N72,902,001,229</td>
-            <td>20th, May 2020</td>
-          </tr>
-          <tr>
-            <td class="px20 color-code-1">Sector</td>
-            <td>Amount</td>
-            <td>Building of Class Blocks</td>
-            <td>N72,902,001,229</td>
-            <td>20th, May 2020</td>
-          </tr>
-          <tr>
-            <td class="px20 color-code-1">Sector</td>
-            <td>Amount</td>
-            <td>Building of Class Blocks</td>
-            <td>N72,902,001,229</td>
-            <td>20th, May 2020</td>
-          </tr>
-          <tr>
-            <td class="px20 color-code-1">Sector</td>
-            <td>Amount</td>
-            <td>Building of Class Blocks</td>
-            <td>N72,902,001,229</td>
-            <td>20th, May 2020</td>
-          </tr>
-          <tr>
-            <td class="px20 color-code-1">Sector</td>
-            <td>Amount</td>
-            <td>Building of Class Blocks</td>
-            <td>N72,902,001,229</td>
-            <td>20th, May 2020</td>
-          </tr>
+            @endforeach
+          @endif
+          
         </tbody>
       </table>
       <div class="col-12 btn-sm-border bottom-50 ">
@@ -248,5 +176,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../assets/js/expense_report.js"></script>
+<script type="text/javascript" src="/js/expenditure_report.js"></script>
 @endsection

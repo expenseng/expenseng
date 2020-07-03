@@ -8,22 +8,22 @@
       <div class="collapse navbar-collapse" id="navcol-1">
           <ul class="nav navbar-nav ml-auto back">
               <li class="nav-item mr-6 sart" role="presentation">
-                  <a class="nav-link" href="index.html">Home</a>
+                  <a class="nav-link" href="{{ route('home') }}">Home</a>
               </li>
               <li class="nav-item mr-6 sart" role="presentation">
-                  <a class="nav-link" href="./ministry_report/ministry_report_table.html">Spending</a>
+                  <a class="nav-link" href="{{ route('spending') }}">Spending</a>
               </li>
               <li class="nav-item mr-6 sart" role="presentation">
                   <a class="nav-link active" href="{{ route('ministry') }}">Ministries</a>
               </li>
               <li class="nav-item mr-6 sart" role="presentation">
-                  <a class="nav-link" href="./contracts_awarded/contracts_awarded.html">Contractors</a>
+                  <a class="nav-link" href="{{ route('contract') }}">Contractors</a>
               </li>
               <li class="nav-item mr-6 sart" role="presentation">
-                  <a class="nav-link" href="aboutus.html">About us</a>
+                  <a class="nav-link" href="{{ route('about') }}">About us</a>
               </li>
               <li class="nav-item mr-3" role="presentation">
-                  <a class="nav-link" href="blog.html">Blog</a>
+                  <a class="nav-link" href="{{ route('blog') }}">Blog</a>
               </li>
               <a class="nav-link" href=""><i class="fa fa-search inp"></i></a>
           </ul>

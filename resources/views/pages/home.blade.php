@@ -110,7 +110,7 @@
                   <p class="exp-card2">#123,446,332</p>
                   <p class="exp-card3">2020</p>
                 </div>
-                <a href="#" class="mt-4 mb-5">View Expenditure Report</a>
+                <a href="{{route('expenditure_report')}}" class="mt-4 mb-5">View Expenditure Report</a>
             </div>
        </div>
 

@@ -8,16 +8,16 @@
     <main>
         <div class="container">
             <div class="top">
-                <a href=""><img src="../assets/img/min_comment_img/HOME.png" alt="" class="img"></a>         
-                <img src="../assets/img/min_comment_img//Ellipse 60.png" alt="">
-                <a href=""><img src="../assets/img/min_comment_img//PROFILES.png" alt=""class="img"></a>
+                <a href=""><img src="/img/min_comment_img/HOME.png" alt="" class="img"></a>         
+                <img src="/img/min_comment_img/Ellipse 60.png" alt="">
+                <a href=""><img src="/img/min_comment_img//PROFILES.png" alt=""class="img"></a>
                 <img src="../assets/img/min_comment_img/Ellipse 60.png" alt="">
                 <a href=""><img src="../assets/img/min_comment_img//MINISTRIES.png" alt=""class="img"></a>
-                <img src="../assets/img/min_comment_img//Ellipse 60.png" alt="">
-                <a href=""><img src="../assets/img/min_comment_img/MINISTRY PROFILE.png" alt=""class="img"></a>
+                <img src="/img/min_comment_img/Ellipse 60.png" alt="">
+                <a href=""><img src="/img/min_comment_img/MINISTRY PROFILE.png" alt=""class="img"></a>
             </div> <br><br>
             <div class="coat">
-                <img src="../assets/img/min_comment_img/image 7.png" alt="">
+                <img src="/img/min_comment_img/image 7.png" alt="">
                 <h1>Ministry of Works and Human Development</h1>
             </div> <br> <br>
             <div class="twitter">
@@ -52,21 +52,21 @@
                 <a href="ministry_list_tables.html">
                     <div>
                     <h5>Expense Summary</h5> 
-                    <img src="../assets/img/min_comment_img/Rectangle 453.png" class="hide" alt="">
+                    <img src="/img/min_comment_img/Rectangle 453.png" class="hide" alt="">
                     </div>
                 </a>
                 
                 <a href="ministryexpense.html">
                     <div>
                     <h5>Cabinet</h5> 
-                    <img src="../assets/img/min_comment_img/Rectangle 453.png" class="hide" alt="">
+                    <img src="/img/min_comment_img/Rectangle 453.png" class="hide" alt="">
                     </div>
                 </a>
                 
                 <a href="ministry_list_comment.html">
                     <div>
                     <h5 class="h51">Comments</h5> 
-                    <img src="../assets/img/min_comment_img/Rectangle 467.png" class="hide" alt="">
+                    <img src="/img/min_comment_img/Rectangle 467.png" class="hide" alt="">
                     </div>
                 </a>
                
@@ -75,7 +75,7 @@
             <br> <br>
             <div class="comm">
                     <div class="comm-image">
-                    <img src="../assets/img/min_comment_img/Rectangle 320.png" alt="">
+                    <img src="/img/min_comment_img/Rectangle 320.png" alt="">
                     </div>
                     <div class="comm-writeup">
                     <p class="p1">James Emmanuel <span>2mins ago</span></p>
@@ -83,27 +83,27 @@
                     <p class="p2">
                         <span>
                            
-                            <img src="../assets/img/min_comment_img/Vector.png" alt=""> 23
+                            <img src="/img/min_comment_img/Vector.png" alt=""> 23
                            
                         </span>
                         <span>
-                            <img src="../assets/img/min_comment_img/Vector(1).png" alt=""> 0
+                            <img src="/img/min_comment_img/Vector(1).png" alt=""> 0
                         </span>
                         <span>
-                            <img src="../assets/img/min_comment_img/Vector(2).png" alt=""> Reply
+                            <img src="/img/min_comment_img/Vector(2).png" alt=""> Reply
                         </span>
                     </p>
                     </div>
                     <hr>
             </div> 
             <div class="shown">
-                <img src="../assets/img/min_comment_img/Rectangle 85(4).png" alt="">
+                <img src="/img/min_comment_img/Rectangle 85(4).png" alt="">
             </div>
            
             <div class="hidden">
             <div class="comm">
                 <div class="comm-image">
-                <img src="../assets/img/min_comment_img/Rectangle 320.png" alt="">
+                <img src="/img/min_comment_img/Rectangle 320.png" alt="">
                 </div>
                 <div class="comm-writeup">
                 <p class="p1">James Emmanuel <span>2mins ago</span></p>
@@ -111,14 +111,14 @@
                 <p class="p2">
                     <span>
                        
-                        <img src="../assets/img/min_comment_img/Vector.png" alt=""> 23
+                        <img src="/img/min_comment_img/Vector.png" alt=""> 23
                        
                     </span>
                     <span>
-                        <img src="../assets/img/min_comment_img/Vector(1).png" alt=""> 0
+                        <img src="/img/min_comment_img/Vector(1).png" alt=""> 0
                     </span>
                     <span>
-                        <img src="../assets/img/min_comment_img/(2).png" alt=""> Reply
+                        <img src="/img/min_comment_img/(2).png" alt=""> Reply
                     </span>
                 </p>
                 </div> 
@@ -127,7 +127,7 @@
             
             <div class="comm inner-comm">
                 <div class="comm-image">
-                <img src="../assets/img/min_comment_img/Rectangle 320.png" alt="">
+                <img src="/img/min_comment_img/Rectangle 320.png" alt="">
                 </div>
                 <div class="comm-writeup">
                 <p class="p1">James Emmanuel <span>2mins ago</span></p>
@@ -135,14 +135,14 @@
                 <p class="p2">
                     <span>
                        
-                        <img src="../assets/img/min_comment_img/Vector.png" alt=""> 23
+                        <img src="/img/min_comment_img/Vector.png" alt=""> 23
                        
                     </span>
                     <span>
-                        <img src="../assets/img/min_comment_img/Vector(1).png" alt=""> 0
+                        <img src="/img/min_comment_img/Vector(1).png" alt=""> 0
                     </span>
                     <span>
-                        <img src="../assets/img/min_comment_img/Vector(2).png" alt=""> Reply
+                        <img src="/img/min_comment_img/Vector(2).png" alt=""> Reply
                     </span>
                 </p>
                 </div> 
@@ -152,8 +152,8 @@
              <hr>
              <div class="input-comm">
              <input type="text" placeholder="Write a Comment"> 
-             <img src="../assets/img/min_comment_img/smile.png" alt="">
-             <img src="../assets/img/min_comment_img/image.png" alt="">
+             <img src="/img/min_comment_img/smile.png" alt="">
+             <img src="/img/min_comment_img/image.png" alt="">
             </div>      
         </div>  
     </main>	
