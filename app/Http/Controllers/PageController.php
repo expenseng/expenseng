@@ -95,10 +95,35 @@ class PageController extends Controller
         return view('pages.about');
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public function federalMinistries()
     {
         $ministries = Ministry::all();
         return view('pages.ministry_list_federal_ministries')->with(['ministries'=> $ministries]);
-        // return view('pages.ministry_list_federal_ministries');
     }
 }
