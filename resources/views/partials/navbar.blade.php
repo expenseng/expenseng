@@ -14,7 +14,7 @@
                   <a class="nav-link" href="./ministry_report/ministry_report_table.html">Spending</a>
               </li>
               <li class="nav-item mr-6 sart" role="presentation">
-                  <a class="nav-link active" href="./ministry_list/ministry_list_federal_ministries.html">Ministries</a>
+                  <a class="nav-link active" href="{{ route('Federal_ministries') }}">Ministries</a>
               </li>
               <li class="nav-item mr-6 sart" role="presentation">
                   <a class="nav-link" href="./contracts_awarded/contracts_awarded.html">Contractors</a>

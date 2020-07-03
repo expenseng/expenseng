@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
+include 'CompanySeeder.php';
+include 'MinistrySeeder.php';
+include 'ExpenseSeeder.php';
+include 'SectorSeeder.php';
 
 class DatabaseSeeder extends Seeder
 {
