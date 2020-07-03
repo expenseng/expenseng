@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Ministry;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -112,7 +113,8 @@ class PageController extends Controller
 
     public function ministryList()
     {
-        return view('pages.ministry_list_federal_ministries');
+        $ministries = Ministry::all();
+        return view('pages.ministry_list_federal_ministries')->with(['ministries'=> $ministries]);
     }
 
     public function ministrySpending()

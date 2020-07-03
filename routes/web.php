@@ -39,3 +39,6 @@ Route::get('/quick-contacts', 'PageController@quickContact')->name('quick_contac
 Route::get('contract', 'PageController@contract')->name('contract');
 Route::get('/ministry', 'PageController@ministryList')->name('ministry');
 Route::get('/spending', 'PageController@ministrySpending')->name('spending');
+
+Route::get('/ministry/details', 'MinistrySearchController@show')->name('get_ministry_details');
+Route::post('/ministry/autocomplete', 'MinistrySearchController@autocomplete')->name('ministry_autocomplete');
