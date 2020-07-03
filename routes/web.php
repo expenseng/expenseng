@@ -40,11 +40,5 @@ Route::get('contract', 'PageController@contract')->name('contract');
 Route::get('/ministry', 'PageController@ministryList')->name('ministry');
 Route::get('/spending', 'PageController@ministrySpending')->name('spending');
 
-<<<<<<< HEAD
 Route::get('/ministry/details', 'MinistrySearchController@show')->name('get_ministry_details');
 Route::post('/ministry/autocomplete', 'MinistrySearchController@autocomplete')->name('ministry_autocomplete');
-=======
-Route::get('/ministry/Federal_ministries', 'PageController@federalMinistries')->name('Federal_ministries');
-Route::get('/ministry/details', 'MinistrySearchController@show')->name('get_ministry_details');
-Route::post('/ministry/autocomplete', 'MinistrySearchController@autocomplete')->name('ministry_autocomplete');
->>>>>>> ea7dc5c8ba18720639abd0abb14664a8a9902fea
