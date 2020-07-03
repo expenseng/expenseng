@@ -61,14 +61,17 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td class="tbl-shadow"><a href="#" class="text-success">Transport</a></td>
-									<td>Rehabilitation of Lagos Ibadan Express-way</td>
-									<td>Julius Berger</td>
-									<td>N72,902,001,229</td>
+                                @foreach ($expenses as $expense)
+                                <tr>
+                                <td class="tbl-shadow"><a href="#" class="text-success">{{Str::ucfirst($expense->ministry)}}</a></td>
+                                <td>{{$expense->description}}</td>
+                                <td>{{$expense->company}}</td>
+									<td>{{$expense->amount}}</td>
 									<td>20th,May 2020</td>
 								</tr>
-								<tr>
+                                @endforeach
+
+								{{-- <tr>
 									<td class="tbl-shadow"><a href="#" class="text-success">Education</a></td>
 									<td>Building of Class Blocks</td>
 									<td>Samsung</td>
@@ -200,7 +203,7 @@
 									<td>Samsung</td>
 									<td>N65,001,901,123</td>
 									<td>20th,May 2020</td>
-								</tr>
+								</tr> --}}
 							</tbody>
 						</table>
 					</div>
@@ -276,5 +279,5 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
 	<script src="{{ asset('js/main.js') }}"></script>
-	<script src="{{ assert('js/ExpenditureScript.js') }}"></script>
+	<script src="{{ asset('js/ExpenditureScript.js') }}"></script>
 @endsection
