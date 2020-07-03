@@ -1,48 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="Description" content="Enter your description here"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
-<link rel="stylesheet" href="../assets/css/header_footer.css">
-<link rel="stylesheet" href="../assets/css/ministry_list_comment.css">
+@extends('layouts.html')
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/header_footer.css') }}">
+<link rel="stylesheet" href="{{ asset('css/ministry_list_comment.css') }}">
 <title>Ministry List Comment</title>
-</head>
-<body>
-	<!-------------Header starts here-------------->
-	<nav class="navbar navbar-toggleable-md navbar-expand-md sticky-top shadow p-3 mb-5" role="navigation">
-		<div class="container">
-		<a class="navbar-brand" href="#"><img src="../assets/img/Logo.png"></a>
-		<button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
-            <span><i class="fa fa-bars" aria-hidden="true"></i></span>
-        </button>
-      	<div class="collapse navbar-collapse" id="navcol-1">
-            <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item mr-3" role="presentation">
-                    <a class="nav-link" href="../index.html">Home</a>
-                </li>
-                <li class="nav-item mr-3" role="presentation">
-                    <a class="nav-link" href="./ministry_report/ministry_report_table.html">Spending</a>
-                </li>
-                <li class="nav-item mr-3" role="presentation">
-                    <a class="nav-link active" href="./ministry_list/ministry_list_federal_ministries.html">Ministries</a>
-                </li>
-                <li class="nav-item mr-3" role="presentation">
-                    <a class="nav-link" href="./contracts_awarded/contracts_awarded.html">Contractors</a>
-                </li>
-                <a class="nav-link" href=""><i class="fa fa-search inp"></i></a>
-            </ul>
-        </div>
-  		</div>
-    </nav><br><br>
-    <!-------------Header ends here-------------->
-
-    <!-------------Header ends here-------------->
-
-    <!-------------Main starts here-------------->
+@endsection
+@section('content')
     <main>
         <div class="container">
             <div class="top">
@@ -195,85 +157,10 @@
             </div>      
         </div>  
     </main>	
-    
-    <!-------------Footer starts here-------------->
-    <footer class="my-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2 footer-brand ">
-                    <a href="index.html">
-                        <img src="../assets/img/Frame 390.png" class="ft">
-                    </a> <br><br>
-                    <a href=""><i class="fab fa-twitter" aria-hidden="true"></i><small> @expenseng</small></a>               
-                </div>
-                <div class="col-md-4">
-                	
-                </div>
-                <div class="col-md-2">
-                    <h6>Pages</h6>
-                    <ul >
-                        <li>
-                            <a  href="#"><small>Home</small></a>
-                        </li>
-                        <li>
-                            <a  href="#"><small>Daily Report</small></a>
-                        </li>
-                        <li>
-                            <a href="#"><small>Ministry Report</small></a>
-                        </li>
-                        <li>
-                            <a href="#"><small>Company Report</small></a>
-                        </li>
-                    </ul>
-                    
-                </div>
-                <div class=" col-md-2">
-                    <h6>Profile</h6>
-                    <ul>
-                        <li>
-                            <a  href="About.html"><small>Ministry Search</small></a>
-                        </li>
-                        <li>
-                            <a href="facilities.html"><small>Company Search</small></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-2">
-                    <h6>Reference</h6>
-                    <ul >
-                        <li>
-                            <a href="index.html"><small>Government handles</small></a>
-                        </li>
-                        <li>
-                            <a href=""><small>About us</small></a>     
-                        </li>
-                        <li>
-							<a href=""><small>Contact us</small></a>                        
-						</li>
-                    </ul>
-                </div>
-            </div><br><br>
-        </div>
-        <div class="container-fluid lower">
-        	<div class="container">
-	            <div class="row ">
-	                <div class="col-md-10">
-	                    <a href=""><small>Accessibility</small></a>-
-	                    <a href=""><small> | Privacy Policy</small></a>-
-	                    <a href=""><small> | Freedom of Information Act</small></a>
-	                </div>
-	                <div class="col-md-2">
-	                    <a href=""><small><span>&#169</span>2020EXPENSENG.com</small></a>
-	                </div>
-	            </div>
-        	</div>
-        </div>
-    </footer>
+@endsection
 
-    <!-------------Footer ends here-------------->
-
+@section('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-</body>
-</html>
+@endsection
