@@ -14,7 +14,11 @@
                   <a class="nav-link" href="{{ route('spending') }}">Spending</a>
               </li>
               <li class="nav-item mr-6 sart" role="presentation">
+<<<<<<< HEAD
                   <a class="nav-link active" href="{{ route('ministry') }}">Ministries</a>
+=======
+                  <a class="nav-link active" href="{{ route('Federal_ministries') }}">Ministries</a>
+>>>>>>> ea7dc5c8ba18720639abd0abb14664a8a9902fea
               </li>
               <li class="nav-item mr-6 sart" role="presentation">
                   <a class="nav-link" href="{{ route('contract') }}">Contractors</a>
