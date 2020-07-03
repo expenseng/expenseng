@@ -125,5 +125,4 @@ class PageController extends Controller
         // return $expenses;
         return view('pages.ministry_report_table', compact('expenses'));
     }
-
 }
