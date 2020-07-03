@@ -87,16 +87,17 @@ class PageController extends Controller
 
     public function companySearch()
     {
-        request()->validate([
-            'company' => 'required',
 
-        ]);
         return view('pages.companysearch');
     }
 
     public function companySearchShow()
     {
-        return 'Hello';
+        request()->validate([
+            'company' => 'required',
+
+        ]);
+        return 'Working on this, talk to @yanmifeakeju';
     }
 
     public function aboutUs()
