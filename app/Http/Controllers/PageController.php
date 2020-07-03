@@ -117,6 +117,10 @@ class PageController extends Controller
 
     public function ministrySpending()
     {
-        return view('pages.ministry_report_table');
+
+        $expenses = \App\Expense::latest()->get();
+
+        // return $expenses;
+        return view('pages.ministry_report_table', compact('expenses'));
     }
 }
