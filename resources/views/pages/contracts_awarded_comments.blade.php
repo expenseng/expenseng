@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('css')
-  <link rel="stylesheet" href="../assets/css/header_footer.css">
-  <link rel="stylesheet" href="../assets/css/contracts_awarded_comments.css">
+  <link rel="stylesheet" href="{{ asset('css/header_footer.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/contracts_awarded_comments.css') }}">
   <title>FG Expense - Contracts</title>
 @endsection
 
@@ -28,7 +28,7 @@
 
       <div class="company">
         <h1 class="company-name my-5">Julius Berger
-          <img src="../assets/img/companylogo.png" alt="company-logo">
+          <img src="{{ asset('images/companylogo.png') }}" alt="company-logo">
         </h1>
         <div class="d-flex justify-content-between mt-3 contract-details">
           <div class="d-flex-sm">
@@ -65,7 +65,7 @@
             <div class="container">
               <div class="row">
                 <div class="col-sm-1 mt-1">
-                  <img src="../assets/img/profile-image.svg" alt="">
+                  <img src="{{ asset('images/profile-image.svg') }}" alt="">
                 </div>
                 <div class="col-sm-11">
                   <div class="d-flex justify-content-between align-items-center mb-2">
@@ -104,7 +104,7 @@
             <div class="container">
               <div class="row">
                 <div class="col-sm-1 mt-1">
-                  <img src="../assets/img/profile-image.svg" alt="">
+                  <img src="{{ asset('images/profile-image.svg') }}" alt="">
                 </div>
                 <div class="col-sm-11">
                   <div class="d-flex justify-content-between align-items-center mb-2">
@@ -141,7 +141,7 @@
             <div class="container">
               <div class="row">
                 <div class="col-sm-1 mt-1">
-                  <img src="../assets/img/profile-image.svg" alt="">
+                  <img src="{{ asset('images/profile-image.svg') }}" alt="">
                 </div>
                 <div class="col-sm-11">
                   <div class="d-flex justify-content-between align-items-center mb-2">
@@ -174,7 +174,7 @@
             <div class="reply mt-3">
               <div class='mx-auto w-75'>
                 <div class="col-sm-1 mt-1">
-                  <img src="../assets/img/profile-image.svg" alt="">
+                  <img src="{{ assets('img/profile-image.svg') }}" alt="">
                 </div>
                 <div class="col-sm-11">
                   <div class="d-flex justify-content-between align-items-center mb-2">
