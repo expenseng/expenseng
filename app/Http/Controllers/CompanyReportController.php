@@ -18,7 +18,7 @@ class CompanyReportController extends Controller
     {
         $yearlyTotals = $this->getYearlyTotal();
         $monthlyTotals = $this->getMonthlyTotal();
-        return view('pages.companyReports')->with(['yearlyTotals'=> $yearlyTotals, 'monthlyTotals' => $monthlyTotals]);
+        return ['status' => 'success', 'message' => 'Total amounts received by various Contractors and Organsations', 'data'=> $yearlyTotals];
     }
 
     public function getYearlyTotal()
