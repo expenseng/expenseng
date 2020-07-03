@@ -1,0 +1,143 @@
+/* body{
+    overflow-x: hidden;
+}
+.nav-link{
+	color: black !important;
+}
+.nav-link:hover{
+	color: grey !important;
+}
+.my-footer ul {
+  list-style-type: none;
+  padding-left: 0;
+  color: white;
+}.my-footer a {
+  color: #fff !important;
+}
+.my-footer {
+  background-color: #323E48 !important;
+}
+h6{
+	color: white;
+	margin-top: 25px;
+}
+.fa-search{
+	color: grey !important;
+}
+.fa-search:hover{
+	color: black !important;
+}
+.ft{
+	margin-top: 25px;
+}
+.lower{
+	background-color: #1F2430;
+	padding: 10px;
+} */
+.hero-link{
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    color: #00945E;
+    text-transform: uppercase;
+    padding-left: 2rem;
+}
+.hero-link::before{
+    content: '.';
+    font-size: 2rem;
+    color: #00945E;
+    padding-right: .5rem;
+}
+.berger-name{
+    font-weight:600;
+    font-size: 40px;
+    line-height: 48px;
+    color: #323E48;
+    padding-left: 2.5rem;
+}
+.berger img{
+    width: 60px;
+    height: 60px;
+}
+.firstSpan{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #1F2430;
+}
+.secondSpan{
+    font-size: 24px;
+    line-height: 29px;
+    color: #6765EC;
+}
+.small{
+    font-size: 13px;
+    line-height: 16px;
+    color: #1F2430;
+}
+.colored{
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    color: #00945E;
+}
+.company-info,
+.board-intro{
+    padding-left: 2.5rem;
+    padding-right: 2rem;
+}
+.board-intro{
+    border-bottom: 1px solid #d5d9d8;
+}
+.board-link{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #A1A3A8;
+    border-bottom: 1px solid #D5D9D8;
+}
+.director-info{
+    background: #FFFFFF;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+}
+.director-name{
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.05em;
+    color: #353A45;
+}
+.director-title{
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #005D3B;
+}
+.socials i{
+    font-size:1.5rem;
+    color: #000;
+    padding: 0 10px;
+}
+@media only screen and (max-width:768px){
+.hero-link{
+    font-size: 18px;
+    padding-left: 1rem;
+}
+.company-info{
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+}
+.berger-name{
+    padding-left: 1rem;
+}
+.company-info .info{
+    margin-top: 2.5rem;
+}
+.board-link{
+    font-size: 15px;
+ }
+}

@@ -8,8 +8,35 @@ class PageController extends Controller
 {
     public function index()
     {
-        return view('pages.home');
+        return view('pages.home'); 
     }
+
+    public function contactUs()
+    {
+        return view('pages.contactUs');
+    }
+
+    public function ministryGraph()
+    {
+        return view('pages.ministry-report-graph'); 
+    }
+
+    public function projectModal()
+    {
+        return view('pages.project_details-filter_modal '); 
+    }
+
+    public function expenseGraph()
+    {
+        return view('pages.expense-graph');
+    }
+
+    public function directorBoard()
+    {
+        return view('pages.director_board'); 
+    }
+
+
 
     public function expenditure()
     {
@@ -26,10 +53,7 @@ class PageController extends Controller
         return view('pages.ministry_profile');
     }
 
-    public function contactUs()
-    {
-        return view('pages.contact');
-    }
+ 
 
     public function quickContact()
     {

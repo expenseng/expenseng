@@ -1,17 +1,16 @@
 @include('partials.head')
-    <body> 
-        <div class="containerr">
-            <!-- navbar -->
-            @include('partials.navbar')
-        
-            <!-- banner -->
-            @yield('banner')
+@yield('css')
+</head>
+  <body> 
+    <div class="containerr">
+        <!-- navbar -->
+        @include('partials.navbar')
 
-            <!-- content -->
-            @yield('content')
-        </div>
-        <!-- footer -->
-        @include('partials.footer')
-
-    </body>
+        <!-- content -->
+        @yield('content')
+    </div>
+    <!-- footer -->
+    @include('partials.footer')
+    @yield('js')
+  </body>
 </html>

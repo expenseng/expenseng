@@ -1,0 +1,65 @@
+body{
+	padding: 50px 0px;
+	margin: 0px;
+}
+.error_body{
+	width: 800px;
+	margin: auto;
+	text-align: center; 
+	margin-bottom :10px;
+}
+
+.error_body h3{
+	font-size: 40px;
+}
+.error_body h4{
+	font-size: 30px;
+	margin-bottom :40px;
+}
+.error_body a{
+	height: 40px;
+	width: 150px;
+	background: 
+	font-weight: bold;
+	font-size: 20px;
+	background: #00945E;
+	border-radius: 5px;
+	color: #ffffff;
+	font-family: lato;
+	cursor: pointer;
+	-webkit-animation: bounce .3s infinite alternate;
+  	-moz-animation: bounce .3s infinite alternate;
+  	animation: bounce .3s infinite alternate;
+  	position: absolute;
+  	left: 0;
+  	right: 0;
+  	margin: auto;
+  	text-align: center;
+  	line-height: 40px;
+}
+.error_body a:hover{
+	color: white;
+	-webkit-animation: stopbounce .3s infinite alternate;
+  	-moz-animation: stopbounce .3s infinite alternate;
+  	animation: stopbounce .3s infinite alternate;
+}
+@-webkit-keyframes stopbounce {
+  to { -webkit-transform: scale(1); }
+}
+@-webkit-keyframes bounce {
+  to { -webkit-transform: scale(1.2); }
+}
+@-moz-keyframes bounce {
+  to { -moz-transform: scale(1.2); }
+}
+@keyframes bounce {
+  to { transform: scale(1.2); }
+}
+@media (max-width: 800px){
+	.error_body{
+		width: 95%;
+	}
+	.error_body div img{
+		width: 100%;
+	}
+}

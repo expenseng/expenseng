@@ -1,0 +1,124 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.top li{
+  display: inline !important;
+  list-style-image: inherit;
+}
+.top h1 {
+  margin-bottom: 30px;
+}
+.top p {
+  margin-bottom: 70px;
+}
+.top-nav li {
+  padding: 20px 40px 20px 0;
+  text-align: center;
+
+
+  display: inline;
+}
+.top-nav a {
+  padding-bottom: 0px;
+  border-bottom: 2px solid #000;
+  text-decoration: none;
+}
+
+.active {
+  /* border: none; */
+  border-bottom-color: 2px solid #00945E;
+}
+.nav {
+  z-index: 1000 !important;
+}
+
+select {
+  color: #00945E;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.sec-select {
+  width: 100%;
+  padding: 10px 10%;
+  border-radius: 4px;
+  border: none;
+  color: #fff;
+  background-color: #00945E;
+}
+.padding {
+  margin: 50px 0;
+}
+
+
+    div.graph-cont{
+            position: relative;
+
+        }
+        div.graph-cont img{
+            width: 100%;
+            padding: 0 0 0 10px;
+        }
+
+        .graph-border {
+            border-bottom: 2px solid black;
+            border-left: 2px solid black;
+        }
+
+        div.graph-cont img:nth-child(1){
+            position: absolute;
+        }
+
+        .ministry-stat{
+            padding: 1.5rem;
+            min-height: 350px;
+        }
+
+        @media only screen and (min-width: 910px) {
+            .ministry-stat{
+                flex-direction: row;
+            }
+
+
+            .top-nav li {
+              padding: 20px 40px 20px 0;
+              text-align: center;
+            
+            
+              display: inline;
+            }
+            
+            
+            
+            .top-nav a {
+              padding-bottom: 20px;
+              border-bottom: 2px solid #0000
+            }
+            
+        }
+
+
+        @media only screen and (max-width: 600px) {
+          .top-nav li {
+            padding: 20px 40px 20px 0;
+            text-align: center;
+          
+          
+            display: block;
+          }
+          
+          
+          
+          .top-nav a {
+            padding-bottom: 20px;
+            border-bottom: 2px solid #000
+          }
+          
+
+        }
+      
