@@ -52,8 +52,6 @@ class PageController extends Controller
         return view('pages.404_error');
     }
 
-
-
     public function expenditure()
     {
         return view('pages.ExpenditureReport');
@@ -64,12 +62,19 @@ class PageController extends Controller
         return view('pages.ministry_report');
     }
 
-    public function ministryProfileSearch()
+    public function ministryGetUrl(Request $request)
     {
-        return view('pages.ministry_profile');
+        $id = $request->get('id');
+        return response()->json(['url'=>url('ministry/profile/'.$id)]);
     }
 
-
+    public function ministryProfileSearch($id)
+    {
+        if ($id) {
+            $ministry = Ministry::where('id', $id)->first();
+            return view('pages.ministry_list_tables')->with(['ministry'=> $ministry]);
+        }
+    }
 
     public function quickContact()
     {
@@ -88,7 +93,6 @@ class PageController extends Controller
 
     public function companySearch()
     {
-
         return view('pages.companysearch');
     }
 

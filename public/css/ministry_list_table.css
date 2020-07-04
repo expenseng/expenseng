@@ -23,6 +23,10 @@ body{
     color:#6765EC;
 }
 
+#minwrks a{
+    text-decoration: none;
+}
+
 .amount{
     color: #00945E;
 }
