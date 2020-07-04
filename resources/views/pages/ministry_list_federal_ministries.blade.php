@@ -47,11 +47,11 @@
     <div class="money-spent">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-6 paragraph">
+          <div class="col-md-6 paragraph">
             <p style="padding:0;">MINISTRIES AND AMOUNT SPENT</p>
             <hr>
           </div>
-          <div id="search-area" class="col-6">
+          <div id="search-area" class="col-md-6 mt-3 mt-md-0">
             <input type="search" id="ministry_search" class="form-control form-control-lg mb-2" placeholder="Search for a ministry">
             <div id="ministryList"></div>
             {{-- <button type="submit" id="submit" class="btn btn-block btn-success">Find</button> --}}
@@ -67,7 +67,7 @@
         <div id="cards-container" class="row d-flex sec-card">
           @if (count($ministries) >0)
           @foreach($ministries as $ministry)
-          <div class="col-3">
+          <div class="col-lg-3 col-md-6 col-sm-12">
             <div class="cont-1">
               <div class="img">
                 <span class="circle"></span>
@@ -259,88 +259,109 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
   <script>
     $(document).ready(function(){
+    
+    const card = (name)=>{
+      return (
+        `<div class="col-lg-3 col-md-6 col-sm-12" style="cursor:pointer">
+              <div class="cont-1">
+                <div class="img">
+                  <span class="circle"></span>
+                  <img src="{{ asset('images/Vector 3.svg') }}" alt="" class="vector" style="width:100%">
+                  <img src="{{ asset('images/Vector 2.png') }}" alt="" style="width:100%">
+                </div>
+                <div class="coat">
+                  <img src="{{ asset('images/image 7.png') }}" alt="">
+                  <div class="text-center ministry">
+                    <h4>${name}</h4>
+                  </div>
+                </div>
+                <div class="texts">
+                  <h4>Total amount Spent</h4>
+                  <p class="num">#123,446,332</p>
+                  <p class="year">2019</p>
+                </div>
+              </div>
+            </div>`
+      )
+  } 
 
-$('#ministry_search').keyup(function(){
-   
-   let query = $(this).val();
-   if(query != ''){
-       let _token = $('input[name="_token"]').val();
-       // console.log(query, _token)
-       $.ajax({
-           url: "{{ route('ministry_autocomplete') }}",
-           method: "POST",
-           data: {query, _token},
-           success: function(data){
-                data = JSON.parse(data)
-               console.log('data', data)
-               let suggestions;
-               let ministryCards = '';
-               if(data.length>0){
-                suggestions = `<ul class="dropdown-menu" style="display:block; position:relative">`;
-                   data.forEach(ministry=>{
-                        suggestions += `<li class="pb-2 px-3"><a href="#" class="text-muted "> ${ministry.ministry_name}</a></li>`
-                        ministryCards +=  `<div class="col-3" >
-                                                <div class="cont-1">
-                                                <div class="img">
-                                                    <span class="circle"></span>
-                                                    <img src="../css/images/Vector 3.svg" alt="" class="vector" style="width:100%">
-                                                    <img src="../css/images/Vector 2.png" alt="" style="width:100%">
-                                                </div>
-                                                <div class="coat">
-                                                    <img src="../css/images/image 7.png" alt="">
-                                                    <div class="text-center ministry">
-                                                    <h4>${ministry.ministry_name}</h4>
-                                                    </div>
-                                                </div>
-                                                <div class="texts">
-                                                    <h4>Total amount Spent</h4>
-                                                    <p class="num">#123,446,332</p>
-                                                    <p class="year">2019</p>
-                                                </div>
-                                                </div>
-                                            </div>`
-                   })
-                    suggestions += '</ul>';
-                    $('#ministryList').fadeIn();
-                    $('#ministryList').html(suggestions);
-                    $('#cards-container').html(ministryCards)
-               }else{
-                   $('#ministryList').fadeOut();
-               }
-                   
-            
-           }
+    const returnDefaults = e =>{
+      $.ajax({
+          url: "{{ route('ministry_all') }}",
+          method: "GET",
+          success: function(data){
+            data = JSON.parse(data)
+            console.log('data', data)
+            let ministryCards = '';
+            if(data.length>0){    
+                  data.forEach(ministry=>{
+                      ministryCards += card(ministry.ministry_name);
+                  })
+                  
+                  $('#cards-container').html(ministryCards);
+                  $('#ministryList').fadeOut();
+              }
+          }
+      })
+    }
 
-       })
-   }else{
-       $('#ministryList').fadeOut();
-   }
-})
+  $('#ministry_search').on('search', returnDefaults)
 
-$('#search-area').on('click', 'li', function(e){
-    e.preventDefault()
-    let ministry = $(this).text();
-    $('#ministry_search').val(ministry);
-    $('#ministryList').fadeOut();
-    $.ajax({
-            url: "{{ route('get_ministry_details') }}",
-            method: "GET",
-            data: {ministry},
+  $('#ministry_search').on('keyup', function(){
+    let query = $(this).val();
+    if(query != ''){
+        let _token = $('input[name="_token"]').val();
+        $.ajax({
+            url: "{{ route('ministry_autocomplete') }}",
+            method: "POST",
+            data: {query, _token},
             success: function(data){
-              
                 data = JSON.parse(data)
-                $('#ministry_details').show()
-                $('#ministry_name').text(data[0].ministry_name);
-                $('#ministry_twitter').text(data[0].ministry_twitter_handle);
-                $('#minister_head').text(data[0].ministry_head);
-                $('#minister_twitter').text(data[0].ministry_head_handle);
-                $('#ministry_website').text(data[0].ministry_website);
-                $('#sector').text(data[0].sector_id);
-                
+                let suggestions;
+                let ministryCards = '';
+                if(data.length>0){
+                  suggestions = `<ul class="dropdown-menu" style="display:block; position:relative">`;
+                    data.forEach(ministry=>{
+                          suggestions += `<li class="pb-2 px-3"><a href="#" class="text-muted "> ${ministry.ministry_name}</a></li>`
+                          ministryCards += card(ministry.ministry_name)
+                    })
+                      suggestions += '</ul>';
+                      $('#ministryList').html(suggestions).fadeIn();
+                      $('#cards-container').html(ministryCards)
+                }else{
+                    $('#ministryList').fadeOut();
+                }
             }
-
         })
-})
+    }else{
+        $('#ministryList').fadeOut();
+        returnDefaults()
+    }
+  })
+
+  $('#search-area').on('click', 'li', function(e){
+      e.preventDefault()
+      let ministry = $(this).text();
+      $('#ministry_search').val(ministry);
+      $('#ministryList').fadeOut();
+      $.ajax({
+              url: "{{ route('get_ministry_details') }}",
+              method: "GET",
+              data: {ministry},
+              success: function(data){
+                  data = JSON.parse(data)
+                  $('#cards-container').html(card(data[0].ministry_name))
+                  // $('#ministry_details').show()
+                  // $('#ministry_name').text(data[0].ministry_name);
+                  // $('#ministry_twitter').text(data[0].ministry_twitter_handle);
+                  // $('#minister_head').text(data[0].ministry_head);
+                  // $('#minister_twitter').text(data[0].ministry_head_handle);
+                  // $('#ministry_website').text(data[0].ministry_website);
+                  // $('#sector').text(data[0].sector_id);
+              }
+
+          })
+  })
 })
   </script>
   @endsection

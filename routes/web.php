@@ -42,3 +42,4 @@ Route::get('/spending', 'PageController@ministrySpending')->name('spending');
 
 Route::get('/ministry/details', 'MinistrySearchController@show')->name('get_ministry_details');
 Route::post('/ministry/autocomplete', 'MinistrySearchController@autocomplete')->name('ministry_autocomplete');
+Route::get('/ministry/all', 'MinistrySearchController@index')->name('ministry_all');
