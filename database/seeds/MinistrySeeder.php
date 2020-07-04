@@ -26,7 +26,7 @@ class MinistrySeeder extends Seeder
                     [
                         "ministry_name" => "Ministry of Petroleum Resources",
                         "ministry_shortname" => "Petroleum",
-                        "ministry_twitter_handle"=> "@minofinteriorng",
+                        "ministry_twitter_handle"=> "@FMPRng",
                         "ministry_head" => "Muhammadu Buhari",
                         "ministry_head_handle" => "@MBuhari",
                         "ministry_website" => "https://petroleumresources.gov.ng",

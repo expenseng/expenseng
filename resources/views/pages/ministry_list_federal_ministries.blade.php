@@ -67,7 +67,10 @@
         <div id="cards-container" class="row d-flex sec-card">
           @if (count($ministries) >0)
           @foreach($ministries as $ministry)
-          <div class="col-lg-3 col-md-6 col-sm-12">
+          <div data-id="{{$ministry->id}}" 
+            class="col-lg-3 col-md-6 col-sm-12 ministry-cards" 
+            style="cursor:pointer"
+          >
             <div class="cont-1">
               <div class="img">
                 <span class="circle"></span>
@@ -86,161 +89,17 @@
                 <p class="year">2019</p>
               </div>
             </div>
+            <a href="{{ route('ministry_profile_search', $ministry->id) }}"></a>
           </div>
 
+         
           @endforeach
           @endif
-          {{-- <div class="col">
-            <div class="cont-1">
-              <div class="img">
-                <span class="circle"></span>
-                <img src="{{ asset('images/Vector 3.svg') }}" alt="" class="vector" style="width:100%">
-                <img src="{{ asset('images/Vector 2.png') }}" alt="" style="width:100%">
-              </div>
-              <div class="coat">
-                <img src="{{ asset('images/image 7.png') }}" alt="">
-                <div class="text-center ministry">
-                  <h4>Ministry of Works </h4>
-                </div>
-              </div>
-              <div class="texts">
-                <h4>Total amount Spent</h4>
-                <p class="num">#123,446,332</p>
-                <p class="year">2019</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="cont-1">
-              <div class="img">
-                <span class="circle"></span>
-                <img src="{{ asset('images/Vector 3.svg') }}" alt="" class="vector" style="width:100%">
-                <img src="{{ asset('images/Vector 2.png') }}" alt="" style="width:100%">
-              </div>
-              <div class="coat">
-                <img src="{{ asset('images/image 7.png') }}" alt="">
-                <div class="text-center ministry">
-                  <h4>Ministry of Works </h4>
-                </div>
-              </div>
-              <div class="texts">
-                <h4>Total amount Spent</h4>
-                <p class="num">#123,446,332</p>
-                <p class="year">2019</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="cont-1">
-              <div class="img">
-                <span class="circle"></span>
-                <img src="{{ asset('images/Vector 3.svg') }}" alt="" class="vector" style="width:100%">
-                <img src="{{ asset('images/Vector 2.png') }}" alt="" style="width:100%">
-              </div>
-              <div class="coat">
-                <img src="{{ asset('images/image 7.png') }}" alt="">
-                <div class="text-center ministry">
-                  <h4>Ministry of Works </h4>
-                </div>
-              </div>
-              <div class="texts">
-                <h4>Total amount Spent</h4>
-                <p class="num">#123,446,332</p>
-                <p class="year">2019</p>
-              </div>
-            </div>
-          </div> --}}
+          
         </div>
       </div>
     </div>
-{{-- 
-    <div class="last-section">
-      <div class="container-fluid">
-        <div class="row d-flex sec-card">
-          <div class="col">
-            <div class="cont-1">
-              <div class="img">
-                <span class="circle"></span>
-                <img src="{{ asset('images/Vector 3.svg') }}" alt="" class="vector" style="width:100%">
-                <img src="{{ asset('images/Vector 2.png') }}" alt="" style="width:100%">
-              </div>
-              <div class="coat">
-                <img src="{{ asset('images/image 7.png') }}" alt="">
-                <div class="text-center ministry">
-                  <h4>Ministry of Works </h4>
-                </div>
-              </div>
-              <div class="texts">
-                <h4>Total amount Spent</h4>
-                <p class="num">#123,446,332</p>
-                <p class="year">2019</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="cont-1">
-              <div class="img">
-                <span class="circle"></span>
-                <img src="{{ asset('images/Vector 3.svg') }}" alt="" class="vector" style="width:100%">
-                <img src="{{ asset('images/Vector 2.png') }}" alt="" style="width:100%">
-              </div>
-              <div class="coat">
-                <img src="{{ asset('images/image 7.png') }}" alt="">
-                <div class="text-center ministry">
-                  <h4>Ministry of Works </h4>
-                </div>
-              </div>
-              <div class="texts">
-                <h4>Total amount Spent</h4>
-                <p class="num">#123,446,332</p>
-                <p class="year">2019</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="cont-1">
-              <div class="img">
-                <span class="circle"></span>
-                <img src="{{ asset('images/Vector 3.svg') }}" alt="" class="vector" style="width:100%">
-                <img src="{{ asset('images/Vector 2.png') }}" alt="" style="width:100%">
-              </div>
-              <div class="coat">
-                <img src="{{ asset('images/image 7.png') }}" alt="">
-                <div class="text-center ministry">
-                  <h4>Ministry of Works </h4>
-                </div>
-              </div>
-              <div class="texts">
-                <h4>Total amount Spent</h4>
-                <p class="num">#123,446,332</p>
-                <p class="year">2019</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="cont-1">
-              <div class="img">
-                <span class="circle"></span>
-                <img src="{{ asset('images/Vector 3.svg') }}" alt="" class="vector" style="width:100%">
-                <img src="{{ asset('images/Vector 2.png') }}" alt="" style="width:100%">
-              </div>
-              <div class="coat">
-                <img src="{{ asset('images/image 7.png') }}" alt="">
-                <div class="text-center ministry">
-                  <h4>Ministry of Works </h4>
-                </div>
-              </div>
-              <div class="texts">
-                <h4>Total amount Spent</h4>
-                <p class="num">#123,446,332</p>
-                <p class="year">2019</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> --}}
+
 @endsection
 
 @section('js')
@@ -260,9 +119,12 @@
   <script>
     $(document).ready(function(){
     
-    const card = (name)=>{
+    const card = (id, name)=>{
       return (
-        `<div class="col-lg-3 col-md-6 col-sm-12" style="cursor:pointer">
+        ` <div data-id="${id}" 
+            class="col-lg-3 col-md-6 col-sm-12 ministry-cards" 
+            style="cursor:pointer"
+          >
               <div class="cont-1">
                 <div class="img">
                   <span class="circle"></span>
@@ -285,25 +147,38 @@
       )
   } 
 
-    const returnDefaults = e =>{
+    $('#cards-container').on('click', '.ministry-cards', function(e){
+      const id = $(this).attr("data-id")
       $.ajax({
-          url: "{{ route('ministry_all') }}",
-          method: "GET",
-          success: function(data){
-            data = JSON.parse(data)
-            console.log('data', data)
-            let ministryCards = '';
-            if(data.length>0){    
-                  data.forEach(ministry=>{
-                      ministryCards += card(ministry.ministry_name);
-                  })
-                  
-                  $('#cards-container').html(ministryCards);
-                  $('#ministryList').fadeOut();
+              url: "{{ route('ministry_get_url') }}",
+              method: "GET",
+              data: {id},
+              success: function(data){
+                window.location=data.url;
               }
-          }
-      })
-    }
+          })
+    })
+
+  const returnDefaults = e =>{
+    $.ajax({
+        url: "{{ route('ministry_all') }}",
+        method: "GET",
+        success: function(data){
+          data = JSON.parse(data)
+          console.log('data', data)
+          let ministryCards = '';
+          if(data.length>0){    
+                data.forEach(ministry=>{
+                    const {id, ministry_name} = ministry;
+                    ministryCards += card(id, ministry_name);
+                })
+                
+                $('#cards-container').html(ministryCards);
+                $('#ministryList').fadeOut();
+            }
+        }
+    })
+  }
 
   $('#ministry_search').on('search', returnDefaults)
 
@@ -322,12 +197,14 @@
                 if(data.length>0){
                   suggestions = `<ul class="dropdown-menu" style="display:block; position:relative">`;
                     data.forEach(ministry=>{
-                          suggestions += `<li class="pb-2 px-3"><a href="#" class="text-muted "> ${ministry.ministry_name}</a></li>`
-                          ministryCards += card(ministry.ministry_name)
+                        const {id, ministry_name} = ministry;
+                        suggestions += `<li class="pb-2 px-3"><a href="#" class="text-muted "> ${ministry_name}</a></li>`
+                        ministryCards += card(id, ministry_name);
                     })
                       suggestions += '</ul>';
                       $('#ministryList').html(suggestions).fadeIn();
                       $('#cards-container').html(ministryCards)
+                
                 }else{
                     $('#ministryList').fadeOut();
                 }
@@ -350,14 +227,9 @@
               data: {ministry},
               success: function(data){
                   data = JSON.parse(data)
-                  $('#cards-container').html(card(data[0].ministry_name))
-                  // $('#ministry_details').show()
-                  // $('#ministry_name').text(data[0].ministry_name);
-                  // $('#ministry_twitter').text(data[0].ministry_twitter_handle);
-                  // $('#minister_head').text(data[0].ministry_head);
-                  // $('#minister_twitter').text(data[0].ministry_head_handle);
-                  // $('#ministry_website').text(data[0].ministry_website);
-                  // $('#sector').text(data[0].sector_id);
+                  console.log(data)
+                  const {id, ministry_name} = data[0]
+                  $('#cards-container').html(card(id, ministry_name))
               }
 
           })

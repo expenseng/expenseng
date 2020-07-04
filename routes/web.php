@@ -28,7 +28,7 @@ Route::get('/404', 'PageController@error404')->name('404');
 
 Route::get('/reports/expenditure', 'ExpendituresController@getExpenditures')->name('expenditure_report');
 Route::get('/ministry/reports', 'PageController@ministryReport')->name('ministry_report');
-Route::get('/ministry/profile', 'PageController@ministryProfileSearch')->name('ministry_profile_search');
+Route::get('/ministry/profile/{id?}', 'PageController@ministryProfileSearch')->name('ministry_profile_search');
 Route::get('/company/profile', 'PageController@companyProfile')->name('company_profile');
 
 Route::get('/company/reports', 'CompanyReportController@getReport')->name('company_report');
@@ -43,3 +43,4 @@ Route::get('/spending', 'PageController@ministrySpending')->name('spending');
 Route::get('/ministry/details', 'MinistrySearchController@show')->name('get_ministry_details');
 Route::post('/ministry/autocomplete', 'MinistrySearchController@autocomplete')->name('ministry_autocomplete');
 Route::get('/ministry/all', 'MinistrySearchController@index')->name('ministry_all');
+Route::get('/ministry/getUrl', 'PageController@ministryGetUrl')->name('ministry_get_url');
