@@ -2,7 +2,7 @@
 
   @section('css')
     <title>FG Expense - Home</title>
-    <link rel="stylesheet" href="{{asset('css/about us-header_footer.css')}}">
+    <link rel="stylesheet" href="{{asset('css/aboutus-header_footer.css')}}">
     <link rel="stylesheet" href="{{ asset('css/index.css')}}">
   @endsection
 
