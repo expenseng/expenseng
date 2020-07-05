@@ -8,7 +8,7 @@
 
         <!-- content -->
         @yield('content')
-    </div>
+      </div>
     <!-- footer -->
     @include('partials.footer')
     @yield('js')
