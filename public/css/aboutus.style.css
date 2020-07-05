@@ -30,12 +30,14 @@ body{
 }
 
 main{
-  margin-top: 4rem;
+  /* margin-top: 4rem; */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
+
+
 
 /* Typography */
 
@@ -51,6 +53,7 @@ main{
 
 .paragraph-big-font{
   font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
 }
 
 .paragraph-small-font{
@@ -75,6 +78,11 @@ main .green_right{
   right: 120px;
 }
 
+
+.hero{
+  margin: 8rem 0 6rem;
+}
+
 .hero .twitter{
   max-width: 36px;
   height: 36px;
@@ -83,6 +91,7 @@ main .green_right{
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 1.5rem;
 }
 
 .hero .twitter img{
@@ -107,11 +116,11 @@ main .green_right{
 .overlay_section{
   margin-top: 3rem;
   width: 100%;
-  height: 20rem;
+  height: 25rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(0deg, #005335, #005335), url(../img/aboutus/nigeria_assembly.jpg);
+  background: linear-gradient(0deg, #005335, #005335), url(../img/nigeria-assembly\ 1.svg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

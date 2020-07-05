@@ -1,8 +1,8 @@
 @extends('layouts.master')
 @section('css')
 <title>FG Expense - Home</title>
-<link rel="stylesheet" href="{{ asset('css/about us-header_footer.css') }}">
-<link rel="stylesheet" href="{{ asset('css/aboutus.style.css')}}">
+<link rel="stylesheet" href="{{ asset('css/aboutus-header_footer.css') }}">
+<link rel="stylesheet" href="{{ asset('css/aboutus.style.css') }}">
 @endsection
 
 @section('content')
