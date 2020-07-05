@@ -1,57 +1,59 @@
 @extends('layouts.master')
-@section('css')
-  <title>FG Expense - Home</title>
-  <link rel="stylesheet" href="{{asset('css/about us-header_footer.css')}}">
-  <link rel="stylesheet" href="{{ asset('css/index.css')}}">
-@endsection
 
-@section('content')
-<section id="main">
+  @section('css')
+    <title>FG Expense - Home</title>
+    <link rel="stylesheet" href="{{asset('css/about us-header_footer.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/index.css')}}">
+  @endsection
 
-  <!-- banner -->
-   <div class="banner">
-        <div class="carets" id="caret">
-           <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left">
-           <img src="{{asset('images/angle-right.svg')}}" alt="" class="arrow-right">
+  @section('banner')
+        <!-- banner -->
+    <div class="banner">
+      <div class="carets" id="caret">
+        <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left">
+        <img src="{{asset('images/angle-right.svg')}}" alt="" class="arrow-right">
+      </div>
+      <div class="target">
+        <div class="summary">
+            <h4> In 2019, <br> the government spent $4.45 trillion.</h4>
+            <p>ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities across Nigeria.
+            Learn more on how this money was spent with tools to help you navigate spending from top to bottom.</p>
         </div>
-        <div class="target">
-             <div class="summary">
-                  <h4> In 2019, <br> the government spent $4.45 trillion.</h4>
-                  <p>ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities across Nigeria.
-                  Learn more on how this money was spent with tools to help you navigate spending from top to bottom.</p>
-              </div>
-              <div class="carets my-4" id="caret-alt">
-               <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left">
-               <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-right">
-              </div>
-              <div class="gallery">
-                 <div class="card1 card">
-                   <p class="tag">New</p>
-                   <div class="project">
-                      <p>Contruction of Lagos-Ibadan Express road <br>
-                         Ministry of Power, Works and Housing</p>
-                      <div class="d-flex justify-content-between mt-4 align-items-center">
-                          <p>Cost of Project: </p>
-                          <p id="cost">#20bn</p>
-                      </div>
-                   </div>
-                 </div>
-                 <div class="card2 card">
-                   <p class="tag">New</p>
-                   <div class="project">
-                     <p>Contruction of Lagos-Ibadan Express road <br>
-                       Ministry of Power, Works and Housing</p>
-                     <div class="d-flex justify-content-between mt-4">
-                         <p>Cost of Project: </p>
-                         <p id="cost">#20bn</p>
-                     </div>
-                  </div>
-                 </div>
-              </div>
+        <div class="carets my-4" id="caret-alt">
+        <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left">
+        <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-right">
         </div>
-          <img src="{{asset('images/arrow-down.svg')}}" alt="arrow-down" class="arrow-down">
+        <div class="gallery">
+          <div class="card1 card">
+              <p class="tag">New</p>
+            <div class="project">
+                  <p>Contruction of Lagos-Ibadan Express road <br>
+                  Ministry of Power, Works and Housing</p>
+                <div class="d-flex justify-content-between mt-4 align-items-center">
+                    <p>Cost of Project: </p>
+                    <p id="cost">#20bn</p>
+                </div>
+            </div>
+          </div>
+          <div class="card2 card">
+            <p class="tag">New</p>
+            <div class="project">
+              <p>Contruction of Lagos-Ibadan Express road <br>
+                Ministry of Power, Works and Housing</p>
+              <div class="d-flex justify-content-between mt-4">
+                  <p>Cost of Project: </p>
+                  <p id="cost">#20bn</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img src="{{asset('images/arrow-down.svg')}}" alt="arrow-down" class="arrow-down">
     </div>
-       
+  @endsection
+
+  @section('content')
+    <section id="main">     
        <!-- Expenses section -->
        <p class="label">Latest Government Expenses</p>
        <div class="p-3 p-lg-5">
@@ -303,8 +305,8 @@
                   propose new features, sign up for testing, and join the conversation about federal spending data.</p>
               </div>
        </div>
- </section>
-@endsection
+    </section>
+  @endsection
 
 @section('js')
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
