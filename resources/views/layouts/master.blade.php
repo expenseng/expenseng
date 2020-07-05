@@ -2,7 +2,7 @@
 @yield('css')
 </head>
   <body> 
-    <div class="container">
+    <div class="">
         <!-- navbar -->
         @include('partials.navbar')
 

@@ -9,15 +9,15 @@
 
 <main role="main" class="">
 
-	<svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg" class="black_tr d-lg-block d-md-none d-sm-none">
+	<svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg" class="black_tr d-lg-block sla d-md-block d-sm-none">
 		<path d="M0.871167 4.9915L9.97402 1.64165L14.0098 0.156494L5.70617 18.1301L0.871167 4.9915Z" fill="#353A45" />
 	</svg>
 
-	<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="green_bottom d-lg-block d-md-none d-sm-none">
+	<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="green_bottom d-lg-block sla d-md-block d-sm-none">
 		<path d="M0 18V5.52901V0L18 18H0Z" fill="#00945E" />
 	</svg>
 
-	<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="green_right d-lg-block d-md-none d-sm-none">
+	<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="green_right d-lg-block sla d-md-block d-sm-none">
 		<path d="M0 18V5.52901V0L18 18H0Z" fill="#00945E" />
 	</svg>
 
@@ -25,8 +25,8 @@
 
 		<div class="container">
 
-			<div class="row">
-				<div class="col-lg col-md col-sm-8 left">
+			<div class="row d-flex justify-content-between">
+				<div class="col-lg-8 col-md-8 col-sm-12 left">
 					<h1>About ExpenseNG</h1>
 
 					<p>
@@ -40,7 +40,7 @@
 					</div>
 
 				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 right d-lg-block d-md-none d-sm-none">
+				<div class="col-lg-3 col-md-3 right d-lg-block d-md-block sla d-sm-none">
 
 					<div class="image_div">
 						<svg width="169" height="145" viewBox="0 0 189 165" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -55,40 +55,38 @@
 
 	</section>
 
+	{{-- Overlay Section --}}
+
 	<section class="overlay_section">
-
-		<p>We help increase your knowledge about how much each ministry gets allocated every month. and how much they spend.</p>
-
+		<div class="container col-md-7 col-sm-9 text-center">
+			<p class="">We help increase your knowledge about how much each ministry gets allocated every month. and how much they spend.</p>
+		</div>
 	</section>
+
+
+	{{-- Mission Vision Section --}}
 
 	<section class="mission_vision">
 
-		<div class="container-fluid">
-			<div class="row">
-
-
-				<div class="col-lg-5 col-md-5 col-sm-8 offset-lg-1 offset-md-0 offset-sm-0">
+		<div class="container">
+			<div class="row d-flex justify-content-around">
+				<div class="col-lg-5 col-md-5 col-sm-12">
 					<div class="mission_img stunts">
 						<img src="{{ asset('images/aboutus/our_mission.jpg') }}" alt="">
-
 					</div>
 				</div>
-
-				<div class="col-lg-5 col-md-5 col-sm-8 mission_text offset-lg-1 offset-md-0 offset-sm-0 stunts">
+				<div class="col-lg-5 col-md-5 col-sm-12 mission_text">
 					<h2>
 						Our Mission
 					</h2>
 					<p>
 						Bringing transparency to government. We’re simplifying and creating access of Government funds to citizens on how the spending of the funds allocated to them is being put to improvve the economy.
 					</p>
-
 				</div>
 			</div>
 
-			<div class="row">
-
-
-				<div class="col-lg-5 col-md-4 col-sm-8 vision_text offset-lg-1 offset-md-0 offset-sm-0 stunts">
+			<div class="row d-flex justify-content-around">
+				<div class="col-lg-5 col-md-5 col-sm-12 vision_text">
 
 					<h2>
 						Our Vision
@@ -99,7 +97,7 @@
 
 				</div>
 
-				<div class="col-lg-5 col-md-5 col-sm-8 offset-lg-0 offset-md-2 offset-sm-0">
+				<div class="col-lg-5 col-md-5 col-sm-12">
 					<div class="vision_img stunts">
 						<img src="{{ asset('images/aboutus/our_vision.jpg') }}" alt="">
 
@@ -175,11 +173,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	// Detect request animation frame
-	var scroll = window.requestAnimationFrame ||
-		// IE Fallback
-		function(callback) {
-			window.setTimeout(callback, 1000 / 60)
-		};
+	// var scroll = window.requestAnimationFrame ||
+	// 	// IE Fallback
+	// 	function(callback) {
+	// 		window.setTimeout(callback, 1000 / 60)
+	// 	};
 	var elementsToShow = document.querySelectorAll('.stunts');
 
 	function loop() {
