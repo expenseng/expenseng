@@ -1,7 +1,7 @@
 <!-------------Header starts here-------------->
 <nav class="navbar navbar-toggleable-md navbar-expand-md shadow p-3" role="navigation">
   <div class="container">
-  <a class="navbar-brand" href="#"><img src="{{asset('images/logo.png')}}"></a>
+  <a class="navbar-brand" href="/"><img src="{{asset('images/Logo.png')}}"></a>
   <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
           <span><i class="fa fa-bars" aria-hidden="true"></i></span>
       </button>
