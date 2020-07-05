@@ -60,8 +60,8 @@
             <div class="expenses">
                 <div class="exp-card">
                   <div class="graph-cont">
-                   <img src="{{asset('/images/vector 3.svg')}}" alt="graph">
-                   <img src="{{asset('/images/vector 2.png')}}" alt="graph">
+                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                   <img src="{{asset('/images/Vector2.png')}}" alt="graph">
                   </div>
                   <p class="exp-card1">Education</p>
                   <p class="exp-card2">#123,446,332</p>
@@ -69,8 +69,8 @@
                 </div>
                 <div class="exp-card">
                  <div class="graph-cont">
-                   <img src="{{asset('/images/vector 3.svg')}}" alt="graph">
-                   <img src="{{asset('/images/vector 2.png')}}" alt="graph">
+                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                   <img src="{{asset('/images/Vector2.png')}}" alt="graph">
                   </div>
                   <p class="exp-card1">Salary</p>
                   <p class="exp-card2">#123,446,332</p>
@@ -78,8 +78,8 @@
                 </div>
                 <div class="exp-card">
                  <div class="graph-cont">
-                   <img src="{{asset('/images/vector 3.svg')}}" alt="graph">
-                   <img src="{{asset('/images/vector 2.png')}}" alt="graph">
+                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                   <img src="{{asset('/images/Vector2.png')}}" alt="graph">
                   </div>
                   <p class="exp-card1">Agriculture</p>
                   <p class="exp-card2">#123,446,332</p>
@@ -87,8 +87,8 @@
                 </div>
                 <div class="exp-card">
                  <div class="graph-cont">
-                   <img src="{{asset('/images/vector 3.svg')}}" alt="graph">
-                   <img src="{{asset('/images/vector 2.png')}}" alt="graph">
+                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                   <img src="{{asset('/images/Vector2.png')}}" alt="graph">
                   </div>
                   <p class="exp-card1">Security</p>
                   <p class="exp-card2">#123,446,332</p>
@@ -96,8 +96,8 @@
                 </div>
                 <div class="exp-card">
                  <div class="graph-cont">
-                   <img src="{{asset('/images/vector 3.svg')}}" alt="graph">
-                   <img src="{{asset('/images/vector 2.png')}}" alt="graph">
+                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                   <img src="{{asset('/images/Vector2.png')}}" alt="graph">
                   </div>
                   <p class="exp-card1">Power</p>
                   <p class="exp-card2">#123,446,332</p>
@@ -105,8 +105,8 @@
                 </div>
                 <div class="exp-card">
                  <div class="graph-cont">
-                   <img src="{{asset('/images/vector 3.svg')}}" alt="graph">
-                   <img src="{{asset('/images/vector 2.png.svg')}}" alt="graph">
+                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                   <img src="{{asset('/images/Vector2.png')}}" alt="graph">
                   </div>
                   <p class="exp-card1">Infrastructure</p>
                   <p class="exp-card2">#123,446,332</p>
@@ -129,8 +129,8 @@
            <div class="ministry-stat">
                  <div class="stat-a p-4">
                    <div class="graph-cont">
-                     <img src="{{asset('/images/vector 3.svg')}}" alt="graph">
-                     <img src="{{asset('/images/vector 2.png')}}" alt="graph">
+                     <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                     <img src="{{asset('/images/Vector2.png')}}" alt="graph">
                     </div>
                    <div>
                      <p class="exp-card1">Total amount spent</p>
@@ -141,8 +141,8 @@
                  <div class="stat-b">
                    <div class="d-flex p-2 justify-content-between">
                      <div class="graph-cont">
-                       <img src="{{asset('/images/vector 3.svg')}}" alt="graph">
-                       <img src="{{asset('/images/vector 2.png')}}" alt="graph">
+                       <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                       <img src="{{asset('/images/Vector2.png')}}" alt="graph">
                       </div>
                    <div class="ml-5 w-50">
                      <p class="exp-card1">Total amount spent on projects</p>
@@ -152,8 +152,8 @@
                    </div>
                    <div class="d-flex p-2 justify-content-between">
                      <div class="graph-cont">
-                       <img src="{{asset('/images/vector 3.svg')}}" alt="graph">
-                       <img src="{{asset('/images/vector 2.png')}}" alt="graph">
+                       <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                       <img src="{{asset('/images/Vector2.png')}}" alt="graph">
                       </div>
                    <div class="ml-5 w-50">
                      <p class="exp-card1">Total amount spent on salary payments</p>
@@ -163,8 +163,8 @@
                    </div>
                    <div class="d-flex p-2 justify-content-between">
                      <div class="graph-cont">
-                       <img src="{{asset('/images/vector 3.svg')}}" alt="graph">
-                       <img src="{{asset('/images/vector 2.png')}}" alt="graph">
+                       <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                       <img src="{{asset('/images/Vector2.png')}}" alt="graph">
                       </div>
                    <div class="ml-5 w-50">
                      <p class="exp-card1">Total amount spent on others</p>
@@ -189,8 +189,8 @@
             <div class="comp-card">
                <div class="awarded">
                  <div class="graph-cont">
-                   <img src="{{asset('/images/vector 3.svg')}}" alt="graph">
-                   <img src="{{asset('/images/vector 2.png')}}" alt="graph">
+                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                   <img src="{{asset('/images/vector2.png')}}" alt="graph">
                   </div>
                   <div class="ml-5">
                      <p class="exp-card1">Total amount Awarded</p>
@@ -223,8 +223,8 @@
             <div class="comp-card">
              <div class="awarded">
                <div class="graph-cont">
-                 <img src="{{asset('/images/vector 3.svg')}}" alt="graph">
-                 <img src="{{asset('/images/vector 2.png')}}" alt="graph">
+                 <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                 <img src="{{asset('/images/Vector2.png')}}" alt="graph">
                 </div>
                <div class="ml-5">
                   <p class="exp-card1">Total amount Awarded</p>
@@ -257,8 +257,8 @@
             <div class="comp-card">
              <div class="awarded">
                <div class="graph-cont">
-                 <img src="{{asset('/images/vector 3.svg')}}" alt="graph">
-                 <img src="{{asset('/images/vector 2.png')}}" alt="graph">
+                 <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                 <img src="{{asset('/images/Vector2.png')}}" alt="graph">
                 </div>
                <div class="ml-5">
                   <p class="exp-card1">Total amount Awarded</p>
