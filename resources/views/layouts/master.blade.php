@@ -2,10 +2,10 @@
 @yield('css')
 </head>
   <body> 
-    <div class="container">
+    <div class="">
         <!-- navbar -->
         @include('partials.navbar')
-
+        @yield('banner')
         <!-- content -->
         @yield('content')
     </div>
