@@ -16,17 +16,20 @@
     <div class="container intro">
         
          <div class="row">
-    
-        <h5 class="bio"> <img src="/img/image_7.png" width="70px"height="70px"> Ministry of Works and Human Development</h5>
+            @if ($ministry)
+        <h5 class="bio"> <img src="/img/image_7.png" width="70px"height="70px"> <b>{{$ministry->ministry_name}}</b></h5>
        
       </div>
     <div class="row">
     <div class="col-md">
-        <h5 class="cards"> Ministry Twitter Handle</h5>
+        <h5 class="cards">Ministry Twitter Handle</h5>
         
-        <div class="sub"><p id="minwrks"> @ministryworks</p>
+        @php
+           $handle = substr($ministry->ministry_twitter_handle, 1)
+        @endphp
+        <div class="sub"><p id="minwrks"> <a href="{!! url("https://twitter.com/$handle") !!}">{{$ministry->ministry_twitter_handle}}</a></p>
         <p> 2020</p></div>
-        
+       
 
 </div>    
         
@@ -49,9 +52,12 @@
 </div>      
         </div>
     </div>
+    @endif
     
-    
-    <div class="container-fluid btn-group"> <button class="button" id="first-btn">Expense Summary</button> <button  class="button btn-marg">Cabinet</button> <button class="button btn-marg">Comments</button></div>
+    <div class="container-fluid btn-group"> 
+        <button class="button" id="first-btn">Expense Summary</button> 
+        <button  class="button btn-marg">Cabinet</button> 
+        <button class="button btn-marg">Comments</button></div>
     
   
    

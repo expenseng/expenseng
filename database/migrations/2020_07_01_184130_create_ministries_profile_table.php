@@ -20,6 +20,8 @@ class CreateMinistriesProfileTable extends Migration
             $table->string('ministry_twitter_handle');
             $table->string('ministry_head');
             $table->string('ministry_head_handle');
+            $table->string('ministry_website');
+            $table->integer('sector_id');
             $table->timestamps();
         });
     }
