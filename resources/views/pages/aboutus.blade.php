@@ -27,9 +27,9 @@
 
 			<div class="row d-flex justify-content-between">
 				<div class="col-lg-8 col-md-8 col-sm-12 left">
-					<h1>About ExpenseNG</h1>
+					<h1 class="section-big-font">About ExpenseNG</h1>
 
-					<p>
+					<p class="paragraph-small-font">
 						Expenseng.com is a dedicated expense tracker and allows for transparency on all national budgets and government spending.
 						Tracking federal spending to ensure citizens can see how their money is being used in communities across Nigeria.
 						It was created to promote transparency and accountability in government operations and transactions.
@@ -59,7 +59,7 @@
 
 	<section class="overlay_section">
 		<div class="container col-md-7 col-sm-9 text-center">
-			<p class="">We help increase your knowledge about how much each ministry gets allocated every month. and how much they spend.</p>
+			<p class="paragraph-big-font">We help increase your knowledge about how much each ministry gets allocated every month. and how much they spend.</p>
 		</div>
 	</section>
 
@@ -76,10 +76,10 @@
 					</div>
 				</div>
 				<div class="col-lg-5 col-md-5 col-sm-12 mission_text">
-					<h2>
+					<h2 class="section-small-font">
 						Our Mission
 					</h2>
-					<p>
+					<p class="paragraph-small-font">
 						Bringing transparency to government. We’re simplifying and creating access of Government funds to citizens on how the spending of the funds allocated to them is being put to improvve the economy.
 					</p>
 				</div>
@@ -88,10 +88,10 @@
 			<div class="row d-flex justify-content-around">
 				<div class="col-lg-5 col-md-5 col-sm-12 vision_text">
 
-					<h2>
+					<h2 class="section-small-font">
 						Our Vision
 					</h2>
-					<p>
+					<p class="paragraph-small-font">
 						We believe that all Nigerian Citizens will have direct access to know where their Tax money goes to and the list of projects the Nigerian Government is working on.
 					</p>
 
@@ -111,48 +111,50 @@
 
 	</section>
 
+	{{-- Policy Section --}}
+
 	<section class="policy">
 		<div class="container">
 
-			<h2>
+			<h2 class="section-big-font">
 				Policy Objectives
 			</h2>
 
 			<div class="commit contents stunts">
-				<h3>
+				<h3 class="section-small-font">
 					Government Commitment to Transparency
 				</h3>
 
-				<p>
+				<p class="paragraph-small-font">
 					A financial transparency policy will cement government commitment at improving governance and supplement the recently launched Whistleblower Policy and equip the general population with the tools they need to report financial wrongdoing. Furthermore, the government has also pledged to ensure full implementation of the Freedom of Information Act so that government held data sets can be requested and used by the media and the public at large, and then published on regular basis.
 					These guidelines are in fulfillment of the Presidents promise to Nigerians in an effort to build public trust in Government.
 				</p>
 
 			</div>
 			<div class="partner contents stunts">
-				<h3>
+				<h3 class="section-small-font">
 					Partnership Building for the Fight against Corruption
 				</h3>
 
-				<p>
+				<p class="paragraph-small-font">
 					To facilitate the fight against corruption, it is crucial that more transparency is not only encouraged but also enforced at all levels. These guidelines are aimed at enabling timely availability of financial information to the civil society organizations and the public at large by all MDAs of the Federal Government. Through this initiative, the foundation for a strong partnership against corruption will be laid.
 				</p>
 			</div>
 			<div class="setting contents stunts">
-				<h3>
+				<h3 class="section-small-font">
 					Setting the Threshold for Transparency.
 				</h3>
 
-				<p>
+				<p class="paragraph-small-font">
 					These guidelines are also aimed at setting the minimum requirements for financial transparency by all MDAs. While full and complete disclosure should be encouraged, a minimum needs to be set to ensure that non-compliance can be established and addressed.
 				</p>
 			</div>
 			<div class="responsible contents stunts">
-				<h3>
+				<h3 class="section-small-font">
 					Defining Responsibility for Transparency
 				</h3>
 
-				<p>
+				<p class="paragraph-small-font">
 					These guidelines are also targeted at setting the deadlines and allocation responsibility for financial transparency.
 					In addition to the responsibility for publication outlined in section 2.2, all MDAs are required to promptly respond to additional requests for information beyond what is published.
 				</p>
@@ -173,11 +175,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	// Detect request animation frame
-	// var scroll = window.requestAnimationFrame ||
-	// 	// IE Fallback
-	// 	function(callback) {
-	// 		window.setTimeout(callback, 1000 / 60)
-	// 	};
+	var scroll = window.requestAnimationFrame ||
+		// IE Fallback
+		function(callback) {
+			window.setTimeout(callback, 1000 / 60)
+		};
 	var elementsToShow = document.querySelectorAll('.stunts');
 
 	function loop() {

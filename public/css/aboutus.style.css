@@ -16,14 +16,9 @@
   --clr-dark: #303030;
   --clr-accent: #ff4b13;
 
-  --fs-h1: 3rem;
-  --fs-h2: 2.25rem;
-  --fs-h3: 1.6rem;
-  --fs-h4: 1.35rem;
-  --fs-h5: 1.225rem;
+  --fs-h2: 2.15rem;
+  --fs-h3: 1.5rem;
   --fs-h6: 1.1rem;
-  --fs-reg: .9rem;
-  --fs-body: 1.1rem;
 }
 
 
@@ -31,6 +26,7 @@ body{
   padding: 0;
   margin: 0;
   font-family: 'Lato';
+  color: #353A45;
 }
 
 main{
@@ -41,6 +37,25 @@ main{
   flex-direction: column;
 }
 
+/* Typography */
+
+.section-big-font{
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-bold);
+}
+
+.section-small-font{
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+}
+
+.paragraph-big-font{
+  font-size: var(--fs-h3);
+}
+
+.paragraph-small-font{
+  font-size: var(--fs-h6);
+}
 
 main .black_tr{
   position: absolute;
@@ -68,7 +83,6 @@ main .green_right{
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin-top: 20px; */
 }
 
 .hero .twitter img{
@@ -113,7 +127,7 @@ main .green_right{
 }
 
 .mission_vision {
-  margin-top: 135px;
+  margin-top: 7.75rem;
 }
 
 .mission_vision .row{
@@ -147,7 +161,6 @@ main .green_right{
 .mission_text h2,
 .vision_text h2,
 .policy h2{
-  color: #353A45;
   position: relative;
   margin-bottom: 2.5rem;
 }
@@ -165,7 +178,7 @@ main .green_right{
 }
 
 .policy h2{
-  margin-bottom: 62px;
+  margin-bottom: 3rem;
 }
 
 .policy {
@@ -174,87 +187,39 @@ main .green_right{
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
-  margin-bottom: 159px;
+  margin-bottom: 2rem;
 }
 
 .policy h3{
-  margin-bottom: 19px;
-  font-family: Lato;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 28px;
-  line-height: 34px;
-  color: #353A45;
+  margin-bottom: .9rem;
 }
 
 .policy p{
-  font-family: Lato;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 35px;
   display: flex;
   align-items: center;
-
-color: #353A45;
-}
-
-
-.policy .contents{
-  opacity: 0;
-    transition: all 4s .25s cubic-bezier(0, 1, .3, 1);
-    -webkit-transition: all 4s .25s cubic-bezier(0, 1, .3, 1);
-    -moz-transition: all 4s .25s cubic-bezier(0, 1, .3, 1);
-    -ms-transition: all 4s .25s cubic-bezier(0, 1, .3, 1);
-    -o-transition: all 4s .25s cubic-bezier(0, 1, .3, 1);
 }
 
 .contents.is-visible{
   opacity: 1;
-  margin-bottom: 50px;
+  margin-bottom: 3rem;
 }
 
 
 
-/* Extra Small Devices, Phones */
-@media only screen and (max-width : 480px) {
-main .black_tr{
-  display: none;
+@media all and (max-width: 1440px){
+  :root{
+    --fs-h2: 2.15rem;
+    --fs-h3: 1.5rem;
+    --fs-h6: 1.1rem;
+  }
 }
 
-main .green_bottom{
-  display: none;
-}
-
-main .green_right{
-display: none;
-}
-
-.hero .right{
-  display: none;
-}
-
-.mission_vision .row:last-child{
-  flex-direction: column-reverse;
-  margin-top: -70px;
-}
-
-.mission_text, .vision_text{
-  margin-top: 100px;
-}
-
-.mission_text p, .vision_text p{
-
-  width: unset;
-}
-
-.mission_img::before, .vision_img::before{
-  display: none;
-}
-
-.policy {
-  margin-top: -70px;
-}
+@media all and (max-width: 1024px){
+  :root{
+    --fs-h2: 2rem;
+    --fs-h3: 1.35rem;
+    --fs-h6: .95rem;
+  }
 }
 
 @media all and (max-width: 968px){
@@ -266,7 +231,7 @@ display: none;
   
   main .green_bottom{
     position: absolute;
-    top: 535px;
+    top: 500px;
     right: 180px;
   }
   
@@ -294,8 +259,16 @@ display: none;
     z-index: -1;
   }
 }
+
+@media all and (max-width: 768px){
+  :root{
+    --fs-h2: 1.85rem;
+    --fs-h3: 1.2rem;
+    --fs-h6: .8rem;
+  }
+}
+
 @media all and (max-width: 760px){
-  
   main .black_tr{
     display: none;
   }
@@ -310,5 +283,55 @@ display: none;
 
   .mission_img::before, .vision_img::before{
     display: none;
+  }
+}
+
+
+@media only screen and (max-width : 480px) {
+  main .black_tr{
+    display: none;
+  }
+
+  main .green_bottom{
+    display: none;
+  }
+
+  main .green_right{
+  display: none;
+  }
+
+  .hero .right{
+    display: none;
+  }
+
+  .mission_vision .row:last-child{
+    flex-direction: column-reverse;
+    margin-top: -70px;
+  }
+
+  .mission_text, .vision_text{
+    margin-top: 100px;
+  }
+
+  .mission_text p, .vision_text p{
+
+    width: unset;
+  }
+
+  .mission_img::before, .vision_img::before{
+    display: none;
+  }
+
+  .policy {
+    margin-top: -70px;
+  }
+}
+
+
+@media all and (max-width: 425px){
+  :root{
+    --fs-h2: 1.7rem;
+    --fs-h3: 1.05rem;
+    --fs-h6: .65rem;
   }
 }
