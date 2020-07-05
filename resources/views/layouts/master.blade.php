@@ -1,6 +1,5 @@
 @include('partials.head')
-@yield('css')
-</head>
+@stack('css')
   <body>  
     <!-- navbar -->
     @include('partials.navbar')

@@ -10,6 +10,25 @@
     color: white;
     margin-bottom: 5rem;
 }
+
+button.btn.scroll-down{
+    margin: auto;
+    position: relative;
+    top: 3.6rem;
+    height: 64px;
+    width: 64px;
+    background: white;
+    border-radius: 100%;
+    border: 2px solid green;
+    display: block;
+}
+
+button.btn.scroll-down::after{
+    position: absolute;
+    content: "";
+}
+
+
 .target{
     margin-top: 3rem;
 }
