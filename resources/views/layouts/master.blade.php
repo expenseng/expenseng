@@ -2,13 +2,13 @@
 @yield('css')
 </head> 
   <body> 
-    <div class="container">
+    <div class="">
         <!-- navbar -->
         @include('partials.navbar')
 
         <!-- content -->
         @yield('content')
-    </div>
+      </div>
     <!-- footer -->
     @include('partials.footer')
     @yield('js')
