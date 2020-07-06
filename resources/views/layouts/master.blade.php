@@ -1,6 +1,6 @@
 @include('partials.head')
 @yield('css')
-</head>
+</head> 
   <body> 
     <div class="container">
         <!-- navbar -->
