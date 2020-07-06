@@ -181,6 +181,31 @@ margin: 19px 0px;
 
     border: 1px solid #D5D9D8;
 }
+
+#filter{
+    /* Frame 393 */
+
+
+    /* Auto Layout */
+
+  
+    padding: 10px 30px;
+    width: 202px;
+    height: 45px;
+
+
+    background: #00945E;
+    border: none;
+    border-radius: 5px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 21px;
+    line-height: 25px;
+    text-align: right;
+
+    color: #FFFFFF;
+}
 /*
 nav>div>ul>li {
    
