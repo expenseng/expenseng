@@ -18,7 +18,7 @@
       </caption>
         <thead>
             <tr>
-            <th scope="col">YEAR</th>
+            <th scope="col" id="year">YEAR</th>
             <th scope="col">2016</th>
             <th scope="col">2017</th>
             <th scope="col">2018</th>
@@ -42,6 +42,12 @@
 
 
     <div id="table">
+        <div class="row main-table p-2 mb-2">
+                <div class="col-md-6">Daily: 12 May, 2019</div>
+				<div class="col-md-6 table-top pl-5">
+					<button id="filter"><h5 >Select Date <i class="fas fa-filter"></i></button></h5>
+                </div>
+        </div>
         <table class="table table-responsive-md table-striped">
         <caption>
         <div class="col-12  bottom-50 text-right">

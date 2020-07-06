@@ -101,13 +101,13 @@
 <div class="mb-5 mt-3 row">
     <div class="col-md-8">
       <div class="mb-4 ">
-        <h5 id="charts">Table <i class="fas fa-caret-down"></i>
+        <h5 id="charts">Charts <i class="fas fa-caret-down"></i>
 
         </h5>
       </div>
       
         
-        @include('pages.ministry.ministry_profile_table')
+        @include('pages.ministry.ministry_profile_chart')
     
 
   </div>
