@@ -1,0 +1,288 @@
+body{
+    /* Ministry profile */
+
+
+position: relative;
+/*width: 1440px;
+height: 3730px;*/
+font-family: lato;
+background: #FFFFFF;
+}
+
+nav>div>ul>li>#home {
+    /* HOME */
+
+
+    position: static;
+    width: 62px;
+    height: 24px;
+    left: 0px;
+    top: 0px;
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    /* identical to box height */
+
+
+    color: #00945E !important;
+
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 0;
+    align-self: center;
+    margin: 19px 0px;
+}
+
+#dot {
+    /* Ellipse 60 */
+
+
+    position: static;
+    width: 4px;
+    height: 4px;
+    left: 81px;
+    top: 10px;
+
+    background: #2D313D;
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 1;
+    align-self: center;
+    margin: 19px 0px;
+}
+
+#profile {
+    /* PROFILES */
+
+
+position: relative;
+width: 92px;
+height: 24px;
+left: 12px;
+top: 0px;
+
+font-family: Lato;
+font-style: normal;
+font-weight: bold;
+font-size: 20px;
+line-height: 24px;
+/* identical to box height */
+
+
+color: #00945E !important;
+
+
+/* Inside Auto Layout */
+
+flex: none;
+order: 2;
+align-self: center;
+margin: 19px 0px;
+}
+
+#ministries {
+        /* MINISTRIES */
+
+
+    position: static;
+    width: 111px;
+    height: 24px;
+    left: 238px;
+    top: 0px;
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    /* identical to box height */
+
+
+    color: #00945E !important;
+
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 4;
+    align-self: center;
+    margin: 19px 0px;
+}
+
+#ministry_prof {
+        /* MINISTRY PROFILE */
+
+
+    position: static;
+    width: 179px;
+    height: 24px;
+    left: 391px;
+    top: 0px;
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    /* identical to box height */
+
+    color: #00945E !important;
+    
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 6;
+    align-self: center;
+    margin: 19px 0px;
+}
+#navbarNav{
+    background: none !important;
+}
+#ministry_logo{
+    position: static;
+    width: 86px;
+    height: 81px;
+    left: 0px;
+    top: 0px;
+}
+#ministry_name {
+    position: relative;
+    width: 100%;
+    height: auto;
+    left: 1rem;
+    top: 16.5px;
+    color: #323E48 !important;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 1.2rem;
+}
+#color{
+    color: #00945E;
+}
+#handle{
+    color: #6765EC;
+}
+#links>div>.active{
+    color: #00945E;
+}
+#comment_name{
+    color: #005938;
+}
+#time{
+    color: #62666E;
+    margin-top: 4px;
+    font-size: 11px;
+}
+#line{
+    /* Line 110 */
+
+
+    position: absolute;
+    width: 1440px;
+    height: 0px;
+    left: 0px;
+    top: 734px;
+
+    border: 1px solid #D5D9D8;
+}
+
+#filter{
+    /* Frame 393 */
+
+
+    /* Auto Layout */
+
+  
+    padding: 10px 30px;
+    width: 202px;
+    height: 45px;
+
+
+    background: #00945E;
+    border: none;
+    border-radius: 5px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 21px;
+    line-height: 25px;
+    text-align: right;
+
+    color: #FFFFFF;
+}
+
+#commentbox{
+    width: 398px;
+    height: 53px;
+    left: 940px;
+    top: 1654px;
+
+    background: #FFFFFF;
+    border: 1px solid #BCBDC1;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+input[type='text']{
+    border: none;
+}
+#links>div>a {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+
+
+    color: #A1A3A8;
+}
+#comments{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+
+
+    color: #00945E;
+}
+#charts{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 38px;
+
+    color: #005938;
+}
+#portfolio{
+    text-align: center;
+    letter-spacing: 0.05em;
+
+    color: #005D3B;
+
+}
+div>a>i>.fa {
+    border: 0.5px solid #1F2430;
+    border-radius: 50%;
+    color: black;
+    box-sizing: border-box;
+}
+
+#card{
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 4px 8px rgba(0, 0, 0, 0.04);
+    border-radius: 6px;
+}
+/*
+nav>div>ul>li {
+   
+}
