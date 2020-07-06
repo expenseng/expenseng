@@ -29,8 +29,9 @@
 					<h5>2020</h5>
 					<button id="filter"><h5>Select Year <i class="fas fa-filter"></i></button></h5>
                 </div>
-                <div class="text-left col-md-2">
-                    <img src="/images/graph.png"  class="responsive" alt="graph">
+                <div class="graph_container" id="expenditure-chart">
+                    <canvas id="graph_canvas3 data-presentation"></canvas>
                 </div>
+                
             </div>
     </div>

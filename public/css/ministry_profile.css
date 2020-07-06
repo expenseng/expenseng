@@ -169,6 +169,14 @@ margin: 19px 0px;
 #links>div>.active{
     color: #00945E;
 }
+#comment_name{
+    color: #005938;
+}
+#time{
+    color: #62666E;
+    margin-top: 4px;
+    font-size: 11px;
+}
 #line{
     /* Line 110 */
 
@@ -251,6 +259,19 @@ input[type='text']{
     line-height: 38px;
 
     color: #005938;
+}
+#portfolio{
+    text-align: center;
+    letter-spacing: 0.05em;
+
+    color: #005D3B;
+
+}
+div>a>i>.fa {
+    border: 0.5px solid #1F2430;
+    border-radius: 50%;
+    color: black;
+    box-sizing: border-box;
 }
 /*
 nav>div>ul>li {

@@ -80,26 +80,46 @@
 </div>
 
 <div id="links" class="mt-5 row">
-    <div class="col-md-4"><a href="#" class="active"><h4>Expense Summary</h4></a>
+    <div class="col-md-4"><a href="#" class="active"><h4>Expense Summary</h4>
+        <svg height="21" width="100">
+          <line x1="200" y1="12" x2="0" y2="10" style="stroke: #00945E;stroke-width:2" />
+        </svg>
+    </a>
         <!--<div id="line"></div>-->
     </div>
 
-    <div class="col-md-4"><a href="#"><h4>Cabinet</h4></a>
+    <div class="col-md-4"><a href="#"><h4>Cabinet </h4>
+        <svg height="21" width="50">
+          <line x1="200" y1="12" x2="0" y2="10" style="stroke:grey;stroke-width:2" />
+        </svg>
+    </a>
         <!--<div id="line"></div>-->
     </div>
 </div>
 
 <div class="mb-5 mt-3 row">
     <div class="col-md-8">
-        <h5 id="charts">Charts</h5>
-        @include('pages.ministry.ministry_profile_cabinet')
+      <div class="mb-4 ">
+        <h5 id="charts">Charts <i class="fas fa-caret-down"></i>
+
+        </h5>
+      </div>
+      
+        
+        @include('pages.ministry.ministry_profile_chart')
     
 
   </div>
     <!--end of chart-->
     <!--begin comments-->
-    <div class="col-md-4">
-        <h5 id="comments">Comments</h5>
+    <div class="col-md-4 ">
+      <div class="mb-4">
+        <h5 id="comments" >Comments </h5>
+        <svg height="15" width="25">
+          <line x1="200" y1="12" x2="0" y2="10" style="stroke:#00945E;stroke-width:2" />
+        </svg>
+      </div>
+        
         <div class="row">
             <div class="col-md-2">
               <img src="/images/min_comment_img/Rectangle 320.png" class="rounded" alt="profile pics">
@@ -107,8 +127,8 @@
             <div class="col-md-8">
             <div class="d-flex flex-column">
                 <div class="p-2 row">
-                    <div class="col-md-8">James Emmanuel</div>
-                    <div class="col-md-4">2mins ago</div>
+                    <div class="col-md-8 " id="comment_name">James Emmanuel</div>
+                    <div class="col-md-4" id="time">2mins ago</div>
                 </div>
 
                 <div class="p-2">This is so nice to read. I can see improvement in this sector. 
@@ -129,7 +149,7 @@
                 </div>
             </div>
             </div>
-            <div class="col-md-2">...</div>
+            <div class="col-md-2 mt-1">...</div>
         </div>
         <!--end of comment-->
 
@@ -138,8 +158,8 @@
             <div class="col-md-8">
             <div class="d-flex flex-column">
                 <div class="p-2 row">
-                    <div class="col-md-8">James Emmanuel</div>
-                    <div class="col-md-4">2mins ago</div>
+                    <div class="col-md-8" id="comment_name">James Emmanuel</div>
+                    <div class="col-md-4" id="time">2mins ago</div>
                 </div>
 
                 <div class="p-2">This is so nice to read. I can see improvement in this sector. 
@@ -160,7 +180,7 @@
                 </div>
             </div>
             </div>
-            <div class="col-md-2">...</div>
+            <div class="col-md-2 mt-1">...</div>
         </div>
 
         <!--end of comment-->
@@ -170,8 +190,8 @@
             <div class="col-md-8">
             <div class="d-flex flex-column">
                 <div class="p-2 row">
-                    <div class="col-md-8">James Emmanuel</div>
-                    <div class="col-md-4">2mins ago</div>
+                    <div class="col-md-8" id="comment_name">James Emmanuel</div>
+                    <div class="col-md-4" id="time">2mins ago</div>
                 </div>
 
                 <div class="p-2">This is so nice to read. I can see improvement in this sector. 
@@ -192,7 +212,7 @@
                 </div>
             </div>
             </div>
-            <div class="col-md-2">...</div>
+            <div class="col-md-2 mt-1">...</div>
         </div>
 
         <!-- end of comment-->
@@ -221,4 +241,11 @@
 </div>
 </section>
 
+@endsection
+@section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/expense-graph.js"></script>
+<script src="/js/app.js"> </script>
 @endsection
