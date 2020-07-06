@@ -23,15 +23,15 @@
                 </ul>
                 </div>
             </li>
-            <li class="nav-item mr-6 sart" role="presentation">
+            <li class="nav-item mr-6 dropdown sart" role="presentation">
                 <div class="dropdown">
                     <a class="nav-link dropdown-toggle" id="profile-dropdown" href="#">Profiles</a>
-                    <ul class="nav-item dropdown-menu" aria-labelledby="profile-dropdown">
+                    <ul class="nav nav-item dropdown-menu" aria-labelledby="profile-dropdown">
                         <li class="nav-item">
-                            <a href="{{ route('profile.companies') }}">Companies</a>
+                            <a href="{{ route('profile.companies') }}" class="nav-link">Companies</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('profile.ministries') }}">Federal Ministries</a>
+                            <a href="{{ route('profile.ministries') }}" class="nav-link">Federal Ministries</a>
                         </li>
                     </ul>
             </li>
