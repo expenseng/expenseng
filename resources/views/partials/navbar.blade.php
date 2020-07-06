@@ -12,8 +12,8 @@
               </li>
               <li class="nav-item mr-6 dropdown sart" role="presentation">
                 <div class="dropdown">
-                <a class="nav-link dropdown-toggle" id="report-dropdown" href="#">Reports</a>
-                <ul class="nav nav-item dropdown-menu" aria-labelledby="report-dropdown">
+                <a class="nav-link dropdown-toggle" id="report-dropdown" data-toggle="dropdown" href="#">Reports</a>
+                <ul class="dropdown-menu" aria-labelledby="report-dropdown">
                     <li class="nav-item">
                         <a href="{{ route('reports.ministry') }}" class="nav-link">Ministry Reports</a>
                     </li>
@@ -25,8 +25,8 @@
             </li>
             <li class="nav-item mr-6 dropdown sart" role="presentation">
                 <div class="dropdown">
-                    <a class="nav-link dropdown-toggle" id="profile-dropdown" href="#">Profiles</a>
-                    <ul class="nav nav-item dropdown-menu" aria-labelledby="profile-dropdown">
+                    <a class="nav-link dropdown-toggle" id="profile-dropdown" data-toggle="dropdown" href="#">Profiles</a>
+                    <ul class="dropdown-menu" aria-labelledby="profile-dropdown">
                         <li class="nav-item">
                             <a href="{{ route('profile.companies') }}" class="nav-link">Companies</a>
                         </li>
