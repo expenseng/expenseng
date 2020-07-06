@@ -1,11 +1,10 @@
 @include('partials.head')
-@yield('css')
-</head>
+@stack('css')
   <body> 
     <div class="">
         <!-- navbar -->
         @include('partials.navbar')
-
+        @yield('banner')
         <!-- content -->
         @yield('content')
       </div>
