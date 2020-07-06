@@ -1,20 +1,20 @@
 @extends('layouts.master')
-@section('css')
+@push('css')
 <link rel="stylesheet" href="{{asset('css/ministry_profile.css')}}" />
 <link rel="stylesheet" href="{{asset('css/aboutus-header_footer.css')}}">
-@endsection
+@endpush
 <title> Expenseng - Minister profile' </title>
 
 <!--content-->
 @section('content')
 <!-- nav bar-->
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg navbar-light container">
   <button class="navbar-toggler" type="button" data-toggle="collapse" 
   data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse container" id="navbarNav">
+  <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
         <a class="nav-link" id="home" href="#" style="color: #00945E;">Home <span class="sr-only">(current)</span>
@@ -38,8 +38,8 @@
 
 <!--end of navbar -->
 <!--begin body -->
-<section id="main">
-<div class="row p-2 container">
+<section id="main" class="container">
+<div class="row p-2 ">
 
     <div class="text-left col-md-2">
     <img src="/images/nglogo2.png" id="ministry_logo" class="rounded" alt="fg logo">
