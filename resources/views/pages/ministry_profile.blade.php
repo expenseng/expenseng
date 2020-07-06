@@ -119,7 +119,7 @@
         </svg>
       </div>
         
-        <div class="row">
+        <div class="row mb-2" id="card">
             <div class="col-md-2">
               <img src="/images/min_comment_img/Rectangle 320.png" class="rounded" alt="profile pics">
             </div>
@@ -134,7 +134,7 @@
                 This is really encouraging!!!
             </div>
 
-                <div class="p-2 row">
+                <div class="p-2 row" >
                     <div class="col-md-3">
                         <img src="/images/min_comment_img/Vector.png" alt="like"/> 3
                     </div>
@@ -152,7 +152,7 @@
         </div>
         <!--end of comment-->
 
-        <div class="row">
+        <div class="row mb-2" id="card">
             <div class="col-md-2"><img src="/images/min_comment_img/Rectangle 320.png" class="rounded" alt="profile pics"></div>
             <div class="col-md-8">
             <div class="d-flex flex-column">
@@ -184,7 +184,7 @@
 
         <!--end of comment-->
 
-        <div class="row">
+        <div class="row mb-2" id="card">
             <div class="col-md-2"><img src="/images/min_comment_img/Rectangle 320.png" class="rounded" alt="profile pics"></div>
             <div class="col-md-8">
             <div class="d-flex flex-column">
