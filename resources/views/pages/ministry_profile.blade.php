@@ -1,5 +1,7 @@
 @extends('layouts.master')
 @push('css')
+
+<link rel="stylesheet" href="{{asset('css/ministry_profile_table.css')}}" />
 <link rel="stylesheet" href="{{asset('css/ministry_profile.css')}}" />
 <link rel="stylesheet" href="{{asset('css/aboutus-header_footer.css')}}">
 @endpush
@@ -99,13 +101,13 @@
 <div class="mb-5 mt-3 row">
     <div class="col-md-8">
       <div class="mb-4 ">
-        <h5 id="charts">Charts <i class="fas fa-caret-down"></i>
+        <h5 id="charts">Table <i class="fas fa-caret-down"></i>
 
         </h5>
       </div>
       
         
-        @include('pages.ministry.ministry_profile_chart')
+        @include('pages.ministry.ministry_profile_table')
     
 
   </div>
@@ -113,7 +115,7 @@
     <!--begin comments-->
     <div class="col-md-4 ">
       <div class="mb-4">
-        <h5 id="comments" >Comments </h5>
+        <h6 id="comments" >COMMENTS </h6>
         <svg height="15" width="25">
           <line x1="200" y1="12" x2="0" y2="10" style="stroke:#00945E;stroke-width:2" />
         </svg>
