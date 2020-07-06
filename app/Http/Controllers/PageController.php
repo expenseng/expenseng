@@ -130,7 +130,7 @@ class PageController extends Controller
         return view('pages.ministry_report_table', compact('expenses'));
     }
 
-    public function showProfile ()
+    public function showProfile()
     {
         return view('pages.ministry_profile');
     }
