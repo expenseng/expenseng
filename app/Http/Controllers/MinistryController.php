@@ -6,7 +6,7 @@ use App\Ministry;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class MinistrySearchController extends Controller
+class MinistryController extends Controller
 {
     public function index(Request $request)
     {
@@ -14,11 +14,9 @@ class MinistrySearchController extends Controller
         echo $ministries;
     }
     
-    public function show(Request $request)
+    public function show(Ministry $ministry)
     {
-        $ministry_name = $request->get('ministry');
-        $ministry = DB::table('ministries_profile')->where('ministry_name', '=', "$ministry_name")->get();
-        echo $ministry;
+        return view('pages.ministry.single', compact($ministry));
     }
 
     public function autocomplete(Request $request)
@@ -28,5 +26,10 @@ class MinistrySearchController extends Controller
             $data = DB::table('ministries_profile')->where('ministry_name', 'LIKE', "%$query%")->get();
             echo $data;
         }
+    }
+
+    public function profile(){
+        $ministries = Ministry::all();
+        return view('pages.ministry.profile')->with('ministries', $ministries);
     }
 }

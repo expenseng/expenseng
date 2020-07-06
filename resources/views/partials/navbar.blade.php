@@ -10,21 +10,34 @@
               <li class="nav-item mr-6 sart" role="presentation">
                   <a class="nav-link" href="{{ route('home') }}">Home</a>
               </li>
-              <li class="nav-item mr-6 sart" role="presentation">
-                  <a class="nav-link" href="{{ route('spending') }}">Spending</a>
-              </li>
-              <li class="nav-item mr-6 sart" role="presentation">
-                  <a class="nav-link active" href="{{ route('ministry') }}">Ministries</a>
-              </li>
-              <li class="nav-item mr-6 sart" role="presentation">
-                  <a class="nav-link" href="{{ route('contract') }}">Contractors</a>
-              </li>
-              <li class="nav-item mr-6 sart" role="presentation">
-                  <a class="nav-link" href="{{ route('about') }}">About us</a>
-              </li>
-              <li class="nav-item mr-3" role="presentation">
-                  <a class="nav-link" href="{{ route('blog') }}">Blog</a>
-              </li>
+              <li class="nav-item mr-6 dropdown sart" role="presentation">
+                <div class="dropdown">
+                <a class="nav-link dropdown-toggle" id="report-dropdown" href="#">Reports</a>
+                <ul class="nav nav-item dropdown-menu" aria-labelledby="report-dropdown">
+                    <li class="nav-item">
+                        <a href="{{ route('reports.ministry') }}" class="nav-link">Ministry Reports</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('reports.expense') }}" class="nav-link">Expense Reports</a>
+                    </li>
+                </ul>
+                </div>
+            </li>
+            <li class="nav-item mr-6 sart" role="presentation">
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle" id="profile-dropdown" href="#">Profiles</a>
+                    <ul class="nav-item dropdown-menu" aria-labelledby="profile-dropdown">
+                        <li class="nav-item">
+                            <a href="{{ route('profile.companies') }}">Companies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('profile.ministries') }}">Federal Ministries</a>
+                        </li>
+                    </ul>
+            </li>
+            <li class="nav-item mr-6 sart" role="presentation">
+                <a class="nav-link" href="{{ route('about') }}">About us</a>
+            </li>
               <a class="nav-link" href=""><i class="fa fa-search inp"></i></a>
           </ul>
       </div>

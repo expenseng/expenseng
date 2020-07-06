@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use App\Expense;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class CompanyReportController extends Controller
+class CompanyController extends Controller
 {
-    //
-    public function __construct()
-    {
+
+    public function profile(){
+        return view('pages.company.profile');
+    }
+
+    public function show(Company $company){
+        return view('pages.company.single', compact($company));
     }
 
     public function getReport()

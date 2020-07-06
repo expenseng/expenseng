@@ -4,7 +4,7 @@
     <div class="banner-section">
         <div class="home-banner">Company Report</div>
         <div class="banner remove-margin-top">
-            <h1>Beneficiary Companies Report<br</h1>
+            <h1>Beneficiary Companies Report<br/></h1>
             <p class="text-center">Explore the amount allocated to every Company for different projects in both graphical and tabular format. Increase your knowledge about how much each beneficiary company gets allocated for projects</p>
         </div>
     </div>

@@ -1,14 +1,13 @@
 @extends('layouts.master')
-@section('css')
+@push('css')
   <title>FG Expense - Contact</title>
-  <link rel="stylesheet" href="{{asset('css/about us-header_footer.css') }}">
+  <link rel="stylesheet" href="{{asset('css/aboutus-header_footer.css') }}">
   <link rel="stylesheet" href="{{ asset('css/contactUs.css') }}">
-@endsection
+@endpush
 
 @section('content')
 
     <!-- Banner Starts -->
-
     <section class="container">
       <div class="row" id="banner">
         <div class="col-md-6">

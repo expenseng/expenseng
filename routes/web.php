@@ -17,18 +17,29 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'PageController@index')->name('home');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contactUs')->name('contact');
-Route::get('/profiles', 'PageController@profiles')->name('contact');
-Route::get('contract', 'PageController@contract')->name('contract');
+
+/**
+ * Reports Endpoints
+ */
+Route::get('/report/expense', 'ReportController@expense')->name('reports.expense');
+Route::get('/report/ministry', 'ReportController@ministry')->name('reports.ministry');
+
+/***
+ * Profiles Endpoints
+ */
+Route::get('/profile/ministries', 'MinistryController@profile')->name('profile.ministries');
+Route::get('/profile/ministries/{ministry}', 'MinistryController@show')->name('profile.ministries.single');
+Route::get('/profile/companies', 'CompanyController@profile')->name('profile.companies');
+Route::get('/profile/companies/{company}', 'CompanyController@show')->name('profile.companies.single');
+
+
+Route::get('/contract', 'PageController@contract')->name('contract');
 Route::get('/ministry', 'PageController@ministryList')->name('ministry');
 Route::get('/spending', 'PageController@ministrySpending')->name('spending');
 
 Route::get('/ministry-graph', 'PageController@ministryGraph')->name('ministry-graph');
 Route::get('/expense-graph', 'PageController@expenseGraph')->name('expense-graph');
 Route::get('/project-modal', 'PageController@projectModal')->name('project-modal');
-Route::get('/director-board', 'PageController@directorBoard')->name('director-board');
-Route::get('/blog', 'PageController@blog')->name('blog');
-Route::get('/404', 'PageController@error404')->name('404');
-
 
 
 Route::get('/reports/expenditure', 'ExpendituresController@getExpenditures')->name('expenditure_report');

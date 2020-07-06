@@ -10,6 +10,13 @@
 .nav-item , .search{
 	background-color: #ffff !important;
 }
+
+@media (min-width: 768px){
+	.navbar-expand-md .navbar-nav {
+		width: 75%;
+		justify-content: space-between;
+	}
+}
 .nav-link:hover{
 	color: grey !important;
 }

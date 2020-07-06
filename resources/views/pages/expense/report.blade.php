@@ -1,10 +1,11 @@
 @extends('layouts.master')
-@section('css')
+
+@push('css')
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <link rel="stylesheet" href="/css/expense_report.css">
 <link rel="stylesheet" href="/css/header_footer.css">
 <title>FG Expense - Expense Report</title>
-@endsection
+@endpush
 
 @section('content')
 <!-- Main body start -->
@@ -67,8 +68,8 @@
           </tr>
         </thead>
         <tbody>
-          @if(count($expenditures)> 0)
-            @foreach( $expenditures as $expenditure)
+          {{-- @if(count($expenditures ?? '')> 0)
+            @foreach( $expenditures ?? '' as $expenditure)
           <tr>
             <td class="px20 color-code-1">{{$expenditure->ministry}}</td>
             <td class="px18">{{$expenditure->company}}</td>
@@ -77,7 +78,7 @@
             <td>{{$expenditure->payment_date}}</td>
           </tr>
             @endforeach
-          @endif
+          @endif --}}
           
         </tbody>
       </table>
