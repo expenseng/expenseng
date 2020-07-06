@@ -1,0 +1,187 @@
+body{
+    /* Ministry profile */
+
+
+position: relative;
+width: 1440px;
+height: 3730px;
+font-family: lato;
+background: #FFFFFF;
+}
+
+nav>div>ul>li>#home {
+    /* HOME */
+
+
+    position: static;
+    width: 62px;
+    height: 24px;
+    left: 0px;
+    top: 0px;
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    /* identical to box height */
+
+
+    color: #00945E !important;
+
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 0;
+    align-self: center;
+    margin: 19px 0px;
+}
+
+#dot {
+    /* Ellipse 60 */
+
+
+    position: static;
+    width: 4px;
+    height: 4px;
+    left: 81px;
+    top: 10px;
+
+    background: #2D313D;
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 1;
+    align-self: center;
+    margin: 19px 0px;
+}
+
+#profile {
+    /* PROFILES */
+
+
+position: static;
+width: 92px;
+height: 24px;
+left: 104px;
+top: 0px;
+
+font-family: Lato;
+font-style: normal;
+font-weight: bold;
+font-size: 20px;
+line-height: 24px;
+/* identical to box height */
+
+
+color: #00945E !important;
+
+
+/* Inside Auto Layout */
+
+flex: none;
+order: 2;
+align-self: center;
+margin: 19px 0px;
+}
+
+#ministries {
+        /* MINISTRIES */
+
+
+    position: static;
+    width: 111px;
+    height: 24px;
+    left: 238px;
+    top: 0px;
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    /* identical to box height */
+
+
+    color: #00945E !important;
+
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 4;
+    align-self: center;
+    margin: 19px 0px;
+}
+
+#ministry_prof {
+        /* MINISTRY PROFILE */
+
+
+    position: static;
+    width: 179px;
+    height: 24px;
+    left: 391px;
+    top: 0px;
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    /* identical to box height */
+
+    color: #00945E !important;
+    
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 6;
+    align-self: center;
+    margin: 19px 0px;
+}
+#navbarNav{
+    background: none !important;
+}
+#ministry_logo{
+    position: static;
+    width: 86px;
+    height: 81px;
+    left: 0px;
+    top: 0px;
+}
+#ministry_name {
+    position: relative;
+    width: 70%;
+    height: 48px;
+    left: 1rem;
+    top: 16.5px;
+    color: #323E48 !important;
+}
+#color{
+    color: #00945E;
+}
+#handle{
+    color: #6765EC;
+}
+#links>div>.active{
+    color: #00945E;
+}
+#line{
+    /* Line 110 */
+
+
+    position: absolute;
+    width: 1440px;
+    height: 0px;
+    left: 0px;
+    top: 734px;
+
+    border: 1px solid #D5D9D8;
+}
+/*
+nav>div>ul>li {
+   
+}

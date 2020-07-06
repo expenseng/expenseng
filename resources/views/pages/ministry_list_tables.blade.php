@@ -2,7 +2,7 @@
 @section('css')
 <link rel="stylesheet" href="/css/about%20us-header_footer.css">
 <link rel="stylesheet" href="/css/ministry_list_table.css">
-<title>FG Expense - Ministry List</title>
+<title>FG Expense - Profile</title>
 @endsection
     
 @section('content')
@@ -27,7 +27,7 @@
         @php
            $handle = substr($ministry->ministry_twitter_handle, 1)
         @endphp
-        <div class="sub"><p id="minwrks"> <a href="{!! url("https://twitter.com/$handle") !!}">{{$ministry->ministry_twitter_handle}}</a></p>
+        <div class="sub"><p id="minwrks"> <a href="{!! url('https://twitter.com/'.$handle) !!}">{{$ministry->ministry_twitter_handle}}</a></p>
         <p> 2020</p></div>
        
 
@@ -225,6 +225,7 @@
     
 <!--Section-->
 @endsection
+
       
 @section('js')
 <script src="..assets/js/ministry_list.js" type="text/javascript"></script>

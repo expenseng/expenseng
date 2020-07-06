@@ -44,3 +44,6 @@ Route::get('/ministry/details', 'MinistrySearchController@show')->name('get_mini
 Route::post('/ministry/autocomplete', 'MinistrySearchController@autocomplete')->name('ministry_autocomplete');
 Route::get('/ministry/all', 'MinistrySearchController@index')->name('ministry_all');
 Route::get('/ministry/getUrl', 'PageController@ministryGetUrl')->name('ministry_get_url');
+
+
+Route::get('/ministry/show/profile', 'PageController@showProfile')->name('ministry_profile_show');
