@@ -59,12 +59,12 @@
   <div class="container-fluid lower">
     <div class="container">
         <div class="row ">
-            <div class="col-md-10">
+            <div class="col-md-9">
                 <a href=""><small>Accessibility</small></a>-
                 <a href=""><small> | Privacy Policy</small></a>-
                 <a href=""><small> | Freedom of Information Act</small></a>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <a href=""><small><span>&#169</span>2020EXPENSENG.com</small></a>
             </div>
         </div>
