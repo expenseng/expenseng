@@ -160,8 +160,11 @@ span {
 	}
 }
 @media only screen and (min-width: 1024px){
+	body{
+		overflow-x: hidden;
+	}
 #banner {
-	margin: 100px 0px 150px 0px;
+	margin: 100px 0px 150px 20px;
 }
 h1{
 	font-size: 56px;
@@ -192,7 +195,7 @@ input{
 }
 
 .contact{
-	margin-left: 25px;
+	margin-left: 145px;
 	margin-top: 220px;
 }
 aside {
