@@ -62,10 +62,10 @@ nav>div>ul>li>#home {
     /* PROFILES */
 
 
-position: static;
+position: relative;
 width: 92px;
 height: 24px;
-left: 104px;
+left: 12px;
 top: 0px;
 
 font-family: Lato;
@@ -154,11 +154,15 @@ margin: 19px 0px;
 }
 #ministry_name {
     position: relative;
-    width: 70%;
-    height: 48px;
+    width: 100%;
+    height: auto;
     left: 1rem;
     top: 16.5px;
     color: #323E48 !important;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 25px;
 }
 #color{
     color: #00945E;
