@@ -80,18 +80,18 @@
 </div>
 
 <div id="links" class="mt-5 row">
-    <div class="col-md-4"><a href="#" class="active">Expense Summary</a>
+    <div class="col-md-4"><a href="#" class="active"><h4>Expense Summary</h4></a>
         <!--<div id="line"></div>-->
     </div>
 
-    <div class="col-md-4"><a href="#">Cabinet</a>
+    <div class="col-md-4"><a href="#"><h4>Cabinet</h4></a>
         <!--<div id="line"></div>-->
     </div>
 </div>
 
-<div class="mb-5 row">
+<div class="mb-5 mt-3 row">
     <div class="col-md-8">
-        <h5>Charts</h5>
+        <h5 id="charts">Charts</h5>
     <div class="table-section reponsive-div">
 			<div class="row main-table">
                 <div class="col-md-6"><h6>Graph(Daily): 12 May, 2019</h6></div>
@@ -135,7 +135,7 @@
     <!--end of chart-->
     <!--begin comments-->
     <div class="col-md-4">
-        <h5>Comments</h5>
+        <h5 id="comments">Comments</h5>
         <div class="row">
             <div class="col-md-2">
               <img src="/images/min_comment_img/Rectangle 320.png" class="rounded" alt="profile pics">
@@ -231,8 +231,28 @@
             <div class="col-md-2">...</div>
         </div>
 
-        <!-- end od comment-->
-        <div id="commentbox"></div>
+        <!-- end of comment-->
+        <div id="commentbox">
+          <form>
+            <div class="row">
+              <div class="col-md-8 mt-2">
+                <input type="text" class="form-control" id="validationCustom02" 
+                placeholder="Write a comment" required />
+                <!--<div class="valid-feedback">
+                  Looks good!
+                </div>-->
+              </div>
+
+              <div class="col-md-2 pt-2 pr-3">
+                <img src="/images/min_comment_img/smile.png" alt="emoji"/>
+              </div>
+
+              <div class="col-md-2 p-2">
+                <img src="/images/min_comment_img/image.png" alt="image"/>
+              </div>
+            </div>
+          </form>
+        </div>
     </div>
 </div>
 </section>

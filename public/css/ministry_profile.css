@@ -206,6 +206,52 @@ margin: 19px 0px;
 
     color: #FFFFFF;
 }
+
+#commentbox{
+    width: 398px;
+    height: 53px;
+    left: 940px;
+    top: 1654px;
+
+    background: #FFFFFF;
+    border: 1px solid #BCBDC1;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+input[type='text']{
+    border: none;
+}
+#links>div>a {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+
+
+    color: #A1A3A8;
+}
+#comments{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+
+
+    color: #00945E;
+}
+#charts{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 38px;
+
+    color: #005938;
+}
 /*
 nav>div>ul>li {
    
