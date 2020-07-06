@@ -60,7 +60,7 @@
         <div class="p-2">2020</div>
       </div>
 
-    </div>
+  </div>
   <div class="p-2 col-md-4">
      <div class="d-flex flex-column ">
         <div class="p-2">Total Amount Spent</div>
@@ -81,17 +81,17 @@
 
 <div id="links" class="mt-5 row">
     <div class="col-md-4"><a href="#" class="active">Expense Summary</a>
-        <div id="line"></div>
+        <!--<div id="line"></div>-->
     </div>
 
     <div class="col-md-4"><a href="#">Cabinet</a>
-        <div id="line"></div>
+        <!--<div id="line"></div>-->
     </div>
 </div>
 
 <div class="mb-5 row">
     <div class="col-md-8">
-        <h3>Charts</h3>
+        <h5>Charts</h5>
     <div class="table-section reponsive-div">
 			<div class="row main-table">
                 <div class="col-md-6"><h6>Graph(Daily): 12 May, 2019</h6></div>
@@ -131,11 +131,44 @@
 
 
 
-    </div>
+  </div>
     <!--end of chart-->
     <!--begin comments-->
     <div class="col-md-4">
-        <h3>Comments</h3>
+        <h5>Comments</h5>
+        <div class="row">
+            <div class="col-md-2">
+              <img src="/images/min_comment_img/Rectangle 320.png" class="rounded" alt="profile pics">
+            </div>
+            <div class="col-md-8">
+            <div class="d-flex flex-column">
+                <div class="p-2 row">
+                    <div class="col-md-8">James Emmanuel</div>
+                    <div class="col-md-4">2mins ago</div>
+                </div>
+
+                <div class="p-2">This is so nice to read. I can see improvement in this sector. 
+                This is really encouraging!!!
+            </div>
+
+                <div class="p-2 row">
+                    <div class="col-md-3">
+                        <img src="/images/min_comment_img/Vector.png" alt="like"/> 3
+                    </div>
+                    <div class="col-md-3">
+                    <img src="/images/min_comment_img/Vector(1).png" alt="downvote" /> 0
+                    </div>
+                    <div class="col-md-6">
+                    <img src="/images/min_comment_img/Vector(2).png" alt="reply"/> <d>Reply</d>
+                    </div>
+
+                </div>
+            </div>
+            </div>
+            <div class="col-md-2">...</div>
+        </div>
+        <!--end of comment-->
+
         <div class="row">
             <div class="col-md-2"><img src="/images/min_comment_img/Rectangle 320.png" class="rounded" alt="profile pics"></div>
             <div class="col-md-8">
@@ -165,6 +198,9 @@
             </div>
             <div class="col-md-2">...</div>
         </div>
+
+        <!--end of comment-->
+
         <div class="row">
             <div class="col-md-2"><img src="/images/min_comment_img/Rectangle 320.png" class="rounded" alt="profile pics"></div>
             <div class="col-md-8">
@@ -194,35 +230,8 @@
             </div>
             <div class="col-md-2">...</div>
         </div>
-        <div class="row">
-            <div class="col-md-2"><img src="/images/min_comment_img/Rectangle 320.png" class="rounded" alt="profile pics"></div>
-            <div class="col-md-8">
-            <div class="d-flex flex-column">
-                <div class="p-2 row">
-                    <div class="col-md-8">James Emmanuel</div>
-                    <div class="col-md-4">2mins ago</div>
-                </div>
 
-                <div class="p-2">This is so nice to read. I can see improvement in this sector. 
-                This is really encouraging!!!
-            </div>
-
-                <div class="p-2 row">
-                    <div class="col-md-3">
-                        <img src="/images/min_comment_img/Vector.png" alt="like"/> 3
-                    </div>
-                    <div class="col-md-3">
-                    <img src="/images/min_comment_img/Vector(1).png" alt="downvote" /> 0
-                    </div>
-                    <div class="col-md-6">
-                    <img src="/images/min_comment_img/Vector(2).png" alt="reply"/> <d>Reply</d>
-                    </div>
-
-                </div>
-            </div>
-            </div>
-            <div class="col-md-2">...</div>
-        </div>
+        <!-- end od comment-->
         <div id="commentbox"></div>
     </div>
 </div>

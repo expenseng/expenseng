@@ -15,13 +15,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'PageController@index')->name('home');
+Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contactUs')->name('contact');
+Route::get('/profiles', 'PageController@profiles')->name('contact');
+Route::get('contract', 'PageController@contract')->name('contract');
+Route::get('/ministry', 'PageController@ministryList')->name('ministry');
+Route::get('/spending', 'PageController@ministrySpending')->name('spending');
+
 Route::get('/ministry-graph', 'PageController@ministryGraph')->name('ministry-graph');
 Route::get('/expense-graph', 'PageController@expenseGraph')->name('expense-graph');
 Route::get('/project-modal', 'PageController@projectModal')->name('project-modal');
 Route::get('/director-board', 'PageController@directorBoard')->name('director-board');
 Route::get('/blog', 'PageController@blog')->name('blog');
-Route::get('/about', 'PageController@about')->name('about');
 Route::get('/404', 'PageController@error404')->name('404');
 
 
@@ -36,9 +41,6 @@ Route::get('/company/search','PageController@companySearch')->name('company_sear
 Route::get('/company/search', 'PageController@companySearch')->name('company_search');
 Route::post('/company/show', 'PageController@companySearchShow');
 Route::get('/quick-contacts', 'PageController@quickContact')->name('quick_contacts');
-Route::get('contract', 'PageController@contract')->name('contract');
-Route::get('/ministry', 'PageController@ministryList')->name('ministry');
-Route::get('/spending', 'PageController@ministrySpending')->name('spending');
 
 Route::get('/ministry/details', 'MinistrySearchController@show')->name('get_ministry_details');
 Route::post('/ministry/autocomplete', 'MinistrySearchController@autocomplete')->name('ministry_autocomplete');

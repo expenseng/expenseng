@@ -1,10 +1,9 @@
 @extends('layouts.master')
 
-  @section('css')
+  @push('css')
     <title>FG Expense - Home</title>
-    <link rel="stylesheet" href="{{asset('css/aboutus-header_footer.css')}}">
     <link rel="stylesheet" href="{{ asset('css/index.css')}}">
-  @endsection
+  @endpush
 
   @section('banner')
         <!-- banner -->
@@ -48,7 +47,7 @@
           </div>
         </div>
       </div>
-      <img src="{{asset('images/arrow-down.svg')}}" alt="arrow-down" class="arrow-down">
+      <button class="btn scroll-down"></button>
     </div>
   @endsection
 
