@@ -3,8 +3,8 @@
   <div class="container">
       <div class="row">
           <div class="col-md-2 footer-brand ">
-              <a href="index.html">
-                  <img src="{{'images/Frame 390.png'}}" class="ft">
+              <a href="{{ url('/') }}">
+                  <img src="{{asset('images/Logo.svg')}}" class="ft">
               </a> <br><br>
               <a href=""><i class="fab fa-twitter" aria-hidden="true"></i><small> @expenseng</small></a>
           </div>
