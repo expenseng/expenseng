@@ -165,6 +165,64 @@
             </div>
             <div class="col-md-2">...</div>
         </div>
+        <div class="row">
+            <div class="col-md-2"><img src="/images/min_comment_img/Rectangle 320.png" class="rounded" alt="profile pics"></div>
+            <div class="col-md-8">
+            <div class="d-flex flex-column">
+                <div class="p-2 row">
+                    <div class="col-md-8">James Emmanuel</div>
+                    <div class="col-md-4">2mins ago</div>
+                </div>
+
+                <div class="p-2">This is so nice to read. I can see improvement in this sector. 
+                This is really encouraging!!!
+            </div>
+
+                <div class="p-2 row">
+                    <div class="col-md-3">
+                        <img src="/images/min_comment_img/Vector.png" alt="like"/> 3
+                    </div>
+                    <div class="col-md-3">
+                    <img src="/images/min_comment_img/Vector(1).png" alt="downvote" /> 0
+                    </div>
+                    <div class="col-md-6">
+                    <img src="/images/min_comment_img/Vector(2).png" alt="reply"/> <d>Reply</d>
+                    </div>
+
+                </div>
+            </div>
+            </div>
+            <div class="col-md-2">...</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"><img src="/images/min_comment_img/Rectangle 320.png" class="rounded" alt="profile pics"></div>
+            <div class="col-md-8">
+            <div class="d-flex flex-column">
+                <div class="p-2 row">
+                    <div class="col-md-8">James Emmanuel</div>
+                    <div class="col-md-4">2mins ago</div>
+                </div>
+
+                <div class="p-2">This is so nice to read. I can see improvement in this sector. 
+                This is really encouraging!!!
+            </div>
+
+                <div class="p-2 row">
+                    <div class="col-md-3">
+                        <img src="/images/min_comment_img/Vector.png" alt="like"/> 3
+                    </div>
+                    <div class="col-md-3">
+                    <img src="/images/min_comment_img/Vector(1).png" alt="downvote" /> 0
+                    </div>
+                    <div class="col-md-6">
+                    <img src="/images/min_comment_img/Vector(2).png" alt="reply"/> <d>Reply</d>
+                    </div>
+
+                </div>
+            </div>
+            </div>
+            <div class="col-md-2">...</div>
+        </div>
         <div id="commentbox"></div>
     </div>
 </div>
