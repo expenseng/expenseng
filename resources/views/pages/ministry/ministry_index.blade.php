@@ -1,8 +1,8 @@
 @extends('layouts.master')
-@section('css')
+@push('css')
 <title>FG On Twitter</title>
 <link rel="stylesheet" href="{{ asset('ministry_index.css') }}" />
-@endsection
+@endpush
 
 @section('content')
 <div class="header">
