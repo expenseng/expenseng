@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateBudgetTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('budget', function (Blueprint $table) {
+            $table->increments('id');
+            $table->bigInteger('amount');
+            $table->string('project_name')->unique();
+            $table->integer('code')->index();
+            $table->string('year');
+            $table->string('classification'); //economic, admistrative, functions of govt
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('budget');
+    }
+}

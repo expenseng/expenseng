@@ -10,11 +10,13 @@ use Illuminate\Support\Facades\DB;
 class CompanyController extends Controller
 {
 
-    public function profile(){
+    public function profile()
+    {
         return view('pages.company.profile');
     }
 
-    public function show(Company $company){
+    public function show(Company $company)
+    {
         return view('pages.company.single', compact($company));
     }
 
