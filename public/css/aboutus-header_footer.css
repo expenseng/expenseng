@@ -4,8 +4,14 @@
 .sart{
 	margin-right: px;
 }
+.navbar{
+	width: 100%;
+	/* margin-left: -120px; */
+}
 .nav-link{
 	color: black !important;
+	font-size: 20px;
+	margin-left: 25px;
 }
 .nav-item , .search{
 	background-color: #ffff !important;
@@ -18,7 +24,7 @@
 	}
 }
 .nav-link:hover{
-	color: grey !important;
+	color: #00945E !important;
 }
 .my-footer ul {
   list-style-type: none;
@@ -46,5 +52,23 @@ h6{
 .lower{
 	background-color: #1F2430;
 	padding: 10px;
-	background:
+}
+@media only screen and (max-width: 650px){
+	body{
+		overflow-x: hidden;
+	}
+	.nav-link{
+		font-size: 16px;
+	}
+	.navbar{
+		width: 100%;
+		margin-left: -10px;
+	}
+	.fa-bars{
+		margin-left: 255px;
+		font-size: 24px;
+	}
+.navbar-brand img{
+	width: 70%;
+}
 }

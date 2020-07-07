@@ -2,13 +2,16 @@
 
 @push('css')
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-<link rel="stylesheet" href="/css/expense_report.css">
-<link rel="stylesheet" href="/css/header_footer.css">
+<link rel="stylesheet" href="{{asset('/css/expense_report.css')}}">
+<link rel="stylesheet" href="{{asset('/css/header_footer.css')}}">
 <title>FG Expense - Expense Report</title>
 @endpush
 
 @section('content')
 <!-- Main body start -->
+
+<link rel="stylesheet" href="{{asset('/css/expense_report.css')}}">
+<link rel="stylesheet" href="{{asset('/css/header_footer.css')}}">
 <div class="mother">
   <div class="col-12 ">
     <div class="col-6 off-1 down-10">
