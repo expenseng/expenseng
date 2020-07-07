@@ -4,14 +4,14 @@
       <div class="row">
           <div class="col-md-2 footer-brand ">
               <a href="index.html">
-                  <img src="{{'images/Frame 390.png'}}" class="ft">
+                  <img src="{{asset('images/Frame 390.png')}}" class="ft">
               </a> <br><br>
               <a href=""><i class="fab fa-twitter" aria-hidden="true"></i><small> @expenseng</small></a>
           </div>
           <div class="col-md-4">
 
           </div>
-          <div class="col-md-2">
+          <div class="col-md-2 mt-3">
               <h6>Pages</h6>
               <ul >
                   <li>
@@ -29,7 +29,7 @@
               </ul>
 
           </div>
-          <div class=" col-md-2">
+          <div class=" mt-3 col-md-2">
               <h6>Profile</h6>
               <ul>
                   <li>
@@ -40,7 +40,7 @@
                   </li>
               </ul>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-2 mt-3">
               <h6>Reference</h6>
               <ul >
                   <li>
