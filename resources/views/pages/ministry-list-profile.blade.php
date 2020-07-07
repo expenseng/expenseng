@@ -1,9 +1,9 @@
 @extends('layouts.master')
-@section('css')
+@push('css')
 <link rel="stylesheet" href="/css/header_footer.css">
 <link rel="stylesheet" href="{{ asset('css/ministry-list-profile.css') }}">
 <title>FG Expense - Ministry List</title>
-@endsection
+@endpush
 
 @section('content')
     <section class="container-fluid first-section px-3">

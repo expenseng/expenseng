@@ -2,7 +2,7 @@
 @section('css')
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{asset('/css/aboutus-header_footer.css')}}">
-<title>FG Expense - Ministry List</title>
+<title>FG Expense -  Profile</title>
 @endsection
 
 @section('content')
@@ -234,6 +234,7 @@
 <!--Section-->
 @endsection
 
+      
 @section('js')
 {{-- <script src="..assets/js/ministry_list.js" type="text/javascript"></script> --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
