@@ -32,16 +32,6 @@ class PageController extends Controller
         return view('pages.expense-graph');
     }
 
-    public function directorBoard()
-    {
-        return view('pages.director_board');
-    }
-
-    public function blog()
-    {
-        return view('pages.blog');
-    }
-
     public function about()
     {
         return view('pages.aboutus');
@@ -49,7 +39,7 @@ class PageController extends Controller
 
     public function error404()
     {
-        return view('pages.404_error');
+        return view('pages.errors.404_error');
     }
 
     public function expenditure()
@@ -118,7 +108,7 @@ class PageController extends Controller
     public function ministryList()
     {
         $ministries = Ministry::all();
-        return view('pages.ministry_list_federal_ministries')->with(['ministries'=> $ministries]);
+        return view('pages.ministry.ministry-list-profile')->with(['ministries'=> $ministries]);
     }
 
     public function ministrySpending()
