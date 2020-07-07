@@ -6,7 +6,7 @@
             <span><i class="fa fa-bars" aria-hidden="true"></i></span>
         </button>
       <div class="collapse navbar-collapse" id="navcol-1">
-          <ul class="nav navbar-nav ml-auto back">
+          <ul class="nav navbar-nav ml-auto ">
               <li class="nav-item mr-6 sart" role="presentation">
                   <a class="nav-link" href="{{ route('home') }}">Home</a>
               </li>

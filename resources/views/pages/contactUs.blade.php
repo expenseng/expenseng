@@ -22,11 +22,11 @@
 
     <!-- Form and side banner Starts -->
 
-    <article class="container">
+    <article class="container contact">
         <div class="row">
           <div class="col-md-6">
-            <h2 style="color: rgba(0, 148, 94, 0.67);">Contact Form</h2>
-            <p>Fill the Form below and we will get back to you.</p>
+            <h2>Contact Form</h2>
+            <p class="para">Fill the Form below and we will get back to you.</p>
             <input type="text" placeholder="Full Name" class="form-control">
             <input type="email" placeholder="Email Address" class="form-control">
             <textarea placeholder="Write Your Message here..." cols="20" rows="10" class="form-control"></textarea>
@@ -35,7 +35,7 @@
           <div class="col-md-6">
             <aside class="banner">
                 <h4 class="pt-3">Keep in touch with us</h4>
-                <hr>
+                <hr class="banner-hr">
                 <div class="row">
                     <div class="align col-sm-4">
                         <span class="fa-stack fa-sm">
@@ -43,7 +43,7 @@
                             <i class="fa fa-map-marker fa-stack-1x fa-inverse"></i>
                         </span>
                     </div>
-                    <div class="align col-sm-8">
+                    <div class="align col-sm-8 text-left">
                         <p>Plot 234, Bowo Avenue,</p>
                         <p>Victoria Island,</p>
                         <p>Lagos, Nigeria.</p>
@@ -57,7 +57,7 @@
                             <i class="fa fa-phone fa-stack-1x"></i>
                         </span>
                     </div>
-                    <div class="align col-sm-8">
+                    <div class="align col-sm-8 text-left">
                         <p>+234 904 234 5678</p>
                         <p>+234 904 234 5678</p>
                         <p>+234 904 234 5678</p>
@@ -71,7 +71,7 @@
                             <i class="fa fa-envelope fa-stack-1x"></i>
                         </span>
                     </div>
-                    <div class="align col-sm-8">
+                    <div class="align col-sm-8 text-left">
                         <p>info@ExpenseNG.com</p>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                             <i class="fab fa-twitter fa-stack-1x"></i>
                         </span>
                     </div>
-                    <div class="align col-sm-8">
+                    <div class="align col-sm-8 text-left">
                         <p>@ExpenseNG</p>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                             <i class="fab fa-facebook fa-stack-1x"></i>
                         </span>
                     </div>
-                    <div class="align col-sm-8">
+                    <div class="align col-sm-8 text-left">
                         <p>ExpenseNG</p>
                     </div>
                 </div>

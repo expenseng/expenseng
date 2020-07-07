@@ -11,7 +11,7 @@
           <div class="col-md-4">
 
           </div>
-          <div class="col-md-2">
+          <div class="col-md-2 mt-3">
               <h6>Pages</h6>
               <ul >
                   <li>
@@ -29,7 +29,7 @@
               </ul>
 
           </div>
-          <div class=" col-md-2">
+          <div class=" mt-3 col-md-2">
               <h6>Profile</h6>
               <ul>
                   <li>
@@ -40,7 +40,7 @@
                   </li>
               </ul>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-2 mt-3">
               <h6>Reference</h6>
               <ul >
                   <li>
@@ -59,12 +59,12 @@
   <div class="container-fluid lower">
     <div class="container">
         <div class="row ">
-            <div class="col-md-10">
+            <div class="col-md-9">
                 <a href=""><small>Accessibility</small></a>-
                 <a href=""><small> | Privacy Policy</small></a>-
                 <a href=""><small> | Freedom of Information Act</small></a>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <a href=""><small><span>&#169</span>2020EXPENSENG.com</small></a>
             </div>
         </div>
