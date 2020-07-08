@@ -82,14 +82,14 @@ span {
 }
 .col-sm-8{
 	text-align: center;
-	margin-left: 120px;
+	margin-left: 100px;
 	margin-top: -52px;
 	font-size: 14px;
 }
 .greenify {
-	margin-top: 35px;
-	margin-bottom: 35px;
-	padding: 30px 30px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	padding: 50px 20px;
 	width: 100%;
 	background: linear-gradient(0deg,rgba(50, 62, 72, 0.33),rgba(50, 62, 72, 0.33)),rgba(0, 148, 94, 0.67);
 }
@@ -256,11 +256,11 @@ span {
 }
 .greenify {
 	margin-left: 210px;
-	margin-top: 40px;
-	margin-bottom: 40px;
+	margin-top: 80px;
+	margin-bottom: 80px;
 	padding: 60px;
 	width: 120%;
-	height: 400px;
+	height: 452px;
 	background: linear-gradient(0deg,rgba(50, 62, 72, 0.33),rgba(50, 62, 72, 0.33)),rgba(0, 148, 94, 0.67);
 }
 .greenify .fa-twitter{
@@ -279,7 +279,7 @@ span {
 .twitter-back {
 	margin-top: 70px;
 	opacity: 0.2;
-	width: 350px;
+	width: 400px;
 	z-index: -1;
 }
 
@@ -287,7 +287,7 @@ span {
 	width: 200px;
 	border: none;
 	position: absolute;
-	top: 210px;
+	top: 230px;
 	left: 70px;
 	padding: 8px 25px;
 }

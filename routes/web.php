@@ -21,21 +21,21 @@ Route::get('/contact', 'PageController@contactUs')->name('contact');
 /**
  * Reports Endpoints
  */
-Route::get('/report/expense', 'ReportController@expense')->name('reports.expense');
-Route::get('/report/ministry', 'ReportController@ministry')->name('reports.ministry');
+Route::get('/expense/report', 'ExpenseController@report')->name('expense.reports');
+Route::get('/expense/ministry', 'ExpenseController@ministry')->name('expense.ministry');
 
 /***
- * Profiles Endpoints
+ * Ministry Endpoints
  */
-Route::get('/profile/ministries', 'MinistryController@profile')->name('profile.ministries');
-Route::get('/profile/ministries/{ministry}', 'MinistryController@show')->name('profile.ministries.single');
-Route::get('/profile/companies', 'CompanyController@profile')->name('profile.companies');
-Route::get('/profile/companies/{company}', 'CompanyController@show')->name('profile.companies.single');
+Route::get('/ministries', 'MinistryController@profile')->name('ministries');
+Route::get('/ministries/{ministry}', 'MinistryController@show')->name('ministries.single');
 
+/**
+ * Contractor Endpoints
+ */
+Route::get('/contractors', 'CompanyController@index')->name('contractors');
+Route::get('/contractors/{company}', 'CompanyController@show')->name('contractors.single');
 
-Route::get('/contract', 'PageController@contract')->name('contract');
-Route::get('/ministry', 'PageController@ministryList')->name('ministry');
-Route::get('/spending', 'PageController@ministrySpending')->name('spending');
 
 Route::get('/ministry-graph', 'PageController@ministryGraph')->name('ministry-graph');
 Route::get('/expense-graph', 'PageController@expenseGraph')->name('expense-graph');

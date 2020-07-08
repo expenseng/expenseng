@@ -14,16 +14,14 @@ class CreateExpensesTable extends Migration
     public function up()
     {
         Schema::create('expenses', function (Blueprint $table) {
-            $table->id();
-            //$table->foreignId('ministry_id')->references('id')->on('ministries_profile')
-            //->onDelete('cascade')->constrained();
-            //$table->foreignId('company_id')->references('id')->on('companies_profile')
-            //->onDelete('cascade')->constrained();
-            $table->string('ministry');
-            $table->string('company');
-            $table->string('description');
-            $table->integer('amount');
-            $table->date('payment_date');
+            $table->increments('id');
+            $table->bigInteger('amount_spent');
+            $table->string('year');
+            $table->string('month');
+            $table->string('project');
+            $table->foreign('project')
+                    ->references('project_name')
+                    ->on('budgets');
             $table->timestamps();
         });
     }

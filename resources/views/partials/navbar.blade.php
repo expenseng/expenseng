@@ -10,35 +10,29 @@
               <li class="nav-item mr-6 sart" role="presentation">
                   <a class="nav-link" href="{{ route('home') }}">Home</a>
               </li>
-              <li class="nav-item mr-6 dropdown sart" role="presentation">
-                <div class="dropdown">
-                <a class="nav-link dropdown-toggle" id="report-dropdown" data-toggle="dropdown" href="#">Reports</a>
-                <ul class="dropdown-menu" aria-labelledby="report-dropdown">
-                    <li class="nav-item">
-                        <a href="{{ route('reports.ministry') }}" class="nav-link">Ministry Reports</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('reports.expense') }}" class="nav-link">Expense Reports</a>
-                    </li>
-                </ul>
-                </div>
-            </li>
-            <li class="nav-item mr-6 dropdown sart" role="presentation">
-                <div class="dropdown">
-                    <a class="nav-link dropdown-toggle" id="profile-dropdown" data-toggle="dropdown" href="#">Profiles</a>
-                    <ul class="dropdown-menu" aria-labelledby="profile-dropdown">
-                        <li class="nav-item">
-                            <a href="{{ route('profile.companies') }}" class="nav-link">Companies</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('profile.ministries') }}" class="nav-link">Federal Ministries</a>
-                        </li>
-                    </ul>
-            </li>
-            <li class="nav-item mr-6 sart" role="presentation">
-                <a class="nav-link" href="{{ route('about') }}">About us</a>
-            </li>
-              <a class="nav-link" href=""><i class="fa fa-search inp"></i></a>
+              <li class="nav-item mr-6 sart" role="presentation">
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle" id="report-dropdown" data-toggle="dropdown" href="#">Expense</a>
+                        <ul class="dropdown-menu" aria-labelledby="report-dropdown">
+                            <li class="nav-item">
+                                <a href="{{ route('expense.reports') }}" class="nav-link">Expenditure Reports</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('expense.ministry') }}" class="nav-link">Ministry Expense</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item mr-6 sart" role="presentation">
+                    <a class="nav-link" href="{{ route('ministries') }}">Ministries</a>
+                </li>
+                <li class="nav-item mr-6 sart" role="presentation">
+                    <a class="nav-link" href="{{ route('contractors') }}">Contractors</a>
+                </li>
+                <li class="nav-item mr-6 sart" role="presentation">
+                    <a class="nav-link" href="{{ route('about') }}">About us</a>
+                </li>
+                  <a class="nav-link" href=""><i class="fa fa-search inp"></i></a>
           </ul>
       </div>
     </div>
