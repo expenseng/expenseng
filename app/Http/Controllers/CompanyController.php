@@ -12,7 +12,7 @@ class CompanyController extends Controller
 
     public function index()
     {
-        return view('pages.company.index');
+        return view('pages.contract.index');
     }
 
     public function show(Company $company)
