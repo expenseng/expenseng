@@ -2,7 +2,7 @@
 @push('css')
 	<title>Table</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Mukta:700|Roboto+Slab&display=swap" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/header_footer.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/ministry-report-table.css') }}">
@@ -11,31 +11,47 @@
 
 @section('content')
 	<!-- Breadcrumb start -->
-	<header class="container">
+	<header class="container section-wrapper">
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb bg-white">
-				<li class="breadcrumb-item"><a href="#">HOME</a></li>
-				<li class="breadcrumb-item"><a href="#">REPORTS</a></li>
-				<li class="breadcrumb-item active" aria-current="page"><a href="#">MINISTRY REPORTS</a></li>
+				<li class="breadcrumb-item not-active"><a href="#">HOME</a></li>
+				<span>&#8226;</span>
+				<li class="breadcrumb-item not-active"><a href="#">SPENDING</a></li>
+				<span>&#8226;</span>
+				<li class="breadcrumb-item active" aria-current="page"><a href="#">MINISTRY SPENDING</a></li>
 			</ol>
 		</nav>
 	</header>
 	<section>
-		<div class="container">
+		<div class="container ">
 			<div class="row">
-				<div class="col-md-6">
-					<h1>Ministry Spending</h1>
-					<p>ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities acros Nigeria. Learn more on how this money was spent with tools to help you navigate spending from top to bottom.</p>
+				<div class="col-md-8 section-heading">
+					<h1 class="section-heading-title">Ministry Spending</h1>
+					<p class="section-heading-paragraph">ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities across Nigeria.</p>
 				</div>
 			</div>
 		</div>
-		<div class="container">
-			<div class="btn-group">
-				<button class="button active" id="first-btn">Expense Summary</button>
-				<button class="button btn-marg">Project Summary</button>
-				<button class="button btn-marg">Purchases Summary</button>
-				<button class="button btn-marg">No Description</button>
-				<button class="button btn-marg"><a href="ministry_report_comments.html">Comments</a></button>
+		<div class="section-button">
+			<div class="container">
+				<div class="btn-group col-lg-10 col-md-12 d-flex justify-content-between responsive-button">
+					<button class="button active text-left" id="first-btn">Expense Summary</button>
+					<button class="button btn-marg text-left">Project Summary</button>
+					<button class="button btn-marg text-left">Purchases Summary</button>
+					<button class="button btn-marg text-left">No Description</button>
+					<button class="button btn-marg text-left"><a href="#">Comments</a></button>
+				</div>
+				<div class="dropdown">
+					<button class="btn btn-success dropdown-toggle responsive-dropdown btn-lg dropdown-button" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  Dropdown
+					</button>
+					<div class="dropdown-menu dropdown-menu-lg-right">
+					  <button class="dropdown-item active" type="button">Expense Summary</button>
+					  <button class="dropdown-item" type="button">Project Summary</button>
+					  <button class="dropdown-item" type="button">Purchases Summary</button>
+					  <button class="dropdown-item" type="button">No Description</button>
+					  <button class="dropdown-item" type="button"><a href="#">Comments</a></button>
+					</div>
+				  </div>
 			</div>
 		</div>
 	</section>
@@ -43,184 +59,183 @@
 	<section class="container bordered">
 		<div class="table-section reponsive-div">
 			<div class="main-table">
-				<div class="table-top">
-					<h3>20th May, 2020</h3>
-					<button>Filter <i class="fas fa-filter"></i></button></h5>
+				<div class="table-top p-3 d-flex justify-content-between align-items-center">
+					<h3 class="align-self-center">Date: 28th, May 2020</h3>
+					<button>Filter <i class="fas fa-filter px-1"></i></button>
 				</div>
-
 				<div class="table-data">
 					<div style="overflow-x: auto;">
 						<table id="Table" cell-spacing="0" data-pagination="true" data-page-size="10" class="table table-striped table-responsive-sm">
 							<thead>
 								<tr>
-									<th class="tbl-shadow">Ministry</th>
-									<th>Project</th>
-									<th>Company</th>
-									<th>Amount</th>
-									<th>Date</th>
+									<th class="section-shadow row-ministry">Ministry</th>
+									<th class="row-project">Project</th>
+									<th class="row-company">Company</th>
+									<th class="row-amount">Amount</th>
+									<th class="row-date">Date</th>
 								</tr>
 							</thead>
 							<tbody>
-                                @foreach ($expenses as $expense)
+                                {{-- @foreach ($expenses as $expense)
                                 <tr>
-                                <td class="tbl-shadow"><a href="#" class="text-success">{{Str::ucfirst($expense->ministry)}}</a></td>
+                                <td class="section-shadow"><a href="#" class="text-success">{{Str::ucfirst($expense->ministry)}}</a></td>
                                 <td>{{$expense->description}}</td>
                                 <td>{{$expense->company}}</td>
 									<td>{{$expense->amount}}</td>
 									<td>20th,May 2020</td>
 								</tr>
-                                @endforeach
-
-								{{-- <tr>
-									<td class="tbl-shadow"><a href="#" class="text-success">Education</a></td>
-									<td>Building of Class Blocks</td>
+                                @endforeach --}}
+								
+								<tr>
+									<td class="section-shadow"><a href="#" class="text-success">Education</a></td>
+									<td class="table-overflow" >Building of Class Blocks</td>
 									<td>Samsung</td>
-									<td>N65,001,901,123</td>
+									<td>&#8358;65,001,901,123</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="tbl-shadow"><a href="#" class="text-success">Energy</a></td>
-									<td>Rehabilitation of Lagos Ibadan Express-way</td>
+									<td class="section-shadow"><a href="#" class="text-success">Energy</a></td>
+									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
 									<td>Julius Berger</td>
-									<td>N72,902,001,229</td>
+									<td>&#8358;72,902,001,229</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="tbl-shadow"><a href="#" class="text-success">Labour</a></td>
-									<td>Building of Class Blocks</td>
+									<td class="section-shadow"><a href="#" class="text-success">Labour</a></td>
+									<td class="table-overflow" >Building of Class Blocks</td>
 									<td>Samsung</td>
-									<td>N65,001,901,123</td>
+									<td>&#8358;65,001,901,123</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="tbl-shadow"><a href="#" class="text-success">Agriculture</a></td>
-									<td>Rehabilitation of Lagos Ibadan Express-way</td>
+									<td class="section-shadow"><a href="#" class="text-success">Agriculture</a></td>
+									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
 									<td>Julius Berger</td>
-									<td>N72,902,001,229</td>
+									<td>&#8358;72,902,001,229</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="tbl-shadow"><a href="#" class="text-success">Education</a></td>
-									<td>Building of Class Blocks</td>
+									<td class="section-shadow"><a href="#" class="text-success">Education</a></td>
+									<td class="table-overflow" >Building of Class Blocks</td>
 									<td>Samsung</td>
-									<td>N65,001,901,123</td>
+									<td>&#8358;65,001,901,123</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="tbl-shadow"><a href="#" class="text-success">Aviation</a></td>
-									<td>Rehabilitation of Lagos Ibadan Express-way</td>
+									<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
+									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
 									<td>Julius Berger</td>
-									<td>N72,902,001,229</td>
+									<td>&#8358;72,902,001,229</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="tbl-shadow"><a href="#" class="text-success">Education</a></td>
-									<td>Building of Class Blocks</td>
+									<td class="section-shadow"><a href="#" class="text-success">Education</a></td>
+									<td class="table-overflow" >Building of Class Blocks</td>
 									<td>Samsung</td>
-									<td>N65,001,901,123</td>
+									<td>&#8358;65,001,901,123</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="tbl-shadow"><a href="#" class="text-success">Transport</a></td>
-									<td>Rehabilitation of Lagos Ibadan Express-way</td>
+									<td class="section-shadow"><a href="#" class="text-success">Transport</a></td>
+									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
 									<td>Julius Berger</td>
-									<td>N72,902,001,229</td>
+									<td>&#8358;72,902,001,229</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="tbl-shadow"><a href="#" class="text-success">Education</a></td>
-									<td>Building of Class Blocks</td>
+									<td class="section-shadow"><a href="#" class="text-success">Education</a></td>
+									<td class="table-overflow" >Building of Class Blocks</td>
 									<td>Samsung</td>
-									<td>N65,001,901,123</td>
+									<td>&#8358;65,001,901,123</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="tbl-shadow"><a href="#" class="text-success">Transport</a></td>
-									<td>Rehabilitation of Lagos Ibadan Express-way</td>
+									<td class="section-shadow"><a href="#" class="text-success">Transport</a></td>
+									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
 									<td>Julius Berger</td>
-									<td>N72,902,001,229</td>
+									<td>&#8358;72,902,001,229</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="tbl-shadow"><a href="#" class="text-success">Education</a></td>
-									<td>Building of Class Blocks</td>
+									<td class="section-shadow"><a href="#" class="text-success">Education</a></td>
+									<td class="table-overflow" >Building of Class Blocks</td>
 									<td>Samsung</td>
-									<td>N65,001,901,123</td>
+									<td>&#8358;65,001,901,123</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="tbl-shadow"><a href="#" class="text-success">Energy</a></td>
-									<td>Rehabilitation of Lagos Ibadan Express-way</td>
+									<td class="section-shadow"><a href="#" class="text-success">Energy</a></td>
+									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
 									<td>Julius Berger</td>
-									<td>N72,902,001,229</td>
+									<td>&#8358;72,902,001,229</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="tbl-shadow"><a href="#" class="text-success">Labour</a></td>
-									<td>Building of Class Blocks</td>
+									<td class="section-shadow"><a href="#" class="text-success">Labour</a></td>
+									<td class="table-overflow" >Building of Class Blocks</td>
 									<td>Samsung</td>
-									<td>N65,001,901,123</td>
+									<td>&#8358;65,001,901,123</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="tbl-shadow"><a href="#" class="text-success">Agriculture</a></td>
-									<td>Rehabilitation of Lagos Ibadan Express-way</td>
+									<td class="section-shadow"><a href="#" class="text-success">Agriculture</a></td>
+									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
 									<td>Julius Berger</td>
-									<td>N72,902,001,229</td>
+									<td>&#8358;72,902,001,229</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="tbl-shadow"><a href="#" class="text-success">Education</a></td>
-									<td>Building of Class Blocks</td>
+									<td class="section-shadow"><a href="#" class="text-success">Education</a></td>
+									<td class="table-overflow" >Building of Class Blocks</td>
 									<td>Samsung</td>
-									<td>N65,001,901,123</td>
+									<td>&#8358;65,001,901,123</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="tbl-shadow"><a href="#" class="text-success">Aviation</a></td>
-									<td>Rehabilitation of Lagos Ibadan Express-way</td>
+									<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
+									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
 									<td>Julius Berger</td>
-									<td>N72,902,001,229</td>
+									<td>&#8358;72,902,001,229</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="tbl-shadow"><a href="#" class="text-success">Education</a></td>
-									<td>Building of Class Blocks</td>
+									<td class="section-shadow"><a href="#" class="text-success">Education</a></td>
+									<td class="table-overflow" >Building of Class Blocks</td>
 									<td>Samsung</td>
-									<td>N65,001,901,123</td>
+									<td>&#8358;65,001,901,123</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="tbl-shadow"><a href="#" class="text-success">Transport</a></td>
-									<td>Rehabilitation of Lagos Ibadan Express-way</td>
+									<td class="section-shadow"><a href="#" class="text-success">Transport</a></td>
+									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
 									<td>Julius Berger</td>
-									<td>N72,902,001,229</td>
+									<td>&#8358;72,902,001,229</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="tbl-shadow"><a href="#" class="text-success">Education</a></td>
-									<td>Building of Class Blocks</td>
+									<td class="section-shadow"><a href="#" class="text-success">Education</a></td>
+									<td class="table-overflow" >Building of Class Blocks</td>
 									<td>Samsung</td>
-									<td>N65,001,901,123</td>
+									<td>&#8358;65,001,901,123</td>
 									<td>20th,May 2020</td>
-								</tr> --}}
+								</tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
 				<!---PAGINATION--->
-				<div class="table-footer">
-					<span> 1-20 of 320 results </span>
-					<div class="pagination">
-						<a href="#">&#8249;</a>
-						<a class="active" href="#">1</a>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#">..</a>
-						<a href="#">6</a>
-						<a href="#">&#8250;</a>
-					</div>
+				<div class="table-footer d-flex align-items-center pagination1">
+				<span>1-20 of 320 results</span>
+				<div class="pagination">
+					<a id="prev" href="#">&#8249;</a>
+					<a class="active" href="#">1</a>
+					<a href="#">2</a>
+					<a href="#">3</a>
+					<a href="#">..</a>
+					<a href="#">6</a>
+					<a id="next" href="#">&#8250;</a>
 				</div>
+			</div>
 			</div>
 		</div>
 
@@ -244,28 +259,28 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td class="ministry">TOTAL AMOUNT</td>
-									<td>N12,908,400</td>
-									<td>N23,388,389</td>
-									<td>N72,902,001</td>
-									<td>N23,778,123</td>
-									<td>22,343,444</td>
+									<td class="ministry" class="table-overflow">TOTAL AMOUNT</td>
+									<td class="table-overflow">&#8358;12,908,400</td>
+									<td class="table-overflow">&#8358;23,388,389</td>
+									<td class="table-overflow">&#8358;72,902,001</td>
+									<td class="table-overflow">&#8358;23,778,123</td>
+									<td class="table-overflow">&#8358;22,343,444</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
 				<!---PAGINATION--->
-				<div class="table-footer">
-					<span> 1-20 of 320 results </span>
+				<div class="table-footer d-flex align-items-center pagination2">
+					<span>1-20 of 320 results</span>
 					<div class="pagination">
-						<a href="#">&#8249;</a>
+						<a id="prev" href="#">&#8249;</a>
 						<a class="active" href="#">1</a>
 						<a href="#">2</a>
 						<a href="#">3</a>
 						<a href="#">..</a>
 						<a href="#">6</a>
-						<a href="#">&#8250;</a>
+						<a id="next" href="#">&#8250;</a>
 					</div>
 				</div>
 			</div>
