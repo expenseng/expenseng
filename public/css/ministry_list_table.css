@@ -35,12 +35,16 @@ a:active, a:link{
 }
 
 hr{
-    margin-top: -1rem;
+    margin-top: -2.1rem;
 }
 
 .list ul > li> a{
     align-self: center;
     color: #a1a3a8;
+}
+
+.pagination-2{
+    margin: 0 7rem;
 }
 
 /* .min-table-over{
@@ -159,8 +163,10 @@ img{
 }
 
 .pagination{
+    background-color: #f1f1f1;
 float: right;
 }
+
 
 .pagination a,.mini-pagination a {
   color: black;
@@ -196,6 +202,7 @@ span.text-success{
 
 .table-div{
     overflow-x: auto;
+    scrollbar-color: #00945e;
 }
 
 .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
@@ -211,7 +218,11 @@ span.text-success{
     box-shadow: -1px -2px 2px rgba(0, 0, 0, 0.1), 1px 2px 2px rgba(0, 0, 0, 0.1);
     border-radius: 6px;
     overflow-x: auto;
+    scrollbar-color: #00945e;
     border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.nav-tabs{
+    border: 0;
 }
 
 .pagination-section{
@@ -274,7 +285,7 @@ text-align: center;
     .pagination{
         float: none;
          text-align: center;
-        margin-left: 5%;
+        margin-left: 15%;
     }
 
 }
