@@ -62,7 +62,7 @@ class PageController extends Controller
     {
         if ($id) {
             $ministry = Ministry::where('id', $id)->first();
-            return view('pages.ministry_list_tables')->with(['ministry' => $ministry]);
+            return view('pages.ministry.ministry_list_tables')->with(['ministry'=> $ministry]);
         }
     }
 
