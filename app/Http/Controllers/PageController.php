@@ -55,7 +55,7 @@ class PageController extends Controller
     public function ministryGetUrl(Request $request)
     {
         $id = $request->get('id');
-        return response()->json(['url' => url('ministry/profile/' . $id)]);
+        return response()->json(['url' => url('ministries/' . $id)]);
     }
 
     public function ministryProfileSearch($id)
