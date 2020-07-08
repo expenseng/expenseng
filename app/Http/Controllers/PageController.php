@@ -73,7 +73,7 @@ class PageController extends Controller
 
     public function companyProfile()
     {
-        return view('pages.companyprofile');
+        return view('pages.contract.contracts_awarded');
     }
 
     public function companyReport()
