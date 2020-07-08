@@ -19,7 +19,7 @@
   <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-          <img class="card-img-top" src="{{asset('images/Lagos-Ibadan-Expressway.jpg')}}" alt="Card image cap" height="140rem">                 
+          <img class="card-img-top" src="{{asset('images/express.svg')}}" alt="Card image cap">                 
         <div class="modal-header">
           <div class="row alignment">
             <div class="col-md-8">
@@ -75,10 +75,10 @@
                 </div>
 <br>
 
-                <div class="container-grid">
+                <div class="container-grid ">
                   <div>
                     <p class="small-text safe">Contracting Ministry</p>
-                    <p class="font-bold">Ministry Of Transportation</p>
+                    <p class="font-bold long-text">Ministry Of Transportation</p>
                   </div>
                   <div>
                   </div>
@@ -91,13 +91,13 @@
 <br>
                 <div class="container-grid">
                   <div>
-                    <p class="small-text safe">Contracted Company</p>
-                    <p class="font-bold">Julius Berger</p>
+                    <p class="small-text safe">Contracting Minister</p>
+                    <p class="font-bold long-text">Mohammed Musa Bello</p>
                   </div>
                   <div></div>
                   <div class="expand-div">
-                    <p class="small-text">Company's Twitter Handle</p><br>
-                    <a href="" class="social-link">@fedmintransport</a> 
+                    <p class="small-text">Minister's Twitter Handle</p><br>
+                    <a href="" class="social-link">@mohammedbello</a> 
                   </div>
                 </div>
 

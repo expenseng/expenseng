@@ -30,8 +30,16 @@ div > div.modal-body{
     align-items: center;
 }
 
+.container-grid-2, .container-grid-3{
+    grid-template-columns: 1fr 1fr;
+}
+
 .social-link{
     color: #6765e6;
+}
+
+.long-text{
+    width: 130%;
 }
 
 .small-text{
@@ -74,4 +82,9 @@ div.row.alignment{
         float: left;    
         margin: 2 1.5%;
     }         
+}
+
+
+@media only screen and (max-width: 540px) {
+        
 }
