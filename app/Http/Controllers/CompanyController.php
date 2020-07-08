@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\DB;
 class CompanyController extends Controller
 {
 
-    public function profile()
+    public function index()
     {
-        return view('pages.company.profile');
+        return view('pages.company.index');
     }
 
     public function show(Company $company)
