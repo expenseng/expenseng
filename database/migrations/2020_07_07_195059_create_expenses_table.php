@@ -18,10 +18,7 @@ class CreateExpensesTable extends Migration
             $table->bigInteger('amount_spent');
             $table->string('year');
             $table->string('month');
-            $table->string('project');
-            $table->foreign('project')
-                    ->references('project_name')
-                    ->on('budgets');
+            $table->string('project', 191);
             $table->timestamps();
         });
     }

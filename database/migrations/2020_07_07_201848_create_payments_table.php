@@ -18,7 +18,7 @@ class CreatePaymentsTable extends Migration
             $table->integer('payment_no')->index();
             $table->integer('payment_code');
             $table->string('organization');
-            $table->string('beneficiary');
+            $table->string('beneficiary', 191);
             $table->foreign('beneficiary')
                     ->references('name')
                     ->on('companies');

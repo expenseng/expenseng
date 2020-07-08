@@ -73,3 +73,4 @@
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="{{ asset('js/contract_page.js') }}" type="text/javascript"></script>
 @endsection
+@extends('layouts.master')

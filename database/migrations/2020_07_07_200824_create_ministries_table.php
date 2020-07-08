@@ -17,7 +17,9 @@ class CreateMinistriesTable extends Migration
             $table->increments('id');
             $table->integer('code')->index();
             $table->string('name');
-            $table->string('twitter_handle');
+            $table->string('shortname');
+            $table->string('twitter')->nullable();
+            $table->string('head')->nullable();
             $table->string('website');
             $table->integer('sector_id')->unsigned();
             $table->foreign('sector_id')
