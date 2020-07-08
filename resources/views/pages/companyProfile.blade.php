@@ -214,7 +214,10 @@
         </nav>
       </div>
     </div>
+    @include('partials.contract_comment')
   </div>
+
+  
 
 </section>
 <!-- Main body end -->

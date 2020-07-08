@@ -5,8 +5,8 @@
 	margin-right: px;
 }
 .navbar{
-	width: 121.6%;
-	margin-left: -120px;
+	width: 100%;
+	/* margin-left: -120px; */
 }
 .nav-link{
 	color: black !important;
@@ -15,6 +15,13 @@
 }
 .nav-item , .search{
 	background-color: #ffff !important;
+}
+
+@media (min-width: 768px){
+	.navbar-expand-md .navbar-nav {
+		width: 75%;
+		justify-content: space-between;
+	}
 }
 .nav-link:hover{
 	color: #00945E !important;
