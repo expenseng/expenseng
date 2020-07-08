@@ -59,16 +59,16 @@
     </div>
 
     <div class="nav content-navigator nav-tabs">
-      <a href="#contract" class="active" data-toggle="tab">Contract awards</a>
-      <a href="#board" data-toggle="tab">Board of Directors</a>
-      <a href="#comments" data-toggle="tab">Comments</a>
+      <a href="#contract" class="active" data-toggle="tab" role="tab">Contract awards</a>
+      <a href="#board" class="" data-toggle="tab" role="tab">Board of Directors</a>
+      <a href="#comments" class="" data-toggle="tab" role="tab">Comments</a>
     </div>
     <hr>
   </div>
 
   <!-- Section 2 -->
   <div class="tab-content">
-  <div class="section-2 container tab-pane fade show table active" id="contract">
+  <div class="section-2 container tab-pane fade show active" id="contract" role="tabpanel">
     <div class="card">
       <div class="card-body">
         <div class="card-title">
@@ -151,7 +151,7 @@
                   <span aria-hidden="true">&laquo;</span>
                 </a>
               </li>
-              <li class="page-item"><a class="page-link active" href="#">1</a></li>
+              <li class="page-item activ"><a class="page-link" href="#">1</a></li>
               <li class="page-item"><a class="page-link" href="#">2</a></li>
               <li class="page-item"><a class="page-link" href="#">3</a></li>
               <li class="page-item">
@@ -201,7 +201,7 @@
                 <span aria-hidden="true">&laquo;</span>
               </a>
             </li>
-            <li class="page-item"><a class="page-link active" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
             <li class="page-item"><a class="page-link" href="#">2</a></li>
             <li class="page-item"><a class="page-link" href="#">3</a></li>
             <li class="page-item">
@@ -218,7 +218,7 @@
 
 
 <!--Board of Directors-->
-<div class="container tab-pane fade" id="board">
+<div class="container tab-pane fade" id="board" role="tabpanel">
   <div class="container-fluid padding"  >
     <!-- cards -->
     <div class="row padding">
@@ -227,7 +227,7 @@
             <img src="{{ asset('images/row1-1.png') }}" alt="Mutiu Sunmonu" class="img-fluid">
               <div class="card-body">
                   <h1 class="card-title director-name mt-2">Mutiu Sunmonu</h1>
-                  <p class="director-title">Chairman of the board</p>
+                  <span class="director-title">Chairman of the board</span>
                   <div class="socials d-flex justify-content-center align-items-center mt-2">
                       <a href="#"><i class="fab fa-facebook"></i></a>
                       <a href="#"><i class="fab fa-twitter"></i></a>
@@ -242,7 +242,7 @@
             <img src="{{ asset('images/row1-2.png') }}" alt="Engr. Dr.Lars Richter" class="img-fluid">
               <div class="card-body">
                   <h1 class="card-title director-name mt-2">Engr. Dr.Lars Richter</h1>
-                  <p class="director-title">Managing Director</p>
+                  <span class="director-title">Managing Director</span>
                   <div class="socials d-flex justify-content-center align-items-center mt-2">
                       <a href="#"><i class="fab fa-facebook"></i></a>
                       <a href="#"><i class="fab fa-twitter"></i></a>
@@ -257,7 +257,7 @@
             <img src="{{ asset('images/row1-3.png') }}" alt="Martin Brack" class="img-fluid">
               <div class="card-body">
                   <h1 class="card-title director-name mt-2">Martin Brack</h1>
-                  <p class="director-title">Financial Director</p>
+                  <span class="director-title">Financial Director</span>
                   <div class="socials d-flex justify-content-center align-items-center mt-2">
                       <a href="#"><i class="fab fa-facebook"></i></a>
                       <a href="#"><i class="fab fa-twitter"></i></a>
@@ -272,7 +272,7 @@
             <img src="{{ asset('images/row1-4.png') }}" alt="George Marks" class="img-fluid">
               <div class="card-body">
                   <h1 class="card-title director-name mt-2">George Marks</h1>
-                  <p class="director-title">Vice Chairman</p>
+                  <span class="director-title">Vice Chairman</span>
                   <div class="socials d-flex justify-content-center align-items-center mt-2">
                       <a href="#"><i class="fab fa-facebook"></i></a>
                       <a href="#"><i class="fab fa-twitter"></i></a>
@@ -290,7 +290,7 @@
             <img src="{{ asset('images/row2-1.png') }}" alt="Ernest Chukwudi Ebi" class="img-fluid">
               <div class="card-body">
                   <h1 class="card-title director-name mt-2">Ernest Chukwudi Ebi</h1>
-                  <p class="director-title">Independent Director</p>
+                  <span class="director-title">Independent Director</span>
                   <div class="socials d-flex justify-content-center align-items-center mt-2">
                       <a href="#"><i class="fab fa-facebook"></i></a>
                       <a href="#"><i class="fab fa-twitter"></i></a>
@@ -305,7 +305,7 @@
             <img src="{{ asset('images/row2-2.png') }}" alt="Belinda Ajoke Disu" class="img-fluid">
               <div class="card-body">
                   <h1 class="card-title director-name mt-2">Belinda Ajoke Disu</h1>
-                  <p class="director-title">Non-executive Director</p>
+                  <span class="director-title">Non-executive Director</span>
                   <div class="socials d-flex justify-content-center align-items-center mt-2">
                       <a href="#"><i class="fab fa-facebook"></i></a>
                       <a href="#"><i class="fab fa-twitter"></i></a>
@@ -320,7 +320,7 @@
             <img src="{{ asset('images/row2-3.png') }}" alt="Dr. Ernest N. Azudialu" class="img-fluid">
               <div class="card-body">
                   <h1 class="card-title director-name mt-2">Dr. Ernest N. Azudialu</h1>
-                  <p class="director-title">Non-executive Director</p>
+                  <span class="director-title">Non-executive Director</span>
                   <div class="socials d-flex justify-content-center align-items-center mt-2">
                       <a href="#"><i class="fab fa-facebook"></i></a>
                       <a href="#"><i class="fab fa-twitter"></i></a>
@@ -335,7 +335,7 @@
             <img src="{{ asset('images/row2-4.png') }}" alt="Tobias Meletschus" class="img-fluid">
               <div class="card-body">
                   <h1 class="card-title director-name mt-2">Tobias Meletschus</h1>
-                  <p class="director-title">Director Corporate Dev</p>
+                  <span class="director-title">Director Corporate Development</span>
                   <div class="socials d-flex justify-content-center align-items-center mt-2">
                       <a href="#"><i class="fab fa-facebook"></i></a>
                       <a href="#"><i class="fab fa-twitter"></i></a>
@@ -353,7 +353,7 @@
             <img src="{{ asset('images/row3-1.png') }}" alt="Alhaji Zubairu I. Bayi" class="img-fluid">
               <div class="card-body">
                   <h1 class="card-title director-name mt-2">Alhaji Zubairu I. Bayi</h1>
-                  <p class="director-title">Director Administration</p>
+                  <span class="director-title">Director Administration</span>
                   <div class="socials d-flex justify-content-center align-items-center mt-2">
                       <a href="#"><i class="fab fa-facebook"></i></a>
                       <a href="#"><i class="fab fa-twitter"></i></a>
@@ -368,7 +368,7 @@
             <img src="{{ asset('images/row3-2.png') }}" alt="Karsten Hensel" class="img-fluid">
               <div class="card-body">
                   <h1 class="card-title director-name mt-2">Karsten Hensel</h1>
-                  <p class="director-title">Non-executive Director</p>
+                  <span class="director-title">Non-executive Director</span>
                   <div class="socials d-flex justify-content-center align-items-center mt-2">
                       <a href="#"><i class="fab fa-facebook"></i></a>
                       <a href="#"><i class="fab fa-twitter"></i></a>
@@ -383,7 +383,7 @@
             <img src="{{ asset('images/row3-3.png') }}" alt="Gladys O.Talabi" class="img-fluid">
               <div class="card-body">
                   <h1 class="card-title director-name mt-2">Gladys O.Talabi</h1>
-                  <p class="director-title">Non-executive Director</p>
+                  <span class="director-title">Non-executive Director</span>
                   <div class="socials d-flex justify-content-center align-items-center mt-2">
                       <a href="#"><i class="fab fa-facebook"></i></a>
                       <a href="#"><i class="fab fa-twitter"></i></a>
@@ -398,7 +398,7 @@
             <img src="{{ asset('images/row3-4.png') }}" alt="Engr. Gomi M.Sheikh" class="img-fluid">
               <div class="card-body">
                   <h1 class="card-title director-name mt-2">Engr. Gomi M.Sheikh</h1>
-                  <p class="director-title">Non-executive Director</p>
+                  <span class="director-title">Non-executive Director</span>
                   <div class="socials d-flex justify-content-center align-items-center mt-2">
                       <a href="#"><i class="fab fa-facebook"></i></a>
                       <a href="#"><i class="fab fa-twitter"></i></a>
@@ -417,7 +417,7 @@
           <img src="{{ asset('images/row4-1.png') }}" alt="Engr.Jafaru Damulak" class="img-fluid">
             <div class="card-body">
                 <h1 class="card-title director-name mt-2">Engr.Jafaru Damulak</h1>
-                <p class="director-title">Non-executive Director</p>
+                <span class="director-title">Non-executive Director</span>
                 <div class="socials d-flex justify-content-center align-items-center mt-2">
                     <a href="#"><i class="fab fa-facebook"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
@@ -432,7 +432,7 @@
 </div>
 
 <!---Comments section-->
-  <div class="container tab-pane fade" id="comments">
+  <div class="container tab-pane fade" role="tabpanel" id="comments">
     <div class="container my-4">
       <div class="card p-2">
         <div class="container">

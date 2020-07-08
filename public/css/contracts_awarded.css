@@ -1,10 +1,11 @@
 body {
   font-family: 'Lato', sans-serif;
+  overflow-x: hidden;
 }
 
-a {
+/* a {
   color: #00945E;
-}
+} */
 
 .page-link {
   color: #00945E;
@@ -45,18 +46,18 @@ a {
 
 .navigation-links ul li {
   display: inline-block;
-  margin: 2%;
+  margin: 5px;
 }
 
 .navigation-links ul li a {
+  color: #00945e;
   text-decoration: none;
-  font-size: 0.875rem;
+  font-size: 16px;
   font-weight: bold;
   transition: padding 0.3s;
 }
 
 .navigation-links ul li a:hover {
-  color: #00945e;
   padding-bottom: 0.3rem;
   border-bottom: 2px solid #00945e;
 }
@@ -64,55 +65,84 @@ a {
 /* Section 1 */
 .user-profile {
   text-align: center;
-  max-width: 768px;
+  max-width: 850px;
 }
 
-.user-profile .name img {
-  width: 40px;
+.user-profile img {
+  width: 45px;
 }
-
-.twitter-handle {
-  color: #6765EC;
+.profile-overview{
+  margin-bottom: 50px;
+}
+.name{
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+.font-weight-bold{
+  font-size: 18px;
+  font-weight: 500;
+  /* padding-left: 20px; */
+}
+.twitter-handle{
+  font-size: 20px;
+  color: #6765EC !important;
 }
 
 .twitter-handle:hover {
   text-decoration: none;
-  color: #43419d;
+  color: #43419d !important;
 }
 
 .amount-rewarded, .contract-number {
+  font-size: 20px;
+  line-height: 29px;
   color: #00945E;
 }
 
+.user-profile .year{
+  font-size: 13px;
+  line-height: 16px
+}
+
 .content-navigator {
+  color: black;
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 22px;
   max-width: 500px;
   display: flex;
   justify-content: space-between;
 }
 
 .content-navigator a {
-  margin: 0.5rem;
+  color: #A1A3A8;
 }
-
-.content-navigator a:hover {
+.content-navigator .active {
   text-decoration: none;
   color: #00945E;
 }
 
-.content-navigator a::before {
-  content: '';
-  position: absolute;
-  top: 47px;
-  width: 100%;
-  height: 2px;
-  background-color: #D5D9D8;
+.content-navigator a.active {
+  padding-bottom:14px; 
+  border-bottom: 3px solid#00945E;
 }
 
-.content-navigator a.active::before {
-  background-color: #00945E;
+.content-navigator a:hover{
+  text-decoration: none;
 }
 
 /* Section-2 */
+h5{
+  font-size: 18px;
+}
+.section-2 th{
+  font-size: 20px;
+}
+.section-2 td{
+  font-size: 17px;
+}
 .date-btn {
   background-color:  #00945E;
   color: white;
@@ -132,7 +162,9 @@ a {
 .date-btn:hover i {
   color: #00945E
 }
-
+.table{
+  margin-top: -21px;
+}
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: white;
 }
@@ -149,8 +181,33 @@ a {
 .table-pagination {
   text-align: center;
 }
-
+.table-pagination p{
+  font-size: 14px;
+}
+.table-pagination .page-item a .active{
+  color: #f1f1f1 !important;
+  background-color: #00945E !important ;
+}
+.table-pagination ul li a:hover{
+color: #f1f1f1;
+background-color: #00945E;
+}
 /* Section 3 */
+.section-3 th{
+  font-size: 16px;
+  color: #00945E;
+}
+.section-3 th:hover{
+  background-color: #00945E;
+  color: black;
+}
+.td-year{
+  font-size: 14px;
+  font-weight: bold;
+}
+.amount{
+  font-size: 13px;
+}
 .section-3 .summary {
   max-width: 768px;
   margin: auto;
@@ -163,6 +220,53 @@ a {
 @media screen and (max-width: 410px) {
   .content-navigator a::before {
     top: 71px;
+  }
+  .section-1{
+    margin-top: -30px;
+  }
+  .navigation-links ul li a{
+    font-size: 16px;
+    padding-left: -20px;
+  }
+  .name{
+    font-size: 28px;
+  }
+  .user-profile img{
+    width: 30px;
+  }
+  .user-profile .row{
+    margin-top: -20px;
+  }
+  .font-weight-bold{
+    font-size: 16px;
+  }
+  .twitter-handle, .amount-rewarded, .contract-number{
+    font-size: 20px;
+  }
+  .content-navigator{
+    font-size: 16px;
+  }
+  .content-navigator a::before {
+    content: '';
+    position: absolute;
+    top: 45px;
+
+  }
+  h5{
+    font-size: 18px;
+  }
+  .section-2 th{
+    font-size: 20px;
+  }
+  .section-2 td{
+    font-size: 16px;
+  }
+  
+  .section-3 th{
+    font-size: 16px;
+  }
+  .section-3 .td-year{
+    font-size: 14px;
   }
 }
 

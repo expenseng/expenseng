@@ -101,20 +101,25 @@ h6{
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
 }
 .director-name{
-    font-size: 20px;
+    font-size: 18px;
     line-height: 24px;
     font-weight: bold;
     display: flex;
+    justify-content: center;
     align-items: center;
     letter-spacing: 0.05em;
     color: #353A45;
 }
-.director-title{
+#board p{
+    text-align: center;
     font-size: 14px;
     line-height: 17px;
     font-weight: 600;
     letter-spacing: 0.05em;
     color: #005D3B;
+}
+.card{
+    margin-top: 20px;
 }
 .socials i{
     font-size:1.5rem;
