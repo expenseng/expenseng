@@ -1,10 +1,7 @@
 @extends('layouts.master')
 @push('css')
-<link rel="stylesheet" href="{{ asset('css/about us-header_footer.css') }}">
+<link rel="stylesheet" href="{{ asset('css/aboutus-header_footer.css') }}">
 <link rel="stylesheet" href="{{ asset('css/contract_page.css') }}">
-
-
-
 <title>FG Expense - Contracts Page</title>
 @endpush
 
@@ -73,4 +70,3 @@
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="{{ asset('js/contract_page.js') }}" type="text/javascript"></script>
 @endsection
-@extends('layouts.master')
