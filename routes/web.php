@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\PageController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,15 +28,13 @@ Route::get('/expense/ministry', 'ExpenseController@ministry')->name('expense.min
  * Ministry Endpoints
  */
 Route::get('/ministries', 'MinistryController@profile')->name('ministries');
-Route::get('/profile/ministries/{ministry}', 'MinistryController@show')->name('profile.ministries.single');
-Route::get('/profile/companies', 'CompanyController@profile')->name('profile.companies');
-Route::get('/profile/companies/{company}', 'CompanyController@show')->name('profile.companies.single');
+Route::get('/ministries/{ministry}', 'MinistryController@show')->name('ministries.single');
 
 /**
  * Contractor Endpoints
  */
 Route::get('/contractors', 'CompanyController@index')->name('contractors');
-
+Route::get('/contractors/{company}', 'CompanyController@show')->name('contractors.single');
 
 
 Route::get('/ministry-graph', 'PageController@ministryGraph')->name('ministry-graph');
