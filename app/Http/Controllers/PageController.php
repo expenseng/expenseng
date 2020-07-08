@@ -32,16 +32,6 @@ class PageController extends Controller
         return view('pages.expense-graph');
     }
 
-    public function directorBoard()
-    {
-        return view('pages.director_board');
-    }
-
-    public function blog()
-    {
-        return view('pages.blog');
-    }
-
     public function about()
     {
         return view('pages.aboutus');
@@ -49,7 +39,7 @@ class PageController extends Controller
 
     public function error404()
     {
-        return view('pages.404_error');
+        return view('pages.errors.404_error');
     }
 
     public function expenditure()
@@ -65,14 +55,14 @@ class PageController extends Controller
     public function ministryGetUrl(Request $request)
     {
         $id = $request->get('id');
-        return response()->json(['url'=>url('ministry/profile/'.$id)]);
+        return response()->json(['url' => url('ministries/' . $id)]);
     }
 
     public function ministryProfileSearch($id)
     {
         if ($id) {
             $ministry = Ministry::where('id', $id)->first();
-            return view('pages.ministry_list_tables')->with(['ministry'=> $ministry]);
+            return view('pages.ministry.ministry_list_tables')->with(['ministry'=> $ministry]);
         }
     }
 
@@ -112,13 +102,13 @@ class PageController extends Controller
 
     public function contract()
     {
-        return view('pages.contracts_awarded');
+        return view('pages.contract.contracts_awarded');
     }
 
     public function ministryList()
     {
         $ministries = Ministry::all();
-        return view('pages.ministry_list_federal_ministries')->with(['ministries'=> $ministries]);
+        return view('pages.ministry.ministry-list-profile')->with(['ministries' => $ministries]);
     }
 
     public function ministrySpending()
