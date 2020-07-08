@@ -131,6 +131,16 @@ i {
 
 
 @media(max-width:600px) {
+  .comments{
+    font-size: 18px;
+  }
+  .username, .time{
+    font-size: 16px;
+    margin-top: 5px;
+  }
+  ::placeholder{
+    font-size: 16px;
+  }
   .company-name {
     font-size: 30px;
   }
