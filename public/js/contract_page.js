@@ -1,5 +1,8 @@
 var options = {
   chart: {
+    toolbar: {
+    show: false
+  },
     height: 280,
     type: "area"
   },
@@ -34,21 +37,15 @@ var options = {
     }
   },
   xaxis: {
-    categories: [
-      'project 1',
-      'project 2',
-      'project 3',
-      'project 4',
-      'project 5',
-      'project 6',
-      'project 7'
-     
-    ],
-    show: false
+    show: false,
+    labels: {
+      show: false
+    },
+     axisBorder: {
+          show: false
+      },
   },
-  axisTicks:{
-    show: false
-  }
+
 };
 
 var chart = new ApexCharts(document.querySelector("#chart"), options);

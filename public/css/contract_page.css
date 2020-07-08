@@ -29,10 +29,7 @@
   .topnav a.active {
     border-bottom: 3px solid green;
   }
-  .search{
-      float: right;
-  }
-/* breadcrumb */
+  /* breadcrumb */
 .breadcrumb-item + .breadcrumb-item::before {
     content: ".";
     font-weight: bold;
@@ -120,4 +117,14 @@
 .pagination a:last-child {
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
+}
+.green-text-and-bottom {
+  color: #00945E;
+  border-bottom: 2px solid #00945E;
+}
+input.se {
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
 }
