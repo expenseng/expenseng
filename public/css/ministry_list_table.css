@@ -65,18 +65,14 @@ body{
     margin-top:3%;
 }
 
-.minitable{
-    border: 2px solid #00945E;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+#minitable{
+    border: 2px solid #00945E !important;
 }
 .min-tab{
     overflow-x: auto;
 }
-.minitable-inner{
-    border-right: 2px solid #00945E;
-}
+
+
 
 
 .first-th{
@@ -124,13 +120,13 @@ float: right;
 }
 
 
-.pagination a.active,.mini-pagination a.active {
+.pagination a.active {
   background-color: #00945E;
   color: white;
 }
 
 
-.pagination a:hover:not(.active),.mini-pagination a:hover:not(.active) {background-color:#00945E;}
+.pagination a:hover:not(.active) {background-color:#00945E;}
 
 th,td{
     padding: 2%;
