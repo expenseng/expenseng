@@ -35,7 +35,7 @@
         </ul>
     </div>
 </footer>
-
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script src="https://kit.fontawesome.com/ae3427d2c7.js" crossorigin="anonymous"></script>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

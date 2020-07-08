@@ -1,0 +1,123 @@
+@import url(https://fonts.googleapis.com/css2?family=Lato&display=swap);body {
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+  overflow-x: hidden;
+}
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: none;
+    overflow: hidden;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: left;
+    display: block;
+    color: #000000;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    border-bottom: 3px solid transparent;
+  }
+  
+  .topnav a:hover {
+    border-bottom: 3px solid green;
+  }
+  
+  .topnav a.active {
+    border-bottom: 3px solid green;
+  }
+  .search{
+      float: right;
+  }
+/* breadcrumb */
+.breadcrumb-item + .breadcrumb-item::before {
+    content: ".";
+    font-weight: bold;
+  }
+  .breadcrumb > .active {
+  color: #00945E;
+  text-decoration: none;
+  }
+  .breadcrumb-item a{
+      color: #00945E;
+      font-weight: bold;
+      text-decoration: none;
+  }
+.btn-group{
+    border-bottom: 1px solid lightgray;
+    margin: 3% 0;
+    vertical-align: middle;
+}
+.btn-light{
+    float: right;
+    vertical-align: middle;
+}
+.btn-group .active{
+	color: #00945E ;
+	border-bottom: 2px solid #00945E;
+}
+.button:hover{
+    color: #00945E;
+    border-bottom: 2px solid  #00945E ;
+}
+.button{
+    border: none;
+    background-color: inherit;
+    border-bottom: 2px solid lightgray;
+    color: lightgray;
+    outline: none;
+    padding-bottom: 10px;
+    
+}
+.heading{
+    display: inline;
+}
+.img{
+    display: inline;
+}
+.table-footer {
+	display: flex;
+	justify-content: space-between;
+	padding: 5px 10px;
+	margin: 10px 5px;
+}
+
+.table-footer > span {
+	margin: auto 0;
+	color: #191e29;
+}
+
+.pagination {
+	background: #f2f2f2;
+}
+
+.pagination a {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	border: 1px solid #ddd;
+}
+
+.pagination a.active {
+	background-color: #00945E !important;
+	color: white;
+	border: 1px solid #00945E !important;
+}
+
+.pagination a:hover:not(.active) {
+	background-color: #ddd;
+}
+
+.pagination a:first-child {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+.pagination a:last-child {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
