@@ -102,7 +102,7 @@ class PageController extends Controller
 
     public function contract()
     {
-        return view('pages.contracts_awarded');
+        return view('pages.contract.contracts_awarded');
     }
 
     public function ministryList()
