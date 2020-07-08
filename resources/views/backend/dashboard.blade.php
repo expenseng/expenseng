@@ -1,14 +1,14 @@
 @extends('layouts.home')
 @section('css')
-    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
-    <link href="/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/extras/bootstrap/css/bootstrap.min.css">
+    <link href="/extras/fonts/circular-std/style.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/vendor/fonts/fontawesome/css/fontawesome-all.css">
-    <link rel="stylesheet" href="/vendor/charts/chartist-bundle/chartist.css">
-    <link rel="stylesheet" href="/vendor/charts/morris-bundle/morris.css">
-    <link rel="stylesheet" href="/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="/vendor/charts/c3charts/c3.css">
-    <link rel="stylesheet" href="/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <link rel="stylesheet" href="/extras/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="/extras/charts/chartist-bundle/chartist.css">
+    <link rel="stylesheet" href="/extras/charts/morris-bundle/morris.css">
+    <link rel="stylesheet" href="/extras/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/extras/charts/c3charts/c3.css">
+    <link rel="stylesheet" href="/extras/fonts/flag-icon-css/flag-icon.min.css">
 @endsection
 <title>ExpenseNg - Dashboard</title>
 @section('content')
@@ -21,7 +21,7 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <h2 class="pageheader-title">E-commerce Dashboard Template </h2>
+                                <h2 class="pageheader-title">ExpenseNg Admin Dashboard  </h2>
                                 <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
@@ -549,24 +549,24 @@
     @section('js')
     <!-- Optional JavaScript -->
     <!-- jquery 3.3.1 -->
-    <script src="/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/extras/jquery/jquery-3.3.1.min.js"></script>
     <!-- bootstap bundle js -->
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="/extras/bootstrap/js/bootstrap.bundle.js"></script>
     <!-- slimscroll js -->
-    <script src="/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src="/extras/slimscroll/jquery.slimscroll.js"></script>
     <!-- main js -->
     <script src="/js/main-js.js"></script>
     <!-- chart chartist js -->
-    <script src="/vendor/charts/chartist-bundle/chartist.min.js"></script>
+    <script src="/extras/charts/chartist-bundle/chartist.min.js"></script>
     <!-- sparkline js -->
-    <script src="/vendor/charts/sparkline/jquery.sparkline.js"></script>
+    <script src="/extras/charts/sparkline/jquery.sparkline.js"></script>
     <!-- morris js -->
-    <script src="/vendor/charts/morris-bundle/raphael.min.js"></script>
-    <script src="/vendor/charts/morris-bundle/morris.js"></script>
+    <script src="/extras/charts/morris-bundle/raphael.min.js"></script>
+    <script src="/extras/charts/morris-bundle/morris.js"></script>
     <!-- chart c3 js -->
-    <script src="/vendor/charts/c3charts/c3.min.js"></script>
-    <script src="/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
-    <script src="/vendor/charts/c3charts/C3chartjs.js"></script>
+    <script src="/extras/charts/c3charts/c3.min.js"></script>
+    <script src="/extras/charts/c3charts/d3-5.4.0.min.js"></script>
+    <script src="/extras/charts/c3charts/C3chartjs.js"></script>
     <script src="/js/dashboard-ecommerce.js"></script>
 @endsection
  
