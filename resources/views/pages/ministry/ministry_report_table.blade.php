@@ -38,7 +38,7 @@
 					<button class="button btn-marg text-left">Project Summary</button>
 					<button class="button btn-marg text-left">Purchases Summary</button>
 					<button class="button btn-marg text-left">No Description</button>
-					<button class="button btn-marg text-left"><a href="#">Comments</a></button>
+				<button class="button btn-marg text-left"><a href="{{'ministry_report_comments'}}">Comments</a></button>
 				</div>
 				<div class="dropdown">
 					<button class="btn btn-success dropdown-toggle responsive-dropdown btn-lg dropdown-button" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
