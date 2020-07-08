@@ -27,7 +27,8 @@ class CompanyController extends Controller
         return [
             'status' => 'success',
             'message' => 'Total amounts received by various Contractors and Organsations',
-            'data'=> $yearlyTotals];
+            'data' => $yearlyTotals
+        ];
     }
 
     public function getYearlyTotal()
