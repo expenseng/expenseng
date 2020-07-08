@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Sectors;
+use App\Sector;
 use Faker\Generator as Faker;
 
-$factory->define(Sectors::class, function (Faker $faker) {
+$factory->define(Sector::class, function (Faker $faker) {
     return [
         //
         'name' =>$faker->name(2),

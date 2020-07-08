@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Budget_spending;
+use App\Expense;
 use Faker\Generator as Faker;
 
-$factory->define(Budget_spending::class, function (Faker $faker) {
+$factory->define(Expense::class, function (Faker $faker) {
     return [
         //
         'amount_spent' =>$faker->money_format->randomNumber(5),

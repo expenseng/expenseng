@@ -12,6 +12,6 @@ $factory->define(Budget::class, function (Faker $faker) {
         'project_name' =>$faker->name(2),
         'code' =>$faker->random_int,
         'year' =>$faker->year(),
-        'classification' => $faker->firstName
+        'classification' => array_rand(['Economic', 'administrative', 'Function of Govt'])
     ];
 });

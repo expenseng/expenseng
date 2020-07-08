@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Daily_payments;
+use App\Payment;
 use Faker\Generator as Faker;
 
-$factory->define(Daily_payments::class, function (Faker $faker) {
+$factory->define(Payment::class, function (Faker $faker) {
     return [
         //
         'payment_no' =>$faker->randomNumber(300),
