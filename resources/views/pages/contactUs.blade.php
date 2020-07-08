@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @push('css')
   <title>FG Expense - Contact</title>
-  <link rel="stylesheet" href="{{asset('css/aboutus-header_footer.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/header-footer.css') }}">
   <link rel="stylesheet" href="{{ asset('css/contactUs.css') }}">
 @endpush
 

@@ -3,7 +3,7 @@
 
 <link rel="stylesheet" href="{{asset('css/ministry_profile_table.css')}}" />
 <link rel="stylesheet" href="{{asset('css/ministry_profile.css')}}" />
-<link rel="stylesheet" href="{{asset('css/aboutus-header_footer.css')}}">
+<link rel="stylesheet" href="{{ asset('css/header-footer.css') }}">
 @endpush
 <title> Expenseng - Minister profile' </title>
 
@@ -11,9 +11,9 @@
 @section('content')
 <!-- nav bar-->
 <nav class="navbar navbar-expand-lg navbar-light container">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" 
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
   data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      
+
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
@@ -105,10 +105,10 @@
 
         </h5>
       </div>
-      
-        
+
+
         @include('pages.ministry.ministry_profile_chart')
-    
+
 
   </div>
     <!--end of chart-->
@@ -120,7 +120,7 @@
           <line x1="200" y1="12" x2="0" y2="10" style="stroke:#00945E;stroke-width:2" />
         </svg>
       </div>
-        
+
         <div class="row mb-2" id="card">
             <div class="col-md-2">
               <img src="/images/min_comment_img/Rectangle 320.png" class="rounded" alt="profile pics">
@@ -132,7 +132,7 @@
                     <div class="col-md-4" id="time">2mins ago</div>
                 </div>
 
-                <div class="p-2">This is so nice to read. I can see improvement in this sector. 
+                <div class="p-2">This is so nice to read. I can see improvement in this sector.
                 This is really encouraging!!!
             </div>
 
@@ -163,7 +163,7 @@
                     <div class="col-md-4" id="time">2mins ago</div>
                 </div>
 
-                <div class="p-2">This is so nice to read. I can see improvement in this sector. 
+                <div class="p-2">This is so nice to read. I can see improvement in this sector.
                 This is really encouraging!!!
             </div>
 
@@ -195,7 +195,7 @@
                     <div class="col-md-4" id="time">2mins ago</div>
                 </div>
 
-                <div class="p-2">This is so nice to read. I can see improvement in this sector. 
+                <div class="p-2">This is so nice to read. I can see improvement in this sector.
                 This is really encouraging!!!
             </div>
 
@@ -221,7 +221,7 @@
           <form>
             <div class="row">
               <div class="col-md-8 mt-2">
-                <input type="text" class="form-control" id="validationCustom02" 
+                <input type="text" class="form-control" id="validationCustom02"
                 placeholder="Write a comment" required />
                 <!--<div class="valid-feedback">
                   Looks good!

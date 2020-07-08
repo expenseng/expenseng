@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @push('css')
-<link rel="stylesheet" href="{{ asset('css/about us-header_footer.css') }}">
+<link rel="stylesheet" href="{{ asset('css/header-footer.css') }}">
 <link rel="stylesheet" href="{{ asset('css/company_profile.css') }}">
 
 <title>FG Expense - Contracts</title>
@@ -225,4 +225,3 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
 @endsection
-    
