@@ -1,0 +1,346 @@
+*,
+*::before,
+*::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --ff-primary: 'Lato';
+
+  --fw-reg: 400;
+  --fw-bold: 700;
+
+  --clr-light: #fff;
+  --clr-dark: #303030;
+  --clr-accent: #ff4b13;
+
+  --fs-h2: 2.15rem;
+  --fs-h3: 1.5rem;
+  --fs-h6: 1.1rem;
+}
+
+
+body{
+  padding: 0;
+  margin: 0;
+  font-family: 'Lato';
+  color: #353A45;
+}
+
+main{
+  /* margin-top: 4rem; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+
+/* Typography */
+
+.section-big-font{
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-bold);
+}
+
+.section-small-font{
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+}
+
+.paragraph-big-font{
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+}
+
+.paragraph-small-font{
+  font-size: var(--fs-h6);
+}
+
+main .black_tr{
+  position: absolute;
+  top: 144.16px;
+  left: 670.01px;
+}
+
+main .green_bottom{
+  position: absolute;
+  top: 435px;
+  right: 250px;
+}
+
+main .green_right{
+  position: absolute;
+  top: 292px;
+  right: 120px;
+}
+
+
+.hero{
+  margin: 8rem 0 6rem;
+}
+
+.hero .twitter{
+  max-width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.hero .twitter img{
+  width: 60%;
+  transform:translate(1px, 1px);
+  -webkit-transform:translate(1px, 1px);
+  -moz-transform:translate(1px, 1px);
+  -ms-transform:translate(1px, 1px);
+  -o-transform:translate(1px, 1px);
+}
+
+
+
+.image_div{
+  transform: translate(-30px, 0px);
+  -webkit-transform: translate(-30px, 0px);
+  -moz-transform: translate(-30px, 0px);
+  -ms-transform: translate(-30px, 0px);
+  -o-transform: translate(-30px, 0px);
+}
+
+.overlay_section{
+  margin-top: 3rem;
+  width: 100%;
+  height: 25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(0deg, #005335, #005335), url(../img/nigeria-assembly\ 1.svg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: hard-light;
+  background-attachment: fixed;
+}
+
+
+.overlay_section p{
+  margin: 0;
+  color: #FFFFFF;
+  padding: 10px;
+}
+
+.mission_vision {
+  margin-top: 7.75rem;
+}
+
+.mission_vision .row{
+  margin-bottom: 8rem;
+}
+
+.mission_img::before, .vision_img::before{
+  content: "";
+  position: absolute;
+  bottom: -64px;
+  width: 235px;
+  height: 235px;
+  background: #00945E;
+  z-index: -1;
+}
+
+.mission_img::before{
+  left: -38px;
+}
+
+.vision_img::before{
+  right: -38px;
+}
+
+.mission_img img,
+.vision_img img {
+  width: 100%;
+  height: 100%;
+}
+
+.mission_text h2,
+.vision_text h2,
+.policy h2{
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.mission_text h2::after,
+.vision_text h2::after,
+.policy h2::after{
+  content: "";
+  position: absolute;
+  background: #00945E;
+  width: 82px;
+  height: 6px;
+  bottom: -20px;
+  left: 0px;
+}
+
+.policy h2{
+  margin-bottom: 3rem;
+}
+
+.policy {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.policy h3{
+  margin-bottom: .9rem;
+}
+
+.policy p{
+  display: flex;
+  align-items: center;
+}
+
+.contents.is-visible{
+  opacity: 1;
+  margin-bottom: 3rem;
+}
+
+
+
+@media all and (max-width: 1440px){
+  :root{
+    --fs-h2: 2.15rem;
+    --fs-h3: 1.5rem;
+    --fs-h6: 1.1rem;
+  }
+}
+
+@media all and (max-width: 1024px){
+  :root{
+    --fs-h2: 2rem;
+    --fs-h3: 1.35rem;
+    --fs-h6: .95rem;
+  }
+}
+
+@media all and (max-width: 968px){
+  main .black_tr{
+    position: absolute;
+    top: 164.16px;
+    left: 470.01px;
+  }
+  
+  main .green_bottom{
+    position: absolute;
+    top: 500px;
+    right: 180px;
+  }
+  
+  main .green_right{
+    position: absolute;
+    top: 392px;
+    right: 50px;
+  }
+  .mission_img::before{
+    content: "";
+    position: absolute;
+    bottom: 104px;
+    width: 205px;
+    height: 205px;
+    background: #00945E;
+    z-index: -1;
+  }
+  .vision_img::before{
+    content: "";
+    position: absolute;
+    bottom: 54px;
+    width: 205px;
+    height: 205px;
+    background: #00945E;
+    z-index: -1;
+  }
+}
+
+@media all and (max-width: 768px){
+  :root{
+    --fs-h2: 1.85rem;
+    --fs-h3: 1.2rem;
+    --fs-h6: .8rem;
+  }
+}
+
+@media all and (max-width: 760px){
+  main .black_tr{
+    display: none;
+  }
+
+  main .green_bottom{
+    display: none;
+  }
+
+  main .green_right{
+    display: none;
+  }
+
+  .mission_img::before, .vision_img::before{
+    display: none;
+  }
+}
+
+
+@media only screen and (max-width : 480px) {
+  main .black_tr{
+    display: none;
+  }
+
+  main .green_bottom{
+    display: none;
+  }
+
+  main .green_right{
+  display: none;
+  }
+
+  .hero .right{
+    display: none;
+  }
+
+  .mission_vision .row:last-child{
+    flex-direction: column-reverse;
+    margin-top: -70px;
+  }
+
+  .mission_text, .vision_text{
+    margin-top: 100px;
+  }
+
+  .mission_text p, .vision_text p{
+
+    width: unset;
+  }
+
+  .mission_img::before, .vision_img::before{
+    display: none;
+  }
+
+  .policy {
+    margin-top: -70px;
+  }
+}
+
+
+@media all and (max-width: 425px){
+  :root{
+    --fs-h2: 1.7rem;
+    --fs-h3: 1.05rem;
+    --fs-h6: .65rem;
+  }
+}

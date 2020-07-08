@@ -1,0 +1,343 @@
+
+
+@font-face{
+    font-family: Lato;
+    src: url(../fonts/Lato.ttf);
+}
+
+body{
+    font-family: 'Lato', sans-serif;
+}
+
+h1{
+    color: #323E48;
+}
+
+a:active, a:link{
+    text-decoration: none;
+}
+
+.list ul{
+    list-style-type: none;
+    display: flex;
+    padding-left: 0;
+}
+
+.list li{
+    margin: 0 1.5rem ;
+    font-size: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #a1a3a8;
+}
+
+.list > .switch-list > li > a.active{
+    color: #00945E ;
+}
+
+hr{
+    margin-top: -2.1rem;
+}
+
+.list ul > li> a{
+    align-self: center;
+    color: #a1a3a8;
+}
+
+.pagination-2{
+    margin: 0 7rem;
+}
+
+/* .min-table-over{
+    margin-bottom: 10%;
+    margin-top: 10%;
+} */
+
+.dot{
+    font-weight: 300;
+}
+
+.col-md.mini-pagination{
+    text-align: end;
+}
+
+#header{    
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+#minwrks{
+    color:#6765EC;
+}
+
+#minwrks a{
+    text-decoration: none;
+}
+
+.amount{
+    color: #00945E;
+}
+
+.button{
+    border: none;
+    background-color: inherit;
+    border-bottom: 2px solid lightgray;
+    color: lightgray;
+    outline: none;
+    padding-bottom: 10px;
+    
+}
+
+.button:hover{
+    color: #00945E;
+    border-bottom: 2px solid  #00945E ;
+}
+
+.button:focus{
+    outline: none;
+}
+/* .btn-group{
+    border-bottom: 1px solid lightgray;
+    margin: 3% 0;
+} */
+
+.btn-marg{
+     margin-left: 0.7%;
+}
+.thead{
+    border-bottom: 2px solid #00945E;
+}
+
+
+.minitable{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+
+/*
+.minitable-inner{
+    border-right: 2px solid #00945E;
+} */
+
+
+.first-th{
+    background-color: #00945E;
+}
+
+table.table-bordered > thead > tr > th{
+    border:1px solid #00945E;
+}
+
+table.table-bordered > tbody > tr > td{
+    border: 1px solid #00945E;
+}
+
+.min-pag-parent{
+    margin-left:0;
+}
+
+.index{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+@media(max-width:575px){
+    .tab-button{
+    position: relative;
+    top: 2em;}
+}
+.button1{
+    margin-left: 10%;
+}
+.filter{
+    float: right;
+}
+
+.pagination{
+    background-color: #f1f1f1;
+float: right;
+}
+
+
+.pagination a,.mini-pagination a {
+  color: black;
+  padding: 3px 10px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+
+.pagination a.active,.mini-pagination a.active {
+  background-color: #00945E;
+  color: white;
+}
+
+
+
+.pagination a:hover:not(.active),.mini-pagination a:hover:not(.active) {background-color:#00945E;}
+
+th,td{
+    padding: 2%;
+}
+
+
+/* .back{
+    background-color: gainsboro;
+} */
+.head-cont{
+    margin-right: 10px;
+}
+
+span.text-success{
+    color: #00945E !important;
+}
+
+.table-div{
+    overflow-x: auto;
+    scrollbar-color: #00945e;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color: #f2faf7;
+ }
+
+ .table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th {
+    background-color: #fff;
+ }
+
+#table-border{
+    background: #FFFFFF;
+    box-shadow: -1px -2px 2px rgba(0, 0, 0, 0.1), 1px 2px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    overflow-x: auto;
+    scrollbar-color: #00945e;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.nav-tabs{
+    border: 0;
+}
+
+.pagination-section{
+    display: flex;
+    align-items: center;
+}
+
+@media(max-width:600px){
+
+    #header{
+        font-size: 0.65rem;
+    }
+    
+    .bio{
+    font-size: 4vw;
+}
+
+    .intro > .stats{
+        flex-direction: column;
+    }
+
+    .intro > .stats > .col{
+        margin: 1rem 0;
+    }
+
+    h1{
+        font-size: 1.5rem;
+    }
+    
+    .cards{
+    font-size: 1rem;
+        border-bottom: 2px solid #00945E;
+}
+
+.sub{
+    font-size:0.875rem;
+}
+
+
+.min-pag-parent{
+text-align: center;
+    }
+
+
+    
+    .index{
+    font-size: 4vw;
+        margin-top: 7%;
+}
+    
+    .filter{
+   font-size: 0.8rem;
+        margin-bottom: 2%;
+}
+    .result, .min-pag-parent{
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    .pagination{
+        float: none;
+         text-align: center;
+        margin-left: 15%;
+    }
+
+}
+
+@media(min-width:1000px){
+    
+    #first-btn{
+    margin-left: 7%;
+}
+/* 
+.min-pag-parent{
+    margin-left: 6%;
+} */
+.list li{
+    font-size: 1.1rem;
+}
+    
+}
+
+@media(max-width: 1000px){
+    h1{
+        font-size: 1.75rem;
+    }
+    .min-tab{
+        overflow-x: auto;
+        
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        scrollbar-width: none;
+        
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #00945E;
+    }
+}
+
+
+.centerize{
+    align-items: center;
+}
+
+.ministry-logo{
+    text-align: center;
+}
+
+.twitter-link{
+    color: #6765ec;
+}
+
+.ministry-logo-image{
+    width: 135px;
+    height: auto;
+    margin-right: 1rem;
+}
+

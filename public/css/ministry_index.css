@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+}
+body{
+    text-align: center;
+}
+.header {
+  font-size: 30px;
+  font-weight: 900;
+  color: #ffffff;
+  background: #008000;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 10px 0;
+}
+a {
+  text-decoration: none;
+  font-size: 20px;
+  color: #ffffff;
+  background: #008000;
+}
+.list{
+    font-size: large;
+    font-family: cursive;
+}
+.footer{
+    font-size: 30px;
+    color: #ffffff;
+    background: #008000;
+    padding: 10px 0;
+}

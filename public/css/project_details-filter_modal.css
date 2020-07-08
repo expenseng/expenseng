@@ -1,0 +1,90 @@
+section {
+  display: flex;
+  justify-content: center;
+}
+
+p{
+    float: left;   
+}      
+
+.social{
+    float: right;
+}
+
+div > div.modal-body{
+    padding: 1rem 1rem 1rem 0;
+}
+
+.social.tweet{
+    margin-right: 3rem;
+}
+
+.date{
+    margin-left: 1rem;
+}
+
+.container-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: center;
+    align-items: center;
+}
+
+.container-grid-2, .container-grid-3{
+    grid-template-columns: 1fr 1fr;
+}
+
+.social-link{
+    color: #6765e6;
+}
+
+.long-text{
+    width: 130%;
+}
+
+.small-text{
+    font-size: 14px;
+    margin-bottom: 0.25rem;
+}
+
+.font-bold{
+    font-weight: 600;
+    margin-bottom: -14px;
+}
+
+.safe{
+    margin-top: -0.5rem;
+}
+
+.expand-div{
+    width: 110%;
+    margin-top: 0.5rem;
+}
+
+div.row.alignment{
+    align-items: flex-end !important;
+}
+
+.fa-share-alt:before{
+    margin-left: .3rem;
+    font-size: .8rem;
+}
+
+@media only screen and (min-width: 600px) {
+ p{
+    float: left;    
+    margin: 2 1.5%;
+}      
+}
+
+@media only screen and (min-width: 768px) {
+    p{
+        float: left;    
+        margin: 2 1.5%;
+    }         
+}
+
+
+@media only screen and (max-width: 540px) {
+        
+}

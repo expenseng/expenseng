@@ -1,185 +1,252 @@
 @extends('layouts.master')
+@push('css')
 
+<link rel="stylesheet" href="{{asset('css/ministry_profile_table.css')}}" />
+<link rel="stylesheet" href="{{asset('css/ministry_profile.css')}}" />
+<link rel="stylesheet" href="{{asset('css/aboutus-header_footer.css')}}">
+@endpush
+<title> Expenseng - Minister profile' </title>
+
+<!--content-->
+@section('content')
+<!-- nav bar-->
+<nav class="navbar navbar-expand-lg navbar-light container">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" 
+  data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" id="home" href="#" style="color: #00945E;">
+        Home <span class="sr-only">(current)</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" id="profile" href="#">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="ministries" href="">Ministries</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="ministry_prof" href="#">Ministry Profile</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!--end of navbar -->
+<!--begin body -->
+<section id="main" class="container">
+<div class="row p-2 ">
+
+    <div class="text-left col-md-1">
+    <img src="/images/nglogo2.png" id="ministry_logo" class="rounded" alt="fg logo">
+    </div>
+
+    <div id="ministry_name" class=" col-md-7">
+        <p >Ministry of Works And Human Development</p>
+    </div>
+
+</div>
+
+<div class="mt-5 row">
+  <div class="p-1 col-md-4">
+
+      <div class="d-flex flex-column">
+        <div class="p-2">Ministry Twitter Handle</div>
+        <div class="p-2" id="handle">@ministryworks</div>
+        <div class="p-2">2020</div>
+      </div>
+
+  </div>
+  <div class="p-1 col-md-4">
+     <div class="d-flex flex-column ">
+        <div class="p-2">Total Amount Spent</div>
+        <div class="p-2" id="color">#38.6M</div>
+        <div class="p-2">2020</div>
+      </div>
+  </div>
+
+  <div class="p-1 col-md-4">
+     <div class="d-flex flex-column">
+        <div class="p-2">Total Number of Projects Contracted</div>
+        <div class="p-2" id="color">27</div>
+        <div class="p-2">2020</div>
+      </div>
+  </div>
+
+</div>
+
+<div id="links" class="mt-5 row">
+    <div class="col-md-4"><a href="#" class="active"><h4>Expense Summary</h4>
+        <svg height="21" width="100">
+          <line x1="200" y1="12" x2="0" y2="10" style="stroke: #00945E;stroke-width:2" />
+        </svg>
+    </a>
+        <!--<div id="line"></div>-->
+    </div>
+
+    <div class="col-md-4"><a href="#"><h4>Cabinet </h4>
+        <svg height="21" width="50">
+          <line x1="200" y1="12" x2="0" y2="10" style="stroke:grey;stroke-width:2" />
+        </svg>
+    </a>
+        <!--<div id="line"></div>-->
+    </div>
+</div>
+
+<div class="mb-5 mt-3 row">
+    <div class="col-md-8">
+      <div class="mb-4 ">
+        <h5 id="charts">Charts <i class="fas fa-caret-down"></i>
+
+        </h5>
+      </div>
+      
+        
+        @include('pages.ministry.ministry_profile_chart')
     
-    @section('content')
-        <p id="header"> Ministry Profile</p>
-        <div class="banner">
-            <div class="jumbotron jumbotron-fluid">
-                <div class="container">
-                    <img src="{{ asset('img/image_7.png') }}" width="15%" height="15%"> 
-                    <h3 class="banner-text"> Ministry of Works and Human Development</h3>
-                </div>
-                <button class="button1 tab-button tablinks" onclick="openCity(event, 'Profile')"> 
-                        Profile 
-                </button> 
-                <button class="tab-button tablinks" onclick="openCity(event, 'Table')">Projects</button> 
+
+  </div>
+    <!--end of chart-->
+    <!--begin comments-->
+    <div class="col-md-4 ">
+      <div class="mb-4">
+        <h6 id="comments" >COMMENTS </h6>
+        <svg height="15" width="25">
+          <line x1="200" y1="12" x2="0" y2="10" style="stroke:#00945E;stroke-width:2" />
+        </svg>
+      </div>
+        
+        <div class="row mb-2" id="card">
+            <div class="col-md-2">
+              <img src="/images/min_comment_img/Rectangle 320.png" class="rounded" alt="profile pics">
             </div>
+            <div class="col-md-8">
+            <div class="d-flex flex-column">
+                <div class="p-2 row">
+                    <div class="col-md-8 " id="comment_name">James Emmanuel</div>
+                    <div class="col-md-4" id="time">2mins ago</div>
+                </div>
+
+                <div class="p-2">This is so nice to read. I can see improvement in this sector. 
+                This is really encouraging!!!
+            </div>
+
+                <div class="p-2 row" >
+                    <div class="col-md-3">
+                        <img src="/images/min_comment_img/Vector.png" alt="like"/> 3
+                    </div>
+                    <div class="col-md-3">
+                    <img src="/images/min_comment_img/Vector(1).png" alt="downvote" /> 0
+                    </div>
+                    <div class="col-md-6">
+                    <img src="/images/min_comment_img/Vector(2).png" alt="reply"/> <d>Reply</d>
+                    </div>
+
+                </div>
+            </div>
+            </div>
+            <div class="col-md-2 mt-1">...</div>
         </div>
-    
-        <!-- Profile   -->
-    <div id="Profile" class="tabcontent">
-        <div class="container">
-         <h6 class="head-names"><img src="{{ asset('img/Vector.png') }}"> @minworksng</h6>
-            <p> The Federal Ministry of Agriculture and Rural Development is a ministry of the Nigerian government that regulates agricultural<br> research, agriculture and natural resources, forestry and veterinary research throughout Nigeria.</p>
-         
-            <h5> Cabinet</h5>
-            <div class="row">
-            <div class="col-md-6">
-                <div class="bio1">
-                    <img src="{{ asset('img/IMG-20200618-WA0144.jpg')}} class="avatar"> 
-                    <p class="head-names">Alhaji Muhammed Sabo Nanono <br> Honourable Minister of Works and Human Development<br> 
-                        <img src="{{ asset('img/Vector.png') }}"><span class="head-names">@NanonoSabo</span></p>
+        <!--end of comment-->
+
+        <div class="row mb-2" id="card">
+            <div class="col-md-2"><img src="/images/min_comment_img/Rectangle 320.png" class="rounded" alt="profile pics"></div>
+            <div class="col-md-8">
+            <div class="d-flex flex-column">
+                <div class="p-2 row">
+                    <div class="col-md-8" id="comment_name">James Emmanuel</div>
+                    <div class="col-md-4" id="time">2mins ago</div>
                 </div>
-                </div>
-                
-                <div class="col-md-6">
-                    
-                <div class="bio2">
-                    <img src="{{ asset('img/IMG-20200618-WA0147.jpg')}}" class="avatar"> <p class="head-names">Alhaji Amin Babandi  <br> Director - Federal Department of Works and Human Development<br> <img src="{{ asset('img/Vector.png') }}"><span class="head-names">@ababandi</span></p>
-                    
+
+                <div class="p-2">This is so nice to read. I can see improvement in this sector. 
+                This is really encouraging!!!
+            </div>
+
+                <div class="p-2 row">
+                    <div class="col-md-3">
+                        <img src="/images/min_comment_img/Vector.png" alt="like"/> 3
                     </div>
-                
-                </div>
-            
-            </div>
-            
-            <div class="row">
-                <div class="col">
-                    <div class="bio3">
-            <img src="{{ asset('img/IMG-20200618-WA0143.jpg')}}" class="avatar">  <p  class="head-names">Mustapha Baba Shehuri <br>Honourable Minister of State, Works and Human Development<br> <img src="{{ asset('img/Vector.png') }}"> <span class="head-names">@shehuri_baba</span></p>
+                    <div class="col-md-3">
+                    <img src="/images/min_comment_img/Vector(1).png" alt="downvote" /> 0
                     </div>
+                    <div class="col-md-6">
+                    <img src="/images/min_comment_img/Vector(2).png" alt="reply"/> <d>Reply</d>
+                    </div>
+
+                </div>
             </div>
             </div>
-         </div>
-             </div>
-         
-     <!--    Table-->
-          <div id="Table" class="tabcontent">
-              
-              <div id="funds">Total Funds Spent  <span id="deep-funds">N159,428,102,500,00</span></div>
-              
-              <div class="icon"> <div><img src="{{ asset('img/apps_24px.png') }}"> <img src="{{ asset('img/vector__1_.png') }}"></div></div>
-             <div id="table-border"> 
-         <div class="container">
-             <div class="row">
-                 <div class="col">
-             <h3 class="index"> Ministry Expenditure</h1>
-             </div>
-                 
-                 <div class="col">
-                 <button type="button" class="btn btn-success filter"> Filter  <img src="{{ asset('img/vector__2_.png') }}"> </button>
-                 </div>
-             </div>
-         </div>
-         
-         
-         <div class="container">
-             <div class="table-div">
-         <table class="table">
-             <thead>
-             <tr>
-                 <th scope="col">Ministry</th>
-                 <th scope="col">Project</th>
-                 <th scope="col">Company</th>
-                 <th scope="col">Amount</th>
-                 <th scope="col">Date</th>
-                 </tr>
-             </thead>
-             
-             <tbody>
-             <tr>
-                 <td class="index"> Transport</td>
-                  <td> Rehabilitation of Lago..</td>
-                  <td> Julius Berger</td>
-                  <td> N72,902,001.229</td>
-                  <td> 20th, May 2020</td>
-                 </tr>
-                 <tr class="back">
-                 <td class="index"> Education</td>
-                  <td> Building of Class Blocks</td>
-                  <td> Samsung</td>
-                  <td> N65,001,901.123</td>
-                  <td> 20th, May 2020</td>
-                 </tr>
-                 <tr>
-                 <td class="index"> Energy</td>
-                  <td> Rehabilitation of Lago..</td>
-                  <td> CCNCC</td>
-                  <td> N62,899,012.111</td>
-                  <td> 20th, May 2020</td>
-                 </tr>
-                 <tr class="back">
-                 <td class="index"> Labour</td>
-                  <td> Building of Class Blocks</td>
-                  <td> HNG</td>
-                  <td> N56,901,889.101</td>
-                  <td> 20th, May 2020</td>
-                 </tr>
-                 <tr>
-                 <td class="index"> Agriculture</td>
-                  <td> Building of Class Blocks</td>
-                  <td> Huawei</td>
-                  <td> N72,902,001.229</td>
-                  <td> 20th, May 2020</td>
-                 </tr>
-                 <tr class="back">
-                 <td class="index"> Sector</td>
-                  <td> Building of Class Blocks</td>
-                  <td> MTN</td>
-                  <td> Amount</td>
-                  <td> 20th, May 2020</td>
-                 </tr>
-                 <tr >
-                 <td class="index"> Sector</td>
-                  <td> Building of Class Blocks</td>
-                  <td> Amount</td>
-                  <td> Amount</td>
-                  <td> 20th, May 2020</td>
-                 </tr>
-                 <tr class="back">
-                 <td class="index"> Sector</td>
-                  <td> Building of Class Blocks</td>
-                  <td> Amount</td>
-                  <td> Amount</td>
-                  <td> 20th, May 2020</td>
-                 </tr>
-                 <tr>
-                 <td class="index"> Sector</td>
-                  <td> Building of Class Blocks</td>
-                  <td> Amount</td>
-                  <td> Amount</td>
-                  <td> 20th, May 2020</td>
-                 </tr>
-                 <tr class="back">
-                 <td class="index"> Sector</td>
-                  <td> Building of Class Blocks</td>
-                  <td> Amount</td>
-                  <td> Amount</td>
-                  <td> 20th, May 2020</td>
-                 </tr>
-             </tbody>
-             
-             </table>
-                 </div>
-             
-             <div class="row">
-             <div class="col"> 1-20 of 320 results</div>
-                  <div class="col"> <div class="pagination">
-       <a href="#">&laquo;</a>
-       <a class="active" href="#">1</a>
-       <a href="#">2</a>
-       <a href="#">3</a>
-       <a href="#">4</a>
-       <a href="#">...</a>
-       <a href="#">6</a>
-       <a href="#">&raquo;</a>
-     </div></div>
-             
-             </div>
-         
-         </div>
-              
-         </div>
-         
+            <div class="col-md-2 mt-1">...</div>
+        </div>
+
+        <!--end of comment-->
+
+        <div class="row mb-2" id="card">
+            <div class="col-md-2"><img src="/images/min_comment_img/Rectangle 320.png" class="rounded" alt="profile pics"></div>
+            <div class="col-md-8">
+            <div class="d-flex flex-column">
+                <div class="p-2 row">
+                    <div class="col-md-8" id="comment_name">James Emmanuel</div>
+                    <div class="col-md-4" id="time">2mins ago</div>
+                </div>
+
+                <div class="p-2">This is so nice to read. I can see improvement in this sector. 
+                This is really encouraging!!!
+            </div>
+
+                <div class="p-2 row">
+                    <div class="col-md-3">
+                        <img src="/images/min_comment_img/Vector.png" alt="like"/> 3
+                    </div>
+                    <div class="col-md-3">
+                    <img src="/images/min_comment_img/Vector(1).png" alt="downvote" /> 0
+                    </div>
+                    <div class="col-md-6">
+                    <img src="/images/min_comment_img/Vector(2).png" alt="reply"/> <d>Reply</d>
+                    </div>
+
+                </div>
+            </div>
+            </div>
+            <div class="col-md-2 mt-1">...</div>
+        </div>
+
+        <!-- end of comment-->
+        <div id="commentbox">
+          <form>
+            <div class="row">
+              <div class="col-md-8 mt-2">
+                <input type="text" class="form-control" id="validationCustom02" 
+                placeholder="Write a comment" required />
+                <!--<div class="valid-feedback">
+                  Looks good!
+                </div>-->
               </div>
-    @endsection
+
+              <div class="col-md-2 pt-2 pr-3">
+                <img src="/images/min_comment_img/smile.png" alt="emoji"/>
+              </div>
+
+              <div class="col-md-2 p-2">
+                <img src="/images/min_comment_img/image.png" alt="image"/>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+</div>
+</section>
+
+@endsection
+@section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/expense-graph.js"></script>
+<script src="/js/app.js"> </script>
+@endsection
