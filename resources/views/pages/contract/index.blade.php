@@ -57,15 +57,8 @@
       @endforeach        
     </div>
     <div class="table-footer">
-      <span> 1-20 of 320 results </span>
       <div class="pagination">
-        <a href="#">&#8249;</a>
-        <a class="active" href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">..</a>
-        <a href="#">6</a>
-        <a href="#">&#8250;</a>
+        {{ $companies->links() }}
       </div>
     </div>
 </div>
