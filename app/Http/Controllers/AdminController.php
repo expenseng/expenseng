@@ -44,7 +44,7 @@ class AdminController extends Controller
                 'company_ceo' => 'required',
                 'ceo_handle' => 'required'
             ]
-        ); 
+        );
 
         $new_company = new Company();
         $new_company->name = $request->company_name;
