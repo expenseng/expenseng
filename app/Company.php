@@ -13,11 +13,6 @@ class Company extends Model
         return $this->hasMany(Expense::class);
     }
 
-    public function people()
-    {
-        return $this->hasMany(People::class);
-    }
-
     /**
      * Helper methods
      */
