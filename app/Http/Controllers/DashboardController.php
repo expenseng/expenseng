@@ -29,13 +29,13 @@ class DashboardController extends Controller
         return view('backend.dashboard');
     }
 
-     public function createExpense(Request $request)
+    public function createExpense(Request $request)
     {
         $this->validate($request, [
-            'amount_spent' => 'required',
-            'year' => 'required',
-            'month' => 'required',
-            'project' => 'required'
+           'amount_spent' => 'required',
+           'year' => 'required',
+           'month' => 'required',
+           'project' => 'required'
         ]);
         
         $input = $request->all();
@@ -44,14 +44,14 @@ class DashboardController extends Controller
         return redirect()->back();
     }
 
-     public function createCompany(Request $request)
+    public function createCompany(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'shortname' => 'required',
-            'industry' => 'required',
-            'ceo' => 'required',
-            'twitter' => 'required'
+           'name' => 'required',
+           'shortname' => 'required',
+           'industry' => 'required',
+           'ceo' => 'required',
+           'twitter' => 'required'
         ]);
         
         $input = $request->all();
