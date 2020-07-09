@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
 {
-    //
+    
     public function report(){
         return view('pages.expense.index');
     }

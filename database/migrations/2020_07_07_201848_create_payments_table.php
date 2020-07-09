@@ -15,13 +15,10 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('payment_no')->index();
-            $table->integer('payment_code');
+            $table->string('payment_no');
+            $table->string('payment_code')->index();
             $table->string('organization');
-            $table->string('beneficiary');
-            $table->foreign('beneficiary')
-                    ->references('name')
-                    ->on('companies');
+            $table->string('beneficiary', 191);
             $table->bigInteger('amount');
             $table->date('payment_date');
             $table->string('description');
