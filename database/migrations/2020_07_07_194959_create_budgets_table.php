@@ -17,7 +17,7 @@ class CreateBudgetsTable extends Migration
             $table->increments('id');
             $table->bigInteger('amount');
             $table->string('project_name', 191);
-            $table->string('code')->index();
+            $table->string('code', 191)->index();
             $table->string('year');
             $table->string('classification'); //economic, admistrative, functions of govt
             $table->timestamps();
