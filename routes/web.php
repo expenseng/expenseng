@@ -66,8 +66,3 @@ Route::prefix('admin')->group(function () {
     Route::get('/companies',  'CompanyController@adminIndex');
     
 });
-
-
-Route::group(['middleware' => ['auth']], function () {
-    Route::post('/companies', 'CompanyController@store');
-});
