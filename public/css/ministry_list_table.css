@@ -115,7 +115,8 @@ hr{
 
 
 .minitable td{
-    min-width: 90px;
+    min-width: 100px;
+    padding: 0 5px;
 }
 
 

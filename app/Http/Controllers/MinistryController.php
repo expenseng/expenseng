@@ -57,7 +57,7 @@ class MinistryController extends Controller
             'code' => 'required',
             'name' => 'required',
             'shortname' => 'required',
-            'twitter_handle' => 'required',
+            'twitter' => 'required',
             'website' => 'required',
             'sector_id' => 'required'
         ]);
@@ -121,7 +121,7 @@ class MinistryController extends Controller
             'code' => 'required',
             'name' => 'required',
             'shortname' => 'required',
-            'twitter_handle' => 'required',
+            'twitter' => 'required',
             'website' => 'required',
             'sector_id' => 'required'
         ]);

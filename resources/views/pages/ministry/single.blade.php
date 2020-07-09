@@ -43,9 +43,9 @@
             <p>Ministry Twitter Handle</p>
             
             @php
-                $ministryHandle = substr($ministry->twitter_handle, 1)   
+                $ministryHandle = substr($ministry->twitter, 1)   
             @endphp
-            <div class="sub"><h4 id="minwrks" class="twitter-link"> <a href="{!! url("https://twitter.com/$ministryHandle") !!}">{{$ministry->twitter_handle}}</a></h4>
+            <div class="sub"><h4 id="minwrks" class="twitter-link"> <a href="{!! url("https://twitter.com/$ministryHandle") !!}">{{$ministry->twitter}}</a></h4>
                  <small>{{date('Y')}}</small></div>
         </div>
         <div class="col">
@@ -206,7 +206,7 @@
             @if ($cabinets)
                 @foreach($cabinets as $cabinet)
                 @php
-                    $ministerHandle = substr($cabinet->twitter_handle, 1)
+                    $ministerHandle = substr($cabinet->twitter, 1)
                 @endphp
             <div class="col-lg-3 card border-top-0 border-left-0 border-right-0">
                 <div class="card-img" style="display:flex; justify-content: center">

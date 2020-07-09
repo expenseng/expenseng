@@ -50,8 +50,8 @@ $(document).ready(function(){
           let ministryCards = '';
           if(data.length>0){    
                 data.forEach(ministry=>{
-                    const {id, name} = ministry;
-                    ministryCards += card(id, name);
+                    const {shortname, name} = ministry;
+                    ministryCards += card(shortname, name);
                 })
                 
                 $('#cards-container').html(ministryCards);
@@ -80,9 +80,9 @@ $(document).ready(function(){
                 if(data.length>0){
                   suggestions = `<ul class="dropdown-menu" style="display:block; position:absolute">`;
                     data.forEach(ministry=>{
-                        const {id, name} = ministry;
+                        const {shortname, name} = ministry;
                         suggestions += `<li class="pb-2 px-3"><a href="#" class="text-muted "> ${name}</a></li>`
-                        ministryCards += card(id, name);
+                        ministryCards += card(shortname, name);
                     })
                       suggestions += '</ul>';
                       $('#ministryList').html(suggestions).fadeIn();
@@ -114,8 +114,8 @@ $(document).ready(function(){
                 console.log(data)
                   data = JSON.parse(data)
                   console.log(data)
-                  const {id, name} = data[0]
-                  $('#cards-container').html(card(id, name))
+                  const {shortname, name} = data[0]
+                  $('#cards-container').html(card(shortname, name))
               }
 
           })
