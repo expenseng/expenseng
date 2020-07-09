@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'PageController@about')->name('about');
@@ -41,11 +40,9 @@ Route::post('/ministries/autocomplete', 'MinistryController@autocomplete')->name
 Route::get('/contractors', 'CompanyController@index')->name('contractors');
 Route::get('/contractors/{company}', 'CompanyController@show')->name('contractors.single');
 
-
 Route::get('/ministry-graph', 'PageController@ministryGraph')->name('ministry-graph');
 Route::get('/expense-graph', 'PageController@expenseGraph')->name('expense-graph');
 Route::get('/project-modal', 'PageController@projectModal')->name('project-modal');
-
 
 Route::get('/ministry/details', 'MinistrySearchController@show')->name('get_ministry_details');
 Route::get('/ministry/all', 'MinistrySearchController@index')->name('ministry_all');
@@ -66,6 +63,10 @@ Route::post('/admin/expense/create', 'DashboardController@createExpense');
 // });
 
 
+
+Route::get('/companies', ['middleware' => 'auth', 'uses' => 'CompanyController@adminIndex']);
+
+Route::get('/companies/{company}', ['middleware' => 'auth', 'uses' => 'CompanyController@adminShow']);
 Route::get('/admin/company/create', 'CompanyController@create')->name('company.create');
 Route::post('/admin/company/create', 'CompanyController@createCompany')->name('create.company');
 Route::get('/admin/company/view', 'CompanyController@viewCompanies')->name('company.view');
