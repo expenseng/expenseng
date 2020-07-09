@@ -3,10 +3,18 @@
    font-family: 'Lato', sans-serif;
 }
 
-.banner{
+.background{
     background: linear-gradient(0deg, rgba(50, 62, 72, 0.4), rgba(50, 62, 72, 0.4)), linear-gradient(0deg, rgba(0, 148, 94, 0.32), rgba(0, 148, 94, 0.32)), url(../images/flag.jpg);
+    
+}
+
+.arrow-right,
+.arrow-left{
+    margin-top: 1rem;
+}
+
+.banner{
     height: 90%;
-    padding: 1rem 0rem 1rem 2rem;
     color: white;
     margin-bottom: 5rem;
 }
@@ -387,9 +395,7 @@ p.profile{
    .tweet{
        width: 35%;
    }
-   .banner{
-    padding: 2rem 0rem 2rem 4rem;
-   }
+   
    .ministry{
        width: 80%;
    }
