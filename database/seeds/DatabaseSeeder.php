@@ -5,6 +5,8 @@ include 'CompanySeeder.php';
 include 'MinistrySeeder.php';
 include 'PaymentSeeder.php';
 include 'SectorSeeder.php';
+include 'ExpenseSeeder.php';
+include 'BudgetSeeder.php';
 
 class DatabaseSeeder extends Seeder
 {

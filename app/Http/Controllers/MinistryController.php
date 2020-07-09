@@ -73,9 +73,15 @@ class MinistryController extends Controller
      */
     public function show(Ministry $ministry)
     {     
+        $yr = ["2020" => 4020, "2019" => 3019, "2018" => 5018, "2017" => 6017 ];
+
             $code = $ministry->code;
             $cabinets = $ministry->cabinet;
-            $payments = DB::table('payments')->where('payment_code', 'LIKE', "$code%")->get();
+            $payments = DB::table('payments')
+                        ->where('payment_code', 'LIKE', "$code%")
+                        ->orderby('payment_date', 'desc')
+                        ->get();
+
             function getTrend($payments){
                 $currentYr = date("Y");
                 $years = [$currentYr, $currentYr - 1, $currentYr - 2, $currentYr - 3, $currentYr - 4];

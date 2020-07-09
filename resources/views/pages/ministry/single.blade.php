@@ -159,23 +159,21 @@
                                 <table class="minitable table-bordered">
                                     <thead class="thead">
                                         <th class="first-th text-white"> YEAR</th>
-                                        <th> 2016 </th>
-                                        <th class="minitable-inner"> 2017</th>
-                                        <th> 2018</th>
-                                        <th>2019</th>
-                                        <th> 2020</th>
+                                       
+                                        @foreach($trend as $key => $value)
+                                            <th>{{$key}}</th>
+                                        @endforeach
+                                       
                                     </thead>
 
                                     <tbody>
                                         <tr>
                                             <td class="text-success"> TOTAL<br>AMOUNT </td>
-                                            <td>₦{{ number_format($trend["2016"]) }}</td>
-
-                                            <td class="minitable-inner">₦{{ number_format($trend["2017"]) }}</td>
-
-                                            <td>₦{{ number_format($trend["2018"]) }}</td>
-                                            <td>₦{{ number_format($trend["2019"]) }}</td>
-                                            <td>₦{{ number_format($trend["2020"]) }}</td>
+                                            
+                                            @foreach($trend as $key => $value)
+                                             <td>₦{{ number_format($value) }}</td>
+                                            @endforeach
+    
                                         </tr>
                                     </tbody>
                                 </table>
