@@ -83,7 +83,8 @@ class BudgetController extends Controller
         //
     }
 
-    public function health(){
+    public function health()
+    {
         $response = [
             [
                 'label' => 'Health',
