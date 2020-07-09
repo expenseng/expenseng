@@ -28,4 +28,9 @@ class Company extends Model
         return strlen($this->name) > 10 ? 
                 explode(" ", $this->name)[0] : strtolower(str_replace(" ", "", $this->name));
     }
+
+    public function getRouteKeyName()
+    {
+        return 'shortname';
+    }
 }

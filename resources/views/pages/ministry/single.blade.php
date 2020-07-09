@@ -208,7 +208,7 @@
             <div class="col-lg-3 card border-top-0 border-left-0 border-right-0">
                 <div class="card-img" style="display:flex; justify-content: center">
                     {{-- <img src="{{ asset('images/img1.png') }}" class="img-fluid" alt="Engr. Jafaru Damaluk"> --}}
-                    <img src="{{$cabinet->avatar}}" class="img-fluid" alt="Engr. Jafaru Damaluk">
+                    <img src="{{$cabinet->avatar}}" class="img-fluid" alt="{{ $cabinet->name }}">
                 </div>
                 <div class="card-body">
                     <div class="card-title">
