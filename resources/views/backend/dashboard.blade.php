@@ -8,6 +8,26 @@
 <div class="dashboard-wrapper">
             <div class="dashboard-ecommerce">
                 <div class="container-fluid dashboard-content ">
+                 <!-- ============================================================== -->
+                    <!-- Flash Messages  -->
+                    <!-- ============================================================== -->
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            @if($errors->any())
+                                <div class="alert alert-danger">
+                                    @foreach($errors->all() as $error)
+                                        <p>{{ $error }}</p>
+                                    @endforeach
+                                </div>
+                            @endif
+
+                            @if(Session::has('flash_message'))
+                                <div class="alert alert-success">
+                                    {{ Session::get('flash_message') }}
+                                </div>
+                            @endif
+                        </div>
+                    </div>
                     <!-- ============================================================== -->
                     <!-- pageheader  -->
                     <!-- ============================================================== -->
@@ -524,6 +544,66 @@
                             <!-- ============================================================== -->
                             <!-- end sales traffice country source  -->
                             <!-- ============================================================== -->
+                        </div>
+
+
+                        <div class="row pt-4" style="background: white">
+                            <div class="col-md-12"> <h2 class="card-header">Quick Forms</h2>  </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <h5 class="card-header">Create New Expenses</h5>
+                                    <div class="card-body">
+                                        {{ Form::open(array('action' => 'DashboardController@createExpense')) }}
+
+                                            {{ Form::label('Amount', 'Amount', ['class' => 'label-for-amount']) }}
+                                            {{ Form::text('amount_spent', '', array_merge(['class' => 'form-control'])) }}
+
+                                            {{ Form::label('Year', 'Year', ['class' => 'label-for-year']) }}
+                                            {{ Form::text('year', '', array_merge(['class' => 'form-control'])) }}
+                                            
+                                            {{ Form::label('Month', 'Month', ['class' => 'label-for-month']) }}
+                                            {{ Form::text('month', '', array_merge(['class' => 'form-control'])) }}
+                                           
+                                            {{ Form::label('Project', 'Project', ['class' => 'label-for-summary']) }}
+                                            {{ Form::textarea('project', '', array_merge(['class' => 'form-control'])) }}
+                                           
+                                            {{ Form::submit('Create', array_merge(['class' => 'btn btn-primary'])) }}
+                                            
+                                       {{ Form::close() }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <h5 class="card-header">Create New Company</h5>
+                                    <div class="card-body p-3 form-group">
+                                       {{ Form::open(array('action' => 'DashboardController@createCompany')) }}
+                                            {{Form::token()}}
+                                            <label class="label-for-name" >Name</label>
+                                            <input type="text" required = 'required' name="name" id="name" class="form-control">
+                                            <p id="nameErr" class="text-danger"></p>
+
+                                            <label class="label-for-shortname">Short Name</label>
+                                            <input type="text"  required = 'required' name="shortname" id="short_name" class="form-control">
+                                            <p id="snameErr" class="text-danger"></p>
+
+                                            <label class="label-for-email">Industry</label>
+                                            <input type="text"  name="industry" id="industry" class="form-control">
+                                            <p id="industryErr" class="text-danger"></p>
+
+                                            <label class="label-for-email">CEO</label>
+                                            <input type="ceo"  name="ceo" id="ceo" class="form-control">
+                                            <p id="ceoErr" class="text-danger"></p>
+
+                                            <label class="label-for-email">Twitter</label>
+                                            <input type="twitter"  name="twitter" id="twitter" class="form-control">
+                                            <p id="twitterErr" class="text-danger"></p>
+
+                                            <button type="submit" value="Add" class="btn btn-primary" name="addCompany" onmouseover="validateAddNew('submit')">Add</button>
+                                         {{ Form::close() }}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

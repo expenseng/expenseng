@@ -54,4 +54,12 @@ Route::get('/ministry/getUrl', 'PageController@ministryGetUrl')->name('ministry_
 
 Auth::routes();
 
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+/**
+ * Admin Routes
+ */
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');  // Matches The "/admin/users" URL
+    Route::post('/create_expense', 'DashboardController@createExpense');
+    Route::post('/create_company', 'DashboardController@createCompany');
+});
+
