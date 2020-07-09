@@ -49,7 +49,7 @@
 
                         <div class="dropdown-menu drop-search" aria-labelledby="dropdownMenuLink">
                           <a class="dropdown-item dropdown-item-search" href="#">
-                            <input class="form-control dropdown-item-search-control" type="text" placeholder="&#xF002 &nbsp Search for reports, profiles and projects" aria-label="Search">
+                            <input class="form-control dropdown-item-search-control" type="text" placeholder="&#xF002 Search for reports, profiles and projects" aria-label="Search">
                           </a>
                         </div>
                       </div>

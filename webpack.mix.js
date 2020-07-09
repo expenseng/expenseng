@@ -16,4 +16,3 @@ mix.js('resources/js/app.js', 'public/js')
 
 mix.sass('resources/sass/header-footer.scss', 'public/css');
 
-mix.js('resources/js/navbar.js', 'public/js')

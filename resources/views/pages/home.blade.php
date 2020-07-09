@@ -20,11 +20,13 @@
         </div>
         <div class="carets my-4" id="caret-alt">
         <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left">
-        <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-right">
+        <img src="{{asset('images/angle-right.svg')}}" alt="" class="arrow-right">
         </div>
         <div class="gallery">
           <div class="card1 card">
-              <p class="tag">New</p>
+            <div class="tag">
+              <p>New</p>
+            </div>
             <div class="project">
                   <p>Contruction of Lagos-Ibadan Express road <br>
                   Ministry of Power, Works and Housing</p>
@@ -35,7 +37,9 @@
             </div>
           </div>
           <div class="card2 card">
-            <p class="tag">New</p>
+            <div class="tag">
+              <p>New</p>
+            </div>
             <div class="project">
               <p>Contruction of Lagos-Ibadan Express road <br>
                 Ministry of Power, Works and Housing</p>
@@ -52,7 +56,7 @@
   @endsection
 
   @section('content')
-    <section id="main">     
+    <section id="main">
        <!-- Expenses section -->
        <p class="label">Latest Government Expenses</p>
        <div class="p-3 p-lg-5">
