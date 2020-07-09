@@ -52,4 +52,30 @@ class CompanyController extends Controller
             ->get();
         return $monthlyTotals;
     }
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    /**
+     * Display a form for creating companies.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create () 
+    {
+        return view('backend.company.create');
+    }
+
+    /**
+     * Display a listing of the companies.
+     *
+     * @return view
+     */
+    public function viewCompanies ()
+    {
+        $companies = Company::all();
+
+        return view('backend.company.view')->with(['companies' => $companies]);
+    }
 }

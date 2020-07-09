@@ -56,6 +56,5 @@ Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin/company/create', 'CompanyController@create')->name('company.create');
+Route::get('/admin/company/view', 'CompanyController@viewCompanies')->name('company.view');

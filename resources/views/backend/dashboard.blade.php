@@ -542,23 +542,23 @@
     @section('js')
     <!-- Optional JavaScript -->
     <!-- jquery 3.3.1 -->
-    <script src="/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/extras/jquery/jquery-3.3.1.min.js"></script>
     <!-- bootstap bundle js -->
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="/extras/bootstrap/js/bootstrap.bundle.js"></script>
     <!-- slimscroll js -->
-    <script src="/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src="/extras/slimscroll/jquery.slimscroll.js"></script>
     <!-- main js -->
     <script src="/js/main-js.js"></script>
     <!-- chart chartist js -->
-    <script src="/vendor/charts/chartist-bundle/chartist.min.js"></script>
+    <script src="/extras/charts/chartist-bundle/chartist.min.js"></script>
     <!-- sparkline js -->
-    <script src="/vendor/charts/sparkline/jquery.sparkline.js"></script>
+    <script src="/extras/charts/sparkline/jquery.sparkline.js"></script>
     <!-- morris js -->
-    <script src="/vendor/charts/morris-bundle/raphael.min.js"></script>
-    <script src="/vendor/charts/morris-bundle/morris.js"></script>
+    <script src="/extras/charts/morris-bundle/raphael.min.js"></script>
+    <script src="/extras/charts/morris-bundle/morris.js"></script>
     <!-- chart c3 js -->
-    <script src="/vendor/charts/c3charts/c3.min.js"></script>
-    <script src="/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
-    <script src="/vendor/charts/c3charts/C3chartjs.js"></script>
+    <script src="/extras/charts/c3charts/c3.min.js"></script>
+    <script src="/extras/charts/c3charts/d3-5.4.0.min.js"></script>
+    <script src="/extras/charts/c3charts/C3chartjs.js"></script>
     <script src="/js/dashboard-ecommerce.js"></script>
 @endsection
