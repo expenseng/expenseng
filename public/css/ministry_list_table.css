@@ -113,10 +113,11 @@ hr{
 }
 
 
-/*
-.minitable-inner{
-    border-right: 2px solid #00945E;
-} */
+
+.minitable td{
+    min-width: 100px;
+    padding: 0 5px;
+}
 
 
 .first-th{

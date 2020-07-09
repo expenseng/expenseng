@@ -18,7 +18,7 @@ class CompanyController extends Controller
 
     public function show(Company $company)
     {
-        return view('pages.contract.single', compact($company));
+        return view('pages.contract.single')->with('company', $company);
     }
 
     public function getReport()
