@@ -24,9 +24,27 @@ Route::get('/contact', 'PageController@contactUs')->name('contact');
 Route::get('/expense/report', 'ExpenseController@report')->name('expense.reports');
 Route::get('/expense/ministry', 'ExpenseController@ministry')->name('expense.ministry');
 
-/***
+/*
+
+ * Modal Endpoints
+ */
+
+Route::get('/filtermodal1', function(){
+    return view('pages.filtermodal1');
+});
+Route::get('/filtermodal2', function(){
+    return view('pages.filtermodal2');
+});
+
+/*
+
  * Ministry Endpoints
  */
+
+Route::get('/ministry_profile', function(){
+    return view('pages.ministry_profile');
+});
+
 Route::get('/ministries', 'MinistryController@profile')->name('ministries');
 Route::get('/ministries/{ministry}', 'MinistryController@show')->name('ministries.single');
 
