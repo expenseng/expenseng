@@ -3,7 +3,6 @@
 <link rel="stylesheet" href="{{ asset('css/aboutus-header_footer.css') }}">
 <link rel="stylesheet" href="{{ asset('css/contracts_awarded.css') }}">
 <link rel="stylesheet" href="{{ asset('css/director_board.css') }}">
-<link rel="stylesheet" href="{{ asset('css/contracts_awarded_comments.css') }}">
 
 <title>FG Expense - Contracts</title>
 @endpush
@@ -30,7 +29,9 @@
           <span>&#8226;</span>
         </li>
         <li>
-          <a>COMPANY PROFILE</a>
+          <a>
+          {{ $company->name }}
+          </a>
         </li>
       </ul>
     </div>
