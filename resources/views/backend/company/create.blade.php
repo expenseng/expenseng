@@ -32,7 +32,7 @@
                                                 
                                             </div>
                                             <div class="form-group">
-                                                <label for="inputText4" class="col-form-label">Industry Twitter Handle</label>
+                                                <label for="inputText4" class="col-form-label">Company Twitter Handle</label>
                                                 <input id="inputText4" name="company_twitter" type="text" class="form-control" placeholder="e.g @example">
                                             </div>
                                             <div class="form-group">
