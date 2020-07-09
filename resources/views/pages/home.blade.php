@@ -67,10 +67,17 @@
        <div class="ministry">
            <div class="ministry-heading">
              <div class="ministry-head">
-               <p>Ministry of Agriculture</p>
-                <i class="fa fa-caret-down"></i>
+              <select class="ministry-picker">
+                <option value="agric">Ministry of Agriculture</option>
+                <option value="grei">Ministry of Agriculture</option>
+                <option>Ministry of Agriculture</option>
+                <option>Ministry of Agriculture</option>
+                <option>Ketchup</option>
+                <option>Barbecue</option>
+              </select>
+              <i class="fa fa-caret-down"></i>
              </div>
-             <p class="profile">View all profiles</p>
+             <a href="{{ route('ministries') }}" class="profile">View all profiles</a>
            </div>
            <div class="ministry-stat">
                  <div class="stat-a p-4">
