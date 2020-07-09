@@ -134,6 +134,9 @@ body {
 }
 
 /* Section-2 */
+.table{
+  margin-top: 50px;
+}
 h5{
   font-size: 18px;
 }
@@ -162,9 +165,9 @@ h5{
 .date-btn:hover i {
   color: #00945E
 }
-.table{
+/* .table{
   margin-top: -21px;
-}
+} */
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: white;
 }
@@ -225,11 +228,22 @@ background-color: #00945E;
     margin-top: -30px;
   }
   .navigation-links ul li a{
-    font-size: 16px;
+    font-size: 14px;
     padding-left: -20px;
   }
   .name{
-    font-size: 28px;
+    font-size: 24px;
+    margin-top: -1px;
+    text-align: left;
+    margin-bottom: 25px;
+  }
+  .user-profile{
+    width: 100%;
+    text-align: left;
+    margin-left: 15px;
+  }
+  .user-profile .col-sm-4{
+    margin-top: 10px;
   }
   .user-profile img{
     width: 30px;
@@ -241,10 +255,11 @@ background-color: #00945E;
     font-size: 16px;
   }
   .twitter-handle, .amount-rewarded, .contract-number{
-    font-size: 20px;
+    font-size: 16px;
   }
   .content-navigator{
-    font-size: 16px;
+    font-size: 14px;
+    margin-top: -35px;
   }
   .content-navigator a::before {
     content: '';
@@ -252,16 +267,23 @@ background-color: #00945E;
     top: 45px;
 
   }
+  .table{
+    margin-top: 5px;
+  }
   h5{
-    font-size: 18px;
+    font-size: 16px;
+    margin-left: -170px;
   }
   .section-2 th{
-    font-size: 20px;
+    font-size: 18px;
   }
   .section-2 td{
-    font-size: 16px;
+    font-size: 14px;
   }
-  
+  .section-2 button{
+    margin-right: -210px;
+    margin-top: -35px;
+  }
   .section-3 th{
     font-size: 16px;
   }

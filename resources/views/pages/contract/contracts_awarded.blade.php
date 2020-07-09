@@ -63,7 +63,7 @@
       <a href="#board" data-toggle="tab">Board of Directors</a>
       <a href="#comments" data-toggle="tab">Comments</a>
     </div>
-    <hr>
+    {{-- <hr> --}}
   </div>
 
   <!-- Section 2 -->
