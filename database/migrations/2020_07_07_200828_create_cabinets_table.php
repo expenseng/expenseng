@@ -18,11 +18,8 @@ class CreateCabinetsTable extends Migration
             $table->string('name');
             $table->string('twitter_handle');
             $table->string('role'); //Minister of State, Minister, Secretary, Permanent Secretary
-            $table->string('avatar');
-             $table->integer('ministry_code');
-            $table->foreign('ministry_code')
-                    ->references('code')
-                    ->on('ministries');
+            $table->string('avatar')->nullable();
+            $table->string('ministry_code')->index();
             $table->timestamps();
         });
     }

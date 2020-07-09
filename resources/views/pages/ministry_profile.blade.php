@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="{{ asset('css/ministry_profile.css') }}">
 
 
-<title>FG Expense - Contracts</title>
+<title>FG Expense - Ministry Profile</title>
 @endpush
 
 @section('content')
