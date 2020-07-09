@@ -15,19 +15,19 @@
         <div class="main-box2">
             <div class="box1">
                 <h4>Pages</h4>
-                <a href="index.html">Home</a>
-                <a href="#">Ministries</a>
-                <a href="#">Contractors</a>
+                <a href="{{ route('home') }}">Home</a>
+                <a href="{{ route('ministries') }}">Ministries</a>
+                <a href="{{ route('contractors') }}">Contractors</a>
             </div>
             <div class="box2">
                 <h4>Spending</h4>
-                <a href="#">Expenditure Report</a>
-                <a href="#">Ministry Spending</a>
+                <a href="{{ route('expense.reports') }}">Expenditure Report</a>
+                <a href="{{ route('expense.ministry') }}">Ministry Spending</a>
             </div>
             <div class="box3">
                 <h4>About us</h4>
-                <a href="#">About us</a>
-                <a href="#">Contact us</a>
+                <a href="{{ route('about') }}">About us</a>
+                <a href="{{ route('contact') }}">Contact us</a>
             </div>
         </div>
     </div>
