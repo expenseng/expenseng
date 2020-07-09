@@ -54,7 +54,19 @@ Route::get('/ministry/getUrl', 'PageController@ministryGetUrl')->name('ministry_
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::post('/admin/expense/create', 'DashboardController@createExpense');
+
+/**
+ * Admin Routes
+ */
+// Route::prefix('admin')->group(function () {
+//     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');  // Matches The "/admin/dashboard" URL
+//     Route::post('/create_expense', 'DashboardController@createExpense');
+//     Route::post('/create_company', 'DashboardController@createCompany');
+// });
+
 
 Route::get('/admin/company/create', 'CompanyController@create')->name('company.create');
 Route::post('/admin/company/create', 'CompanyController@createCompany')->name('create.company');
 Route::get('/admin/company/view', 'CompanyController@viewCompanies')->name('company.view');
+
