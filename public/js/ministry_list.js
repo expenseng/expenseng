@@ -3,10 +3,10 @@ $(document).ready(function(){
     const card = (id, name)=>{
       return (
         ` <div data-id="${id}" 
-            class="col-lg-3 col-md-6 col-sm-12 ministry-cards" 
+            class="col-lg-3 col-md-6 col-sm-12 ministry-cards d-flex" 
             style="cursor:pointer"
           >
-              <div class="cont-1">
+              <div class="cont-1 d-flex flex-column justify-content-center">
                 <div class="img">
                   <span class="circle"></span>
                   <img src="/images/Vector 3.svg" alt="" class="vector" style="width:100%">
@@ -18,7 +18,7 @@ $(document).ready(function(){
                     <h4>${name}</h4>
                   </div>
                 </div>
-                <div class="texts">
+                <div class="texts d-flex flex-column text-center">
                   <h4>Total amount Spent</h4>
                   <p class="num">#123,446,332</p>
                   <p class="year">${new Date().getFullYear()}</p>

@@ -68,10 +68,10 @@
           @if (count($ministries) >0)
           @foreach($ministries as $ministry)
           <div data-id="{{$ministry->shortname()}}" 
-            class="col-lg-3 col-md-6 col-sm-12 ministry-cards" 
+            class="col-lg-3 col-md-6 col-sm-12 ministry-cards d-flex" 
             style="cursor:pointer"
           >
-            <div class="cont-1">
+            <div class="cont-1 d-flex flex-column justify-content-center">
               <div class="img">
                 <span class="circle"></span>
               </div>
@@ -81,13 +81,13 @@
                   <h4>{{$ministry->name}}</h4>
                 </div>
               </div>
-              <div class="texts">
+              <div class="texts d-flex flex-column text-center">
                 <h4>Total amount Spent</h4>
                 <p class="num">#123,446,332</p>
                 <p class="year">{{date('Y')}}</p>
               </div>
             </div>
-            <a href="{{ route('ministries.single', $ministry->shortname()) }}"></a>
+            <a title="Click to view profile" href="{{ route('ministries.single', $ministry->shortname()) }}"></a>
           </div>
 
          
