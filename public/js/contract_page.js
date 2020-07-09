@@ -3,7 +3,7 @@ var options = {
     toolbar: {
     show: false
   },
-    height: 280,
+    height: 100,
     type: "area"
   },
   dataLabels: {
@@ -12,6 +12,10 @@ var options = {
   series: [
     {
       name: "Amount in Millions",
+      data: [45, 52, 38, 45, 39, 47, 54]
+    },
+    {
+      name: "Amount in Thousands",
       data: [45, 52, 38, 45, 39, 47, 54]
     }
   ],
