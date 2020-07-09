@@ -8,12 +8,6 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function index()
-    {
-        $collection = [];
-        $collection['buget'] = Budget::where()
-        return view('pages.home');
-    }
 
     public function contactUs()
     {

@@ -10,4 +10,8 @@ class Budget extends Model
         "amount", "project_name", 
         "code", "year", "classification"
     ];
+
+    public function graphData(){
+        
+    }
 }
