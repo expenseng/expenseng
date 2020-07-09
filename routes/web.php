@@ -71,3 +71,7 @@ Route::get('/admin/company/create', 'CompanyController@create')->name('company.c
 Route::post('/admin/company/create', 'CompanyController@createCompany')->name('create.company');
 Route::get('/admin/company/view', 'CompanyController@viewCompanies')->name('company.view');
 
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::post('/companies', 'CompanyController@store');
+});
