@@ -314,7 +314,7 @@ tr:nth-child(even) {
     border-bottom: 2px solid var(--clr-dark);
     color: var(--clr-dark);
     outline: none;
-    padding-bottom: 10px;
+    padding: .5rem 0 .5rem;
 }
 
 .button:hover{
@@ -327,12 +327,16 @@ tr:nth-child(even) {
 }
 
 .btn-marg{
-	margin-left: 2rem;
+	margin-left: 1.5rem;
 }
 
 .btn-group .active{
 	color: var(--clr-accent) ;
 	border-bottom: 2px solid var(--clr-accent);
+}
+
+.btn-group a{
+	color: inherit;
 }
 
 
@@ -398,14 +402,15 @@ tr:nth-child(even) {
 		--fs-h6: .6rem;
 		--fs-reg: .6rem;
 	}
-	.container .responsive-button{
-		display: none !important;
+	.btn-marg{
+		margin-left: .5rem;
 	}
 	.dropdown-button{
 		background-color: var(--clr-accent);
 		font-size: var(--fs-h6) !important;
 	}
-	.pagination1{
+	.pagination1,
+	.pagination2{
 		display: flex;
 		flex-direction: column-reverse;
 	}
@@ -425,14 +430,29 @@ tr:nth-child(even) {
 
 @media all and (max-width: 425px){
 	:root{
-		--fs-h2: 1.7rem;
-		--fs-h3: 1.05rem;
-		--fs-h6: .65rem;
 		--fs-h2: 1.55rem;
 		--fs-h3: 1.05rem;
 		--fs-h4: .8rem;
 		--fs-h5: .6rem;
-		--fs-h6: .6rem;
-		--fs-reg: .6rem;
+		--fs-h6: .5rem;
+		--fs-reg: .5rem;
+	}
+}
+
+@media all and (max-width: 390px){
+	:root{
+		--fs-h2: 1.55rem;
+		--fs-h3: .9rem;
+		--fs-h4: .65rem;
+		--fs-h5: .65rem;
+		--fs-h6: .5rem;
+		--fs-reg: .5rem;
+	}
+	.btn-marg{
+		margin-left: .5rem;
+	}
+	
+	.table-top button {
+		padding: .5rem 1rem;
 	}
 }
