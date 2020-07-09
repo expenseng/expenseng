@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Budget;
 use App\Ministry;
 use Illuminate\Http\Request;
 
@@ -9,6 +10,8 @@ class PageController extends Controller
 {
     public function index()
     {
+        $collection = [];
+        $collection['buget'] = Budget::where()
         return view('pages.home');
     }
 
