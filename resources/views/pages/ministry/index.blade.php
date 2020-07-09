@@ -103,15 +103,6 @@
 @endsection
 
 @section('js')
-  {{-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 1500,
-    });
-  </script> --}}
-
-
   <script src="assets/js/ministry_list.js" type="text/javascript"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>

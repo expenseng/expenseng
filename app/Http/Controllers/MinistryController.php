@@ -19,6 +19,12 @@ class MinistryController extends Controller
         return view('pages.ministry.single', compact($ministry));
     }
 
+    public function profile()
+    {
+        $ministries = Ministry::all();
+        return view('pages.ministry.index')->with('ministries', $ministries);
+    }
+
     public function autocomplete(Request $request)
     {
         if ($request->get('query')) {
@@ -26,11 +32,5 @@ class MinistryController extends Controller
             $data = DB::table('ministries_profile')->where('ministry_name', 'LIKE', "%$query%")->get();
             echo $data;
         }
-    }
-
-    public function profile()
-    {
-        $ministries = Ministry::all();
-        return view('pages.ministry.index')->with('ministries', $ministries);
     }
 }

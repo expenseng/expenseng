@@ -53,6 +53,7 @@ Route::get('/company/search', 'PageController@companySearch')->name('company_sea
 Route::post('/company/show', 'PageController@companySearchShow');
 Route::get('/quick-contacts', 'PageController@quickContact')->name('quick_contacts');
 
+
 Route::get('/ministry/details', 'MinistrySearchController@show')->name('get_ministry_details');
 Route::post('/ministry/autocomplete', 'MinistrySearchController@autocomplete')->name('ministry_autocomplete');
 Route::get('/ministry/all', 'MinistrySearchController@index')->name('ministry_all');

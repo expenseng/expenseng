@@ -23,7 +23,7 @@ a:active, a:link{
 
 .list li{
     margin: 0 1.5rem ;
-    font-size: 1.1rem;
+    font-size: 1rem;
     padding: 1rem 0;
     border-bottom: 1px solid #a1a3a8;
 }
@@ -33,12 +33,16 @@ a:active, a:link{
 }
 
 hr{
-    margin-top: -1rem;
+    margin-top: -2.1rem;
 }
 
 .list ul > li> a{
     align-self: center;
     color: #a1a3a8;
+}
+
+.pagination-2{
+    margin: 0 7rem;
 }
 
 /* .min-table-over{
@@ -157,8 +161,10 @@ img{
 }
 
 .pagination{
+    background-color: #f1f1f1;
 float: right;
 }
+
 
 .pagination a,.mini-pagination a {
   color: black;
@@ -174,7 +180,12 @@ float: right;
 }
 
 
+<<<<<<< HEAD
 .pagination a:hover:not(.active) {background-color:#00945E;}
+=======
+
+.pagination a:hover:not(.active),.mini-pagination a:hover:not(.active) {background-color:#00945E;}
+>>>>>>> 678284e4d162c51d33b664a4c100a88a6c385b5f
 
 th,td{
     padding: 2%;
@@ -194,6 +205,7 @@ span.text-success{
 
 .table-div{
     overflow-x: auto;
+    scrollbar-color: #00945e;
 }
 
 .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
@@ -209,7 +221,11 @@ span.text-success{
     box-shadow: -1px -2px 2px rgba(0, 0, 0, 0.1), 1px 2px 2px rgba(0, 0, 0, 0.1);
     border-radius: 6px;
     overflow-x: auto;
+    scrollbar-color: #00945e;
     border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.nav-tabs{
+    border: 0;
 }
 
 .pagination-section{
@@ -272,7 +288,7 @@ text-align: center;
     .pagination{
         float: none;
          text-align: center;
-        margin-left: 5%;
+        margin-left: 15%;
     }
 
 }
@@ -286,6 +302,9 @@ text-align: center;
 .min-pag-parent{
     margin-left: 6%;
 } */
+.list li{
+    font-size: 1.1rem;
+}
     
 }
 
