@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Company;
-use App\Expense;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -28,7 +27,7 @@ class CompanyController extends Controller
         return [
             'status' => 'success',
             'message' => 'Total amounts received by various Contractors and Organsations',
-            'data' => $yearlyTotals
+            'data' => $yearlyTotals,
         ];
     }
 
@@ -40,7 +39,6 @@ class CompanyController extends Controller
             ->get();
         return $yearlyTotals;
     }
-
 
     public function getMonthlyTotal()
     {

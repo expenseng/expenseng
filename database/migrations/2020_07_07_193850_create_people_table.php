@@ -15,18 +15,17 @@ class CreatePeopleTable extends Migration
     {
         Schema::create('people', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedBigInteger('company_id');
             $table->string('name');
             $table->string('position');
-            $table->integer('company_id')->unsigned();
-            $table->foreign('company_id')
-                    ->references('id')
-                    ->on('companies');
             $table->string('twitter');
             $table->string('facebook');
             $table->string('linkedin');
             $table->string('avatar');
             $table->string('email', 191)->unique();
             $table->timestamps();
+
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
         });
     }
 
