@@ -1,10 +1,7 @@
 @extends('layouts.master')
 @push('css')
-<link rel="stylesheet" href="{{ asset('css/about us-header_footer.css') }}">
+<link rel="stylesheet" href="{{ asset('css/aboutus-header_footer.css') }}">
 <link rel="stylesheet" href="{{ asset('css/contract_page.css') }}">
-
-
-
 <title>FG Expense - Contracts Page</title>
 @endpush
 
@@ -47,10 +44,12 @@
     <br />
     <div class="container">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 mb-3" v-for="item in 10">
           <div class="card shadow">
             <div class="card-body">
-              <div id="chart"></div>
+                <chart label="myVueChart" 
+                        v-bind:data="[{amount:32424, year:2039},{amount:12920923, year:2010}]" 
+                        v-bind:element="'chart-'+item"></chart>
                 <div class="company">
                     <img src="./image 13.png" alt="">
                     <h5 class="heading">Julius Bergar</h5>

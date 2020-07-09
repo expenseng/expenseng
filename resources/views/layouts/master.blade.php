@@ -1,16 +1,16 @@
 @include('partials.head')
 @stack('css')
   <body> 
-    <div id="app" class="">
+    <div id="app">
         <!-- navbar -->
         @include('partials.navbar')
         @yield('banner')
         <!-- content -->
         @yield('content')
-      </div>
+    </div>
     <!-- footer -->
+    @yield('js')
     @include('partials.footer')
     <script src="{{ asset('js/app.js') }}"></script>
-    @yield('js')
   </body>
 </html>

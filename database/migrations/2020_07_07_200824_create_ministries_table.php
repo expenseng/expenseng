@@ -15,7 +15,7 @@ class CreateMinistriesTable extends Migration
     {
         Schema::create('ministries', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('code')->index();
+            $table->string('code')->index();
             $table->string('name');
             $table->string('shortname');
             $table->string('twitter')->nullable();

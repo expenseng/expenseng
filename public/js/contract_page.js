@@ -3,18 +3,45 @@ var options = {
     toolbar: {
     show: false
   },
-    height: 280,
+    height: 200,
     type: "area"
   },
   dataLabels: {
     enabled: false
   },
+
   series: [
     {
-      name: "Amount in Millions",
-      data: [45, 52, 38, 45, 39, 47, 54]
-    }
-  ],
+    name: 'Expenses',
+    data: [
+        {
+            x: "2015",
+            y: 201210023
+        },
+        {
+            x: "2016",
+            y: 212340023
+        },
+        {
+            x: "2017",
+            y: 23100023
+        },
+        {
+            x: "2018",
+            y: 23150023
+        },
+        {
+            x: "2019",
+            y: 1150023
+        },
+        {
+          x: "2020",
+          y: 1250023
+        },
+        
+    ]
+}],
+
   stroke: {
     curve: 'straight', 
     colors: ['green'],
