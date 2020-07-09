@@ -67,15 +67,13 @@
         <div id="cards-container" class="row d-flex sec-card" style="min-height: 300px">
           @if (count($ministries) >0)
           @foreach($ministries as $ministry)
-          <div data-id="{{$ministry->id}}" 
+          <div data-id="{{$ministry->shortname()}}" 
             class="col-lg-3 col-md-6 col-sm-12 ministry-cards" 
             style="cursor:pointer"
           >
             <div class="cont-1">
               <div class="img">
                 <span class="circle"></span>
-                <img src="{{ asset('images/Vector 3.svg') }}" alt="" class="vector" style="width:100%">
-                <img src="{{ asset('images/Vector 2.png') }}" alt="" style="width:100%">
               </div>
               <div class="coat">
                 <img src="{{ asset('images/image 7.png') }}" alt="">
@@ -89,7 +87,7 @@
                 <p class="year">{{date('Y')}}</p>
               </div>
             </div>
-            <a href="{{ route('ministries.single', $ministry->id) }}"></a>
+            <a href="{{ route('ministries.single', $ministry->shortname()) }}"></a>
           </div>
 
          
@@ -119,8 +117,9 @@
               <div class="cont-1">
                 <div class="img">
                   <span class="circle"></span>
-                  <img src="{{ asset('images/Vector 3.svg') }}" alt="" class="vector" style="width:100%">
-                  <img src="{{ asset('images/Vector 2.png') }}" alt="" style="width:100%">
+                  <chart label="myVueChart" 
+                        v-bind:data="[{amount:32424, year:2039},{amount:12920923, year:2010}]" 
+                        v-bind:element="'chart-'+item"></chart>
                 </div>
                 <div class="coat">
                   <img src="{{ asset('images/image 7.png') }}" alt="">
@@ -136,7 +135,7 @@
               </div>
             </div>`
       )
-  } 
+    } 
 
     $('#cards-container').on('click', '.ministry-cards', function(e){
       const id = $(this).attr("data-id")
@@ -168,68 +167,68 @@
                 $('#ministryList').fadeOut();
             }
         }
-    })
-  }
-
-  $('#ministry_search').on('search', returnDefaults)
-
-  $('#ministry_search').on('keyup', function(){
-    let query = $(this).val();
-    if(query != ''){
-        let _token = $('input[name="_token"]').val();
-        // console.log(query, _token)
-        $.ajax({
-            url: "{{ route('ministry_autocomplete') }}",
-            method: "POST",
-            data: {query, _token},
-            success: function(data){
-              // console.log(data)
-                data = JSON.parse(data)
-                let suggestions;
-                let ministryCards = '';
-                if(data.length>0){
-                  suggestions = `<ul class="dropdown-menu" style="display:block; position:absolute">`;
-                    data.forEach(ministry=>{
-                        const {id, name} = ministry;
-                        suggestions += `<li class="pb-2 px-3"><a href="#" class="text-muted "> ${name}</a></li>`
-                        ministryCards += card(id, name);
-                    })
-                      suggestions += '</ul>';
-                      $('#ministryList').html(suggestions).fadeIn();
-                      $('#cards-container').html(ministryCards)
-                
-                }else{
-                    $('#ministryList').fadeOut();
-                    $('#cards-container').empty();
-                }
-            }
-        })
-    }else{
-        $('#ministryList').fadeOut();
-        returnDefaults()
+      })
     }
-  })
 
-  $('#search-area').on('click', 'li', function(e){
-      e.preventDefault()
-      let ministry = $(this).text();
-      console.log(ministry)
-      $('#ministry_search').val(ministry);
-      $('#ministryList').fadeOut();
-      $.ajax({
-              url: "{{ route('get_ministry_details') }}",
-              method: "GET",
-              data: {ministry},
+    $('#ministry_search').on('search', returnDefaults)
+
+    $('#ministry_search').on('keyup', function(){
+      let query = $(this).val();
+      if(query != ''){
+          let _token = $('input[name="_token"]').val();
+          // console.log(query, _token)
+          $.ajax({
+              url: "{{ route('ministry_autocomplete') }}",
+              method: "POST",
+              data: {query, _token},
               success: function(data){
-                console.log(data)
+                // console.log(data)
                   data = JSON.parse(data)
-                  console.log(data)
-                  const {id, name} = data[0]
-                  $('#cards-container').html(card(id, name))
+                  let suggestions;
+                  let ministryCards = '';
+                  if(data.length>0){
+                    suggestions = `<ul class="dropdown-menu" style="display:block; position:absolute">`;
+                      data.forEach(ministry=>{
+                          const {id, name} = ministry;
+                          suggestions += `<li class="pb-2 px-3"><a href="#" class="text-muted "> ${name}</a></li>`
+                          ministryCards += card(id, name);
+                      })
+                        suggestions += '</ul>';
+                        $('#ministryList').html(suggestions).fadeIn();
+                        $('#cards-container').html(ministryCards)
+                  
+                  }else{
+                      $('#ministryList').fadeOut();
+                      $('#cards-container').empty();
+                  }
               }
-
           })
-  })
+      }else{
+          $('#ministryList').fadeOut();
+          returnDefaults()
+      }
+    })
+
+    $('#search-area').on('click', 'li', function(e){
+        e.preventDefault()
+        let ministry = $(this).text();
+        console.log(ministry)
+        $('#ministry_search').val(ministry);
+        $('#ministryList').fadeOut();
+        $.ajax({
+                url: "{{ route('get_ministry_details') }}",
+                method: "GET",
+                data: {ministry},
+                success: function(data){
+                  console.log(data)
+                    data = JSON.parse(data)
+                    console.log(data)
+                    const {id, name} = data[0]
+                    $('#cards-container').html(card(id, name))
+                }
+
+            })
+    })
 })
   </script>
   @endsection
