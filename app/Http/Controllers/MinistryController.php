@@ -31,6 +31,6 @@ class MinistryController extends Controller
     public function profile()
     {
         $ministries = Ministry::all();
-        return view('pages.ministry.profile')->with('ministries', $ministries);
+        return view('pages.ministry.index')->with('ministries', $ministries);
     }
 }
