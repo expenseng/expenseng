@@ -24,5 +24,9 @@
         "sass-loader": "^8.0.0",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "apexcharts": "^3.19.3",
+        "vue-apexcharts": "^1.5.3"
     }
 }
