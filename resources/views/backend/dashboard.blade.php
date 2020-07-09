@@ -547,64 +547,99 @@
                         </div>
 
 
+                         
                         <div class="row pt-4" style="background: white">
-                            <div class="col-md-12"> <h2 class="card-header">Quick Forms</h2>  </div>
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <h5 class="card-header">Create New Expenses</h5>
-                                    <div class="card-body">
-                                        {{ Form::open(array('action' => 'DashboardController@createExpense')) }}
+                            <!-- ============================================================== -->
+                            <!-- Tabbed Quick Forms -->
+                            <!-- ============================================================== -->
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h2 class="ml-3 mb-4 card-header">Quick Forms</h2>
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                  <li class="nav-item">
+                                    <a class="nav-link active" id="expense_form-tab" data-toggle="tab" href="#expense_form" role="tab" aria-controls="expense_form" aria-selected="true">EXPENSE</a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a class="nav-link" id="company_form-tab" data-toggle="tab" href="#company_form" role="tab" aria-controls="company_form" aria-selected="false">COMPANY</a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a class="nav-link" id="payments_form-tab" data-toggle="tab" href="#payments_form" role="tab" aria-controls="payments_form" aria-selected="false">PAYMENTS</a>
+                                  </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="expense_form" role="tabpanel" aria-labelledby="expense_form-tab">
+                                        <div class="col-md-8 mt-4 offset-2">
+                                            <div class="card">
+                                                <h5 class="card-header">CREATE NEW EXPENSE</h5>
+                                                <div class="card-body">
+                                                    {{ Form::open(array('action' => 'DashboardController@createExpense')) }}
 
-                                            {{ Form::label('Amount', 'Amount', ['class' => 'label-for-amount']) }}
-                                            {{ Form::text('amount_spent', '', array_merge(['class' => 'form-control'])) }}
+                                                        {{ Form::label('Amount', 'Amount', ['class' => 'label-for-amount']) }}
+                                                        {{ Form::text('amount_spent', '', array_merge(['class' => 'form-control'])) }}
 
-                                            {{ Form::label('Year', 'Year', ['class' => 'label-for-year']) }}
-                                            {{ Form::text('year', '', array_merge(['class' => 'form-control'])) }}
-                                            
-                                            {{ Form::label('Month', 'Month', ['class' => 'label-for-month']) }}
-                                            {{ Form::text('month', '', array_merge(['class' => 'form-control'])) }}
-                                           
-                                            {{ Form::label('Project', 'Project', ['class' => 'label-for-summary']) }}
-                                            {{ Form::textarea('project', '', array_merge(['class' => 'form-control'])) }}
-                                           
-                                            {{ Form::submit('Create', array_merge(['class' => 'btn btn-primary'])) }}
-                                            
-                                       {{ Form::close() }}
+                                                        {{ Form::label('Year', 'Year', ['class' => 'label-for-year']) }}
+                                                        {{ Form::text('year', '', array_merge(['class' => 'form-control'])) }}
+                                                        
+                                                        {{ Form::label('Month', 'Month', ['class' => 'label-for-month']) }}
+                                                        {{ Form::text('month', '', array_merge(['class' => 'form-control'])) }}
+                                                       
+                                                        {{ Form::label('Project', 'Project', ['class' => 'label-for-summary']) }}
+                                                        {{ Form::textarea('project', '', array_merge(['class' => 'form-control', 'rows' => 3])) }}
+                                                       
+                                                        {{ Form::submit('Create', array_merge(['class' => 'btn btn-primary'])) }}
+                                                        
+                                                   {{ Form::close() }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="company_form" role="tabpanel" aria-labelledby="company_form-tab">
+                                    <div class="col-md-8 mt-4 offset-2">
+                                            <div class="card">
+                                                <h5 class="card-header">CREATE NEW COMPANY</h5>
+                                                <div class="card-body p-3 form-group">
+                                                    {{ Form::open(array('action' => 'DashboardController@createCompany')) }}
+                                                    {{Form::token()}}
+                                                    <label class="label-for-name" >Name</label>
+                                                    <input typ0e="text" required = 'required' name="name" id="name" class="form-control">
+                                                    <p id="nameErr" class="text-danger"></p>
+
+                                                    <label class="label-for-shortname">Short Name</label>
+                                                    <input type="text"  required = 'required' name="shortname" id="short_name" class="form-control">
+                                                    <p id="snameErr" class="text-danger"></p>
+
+                                                    <label class="label-for-email">Industry</label>
+                                                    <input type="text"  name="industry" id="industry" class="form-control">
+                                                    <p id="industryErr" class="text-danger"></p>
+
+                                                    <label class="label-for-email">CEO</label>
+                                                    <input type="ceo"  name="ceo" id="ceo" class="form-control">
+                                                    <p id="ceoErr" class="text-danger"></p>
+
+                                                    <label class="label-for-email">Twitter</label>
+                                                    <input type="twitter"  name="twitter" id="twitter" class="form-control">
+                                                    <p id="twitterErr" class="text-danger"></p>
+
+                                                    <button type="submit" value="Add" class="btn btn-primary" name="addCompany" onmouseover="validateAddNew('submit')">Add</button>
+                                                    {{ Form::close() }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="payments_form" role="tabpanel" aria-labelledby="payments_form-tab-tab">
+                                        <div class="col-md-8 mt-4 offset-2">
+                                            <div class="card">
+                                                <h5 class="card-header">CREATE NEW PAYMENTS</h5>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <h5 class="card-header">Create New Company</h5>
-                                    <div class="card-body p-3 form-group">
-                                       {{ Form::open(array('action' => 'DashboardController@createCompany')) }}
-                                            {{Form::token()}}
-                                            <label class="label-for-name" >Name</label>
-                                            <input type="text" required = 'required' name="name" id="name" class="form-control">
-                                            <p id="nameErr" class="text-danger"></p>
+                            <!-- ============================================================== -->
+                            <!-- END Tabbed Quick Forms -->
+                            <!-- ============================================================== -->
+                        </div> <!-- ROW -->
 
-                                            <label class="label-for-shortname">Short Name</label>
-                                            <input type="text"  required = 'required' name="shortname" id="short_name" class="form-control">
-                                            <p id="snameErr" class="text-danger"></p>
 
-                                            <label class="label-for-email">Industry</label>
-                                            <input type="text"  name="industry" id="industry" class="form-control">
-                                            <p id="industryErr" class="text-danger"></p>
-
-                                            <label class="label-for-email">CEO</label>
-                                            <input type="ceo"  name="ceo" id="ceo" class="form-control">
-                                            <p id="ceoErr" class="text-danger"></p>
-
-                                            <label class="label-for-email">Twitter</label>
-                                            <input type="twitter"  name="twitter" id="twitter" class="form-control">
-                                            <p id="twitterErr" class="text-danger"></p>
-
-                                            <button type="submit" value="Add" class="btn btn-primary" name="addCompany" onmouseover="validateAddNew('submit')">Add</button>
-                                         {{ Form::close() }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

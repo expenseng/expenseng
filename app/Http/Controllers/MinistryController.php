@@ -80,27 +80,28 @@ class MinistryController extends Controller
                         ->orderby('payment_date', 'desc')
                         ->get();
 
-            function getTrend($payments){
-                $currentYr = date("Y");
-                $years = [$currentYr, $currentYr - 1, $currentYr - 2, $currentYr - 3, $currentYr - 4];
-                $yearByYear = [];
-                $currentYrPmts = [];
-                for($x = 0; $x < count($years); $x++){
-                    $filtered = $payments->filter(function ($value, $key) use (&$years, $x) {
-                        return date('Y', strtotime($value->payment_date)) == $years[$x];
-                    });
-                    if($x == 0){
-                        $currentYrPmts = $filtered;
-                    }
-                    $sum = $filtered->sum('amount');
-                    $yearByYear[$years[$x]] = $sum;
+        function getTrend($payments)
+        {
+            $currentYr = date("Y");
+            $years = [$currentYr, $currentYr - 1, $currentYr - 2, $currentYr - 3, $currentYr - 4];
+            $yearByYear = [];
+            $currentYrPmts = [];
+            for ($x = 0; $x < count($years); $x++) {
+                $filtered = $payments->filter(function ($value, $key) use (&$years, $x) {
+                    return date('Y', strtotime($value->payment_date)) == $years[$x];
+                });
+                if ($x == 0) {
+                    $currentYrPmts = $filtered;
                 }
-                return [$currentYrPmts, $yearByYear];
+                $sum = $filtered->sum('amount');
+                $yearByYear[$years[$x]] = $sum;
             }
+            return [$currentYrPmts, $yearByYear];
+        }
 
             $data = getTrend($payments);
             return view('pages.ministry.single')
-            ->with(['ministry'=> $ministry, 
+            ->with(['ministry'=> $ministry,
                     'cabinets' => $cabinets,
                     'payments' => $data[0],
                     'trend' => $data[1]
