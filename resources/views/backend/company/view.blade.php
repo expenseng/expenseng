@@ -38,7 +38,9 @@
                                         @foreach ($companies as $company)
                                         <tbody>
                                             <tr>
-                                                <td></td>
+                                                <td>
+                                                    {{$company->id}}
+                                                </td>
                                                 <td>{{$company->name}}</td>
                                                 <td>{{$company->shortname}}</td>
                                                 <td>{{$company->industry}}</td>

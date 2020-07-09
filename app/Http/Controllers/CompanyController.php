@@ -78,4 +78,16 @@ class CompanyController extends Controller
 
         return view('backend.company.view')->with(['companies' => $companies]);
     }
+
+    public function createCompany (Request $request)
+    {
+        validator(
+            [
+                'company_name' => 'required',
+                'company_shortname' => 'required',
+                'company_twitter' => 'required',
+                'company_ceo' => 'required',
+            ]
+        );
+    }
 }
