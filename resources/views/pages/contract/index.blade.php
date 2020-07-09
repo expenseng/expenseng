@@ -10,6 +10,9 @@
 
 
 @section('content')
+<br />
+<br />
+<br />
  <header class="container">
         <nav aria-label="breadcrumb">
       <ol class="breadcrumb bg-white">
@@ -19,17 +22,27 @@
     </nav>
       </header>
       <div class="container">
-        <h1>Contracted Companies and Organisations </h1>
+        <h1 class="ws-10 font-weight-bold">Contracted Companies and Organisations</h1>
+        <br />
         <div class="row">
             <div class="col-md-5">
                 <p>ExpenseNG gives an insight to how much is being dispensed to contracted companies.</p>
             </div>
         </div>
         </div>
-    <div class="container overflow-auto">
-        <h6 class="active float-left pb-3 green-text-and-bottom font-weight-bold">COMPANIES AND TOTAL AMOUNTS AWARDED</h6>
-        <input type="text" class="form-control float-right d-none d-lg-inline w-50 se" placeholder="&#xf002; Search for companies and Organisations" />
-        <input type="text" class="form-control d-lg-none se" placeholder="&#xf002; Search for companies and Organisations" />
+        <br>
+        <br>
+        <br>
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-6">
+            <h6 class="active green-text text-center font-weight-bold mb-3">COMPANIES AND TOTAL AMOUNTS AWARDED</h6>
+            <div class="green-divider mx-auto d-block w-50"></div>
+          </div>
+          <div class="col-lg-6">
+            <input type="text" class="form-control float-right se" placeholder="&#xf002; Search for companies and Organisations" />
+          </div>
+      </div>
     </div>
     <br />
     <div class="container">
@@ -73,4 +86,3 @@
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="{{ asset('js/contract_page.js') }}" type="text/javascript"></script>
 @endsection
-@extends('layouts.master')

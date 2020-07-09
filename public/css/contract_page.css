@@ -118,13 +118,20 @@
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 }
-.green-text-and-bottom {
+.green-text {
   color: #00945E;
-  border-bottom: 2px solid #00945E;
 }
 input.se {
     font-family: FontAwesome;
     font-style: normal;
     font-weight: normal;
     text-decoration: inherit;
+}
+.ws-10 {
+  word-spacing: 10px;
+}
+.green-divider {
+  height: 2px;
+  background-color: #00945E;
+  width: 100%;
 }
