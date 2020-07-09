@@ -67,15 +67,13 @@
         <div id="cards-container" class="row d-flex sec-card" style="min-height: 300px">
           @if (count($ministries) >0)
           @foreach($ministries as $ministry)
-          <div data-id="{{$ministry->id}}" 
+          <div data-id="{{$ministry->shortname()}}" 
             class="col-lg-3 col-md-6 col-sm-12 ministry-cards" 
             style="cursor:pointer"
           >
             <div class="cont-1">
               <div class="img">
                 <span class="circle"></span>
-                <img src="{{ asset('images/Vector 3.svg') }}" alt="" class="vector" style="width:100%">
-                <img src="{{ asset('images/Vector 2.png') }}" alt="" style="width:100%">
               </div>
               <div class="coat">
                 <img src="{{ asset('images/image 7.png') }}" alt="">
@@ -89,7 +87,7 @@
                 <p class="year">{{date('Y')}}</p>
               </div>
             </div>
-            <a href="{{ route('ministries.single', $ministry->id) }}"></a>
+            <a href="{{ route('ministries.single', $ministry->shortname()) }}"></a>
           </div>
 
          

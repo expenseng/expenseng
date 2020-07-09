@@ -236,9 +236,9 @@
     </div>
 
     <!--3-->
-    <div id="comments" class="tab-pane fade">
-        @include('partials.comments')
-    </div>
+        <div id="comments" class="tab-pane fade">
+            @include('partials.comments')
+        </div>
     </div>
 </div>
 @endsection

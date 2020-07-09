@@ -23,7 +23,6 @@ class MinistryController extends Controller
      */
     public function index()
     {
-        // echo "I came here";
         $ministries = Ministry::all();
         echo $ministries;
     }
