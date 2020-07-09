@@ -13,21 +13,17 @@ class Company extends Model
         return $this->hasMany(Expense::class);
     }
 
-    public function employee()
-    {
-        return $this->hasMany(Employee::class);
-    }
-
     /**
      * Helper methods
      */
-    public function shortname(){
+    public function shortname()
+    {
         /***
          * Return only the first word if the word is greater than 10
          * Return the entire word in lowercase with spaces removed otherwise
          */
-        return strlen($this->shortname) > 10 ? 
-                explode(" ", $this->shortname)[0] : strtolower(str_replace(" ", "", $this->shortname));
+        return strlen($this->shortname) > 10 ?
+        explode(" ", $this->shortname)[0] : strtolower(str_replace(" ", "", $this->shortname));
     }
 
     public function twitterUrl(){

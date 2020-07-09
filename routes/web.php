@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'PageController@about')->name('about');
@@ -41,20 +40,15 @@ Route::post('/ministries/autocomplete', 'MinistryController@autocomplete')->name
 Route::get('/contractors', 'CompanyController@index')->name('contractors');
 Route::get('/contractors/{company}', 'CompanyController@show')->name('contractors.single');
 
-
 Route::get('/ministry-graph', 'PageController@ministryGraph')->name('ministry-graph');
 Route::get('/expense-graph', 'PageController@expenseGraph')->name('expense-graph');
 Route::get('/project-modal', 'PageController@projectModal')->name('project-modal');
-
 
 Route::get('/ministry/details', 'MinistrySearchController@show')->name('get_ministry_details');
 Route::get('/ministry/all', 'MinistrySearchController@index')->name('ministry_all');
 Route::get('/ministry/getUrl', 'PageController@ministryGetUrl')->name('ministry_get_url');
 
 Auth::routes();
-
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-Route::post('/admin/expense/create', 'DashboardController@createExpense');
 
 /**
  * Admin Routes
@@ -71,4 +65,17 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('/admin/company/view', 'CompanyController@viewCompanies')->name('company.view');
 });
 
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');  // Matches The "/admin/dashboard" URL
+    Route::post('/expense', 'DashboardController@createExpense');
+    Route::post('/company', 'DashboardController@createCompany');
+
+    Route::get('/company/create', 'CompanyController@create')->name('company.create'); // Matches The "/admin/company/create" URL
+    Route::post('/company/create', 'CompanyController@createCompany')->name('create.company');
+    Route::get('/company/view', 'CompanyController@viewCompanies')->name('company.view');
+  
+    Route::get('/companies/{company}', 'CompanyController@adminShow'); // Matches The "/admin/companies/{company}" URL
+    Route::get('/companies',  'CompanyController@adminIndex');
+    
+});
 
