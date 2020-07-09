@@ -62,7 +62,7 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create () 
+    public function create()
     {
         return view('backend.company.create');
     }
@@ -72,14 +72,14 @@ class CompanyController extends Controller
      *
      * @return view
      */
-    public function viewCompanies ()
+    public function viewCompanies()
     {
         $companies = Company::all();
 
         return view('backend.company.view')->with(['companies' => $companies]);
     }
 
-    public function createCompany (Request $request)
+    public function createCompany(Request $request)
     {
         validator(
             [
@@ -99,10 +99,10 @@ class CompanyController extends Controller
         $new_company->twitter = $request->ceo_handle;
         $save_new_company = $new_company->save();
 
-        if ($save_new_company){
+        if ($save_new_company) {
             echo ("<script>alert('New Company created successfully');
              window.location.replace('/admin/company/view');</script>");
-        }else{
+        } else {
             echo ("<script>alert('Cannot create New Company'); 
             window.location.replace('/admin/company/create');</script>");
         }
