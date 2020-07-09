@@ -115,10 +115,10 @@ hr{
 }
 
 
-/*
-.minitable-inner{
-    border-right: 2px solid #00945E;
-} */
+
+.minitable td{
+    min-width: 90px;
+}
 
 
 .first-th{

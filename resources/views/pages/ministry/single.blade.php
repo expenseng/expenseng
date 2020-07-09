@@ -43,19 +43,19 @@
             <p>Ministry Twitter Handle</p>
             
             @php
-                $handle = substr($ministry->twitter_handle, 1)
+                $ministryHandle = substr($ministry->twitter_handle, 1)   
             @endphp
-            <div class="sub"><h4 id="minwrks" class="twitter-link"> <a href="{!! url("https://twitter.com/$handle") !!}">{{$ministry->twitter_handle}}</a></h4>
+            <div class="sub"><h4 id="minwrks" class="twitter-link"> <a href="{!! url("https://twitter.com/$ministryHandle") !!}">{{$ministry->twitter_handle}}</a></h4>
                  <small>{{date('Y')}}</small></div>
         </div>
         <div class="col">
             <p>Total Amount Spent</p>
-            <h4><span class="text-success">&#8358;{{number_format($sum)}}</span></h4>
+            <h4><span class="text-success">&#8358;{{number_format($trend["2020"])}}</span></h4>
             <small>{{date('Y')}}</small>
         </div>
         <div class="col">
             <p>Total Number of Projects</p>
-            <h4><span class="text-success">{{$count}}</span></h4>
+            <h4><span class="text-success">{{count($payments)}}</span></h4>
             <small>{{date('Y')}}</small>
         </div>
     </div>
@@ -169,19 +169,19 @@
                                     <tbody>
                                         <tr>
                                             <td class="text-success"> TOTAL<br>AMOUNT </td>
-                                            <td>16,456,352,000</td>
+                                            <td>₦{{ number_format($trend["2016"]) }}</td>
 
-                                            <td class="minitable-inner">32,890,762,000</td>
+                                            <td class="minitable-inner">₦{{ number_format($trend["2017"]) }}</td>
 
-                                            <td> 16,456,352,000</td>
-                                            <td> 32,890,762,000</td>
-                                            <td> 32,890,762,000</td>
+                                            <td>₦{{ number_format($trend["2018"]) }}</td>
+                                            <td>₦{{ number_format($trend["2019"]) }}</td>
+                                            <td>₦{{ number_format($trend["2020"]) }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                            <div class=" row mt-4  container centerize">
+                            {{-- <div class=" row mt-4  container centerize">
                                 <div class=" col-md min-pag-parent text-muted">1-20 of 320 results </div>
                                 <div class=" pagination">
                                     <a href="#">&laquo;</a>
@@ -193,7 +193,7 @@
                                     <a href="#">6</a>
                                     <a href="#">&raquo;</a>
                                 </div>
-                            </div>
+                            </div> --}}
                     </div>
                 </div>
             </div>
@@ -205,10 +205,12 @@
         <div class="row mt-5 pl-3 d-flex justify-content-lg-around">
             @if ($cabinets)
                 @foreach($cabinets as $cabinet)
+                @php
+                    $ministerHandle = substr($cabinet->twitter_handle, 1)
+                @endphp
             <div class="col-lg-3 card border-top-0 border-left-0 border-right-0">
                 <div class="card-img" style="display:flex; justify-content: center">
-                    {{-- <img src="{{ asset('images/img1.png') }}" class="img-fluid" alt="Engr. Jafaru Damaluk"> --}}
-                    <img src="{{$cabinet->avatar}}" class="img-fluid" alt="Engr. Jafaru Damaluk">
+                    <img src="{{$cabinet->avatar}}" class="img-fluid" alt="{{$cabinet->name}}">
                 </div>
                 <div class="card-body">
                     <div class="card-title">
@@ -220,7 +222,7 @@
                     </div>
                     <div class="social-handle text-center">
                         <a href="#" class="link ml-2"><i class="fab fa-facebook" aria-hidden="true"></i></a>
-                        <a href="#" class="link ml-2"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="{!! url("https://twitter.com/$ministerHandle") !!}" class="link ml-2"><i class="fab fa-twitter" aria-hidden="true"></i></a>
                         <a href="#" class="link ml-2"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
                         <a href="#" class="link ml-2"><i class="fab fa-instagram" aria-hidden="true"></i></a>
                     </div>

@@ -29,7 +29,6 @@ Route::get('/expense/ministry', 'ExpenseController@ministry')->name('expense.min
  */
 Route::get('/ministries', 'MinistryController@profile')->name('ministries');
 Route::get('/ministries/{ministry}', 'MinistryController@show')->name('ministries.single');
-Route::get('ministries/hall', 'MinistryController@index')->name('ministry_hall');
 Route::post('/ministries', 'MinistryController@store')->name('ministry_store');
 Route::patch('/ministries/{ministry}', 'MinistryController@update')->name('ministry_update');
 Route::delete('/ministries/{ministry}', 'MinistryController@destroy')->name('ministry_destroy');
@@ -48,11 +47,11 @@ Route::get('/expense-graph', 'PageController@expenseGraph')->name('expense-graph
 Route::get('/project-modal', 'PageController@projectModal')->name('project-modal');
 
 
-// Route::get('/reports/expenditure', 'ExpendituresController@getExpenditures')->name('expenditure_report');
+Route::get('/reports/expenditure', 'ExpendituresController@getExpenditures')->name('expenditure_report');
 Route::get('/ministry/reports', 'PageController@ministryReport')->name('ministry_report');
 Route::get('/company/profile', 'PageController@companyProfile')->name('company_profile');
 
-// Route::get('/company/reports', 'CompanyReportController@getReport')->name('company_report');
+Route::get('/company/reports', 'CompanyReportController@getReport')->name('company_report');
 Route::get('/company/search','PageController@companySearch')->name('company_search');
 Route::get('/company/search', 'PageController@companySearch')->name('company_search');
 Route::post('/company/show', 'PageController@companySearchShow');
