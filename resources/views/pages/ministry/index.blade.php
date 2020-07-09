@@ -1,10 +1,10 @@
 @extends('layouts.master')
 
-@section('css')
+@push('css')
   <link rel="stylesheet" href="{{ asset('css/about us-header_footer.css') }}">
   <link rel="stylesheet" href="{{asset('css/ministry_list.css') }}">
   <title>FG Expense - Ministry List</title>
-@endsection
+@endpush
   <!-------------Header starts here-------------->
   <!-- <<br><br> -->
   <!-------------Header ends here-------------->
@@ -47,11 +47,11 @@
     <div class="money-spent">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-6 paragraph">
+          <div class="col-md-6 pt-2 paragraph">
             <p style="padding:0;">MINISTRIES AND AMOUNT SPENT</p>
             <hr>
           </div>
-          <div id="search-area" class="col-md-6 mt-3 mt-md-0">
+          <div id="search-area" class="offset-md-1 col-md-5 mt-3 mt-md-0">
             <input type="search" id="ministry_search" class="form-control form-control-lg mb-2" placeholder="Search for a ministry">
             <div id="ministryList"></div>
             {{-- <button type="submit" id="submit" class="btn btn-block btn-success">Find</button> --}}
@@ -64,7 +64,7 @@
 
     <div class="last-section">
       <div class="container-fluid">
-        <div id="cards-container" class="row d-flex sec-card">
+        <div id="cards-container" class="row d-flex sec-card" style="min-height: 300px">
           @if (count($ministries) >0)
           @foreach($ministries as $ministry)
           <div data-id="{{$ministry->id}}" 
@@ -80,16 +80,16 @@
               <div class="coat">
                 <img src="{{ asset('images/image 7.png') }}" alt="">
                 <div class="text-center ministry">
-                  <h4>{{$ministry->ministry_name}}</h4>
+                  <h4>{{$ministry->name}}</h4>
                 </div>
               </div>
               <div class="texts">
                 <h4>Total amount Spent</h4>
                 <p class="num">#123,446,332</p>
-                <p class="year">2019</p>
+                <p class="year">{{date('Y')}}</p>
               </div>
             </div>
-            <a href="{{ route('ministry_profile_search', $ministry->id) }}"></a>
+            <a href="{{ route('ministries.single', $ministry->id) }}"></a>
           </div>
 
          
@@ -131,7 +131,7 @@
                 <div class="texts">
                   <h4>Total amount Spent</h4>
                   <p class="num">#123,446,332</p>
-                  <p class="year">2019</p>
+                  <p class="year">${new Date().getFullYear()}</p>
                 </div>
               </div>
             </div>`
@@ -150,7 +150,7 @@
           })
     })
 
-  const returnDefaults = e =>{
+    const returnDefaults = e =>{
     $.ajax({
         url: "{{ route('ministry_all') }}",
         method: "GET",
@@ -160,8 +160,8 @@
           let ministryCards = '';
           if(data.length>0){    
                 data.forEach(ministry=>{
-                    const {id, ministry_name} = ministry;
-                    ministryCards += card(id, ministry_name);
+                    const {id, name} = ministry;
+                    ministryCards += card(id, name);
                 })
                 
                 $('#cards-container').html(ministryCards);
@@ -177,20 +177,22 @@
     let query = $(this).val();
     if(query != ''){
         let _token = $('input[name="_token"]').val();
+        // console.log(query, _token)
         $.ajax({
             url: "{{ route('ministry_autocomplete') }}",
             method: "POST",
             data: {query, _token},
             success: function(data){
+              // console.log(data)
                 data = JSON.parse(data)
                 let suggestions;
                 let ministryCards = '';
                 if(data.length>0){
-                  suggestions = `<ul class="dropdown-menu" style="display:block; position:relative">`;
+                  suggestions = `<ul class="dropdown-menu" style="display:block; position:absolute">`;
                     data.forEach(ministry=>{
-                        const {id, ministry_name} = ministry;
-                        suggestions += `<li class="pb-2 px-3"><a href="#" class="text-muted "> ${ministry_name}</a></li>`
-                        ministryCards += card(id, ministry_name);
+                        const {id, name} = ministry;
+                        suggestions += `<li class="pb-2 px-3"><a href="#" class="text-muted "> ${name}</a></li>`
+                        ministryCards += card(id, name);
                     })
                       suggestions += '</ul>';
                       $('#ministryList').html(suggestions).fadeIn();
@@ -198,6 +200,7 @@
                 
                 }else{
                     $('#ministryList').fadeOut();
+                    $('#cards-container').empty();
                 }
             }
         })
@@ -210,6 +213,7 @@
   $('#search-area').on('click', 'li', function(e){
       e.preventDefault()
       let ministry = $(this).text();
+      console.log(ministry)
       $('#ministry_search').val(ministry);
       $('#ministryList').fadeOut();
       $.ajax({
@@ -217,10 +221,11 @@
               method: "GET",
               data: {ministry},
               success: function(data){
+                console.log(data)
                   data = JSON.parse(data)
                   console.log(data)
-                  const {id, ministry_name} = data[0]
-                  $('#cards-container').html(card(id, ministry_name))
+                  const {id, name} = data[0]
+                  $('#cards-container').html(card(id, name))
               }
 
           })

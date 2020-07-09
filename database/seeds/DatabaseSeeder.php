@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 include 'CompanySeeder.php';
 include 'MinistrySeeder.php';
-include 'ExpenseSeeder.php';
+include 'PaymentSeeder.php';
 include 'SectorSeeder.php';
 
 class DatabaseSeeder extends Seeder
@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CompanySeeder::class);
         $this->call(MinistrySeeder::class);
         $this->call(ExpenseSeeder::class);
-        
+        $this->call(PaymentSeeder::class); 
+        $this->call(CabinetSeeder::class);
     }
 }
