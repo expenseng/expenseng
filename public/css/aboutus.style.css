@@ -21,7 +21,6 @@
   --fs-h6: 1.1rem;
 }
 
-
 body{
   padding: 0;
   margin: 0;
@@ -68,16 +67,15 @@ main .black_tr{
 
 main .green_bottom{
   position: absolute;
-  top: 435px;
+  top: 475px;
   right: 250px;
 }
 
 main .green_right{
   position: absolute;
-  top: 292px;
+  top: 352px;
   right: 120px;
 }
-
 
 .hero{
   margin: 8rem 0 6rem;
@@ -103,8 +101,6 @@ main .green_right{
   -o-transform:translate(1px, 1px);
 }
 
-
-
 .image_div{
   transform: translate(-30px, 0px);
   -webkit-transform: translate(-30px, 0px);
@@ -128,7 +124,6 @@ main .green_right{
   background-attachment: fixed;
 }
 
-
 .overlay_section p{
   margin: 0;
   color: #FFFFFF;
@@ -147,8 +142,8 @@ main .green_right{
   content: "";
   position: absolute;
   bottom: -64px;
-  width: 235px;
-  height: 235px;
+  width: 200px;
+  height: 200px;
   background: #00945E;
   z-index: -1;
 }
@@ -215,11 +210,33 @@ main .green_right{
 
 
 
+/* Media Queries */
+
 @media all and (max-width: 1440px){
   :root{
     --fs-h2: 2.15rem;
     --fs-h3: 1.5rem;
     --fs-h6: 1.1rem;
+  }
+}
+
+@media all and (max-width: 1200px){
+  main .black_tr{
+    position: absolute;
+    top: 190.16px;
+    left: 570.01px;
+  }
+  
+  main .green_bottom{
+    position: absolute;
+    top: 500px;
+    right: 250px;
+  }
+  
+  main .green_right{
+    position: absolute;
+    top: 377px;
+    right: 100px;
   }
 }
 
@@ -229,41 +246,53 @@ main .green_right{
     --fs-h3: 1.35rem;
     --fs-h6: .95rem;
   }
+
+  .mission_img::before{
+    width: 170px;
+    height: 170px;
+  }
+
+  .vision_img::before{
+    width: 170px;
+    height: 170px;
+  }
 }
 
-@media all and (max-width: 968px){
+@media all and (max-width: 991px){
   main .black_tr{
     position: absolute;
-    top: 164.16px;
+    top: 234.16px;
     left: 470.01px;
   }
   
   main .green_bottom{
     position: absolute;
-    top: 500px;
+    top: 550px;
     right: 180px;
   }
   
   main .green_right{
     position: absolute;
-    top: 392px;
+    top: 442px;
     right: 50px;
   }
+
   .mission_img::before{
     content: "";
     position: absolute;
-    bottom: 104px;
-    width: 205px;
-    height: 205px;
+    bottom: 54px;
+    width: 150px;
+    height: 150px;
     background: #00945E;
     z-index: -1;
   }
+
   .vision_img::before{
     content: "";
     position: absolute;
-    bottom: 54px;
-    width: 205px;
-    height: 205px;
+    bottom: 24px;
+    width: 150px;
+    height: 150px;
     background: #00945E;
     z-index: -1;
   }
@@ -275,9 +304,21 @@ main .green_right{
     --fs-h3: 1.2rem;
     --fs-h6: .8rem;
   }
+
+  .mission_img::before{
+    width: 150px;
+    height: 150px;
+    bottom: -14px;
+  }
+  
+  .vision_img::before{
+    width: 150px;
+    height: 150px;
+    bottom: -34px;
+  }
 }
 
-@media all and (max-width: 760px){
+@media all and (max-width: 767px){
   main .black_tr{
     display: none;
   }
