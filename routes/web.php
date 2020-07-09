@@ -66,3 +66,4 @@ Route::post('/create_company', 'DashboardController@createCompany');
 //     Route::post('/create_company', 'DashboardController@createCompany');
 // });
 
+
