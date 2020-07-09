@@ -24,7 +24,7 @@ class CreatePeopleTable extends Migration
             $table->string('twitter');
             $table->string('facebook');
             $table->string('linkedin');
-            $table->string('email')->unique();
+            $table->string('email', 191)->unique();
             $table->timestamps();
         });
     }

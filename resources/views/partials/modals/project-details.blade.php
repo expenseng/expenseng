@@ -1,13 +1,6 @@
-@extends('layouts.master')
-@section('css')
-  <title>FG Expense - Contact</title>
-  <link rel="stylesheet" href="{{ asset('css/header-footer.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/project_details-filter_modal.css')}}">
-@endsection
-
-@section('content')
-
-<link rel="stylesheet" href="{{ asset('css/project_details-filter_modal.css')}}">
+@push('css')
+    <link rel="stylesheet" href="{{ asset('css/project_details-filter_modal.css')}}">
+@endpush
 
 <script src="https://kit.fontawesome.com/9b1c8d52ed.js" crossorigin="anonymous"></script>
 <section id="modal-content">
@@ -20,7 +13,7 @@
   <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-          <img class="card-img-top" src="{{asset('images/express.svg')}}" alt="Card image cap">
+        <img class="card-img-top" src="{{asset('images/express.svg')}}" alt="Card image cap">
         <div class="modal-header">
           <div class="row alignment">
             <div class="col-md-8">
@@ -31,35 +24,11 @@
               <strong>20th, May 2020</strong>
             </div>
           </div>
-
-          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
-            <!-- <span aria-hidden="true">&times;</span> -->
           </button>
         </div>
+
         <div class="modal-body">
-
             <div class="container">
-{{--
-                <p class="small">Contracted Company <br> Julius Berger</p>
-
-                <p class="small">Company's CEO <br> Julius Berger</p>
-
-                <p class="small">Company's Twitter Handle <a href="">@fedmintransport</a> </p>
-
-
-                <p class="small">Contracting Ministry <br> Ministry of Transportation</p>
-
-                <p class="small"><br></p>
-
-                <p class="small">Ministry's Twitter Handle <a href="">@fedmintransport</a> </p>
-
-
-                <br><p class="small">Contracting Minister <br> Mohammed Musa Bello</p>
-
-                <p><br></p>
-
-                <p class="small">Minister's Twitter Handle <a href="">@fedmintransport</a> </p>
- --}}
                 <div class="container-grid">
                   <div>
                     <p class="small-text safe">Contracted Company</p>
@@ -74,7 +43,8 @@
                     <a href="" class="social-link">@fedmintransport</a>
                   </div>
                 </div>
-<br>
+
+                <br>
 
                 <div class="container-grid ">
                   <div>
@@ -89,7 +59,7 @@
                   </div>
                 </div>
 
-<br>
+                <br>
                 <div class="container-grid">
                   <div>
                     <p class="small-text safe">Contracting Minister</p>
@@ -101,10 +71,9 @@
                     <a href="" class="social-link">@mohammedbello</a>
                   </div>
                 </div>
-
-
             </div>
         </div>
+
         <div class="modal-footer">
           <button type="button" class="btn btn-white border-primary text-primary social tweet" data-dismiss="modal">Tweet
             <i class="fab fa-twitter" aria-hidden="true"></i>
@@ -112,15 +81,8 @@
           <button type="button" class="btn btn-success social">Share<i class="fas fa-share-alt"></i>
           </button>
         </div>
+
       </div>
     </div>
   </div>
 </section>
-@endsection
-
-@section('js')
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <script src="{{ asset('js/index.js') }}"></script>
-@endsection
