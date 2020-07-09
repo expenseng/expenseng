@@ -8,19 +8,39 @@
 <div class="dashboard-wrapper">
             <div class="dashboard-ecommerce">
                 <div class="container-fluid dashboard-content ">
+                 <!-- ============================================================== -->
+                    <!-- Flash Messages  -->
+                    <!-- ============================================================== -->
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            @if($errors->any())
+                                <div class="alert alert-danger">
+                                    @foreach($errors->all() as $error)
+                                        <p>{{ $error }}</p>
+                                    @endforeach
+                                </div>
+                            @endif
+
+                            @if(Session::has('flash_message'))
+                                <div class="alert alert-success">
+                                    {{ Session::get('flash_message') }}
+                                </div>
+                            @endif
+                        </div>
+                    </div>
                     <!-- ============================================================== -->
                     <!-- pageheader  -->
                     <!-- ============================================================== -->
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <h2 class="pageheader-title">E-commerce Dashboard Template </h2>
+                                <h2 class="pageheader-title">ExpenseNG Admin Dashboard </h2>
                                 <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">E-Commerce Dashboard Template</li>
+                                            <li class="breadcrumb-item active" aria-current="page">Admin Dashboard</li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -36,9 +56,9 @@
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="text-muted">Total Revenue</h5>
+                                        <h5 class="text-muted">Total Comments</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">$12099</h1>
+                                            <h1 class="mb-1">150000</h1>
                                         </div>
                                         <div class="metric-label d-inline-block float-right text-success font-weight-bold">
                                             <span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>
@@ -50,12 +70,12 @@
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="text-muted">Affiliate Revenue</h5>
+                                        <h5 class="text-muted">Total Contractors</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">$12099</h1>
+                                            <h1 class="mb-1">5000</h1>
                                         </div>
                                         <div class="metric-label d-inline-block float-right text-success font-weight-bold">
-                                            <span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>
+                                            <span><i class="fa fa-fw fa-arrow-down"></i></span><span>2.86%</span>
                                         </div>
                                     </div>
                                     <div id="sparkline-revenue2"></div>
@@ -99,7 +119,7 @@
                             <!-- ============================================================== -->
                             <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
                                 <div class="card">
-                                    <h5 class="card-header">Recent Orders</h5>
+                                    <h5 class="card-header"><strong> Recent Expenses</strong></h5>
                                     <div class="card-body p-0">
                                         <div class="table-responsive">
                                             <table class="table">
@@ -107,11 +127,11 @@
                                                     <tr class="border-0">
                                                         <th class="border-0">#</th>
                                                         <th class="border-0">Image</th>
-                                                        <th class="border-0">Product Name</th>
-                                                        <th class="border-0">Product Id</th>
+                                                        <th class="border-0">Contractors</th>
+                                                        <th class="border-0">Contract Awarded</th>
                                                         <th class="border-0">Quantity</th>
                                                         <th class="border-0">Price</th>
-                                                        <th class="border-0">Order Time</th>
+                                                        <th class="border-0">Allocation Time</th>
                                                         <th class="border-0">Customer</th>
                                                         <th class="border-0">Status</th>
                                                     </tr>
@@ -122,13 +142,13 @@
                                                         <td>
                                                             <div class="m-r-10"><img src="/images/product-pic.jpg" alt="user" class="rounded" width="45"></div>
                                                         </td>
-                                                        <td>Product #1 </td>
-                                                        <td>id000001 </td>
+                                                        <td>Julius Berger </td>
+                                                        <td>Building of School Blocks </td>
                                                         <td>20</td>
-                                                        <td>$80.00</td>
+                                                        <td>$15000</td>
                                                         <td>27-08-2018 01:22:12</td>
-                                                        <td>Patricia J. King </td>
-                                                        <td><span class="badge-dot badge-brand mr-1"></span>InTransit </td>
+                                                        <td>Federal Uni of Tech Owerri, Imo state</td>
+                                                        <td><span class="badge-dot badge-brand mr-1"></span>Not Completed </td>
                                                     </tr>
                                                     <tr>
                                                         <td>2</td>
@@ -525,6 +545,101 @@
                             <!-- end sales traffice country source  -->
                             <!-- ============================================================== -->
                         </div>
+
+
+                         
+                        <div class="row pt-4" style="background: white">
+                            <!-- ============================================================== -->
+                            <!-- Tabbed Quick Forms -->
+                            <!-- ============================================================== -->
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h2 class="ml-3 mb-4 card-header">Quick Forms</h2>
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                  <li class="nav-item">
+                                    <a class="nav-link active" id="expense_form-tab" data-toggle="tab" href="#expense_form" role="tab" aria-controls="expense_form" aria-selected="true">EXPENSE</a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a class="nav-link" id="company_form-tab" data-toggle="tab" href="#company_form" role="tab" aria-controls="company_form" aria-selected="false">COMPANY</a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a class="nav-link" id="payments_form-tab" data-toggle="tab" href="#payments_form" role="tab" aria-controls="payments_form" aria-selected="false">PAYMENTS</a>
+                                  </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="expense_form" role="tabpanel" aria-labelledby="expense_form-tab">
+                                        <div class="col-md-8 mt-4 offset-2">
+                                            <div class="card">
+                                                <h5 class="card-header">CREATE NEW EXPENSE</h5>
+                                                <div class="card-body">
+                                                    {{ Form::open(array('action' => 'DashboardController@createExpense')) }}
+
+                                                        {{ Form::label('Amount', 'Amount', ['class' => 'label-for-amount']) }}
+                                                        {{ Form::text('amount_spent', '', array_merge(['class' => 'form-control'])) }}
+
+                                                        {{ Form::label('Year', 'Year', ['class' => 'label-for-year']) }}
+                                                        {{ Form::text('year', '', array_merge(['class' => 'form-control'])) }}
+                                                        
+                                                        {{ Form::label('Month', 'Month', ['class' => 'label-for-month']) }}
+                                                        {{ Form::text('month', '', array_merge(['class' => 'form-control'])) }}
+                                                       
+                                                        {{ Form::label('Project', 'Project', ['class' => 'label-for-summary']) }}
+                                                        {{ Form::textarea('project', '', array_merge(['class' => 'form-control', 'rows' => 3])) }}
+                                                       
+                                                        {{ Form::submit('Create', array_merge(['class' => 'btn btn-primary'])) }}
+                                                        
+                                                   {{ Form::close() }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="company_form" role="tabpanel" aria-labelledby="company_form-tab">
+                                    <div class="col-md-8 mt-4 offset-2">
+                                            <div class="card">
+                                                <h5 class="card-header">CREATE NEW COMPANY</h5>
+                                                <div class="card-body p-3 form-group">
+                                                    {{ Form::open(array('action' => 'DashboardController@createCompany')) }}
+                                                    {{Form::token()}}
+                                                    <label class="label-for-name" >Name</label>
+                                                    <input typ0e="text" required = 'required' name="name" id="name" class="form-control">
+                                                    <p id="nameErr" class="text-danger"></p>
+
+                                                    <label class="label-for-shortname">Short Name</label>
+                                                    <input type="text"  required = 'required' name="shortname" id="short_name" class="form-control">
+                                                    <p id="snameErr" class="text-danger"></p>
+
+                                                    <label class="label-for-email">Industry</label>
+                                                    <input type="text"  name="industry" id="industry" class="form-control">
+                                                    <p id="industryErr" class="text-danger"></p>
+
+                                                    <label class="label-for-email">CEO</label>
+                                                    <input type="ceo"  name="ceo" id="ceo" class="form-control">
+                                                    <p id="ceoErr" class="text-danger"></p>
+
+                                                    <label class="label-for-email">Twitter</label>
+                                                    <input type="twitter"  name="twitter" id="twitter" class="form-control">
+                                                    <p id="twitterErr" class="text-danger"></p>
+
+                                                    <button type="submit" value="Add" class="btn btn-primary" name="addCompany" onmouseover="validateAddNew('submit')">Add</button>
+                                                    {{ Form::close() }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="payments_form" role="tabpanel" aria-labelledby="payments_form-tab-tab">
+                                        <div class="col-md-8 mt-4 offset-2">
+                                            <div class="card">
+                                                <h5 class="card-header">CREATE NEW PAYMENTS</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- END Tabbed Quick Forms -->
+                            <!-- ============================================================== -->
+                        </div> <!-- ROW -->
+
+
                     </div>
                 </div>
             </div>
@@ -541,24 +656,23 @@
     @endsection
     @section('js')
     <!-- Optional JavaScript -->
-    <!-- jquery 3.3.1 -->
+
+    <!-- main js -->
+    <script src="{{ asset('js/main-js.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/dashboard-ecommerce.js') }}" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+
     <script src="/vendor/jquery/jquery-3.3.1.min.js"></script>
     <!-- bootstap bundle js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
     <!-- slimscroll js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/slimscroll/jquery.slim.min.js"></script>
     <script src="/vendor/slimscroll/jquery.slimscroll.js"></script>
-    <!-- main js -->
-    <script src="/js/main-js.js"></script>
-    <!-- chart chartist js -->
-    <script src="/vendor/charts/chartist-bundle/chartist.min.js"></script>
-    <!-- sparkline js -->
-    <script src="/vendor/charts/sparkline/jquery.sparkline.js"></script>
-    <!-- morris js -->
-    <script src="/vendor/charts/morris-bundle/raphael.min.js"></script>
-    <script src="/vendor/charts/morris-bundle/morris.js"></script>
+   
     <!-- chart c3 js -->
     <script src="/vendor/charts/c3charts/c3.min.js"></script>
     <script src="/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="/vendor/charts/c3charts/C3chartjs.js"></script>
-    <script src="/js/dashboard-ecommerce.js"></script>
-@endsection
+   @endsection

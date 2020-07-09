@@ -1,6 +1,8 @@
 @push('css')
     <link rel="stylesheet" href="{{ asset('css/comments.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
 @endpush
+<<<<<<< HEAD
 <div class="comment">
 <div class="container mb-4 mt-4">
     <div class="card p-3">
@@ -138,3 +140,7 @@
     </div>
 </div>
 </div>
+=======
+
+<comments></comments>
+>>>>>>> 4d1843dab303cd2f159709e7b1c5f1a6ac62b29b
