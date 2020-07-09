@@ -82,7 +82,7 @@
               </div>
               <div class="texts d-flex flex-column text-center">
                 <h4>Total amount Spent</h4>
-                <p class="num">#123,446,332</p>
+              <p class="num">₦{{number_format($ministry->total)}}</p>
                 <p class="year">{{date('Y')}}</p>
               </div>
             </div>

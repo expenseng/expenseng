@@ -9,21 +9,36 @@ use Illuminate\Support\Facades\DB;
 
 class MinistryController extends Controller
 {
+    public function getMinistries()
+    {
+        $ministries = Ministry::all();
+        $currentYr = date("Y").'-01-01';
+        foreach($ministries as $ministry){
+            $code = $ministry->code;
+            $payments = DB::table('payments')
+                        ->where('payment_code', 'LIKE', "$code%")
+                        ->where('payment_date', '>=', "$currentYr")
+                        ->get();
+            $total = $payments->sum('amount');
+            $ministry->total = $total;
+        }
+        return $ministries;
+    }
     /**
      * List ministries on page load
      */
     public function profile()
     {
-        $ministries = Ministry::all();
+        $ministries = $this->getMinistries();
         return view('pages.ministry.index')->with('ministries', $ministries);
     }
 
      /**
-     * Renders all the ministries each time the search box's content is cleared
+     * Re-renders all the ministries each time the search box's content is cleared
      */
     public function index()
     {
-        $ministries = Ministry::all();
+        $ministries = $this->getMinistries();
         echo $ministries;
     }
 
@@ -34,7 +49,7 @@ class MinistryController extends Controller
     public function showMatch(Request $request)
     {
         $ministry_name = $request->get('id');
-        echo $ministry_name;
+        // echo $ministry_name;
         $ministry = DB::table('ministries')->where('name', '=', "$ministry_name")->get();
         echo $ministry;
     }
@@ -137,10 +152,9 @@ class MinistryController extends Controller
      * Remove the specified resource from storage.
      *
      */
-    public function destroy($ministry=29)
+    public function destroy($ministry)
     {
-        echo "deleted";
-        // Ministry::where('id', $ministry)->delete();
+        Ministry::where('id', $ministry)->delete();
     }
 
 
