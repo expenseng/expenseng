@@ -73,8 +73,6 @@ class MinistryController extends Controller
      */
     public function show(Ministry $ministry)
     {     
-        $yr = ["2020" => 4020, "2019" => 3019, "2018" => 5018, "2017" => 6017 ];
-
             $code = $ministry->code;
             $cabinets = $ministry->cabinet;
             $payments = DB::table('payments')
