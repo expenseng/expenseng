@@ -7,29 +7,49 @@
 
 
 @section('content')
-  <header class="container section-wrapper">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb bg-white">
-        <li class="breadcrumb-item"><a href="{{ url('/') }}">HOME</a></li>
-        <li class="breadcrumb-item active" aria-current="page"><a>CONTRACTORS</a></li>
-      </ol>
-    </nav>
-  </header>
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 section-heading">
-          <h1 class="section-heading-title section-heading-paragraph">Contracted Companies and Organisations </h1>
-          <p>ExpenseNG gives an insight to how much is being dispensed to contracted companies.</p>
+<br />
+<br />
+<br />
+ <header class="container"><!-- Breadcrumb start -->
+	<header class="section-wrapper">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb bg-white">
+				<li class="breadcrumb-item not-active"><a href="{{ url('/') }}">HOME &nbsp;</a></li>
+				<span>&#8226;</span>
+				<li class="breadcrumb-item not-active"><a href="#">&nbsp; CONTRACTORS</a></li>
+			</ol>
+		</nav>
+	</header>
+	<section>
+      <div class="container">
+        <h1 class="ws-10 font-weight-bold">Contracted Companies and Organisations</h1>
+        <br />
+        <div class="row">
+            <div class="col-md-5">
+                <p>ExpenseNG gives an insight to how much is being dispensed to contracted companies.</p>
+            </div>
+        </div>
+        </div>
+        <br>
+        <br>
+        <br><div class="contract-awarded">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6 pt-2 paragraph">
+            <p style="padding:0;">COMPANIES AND TOTAL AMOUNT AWARDED</p>
+            <hr>
+          </div>
+          <div id="search-area" class="offset-md-1 col-md-5 mt-3 mt-md-0">
+            <input type="search" id="ministry_search" class="form-control form-control-lg mb-2 se" placeholder="&#xf002; Search for companies and Organisations">
+            <div id="ministryList"></div>
+            {{-- <button type="submit" id="submit" class="btn btn-block btn-success">Find</button> --}}
+            @csrf
+          </div>
         </div>
       </div>
     </div>
-  </section>
-  <div class="container overflow-auto">
-      <h6 class="active float-left pb-3 green-text-and-bottom font-weight-bold">COMPANIES AND TOTAL AMOUNTS AWARDED</h6>
-      <input type="text" class="form-control float-right d-none d-lg-inline w-50 se" placeholder="&#xf002; Search for companies and Organisations" />
-      <input type="text" class="form-control d-lg-none se" placeholder="&#xf002; Search for companies and Organisations" />
-  </div>
+  </header>
+  
     <br />
     <div class="container">
     <div class="row">
