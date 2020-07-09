@@ -18,41 +18,47 @@
     <div class="navigation-links">
       <ul>
         <li>
-          <a href="">HOME</a>
+          <a href="{{ route('home') }}">HOME</a>
         </li>
         <li>
           <span>&#8226;</span>
         </li>
         <li>
-          <a href="">CONTRACTORS</a>
+          <a href="{{ route('contractors') }}">CONTRACTORS</a>
         </li>
         <li>
           <span>&#8226;</span>
         </li>
         <li>
-          <a href="">COMPANY PROFILE</a>
+          <a>COMPANY PROFILE</a>
         </li>
       </ul>
     </div>
 
     <div class="user-profile">
-      <h3 class="name brand-name">Julius Berger <img src="{{ asset('images/image 13.png') }}" alt="Berger logo"></h3>
+      <h3 class="name brand-name">
+        {{ $company->name }} 
+        <img src="{{ asset('images/image 13.png') }}" alt="Berger logo">
+      </h3>
       <div class="profile-overview mt-3">
         <div class="row">
           <div class="col-sm-4">
             <p class="font-weight-bold">Company twitter handle</p>
-            <p><a href="" class="twitter-handle">@JuliusBergerO</a></p>
-            <p class="year">2000</p>
+            <p><a href="{{ $company->twitterUrl() }}" class="twitter-handle">{{ $company->twitter }}</a></p>
           </div>
           <div class="col-sm-4">
             <p class="font-weight-bold">Total amount rewarded</p>
-            <p class="amount-rewarded">#38.8M</p>
-            <p class="year">2000</p>
+            <p class="amount-rewarded">
+              {{ $company->contract(date("Y"))->amount }}
+            </p>
+            <p class="year">{{ date("Y") }}</p>
           </div>
           <div class="col-sm-4">
             <p class="font-weight-bold">Total number contracts awarded</p>
-            <p class="contract-number">27</p>
-            <p class="year">2000</p>
+            <p class="contract-number">
+              {{ 20 }}
+            </p>
+            <p class="year">{{ date("Y") }}</p>
           </div>
         </div>
       </div>
@@ -71,7 +77,7 @@
     <div class="card">
       <div class="card-body">
         <div class="card-title">
-          <h5>Date: 28th May, 2020</h5>
+          <h5>Date: {{ date("dS M, Y") }}</h5>
           <button class="btn date-btn">
             Select Date
             <i class="fa fa-filter" aria-hidden="true"></i>
@@ -220,9 +226,10 @@
     <div class="container-fluid padding"  >
       <!-- cards -->
       <div class="row padding">
+        @foreach($company->people as $people)
         <div class="col-md-3">
             <div class="card">
-              <img src="{{ asset('images/row1-1.png') }}" alt="Mutiu Sunmonu" class="img-fluid">
+              <img src="{{ asset('images/row1-1.png') }}" alt="{{ $people->name }}" class="img-fluid">
                 <div class="card-body">
                     <h1 class="card-title director-name mt-2">Mutiu Sunmonu</h1>
                     <p class="director-title">Chairman of the board</p>
@@ -343,6 +350,7 @@
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
     <!-- card 3 -->
     <div class="row padding">

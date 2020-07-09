@@ -53,13 +53,13 @@ a:active{
 	color: var(--clr-accent);
 }
 .breadcrumb-item + .breadcrumb-item::before {
-  content: ".";
-  font-weight: var(--fw-bold);
+	content: ".";
+	font-weight: var(--fw-bold);
 }
 
 .breadcrumb > .active {
-color: var(--clr-accent);
-text-decoration: none;
+	color: var(--clr-accent);
+	text-decoration: none;
 }
 
 .breadcrumb-item a{
@@ -309,12 +309,13 @@ tr:nth-child(even) {
 }
 
 .button{
+	width: auto;
     border: none;
     background-color: inherit;
     border-bottom: 2px solid var(--clr-dark);
     color: var(--clr-dark);
     outline: none;
-    padding: .5rem 0 .5rem;
+	padding: .5rem 0 .5rem;
 }
 
 .button:hover{
@@ -328,6 +329,7 @@ tr:nth-child(even) {
 
 .btn-marg{
 	margin-left: 1.5rem;
+	max-width: 20%;
 }
 
 .btn-group .active{
@@ -404,10 +406,6 @@ tr:nth-child(even) {
 	}
 	.btn-marg{
 		margin-left: .5rem;
-	}
-	.dropdown-button{
-		background-color: var(--clr-accent);
-		font-size: var(--fs-h6) !important;
 	}
 	.pagination1,
 	.pagination2{

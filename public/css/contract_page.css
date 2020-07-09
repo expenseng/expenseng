@@ -1,3 +1,23 @@
+:root{
+	--ff-primary: 'Lato' sans-serif;
+  
+	--fw-reg: 400;
+	--fw-normal: 500;
+	--fw-bold: 700;
+  
+	--clr-light: #fff;
+	--clr-dark: #A1A3A8;
+	--clr-accent: #00945E;
+	--clr-white: #f2faf7;
+  
+	--fs-h2: 2.15rem;
+	--fs-h3: 1.5rem;
+	--fs-h4: 1.25rem;
+	--fs-h5: 1.1rem;
+	--fs-h6: .9rem;
+	--fs-reg: .9rem;
+}
+
 @import url(https://fonts.googleapis.com/css2?family=Lato&display=swap);body {
   margin: 0;
   padding: 0;
@@ -127,4 +147,43 @@ input.se {
     font-style: normal;
     font-weight: normal;
     text-decoration: inherit;
+}
+
+.company{
+    display: flex;
+    align-items: flex-end;
+    max-height: 60px;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: nowrap;
+    flex: 1;
+    flex-direction: row;
+}
+
+.company .heading {
+  line-height: 29px;
+  font-size: 15px !important;
+  width: auto;
+  display: inline !important;
+}
+
+header.container {
+  padding-left: 0;
+  margin-top: 5.5rem;
+}
+
+.company a{
+    text-transform: none;
+    text-decoration: none;
+    color: unset;
+}
+
+.company a:hover{
+  /* text-decoration: none; */
+  font-weight: 700;
+}
+
+.section-heading-title {
+  font-size: var(--fs-h2);
+  font-weight: bolder;
 }

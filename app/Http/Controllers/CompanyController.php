@@ -12,12 +12,13 @@ class CompanyController extends Controller
 
     public function index()
     {
-        return view('pages.contract.index');
+        $companies = Company::paginate(20);
+        return view('pages.contract.index')->with('companies', $companies);
     }
 
     public function show(Company $company)
     {
-        return view('pages.contract.single', compact($company));
+        return view('pages.contract.single')->with('company', $company);
     }
 
     public function getReport()

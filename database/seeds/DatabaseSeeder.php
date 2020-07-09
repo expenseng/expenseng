@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CompanySeeder::class);
         $this->call(ExpenseSeeder::class);
         $this->call(PaymentSeeder::class); 
-        $this->call(BudgetSeeder::class); 
+        $this->call(BudgetSeeder::class);  
         $this->call(MinistrySeeder::class);
     }
 }
