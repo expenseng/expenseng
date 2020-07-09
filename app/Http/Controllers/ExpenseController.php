@@ -7,9 +7,14 @@ use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
 {
+<<<<<<< HEAD
     //
     public function report()
     {
+=======
+    
+    public function report(){
+>>>>>>> upstream/develop
         return view('pages.expense.index');
     }
 

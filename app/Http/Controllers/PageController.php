@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Budget;
 use App\Ministry;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function index()
-    {
-        return view('pages.home');
-    }
 
     public function contactUs()
     {
@@ -49,20 +46,20 @@ class PageController extends Controller
 
     public function ministryReport()
     {
-        return view('pages.ministry_report');
+        return view('pages.ministry.ministry_report_table');
     }
 
     public function ministryGetUrl(Request $request)
     {
         $id = $request->get('id');
-        return response()->json(['url' => url('ministry/profile/' . $id)]);
+        return response()->json(['url' => url('ministries/' . $id)]);
     }
 
     public function ministryProfileSearch($id)
     {
         if ($id) {
             $ministry = Ministry::where('id', $id)->first();
-            return view('pages.ministry_list_tables')->with(['ministry' => $ministry]);
+            return view('pages.ministry.ministry_list_tables')->with(['ministry'=> $ministry]);
         }
     }
 
@@ -73,7 +70,7 @@ class PageController extends Controller
 
     public function companyProfile()
     {
-        return view('pages.companyprofile');
+        return view('pages.contract.contracts_awarded');
     }
 
     public function companyReport()

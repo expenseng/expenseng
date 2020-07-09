@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @push('css')
 <title>FG Expense - Home</title>
-<link rel="stylesheet" href="{{ asset('css/about us-header_footer.css') }}">
+<link rel="stylesheet" href="{{ asset('css/aboutus-header_footer.css') }}">
 <link rel="stylesheet" href="{{ asset('css/aboutus.style.css')}}">
 @endpush
 
@@ -75,7 +75,7 @@
 						<img src="{{ asset('images/aboutus/our_mission.jpg') }}" alt="">
 					</div>
 				</div>
-				<div class="col-lg-5 col-md-5 col-sm-12 mission_text">
+				<div class="col-lg-5 col-md-5 col-sm-12 mission_text d-flex flex-column justify-content-center">
 					<h2 class="section-small-font">
 						Our Mission
 					</h2>
@@ -86,7 +86,7 @@
 			</div>
 
 			<div class="row d-flex justify-content-around">
-				<div class="col-lg-5 col-md-5 col-sm-12 vision_text">
+				<div class="col-lg-5 col-md-5 col-sm-12 vision_text d-flex flex-column justify-content-center">
 
 					<h2 class="section-small-font">
 						Our Vision
