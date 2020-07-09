@@ -62,7 +62,7 @@ Route::post('/admin/expense/create', 'DashboardController@createExpense');
 // Route::prefix('admin')->group(function () {
 //     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');  // Matches The "/admin/dashboard" URL
 //     Route::post('/create_expense', 'DashboardController@createExpense');
-//     Route::post('/create_company', 'DashboardController@createCompany');
+     Route::post('/create_company', 'DashboardController@createCompany');
 // });
 
 
