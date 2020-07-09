@@ -33,7 +33,7 @@
         <img src="{{asset('/img/image_7.png')}}" class="ministry-logo-image" alt="ministry logo">
     </div>
     <div class="ministry">
-        <h1 class="font-weight-bold">Ministry of Works and Human Development</h1>
+        <h1 class="font-weight-bold">{{$ministry->name}}</h1>
     </div>
 </div>
 
@@ -41,18 +41,22 @@
     <div class="row stats">
         <div class="col">
             <p>Ministry Twitter Handle</p>
-            <h4 class="twitter-link"><?php echo urldecode('%40')?>ministryworks</h4>
-            <small>2020</small>
+            
+            @php
+                $handle = substr($ministry->twitter_handle, 1)
+            @endphp
+            <div class="sub"><h4 id="minwrks" class="twitter-link"> <a href="{!! url("https://twitter.com/$handle") !!}">{{$ministry->twitter_handle}}</a></h4>
+                 <small>{{date('Y')}}</small></div>
         </div>
         <div class="col">
             <p>Total Amount Spent</p>
-            <h4><span class="text-success">&#8358;38.8M</span></h4>
-            <small>2020</small>
+            <h4><span class="text-success">&#8358;{{number_format($sum)}}</span></h4>
+            <small>{{date('Y')}}</small>
         </div>
         <div class="col">
-            <p>Total Number of Projects Contracted</p>
-            <h4><span class="text-success">27</span></h4>
-            <small>2020</small>
+            <p>Total Number of Projects</p>
+            <h4><span class="text-success">{{$count}}</span></h4>
+            <small>{{date('Y')}}</small>
         </div>
     </div>
 
@@ -102,66 +106,25 @@
                                 </thead>
 
                                 <tbody>
-                                    <tr>
-                                        <td> Rehabilitation of Lago..</td>
-                                        <td> Julius Berger</td>
-                                        <td> N72,902,001.229</td>
-                                        <td> 20th, May 2020</td>
-                                    </tr>
-                                    <tr class="back">
-                                        <td> Rehabilitation of Lago..</td>
-                                        <td> Samsung</td>
-                                        <td> N65,001,901.123</td>
-                                        <td> 20th, May 2020</td>
-                                    </tr>
-                                    <tr>
-                                        <td> Rehabilitation of Lago..</td>
-                                        <td> CCNCC</td>
-                                        <td> N62,899,012.111</td>
-                                        <td> 20th, May 2020</td>
-                                    </tr>
-                                    <tr class="back">
-                                        <td> Building of Class Blocks</td>
-                                        <td> HNG</td>
-                                        <td> N56,901,889.101</td>
-                                        <td> 20th, May 2020</td>
-                                    </tr>
-                                    <tr>
-                                        <td> Building of Class Blocks</td>
-                                        <td> Huawei</td>
-                                        <td> N72,902,001.229</td>
-                                        <td> 20th, May 2020</td>
-                                    </tr>
-                                    <tr class="back">
-                                        <td> Building of Class Blocks</td>
-                                        <td> MTN</td>
-                                        <td> Amount</td>
-                                        <td> 20th, May 2020</td>
-                                    </tr>
-                                    <tr>
-                                        <td> Building of Class Blocks</td>
-                                        <td> Amount</td>
-                                        <td> Amount</td>
-                                        <td> 20th, May 2020</td>
-                                    </tr>
-                                    <tr class="back">
-                                        <td> Building of Class Blocks</td>
-                                        <td> Amount</td>
-                                        <td> Amount</td>
-                                        <td> 20th, May 2020</td>
-                                    </tr>
-                                    <tr>
-                                        <td> Building of Class Blocks</td>
-                                        <td> Amount</td>
-                                        <td> Amount</td>
-                                        <td> 20th, May 2020</td>
-                                    </tr>
-                                    <tr class="back">
-                                        <td> Building of Class Blocks</td>
-                                        <td> Amount</td>
-                                        <td> Amount</td>
-                                        <td> 20th, May 2020</td>
-                                    </tr>
+                                    @if (count($payments) > 0)
+                                    @php
+                                    $back = true;
+                                    @endphp
+                                    @foreach($payments as $payment)
+                                
+                                    @php
+                                    $back = !$back;
+                                    $shade = $back ? 'back': '';
+                                    @endphp
+                                        <tr class="{{$shade}}">
+                                            <td> {{$payment->description}}</td>
+                                            <td> {{$payment->beneficiary}}</td>
+                                            <td> ₦{{number_format($payment->amount)}}</td>
+                                            <td> {{date('jS, M Y', strtotime($payment->payment_date))}}</td>
+                                        </tr>
+                                    @endforeach
+                                @endif
+                                
                                 </tbody>
 
                             </table>
@@ -239,10 +202,34 @@
 
     <!--2-->
     <div id="board" class="tab-pane fade">
-
-        <div style="background:red; height: 40vh"></div>
-        <!--This is where cabinet should be-->
-
+        <div class="row mt-5 pl-3 d-flex justify-content-lg-around">
+            @if ($cabinets)
+                @foreach($cabinets as $cabinet)
+            <div class="col-lg-3 card border-top-0 border-left-0 border-right-0">
+                <div class="card-img" style="display:flex; justify-content: center">
+                    {{-- <img src="{{ asset('images/img1.png') }}" class="img-fluid" alt="Engr. Jafaru Damaluk"> --}}
+                    <img src="{{$cabinet->avatar}}" class="img-fluid" alt="Engr. Jafaru Damaluk">
+                </div>
+                <div class="card-body">
+                    <div class="card-title">
+                    <p class="text-center">{{$cabinet->name}}</p>
+                    </div>
+                    <div class="card-text">
+                        
+                        <p class="green text-center">{{$cabinet->role}}</p>
+                    </div>
+                    <div class="social-handle text-center">
+                        <a href="#" class="link ml-2"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#" class="link ml-2"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#" class="link ml-2"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="#" class="link ml-2"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+                @endforeach
+            @endif
+        </div>
 
     </div>
 

@@ -29,12 +29,28 @@ Route::get('/expense/ministry', 'ExpenseController@ministry')->name('expense.min
  */
 Route::get('/ministries', 'MinistryController@profile')->name('ministries');
 Route::get('/ministries/{ministry}', 'MinistryController@show')->name('ministries.single');
+Route::get('ministries/hall', 'MinistryController@index')->name('ministry_hall');
+Route::post('/ministries', 'MinistryController@store')->name('ministry_store');
+Route::patch('/ministries/{ministry}', 'MinistryController@update')->name('ministry_update');
+Route::delete('/ministries/{ministry}', 'MinistryController@destroy')->name('ministry_destroy');
+Route::get('/ministries/display', 'MinistryController@showMatch')->name('ministry_get_clicked');
+Route::post('/ministries/autocomplete', 'MinistryController@autocomplete')->name('ministry_autocomplete');
 
 /**
  * Contractor Endpoints
  */
 Route::get('/contractors', 'CompanyController@index')->name('contractors');
 Route::get('/contractors/{company}', 'CompanyController@show')->name('contractors.single');
+
+
+Route::get('/ministry-graph', 'PageController@ministryGraph')->name('ministry-graph');
+Route::get('/expense-graph', 'PageController@expenseGraph')->name('expense-graph');
+Route::get('/project-modal', 'PageController@projectModal')->name('project-modal');
+
+
+Route::get('/ministry/details', 'MinistrySearchController@show')->name('get_ministry_details');
+Route::get('/ministry/all', 'MinistrySearchController@index')->name('ministry_all');
+Route::get('/ministry/getUrl', 'PageController@ministryGetUrl')->name('ministry_get_url');
 
 Auth::routes();
 
