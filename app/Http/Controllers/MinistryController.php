@@ -72,7 +72,7 @@ class MinistryController extends Controller
      * Called when user clicks on a ministry in profile.blade.php
      */
     public function show(Ministry $ministry)
-    {     
+    {
             $code = $ministry->code;
             $cabinets = $ministry->cabinet;
             $payments = DB::table('payments')
@@ -113,7 +113,6 @@ class MinistryController extends Controller
      */
     public function edit($id)
     {
-        
     }
 
     /**
@@ -137,7 +136,7 @@ class MinistryController extends Controller
      * Remove the specified resource from storage.
      *
      */
-    public function destroy($ministry=29)
+    public function destroy($ministry = 29)
     {
         echo "deleted";
         // Ministry::where('id', $ministry)->delete();
@@ -156,5 +155,4 @@ class MinistryController extends Controller
             echo $data;
         }
     }
-    
 }

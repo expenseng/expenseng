@@ -54,3 +54,7 @@ Route::get('/ministry/getUrl', 'PageController@ministryGetUrl')->name('ministry_
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+Route::get('/admin/company/create', 'CompanyController@create')->name('company.create');
+Route::post('/admin/company/create', 'CompanyController@createCompany')->name('create.company');
+Route::get('/admin/company/view', 'CompanyController@viewCompanies')->name('company.view');
