@@ -13,7 +13,7 @@
                                 Menu
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" href="{{Route::has('dashbord')? 'nav-link active': 'nav-link'}}" href="{{route('dashboard')}}"  data-target="#submenu-1" aria-controls="submenu-1">
+                                <a class="{{Route::has('dashbord')? 'nav-link active': 'nav-link'}}"  href="{{route('dashboard')}}"  data-target="#submenu-1" aria-controls="submenu-1">
                                     <i class="fa fa-fw fa-user-circle"></i>Dashboard <span class="badge badge-success">6</span></a>
                             </li>
                     
@@ -32,6 +32,7 @@
                                     </ul>
                                 </div>
                             </li>
+                            <!--
                             <li class="nav-item">
                                 <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-fw fa-chart-pie"></i>Chart</a>
                                 <div id="submenu-3" class="collapse submenu" style="">
@@ -225,7 +226,7 @@
                                             <a class="nav-link" href="#">Level 3</a>
                                         </li>
                                     </ul>
-                                </div>
+                                </div>-->
                             </li>
                         </ul>
                     </div>
