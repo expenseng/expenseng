@@ -1,11 +1,13 @@
 @extends('layouts.master')
 @push('css')
-	<title>Table</title>
+	<title>Ministry Expenses</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
 	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Mukta:700|Roboto+Slab&display=swap" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/header_footer.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/ministry-report-table.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/ministry-report-table.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/aboutus-header_footer.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
 	<script src="https://kit.fontawesome.com/8f691340fb.js" crossorigin="anonymous"></script>
 @endpush
 
@@ -33,13 +35,15 @@
 		</div>
 		<div class="section-button">
 			<div class="container">
-				<div class="btn-group col-lg-10 col-md-12 d-flex justify-content-md-between responsive-button nav nav-tabs">
-					<a class="btn-marg text-left active button" data-toggle="tab" role="tab" href="#table">Expense Summary</a>
-					<a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Project Summary</a>
-					<a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Purchases Summary</a>
-					<a class="btn-marg text-left button" data-toggle="tab" role="tab"href="">No Description</a>
-					<a class="btn-marg text-left button" data-toggle="tab" role="tab" href="#comments">Comments</a>
-				</div>
+				<div class="row px-1">
+          <div class="btn-group col-lg-10 col-md-12 d-flex justify-content-between responsive-button nav nav-tabs">
+            <a class="btn-marg text-left active button" data-toggle="tab" role="tab" href="#table">Expense Summary</a>
+            <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Project Summary</a>
+            <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Purchases Summary</a>
+            <a class="btn-marg text-left button" data-toggle="tab" role="tab"href="">No Description</a>
+            <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="#comments">Comments</a>
+          </div>
+        </div>
 			</div>
 		</div>
 	</section>

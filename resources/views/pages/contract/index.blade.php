@@ -7,60 +7,67 @@
 
 
 @section('content')
- <header class="container">
-        <nav aria-label="breadcrumb">
+  <header class="container section-wrapper">
+    <nav aria-label="breadcrumb">
       <ol class="breadcrumb bg-white">
-        <li class="breadcrumb-item"><a href="#">HOME</a></li>
-        <li class="breadcrumb-item active" aria-current="page"><a href="#">CONTRACTORS</a></li>
+        <li class="breadcrumb-item"><a href="{{ url('/') }}">HOME</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a>CONTRACTORS</a></li>
       </ol>
     </nav>
-      </header>
-      <div class="container">
-        <h1>Contracted Companies and Organisations </h1>
-        <div class="row">
-            <div class="col-md-5">
-                <p>ExpenseNG gives an insight to how much is being dispensed to contracted companies.</p>
-            </div>
+  </header>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 section-heading">
+          <h1 class="section-heading-title section-heading-paragraph">Contracted Companies and Organisations </h1>
+          <p>ExpenseNG gives an insight to how much is being dispensed to contracted companies.</p>
         </div>
-        </div>
-    <div class="container overflow-auto">
-        <h6 class="active float-left pb-3 green-text-and-bottom font-weight-bold">COMPANIES AND TOTAL AMOUNTS AWARDED</h6>
-        <input type="text" class="form-control float-right d-none d-lg-inline w-50 se" placeholder="&#xf002; Search for companies and Organisations" />
-        <input type="text" class="form-control d-lg-none se" placeholder="&#xf002; Search for companies and Organisations" />
+      </div>
     </div>
+  </section>
+  <div class="container overflow-auto">
+      <h6 class="active float-left pb-3 green-text-and-bottom font-weight-bold">COMPANIES AND TOTAL AMOUNTS AWARDED</h6>
+      <input type="text" class="form-control float-right d-none d-lg-inline w-50 se" placeholder="&#xf002; Search for companies and Organisations" />
+      <input type="text" class="form-control d-lg-none se" placeholder="&#xf002; Search for companies and Organisations" />
+  </div>
     <br />
     <div class="container">
     <div class="row">
-        <div class="col-md-3 mb-3" v-for="item in 10">
+      @foreach ($companies as $company)
+        <div class="col-md-4 mb-3">
           <div class="card shadow">
             <div class="card-body">
                 <chart label="myVueChart" 
                         v-bind:data="[{amount:32424, year:2039},{amount:12920923, year:2010}]" 
-                        v-bind:element="'chart-'+item"></chart>
-                <div class="company">
-                    <img src="./image 13.png" alt="">
-                    <h5 class="heading">Julius Bergar</h5>
+                        element="{{ $company->shortname() }}"></chart>
+                <div class="company mb-2">
+                    <img src="{{ asset('images/image 13.png') }}" height="30" class="mr-3" alt="">
+                    <a href="{{ route('contractors.single', ['company' => $company->shortname()]) }}">
+                      <h5 class="heading mb-0">
+                        {{ $company->name }}
+                      </h5>
+                    </a>
                 </div>
                 <h5>Total amount Awarded</h5>
                 <h5 class="text-success">#123,334,334</h5>
-                <h6>2019</h6>
+                <h6 class="m-0 mb-0 text-sm-left text-black-50">2019</h6>
             </div>
           </div>
         </div>
-        
-</div>
-<div class="table-footer">
-  <span> 1-20 of 320 results </span>
-  <div class="pagination">
-    <a href="#">&#8249;</a>
-    <a class="active" href="#">1</a>
-    <a href="#">2</a>
-    <a href="#">3</a>
-    <a href="#">..</a>
-    <a href="#">6</a>
-    <a href="#">&#8250;</a>
-  </div>
-</div>
+      @endforeach        
+    </div>
+    <div class="table-footer">
+      <span> 1-20 of 320 results </span>
+      <div class="pagination">
+        <a href="#">&#8249;</a>
+        <a class="active" href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">..</a>
+        <a href="#">6</a>
+        <a href="#">&#8250;</a>
+      </div>
+    </div>
 </div>
 
 @endsection
