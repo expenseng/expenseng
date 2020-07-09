@@ -46,7 +46,7 @@ class PageController extends Controller
 
     public function ministryReport()
     {
-        return view('pages.ministry_report');
+        return view('pages.ministry.ministry_report_table');
     }
 
     public function ministryGetUrl(Request $request)
