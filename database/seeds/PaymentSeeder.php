@@ -102,7 +102,7 @@ class PaymentSeeder extends Seeder
                 "payment_code" => "0234001601",
                 "organization" => "Works & Housing",
                 "beneficiary" => "CCCEC",
-                "amount" => 5778413.63,
+                "amount" => 8175491.12,
                 "description" => "40km Rail Project Milestone 1",
                 "payment_date" => Carbon::create('2020', '03', '04')
             ],
@@ -229,7 +229,7 @@ class PaymentSeeder extends Seeder
                 "organization" => "Works & Housing",
                 "beneficiary" => "CCCEC",
                 "amount" => 5778413.63,
-                "description" => "Lagos-Ibadan",
+                "description" => "Lagos-Ibadan Phase II",
                 "payment_date" => Carbon::create('2020', '03', '01')
             ],
             [
@@ -247,7 +247,7 @@ class PaymentSeeder extends Seeder
                 "organization" => "Works & Housing",
                 "beneficiary" => "CCCEC",
                 "amount" => 5778413.63,
-                "description" => "Lagos-Ibadan express",
+                "description" => "Lagos-Ibadan Phase I",
                 "payment_date" => Carbon::create('2020', '03', '01')
             ],
             [

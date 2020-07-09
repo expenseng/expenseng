@@ -57,6 +57,7 @@
        <p class="label">Latest Government Expenses</p>
        <div class="p-3 p-lg-5">
             <div class="expenses">
+                <govt-expense></govt-expense>
                 <div class="exp-card">
                   <div class="graph-cont">
                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
@@ -308,8 +309,5 @@
   @endsection
 
 @section('js')
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
   <script src="{{asset('js/index.js')}}"></script>
 @endsection

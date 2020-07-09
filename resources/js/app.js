@@ -22,6 +22,7 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('comments', require('./components/Comments.vue').default);
 Vue.component('chart', require('./components/Payments/Chart.vue').default);
+Vue.component('govt-expense', require('./components/Home/GovtExpenses.vue').default);
 
 import VueApexCharts from 'vue-apexcharts'
 Vue.component('apexchart', VueApexCharts);

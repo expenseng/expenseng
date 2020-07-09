@@ -14,13 +14,13 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <h2 class="pageheader-title">E-commerce Dashboard Template </h2>
+                                <h2 class="pageheader-title">ExpenseNG Admin Dashboard </h2>
                                 <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">E-Commerce Dashboard Template</li>
+                                            <li class="breadcrumb-item active" aria-current="page">Admin Dashboard</li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -36,9 +36,9 @@
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="text-muted">Total Revenue</h5>
+                                        <h5 class="text-muted">Total Comments</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">$12099</h1>
+                                            <h1 class="mb-1">150000</h1>
                                         </div>
                                         <div class="metric-label d-inline-block float-right text-success font-weight-bold">
                                             <span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>
@@ -50,12 +50,12 @@
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="text-muted">Affiliate Revenue</h5>
+                                        <h5 class="text-muted">Total Contractors</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">$12099</h1>
+                                            <h1 class="mb-1">5000</h1>
                                         </div>
                                         <div class="metric-label d-inline-block float-right text-success font-weight-bold">
-                                            <span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>
+                                            <span><i class="fa fa-fw fa-arrow-down"></i></span><span>2.86%</span>
                                         </div>
                                     </div>
                                     <div id="sparkline-revenue2"></div>
@@ -99,7 +99,7 @@
                             <!-- ============================================================== -->
                             <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
                                 <div class="card">
-                                    <h5 class="card-header">Recent Orders</h5>
+                                    <h5 class="card-header"><strong> Recent Expenses</strong></h5>
                                     <div class="card-body p-0">
                                         <div class="table-responsive">
                                             <table class="table">
@@ -107,11 +107,11 @@
                                                     <tr class="border-0">
                                                         <th class="border-0">#</th>
                                                         <th class="border-0">Image</th>
-                                                        <th class="border-0">Product Name</th>
-                                                        <th class="border-0">Product Id</th>
+                                                        <th class="border-0">Contractors</th>
+                                                        <th class="border-0">Contract Awarded</th>
                                                         <th class="border-0">Quantity</th>
                                                         <th class="border-0">Price</th>
-                                                        <th class="border-0">Order Time</th>
+                                                        <th class="border-0">Allocation Time</th>
                                                         <th class="border-0">Customer</th>
                                                         <th class="border-0">Status</th>
                                                     </tr>
@@ -122,13 +122,13 @@
                                                         <td>
                                                             <div class="m-r-10"><img src="/images/product-pic.jpg" alt="user" class="rounded" width="45"></div>
                                                         </td>
-                                                        <td>Product #1 </td>
-                                                        <td>id000001 </td>
+                                                        <td>Julius Berger </td>
+                                                        <td>Building of School Blocks </td>
                                                         <td>20</td>
-                                                        <td>$80.00</td>
+                                                        <td>$15000</td>
                                                         <td>27-08-2018 01:22:12</td>
-                                                        <td>Patricia J. King </td>
-                                                        <td><span class="badge-dot badge-brand mr-1"></span>InTransit </td>
+                                                        <td>Federal Uni of Tech Owerri, Imo state</td>
+                                                        <td><span class="badge-dot badge-brand mr-1"></span>Not Completed </td>
                                                     </tr>
                                                     <tr>
                                                         <td>2</td>
@@ -541,24 +541,23 @@
     @endsection
     @section('js')
     <!-- Optional JavaScript -->
-    <!-- jquery 3.3.1 -->
+
+    <!-- main js -->
+    <script src="{{ asset('js/main-js.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/dashboard-ecommerce.js') }}" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+
     <script src="/vendor/jquery/jquery-3.3.1.min.js"></script>
     <!-- bootstap bundle js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
     <!-- slimscroll js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/slimscroll/jquery.slim.min.js"></script>
     <script src="/vendor/slimscroll/jquery.slimscroll.js"></script>
-    <!-- main js -->
-    <script src="/js/main-js.js"></script>
-    <!-- chart chartist js -->
-    <script src="/vendor/charts/chartist-bundle/chartist.min.js"></script>
-    <!-- sparkline js -->
-    <script src="/vendor/charts/sparkline/jquery.sparkline.js"></script>
-    <!-- morris js -->
-    <script src="/vendor/charts/morris-bundle/raphael.min.js"></script>
-    <script src="/vendor/charts/morris-bundle/morris.js"></script>
+   
     <!-- chart c3 js -->
     <script src="/vendor/charts/c3charts/c3.min.js"></script>
     <script src="/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="/vendor/charts/c3charts/C3chartjs.js"></script>
-    <script src="/js/dashboard-ecommerce.js"></script>
-@endsection
+   @endsection
