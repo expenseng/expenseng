@@ -17,9 +17,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(SectorSeeder::class);
         $this->call(CompanySeeder::class);
-        $this->call(MinistrySeeder::class);
         $this->call(ExpenseSeeder::class);
         $this->call(PaymentSeeder::class); 
         $this->call(BudgetSeeder::class); 
+        $this->call(MinistrySeeder::class);
     }
 }
