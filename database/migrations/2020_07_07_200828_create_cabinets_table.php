@@ -20,9 +20,6 @@ class CreateCabinetsTable extends Migration
             $table->string('role'); //Minister of State, Minister, Secretary, Permanent Secretary
             $table->string('avatar')->nullable();
             $table->string('ministry_code')->index();
-            $table->foreign('ministry_code')
-                    ->references('code')
-                    ->on('ministries');
             $table->timestamps();
         });
     }
