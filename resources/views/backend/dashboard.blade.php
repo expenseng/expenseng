@@ -34,7 +34,7 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <h2 class="pageheader-title">ExpenseNg Admin Dashboard </h2>
+                                <h2 class="pageheader-title">ExpenseNG Admin Dashboard </h2>
                                 <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
@@ -656,8 +656,7 @@
     @endsection
     @section('js')
     <!-- Optional JavaScript -->
-    <!-- jquery 3.3.1 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+
     <!-- main js -->
     <script src="{{ asset('js/main-js.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/dashboard-ecommerce.js') }}" type="text/javascript"></script>
@@ -671,13 +670,7 @@
     <!-- slimscroll js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/slimscroll/jquery.slim.min.js"></script>
     <script src="/vendor/slimscroll/jquery.slimscroll.js"></script>
-    <!-- chart chartist js -->
-    <script src="/vendor/charts/chartist-bundle/chartist.min.js"></script>
-    <!-- sparkline js -->
-    <script src="/vendor/charts/sparkline/jquery.sparkline.js"></script>
-    <!-- morris js -->
-    <script src="/vendor/charts/morris-bundle/raphael.min.js"></script>
-    <script src="/vendor/charts/morris-bundle/morris.js"></script>
+   
     <!-- chart c3 js -->
     <script src="/vendor/charts/c3charts/c3.min.js"></script>
     <script src="/vendor/charts/c3charts/d3-5.4.0.min.js"></script>

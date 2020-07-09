@@ -7,15 +7,7 @@ use stdClass;
 
 class Company extends Model
 {
-
-    protected $fillable = [
-        'name',
-        'shortname',
-        'industry',
-        'ceo',
-        'twitter',
-    ];
-    
+    public $fillable = ['name', 'shortname', 'industry', 'ceo', 'twitter'];
     public function expense()
     {
         return $this->hasMany(Expense::class);
