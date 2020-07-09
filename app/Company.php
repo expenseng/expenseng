@@ -25,8 +25,8 @@ class Company extends Model
          * Return only the first word if the word is greater than 10
          * Return the entire word in lowercase with spaces removed otherwise
          */
-        return strlen($this->name) > 10 ? 
-                explode(" ", $this->name)[0] : strtolower(str_replace(" ", "", $this->name));
+        return strlen($this->shortname) > 10 ? 
+                explode(" ", $this->shortname)[0] : strtolower(str_replace(" ", "", $this->shortname));
     }
 
     public function getRouteKeyName()

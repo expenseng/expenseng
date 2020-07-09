@@ -21,7 +21,10 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('comments', require('./components/Comments.vue').default);
+Vue.component('chart', require('./components/Payments/Chart.vue').default);
 
+import VueApexCharts from 'vue-apexcharts'
+Vue.component('apexchart', VueApexCharts);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

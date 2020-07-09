@@ -16,8 +16,8 @@ class CreateBudgetsTable extends Migration
         Schema::create('budgets', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('amount');
-            $table->string('project_name', 191)->unique();
-            $table->integer('code')->index();
+            $table->string('project_name', 191);
+            $table->string('code')->index();
             $table->string('year');
             $table->string('classification'); //economic, admistrative, functions of govt
             $table->timestamps();
