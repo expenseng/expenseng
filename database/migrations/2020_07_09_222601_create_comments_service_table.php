@@ -21,6 +21,7 @@ class CreateCommentsServiceTable extends Migration
             $table->string("adminName");
             $table->string("adminEmail");
             $table->string("adminPassword");
+            $table->string("token");
             $table->timestamps();
         });
     }
