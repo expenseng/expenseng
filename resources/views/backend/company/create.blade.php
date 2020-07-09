@@ -24,24 +24,24 @@
                                             @csrf
                                             <div class="form-group">
                                                 <label for="inputText3" class="col-form-label">Company Name</label>
-                                                <input id="inputText3" type="text" class="form-control" placeholder="e.g example company">
+                                                <input id="inputText3" name="company_name" type="text" class="form-control" placeholder="e.g example company">
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">Short Name</label>
-                                                <input id="inputEmail" type="text" placeholder="e.g example" class="form-control">
+                                                <input id="inputEmail" name="company_shortname" type="text" placeholder="e.g example" class="form-control">
                                                 
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputText4" class="col-form-label">Industry Twitter Handle</label>
-                                                <input id="inputText4" type="text" class="form-control" placeholder="e.g @example">
+                                                <input id="inputText4" name="company_twitter" type="text" class="form-control" placeholder="e.g @example">
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword">CEO Name</label>
-                                                <input id="inputPassword" type="text" placeholder="e.g Samuel Ogbede" class="form-control">
+                                                <input id="inputPassword" name="company_ceo" type="text" placeholder="e.g Samuel Ogbede" class="form-control">
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword">CEO Twitter hande</label>
-                                                <input id="inputPassword" type="text" placeholder="e.g  @Ogbede" class="form-control">
+                                                <input id="inputPassword" name="ceo_handle" type="text" placeholder="e.g  @Ogbede" class="form-control">
                                             </div>
                                             <div class="form-group text-right">
                                                 <input type="submit" value="Create New Company"
