@@ -1,6 +1,9 @@
 @push('css')
     <link rel="stylesheet" href="{{ asset('css/comments.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
 @endpush
+<<<<<<< HEAD
+<div class="comment">
 <div class="container mb-4 mt-4">
     <div class="card p-3">
         <div class="container">
@@ -8,8 +11,6 @@
                 <div class="col-sm-1 mt-1 row d-flex container">
                     <img src="/images/profile-image.svg"class="resize"alt="profile-image">
                     <div class="ml-3 mt-2 be-gone">
-                        <p class="green-text">James Emmanuel<br>
-                        <span class="mt-0 grey-text small mt-1">2mins ago</span></p>
                     </div>
                 </div>
                 <div class="col-sm-11">
@@ -42,8 +43,6 @@
                 <div class="col-sm-1 mt-1 row d-flex container">
                     <img src="/images/profile-image.svg"class="resize"alt="profile-image">
                     <div class="ml-3 mt-2 be-gone">
-                        <p class="green-text">James Emmanuel<br>
-                        <span class="mt-0 grey-text small mt-1">2mins ago</span></p>
                     </div>
                 </div>
                 <div class="col-sm-11">
@@ -78,8 +77,6 @@
                 <div class="col-sm-1 mt-1 row d-flex container">
                     <img src="/images/profile-image.svg"class="resize"alt="profile-image">
                     <div class="ml-3 mt-2 be-gone">
-                        <p class="green-text">James Emmanuel<br>
-                        <span class="mt-0 grey-text small mt-1">2mins ago</span></p>
                     </div>
                 </div>
                 <div class="col-sm-11">
@@ -106,8 +103,6 @@
                                     <div class="col-sm-1 mt-1 row d-flex container">
                                         <img src="/images/profile-image.svg"class="reduce"alt="profile-image">
                                         <div class="ml-3 mt-2 be-gone">
-                                            <p class="green-text">James Emmanuel<br>
-                                            <span class="mt-0 grey-text small mt-1">2mins ago</span></p>
                                         </div>
                                     </div>
                                     <div class="col-sm-11 ">
@@ -139,8 +134,13 @@
 
 <div class=" container d-flex align-content-center justify-content-center mb-5">
     <div class="container  d-flex align-content-center justify-content-center">
-        <input   placeholder="Write a Comment" class="w-75 p-2">
+        <input placeholder="Write a Comment" class="w-75 p-2">
         <i class="far fa-laugh"></i>
         <i class="far fa-image"></i>
     </div>
 </div>
+</div>
+=======
+
+<comments></comments>
+>>>>>>> 4d1843dab303cd2f159709e7b1c5f1a6ac62b29b

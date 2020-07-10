@@ -45,6 +45,4 @@ class MinistrySearchController extends Controller
         $ministry = $this->getMinistries($result);
         echo $ministry;
     }
-
-   
 }

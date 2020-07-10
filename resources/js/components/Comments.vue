@@ -144,95 +144,90 @@
 
 <script>
 export default {
-    
+    data() {
+        return {
+            
+        }
+    },
 }
 </script>
 
 <style scoped>
-*{
-    margin: 0;
-    padding: 0;
-}
-
-.top img{
+.comments .top img{
 padding-right: 10px;
 }
 
 .coat h1{
-display: inline-block;
-left: 106px;
-top: 16.5px;
-margin-left: 20px;
-font-family: Lato;
-font-style: normal;
-font-weight: bold;
-font-size: 40px;
-line-height: 48px;
-
-/* identical to box height */
-
-color: #323E48;
+    display: inline-block;
+    left: 106px;
+    top: 16.5px;
+    margin-left: 20px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 48px;
+    /* identical to box height */
+    color: #323E48;
 }
 
-
-
 .topic{
-width: 400px;
-height: 41.25px;
+    width: 400px;
+    height: 41.25px;
 
 
-font-family: Lato;
-font-style: normal;
-font-weight: 500;
-font-size: 18px;
-line-height: 22px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
 
-color: #1F2430;
+    color: #1F2430;
 }
 
 .subtopic1{
-width: 169px;
-height: 28.9px;
-left: 100px;
-top: 546px;
+    width: 169px;
+    height: 28.9px;
+    left: 100px;
+    top: 546px;
 
-font-family: Lato;
-font-style: normal;
-font-weight: normal;
-font-size: 24px;
-line-height: 29px;
-color: #6765EC;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 29px;
+    color: #6765EC;
 }
 
 .subtopic2{
-width: 152.99px;
-height: 52.5px;
-left: 415px;
-top: 546px;
+    width: 152.99px;
+    height: 52.5px;
+    left: 415px;
+    top: 546px;
 
-font-family: Lato;
-font-style: normal;
-font-weight: bold;
-font-size: 24px;
-line-height: 29px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
 
-color: #00945E;
+    color: #00945E;
 }
 
 .subtopic3{
-margin-top: -10px;
-width: 31.18px;
-height: 28.13px;
-left: 100px;
-top: 587.88px;
+    margin-top: -10px;
+    width: 31.18px;
+    height: 28.13px;
+    left: 100px;
+    top: 587.88px;
 
-font-family: Lato;
-font-style: normal;
-font-weight: normal;
-font-size: 13px;
-line-height: 16px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
 
-color: #1F2430;
+    color: #1F2430;
 }
 
 .closer{
@@ -333,8 +328,11 @@ color: #1F2430;
 }
 
 input{
-    border: none;
     padding-left: 15px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px;
+    padding-right: 73px !important;
 }
 
 .input-comm img{
