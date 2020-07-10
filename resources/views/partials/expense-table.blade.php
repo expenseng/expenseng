@@ -11,78 +11,13 @@
 					<button class="nav-button">Select Date<i class="fas fa-filter px-1" style="font-size: var(--fs-reg);"></i></button>
 				</div>
 				<div class="table-data">
-					<div class=" d-flex flex-row" style="overflow-x: auto;">
-						<table id="Table" cell-spacing="0" data-pagination="true" data-page-size="10" class="table table-striped table-responsive-sm table1">
-							<thead class="thead1">
-								<tr>
-									<th class="section-shadow row-ministry">Ministry</th>
-								</tr>
-							</thead>
-							<tbody class="tbody1">
-								<tr>
-									<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
-								</tr>
-								<tr>
-									<td class="section-shadow"><a href="#" class="text-success">Labour</a></td>
-								</tr>
-								<tr>
-									<td class="section-shadow"><a href="#" class="text-success">Energy</a></td>
-								</tr>
-								<tr>
-									<td class="section-shadow"><a href="#" class="text-success">Labour</a></td>
-								</tr>
-								<tr>
-									<td class="section-shadow"><a href="#" class="text-success">Energy</a></td>
-								</tr>
-								<tr>
-									<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
-								</tr>
-								<tr>
-									<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
-								</tr>
-								<tr>
-									<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
-								</tr>
-								<tr>
-									<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
-								</tr>
-								<tr>
-									<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
-								</tr>
-								<tr>
-									<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
-								</tr>
-								<tr>
-									<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
-								</tr>
-								<tr>
-									<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
-								</tr>
-								<tr>
-									<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
-								</tr>
-								<tr>
-									<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
-								</tr>
-								<tr>
-									<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
-								</tr>
-								<tr>
-									<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
-								</tr>
-								<tr>
-									<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
-								</tr>
-								<tr>
-									<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
-								</tr>
-							</tbody>
-						</table>
-						<table id="Table" cell-spacing="0" data-pagination="true" data-page-size="10" class="table table-striped table-responsive-sm table2">
+					<div style="overflow-x: auto;">
+						<table id="Table" cell-spacing="0" data-pagination="true" data-page-size="10" class="table table-striped table-responsive-sm">
 							<thead>
 								<tr>
-									<th class="row-project">Project</th>
-									<th class="row-company">Company</th>
+									<th class="section-shadow row-ministry">Ministry</th>
+									<th class="row-project">Beneficiary</th>
+									<th class="row-company">Purpose</th>
 									<th class="row-amount">Amount</th>
 									<th class="row-date">Date</th>
 								</tr>
@@ -97,118 +32,137 @@
 									<td>20th,May 2020</td>
 								</tr>
 								@endforeach --}}
-								
+
 								<tr>
-									<td class="table-overflow" >Building of Class Blocks</td>
+									<td class="section-shadow"><a href="#" class="text-success">Education</a></td>
 									<td>Samsung</td>
+									<td class="table-overflow" >Building of Class Blocks</td>
 									<td>&#8358;65,001,901,123</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
+									<td class="section-shadow"><a href="#" class="text-success">Energy</a></td>
 									<td>Julius Berger</td>
+									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
 									<td>&#8358;72,902,001,229</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="table-overflow" >Building of Class Blocks</td>
+									<td class="section-shadow"><a href="#" class="text-success">Labour</a></td>
 									<td>Samsung</td>
+									<td class="table-overflow" >Building of Class Blocks</td>
 									<td>&#8358;65,001,901,123</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
+									<td class="section-shadow"><a href="#" class="text-success">Agriculture</a></td>
 									<td>Julius Berger</td>
+									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
 									<td>&#8358;72,902,001,229</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="table-overflow" >Building of Class Blocks</td>
+									<td class="section-shadow"><a href="#" class="text-success">Education</a></td>
 									<td>Samsung</td>
+									<td class="table-overflow" >Building of Class Blocks</td>
 									<td>&#8358;65,001,901,123</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
+									<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
 									<td>Julius Berger</td>
+									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
 									<td>&#8358;72,902,001,229</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="table-overflow" >Building of Class Blocks</td>
+									<td class="section-shadow"><a href="#" class="text-success">Education</a></td>
 									<td>Samsung</td>
+									<td class="table-overflow" >Building of Class Blocks</td>
 									<td>&#8358;65,001,901,123</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
+									<td class="section-shadow"><a href="#" class="text-success">Transport</a></td>
 									<td>Julius Berger</td>
+									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
 									<td>&#8358;72,902,001,229</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="table-overflow" >Building of Class Blocks</td>
+									<td class="section-shadow"><a href="#" class="text-success">Education</a></td>
 									<td>Samsung</td>
+									<td class="table-overflow" >Building of Class Blocks</td>
 									<td>&#8358;65,001,901,123</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
+									<td class="section-shadow"><a href="#" class="text-success">Transport</a></td>
 									<td>Julius Berger</td>
+									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
 									<td>&#8358;72,902,001,229</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="table-overflow" >Building of Class Blocks</td>
+									<td class="section-shadow"><a href="#" class="text-success">Education</a></td>
 									<td>Samsung</td>
+									<td class="table-overflow" >Building of Class Blocks</td>
 									<td>&#8358;65,001,901,123</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
+									<td class="section-shadow"><a href="#" class="text-success">Energy</a></td>
 									<td>Julius Berger</td>
+									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
 									<td>&#8358;72,902,001,229</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="table-overflow" >Building of Class Blocks</td>
+									<td class="section-shadow"><a href="#" class="text-success">Labour</a></td>
 									<td>Samsung</td>
+									<td class="table-overflow" >Building of Class Blocks</td>
 									<td>&#8358;65,001,901,123</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
+									<td class="section-shadow"><a href="#" class="text-success">Agriculture</a></td>
 									<td>Julius Berger</td>
+									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
 									<td>&#8358;72,902,001,229</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="table-overflow" >Building of Class Blocks</td>
+									<td class="section-shadow"><a href="#" class="text-success">Education</a></td>
 									<td>Samsung</td>
+									<td class="table-overflow" >Building of Class Blocks</td>
 									<td>&#8358;65,001,901,123</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
+									<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
 									<td>Julius Berger</td>
+									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
 									<td>&#8358;72,902,001,229</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="table-overflow" >Building of Class Blocks</td>
+									<td class="section-shadow"><a href="#" class="text-success">Education</a></td>
 									<td>Samsung</td>
+									<td class="table-overflow" >Building of Class Blocks</td>
 									<td>&#8358;65,001,901,123</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
+									<td class="section-shadow"><a href="#" class="text-success">Transport</a></td>
 									<td>Julius Berger</td>
+									<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
 									<td>&#8358;72,902,001,229</td>
 									<td>20th,May 2020</td>
 								</tr>
 								<tr>
-									<td class="table-overflow" >Building of Class Blocks</td>
+									<td class="section-shadow"><a href="#" class="text-success">Education</a></td>
 									<td>Samsung</td>
+									<td class="table-overflow" >Building of Class Blocks</td>
 									<td>&#8358;65,001,901,123</td>
 									<td>20th,May 2020</td>
 								</tr>
