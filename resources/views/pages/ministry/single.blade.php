@@ -179,19 +179,6 @@
                                 </table>
                             </div>
                         </div>
-                            {{-- <div class=" row mt-4  container centerize">
-                                <div class=" col-md min-pag-parent text-muted">1-20 of 320 results </div>
-                                <div class=" pagination">
-                                    <a href="#">&laquo;</a>
-                                    <a class="active" href="#">1</a>
-                                    <a href="#">2</a>
-                                    <a href="#">3</a>
-                                    <a href="#">4</a>
-                                    <a href="#">...</a>
-                                    <a href="#">6</a>
-                                    <a href="#">&raquo;</a>
-                                </div>
-                            </div> --}}
                     </div>
                 </div>
             </div>

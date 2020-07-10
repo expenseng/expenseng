@@ -61,10 +61,64 @@
     <section id="main" class="">     
        <!-- Expenses section -->
        <div id="expenses">
-        <p class="label">Latest Government Expenses</p>
+        <p class="label" id="comput">Latest Government Expenses</p>
         <div class="p-3  p-lg-5">
              <div class="expenses container">
                  <govt-expense></govt-expense>
+                 <div class="exp-card">
+                   <div class="graph-cont">
+                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                   <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                   </div>
+                   <p class="exp-card1">Health</p>
+                   <p class="exp-card2">&#8358;123,446,332</p>
+                   <p class="exp-card3">2020</p>
+                 </div>
+                 <div class="exp-card">
+                  <div class="graph-cont">
+                    <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                    <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                   </div>
+                   <p class="exp-card1">Salary</p>
+                   <p class="exp-card2">&#8358;123,446,332</p>
+                   <p class="exp-card3">2020</p>
+                 </div>
+                 <div class="exp-card">
+                  <div class="graph-cont">
+                    <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                    <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                   </div>
+                   <p class="exp-card1">Agriculture</p>
+                   <p class="exp-card2">&#8358;123,446,332</p>
+                   <p class="exp-card3">2020</p>
+                 </div>
+                 <div class="exp-card">
+                  <div class="graph-cont">
+                    <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                    <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                   </div>
+                   <p class="exp-card1">Security</p>
+                   <p class="exp-card2">&#8358;123,446,332</p>
+                   <p class="exp-card3">2020</p>
+                 </div>
+                 <div class="exp-card">
+                  <div class="graph-cont">
+                    <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                    <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                   </div>
+                   <p class="exp-card1">Power</p>
+                   <p class="exp-card2">&#8358;123,446,332</p>
+                   <p class="exp-card3">2020</p>
+                 </div>
+                 <div class="exp-card">
+                  <div class="graph-cont">
+                    <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                    <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                   </div>
+                   <p class="exp-card1">Infrastructure</p>
+                   <p class="exp-card2">&#8358;123,446,332</p>
+                   <p class="exp-card3">2020</p>
+                 </div>
                  <a href="{{route('expense.reports')}}" class="mt-4 mb-5">View Expenditure Report</a>
              </div>
         </div>
@@ -73,7 +127,7 @@
        <!-- Ministry section -->
        <div>
 
-        <p class="label mb-5 specific">Ministry Expenditures</p>
+        <p class="label mb-5 specific" id="compute">Ministry Expenditures</p>
         <div class="ministry container mt-4">
             <div class="ministry-top">
               <div class="ministry-heading">
@@ -88,7 +142,19 @@
                </div>
                <a href="{{ route('ministries') }}" class="profile">View all profiles</a>
              </div>
-            <div class="ministry-stat">
+             <div >
+                   {{-- <div class="stat-a p-4">
+                     <div class="graph-cont">
+                       <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                       <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                      </div>
+                     <div>
+                       <p class="exp-card1">Total amount spent</p>
+                       <p class="exp-card2">#123,446,332</p>
+                       <p class="exp-card3">2020</p>
+              </div>
+            </div> --}}
+            <div class="ministry-stat stata">
                   <div class="stat-a p-4">
                     <div class="graph-cont">
                       <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
@@ -149,20 +215,22 @@
        </div>
 
        <!-- Company section -->
-       <p class="label mt-5 mb-5 ">Companies that received money</p>
+       <p class="label mt-5 mb-5 " id="compu">Companies that received money</p>
+      
        <div class="companies container">
             <div class="comp-card">
-               <div class="awarded">
-                 <div class="graph-cont">
-                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                   <img src="{{asset('/images/vector2.png')}}" alt="graph">
-                  </div>
-                  <div class="ml-5">
-                     <p class="exp-card1">Total amount Awarded</p>
-                     <p class="exp-card2">&#8358;123,446,332</p>
-                     <p class="exp-card3">2019</p>
-                  </div>
-              </div>
+              <div class="awarded">
+                <div class="graph-cont">
+                  <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                  <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                 </div>
+                <div class="ml-5">
+                   <p class="exp-card1">Total amount Awarded</p>
+                   <p class="exp-card2">&#8358;123,446,332</p>
+                   <p class="exp-card3">2019</p>
+                </div>
+            </div>
+              
               <div>
                  <div class="d-flex align-items-center mb-3">
                    <img src="{{asset('/images/berger.jpg')}}" alt="">
@@ -253,7 +321,12 @@
               </div>
            </div>
             </div>
+          
        </div>
+
+      </div>
+      <div class="move">
+        <a href="{{ route('contractors') }}" class="profile">View all Companies</a>
       </div>
        <!-- conversation section -->
        <div class="convo-background">
@@ -271,6 +344,7 @@
                   Drop by our community page to ask questions,
                   propose new features, sign up for testing, and join the conversation about federal spending data.</p>
               </div>
+       </div>
        </div>
     </section>
   @endsection
