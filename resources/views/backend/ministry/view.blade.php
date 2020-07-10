@@ -6,6 +6,11 @@
     <link rel="stylesheet" type="text/css" href="/extras/datatables/css/buttons.bootstrap4.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/extras/datatables/css/fixedHeader.bootstrap4.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" />
+        
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+        <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <title>ExpenseNg - Ministries</title>
 @endpush
 
@@ -83,21 +88,7 @@
 
 @section('js')
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/multi-select/0.9.12/js/jquery.multi-select.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    <script src="/extras/datatables/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    <script src="/extras/datatables/js/data-table.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
-    <script src="https://cdn.datatables.net/rowgroup/1.0.4/js/dataTables.rowGroup.min.js"></script>
-    <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
-    <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
+    
     <!-- main js -->
     <script src="{{ asset('js/main-js.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/dashboard-ecommerce.js') }}" type="text/javascript"></script>
@@ -111,8 +102,7 @@
     <!-- slimscroll js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/slimscroll/jquery.slim.min.js"></script>
     <script src="/vendor/slimscroll/jquery.slimscroll.js"></script>
-    <!-- datatable  js -->
-    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+
     <!-- sparkline js -->
     <script src="/vendor/charts/sparkline/jquery.sparkline.js"></script>
     <!-- morris js -->
@@ -123,7 +113,7 @@
     <script src="/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="/vendor/charts/c3charts/C3chartjs.js"></script>
     <script>
-        $(document).ready(function() {
+        jQuery(document).ready(function() {
     $('#example').DataTable();
     } );
     </script>
