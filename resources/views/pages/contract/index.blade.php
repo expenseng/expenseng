@@ -78,7 +78,7 @@
     </div>
     <div class="table-footer">
       <div class="pagination">
-        {{ $companies->links() }}
+        @include('partials.pagination', ['data' => $companies])
       </div>
     </div>
 </div>
