@@ -8,7 +8,7 @@
   @section('banner')
         <!-- banner -->
         <div class=" background">
-          
+
           <div class="container banner">
             {{-- <img src="{{asset('images/flag.jpg')}}" alt=""> --}}
             <div class="carets" id="caret">
@@ -22,8 +22,8 @@
                   Learn more on how this money was spent with tools to help you navigate spending from top to bottom.</p>
               </div>
               <div class="carets my-4" id="caret-alt">
-              <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left">
-              <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-right">
+              <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left2">
+              <img src="{{asset('images/angle-right.svg')}}" alt="" class="arrow-right2">
               </div>
               <div class="gallery">
                 <div class="card1 card">
@@ -33,7 +33,7 @@
                         Ministry of Power, Works and Housing</p>
                       <div class="d-flex justify-content-between mt-4 align-items-center">
                           <p>Cost of Project: </p>
-                          <p id="cost">#20bn</p>
+                          <p id="cost">&#8358;20bn</p>
                       </div>
                   </div>
                 </div>
@@ -44,152 +44,161 @@
                       Ministry of Power, Works and Housing</p>
                     <div class="d-flex justify-content-between mt-4">
                         <p>Cost of Project: </p>
-                        <p id="cost">#20bn</p>
+                        <p id="cost">&#8358;20bn</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <button class="btn scroll-down"></button>
+            <button class="btn scroll-down" >
+              <a href="#expenses"></a>
+            </button>
           </div>
         </div>
   @endsection
 
   @section('content')
-    <section id="main" class="container">     
+    <section id="main" class="">     
        <!-- Expenses section -->
-       <p class="label">Latest Government Expenses</p>
-       <div class="p-3  p-lg-5">
-            <div class="expenses">
-                <govt-expense></govt-expense>
-                <div class="exp-card">
+       <div id="expenses">
+        <p class="label">Latest Government Expenses</p>
+        <div class="p-3  p-lg-5">
+             <div class="expenses container">
+                 <govt-expense></govt-expense>
+                 <div class="exp-card">
+                   <div class="graph-cont">
+                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                   <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                   </div>
+                   <p class="exp-card1">Health</p>
+                   <p class="exp-card2">&#8358;123,446,332</p>
+                   <p class="exp-card3">2020</p>
+                 </div>
+                 <div class="exp-card">
                   <div class="graph-cont">
-                  <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                  <img src="{{asset('/images/Vector2.png')}}" alt="graph">
-                  </div>
-                  <p class="exp-card1">Health</p>
-                  <p class="exp-card2">#123,446,332</p>
-                  <p class="exp-card3">2020</p>
-                </div>
-                <div class="exp-card">
-                 <div class="graph-cont">
-                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                   <img src="{{asset('/images/Vector2.png')}}" alt="graph">
-                  </div>
-                  <p class="exp-card1">Salary</p>
-                  <p class="exp-card2">#123,446,332</p>
-                  <p class="exp-card3">2020</p>
-                </div>
-                <div class="exp-card">
-                 <div class="graph-cont">
-                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                   <img src="{{asset('/images/Vector2.png')}}" alt="graph">
-                  </div>
-                  <p class="exp-card1">Agriculture</p>
-                  <p class="exp-card2">#123,446,332</p>
-                  <p class="exp-card3">2020</p>
-                </div>
-                <div class="exp-card">
-                 <div class="graph-cont">
-                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                   <img src="{{asset('/images/Vector2.png')}}" alt="graph">
-                  </div>
-                  <p class="exp-card1">Security</p>
-                  <p class="exp-card2">#123,446,332</p>
-                  <p class="exp-card3">2020</p>
-                </div>
-                <div class="exp-card">
-                 <div class="graph-cont">
-                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                   <img src="{{asset('/images/Vector2.png')}}" alt="graph">
-                  </div>
-                  <p class="exp-card1">Power</p>
-                  <p class="exp-card2">#123,446,332</p>
-                  <p class="exp-card3">2020</p>
-                </div>
-                <div class="exp-card">
-                 <div class="graph-cont">
-                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                   <img src="{{asset('/images/Vector2.png')}}" alt="graph">
-                  </div>
-                  <p class="exp-card1">Infrastructure</p>
-                  <p class="exp-card2">#123,446,332</p>
-                  <p class="exp-card3">2020</p>
-                </div>
-                <a href="{{route('expense.reports')}}" class="mt-4 mb-5">View Expenditure Report</a>
-            </div>
+                    <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                    <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                   </div>
+                   <p class="exp-card1">Salary</p>
+                   <p class="exp-card2">&#8358;123,446,332</p>
+                   <p class="exp-card3">2020</p>
+                 </div>
+                 <div class="exp-card">
+                  <div class="graph-cont">
+                    <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                    <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                   </div>
+                   <p class="exp-card1">Agriculture</p>
+                   <p class="exp-card2">&#8358;123,446,332</p>
+                   <p class="exp-card3">2020</p>
+                 </div>
+                 <div class="exp-card">
+                  <div class="graph-cont">
+                    <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                    <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                   </div>
+                   <p class="exp-card1">Security</p>
+                   <p class="exp-card2">&#8358;123,446,332</p>
+                   <p class="exp-card3">2020</p>
+                 </div>
+                 <div class="exp-card">
+                  <div class="graph-cont">
+                    <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                    <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                   </div>
+                   <p class="exp-card1">Power</p>
+                   <p class="exp-card2">&#8358;123,446,332</p>
+                   <p class="exp-card3">2020</p>
+                 </div>
+                 <div class="exp-card">
+                  <div class="graph-cont">
+                    <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                    <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                   </div>
+                   <p class="exp-card1">Infrastructure</p>
+                   <p class="exp-card2">&#8358;123,446,332</p>
+                   <p class="exp-card3">2020</p>
+                 </div>
+                 <a href="{{route('expense.reports')}}" class="mt-4 mb-5">View Expenditure Report</a>
+             </div>
+        </div>
        </div>
 
        <!-- Ministry section -->
-       <p class="label">Ministry Expenditures</p>
-       <div class="ministry">
-           <div class="ministry-heading">
-             <div class="ministry-head">
-               <p>Ministry of Agriculture</p>
-                <i class="fa fa-caret-down"></i>
-             </div>
-             <p class="profile">View all profiles</p>
-           </div>
-           <div class="ministry-stat">
-                 <div class="stat-a p-4">
-                   <div class="graph-cont">
-                     <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                     <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+       <div>
+
+        <p class="label mb-5">Ministry Expenditures</p>
+        <div class="ministry container mt-4">
+            <div class="ministry-heading">
+              <div class="ministry-head">
+                <p>Ministry of Agriculture</p>
+                 <i class="fa fa-caret-down"></i>
+              </div>
+              <p class="profile">View all profiles</p>
+            </div>
+            <div class="ministry-stat">
+                  <div class="stat-a p-4">
+                    <div class="graph-cont">
+                      <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                      <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                     </div>
+                    <div>
+                      <p class="exp-card1">Total amount spent</p>
+                      <p class="exp-card2">&#8358;123,446,332</p>
+                      <p class="exp-card3">2020</p>
                     </div>
-                   <div>
-                     <p class="exp-card1">Total amount spent</p>
-                     <p class="exp-card2">#123,446,332</p>
-                     <p class="exp-card3">2020</p>
-                   </div>
-                 </div>
-                 <div class="stat-b">
-                   <div class="d-flex p-2 justify-content-between">
-                     <div class="graph-cont">
-                       <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                       <img src="{{asset('/images/Vector2.png')}}" alt="graph">
-                      </div>
-                   <div class="ml-5 w-50">
-                     <p class="exp-card1">Total amount spent on projects</p>
-                     <p class="exp-card2">#123,446,332</p>
-                     <p class="exp-card3">2020</p>
-                   </div>
-                   </div>
-                   <div class="d-flex p-2 justify-content-between">
-                     <div class="graph-cont">
-                       <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                       <img src="{{asset('/images/Vector2.png')}}" alt="graph">
-                      </div>
-                   <div class="ml-5 w-50">
-                     <p class="exp-card1">Total amount spent on salary payments</p>
-                     <p class="exp-card2">#123,446,332</p>
-                     <p class="exp-card3">2020</p>
-                   </div>
-                   </div>
-                   <div class="d-flex p-2 justify-content-between">
-                     <div class="graph-cont">
-                       <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                       <img src="{{asset('/images/Vector2.png')}}" alt="graph">
-                      </div>
-                   <div class="ml-5 w-50">
-                     <p class="exp-card1">Total amount spent on others</p>
-                     <p class="exp-card2">#123,446,332</p>
-                     <p class="exp-card3">2020</p>
-                   </div>
-                   </div>
-                 </div>
-           </div>
+                  </div>
+                  <div class="stat-b">
+                    <div class="d-flex p-2 justify-content-between">
+                      <div class="graph-cont">
+                        <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                        <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                       </div>
+                    <div class="ml-5 w-50">
+                      <p class="exp-card1">Total amount spent on projects</p>
+                      <p class="exp-card2">&#8358;123,446,332</p>
+                      <p class="exp-card3">2020</p>
+                    </div>
+                    </div>
+                    <div class="d-flex p-2 justify-content-between">
+                      <div class="graph-cont">
+                        <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                        <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                       </div>
+                    <div class="ml-5 w-50">
+                      <p class="exp-card1">Total amount spent on salary payments</p>
+                      <p class="exp-card2">&#8358;123,446,332</p>
+                      <p class="exp-card3">2020</p>
+                    </div>
+                    </div>
+                    <div class="d-flex p-2 justify-content-between">
+                      <div class="graph-cont">
+                        <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                        <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                       </div>
+                    <div class="ml-5 w-50">
+                      <p class="exp-card1">Total amount spent on others</p>
+                      <p class="exp-card2">&#8358;123,446,332</p>
+                      <p class="exp-card3">2020</p>
+                    </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
        </div>
 
        <!-- Explore section -->
        <div class="explore">
-           <p>A big-picture view of the daily spending <br> of the federal government</p>
-           <p>Use our explorer to view how government spends our money daily</p>
-           <button>Explore</button>
+         <div class="container">
+          <p>A big-picture view of the daily spending <br> of the federal government</p>
+          <p>Use our explorer to view how government spends our money daily</p>
+          <button>Explore</button>
+         </div>
        </div>
 
        <!-- Company section -->
-       <p class="label">Companies that received money</p>
-       <div class="companies">
+       <p class="label mt-5 mb-5 ">Companies that received money</p>
+       <div class="companies container">
             <div class="comp-card">
                <div class="awarded">
                  <div class="graph-cont">
@@ -198,7 +207,7 @@
                   </div>
                   <div class="ml-5">
                      <p class="exp-card1">Total amount Awarded</p>
-                     <p class="exp-card2">#123,446,332</p>
+                     <p class="exp-card2">&#8358;123,446,332</p>
                      <p class="exp-card3">2019</p>
                   </div>
               </div>
@@ -232,7 +241,7 @@
                 </div>
                <div class="ml-5">
                   <p class="exp-card1">Total amount Awarded</p>
-                  <p class="exp-card2">#123,446,332</p>
+                  <p class="exp-card2">&#8358;123,446,332</p>
                   <p class="exp-card3">2019</p>
                </div>
            </div>
@@ -266,7 +275,7 @@
                 </div>
                <div class="ml-5">
                   <p class="exp-card1">Total amount Awarded</p>
-                  <p class="exp-card2">#123,446,332</p>
+                  <p class="exp-card2">&#8358;123,446,332</p>
                   <p class="exp-card3">2019</p>
                </div>
            </div>
@@ -293,9 +302,11 @@
            </div>
             </div>
        </div>
-
+      </div>
        <!-- conversation section -->
-       <div class="convo">
+       <div class="convo-background">
+          
+       <div class="convo container">
                 <div class="tweet">
                    <div class="twt-handle">
                      <img src="{{asset('/images/twitter.png')}}" alt="">
@@ -314,4 +325,5 @@
 
 @section('js')
   <script src="{{asset('js/index.js')}}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @endsection

@@ -11,6 +11,7 @@
 .arrow-right,
 .arrow-left{
     margin-top: 1rem;
+    cursor: pointer;
 }
 
 .banner{
@@ -23,12 +24,13 @@ button.btn.scroll-down{
     margin: auto;
     position: relative;
     top: 3.6rem;
+    margin-bottom: 7rem;
     height: 64px;
     width: 64px;
     background: white;
-    border-radius: 100%;
-    border: 2px solid green;
     display: block;
+    background: url('../images/arrow-down-vector.png');
+    background-size: contain;
 }
 
 button.btn.scroll-down::after{
@@ -103,9 +105,11 @@ p.tag{
 }
 .card1{
     background-image: url(../images/card2.jpg);
+    
 }
 .card2{
-    background-image: url(../images/card2.jpg);
+    background-image: url(../images/road.svg);
+    background-size: contain;
     left: 80%;
 }
 .project{
@@ -141,11 +145,13 @@ p.tag{
 p.label{
     background: #353A45;
     width: 65%;
-    padding:0.3rem 3rem;
+    left: 0;
+    padding:1rem;
     color: white;
     font-size: 1rem;
     line-height: 190%;
-    margin-bottom: 4rem;
+    margin-top: -3rem;
+    text-align: end;
 }
 
 div.expenses{
@@ -246,11 +252,12 @@ p.profile{
 }
 
 .explore{
-    background: linear-gradient(0deg, rgba(50, 62, 72, 0.33), rgba(50, 62, 72, 0.33)), rgba(0, 148, 94, 0.67);
+    background: linear-gradient(0deg, rgba(50, 62, 72, 0.33), rgba(50, 62, 72, 0.33)), url('../images/HOA.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     padding: 1rem;
     color: white;
     margin: 4rem 0rem;
- 
 }
 .explore p:nth-child(1){
     font-size: 1.6rem;
@@ -272,7 +279,6 @@ p.profile{
 .companies{
    display: flex;
    flex-wrap: wrap;
-   padding:1rem;
    margin-bottom: 4rem;
 }
 .comp-card{
@@ -312,9 +318,12 @@ p.profile{
     color: #6765EC;
 }
 
+.convo-background{
+    background: linear-gradient(0deg, rgba(50, 62, 72, 0.33), rgba(50, 62, 72, 0.33)), rgba(0, 148, 94, 0.67);
+}
+
 .convo{
     padding: 1rem;
-    background: linear-gradient(0deg, rgba(50, 62, 72, 0.33), rgba(50, 62, 72, 0.33)), rgba(0, 148, 94, 0.67);
     display: flex;
     flex-direction: column;
     color: white;
@@ -326,6 +335,9 @@ p.profile{
     display: flex;
     width: 45%;
     margin: auto;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .query{
@@ -400,9 +412,6 @@ p.profile{
        width: 80%;
    }
    .explore{
-       padding: 3rem;
-   }
-   .companies{
        padding: 3rem;
    }
    .convo{
