@@ -40,8 +40,9 @@ Route::get('/filtermodal2', function(){
  * Ministry Endpoints
  */
 
-Route::get('/filtermodal2', function(){
-    return view('pages.filtermodal2');
+
+Route::get('/ministry/single', function(){
+    return view('pages.ministry.single');
 });
 
 Route::get('/ministries', 'MinistryController@profile')->name('ministries');
