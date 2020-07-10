@@ -58,11 +58,9 @@
                                     <div class="card-body">
                                         <h5 class="text-muted">Total Comments</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">150000</h1>
+                                            <h1 class="mb-1">100</h1>
                                         </div>
-                                        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
-                                            <span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>
-                                        </div>
+                                        
                                     </div>
                                     <div id="sparkline-revenue"></div>
                                 </div>
@@ -70,12 +68,15 @@
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="text-muted">Total Contractors</h5>
+                                        <h5 class="text-muted">Total Budget for {{date('Y')}}</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">5000</h1>
+                                            <h3 class="mb-1">
+                                            ₦{{number_format($amount, 2)}}
+                                                    
+                                            </h3>
                                         </div>
                                         <div class="metric-label d-inline-block float-right text-success font-weight-bold">
-                                            <span><i class="fa fa-fw fa-arrow-down"></i></span><span>2.86%</span>
+                                            
                                         </div>
                                     </div>
                                     <div id="sparkline-revenue2"></div>
@@ -633,21 +634,12 @@
                             <!-- END Tabbed Quick Forms -->
                             <!-- ============================================================== -->
                         </div> <!-- ROW -->
-
-
                     </div>
-                </div>
-            </div>
+
+      
             <!-- ============================================================== -->
             <!-- ============================================================== -->
-        </div>
-        <!-- ============================================================== -->
-        <!-- end wrapper  -->
-        <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- end main wrapper  -->
-    <!-- ============================================================== -->
+        
     @endsection
     @section('js')
     <!-- Optional JavaScript -->
