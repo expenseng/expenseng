@@ -16,7 +16,8 @@
 	<header class="container section-wrapper">
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb bg-white">
-				<li class="breadcrumb-item not-active"><a href="{{ url('/') }}">HOME</a></li>
+
+			<li class="breadcrumb-item not-active"><a href="{{ route('home') }}">HOME</a></li>
 				<span>&#8226;</span>
 				<li class="breadcrumb-item not-active"><a>Expense</a></li>
 				<span>&#8226;</span>
@@ -27,7 +28,7 @@
 	<section>
 		<div class="container ">
 			<div class="row">
-				<div class="col-md-8 section-heading">
+				<div class="col-md-8 col-lg-12 section-heading">
 					<h1 class="section-heading-title">Ministry Spending</h1>
 					<p class="section-heading-paragraph">ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities across Nigeria.</p>
 				</div>
@@ -36,7 +37,7 @@
 		<div class="section-button">
 			<div class="container">
 				<div class="row px-1">
-          <div class="btn-group col-lg-10 col-md-12 d-flex justify-content-between responsive-button nav nav-tabs">
+          <div class="btn-group col-lg-12 col-md-12 d-flex justify-content-between responsive-button nav nav-tabs">
             <a class="btn-marg text-left active button" data-toggle="tab" role="tab" href="#table">Expense Summary</a>
             <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Project Summary</a>
             <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Purchases Summary</a>
@@ -58,11 +59,76 @@
 							<button>Filter <i class="fas fa-filter px-1"></i></button>
 						</div>
 						<div class="table-data">
-							<div style="overflow-x: auto;">
-								<table id="Table" cell-spacing="0" data-pagination="true" data-page-size="10" class="table table-striped table-responsive-sm">
-									<thead>
+							<div class=" d-flex flex-row" style="overflow-x: auto;">
+								<table id="Table" cell-spacing="0" data-pagination="true" data-page-size="10" class="table table-striped table-responsive-sm table1">
+									<thead class="thead1">
 										<tr>
 											<th class="section-shadow row-ministry">Ministry</th>
+										</tr>
+									</thead>
+									<tbody class="tbody1">
+										<tr>
+											<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
+										</tr>
+										<tr>
+											<td class="section-shadow"><a href="#" class="text-success">Labour</a></td>
+										</tr>
+										<tr>
+											<td class="section-shadow"><a href="#" class="text-success">Energy</a></td>
+										</tr>
+										<tr>
+											<td class="section-shadow"><a href="#" class="text-success">Labour</a></td>
+										</tr>
+										<tr>
+											<td class="section-shadow"><a href="#" class="text-success">Energy</a></td>
+										</tr>
+										<tr>
+											<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
+										</tr>
+										<tr>
+											<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
+										</tr>
+										<tr>
+											<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
+										</tr>
+										<tr>
+											<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
+										</tr>
+										<tr>
+											<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
+										</tr>
+										<tr>
+											<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
+										</tr>
+										<tr>
+											<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
+										</tr>
+										<tr>
+											<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
+										</tr>
+										<tr>
+											<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
+										</tr>
+										<tr>
+											<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
+										</tr>
+										<tr>
+											<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
+										</tr>
+										<tr>
+											<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
+										</tr>
+										<tr>
+											<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
+										</tr>
+										<tr>
+											<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
+										</tr>
+									</tbody>
+								</table>
+								<table id="Table" cell-spacing="0" data-pagination="true" data-page-size="10" class="table table-striped table-responsive-sm table2">
+									<thead>
+										<tr>
 											<th class="row-project">Project</th>
 											<th class="row-company">Company</th>
 											<th class="row-amount">Amount</th>
@@ -220,4 +286,8 @@
 @section('js')
 	<script src="{{ asset('js/main.js') }}"></script>
 	<script src="{{ asset('js/ExpenditureScript.js') }}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<script src="{{ asset('js/index.js') }}"></script>
 @endsection
