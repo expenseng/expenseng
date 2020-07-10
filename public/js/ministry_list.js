@@ -27,7 +27,7 @@ $(document).ready(function(){
                 </div>
                 <div class="texts d-flex flex-column text-center">
                   <h4>Total amount Spent</h4>
-                  <p class="num">₦${insertCommas(total)}</p>
+                  <p class="num">₦${insertCommas(total.toFixed(2))}</p>
                   <p class="year">${new Date().getFullYear()}</p>
                 </div>
               </div>
