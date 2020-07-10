@@ -55,7 +55,7 @@
 					<div class="main-table">
 						<div class="table-top p-3 d-flex justify-content-between align-items-center">
 							<h3 class="align-self-center">Date: 28th, May 2020</h3>
-							<button>Filter <i class="fas fa-filter px-1"></i></button>
+							<button class="nav-button">Filter<i class="fas fa-filter px-1" style="font-size: var(--fs-reg);"></i></button>
 						</div>
 						<div class="table-data">
 							<div class=" d-flex flex-row" style="overflow-x: auto;">
