@@ -568,23 +568,22 @@
                                             <div class="card">
                                                 <h5 class="card-header">CREATE NEW EXPENSE</h5>
                                                 <div class="card-body">
-                                                    {{ Form::open(array('action' => 'DashboardController@createExpense')) }}
-
-                                                        {{ Form::label('Amount', 'Amount', ['class' => 'label-for-amount']) }}
-                                                        {{ Form::text('amount_spent', '', array_merge(['class' => 'form-control'])) }}
-
-                                                        {{ Form::label('Year', 'Year', ['class' => 'label-for-year']) }}
-                                                        {{ Form::text('year', '', array_merge(['class' => 'form-control'])) }}
-                                                        
-                                                        {{ Form::label('Month', 'Month', ['class' => 'label-for-month']) }}
-                                                        {{ Form::text('month', '', array_merge(['class' => 'form-control'])) }}
-                                                       
-                                                        {{ Form::label('Project', 'Project', ['class' => 'label-for-summary']) }}
-                                                        {{ Form::textarea('project', '', array_merge(['class' => 'form-control', 'rows' => 3])) }}
-                                                       
-                                                        {{ Form::submit('Create', array_merge(['class' => 'btn btn-primary'])) }}
-                                                        
-                                                   {{ Form::close() }}
+                                                    <form class="" method="post" action="{{action('DashboardController@createExpense')}}">
+                                                        {{csrf_field()}}
+                                                        <label class="label-for-amount" >Amount</label>
+                                                        <input type="text" required = 'required' name="amount_spent" id="amount_spent" class="form-control">
+                                                        <p id="ammountErr" class="text-danger"></p>
+                                                        <label class="label-for-amount" >Year</label>
+                                                        <input type="text" required = 'required' name="year" id="year" class="form-control">
+                                                        <p id="yearErr" class="text-danger"></p>
+                                                        <label class="label-for-amount" >Month</label>
+                                                        <input type="text" required = 'required' name="month" id="month" class="form-control">
+                                                        <p id="monthErr" class="text-danger"></p>
+                                                        <label class="label-for-amount" >Project</label>
+                                                        <textarea  required = 'required' name="project" id="project" class="form-control" rows=3></textarea>
+                                                        <p id="projectErr" class="text-danger"></p>
+                                                        <button type="submit" value="Create" class="btn btn-primary" name="createExpense" >Create</button>     
+                                                   </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -594,30 +593,30 @@
                                             <div class="card">
                                                 <h5 class="card-header">CREATE NEW COMPANY</h5>
                                                 <div class="card-body p-3 form-group">
-                                                   {{Form::open(array('action' => 'DashboardController@createCompany')) }}
-                                                    {{Form::token()}}
-                                                    <label class="label-for-name" >Name</label>
-                                                    <input typ0e="text" required = 'required' name="name" id="name" class="form-control">
-                                                    <p id="nameErr" class="text-danger"></p>
+                                                    <form class="" method="post" action="{{action('DashboardController@createCompany')}}">
+                                                        {{csrf_field()}}
+                                                        <label class="label-for-name" >Name</label>
+                                                        <input typ0e="text" required = 'required' name="name" id="name" class="form-control">
+                                                        <p id="nameErr" class="text-danger"></p>
 
-                                                    <label class="label-for-shortname">Short Name</label>
-                                                    <input type="text"  required = 'required' name="shortname" id="short_name" class="form-control">
-                                                    <p id="snameErr" class="text-danger"></p>
+                                                        <label class="label-for-shortname">Short Name</label>
+                                                        <input type="text"  required = 'required' name="shortname" id="short_name" class="form-control">
+                                                        <p id="snameErr" class="text-danger"></p>
 
-                                                    <label class="label-for-email">Industry</label>
-                                                    <input type="text"  name="industry" id="industry" class="form-control">
-                                                    <p id="industryErr" class="text-danger"></p>
+                                                        <label class="label-for-industry">Industry</label>
+                                                        <input type="text" required = 'required' name="industry" id="industry" class="form-control">
+                                                        <p id="industryErr" class="text-danger"></p>
 
-                                                    <label class="label-for-email">CEO</label>
-                                                    <input type="ceo"  name="ceo" id="ceo" class="form-control">
-                                                    <p id="ceoErr" class="text-danger"></p>
+                                                        <label class="label-for-ceo">CEO</label>
+                                                        <input type="ceo" required = 'required' name="ceo"  id="ceo" class="form-control">
+                                                        <p id="ceoErr" class="text-danger"></p>
 
-                                                    <label class="label-for-email">Twitter</label>
-                                                    <input type="twitter"  name="twitter" id="twitter" class="form-control">
-                                                    <p id="twitterErr" class="text-danger"></p>
+                                                        <label class="label-for-twitter">Twitter</label>
+                                                        <input type="twitter" required = 'required'  name="twitter" id="twitter" class="form-control">
+                                                        <p id="twitterErr" class="text-danger"></p>
 
-                                                    <button type="submit" value="Add" class="btn btn-primary" name="addCompany" onmouseover="validateAddNew('submit')">Add</button>
-                                                    {{ Form::close() }}
+                                                        <button type="submit" value="Add" class="btn btn-primary" name="addCompany" onmouseover="validateAddNew('submit')">Add</button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -662,6 +661,11 @@
     <script src="{{ asset('js/dashboard-ecommerce.js') }}" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 
+    <!-- Jquery js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous">
+    </script>
     <script src="/vendor/jquery/jquery-3.3.1.min.js"></script>
     <!-- bootstap bundle js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>

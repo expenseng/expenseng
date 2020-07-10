@@ -78,4 +78,3 @@ Route::prefix('admin')->group(function () {
     Route::get('/companies',  'CompanyController@adminIndex');
     
 });
-

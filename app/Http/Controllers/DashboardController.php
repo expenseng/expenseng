@@ -35,11 +35,12 @@ class DashboardController extends Controller
         $amount = 0;
 
         
-           if (count($total_budgets)> 0){
-            for($i=0; $i< count($total_budgets); $i++){
+        if (count($total_budgets)> 0) {
+            for ($i=0; $i< count($total_budgets); $i++) {
                 $amount += $total_budgets[$i]->amount;
             }
-           }else{}
+        } else {
+        }
            
             
                 
@@ -74,7 +75,7 @@ class DashboardController extends Controller
            'shortname' => 'required',
            'industry' => 'required',
            'ceo' => 'required',
-           'twitter' => 'required'
+           'twitter' => ''
         ]);
         
         $input = $request->all();

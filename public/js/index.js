@@ -14,3 +14,5 @@ arrowRight.click(function(e){
 });
 
 $('.ministry-picker').selectpicker();
+
+$('select').selectpicker();
