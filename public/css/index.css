@@ -15,7 +15,7 @@
 }
 
 .banner{
-    height: 90%;
+    height: /* 90% */ 100vh;
     color: white;
     margin-bottom: 5rem;
 }
@@ -34,7 +34,7 @@
     display: box;
     box-pack: center;
     box-align: center;
-    margin-top: -7rem;
+    margin-top: -8rem;
 }
 
 .scroll-down img{
@@ -95,7 +95,7 @@ button.btn.scroll-down::after{
 .gallery{
     display: flex;
     position: relative;
-    height:250px;
+    height:400px;
     overflow-x: hidden;
 } 
 
@@ -132,7 +132,7 @@ p.tag{
 }
 .card2{
     background-image: url(../images/road.svg);
-    background-size: contain;
+    background-size: cover;
     left: 80%;
 }
 .project{
@@ -522,9 +522,96 @@ p.profile{
     }
 }
 
-@media(max-width:600px){
+
+@media only screen and (max-width: 800px){
     
-.specific{
-    width: 50%;
+    .summary h4{
+        font-weight: 200;
+        font-size: 1.5rem;
+        line-height: 124.8%;
+    }
+    
+    .para{
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+    .para p{
+        margin-bottom: -5px;
+        
+        font-weight: 300;
+        font-size: 0.71rem;
+        line-height: 204.8%;
+    }
+
+    .gallery{
+        display: flex;
+        position: relative;
+        height:300px;
+        overflow-x: hidden;
+    } 
+    .banner{
+        height: /* 90% */ 45vh;
+    }
+    
+    .scroll-down img{
+        height: 80px;
+        margin-bottom: -80px;
+    }
+    
+    #main{
+        margin-top: 10rem;
+    }
+    
+    .explore p:nth-child(1){
+        margin-bottom: 3rem;
+        font-size: 1.3rem;
+        line-height: 150%;
+        font-weight: 200;
+    }
+    .explore p:nth-child(2){
+        margin-bottom: 3rem;
+        font-size: 1rem;
+        font-weight: 200;
+    }
 }
-}
+
+@media only screen and (max-width:600px){
+    
+    .specific{
+        width: 50%;
+    }
+    .gallery{
+        display: flex;
+        position: relative;
+        height:250px;
+        overflow-x: hidden;
+    } 
+    .banner{
+        height: /* 90% */ 100vh;
+    }
+    
+    .scroll-down img{
+        height: 60px;
+        margin-bottom: -80px;
+    }
+    
+    #main{
+        margin-top: 10rem;
+    }
+    
+    .explore p:nth-child(1){
+        margin-bottom: 3rem;
+        font-size: 1.3rem;
+        line-height: 150%;
+        font-weight: 200;
+    }
+    .explore p:nth-child(2){
+        margin-bottom: 3rem;
+        font-size: 1rem;
+        font-weight: 200;
+    }
+    
+    }
+    
+
+
