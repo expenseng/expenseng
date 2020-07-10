@@ -15,22 +15,30 @@
 }
 
 .banner{
-    height: 90%;
+    height: /* 90% */ 100vh;
     color: white;
     margin-bottom: 5rem;
 }
 
-button.btn.scroll-down{
-    margin: auto;
-    position: relative;
-    top: 3.6rem;
-    margin-bottom: 7rem;
-    height: 64px;
-    width: 64px;
-    background: white;
-    display: block;
-    background: url('../images/arrow-down-vector.png');
-    background-size: contain;
+.scroll-down{
+    width: 100%;
+    /* Firefox */
+    display: -moz-box;
+    -moz-box-pack: center;
+    -moz-box-align: center;
+    /* Safari and Chrome */
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    /* W3C */
+    display: box;
+    box-pack: center;
+    box-align: center;
+    margin-top: -8rem;
+}
+
+.scroll-down img{
+    height: 80px;
 }
 
 button.btn.scroll-down::after{
@@ -52,7 +60,7 @@ button.btn.scroll-down::after{
     height: 25px;
 }
 .carets img:nth-child(1){
-    margin-right: 2rem;
+    margin-right: 3rem;
 }
 
 #caret{
@@ -65,22 +73,33 @@ button.btn.scroll-down::after{
    transform: translateX(0%);
 }
 .summary{
-    margin-right: 4rem;
+    margin-left: 2rem;
 }
 .summary h4{
-    font-weight: 300;
-    font-size: 3rem;
+    font-weight: 200;
+    font-size: 1.5rem;
     line-height: 124.8%;
 }
-.summary p{
+.summary .bolding{
+    font-weight: bolder;
+    
+}
+
+.para{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.para p{
+    margin-bottom: -5px;
+    
     font-weight: 300;
-    font-size: 1rem;
+    font-size: 0.6rem;
     line-height: 204.8%;
 }
 .gallery{
     display: flex;
     position: relative;
-    height:380px;
+    height:400px;
     overflow-x: hidden;
 } 
 
@@ -95,10 +114,11 @@ p.tag{
     color: #005938;
     background-color: white;
     font-weight: 700;
+    margin-top: -10px;
     align-self: flex-start;
     position: absolute;
     left: 10%;
-    top: -3%;
+    top: -2%;
     z-index: 23;
 }
 .card{
@@ -116,7 +136,7 @@ p.tag{
 }
 .card2{
     background-image: url(../images/road.svg);
-    background-size: contain;
+    background-size: cover;
     left: 80%;
 }
 .project{
@@ -239,6 +259,10 @@ p.profile{
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04)
 }
 
+.stata{
+    box-shadow: none;
+}
+
 .ministry-stat .exp-card{
     height: auto;
 }
@@ -259,7 +283,7 @@ p.profile{
 }
 
 .explore{
-    background: linear-gradient(0deg, rgba(50, 62, 72, 0.33), rgba(50, 62, 72, 0.33)), url('../images/HOA.png');
+    background: linear-gradient(0deg, rgba(50, 62, 72, 0.33), rgba(50, 62, 72, 0.33)), url('../images/Group 1394.png');
     background-size: cover;
     background-repeat: no-repeat;
     padding: 1rem;
@@ -267,12 +291,14 @@ p.profile{
     margin: 4rem 0rem;
 }
 .explore p:nth-child(1){
-    font-size: 1.6rem;
+    margin-bottom: 5rem;
+    font-size: 2rem;
     line-height: 150%;
     font-weight: 300;
 }
 .explore p:nth-child(2){
-    font-size: 0.9rem;
+    margin-bottom: 5rem;
+    font-size: 1.4rem;
     font-weight: 300;
 }
 .explore button{
@@ -463,6 +489,24 @@ p.profile{
 }
 
 @media only screen and (min-width: 1020px) {
+    .summary h4{
+        font-weight: 200;
+        font-size: 3rem;
+        line-height: 124.8%;
+    }
+    .para p{
+        margin-bottom: -5px;
+        
+        font-weight: 300;
+        font-size: 1.2rem;
+        line-height: 204.8%;
+    }
+
+    .scroll-down img{
+        height: 150px;
+    }
+    
+
     .comp-card{
         flex-direction: row;
         justify-content: space-between;
@@ -486,9 +530,99 @@ p.profile{
     }
 }
 
-@media(max-width:600px){
+
+@media only screen and (max-width: 800px){
     
-.specific{
-    width: 50%;
+    .summary h4{
+        font-weight: 200;
+        font-size: 1.5rem;
+        line-height: 124.8%;
+    }
+    
+    .para{
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+    .para p{
+        margin-bottom: -5px;
+        
+        font-weight: 300;
+        font-size: 0.71rem;
+        line-height: 204.8%;
+    }
+
+    .gallery{
+        display: flex;
+        position: relative;
+        height:300px;
+        overflow-x: hidden;
+    } 
+    .banner{
+        height: /* 90% */ 45vh;
+    }
+    
+    .scroll-down img{
+        height: 80px;
+        margin-bottom: -80px;
+    }
+    
+    #main{
+        margin-top: 10rem;
+    }
+    
+    .explore p:nth-child(1){
+        margin-bottom: 3rem;
+        font-size: 1.3rem;
+        line-height: 150%;
+        font-weight: 200;
+    }
+    .explore p:nth-child(2){
+        margin-bottom: 3rem;
+        font-size: 1rem;
+        font-weight: 200;
+    }
 }
-}
+
+@media only screen and (max-width:600px){
+    
+    .specific{
+        width: 50%;
+    }
+    .gallery{
+        display: flex;
+        position: relative;
+        height:250px;
+        overflow-x: hidden;
+    } 
+    .banner{
+        height: /* 90% */ 100vh;
+    }
+    
+    .scroll-down img{
+        height: 60px;
+        margin-bottom: -80px;
+    }
+    
+    #main{
+        margin-top: 10rem;
+    }
+    
+    .explore p:nth-child(1){
+        margin-bottom: 3rem;
+        font-size: 1.3rem;
+        line-height: 150%;
+        font-weight: 200;
+    }
+    .explore p:nth-child(2){
+        margin-bottom: 3rem;
+        font-size: 1rem;
+        font-weight: 200;
+    }
+    #compu{
+        font-size: 15px;
+    }
+    
+    }
+    
+
+

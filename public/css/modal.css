@@ -1,0 +1,172 @@
+
+
+.modal-title{
+width: 43px;
+height: 22px;
+left: 34px;
+top: 19px;
+
+font-family: Lato;
+font-style: normal;
+font-weight: bold;
+font-size: 18px;
+line-height: 22px;
+
+/* identical to box height */
+
+color: #00945E;
+}
+
+.form-group label{
+/*     width: 82px;
+height: 19px;
+left: 34px;
+top: 102px; */
+
+font-family: Lato;
+font-style: normal;
+font-weight: bold;
+font-size: 16px;
+line-height: 19px;
+
+color: #1F2430;
+}
+
+.comm{
+align-items: center;
+height: 49px;
+left: 34px;
+top: 131px;
+
+background: #EBF1EF;
+border: 0.5px solid #00945E;
+box-sizing: border-box;
+border-radius: 4px;
+
+}
+
+.comm input{
+width: 200px; 
+display: inline-block;
+background: #EBF1EF;
+border: none; 
+box-shadow: none;
+margin-top: 7px;
+}
+
+.comm input:focus{
+    border: none;
+    box-shadow: none;
+}
+
+.comm img{
+    float: right;
+    margin-right: 20px;
+    margin-top: 8px;
+
+}
+
+.bt-div{
+    display: block;
+}
+
+.bt-div label{
+ /*    width: 52px;
+height: 19px;
+left: 34px;
+top: 230px; */
+margin-top: 30px;
+font-family: Lato;
+font-style: normal;
+font-weight: bold;
+font-size: 16px;
+line-height: 19px;
+
+color: #1F2430;
+}
+
+.bt-div input{
+/* width: 322px; */
+display: block;
+width: 100%;
+height: 49px;
+left: 34px;
+top: 259px;
+margin-top: 20px;
+background: linear-gradient(0deg, #00945E, #00945E), #EBF1EF;
+border: 0.5px solid #00945E;
+box-sizing: border-box;
+border-radius: 4px;
+}
+
+.bt-div .nonactive{
+    background:#EBF1EF;
+    color: #1F2430;
+}
+
+.bt-div .nonactive:hover{
+    background: #EBF1EF;
+}
+.app{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.app input{
+align-items: center;
+width: 263px;
+height: 49px;
+left: 64px;
+top: 417px;
+margin-top: 40px;
+background-color: #005D3B;
+border: 0.5px solid #00945E;
+box-sizing: border-box;
+border-radius: 4px;
+}
+
+.app input:hover{
+    background-color: #005D3A;
+}
+
+.bt-top{
+    
+    margin-bottom: 20px;
+}
+
+.bt-top input{
+   
+    margin-right: 20px;
+    width: 80px;
+height: 49px;
+left: 120px;
+top: 0px;
+color: #1F2430;;
+background: #EBF1EF;
+border: 0.5px solid #00945E;
+box-sizing: border-box;
+border-radius: 3px;
+}
+
+.bt-top .act{
+    background: linear-gradient(0deg, #00945E, #00945E), #EBF1EF;
+    color: #FFFFFF;
+}
+
+.bt-top input:active{
+    background: linear-gradient(0deg, #00945E, #00945E), #EBF1EF;
+}
+
+.bt-top input:hover{
+    background: #EBF1EF;
+}
+
+.sel{
+    background: #FFFFFF;
+}
+
+.sel input{
+    background: #FFFFFF;
+}
