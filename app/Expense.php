@@ -2,6 +2,7 @@
 
 namespace App;
 
+use NumberFormatter;
 use Illuminate\Database\Eloquent\Model;
 
 class Expense extends Model
@@ -17,4 +18,9 @@ class Expense extends Model
         'month',
         'project'
     ];
+
+    public function amount(){
+        $fmt = new NumberFormatter( 'en_NG', NumberFormatter::CURRENCY );
+        return $fmt->formatCurrency($this->amount_spent, "NGN");
+    }
 }

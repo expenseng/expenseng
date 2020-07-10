@@ -58,7 +58,11 @@ h6{
 	}
 	.navbar{
 		width: 100%;
-		margin-left: -10px;
+	}
+	.navbar-toggler{
+		flex: 1;
+		margin-top: -2rem;
+		text-align: end;
 	}
 	.fa-bars{
 		margin-left: 255px;

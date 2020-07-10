@@ -8,7 +8,7 @@
             <p class="exp-card1">{{ card }}</p>
             <p class="exp-card2">
                 {{ 
-                    "₦" + Number((series[card.toLowerCase()].total.reduce( (a,b) => a+b, 0)).toFixed(1)).toLocaleString()
+                    "₦" + Number(series[card.toLowerCase()].total.toFixed(1)).toLocaleString()
                  }}
             </p>
             <p class="exp-card3">{{ new Date().getFullYear() }}</p>
@@ -23,27 +23,28 @@ export default {
     data() {
         return {
             cards: [],
+            currentYear: new Date().getFullYear(),
             series: {
                 health: {
                     data: [],
-                    total: [],
+                    total: '',
                 },
                 defence: {
                     data: [],
-                    total: [],
+                    total: '',
                 },
                 housing: {
                     data: [],
-                    total: []
+                    total: ''
                 },
                 education: {
                     data: [],
-                    total: []
+                    total: ''
                 },
             },
         }
     },    
-    
+
     components:{
         Chart
     },
@@ -55,25 +56,34 @@ export default {
                     this.cards.push(element.label); 
                     if(element.label == "Health"){
                         element.data.map(item => {  
-                            this.series.health.total.push(item.amount);
+                            if(item.year == this.currentYear){
+                                console.log(item.year)
+                                this.series.health.total = item.amount;
+                            }
                             this.series.health.data.push({amount: item.amount, year: item.year})
                         })
                     }
                     if(element.label == "Defence"){
                         element.data.map(item => {  
-                            this.series.defence.total.push(item.amount);
+                            if(item.year == this.currentYear){
+                                this.series.defence.total = item.amount;
+                            }
                             this.series.defence.data.push({amount: item.amount, year: item.year})
                         })
                     }
                     if(element.label == "Housing"){
                         element.data.map(item => { 
-                            this.series.housing.total.push(item.amount);
+                            if(item.year == this.currentYear){
+                                this.series.housing.total = item.amount;
+                            }
                             this.series.housing.data.push({amount: item.amount, year: item.year})
                         })
                     }      
                     if(element.label == "Education"){
                         element.data.map(item => { 
-                            this.series.education.total.push(item.amount);
+                            if(item.year == this.currentYear){
+                                this.series.education.total = item.amount;
+                            }
                             this.series.education.data.push({amount: item.amount, year: item.year})
                         })
                     }                    
