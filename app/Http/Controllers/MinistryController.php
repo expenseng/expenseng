@@ -216,5 +216,3 @@ class MinistryController extends Controller
         }
     }
 }
-
-
