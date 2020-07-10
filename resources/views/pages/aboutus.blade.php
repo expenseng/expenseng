@@ -36,7 +36,9 @@
 					</p>
 
 					<div class="twitter">
-						<img src="{{ asset('images/aboutus/twitter.jpg') }}" alt="">
+						<a href="https://twitter.com/expenseng">
+							<img src="{{ asset('images/aboutus/twitter.jpg') }}" alt="">
+						</a>
 					</div>
 
 				</div>

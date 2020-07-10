@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Budget;
 use Illuminate\Http\Request;
 

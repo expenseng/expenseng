@@ -20,6 +20,4 @@ class MinistrySearchController extends Controller
         $ministry = DB::table('ministries')->where('name', '=', "$ministry_name")->get();
         echo $ministry;
     }
-
-   
 }
