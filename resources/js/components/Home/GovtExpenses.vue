@@ -1,18 +1,20 @@
 <template>
-    <div class="d-flex flex-wrap w-100">
+    <div class="d-flex justify-content-lg-center w-100">
         <img :src="this.loaderGif" v-if="this.loading" alt="Loading..." srcset="">
-        <div class="exp-card" v-for="card in cards" :key="card">
-            <div class="graph-cont">
-                <chart :element="card.toLowerCase()" :label="card" 
-                        :data="series[card.toLowerCase()].data"></chart>
+        <div class="d-flex flex-wrap w-100" v-else>
+            <div class="exp-card" v-for="card in cards" :key="card">
+                <div class="graph-cont">
+                    <chart :element="card.toLowerCase()" :label="card" 
+                            :data="series[card.toLowerCase()].data"></chart>
+                </div>
+                <p class="exp-card1">{{ card }}</p>
+                <p class="exp-card2">
+                    {{ 
+                        "₦" + Number(series[card.toLowerCase()].total.toFixed(1)).toLocaleString()
+                    }}
+                </p>
+                <p class="exp-card3">{{ new Date().getFullYear() }}</p>
             </div>
-            <p class="exp-card1">{{ card }}</p>
-            <p class="exp-card2">
-                {{ 
-                    "₦" + Number(series[card.toLowerCase()].total.toFixed(1)).toLocaleString()
-                 }}
-            </p>
-            <p class="exp-card3">{{ new Date().getFullYear() }}</p>
         </div>
     </div>
 </template>
@@ -25,7 +27,8 @@ export default {
         return {
             cards: [],
             currentYear: new Date().getFullYear(),
-            loadingGif: require('../../../img/EXPENSE LOADER.gif'),
+            loaderGif: require('../../../img/EXPENSE LOADER.gif'),
+            loading : false,
             series: {
                 health: {
                     data: [],

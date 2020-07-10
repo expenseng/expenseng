@@ -66,13 +66,8 @@
                       </h5>
                     </a>
                 </div>
-<<<<<<< HEAD
                 <h5>Total amount Awarded</h5>
                 <h5 class="text-success">&#8358;123,334,334</h5>
-=======
-                <h5 class="amount">Total amount Awarded</h5>
-                <h5 class="text-success">#123,334,334</h5>
->>>>>>> 158d8c524790ec6c60ee6dc558376dcc1bab6653
                 <h6 class="m-0 mb-0 text-sm-left text-black-50">2019</h6>
             </div>
           </div>

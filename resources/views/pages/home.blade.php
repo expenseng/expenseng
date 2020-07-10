@@ -4,60 +4,57 @@
     <link rel="stylesheet" href="{{ asset('css/index.css')}}">
   @endpush
   @section('banner')
-        <!-- banner -->
-        <div class=" background">
-          <div class="container banner">
-            {{-- <img src="{{asset('images/flag.jpg')}}" alt=""> --}}
-            <div class="carets" id="caret">
-              <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left">
-              <img src="{{asset('images/angle-right.svg')}}" alt="" class="arrow-right">
+    <!-- banner -->
+    <div class=" background">
+      <div class="container banner">
+        {{-- <img src="{{asset('images/flag.jpg')}}" alt=""> --}}
+        <div class="carets" id="caret">
+          <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left">
+          <img src="{{asset('images/angle-right.svg')}}" alt="" class="arrow-right">
+        </div>
+        <div class="target">
+          <div class="summary">
+              <h4> In 2019, <br> the government spent </h4>
+              <h4 class="bolding"> $4.45 trillion.</h4>
+              <div class="para">
+                <p>ExpenseNG tracks federal spending to ensure taxpayers can
+                <p> see how their money is being used in communities across </p>
+                  <p>Nigeria.
+                Learn more on how this money was spent with </p>
+                <p> tools to help you navigate spending from top to bottom.</p>
+              </div>
+          </div>
+          <div class="carets my-4" id="caret-alt">
+            <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left2">
+            <img src="{{asset('images/angle-right.svg')}}" alt="" class="arrow-right2">
+          </div>
+          <div class="gallery">
+            <div class="card1 card">
+                {{-- <p class="tag">New</p> --}}
+              <div class="project">
+                  <p>Contruction of Lagos-Ibadan Express road <br>
+                    Ministry of Power, Works and Housing</p>
+                  <div class="d-flex justify-content-between mt-4 align-items-center">
+                      <p>Cost of Project: </p>
+                      <p id="cost">&#8358;20bn</p>
+                  </div>
+              </div>
             </div>
-            <div class="target">
-              <div class="summary">
-                  <h4> In 2019, <br> the government spent </h4>
-                  <h4 class="bolding"> $4.45 trillion.</h4>
-                  <div class="para">
-                  <p>ExpenseNG tracks federal spending to ensure taxpayers can
-                   <p> see how their money is being used in communities across </p>
-                    <p>Nigeria.
-                  Learn more on how this money was spent with </p>
-                  <p> tools to help you navigate spending from top to bottom.</p>
-                </div>
-              </div>
-              <div class="carets my-4" id="caret-alt">
-              <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left2">
-              <img src="{{asset('images/angle-right.svg')}}" alt="" class="arrow-right2">
-              </div>
-              <div class="gallery">
-                <div class="card1 card">
-                    {{-- <p class="tag">New</p> --}}
-                  <div class="project">
-                        <p>Contruction of Lagos-Ibadan Express road <br>
-                        Ministry of Power, Works and Housing</p>
-                      <div class="d-flex justify-content-between mt-4 align-items-center">
-                          <p>Cost of Project: </p>
-                          <p id="cost">&#8358;20bn</p>
-                      </div>
-                  </div>
-                </div>
-                <div class="card2 card">
-                  {{-- <p class="tag">New</p> --}}
-                  <div class="project">
-                    <p>Contruction of Lagos-Ibadan Express road <br>
-                      Ministry of Power, Works and Housing</p>
-                    <div class="d-flex justify-content-between mt-4">
-                        <p>Cost of Project: </p>
-                        <p id="cost">&#8358;20bn</p>
-                    </div>
-                  </div>
+            <div class="card2 card">
+              <div class="project">
+                <p>Contruction of Lagos-Ibadan Express road <br>
+                  Ministry of Power, Works and Housing</p>
+                <div class="d-flex justify-content-between mt-4">
+                    <p>Cost of Project: </p>
+                    <p id="cost">&#8358;20bn</p>
                 </div>
               </div>
             </div>
-            <button class="btn scroll-down" >
-              <a href="#expenses"></a>
-            </button>
           </div>
         </div>
+        <button class="btn scroll-down" >
+          <a href="#expenses"></a>
+        </button>
       </div>
     </div>
     <div class="scroll-down">
@@ -74,7 +71,6 @@
         <div class="p-3  p-lg-5">
              <div class="expenses container">
                  <govt-expense></govt-expense>
-                 
                  <a href="{{route('expense.reports')}}" class="mt-4 mb-5">View Expenditure Report</a>
              </div>
         </div>
@@ -97,19 +93,6 @@
                </div>
                <a href="{{ route('ministries') }}" class="profile">View all profiles</a>
              </div>
-             {{-- <div class="ministry-stat">
-                   <div class="stat-a p-4">
-                     <div class="graph-cont">
-                       <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                       <img src="{{asset('/images/Vector2.png')}}" alt="graph">
-                      </div>
-                     <div>
-                       <p class="exp-card1">Total amount spent</p>
-                       <p class="exp-card2">#123,446,332</p>
-                       <p class="exp-card3">2020</p>
-              </div>
-            </div>
-            </div> --}}
             <div class="ministry-stat">
                   <div class="stat-a p-4">
                     <div class="graph-cont">
