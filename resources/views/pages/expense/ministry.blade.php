@@ -6,7 +6,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Mukta:700|Roboto+Slab&display=swap" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/header_footer.css') }}">
   <link rel="stylesheet" href="{{ asset('css/ministry-report-table.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/header-footer.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/aboutus-header_footer.css') }}">
 <link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
 	<script src="https://kit.fontawesome.com/8f691340fb.js" crossorigin="anonymous"></script>
 @endpush

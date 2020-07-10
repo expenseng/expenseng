@@ -13,7 +13,7 @@ body{
 /*content 1 */
 .wrapper{
   max-width:1440px;
-  margin: 0 2rem;
+  margin:0 auto;
 }
 .content-1{
   margin:1rem 0;
@@ -105,7 +105,7 @@ body{
   color: #33A97E;
   font-size:25px;
   font-weight:bold;
-
+  
 }
 .texts .year{
   color: #1F2430;
@@ -132,7 +132,7 @@ body{
     color: #33A97E;
     font-size:15px;
     font-weight:bold;
-
+    
   }
   .texts .year{
     color: #1F2430;
@@ -205,7 +205,7 @@ body{
   .vector{
     top:5%;
   }
-
+  
 }
 @media only screen and (max-width:400px){
   .main-header p{
@@ -214,16 +214,16 @@ body{
   .content-1 .circle-1{
     width:8px;
     height:8px;
-
+    
    margin:0 0.4rem;
   }
-
+  
   .content-1 ul li a{
-
+    
     font-size:14px;
-
+    
   }
-
+  
 }
 
 .ministry-cards {
