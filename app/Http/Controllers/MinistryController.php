@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\DB;
 class MinistryController extends Controller
 {
     public function getMinistries($ministries)
-    {   
+    {
         $currentYr = date("Y").'-01-01';
-        foreach($ministries as $ministry){
+        foreach ($ministries as $ministry) {
             $code = $ministry->code;
             $payments = DB::table('payments')
                         ->where('payment_code', 'LIKE', "$code%")
