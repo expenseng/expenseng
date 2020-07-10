@@ -7,10 +7,10 @@
         @yield('banner')
         <!-- content -->
         @yield('content')
+        <!-- footer -->
     </div>
-    <!-- footer -->
-    @yield('js')
     @include('partials.footer')
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}" type="application/javascript"></script>
+    @yield('js')
   </body>
 </html>

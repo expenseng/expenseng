@@ -27,7 +27,7 @@
 /* Add a black background color to the top navigation */
 
   /* breadcrumb */
-..breadcrumb{
+.breadcrumb{
 	padding-left: 0;
 	font-size: var(--fs-h6);
 }
@@ -151,10 +151,10 @@ input.se {
 }
 
 .company .heading {
+  display: inline !important;
   line-height: 29px;
   font-size: 15px !important;
-  width:auto;
-  display: inline !important;
+  /* width: auto; */
 }
 
 header.container {

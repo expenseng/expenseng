@@ -9,35 +9,40 @@ use Illuminate\Support\Facades\DB;
 
 class MinistryController extends Controller
 {
+    public function getMinistries($ministries)
+    {   
+        $currentYr = date("Y").'-01-01';
+        foreach($ministries as $ministry){
+            $code = $ministry->code;
+            $payments = DB::table('payments')
+                        ->where('payment_code', 'LIKE', "$code%")
+                        ->where('payment_date', '>=', "$currentYr")
+                        ->get();
+            $total = $payments->sum('amount');
+            $ministry->total = $total;
+        }
+        return $ministries;
+    }
     /**
      * List ministries on page load
      */
     public function profile()
     {
-        $ministries = Ministry::all();
+        $data = Ministry::all();
+        $ministries = $this->getMinistries($data);
         return view('pages.ministry.index')->with('ministries', $ministries);
     }
 
      /**
-     * Renders all the ministries each time the search box's content is cleared
+     * Re-renders all the ministries each time the search box's content is cleared
+     * Was getting 404 error, Moved back to MinistrySearchController
      */
-    public function index()
-    {
-        $ministries = Ministry::all();
-        echo $ministries;
-    }
-
-     /**
-     * Displays the ministry that matches the search result;
-     * called when a user clicks on one of the suggested autocomplete words
-     */
-    public function showMatch(Request $request)
-    {
-        $ministry_name = $request->get('id');
-        echo $ministry_name;
-        $ministry = DB::table('ministries')->where('name', '=', "$ministry_name")->get();
-        echo $ministry;
-    }
+    // public function index()
+    // {
+    //     $data = Ministry::all();
+    //     $ministries = $this->getMinistries($data);
+    //     echo $ministries;
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -57,7 +62,7 @@ class MinistryController extends Controller
             'code' => 'required',
             'name' => 'required',
             'shortname' => 'required',
-            'twitter_handle' => 'required',
+            'twitter' => 'required',
             'website' => 'required',
             'sector_id' => 'required'
         ]);
@@ -69,26 +74,43 @@ class MinistryController extends Controller
 
     /**
      * Display the specified resource.
-     * Called when user clicks on a ministry in profile.blade.php
+     * Called when user clicks on a ministry card in index.blade.php
      */
     public function show(Ministry $ministry)
-    {     
+    {
             $code = $ministry->code;
             $cabinets = $ministry->cabinet;
-            $payments = DB::table('payments')->where('payment_code', 'LIKE', "$code%")->get();
-            $filtered = $payments->filter(function ($value, $key) {
-                return $value->payment_date >= date("Y");
-            });
-            $count = $filtered->count();
-            $sum = $filtered->sum('amount');
+            $payments = DB::table('payments')
+                        ->where('payment_code', 'LIKE', "$code%")
+                        ->orderby('payment_date', 'desc')
+                        ->get();
+
+        function getTrend($payments)
+        {
+            $currentYr = date("Y");
+            $years = [$currentYr, $currentYr - 1, $currentYr - 2, $currentYr - 3, $currentYr - 4];
+            $yearByYear = [];
+            $currentYrPmts = [];
+            for ($x = 0; $x < count($years); $x++) {
+                $filtered = $payments->filter(function ($value, $key) use (&$years, $x) {
+                    return date('Y', strtotime($value->payment_date)) == $years[$x];
+                });
+                if ($x == 0) {
+                    $currentYrPmts = $filtered;
+                }
+                $sum = $filtered->sum('amount');
+                $yearByYear[$years[$x]] = $sum;
+            }
+            return [$currentYrPmts, $yearByYear];
+        }
+
+            $data = getTrend($payments);
             return view('pages.ministry.single')
-            ->with(['ministry'=> $ministry, 
-                     'cabinets' => $cabinets,
-                     'payments' => $filtered,
-                      'sum' => $sum,
-                      'count' => $count
-                    ]);
-        
+            ->with(['ministry'=> $ministry,
+                    'cabinets' => $cabinets,
+                    'payments' => $data[0],
+                    'trend' => $data[1]
+                 ]);
     }
 
     /**
@@ -96,7 +118,6 @@ class MinistryController extends Controller
      */
     public function edit($id)
     {
-        
     }
 
     /**
@@ -108,7 +129,7 @@ class MinistryController extends Controller
             'code' => 'required',
             'name' => 'required',
             'shortname' => 'required',
-            'twitter_handle' => 'required',
+            'twitter' => 'required',
             'website' => 'required',
             'sector_id' => 'required'
         ]);
@@ -120,10 +141,9 @@ class MinistryController extends Controller
      * Remove the specified resource from storage.
      *
      */
-    public function destroy($ministry=29)
+    public function destroy($ministry)
     {
-        echo "deleted";
-        // Ministry::where('id', $ministry)->delete();
+        Ministry::where('id', $ministry)->delete();
     }
 
 
@@ -136,8 +156,63 @@ class MinistryController extends Controller
         if ($request->get('query')) {
             $query = $request->get('query');
             $data = DB::table('ministries')->where('name', 'LIKE', "%$query%")->get();
-            echo $data;
+            $ministries = $this->getMinistries($data);
+            echo $ministries;
         }
     }
-    
+
+     /**
+     * Display a form for creating companies.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function viewCreateMinistry()
+    {
+        return view('backend.ministry.create');
+    }
+
+    /**
+     * Display a listing of the companies.
+     *
+     * @return view
+     */
+    public function viewMinistries()
+    {
+        $ministries = Ministry::all();
+
+        return view('backend.ministry.view')->with(['ministries' => $ministries]);
+    }
+
+    public function createMinistry(Request $request)
+    {
+        validator(
+            [
+                'ministry_name' => 'required',
+                'code' => 'required | number',
+                'ministry_shortname' => 'required',
+                'ministry_twitter' => 'required',
+                'ministry_head' => 'required',
+                'website' => 'required',
+                'sector_id' => 'required|number'
+            ]
+        );
+
+        $new_ministry = new Ministry();
+        $new_ministry->name = $request->ministry_name;
+        $new_ministry->shortname = $request->ministry_shortname;
+        $new_ministry->twitter = $request->ministry_twitter;
+        $new_ministry->head = $request->ministry_head;
+        $new_ministry->website = $request->website;
+        $new_ministry->code = $request->code;
+        $new_ministry->sector_id = $request->sector_id;
+        $save_new_ministry = $new_ministry->save();
+
+        if ($save_new_ministry) {
+            echo ("<script>alert('New ministry created successfully');
+             window.location.replace('/admin/ministry/view');</script>");
+        } else {
+            echo ("<script>alert('Cannot create New ministry'); 
+            window.location.replace('/admin/ministry/create');</script>");
+        }
+    }
 }
