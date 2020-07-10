@@ -9,9 +9,8 @@ use Illuminate\Support\Facades\DB;
 
 class MinistryController extends Controller
 {
-    public function getMinistries()
-    {
-        $ministries = Ministry::all();
+    public function getMinistries($ministries)
+    {   
         $currentYr = date("Y").'-01-01';
         foreach($ministries as $ministry){
             $code = $ministry->code;
@@ -29,30 +28,21 @@ class MinistryController extends Controller
      */
     public function profile()
     {
-        $ministries = $this->getMinistries();
+        $data = Ministry::all();
+        $ministries = $this->getMinistries($data);
         return view('pages.ministry.index')->with('ministries', $ministries);
     }
 
      /**
      * Re-renders all the ministries each time the search box's content is cleared
+     * Was getting 404 error, Moved back to MinistrySearchController
      */
-    public function index()
-    {
-        $ministries = $this->getMinistries();
-        echo $ministries;
-    }
-
-     /**
-     * Displays the ministry that matches the search result;
-     * called when a user clicks on one of the suggested autocomplete words
-     */
-    public function showMatch(Request $request)
-    {
-        $ministry_name = $request->get('id');
-        // echo $ministry_name;
-        $ministry = DB::table('ministries')->where('name', '=', "$ministry_name")->get();
-        echo $ministry;
-    }
+    // public function index()
+    // {
+    //     $data = Ministry::all();
+    //     $ministries = $this->getMinistries($data);
+    //     echo $ministries;
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -84,7 +74,7 @@ class MinistryController extends Controller
 
     /**
      * Display the specified resource.
-     * Called when user clicks on a ministry in profile.blade.php
+     * Called when user clicks on a ministry card in index.blade.php
      */
     public function show(Ministry $ministry)
     {     
@@ -167,7 +157,8 @@ class MinistryController extends Controller
         if ($request->get('query')) {
             $query = $request->get('query');
             $data = DB::table('ministries')->where('name', 'LIKE', "%$query%")->get();
-            echo $data;
+            $ministries = $this->getMinistries($data);
+            echo $ministries;
         }
     }
     

@@ -9,8 +9,11 @@
         @yield('content')
     </div>
     <!-- footer -->
+    @include('partials.footer')
+    
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('js')
-    @include('partials.footer')
+    
   </body>
+  
 </html>
