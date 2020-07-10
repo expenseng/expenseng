@@ -302,7 +302,7 @@
                     <a href="#">@expenseNG</a>
                    </div>
                 </div>
-               <div class="query">
+               <div class="query ">
                   <p>Join the conversation</p>
                   <p>We want to know how we can serve you better.
                   Drop by our community page to ask questions,
@@ -313,6 +313,6 @@
   @endsection
 
 @section('js')
-  <script src="{{asset('js/index.js')}}"></script>
+<script src="{{asset('js/index.js')}}"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @endsection
