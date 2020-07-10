@@ -78,10 +78,10 @@ main .green_right{
 }
 
 .hero{
-  margin: 8rem 0 6rem;
+  margin: 8rem 0 3rem;
 }
 
-.hero .twitter{
+.hero .twitter a{
   max-width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -92,7 +92,7 @@ main .green_right{
   margin-top: 1.5rem;
 }
 
-.hero .twitter img{
+.hero .twitter a img{
   width: 60%;
   transform:translate(1px, 1px);
   -webkit-transform:translate(1px, 1px);
@@ -334,6 +334,9 @@ main .green_right{
   .mission_img::before, .vision_img::before{
     display: none;
   }
+  .image_div{
+    display: none;
+  }
 }
 
 
@@ -383,5 +386,9 @@ main .green_right{
     --fs-h2: 1.7rem;
     --fs-h3: 1.05rem;
     --fs-h6: .65rem;
+  }
+
+  .hero{
+    margin: 6rem 0 2rem;
   }
 }

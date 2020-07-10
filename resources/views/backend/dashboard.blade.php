@@ -58,11 +58,9 @@
                                     <div class="card-body">
                                         <h5 class="text-muted">Total Comments</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">150000</h1>
+                                            <h1 class="mb-1">100</h1>
                                         </div>
-                                        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
-                                            <span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>
-                                        </div>
+                                        
                                     </div>
                                     <div id="sparkline-revenue"></div>
                                 </div>
@@ -70,12 +68,15 @@
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="text-muted">Total Contractors</h5>
+                                        <h5 class="text-muted">Total Budget for {{date('Y')}}</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">5000</h1>
+                                            <h3 class="mb-1">
+                                            ₦{{number_format($amount, 2)}}
+                                                    
+                                            </h3>
                                         </div>
                                         <div class="metric-label d-inline-block float-right text-success font-weight-bold">
-                                            <span><i class="fa fa-fw fa-arrow-down"></i></span><span>2.86%</span>
+                                            
                                         </div>
                                     </div>
                                     <div id="sparkline-revenue2"></div>
@@ -121,32 +122,32 @@
                                             <table class="table">
                                                 <thead class="bg-light">
                                                     <tr class="border-0">
-                                                        <th class="border-0">#</th>
+
                                                         <th class="border-0">Image</th>
                                                         <th class="border-0">Contractors</th>
                                                         <th class="border-0">Contract Awarded</th>
-                                                        <th class="border-0">Quantity</th>
-                                                        <th class="border-0">Price</th>
-                                                        <th class="border-0">Allocation Time</th>
-                                                        <th class="border-0">Customer</th>
+                                                        <th class="border-0">Awarding Ministry</th>
+                                                        <th class="border-0">Amount</th>
                                                         <th class="border-0">Status</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @if (count($recent_expenses)> 0)
+                                                        @foreach ($recent_expenses as $recent_expense)
                                                     <tr>
-                                                        <td>1</td>
+                                                        
                                                         <td>
                                                             <div class="m-r-10"><img src="/images/product-pic.jpg" alt="user" class="rounded" width="45"></div>
                                                         </td>
-                                                        <td>Julius Berger </td>
-                                                        <td>Building of School Blocks </td>
-                                                        <td>20</td>
-                                                        <td>$15000</td>
-                                                        <td>27-08-2018 01:22:12</td>
-                                                        <td>Federal Uni of Tech Owerri, Imo state</td>
+                                                        <td>{{$recent_expense->year}} </td>
+                                                        <td>{{$recent_expense->project}}  </td>
+                                                        <td>{{$recent_expense->month}}</td>
+                                                        <td>₦{{number_format($recent_expense->amount_spent,2)}}</td>
                                                         <td><span class="badge-dot badge-brand mr-1"></span>Not Completed </td>
                                                     </tr>
-                                                    <tr>
+                                                    @endforeach
+                                                    @endif
+                                                    <!--<tr>
                                                         <td>2</td>
                                                         <td>
                                                             <div class="m-r-10"><img src="/images/product-pic-2.jpg" alt="user" class="rounded" width="45"></div>
@@ -184,7 +185,7 @@
                                                         <td>23-08-2018 09:12:35</td>
                                                         <td>Michael K. Ledford </td>
                                                         <td><span class="badge-dot badge-success mr-1"></span>Delivered </td>
-                                                    </tr>
+                                                    </tr>-->
                                                     <tr>
                                                         <td colspan="9"><a href="#" class="btn btn-outline-light float-right">View Details</a></td>
                                                     </tr>
@@ -225,11 +226,11 @@
                             <!-- end customer acquistion  -->
                             <!-- ============================================================== -->
                         </div>
-                        <div class="row">
+                        <!--<div class="row">
                             <!-- ============================================================== -->
               				                        <!-- product category  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <!--<div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <h5 class="card-header"> Product Category</h5>
                                     <div class="card-body">
@@ -254,7 +255,7 @@
                             <!-- end product category  -->
                                    <!-- product sales  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <!--<div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-header">
                                         <!-- <div class="float-right">
@@ -265,7 +266,7 @@
                                                     <option value="3">Yearly</option>
                                                 </select>
                                             </div> -->
-                                        <h5 class="mb-0"> Product Sales</h5>
+                                       <!-- <h5 class="mb-0"> Product Sales</h5>
                                     </div>
                                     <div class="card-body">
                                         <div class="ct-chart-product ct-golden-section"></div>
@@ -275,12 +276,12 @@
                             <!-- ============================================================== -->
                             <!-- end product sales  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-3 col-lg-12 col-md-6 col-sm-12 col-12">
+                           <!-- <div class="col-xl-3 col-lg-12 col-md-6 col-sm-12 col-12">
                                 <!-- ============================================================== -->
                                 <!-- top perfomimg  -->
                                 <!-- ============================================================== -->
                                 <div class="card">
-                                    <h5 class="card-header">Top Performing Campaigns</h5>
+                                    <h5 class="card-header">Top Performing Companies</h5>
                                     <div class="card-body p-0">
                                         <div class="table-responsive">
                                             <table class="table no-wrap p-table">
@@ -338,11 +339,11 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <!--<div class="row">
                             <!-- ============================================================== -->
                             <!-- sales  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                           <!-- <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                 <div class="card border-3 border-top border-top-primary">
                                     <div class="card-body">
                                         <h5 class="text-muted">Sales</h5>
@@ -361,7 +362,7 @@
                             <!-- ============================================================== -->
                             <!-- new customer  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                            <!--<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                 <div class="card border-3 border-top border-top-primary">
                                     <div class="card-body">
                                         <h5 class="text-muted">New Customer</h5>
@@ -380,7 +381,7 @@
                             <!-- ============================================================== -->
                             <!-- visitor  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                            <!--<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                 <div class="card border-3 border-top border-top-primary">
                                     <div class="card-body">
                                         <h5 class="text-muted">Visitor</h5>
@@ -399,7 +400,7 @@
                             <!-- ============================================================== -->
                             <!-- total orders  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                            <!--<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                 <div class="card border-3 border-top border-top-primary">
                                     <div class="card-body">
                                         <h5 class="text-muted">Total Orders</h5>
@@ -415,7 +416,7 @@
                             <!-- ============================================================== -->
                             <!-- end total orders  -->
                             <!-- ============================================================== -->
-                        </div>
+                        <!--</div>
                         <div class="row">
                             <!-- ============================================================== -->
                             <!-- total revenue  -->
@@ -426,7 +427,7 @@
                             <!-- ============================================================== -->
                             <!-- category revenue  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12">
+                            <!--<div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12">
                                 <div class="card">
                                     <h5 class="card-header">Revenue by Category</h5>
                                     <div class="card-body">
@@ -438,7 +439,7 @@
                             <!-- end category revenue  -->
                             <!-- ============================================================== -->
 
-                            <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12">
+                            <!--<div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12">
                                 <div class="card">
                                     <h5 class="card-header"> Total Revenue</h5>
                                     <div class="card-body">
@@ -455,7 +456,7 @@
                                 <!-- ============================================================== -->
                                 <!-- social source  -->
                                 <!-- ============================================================== -->
-                                <div class="card">
+                                <!--<div class="card">
                                     <h5 class="card-header"> Sales By Social Source</h5>
                                     <div class="card-body p-0">
                                         <ul class="social-sales list-group list-group-flush">
@@ -478,12 +479,12 @@
                                 <!-- ============================================================== -->
                                 <!-- end social source  -->
                                 <!-- ============================================================== -->
-                            </div>
+                            <!--</div>
                             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <!-- ============================================================== -->
                                 <!-- sales traffice source  -->
                                 <!-- ============================================================== -->
-                                <div class="card">
+                                <!--<div class="card">
                                     <h5 class="card-header"> Sales By Traffic Source</h5>
                                     <div class="card-body p-0">
                                         <ul class="traffic-sales list-group list-group-flush">
@@ -514,7 +515,7 @@
                             <!-- ============================================================== -->
                             <!-- sales traffic country source  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-3 col-lg-12 col-md-6 col-sm-12 col-12">
+                           <!-- <div class="col-xl-3 col-lg-12 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <h5 class="card-header">Sales By Country Traffic Source</h5>
                                     <div class="card-body p-0">
@@ -540,11 +541,11 @@
                             <!-- ============================================================== -->
                             <!-- end sales traffice country source  -->
                             <!-- ============================================================== -->
-                        </div>
+                        <!--</div>-->
 
 
                          
-                        <div class="row pt-4" style="background: white">
+                        <div class="//row pt-4" style="background: white">
                             <!-- ============================================================== -->
                             <!-- Tabbed Quick Forms -->
                             <!-- ============================================================== -->
@@ -633,21 +634,12 @@
                             <!-- END Tabbed Quick Forms -->
                             <!-- ============================================================== -->
                         </div> <!-- ROW -->
+                    <!--</div>
 
-
-                    </div>
-                </div>
-            </div>
+      
             <!-- ============================================================== -->
             <!-- ============================================================== -->
-        </div>
-        <!-- ============================================================== -->
-        <!-- end wrapper  -->
-        <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- end main wrapper  -->
-    <!-- ============================================================== -->
+        
     @endsection
     @section('js')
     <!-- Optional JavaScript -->

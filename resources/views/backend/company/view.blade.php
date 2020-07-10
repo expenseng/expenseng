@@ -13,7 +13,7 @@
 <div class="dashboard-wrapper">
             <div class="container-fluid dashboard-content">
                 <div class="row">
-                    <div class="col-xl-10">
+                    <div class="col-xl-12">
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <div class="card-header">
@@ -31,13 +31,16 @@
                                                 <th>Company Twitter</th>
                                                 <th>CEO</th>
                                                 <th>CEO Twitter</th>
+                                                <th>Actions</th>
                                                 
                                             </tr>
                                         </thead>
-                                        @if (count($companies ) > 0)
-                                        @foreach ($companies as $company)
+
                                         <tbody>
+                                        @if (count($companies ) > 0)
+                                        
                                             <tr>
+                                            @foreach ($companies as $company)
                                                 <td>
                                                     {{$company->id}}
                                                 </td>
@@ -46,11 +49,23 @@
                                                 <td>{{$company->industry}}</td>
                                                 <td>{{$company->ceo}}</td>
                                                 <td>{{$company->twitter}}</td>
+                                                <td>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <a href="{{'/admin/company/edit/' . $company->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <a href="#"><i class="fa fa-trash" style="color: red"></i> </a>
+                                                        </div>
+
+                                                    </div>
+                                                </td>
                                             </tr>
                                             
-                                        </tbody>
                                         @endforeach
                                         @endif
+                                            
+                                        </tbody>
                                         <tfoot>
                                             <tr>
                                                 <th>S/N</th>
@@ -59,6 +74,7 @@
                                                 <th>Company Twitter</th>
                                                 <th>CEO</th>
                                                 <th>CEO Twitter</th>
+                                                <th>Actions</th>
                                             </tr>
                                         </tfoot>
                                     </table>
