@@ -13,14 +13,14 @@
                                 Menu
                             </li>
                             <li class="nav-item ">
-                                <a class="{{Route::has('dashbord')? 'nav-link active': 'nav-link'}}"  href="{{route('dashboard')}}"  data-target="#submenu-1" aria-controls="submenu-1">
+                                <a class="{{Route::has('/admin/dashbord')? 'nav-link active': 'nav-link'}}"  href="{{route('dashboard')}}"  data-target="#submenu-1" aria-controls="submenu-1">
                                     <i class="fa fa-fw fa-user-circle"></i>Dashboard <span class="badge badge-success">6</span></a>
                             </li>
                     
                         
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Company</a>
+                                <a class="{{Route::is('company.create') || Route::is('company.view')? 'nav-link active': 'nav-link'}}" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Company</a>
                                 <div id="submenu-2" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">

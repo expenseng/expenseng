@@ -122,32 +122,32 @@
                                             <table class="table">
                                                 <thead class="bg-light">
                                                     <tr class="border-0">
-                                                        <th class="border-0">#</th>
+
                                                         <th class="border-0">Image</th>
                                                         <th class="border-0">Contractors</th>
                                                         <th class="border-0">Contract Awarded</th>
-                                                        <th class="border-0">Quantity</th>
-                                                        <th class="border-0">Price</th>
-                                                        <th class="border-0">Allocation Time</th>
-                                                        <th class="border-0">Customer</th>
+                                                        <th class="border-0">Awarding Ministry</th>
+                                                        <th class="border-0">Amount</th>
                                                         <th class="border-0">Status</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @if (count($recent_expenses)> 0)
+                                                        @foreach ($recent_expenses as $recent_expense)
                                                     <tr>
-                                                        <td>1</td>
+                                                        
                                                         <td>
                                                             <div class="m-r-10"><img src="/images/product-pic.jpg" alt="user" class="rounded" width="45"></div>
                                                         </td>
-                                                        <td>Julius Berger </td>
-                                                        <td>Building of School Blocks </td>
-                                                        <td>20</td>
-                                                        <td>$15000</td>
-                                                        <td>27-08-2018 01:22:12</td>
-                                                        <td>Federal Uni of Tech Owerri, Imo state</td>
+                                                        <td>{{$recent_expense->year}} </td>
+                                                        <td>{{$recent_expense->project}}  </td>
+                                                        <td>{{$recent_expense->month}}</td>
+                                                        <td>{{$recent_expense->amount_spent}}</td>
                                                         <td><span class="badge-dot badge-brand mr-1"></span>Not Completed </td>
                                                     </tr>
-                                                    <tr>
+                                                    @endforeach
+                                                    @endif
+                                                    <!--<tr>
                                                         <td>2</td>
                                                         <td>
                                                             <div class="m-r-10"><img src="/images/product-pic-2.jpg" alt="user" class="rounded" width="45"></div>
@@ -185,7 +185,7 @@
                                                         <td>23-08-2018 09:12:35</td>
                                                         <td>Michael K. Ledford </td>
                                                         <td><span class="badge-dot badge-success mr-1"></span>Delivered </td>
-                                                    </tr>
+                                                    </tr>-->
                                                     <tr>
                                                         <td colspan="9"><a href="#" class="btn btn-outline-light float-right">View Details</a></td>
                                                     </tr>
