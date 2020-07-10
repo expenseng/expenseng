@@ -3,21 +3,217 @@ body {
 }
 
 #banner {
-	margin: 200px 0px 200px 0px;
+	margin: 60px 0px 150px -15px;
 }
-
-input,
-button {
-	margin: 50px 0px;
+h1{
+	font-size: 24px;
+	font-weight: bold;
 }
-
+#banner p{
+	font-size: 16px;
+}
+.contact h2{
+	font-size: 24px;
+	font-weight: bold;
+	color: #00945E;
+	margin-top: -105px;
+}
+.contact .para{
+	font-size: 16px;
+}
+input{
+	margin: 20px 0px;
+	font-size: 16px;
+}
+.btn-success {
+	width: 35%;
+	font-size: 16px;
+	font-weight: bold;
+	margin: 20px 0px;
+	background: #00945E !important;
+	border-radius: 5px;
+	padding: 10px;
+}
+.btn-success:hover{
+	background: #078155 !important;
+}
 aside {
 	color: white;
+}
+.banner-hr{
+	width: 75%;	
+	background-color: #fff;
 }
 
 hr {
 	width: 75%;
-	background-color: white;
+	margin-top: 5px;
+	margin-bottom: 20px;
+	background-color: rgba(255, 255, 255, 0.534);
+}
+
+.banner {
+	width: 100%;
+	background: linear-gradient(0deg,rgba(50, 62, 72, 0.33),rgba(50, 62, 72, 0.33)),rgba(0, 148, 94, 0.67);
+
+}
+
+.align {
+	text-align: center;
+}
+
+h4 {
+	font-size: 24px;
+	line-height: 135.5%;
+	text-align: center;
+}
+
+.fa-map-marker,
+.fa-phone,
+.fa-envelope,
+.fa-facebook,
+.fa-twitter {
+	color: #00945E;
+}
+
+span {
+	margin-bottom: 20px;
+	margin-left: -220px;
+}
+.col-sm-8{
+	text-align: center;
+	margin-left: 120px;
+	margin-top: -52px;
+	font-size: 14px;
+}
+.greenify {
+	margin-top: 35px;
+	margin-bottom: 35px;
+	padding: 30px 30px;
+	width: 100%;
+	background: linear-gradient(0deg,rgba(50, 62, 72, 0.33),rgba(50, 62, 72, 0.33)),rgba(0, 148, 94, 0.67);
+}
+.greenify .fa-twitter{
+	color: #55acee;
+}
+.greenify h2{
+	font-size: 24px;
+	font-weight: bold;
+	text-align: left;
+	margin-top: -10px;
+}
+.greenify p{
+	text-align: left;
+	font-size: 16px;
+	margin-top: -15px;
+}
+.twitter-back {
+	opacity: 0.2;
+	width: 230px;
+	z-index: -1;
+}
+
+.button {
+	border: none;
+	position: absolute;
+	top: 90px;
+	left: 60px;
+	font-weight: 12px;
+	padding: 5px;
+	color: #55acee;
+	box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.06);
+	border-radius: 5px;
+}
+@media only screen and (min-width: 430px){
+	span{
+		margin-left: -260px;
+	}
+	.col-sm-8{
+		margin-left: 140px;
+	}
+}
+@media only screen and (min-width: 530px){
+	span{
+		margin-left: -320px;
+	}
+	.col-sm-8{
+		margin-left: 160px;
+	}
+}
+@media only screen and (min-width: 576px){
+	.contact{
+		padding-top: 25px ;
+		padding-bottom: 15px ;
+	}
+	span{
+		margin-left: 5px;
+	}
+	.col-sm-8{
+		margin-left: 130px;
+	}
+}
+@media only screen and (min-width: 777px){
+	span{
+		margin-left: 5px;
+	}
+	.col-sm-8{
+		margin-left: 90px;
+	}
+}
+@media only screen and (min-width: 1024px){
+	body{
+		overflow-x: hidden;
+	}
+#banner {
+	margin: 60px 0px 150px -15px;
+}
+h1{
+	font-size: 35px;
+	width: 120%;
+}
+#banner p{
+	font-size: 20px;
+	width: 150%;
+}
+.contact h2{
+	font-size: 32px;
+	font-weight: bold;
+	color: #00945E;
+}
+.contact .para{
+	font-size: 20px;
+}
+input{
+	margin: 30px 0px;
+	font-size: 16px;
+}
+.btn-success {
+	width: 150px;
+	font-size: 18px;
+	font-weight: bold;
+	margin: 25px 0px;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.contact{
+	/* margin-left: 145px; */
+	margin-top: 180px;
+}
+aside {
+	color: white;
+	margin-top: -90px;
+}
+.banner-hr{
+	width: 75%;	
+	background-color: #fff;
+}
+
+hr {
+	width: 75%;
+	margin-top: 5px;
+	margin-bottom: 20px;
+	background-color: rgba(255, 255, 255, 0.534);
 }
 
 .banner {
@@ -29,6 +225,8 @@ hr {
 		),
 		rgba(0, 148, 94, 0.67);
 	margin-left: 20px;
+	padding-top: 30px;
+	padding-bottom: 20px;
 }
 
 .align {
@@ -36,7 +234,10 @@ hr {
 }
 
 h4 {
-	text-align: center;
+	font-size: 24px;
+	line-height: 135.5%;
+	text-align: left;
+	margin-left: 55px;
 }
 
 .fa-map-marker,
@@ -44,35 +245,51 @@ h4 {
 .fa-envelope,
 .fa-facebook,
 .fa-twitter {
-	color: rgba(0, 148, 94, 0.67);
+	color: #00945E;
 }
 
 span {
 	margin-bottom: 20px;
 }
-
-.greenify {
-	margin-top: 100px;
-	margin-bottom: 100px;
-	padding: 40px;
-	background: linear-gradient(
-			0deg,
-			rgba(50, 62, 72, 0.33),
-			rgba(50, 62, 72, 0.33)
-		),
-		rgba(0, 148, 94, 0.67);
+.col-sm-8{
+	margin-left: -45px;
+	font-size: 16px;
+	margin-top: -3px;
 }
-
+.greenify {
+	margin-left: 210px;
+	margin-top: 30px;
+	margin-bottom: 40px;
+	padding: 60px;
+	width: 120%;
+	height: 400px;
+	background: linear-gradient(0deg,rgba(50, 62, 72, 0.33),rgba(50, 62, 72, 0.33)),rgba(0, 148, 94, 0.67);
+}
+.greenify .fa-twitter{
+	color: #55acee;
+}
+.greenify h2{
+	margin-left: -40px;
+	margin-top: 60px;
+	font-size: 34px;
+}
+.greenify p{
+	font-size: 18px;
+	margin-left: -40px;
+}
 .twitter-back {
+	margin-top: 70px;
 	opacity: 0.2;
-	width: 320px;
+	width: 350px;
+	z-index: -1;
 }
 
 .button {
+	width: 200px;
 	border: none;
 	position: absolute;
-	top: 80px;
-	left: 100px;
-	padding: 5px 25px;
-	color: #55acee;
+	top: 210px;
+	left: 70px;
+	padding: 8px 25px;
+}
 }

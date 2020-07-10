@@ -17,16 +17,7 @@ class MinistrySearchController extends Controller
     public function show(Request $request)
     {
         $ministry_name = $request->get('ministry');
-        $ministry = DB::table('ministries_profile')->where('ministry_name', '=', "$ministry_name")->get();
+        $ministry = DB::table('ministries')->where('name', '=', "$ministry_name")->get();
         echo $ministry;
-    }
-
-    public function autocomplete(Request $request)
-    {
-        if ($request->get('query')) {
-            $query = $request->get('query');
-            $data = DB::table('ministries_profile')->where('ministry_name', 'LIKE', "%$query%")->get();
-            echo $data;
-        }
     }
 }

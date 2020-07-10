@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Budget;
 use App\Ministry;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function index()
-    {
-        return view('pages.home');
-    }
 
     public function contactUs()
     {
@@ -32,16 +29,6 @@ class PageController extends Controller
         return view('pages.expense-graph');
     }
 
-    public function directorBoard()
-    {
-        return view('pages.director_board');
-    }
-
-    public function blog()
-    {
-        return view('pages.blog');
-    }
-
     public function about()
     {
         return view('pages.aboutus');
@@ -49,7 +36,7 @@ class PageController extends Controller
 
     public function error404()
     {
-        return view('pages.404_error');
+        return view('pages.errors.404_error');
     }
 
     public function expenditure()
@@ -59,20 +46,20 @@ class PageController extends Controller
 
     public function ministryReport()
     {
-        return view('pages.ministry_report');
+        return view('pages.ministry.ministry_report_table');
     }
 
     public function ministryGetUrl(Request $request)
     {
         $id = $request->get('id');
-        return response()->json(['url'=>url('ministry/profile/'.$id)]);
+        return response()->json(['url' => url('ministries/' . $id)]);
     }
 
     public function ministryProfileSearch($id)
     {
         if ($id) {
             $ministry = Ministry::where('id', $id)->first();
-            return view('pages.ministry_list_tables')->with(['ministry'=> $ministry]);
+            return view('pages.ministry.ministry_list_tables')->with(['ministry'=> $ministry]);
         }
     }
 
@@ -83,7 +70,7 @@ class PageController extends Controller
 
     public function companyProfile()
     {
-        return view('pages.companyprofile');
+        return view('pages.contract.contracts_awarded');
     }
 
     public function companyReport()
@@ -112,13 +99,13 @@ class PageController extends Controller
 
     public function contract()
     {
-        return view('pages.contracts_awarded');
+        return view('pages.contract.contracts_awarded');
     }
 
     public function ministryList()
     {
         $ministries = Ministry::all();
-        return view('pages.ministry_list_federal_ministries')->with(['ministries'=> $ministries]);
+        return view('pages.ministry.ministry-list-profile')->with(['ministries' => $ministries]);
     }
 
     public function ministrySpending()
@@ -128,5 +115,10 @@ class PageController extends Controller
 
         // return $expenses;
         return view('pages.ministry_report_table', compact('expenses'));
+    }
+
+    public function showProfile()
+    {
+        return view('pages.ministry_profile');
     }
 }

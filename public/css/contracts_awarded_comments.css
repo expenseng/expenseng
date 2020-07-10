@@ -7,7 +7,7 @@ body {
   ;
 }
 
-a {
+/* a {
   text-decoration: none;
 }
 
@@ -87,10 +87,10 @@ ul li:nth-child(1) {
   width: 100%;
   height: 2px;
   background-color: #D5D9D8;
-}
+} */
 
 .username {
-  font-size: 20px;
+  font-size: 18px;
   margin: 0;
 }
 
@@ -110,7 +110,7 @@ ul li:nth-child(1) {
 
 i {
   cursor: pointer;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
 }
 
 .time {
@@ -125,12 +125,22 @@ i {
 }
 
 ::placeholder {
-  font-size: 24px;
+  font-size: 18px;
   color: #BCBDC1
 }
 
 
 @media(max-width:600px) {
+  .comments{
+    font-size: 18px;
+  }
+  .username, .time{
+    font-size: 16px;
+    margin-top: 5px;
+  }
+  ::placeholder{
+    font-size: 16px;
+  }
   .company-name {
     font-size: 30px;
   }

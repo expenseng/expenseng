@@ -4,24 +4,32 @@
 .sart{
 	margin-right: px;
 }
+.navbar{
+	width: 100%;
+	/* margin-left: -120px; */
+}
 .nav-link{
 	color: black !important;
+	font-size: 20px;
+	margin-left: 25px;
 }
 .nav-item , .search{
 	background-color: #ffff !important;
 }
 .nav-link:hover{
-	color: grey !important;
+	color: #00945E !important;
 }
 .my-footer ul {
   list-style-type: none;
   padding-left: 0;
   color: white;
+  height: auto;
 }.my-footer a {
   color: #fff !important;
 }
 .my-footer {
   background-color: #323E48 !important;
+  height: auto;
 }
 h6{
 	color: white;
@@ -38,6 +46,25 @@ h6{
 }
 .lower{
 	background-color: #1F2430;
-	padding: 10px;
-	background:
+	/* padding: 10px; */
+	height: auto;
+}
+@media only screen and (max-width: 650px){
+	body{
+		overflow-x: hidden;
+	}
+	.nav-link{
+		font-size: 16px;
+	}
+	.navbar{
+		width: 100%;
+		margin-left: -10px;
+	}
+	.fa-bars{
+		margin-left: 255px;
+		font-size: 24px;
+	}
+.navbar-brand img{
+	width: 70%;
+}
 }

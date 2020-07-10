@@ -13,42 +13,48 @@ class CompanySeeder extends Seeder
     public function run()
     {
         //
-        DB::table('companies_profile')->insert([
+        DB::table('companies')->insert([
             [
-                "company_name"=> "Dangote Group",
-                "company_twitter_handle"=> "@dangote_group",
-                "company_head"=> "Aliko Dangote",
-                "company_head_twitter_handle"=> "@a_dangote"
+                "name"=> "Dangote Group",
+                "shortname" => "dangote",
+                "twitter"=> "@dangote_group",
+                "ceo"=> "Aliko Dangote",
+                "industry"=> "@a_dangote"
             ],
             [
-                "company_name"=> "WATERBASE ENGINEERING LIMITED",
-                "company_twitter_handle"=> "@waterbase_ng",
-                "company_head"=> "Chima Nwogu",
-                "company_head_twitter_handle"=> "@c_nwogu"
+                "name"=> "WATERBASE ENGINEERING LIMITED",
+                "shortname" => "waterbase",
+                "twitter"=> "@waterbase_ng",
+                "ceo"=> "Chima Nwogu",
+                "industry"=> "@c_nwogu"
             ],
             [
-                "company_name"=> "AKINYOSOYE  OLADOTUN",
-                "company_twitter_handle"=> "@akinsonye_oladotun",
-                "company_head"=> "AKINYOSOYE  OLADOTUN",
-                "company_head_twitter_handle"=> "@akinsonye_oladotun"
+                "name"=> "AKINYOSOYE  OLADOTUN",
+                "shortname" => "akinsoye",
+                "twitter"=> "@akinsonye_oladotun",
+                "ceo"=> "AKINYOSOYE  OLADOTUN",
+                "industry"=> "@akinsonye_oladotun"
             ],
             [
-                "company_name"=> "MARITIME PROJECT SERVICES LIMITED",
-                "company_twitter_handle"=> "@maritimeprojectservice",
-                "company_head"=> "Moses Babalola",
-                "company_head_twitter_handle"=> "@m_babalola"
+                "name"=> "MARITIME PROJECT SERVICES LIMITED",
+                "shortname" => "maritime",
+                "twitter"=> "@maritimeprojectservice",
+                "ceo"=> "Moses Babalola",
+                "industry"=> "@m_babalola"
             ],
             [
-                "company_name"=> "GEOID CONSULT LTD",
-                "company_twitter_handle"=> "@geoidconsultltd",
-                "company_head"=> "Aluko Francis",
-                "company_head_twitter_handle"=> "@a_francis"
+                "name"=> "GEOID CONSULT LTD",
+                "shortname" => "geoid",
+                "twitter"=> "@geoidconsultltd",
+                "ceo"=> "Aluko Francis",
+                "industry"=> "@a_francis"
             ],
             [
-                "company_name"=> "JAY JAY BADMUS INVESTMENT LTD",
-                "company_twitter_handle"=> "@jayjay_badmusltd",
-                "company_head"=> "Martin King",
-                "company_head_twitter_handle"=> "@martinking"
+                "name"=> "JAY JAY BADMUS INVESTMENT LTD",
+                "shortname" => "jayjay",
+                "twitter"=> "@jayjay_badmusltd",
+                "ceo"=> "Martin King",
+                "industry"=> "@martinking"
             ]
         ]);
     }

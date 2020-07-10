@@ -1,17 +1,17 @@
 <!-------------Footer starts here-------------->
-<footer class="my-footer">
-  <div class="container">
+<footer class=" container-fluid my-footer">
+  <div class="container" style ="background-color: #323E48 !important;">
       <div class="row">
           <div class="col-md-2 footer-brand ">
-              <a href="index.html">
-                  <img src="{{'images/Frame 390.png'}}" class="ft">
+              <a href="{{ url('/') }}">
+                  <img src="{{asset('images/Logo.svg')}}" class="ft">
               </a> <br><br>
               <a href=""><i class="fab fa-twitter" aria-hidden="true"></i><small> @expenseng</small></a>
           </div>
           <div class="col-md-4">
 
           </div>
-          <div class="col-md-2">
+          <div class="col-md-2 mt-3">
               <h6>Pages</h6>
               <ul >
                   <li>
@@ -29,7 +29,7 @@
               </ul>
 
           </div>
-          <div class=" col-md-2">
+          <div class=" mt-3 col-md-2">
               <h6>Profile</h6>
               <ul>
                   <li>
@@ -40,7 +40,7 @@
                   </li>
               </ul>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-2 mt-3">
               <h6>Reference</h6>
               <ul >
                   <li>
@@ -56,7 +56,7 @@
           </div>
       </div><br><br>
   </div>
-  <div class="container-fluid lower">
+ 
     <div class="container">
         <div class="row ">
             <div class="col-md-9">
@@ -69,7 +69,5 @@
             </div>
         </div>
     </div>
-  </div>
+  
 </footer>
-
-<!-------------Footer ends here-------------->
