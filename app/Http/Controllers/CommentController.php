@@ -68,6 +68,6 @@ class CommentController extends Controller
     public function store(){
         $response = $this->http->post('/comments', [
 
-        ])
+        ]);
     }
 }
