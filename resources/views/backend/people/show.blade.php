@@ -24,7 +24,7 @@
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="mb-0">Registered Companies </h3>
+                                <h3 class="mb-0">People at {{$company->name}}</h3>
                                 <p></p>
                             </div>
                             <div class="card-body">
@@ -32,55 +32,55 @@
                                     <table id="example" class="table table-striped table-bordered second" style="width:100%">
                                         <thead>
                                             <tr>
-                                                <th>S/N</th>
                                                 <th>Name</th>
-                                                <th>Short Name</th>
-                                                <th>Company Twitter</th>
-                                                <th>CEO</th>
-                                                <th>CEO Twitter</th>
+                                                <th>Postion</th>
+                                                <th>Company</th>
+                                                <th>Email</th>
+                                                <th>LinkedIn</th>
+                                                <th>Twitter</th>
                                                 <th>Actions</th>
 
                                             </tr>
                                         </thead>
 
                                         <tbody>
-                                        @if (count($companies ) > 0)
-
+                                            @forelse ($people as $person)
                                             <tr>
-                                            @foreach ($companies as $company)
-                                                <td>
-                                                    {{$company->id}}
-                                                </td>
-                                                <td>{{$company->name}}</td>
-                                            <td><a href="/admin/{{$company->shortname}}/people"></a>{{$company->shortname}}</td>
-                                                <td>{{$company->industry}}</td>
-                                                <td>{{$company->ceo}}</td>
-                                                <td>{{$company->twitter}}</td>
-                                                <td>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <a href="{{'/admin/company/edit/' . $company->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <a href="#"><i class="fa fa-trash" style="color: red"></i> </a>
-                                                        </div>
+                                                    <td>
+                                                        {{$person->name}}
+                                                    </td>
+                                                    <td>{{$person->position}}</td>
+                                                <td><a href="#">{{$company->name}}</a></td>
+                                                    <td>{{$person->email}}</td>
+                                                    <td>{{$person->linkedin}}</td>
+                                                    <td>{{$person->twitter}}</td>
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <a href="#"><i class="fa fa-edit" style="color: #00945E"></i></a>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <a href="#"><i class="fa fa-trash" style="color: red"></i> </a>
+                                                            </div>
 
-                                                    </div>
-                                                </td>
-                                            </tr>
-
-                                        @endforeach
-                                        @endif
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td>No people record</td>
+                                                </tr>
+                                            @endforelse
 
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>S/N</th>
-                                                <th>Company Name</th>
-                                                <th>Short Name</th>
-                                                <th>Company Twitter</th>
-                                                <th>CEO</th>
-                                                <th>CEO Twitter</th>
+                                                <th>Name</th>
+                                                <th>Postion</th>
+                                                <th>Company</th>
+                                                <th>Email</th>
+                                                <th>LinkedIn</th>
+                                                <th>Twitter</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </tfoot>
@@ -130,4 +130,3 @@
 
 
 @endsection
-

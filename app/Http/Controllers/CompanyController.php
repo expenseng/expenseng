@@ -81,7 +81,7 @@ class CompanyController extends Controller
                 'company_shortname' => 'required',
                 'company_twitter' => 'required',
                 'company_ceo' => 'required',
-                'ceo_handle' => 'required'
+                'ceo_handle' => 'required',
             ]
         );
 
@@ -97,7 +97,7 @@ class CompanyController extends Controller
             echo ("<script>alert('New Company created successfully');
              window.location.replace('/admin/company/view');</script>");
         } else {
-            echo ("<script>alert('Cannot create New Company'); 
+            echo ("<script>alert('Cannot create New Company');
             window.location.replace('/admin/company/create');</script>");
         }
     }
@@ -116,25 +116,36 @@ class CompanyController extends Controller
                 'company_shortname' => 'required',
                 'company_twitter' => 'required',
                 'company_ceo' => 'required',
-                'ceo_handle' => 'required'
+                'ceo_handle' => 'required',
             ]
         );
         $update = Company::where('id', $id)
-        ->update(
-            [
-                'name' => $request->company_name,
-                'shortname' => $request->company_shortname,
-                'industry' => $request->company_twitter,
-                'ceo' => $request->company_ceo,
-                'twitter' => $request->ceo_handle
-            ]
-        );
+            ->update(
+                [
+                    'name' => $request->company_name,
+                    'shortname' => $request->company_shortname,
+                    'industry' => $request->company_twitter,
+                    'ceo' => $request->company_ceo,
+                    'twitter' => $request->ceo_handle,
+                ]
+            );
         if ($update) {
             echo ("<script>alert(' Company details edited successfully');
              window.location.replace('/admin/company/view');</script>");
         } else {
-            echo ("<script>alert('Cannot edit Company detail'); 
+            echo ("<script>alert('Cannot edit Company detail');
             window.location.replace('/admin/company/edit/$id');</script>");
         }
+    }
+
+    //View people
+    public function showPeople(Company $company)
+    {
+        $people = $company->people;
+        return view('backend.people.show', [
+            'people' => $people,
+            'company' => $company,
+        ]);
+        //return $company->people;
     }
 }
