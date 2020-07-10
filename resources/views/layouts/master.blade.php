@@ -8,9 +8,9 @@
         <!-- content -->
         @yield('content')
         <!-- footer -->
-        @include('partials.footer')
     </div>
+    @include('partials.footer')
+    <script src="{{ asset('js/app.js') }}" type="application/javascript"></script>
+    @yield('js')
   </body>
-  <script type="application/javascript" src="{{ asset('js/app.js') }}"></script>
-  @yield('js')
 </html>

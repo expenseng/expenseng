@@ -50,7 +50,7 @@
         </div>
         <div class="col">
             <p>Total Amount Spent</p>
-            <h4><span class="text-success">&#8358;{{number_format($trend["2020"])}}</span></h4>
+            <h4><span class="text-success">&#8358;{{number_format($trend["2020"], 2)}}</span></h4>
             <small>{{date('Y')}}</small>
         </div>
         <div class="col">
@@ -82,7 +82,7 @@
                     <div class="container pb-3 pt-1 py-4">
                         <div class="row centerize">
                             <div class="col">
-                                <h3 class="index"> Date:28th May, 2020</h1>
+                                <h3 class="index">Date: {{date("jS F, Y")}}</h1>
                             </div>
 
                             <div class="col">
@@ -119,7 +119,7 @@
                                         <tr class="{{$shade}}">
                                             <td> {{$payment->description}}</td>
                                             <td> {{$payment->beneficiary}}</td>
-                                            <td> ₦{{number_format($payment->amount)}}</td>
+                                            <td> ₦{{number_format($payment->amount, 2)}}</td>
                                             <td> {{date('jS, M Y', strtotime($payment->payment_date))}}</td>
                                         </tr>
                                     @endforeach
@@ -171,7 +171,7 @@
                                             <td class="text-success"> TOTAL<br>AMOUNT </td>
                                             
                                             @foreach($trend as $key => $value)
-                                             <td>₦{{ number_format($value) }}</td>
+                                             <td>₦{{ number_format($value, 2) }}</td>
                                             @endforeach
     
                                         </tr>
@@ -179,19 +179,6 @@
                                 </table>
                             </div>
                         </div>
-                            {{-- <div class=" row mt-4  container centerize">
-                                <div class=" col-md min-pag-parent text-muted">1-20 of 320 results </div>
-                                <div class=" pagination">
-                                    <a href="#">&laquo;</a>
-                                    <a class="active" href="#">1</a>
-                                    <a href="#">2</a>
-                                    <a href="#">3</a>
-                                    <a href="#">4</a>
-                                    <a href="#">...</a>
-                                    <a href="#">6</a>
-                                    <a href="#">&raquo;</a>
-                                </div>
-                            </div> --}}
                     </div>
                 </div>
             </div>

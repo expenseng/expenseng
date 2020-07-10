@@ -179,18 +179,30 @@ color: #1F2430;
     margin: 50px;
     height: 40px;
     padding-top: 5px;
+    font-size: 16px;
 }
 
 input{
-    border: none;
     padding-left: 15px;
 }
-
+.fa-laugh{
+    margin-left: -30px;
+    margin-top: 15px;
+    color: #BCBDC1;
+}
+.fa-image{
+    margin-left: -50px;
+    margin-top: 15px;
+    color: #BCBDC1;
+}
 .input-comm img{
     float: right;
     padding-right: 20px;
+    
 }
-
+.comment{
+    margin-top: 50px;
+}
 @media (max-width: 960px){
     .top .img{
         height: 18px;        
@@ -208,9 +220,7 @@ input{
     }
 
     .coat h1{
-        font-size: 23px;
-        
-        
+        font-size: 23px;    
     }
 
     .topic{
@@ -241,10 +251,6 @@ input{
         margin-right: -20px;
         font-size: 17px;
     }
-
-    /* .comm-section .hide{
-        display: none;
-    } */
 
     .comm-image img{
         height: 40px;

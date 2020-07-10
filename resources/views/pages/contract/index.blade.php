@@ -10,7 +10,7 @@
 <br />
 <br />
 <br />
- <header class="container"><!-- Breadcrumb start -->
+ <header class="container header"><!-- Breadcrumb start -->
 	<header class="section-wrapper">
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb bg-white">
@@ -26,7 +26,7 @@
         <br />
         <div class="row">
             <div class="col-md-5">
-                <p>ExpenseNG gives an insight to how much is being dispensed to contracted companies.</p>
+                <p class="para">ExpenseNG gives an insight to how much is being dispensed to contracted companies.</p>
             </div>
         </div>
         </div>
@@ -68,7 +68,7 @@
                       </h5>
                     </a>
                 </div>
-                <h5>Total amount Awarded</h5>
+                <h5 class="amount">Total amount Awarded</h5>
                 <h5 class="text-success">#123,334,334</h5>
                 <h6 class="m-0 mb-0 text-sm-left text-black-50">2019</h6>
             </div>
@@ -78,7 +78,7 @@
     </div>
     <div class="table-footer">
       <div class="pagination">
-        {{ $companies->links() }}
+        @include('partials.pagination', ['data' => $companies])
       </div>
     </div>
 </div>

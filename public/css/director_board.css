@@ -1,44 +1,8 @@
-/* body{
-    overflow-x: hidden;
-}
-.nav-link{
-	color: black !important;
-}
-.nav-link:hover{
-	color: grey !important;
-}
-.my-footer ul {
-  list-style-type: none;
-  padding-left: 0;
-  color: white;
-}.my-footer a {
-  color: #fff !important;
-}
-.my-footer {
-  background-color: #323E48 !important;
-}
-h6{
-	color: white;
-	margin-top: 25px;
-}
-.fa-search{
-	color: grey !important;
-}
-.fa-search:hover{
-	color: black !important;
-}
-.ft{
-	margin-top: 25px;
-}
-.lower{
-	background-color: #1F2430;
-	padding: 10px;
-} */
 
 .card{
     margin-top: 30px;
 }
-.card img{
+#board .card img{
     background-color: #ccc;
 }
 
@@ -94,6 +58,9 @@ h6{
     padding-left: 2.5rem;
     padding-right: 2rem;
 }
+#board{
+    margin-top: 30px;
+}
 .board-intro{
     border-bottom: 1px solid #d5d9d8;
 }
@@ -114,10 +81,12 @@ h6{
     font-weight: bold;
     display: flex;
     justify-content: center;
+    align-items: center;
     letter-spacing: 0.05em;
     color: #353A45;
 }
-.director-title{
+#board p{
+    text-align: center;
     font-size: 14px;
     font-weight: bold;
     justify-content: center;
@@ -126,9 +95,8 @@ h6{
     letter-spacing: 0.05em;
     color: #005D3B;
 }
-.card-body span{
-    justify-content: center;
-    text-align: center;
+.card{
+    margin-top: 20px;
 }
 .socials i{
     font-size:1.5rem;

@@ -121,7 +121,7 @@ class MinistrySeeder extends Seeder
                     ],
                     [
                         "code" => "0119",
-                        "ministry_name" => "Minister of Foreign Affairs",
+                        "ministry_name" => "Ministry of Foreign Affairs",
                         "shortname" => "Budget",
                         "twitter"=> "@nigeriamfa",
                         "website" => "https://www.foreignaffairs.gov.ng",
@@ -201,7 +201,7 @@ class MinistrySeeder extends Seeder
                     ],
                     [
                         "code" => "0544",
-                        "ministry_name" => "Minister of Humanitarian Affairs, Disaster Management and Social Development",
+                        "ministry_name" => "Ministry of Humanitarian Affairs, Disaster Management and Social Development",
                         "shortname" => "Humanitarian",
                         "twitter"=> "@fmhdsd",
                         "website" => "http://www.fmhds.gov.ng",
@@ -225,7 +225,7 @@ class MinistrySeeder extends Seeder
                     ],
                     [
                         "code" => "0215",
-                        "ministry_name" => "Minister of Agriculture and Rural Development",
+                        "ministry_name" => "Ministry of Agriculture and Rural Development",
                         "shortname" => "Agriculture",
                         "twitter"=> "@fmardng",
                         "website" => "https://fmard.gov.ng",

@@ -32,7 +32,6 @@
     },
     "dependencies": {
         "apexcharts": "^3.19.3",
-        "bootstrap-select": "^1.13.18",
         "vue-apexcharts": "^1.5.3"
     }
 }
