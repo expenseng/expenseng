@@ -17,15 +17,9 @@
             </div>
             <div class="target">
               <div class="summary">
-                  <h4> In 2019, <br> the government spent </h4> 
-                  <h4 class="bolding"> $4.45 trillion.</h4>
-                  <div class="para">
-                  <p>ExpenseNG tracks federal spending to ensure taxpayers can 
-                   <p> see how their money is being used in communities across </p>
-                    <p>Nigeria.
-                  Learn more on how this money was spent with </p>
-                  <p> tools to help you navigate spending from top to bottom.</p>
-                </div>
+                  <h4> In 2019, <br> the government spent $4.45 trillion.</h4>
+                  <p>ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities across Nigeria.
+                  Learn more on how this money was spent with tools to help you navigate spending from top to bottom.</p>
               </div>
               <div class="carets my-4" id="caret-alt">
               <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left2">
@@ -57,18 +51,10 @@
               </div>
             </div>
             <button class="btn scroll-down" >
-              <a href="#expenses"></a>
+              <a href="#expenses">s</a>
             </button>
           </div>
         </div>
-      </div>
-      
-    </div>
-    <div class="scroll-down">
-      <a href="#compu">
-      <img src="{{asset('images/mdi_arrow-right-drop-circle.png')}}" alt="">
-      </a>
-    </div>
   @endsection
 
   @section('content')
@@ -229,15 +215,19 @@
        </div>
 
        <!-- Company section -->
+<<<<<<< HEAD
        <p class="label mt-5 mb-5 " id="compu">Companies that received money</p>
       
+=======
+       <p class="label mt-5 mb-5 ">Companies that received money</p>
+>>>>>>> 5f002f2ed0c5b0a1ff80bc5eb45a7833e898ea40
        <div class="companies container">
             <div class="comp-card">
                <div class="awarded">
-                <div class="graph-cont">
-                  <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                  <img src="{{asset('/images/Vector2.png')}}" alt="graph">
-                 </div>
+                 <div class="graph-cont">
+                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                   <img src="{{asset('/images/vector2.png')}}" alt="graph">
+                  </div>
                   <div class="ml-5">
                      <p class="exp-card1">Total amount Awarded</p>
                      <p class="exp-card2">&#8358;123,446,332</p>
@@ -352,7 +342,7 @@
                     <a href="#">@expenseNG</a>
                    </div>
                 </div>
-               <div class="query">
+               <div class="query ">
                   <p>Join the conversation</p>
                   <p>We want to know how we can serve you better.
                   Drop by our community page to ask questions,
@@ -365,5 +355,4 @@
 
 @section('js')
   <script src="{{asset('js/index.js')}}"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @endsection
