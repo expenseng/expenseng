@@ -101,4 +101,40 @@ class CompanyController extends Controller
             window.location.replace('/admin/company/create');</script>");
         }
     }
+
+    public function showEditForm ( $id)
+    {
+        $details = Company::findOrFail($id);
+        return view('backend.company.edit')->with(['details' => $details]);
+    }
+
+    public function editCompany (Request $request, $id)
+    {
+        validator(
+            [
+                'company_name' => 'required',
+                'company_shortname' => 'required',
+                'company_twitter' => 'required',
+                'company_ceo' => 'required',
+                'ceo_handle' => 'required'
+            ]
+        );
+        $update = Company::where('id', $id)
+        ->update(
+            [
+                'name' => $request->company_name,
+                'shortname' => $request->company_shortname,
+                'industry' => $request->company_twitter,
+                'ceo' => $request->company_ceo,
+                'twitter' => $request->ceo_handle
+            ]
+        );
+        if ($update) {
+            echo ("<script>alert(' Company details edited successfully');
+             window.location.replace('/admin/company/view');</script>");
+        } else {
+            echo ("<script>alert('Cannot edit Company detail'); 
+            window.location.replace('/admin/company/edit/$id');</script>");
+        }
+    }
 }
