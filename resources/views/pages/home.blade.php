@@ -127,14 +127,32 @@
        <!-- Ministry section -->
        <div>
 
-        <p class="label mb-5">Ministry Expenditures</p>
+        <p class="label mb-5 specific">Ministry Expenditures</p>
         <div class="ministry container mt-4">
-            <div class="ministry-heading">
-              <div class="ministry-head">
-                <p>Ministry of Agriculture</p>
-                 <i class="fa fa-caret-down"></i>
+            <div class="ministry-top">
+              <div class="ministry-heading">
+                <select class="ministry-head">
+                  <option value="agric">Ministry of Agriculture</option>
+                  <option value="grei">Ministry of Agriculture</option>
+                  <option>Ministry of Agriculture</option>
+                  <option>Ministry of Agriculture</option>
+                  <option>Ketchup</option>
+                  <option>Barbecue</option>
+                </select>
+               </div>
+               <a href="{{ route('ministries') }}" class="profile">View all profiles</a>
+             </div>
+             <div class="ministry-stat">
+                   <div class="stat-a p-4">
+                     <div class="graph-cont">
+                       <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                       <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                      </div>
+                     <div>
+                       <p class="exp-card1">Total amount spent</p>
+                       <p class="exp-card2">#123,446,332</p>
+                       <p class="exp-card3">2020</p>
               </div>
-              <p class="profile">View all profiles</p>
             </div>
             <div class="ministry-stat">
                   <div class="stat-a p-4">

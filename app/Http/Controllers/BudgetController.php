@@ -83,22 +83,26 @@ class BudgetController extends Controller
         //
     }
 
-    public function health(){
+    public function health()
+    {
         $response = [
             [
                 'label' => 'Health',
-                'year' => Budget::where('project_name', 'Health')->pluck('year'),
-                'amount' => Budget::where('project_name', 'Health')->pluck('amount'),
+                'data' => Budget::where('project_name', 'Health')->get()
             ],
             [
-                'label' => 'Security',
-                'year' => Budget::where('project_name', 'Defence')->pluck('year'),
-                'amount' => Budget::where('project_name', 'Defence')->pluck('amount'),
+                'label' => 'Defence',
+                'data' => Budget::where('project_name', 'Defence')->get(),
             ],
             [
                 'label' => 'Housing',
-                'year' => Budget::where('project_name', 'Housing and Community Amenities')->pluck('year'),
-                'amount' => Budget::where('project_name', 'Housing and Community Amenities')->pluck('amount'),
+                'data' => Budget::where('project_name', 'Housing and Community Amenities')
+                                ->get(),
+            ],
+            [
+                'label' => 'Education',
+                'data' => Budget::where('project_name', 'Education')
+                                ->get(),
             ]
         ];
         

@@ -1,9 +1,7 @@
 
 let arrowLeft = document.querySelector('.arrow-left');
-
 let arrowRight = document.querySelector('.arrow-right')
 let arrowLeft2 = document.querySelector('.arrow-left2');
-
 let arrowRight2 = document.querySelector('.arrow-right2')
 let card = document.querySelector('.card1');
 let card2 = document.querySelector('.card2');
@@ -27,14 +25,8 @@ function unshift(){
     card.style.transform = "translateX(" + slide + "%)";
     card2.style.transform = "translateX(" + slide + "%)";}
 }
-
-console.log(card);
-
-
 arrowLeft.addEventListener("click", unshift);
-
 arrowRight.addEventListener('click', shift);
 arrowLeft2.addEventListener("click", unshift);
-
 arrowRight2.addEventListener('click', shift);
 
