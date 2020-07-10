@@ -44,6 +44,11 @@ export default {
         }
     },    
     
+    computed: {
+        currentYear(){
+            return new Date().getFullYear();
+        }
+    },
     components:{
         Chart
     },
@@ -55,25 +60,33 @@ export default {
                     this.cards.push(element.label); 
                     if(element.label == "Health"){
                         element.data.map(item => {  
-                            this.series.health.total.push(item.amount);
+                            if(item.year == this.currentYear){
+                                this.series.health.total = item.amount;
+                            }
                             this.series.health.data.push({amount: item.amount, year: item.year})
                         })
                     }
                     if(element.label == "Defence"){
                         element.data.map(item => {  
-                            this.series.defence.total.push(item.amount);
+                            if(item.year == this.currentYear){
+                                this.series.defence.total = item.amount;
+                            }
                             this.series.defence.data.push({amount: item.amount, year: item.year})
                         })
                     }
                     if(element.label == "Housing"){
                         element.data.map(item => { 
-                            this.series.housing.total.push(item.amount);
+                            if(item.year == this.currentYear){
+                                this.series.housing.total = item.amount;
+                            }
                             this.series.housing.data.push({amount: item.amount, year: item.year})
                         })
                     }      
                     if(element.label == "Education"){
                         element.data.map(item => { 
-                            this.series.education.total.push(item.amount);
+                            if(item.year == this.currentYear){
+                                this.series.education.total = item.amount;
+                            }
                             this.series.education.data.push({amount: item.amount, year: item.year})
                         })
                     }                    
