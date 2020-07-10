@@ -39,7 +39,7 @@
                                                 <th>Minister in charge</th>
                                                 <th>Ministry's Twitter Handle</th>
                                                 <th>Website</th>
-                                                
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         
@@ -59,6 +59,17 @@
                                                 <td>{{$ministry->twitter}}</td>
                                                 <td>
                                                     {{$ministry->website}}
+                                                </td>
+                                                <td>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <a href="{{'/admin/ministry/edit/' . $ministry->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <a href="#"><i class="fa fa-trash" style="color: red"></i> </a>
+                                                        </div>
+
+                                                    </div>
                                                 </td>
                                                 
                                             </tr>

@@ -215,4 +215,44 @@ class MinistryController extends Controller
             window.location.replace('/admin/ministry/create');</script>");
         }
     }
+
+    public function showEditForm($id)
+    {
+        $details = Ministry::findOrFail($id);
+        return view('backend.ministry.edit')->with(['details' => $details]);
+    }
+
+    public function editCompany(Request $request, $id)
+    {
+        validator(
+            [
+                'ministry_name' => 'required',
+                'code' => 'required | number',
+                'ministry_shortname' => 'required',
+                'ministry_twitter' => 'required',
+                'ministry_head' => 'required',
+                'website' => 'required',
+                'sector_id' => 'required|number'
+            ]
+        );
+        $update = Ministry::where('id', $id)
+        ->update(
+            [
+                'name' => $request->ministry_name,
+                'code' => $request->code,
+                'shortname' => $request->ministry_shortname,
+                'twitter' => $request->ministry_twitter,
+                'head' => $request->ministry_head,
+                'website' => $request->website,
+                'sector_id' => $request->sector_id
+            ]
+        );
+        if ($update) {
+            echo ("<script>alert(' Ministry details edited successfully');
+             window.location.replace('/admin/ministry/view');</script>");
+        } else {
+            echo ("<script>alert('Cannot edit ministry detail'); 
+            window.location.replace('/admin/ministry/edit/$id');</script>");
+        }
+    }
 }
