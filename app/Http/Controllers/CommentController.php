@@ -12,13 +12,15 @@ class CommentController extends Controller
     protected $token;
     protected $http;
     protected $org;
+    private $baseUri = "https://comment.microapi.dev/v1/";
 
     public function __construct()
     {
+        
         $this->http = new Client([
-            'base_uri' => '',
+            'base_uri' => $this->baseUri,
             'headers' => [
-                'Authorization' => 'Bearer token ' .$this->token,
+                'Authorization' => 'Bearer ' .$this->token,
             ]
         ]);
         
