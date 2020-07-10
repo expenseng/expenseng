@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="/extras/datatables/css/buttons.bootstrap4.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/extras/datatables/css/fixedHeader.bootstrap4.css">
-<title>ExpenseNg - Companies</title>
+<title>ExpenseNg - Ministries</title>
 @endpush
 
 @section('content')
@@ -17,7 +17,7 @@
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="mb-0">Registered Companies </h3>
+                                <h3 class="mb-0">All Ministries </h3>
                                 <p></p>
                             </div>
                             <div class="card-body">
@@ -28,53 +28,46 @@
                                                 <th>S/N</th>
                                                 <th>Name</th>
                                                 <th>Short Name</th>
-                                                <th>Company Twitter</th>
-                                                <th>CEO</th>
-                                                <th>CEO Twitter</th>
-                                                <th>Actions</th>
+                                                <th>Code</th>
+                                                <th>Minister in charge</th>
+                                                <th>Ministry's Twitter Handle</th>
+                                                <th>Website</th>
                                                 
                                             </tr>
                                         </thead>
-
-                                        <tbody>
-                                        @if (count($companies ) > 0)
                                         
+                                        
+                                        <tbody>
+                                        @if (count($ministries ) > 0)
                                             <tr>
-                                            @foreach ($companies as $company)
+                                                
+                                                @foreach ($ministries as $ministry)
                                                 <td>
-                                                    {{$company->id}}
+                                                    {{$ministry->id}}
                                                 </td>
-                                                <td>{{$company->name}}</td>
-                                                <td>{{$company->shortname}}</td>
-                                                <td>{{$company->industry}}</td>
-                                                <td>{{$company->ceo}}</td>
-                                                <td>{{$company->twitter}}</td>
+                                                <td>{{$ministry->name}}</td>
+                                                <td>{{$ministry->shortname}}</td>
+                                                <td>{{$ministry->code}}</td>
+                                                <td>{{$ministry->head}}</td>
+                                                <td>{{$ministry->twitter}}</td>
                                                 <td>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <a href="{{'/admin/company/edit/' . $company->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <a href="#"><i class="fa fa-trash" style="color: red"></i> </a>
-                                                        </div>
-
-                                                    </div>
+                                                    {{$ministry->website}}
                                                 </td>
+                                                
                                             </tr>
-                                            
-                                        @endforeach
+                                            @endforeach
                                         @endif
-                                            
                                         </tbody>
+                                       
                                         <tfoot>
                                             <tr>
-                                                <th>S/N</th>
-                                                <th>Company Name</th>
+                                            <th>S/N</th>
+                                                <th>Name</th>
                                                 <th>Short Name</th>
-                                                <th>Company Twitter</th>
-                                                <th>CEO</th>
-                                                <th>CEO Twitter</th>
-                                                <th>Actions</th>
+                                                <th>Code</th>
+                                                <th>Minister in charge</th>
+                                                <th>Ministry's Twitter Handle</th>
+                                                <th>Website</th>
                                             </tr>
                                         </tfoot>
                                     </table>

@@ -1,7 +1,7 @@
 @extends('layouts.home')
 @push('css')
 <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-<title>ExpenseNg - Create Company</title>
+<title>ExpenseNg - Edit Company</title>
 @endpush
 
 @section('content')
@@ -14,42 +14,43 @@
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="section-block" id="basicform">
-                                    <h3 class="section-title">Create New Company</h3>
+                                    <h3 class="section-title">Edit Company</h3>
                                     <p></p>
                                 </div>
                                 <div class="card">
                                     
                                     <div class="card-body">
-                                        <form method="post" action="{{route('create.company')}}">
+                                        <form method="post" action="{{'/admin/company/edit/' . $details->id}}">
+                                            @method('put')
                                             @csrf
                                             <div class="form-group">
                                                 <label for="inputText3" class="col-form-label">Company Name</label>
                                                 <input id="inputText3" name="company_name" type="text" 
-                                                class="form-control" placeholder="e.g example company" required />
+                                                class="form-control" value="{{$details->name}}" placeholder="e.g example company">
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">Short Name</label>
-                                                <input id="inputEmail" name="company_shortname" type="text"
-                                                 placeholder="e.g example" class="form-control" required />
+                                                <input id="inputEmail" name="company_shortname" value="{{$details->shortname}}"
+                                                type="text" placeholder="e.g example" class="form-control">
                                                 
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputText4" class="col-form-label">Company Twitter Handle</label>
-                                                <input id="inputText4" name="company_twitter" type="text" 
-                                                class="form-control" placeholder="e.g @example" required />
+                                                <input id="inputText4" name="company_twitter" type="text" value="{{$details->industry}}"
+                                                class="form-control" placeholder="e.g @example">
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword">CEO Name</label>
-                                                <input id="inputPassword" name="company_ceo" type="text" 
-                                                placeholder="e.g Samuel Ogbede" class="form-control" required />
+                                                <input id="inputPassword" name="company_ceo" type="text" value="{{$details->ceo}}"
+                                                placeholder="e.g Samuel Ogbede" class="form-control">
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword">CEO Twitter hande</label>
-                                                <input id="inputPassword" name="ceo_handle" type="text" 
-                                                placeholder="e.g  @Ogbede" class="form-control" required />
+                                                <input id="inputPassword" name="ceo_handle" type="text" value="{{$details->twitter}}" 
+                                                placeholder="e.g  @Ogbede" class="form-control">
                                             </div>
                                             <div class="form-group text-right">
-                                                <input type="submit" value="Create New Company"
+                                                <input type="submit" value="Edit Company"
                                                 class="form-control" 
                                                 style="background-color: #00945E; color:honeydew; border: none; border-radius: 12px; width: 12rem"/>
                                             </div>

@@ -46,13 +46,13 @@ body {
 
 .navigation-links ul li {
   display: inline-block;
-  margin: 2%;
+  margin: 5px;
 }
 
 .navigation-links ul li a {
   color: #00945e;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
   transition: padding 0.3s;
 }
@@ -69,22 +69,24 @@ body {
 }
 
 .user-profile img {
-  width: 58px;
+  width: 45px;
 }
 .profile-overview{
   margin-bottom: 50px;
 }
 .name{
-  font-size: 40px;
+  font-size: 30px;
   font-weight: bold;
   margin-bottom: 40px;
+  margin-top: 40px;
 }
 .font-weight-bold{
   font-size: 18px;
   font-weight: 500;
+  /* padding-left: 20px; */
 }
 .twitter-handle{
-  font-size: 24px;
+  font-size: 20px;
   color: #6765EC !important;
 }
 
@@ -94,7 +96,7 @@ body {
 }
 
 .amount-rewarded, .contract-number {
-  font-size: 24px;
+  font-size: 20px;
   line-height: 29px;
   color: #00945E;
 }
@@ -106,7 +108,7 @@ body {
 
 .content-navigator {
   color: black;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: bold;
   line-height: 22px;
   max-width: 500px;
@@ -115,10 +117,8 @@ body {
 }
 
 .content-navigator a {
-  margin: 0.5rem;
   color: #A1A3A8;
 }
-
 .content-navigator .active {
   text-decoration: none;
   color: #00945E;
@@ -133,28 +133,18 @@ body {
   text-decoration: none;
 }
 
-.content-navigator a::before {
-  content: '';
-  position: absolute;
-  top: 47px;
-  width: 100%;
-  height: 2px;
-  background-color: #D5D9D8;
-}
-
-.content-navigator a.active::before {
-  background-color: #00945E;
-}
-
 /* Section-2 */
+.table{
+  margin-top: 50px;
+}
 h5{
-  font-size: 28px;
+  font-size: 18px;
 }
 .section-2 th{
-  font-size: 25px;
+  font-size: 20px;
 }
 .section-2 td{
-  font-size: 18px;
+  font-size: 17px;
 }
 .date-btn {
   background-color:  #00945E;
@@ -175,7 +165,9 @@ h5{
 .date-btn:hover i {
   color: #00945E
 }
-
+/* .table{
+  margin-top: -21px;
+} */
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: white;
 }
@@ -193,9 +185,9 @@ h5{
   text-align: center;
 }
 .table-pagination p{
-  font-size: 17px;
+  font-size: 14px;
 }
-.table-pagination ul li a .activ{
+.table-pagination .page-item a .active{
   color: #f1f1f1 !important;
   background-color: #00945E !important ;
 }
@@ -205,7 +197,7 @@ background-color: #00945E;
 }
 /* Section 3 */
 .section-3 th{
-  font-size: 14px;
+  font-size: 16px;
   color: #00945E;
 }
 .section-3 th:hover{
@@ -236,11 +228,22 @@ background-color: #00945E;
     margin-top: -30px;
   }
   .navigation-links ul li a{
-    font-size: 16px;
+    font-size: 14px;
     padding-left: -20px;
   }
   .name{
-    font-size: 28px;
+    font-size: 24px;
+    margin-top: -1px;
+    text-align: left;
+    margin-bottom: 25px;
+  }
+  .user-profile{
+    width: 100%;
+    text-align: left;
+    margin-left: 15px;
+  }
+  .user-profile .col-sm-4{
+    margin-top: 10px;
   }
   .user-profile img{
     width: 30px;
@@ -252,10 +255,11 @@ background-color: #00945E;
     font-size: 16px;
   }
   .twitter-handle, .amount-rewarded, .contract-number{
-    font-size: 20px;
+    font-size: 16px;
   }
   .content-navigator{
-    font-size: 16px;
+    font-size: 14px;
+    margin-top: -35px;
   }
   .content-navigator a::before {
     content: '';
@@ -263,14 +267,22 @@ background-color: #00945E;
     top: 45px;
 
   }
+  .table{
+    margin-top: 5px;
+  }
   h5{
-    font-size: 18px;
+    font-size: 16px;
+    margin-left: -170px;
   }
   .section-2 th{
-    font-size: 20px;
+    font-size: 18px;
   }
   .section-2 td{
-    font-size: 16px;
+    font-size: 14px;
+  }
+  .section-2 button{
+    margin-right: -210px;
+    margin-top: -35px;
   }
   .section-3 th{
     font-size: 16px;
