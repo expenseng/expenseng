@@ -114,7 +114,7 @@
                        <p class="exp-card3">2020</p>
               </div>
             </div>
-            <div class="ministry-stat">
+            <div class="ministry-stat stata">
                   <div class="stat-a p-4">
                     <div class="graph-cont">
                       <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
