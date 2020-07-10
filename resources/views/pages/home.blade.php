@@ -17,7 +17,7 @@
             </div>
             <div class="target">
               <div class="summary">
-                  <h4> In 2019, <br> the government spent $4.45 trillion.</h4>
+                  <h4> In 2019, <br> the government spent <br> $4.45 trillion.</h4>
                   <p>ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities across Nigeria.
                   Learn more on how this money was spent with tools to help you navigate spending from top to bottom.</p>
               </div>
@@ -338,7 +338,7 @@
                     <a href="#">@expenseNG</a>
                    </div>
                 </div>
-               <div class="query ">
+               <div class="query">
                   <p>Join the conversation</p>
                   <p>We want to know how we can serve you better.
                   Drop by our community page to ask questions,
