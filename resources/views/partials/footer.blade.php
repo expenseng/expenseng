@@ -9,7 +9,7 @@
             </div>
             <div class="twitter">
                 <img src="{{asset('/images/f-twitter-logo.png')}}">
-                <a href="#">@expenseng</a>
+                <a href="https://twitter.com/expenseng">@expenseng</a>
             </div>
         </div>
         <div class="main-box2">

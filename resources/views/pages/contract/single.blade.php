@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @push('css')
-<link rel="stylesheet" href="{{ asset('css/aboutus-header_footer.css') }}">
+<link rel="stylesheet" href="{{ asset('css/header-footer.css') }}">
 <link rel="stylesheet" href="{{ asset('css/contracts_awarded.css') }}">
 <link rel="stylesheet" href="{{ asset('css/director_board.css') }}">
 
@@ -38,7 +38,7 @@
 
     <div class="user-profile">
       <h3 class="name brand-name">
-        {{ $company->name }} 
+        {{ $company->name }}
         <img src="{{ asset('images/image 13.png') }}" alt="Berger logo">
       </h3>
       <div class="profile-overview mt-3">
