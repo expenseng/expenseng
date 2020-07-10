@@ -5,9 +5,6 @@
   <link rel="stylesheet" href="{{asset('css/ministry_list.css') }}">
   <title>FG Expense - Ministry List</title>
 @endpush
-  <!-------------Header starts here-------------->
-  <!-- <<br><br> -->
-  <!-------------Header ends here-------------->
 
 
 @section('content')
