@@ -2,7 +2,7 @@
 .card{
     margin-top: 30px;
 }
-.card img{
+#board .card img{
     background-color: #ccc;
 }
 

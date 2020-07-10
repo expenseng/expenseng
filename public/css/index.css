@@ -329,7 +329,7 @@ p.profile{
 }
 
 .convo-background{
-    background: linear-gradient(0deg, rgba(50, 62, 72, 0.33), rgba(50, 62, 72, 0.33)), rgba(0, 148, 94, 0.67);
+    background: linear-gradient(0deg,rgba(50, 62, 72, 0.33),rgba(50, 62, 72, 0.33)),rgba(0, 148, 94, 0.67);
 }
 
 .convo{
@@ -340,6 +340,7 @@ p.profile{
 }
 .tweet{
     background-image: url(../images/twitter1.png);
+    opacity: .2;
     height: 200px;
     background-size: 100% 100%;
     display: flex;
@@ -349,9 +350,7 @@ p.profile{
     background-position: center;
     background-repeat: no-repeat;
 }
-
 .query{
-
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -364,7 +363,9 @@ p.profile{
 .query p:nth-child(2){
      font-size: 0.9rem;
 }
-
+.tweet a{
+    background-color: #FFFFFF !important;
+}
 .twt-handle{
     padding: 0.3rem 0.5rem;
     background-color: white;
@@ -489,6 +490,9 @@ text-align: end;}
     }
     .companies .comp-card:nth-child(3){
         margin-top: 2%;
+    }
+    .tweet{
+        margin-left: -50px;
     }
 }
 

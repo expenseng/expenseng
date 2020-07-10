@@ -28,10 +28,12 @@
 
   /* breadcrumb */
 .breadcrumb{
-	padding-left: 0;
+	padding-left: 20px;
 	font-size: var(--fs-h6);
 }
-
+.header{
+  margin-top: 5px !important;
+}
 .breadcrumb span{
 	margin: 0 1rem;
 	color: var(--clr-accent);
@@ -40,7 +42,13 @@
 	content: ".";
 	font-weight: var(--fw-bold);
 }
-
+h1{
+  font-size: 36px;
+  margin-top: 30px !important;
+}
+.para{
+  font-size: 18px !important;
+}
 .breadcrumb > .active {
 	color: var(--clr-accent);
 	text-decoration: none;
@@ -50,6 +58,9 @@
 	color: var(--clr-accent);
 	font-weight: var(--fw-bold);
   text-decoration: none;
+}
+.font-weight-bold{
+  margin-top: 20px;
 }
   .contract-awarded{
     margin:1rem 0;
@@ -95,7 +106,8 @@
 }
 
 .pagination {
-	background: #f2f2f2;
+  background: #f2f2f2;
+  margin-bottom: 50px;
 }
 
 .pagination a {
@@ -166,8 +178,13 @@ header.container {
     text-transform: none;
     text-decoration: none;
     color: unset;
+    color: #00945E;
+    font-weight: bold;
+    /* font-size: 14px !important; */
 }
-
+h5{
+  font-size: 16px;
+}
 .company a:hover{
   /* text-decoration: none; */
   font-weight: 700;
@@ -176,4 +193,21 @@ header.container {
 .section-heading-title {
   font-size: var(--fs-h2);
   font-weight: bolder;
+}
+
+@media only screen and (max-width: 768px){
+  .header{
+    margin-top: -35px !important;
+  }
+h1{
+  font-size: 24px;
+  margin-top: -15px;
+}
+.para{
+  font-size: 16px !important;
+  margin-top: -5px !important;
+}
+.container-fluid{
+  margin-top: -45px !important;
+}
 }
