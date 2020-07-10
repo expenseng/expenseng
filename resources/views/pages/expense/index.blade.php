@@ -5,7 +5,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <!-- <link rel="stylesheet" href="{{asset('/css/expense_report.css')}}"> -->
   <link rel="stylesheet" href="{{asset('/css/header_footer.css')}}">
-  <link rel="stylesheet" href="{{asset('/css/index.blade.css')}}">
+  <link rel="stylesheet" href="{{asset('css/index.blade.css')}}">
 
   <title>FG Expense - Expense Report</title>
 @endpush
