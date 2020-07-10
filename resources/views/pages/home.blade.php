@@ -142,7 +142,7 @@
                </div>
                <a href="{{ route('ministries') }}" class="profile">View all profiles</a>
              </div>
-             <div class="ministry-stat">
+             <div >
                    {{-- <div class="stat-a p-4">
                      <div class="graph-cont">
                        <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
@@ -215,25 +215,21 @@
        </div>
 
        <!-- Company section -->
-<<<<<<< HEAD
        <p class="label mt-5 mb-5 " id="compu">Companies that received money</p>
       
-=======
-       <p class="label mt-5 mb-5 ">Companies that received money</p>
->>>>>>> 5f002f2ed0c5b0a1ff80bc5eb45a7833e898ea40
        <div class="companies container">
             <div class="comp-card">
-               <div class="awarded">
-                 <div class="graph-cont">
-                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                   <img src="{{asset('/images/vector2.png')}}" alt="graph">
-                  </div>
-                  <div class="ml-5">
-                     <p class="exp-card1">Total amount Awarded</p>
-                     <p class="exp-card2">&#8358;123,446,332</p>
-                     <p class="exp-card3">2019</p>
-                  </div>
-              </div>
+              <div class="awarded">
+                <div class="graph-cont">
+                  <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                  <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                 </div>
+                <div class="ml-5">
+                   <p class="exp-card1">Total amount Awarded</p>
+                   <p class="exp-card2">&#8358;123,446,332</p>
+                   <p class="exp-card3">2019</p>
+                </div>
+            </div>
               
               <div>
                  <div class="d-flex align-items-center mb-3">

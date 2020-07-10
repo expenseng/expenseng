@@ -26,15 +26,6 @@ Route::get('/expense/ministry', 'ExpenseController@ministry')->name('expense.min
 /***
  * Ministry Endpoints
  */
-<<<<<<< HEAD
-
-
-Route::get('/ministry/single', function(){
-    return view('pages.ministry.single');
-});
-
-=======
->>>>>>> 5f002f2ed0c5b0a1ff80bc5eb45a7833e898ea40
 Route::get('/ministries', 'MinistryController@profile')->name('ministries');
 Route::get('/ministries/{ministry}', 'MinistryController@show')->name('ministries.single');
 Route::post('/ministries', 'MinistryController@store')->name('ministry_store');
