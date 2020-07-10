@@ -13,7 +13,7 @@ function shift(){
     }else{
     slide -= 90;
     card2.style.transform = "translateX(" + slide + "%)";
-
+    
     card.style.transform = "translateX(" + slide + "%)";}
 }
 

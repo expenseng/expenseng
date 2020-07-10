@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @push('css')
-  <link rel="stylesheet" href="{{ asset('css/header-footer.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/aboutus-header_footer.css') }}">
   <link rel="stylesheet" href="{{asset('css/ministry_list.css') }}">
   <title>FG Expense - Ministry List</title>
 @endpush
@@ -63,8 +63,8 @@
         <div id="cards-container" class="row d-flex sec-card" style="min-height: 300px">
           @if (count($ministries) >0)
           @foreach($ministries as $ministry)
-          <div data-id="{{$ministry->shortname()}}"
-            class="col-lg-3 col-md-6 col-sm-12 ministry-cards d-flex"
+          <div data-id="{{$ministry->shortname()}}" 
+            class="col-lg-3 col-md-6 col-sm-12 ministry-cards d-flex" 
             style="cursor:pointer"
           >
             <div class="cont-1 d-flex flex-column justify-content-center">
@@ -86,10 +86,10 @@
             <a title="Click to view profile" href="{{ route('ministries.single', $ministry->shortname()) }}"></a>
           </div>
 
-
+         
           @endforeach
           @endif
-
+          
         </div>
       </div>
     </div>
@@ -98,6 +98,9 @@
 @endsection
 
 @section('js')
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
   <script src="{{ asset('js/ministry_list.js') }}" type="text/javascript"></script>
 @endsection
 
