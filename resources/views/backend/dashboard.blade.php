@@ -226,11 +226,11 @@
                             <!-- end customer acquistion  -->
                             <!-- ============================================================== -->
                         </div>
-                        <div class="row">
+                        <!--<div class="row">
                             <!-- ============================================================== -->
               				                        <!-- product category  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <!--<div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <h5 class="card-header"> Product Category</h5>
                                     <div class="card-body">
@@ -255,7 +255,7 @@
                             <!-- end product category  -->
                                    <!-- product sales  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <!--<div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-header">
                                         <!-- <div class="float-right">
@@ -266,7 +266,7 @@
                                                     <option value="3">Yearly</option>
                                                 </select>
                                             </div> -->
-                                        <h5 class="mb-0"> Product Sales</h5>
+                                       <!-- <h5 class="mb-0"> Product Sales</h5>
                                     </div>
                                     <div class="card-body">
                                         <div class="ct-chart-product ct-golden-section"></div>
@@ -276,12 +276,12 @@
                             <!-- ============================================================== -->
                             <!-- end product sales  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-3 col-lg-12 col-md-6 col-sm-12 col-12">
+                           <!-- <div class="col-xl-3 col-lg-12 col-md-6 col-sm-12 col-12">
                                 <!-- ============================================================== -->
                                 <!-- top perfomimg  -->
                                 <!-- ============================================================== -->
                                 <div class="card">
-                                    <h5 class="card-header">Top Performing Campaigns</h5>
+                                    <h5 class="card-header">Top Performing Companies</h5>
                                     <div class="card-body p-0">
                                         <div class="table-responsive">
                                             <table class="table no-wrap p-table">
@@ -339,11 +339,11 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <!--<div class="row">
                             <!-- ============================================================== -->
                             <!-- sales  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                           <!-- <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                 <div class="card border-3 border-top border-top-primary">
                                     <div class="card-body">
                                         <h5 class="text-muted">Sales</h5>
@@ -362,7 +362,7 @@
                             <!-- ============================================================== -->
                             <!-- new customer  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                            <!--<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                 <div class="card border-3 border-top border-top-primary">
                                     <div class="card-body">
                                         <h5 class="text-muted">New Customer</h5>
@@ -381,7 +381,7 @@
                             <!-- ============================================================== -->
                             <!-- visitor  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                            <!--<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                 <div class="card border-3 border-top border-top-primary">
                                     <div class="card-body">
                                         <h5 class="text-muted">Visitor</h5>
@@ -400,7 +400,7 @@
                             <!-- ============================================================== -->
                             <!-- total orders  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                            <!--<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                 <div class="card border-3 border-top border-top-primary">
                                     <div class="card-body">
                                         <h5 class="text-muted">Total Orders</h5>
@@ -416,7 +416,7 @@
                             <!-- ============================================================== -->
                             <!-- end total orders  -->
                             <!-- ============================================================== -->
-                        </div>
+                        <!--</div>
                         <div class="row">
                             <!-- ============================================================== -->
                             <!-- total revenue  -->
@@ -427,7 +427,7 @@
                             <!-- ============================================================== -->
                             <!-- category revenue  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12">
+                            <!--<div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12">
                                 <div class="card">
                                     <h5 class="card-header">Revenue by Category</h5>
                                     <div class="card-body">
@@ -439,7 +439,7 @@
                             <!-- end category revenue  -->
                             <!-- ============================================================== -->
 
-                            <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12">
+                            <!--<div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12">
                                 <div class="card">
                                     <h5 class="card-header"> Total Revenue</h5>
                                     <div class="card-body">
@@ -456,7 +456,7 @@
                                 <!-- ============================================================== -->
                                 <!-- social source  -->
                                 <!-- ============================================================== -->
-                                <div class="card">
+                                <!--<div class="card">
                                     <h5 class="card-header"> Sales By Social Source</h5>
                                     <div class="card-body p-0">
                                         <ul class="social-sales list-group list-group-flush">
@@ -479,12 +479,12 @@
                                 <!-- ============================================================== -->
                                 <!-- end social source  -->
                                 <!-- ============================================================== -->
-                            </div>
+                            <!--</div>
                             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <!-- ============================================================== -->
                                 <!-- sales traffice source  -->
                                 <!-- ============================================================== -->
-                                <div class="card">
+                                <!--<div class="card">
                                     <h5 class="card-header"> Sales By Traffic Source</h5>
                                     <div class="card-body p-0">
                                         <ul class="traffic-sales list-group list-group-flush">
@@ -515,7 +515,7 @@
                             <!-- ============================================================== -->
                             <!-- sales traffic country source  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-3 col-lg-12 col-md-6 col-sm-12 col-12">
+                           <!-- <div class="col-xl-3 col-lg-12 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <h5 class="card-header">Sales By Country Traffic Source</h5>
                                     <div class="card-body p-0">
@@ -541,11 +541,11 @@
                             <!-- ============================================================== -->
                             <!-- end sales traffice country source  -->
                             <!-- ============================================================== -->
-                        </div>
+                        <!--</div>-->
 
 
                          
-                        <div class="row pt-4" style="background: white">
+                        <div class="//row pt-4" style="background: white">
                             <!-- ============================================================== -->
                             <!-- Tabbed Quick Forms -->
                             <!-- ============================================================== -->
@@ -634,7 +634,7 @@
                             <!-- END Tabbed Quick Forms -->
                             <!-- ============================================================== -->
                         </div> <!-- ROW -->
-                    </div>
+                    <!--</div>
 
       
             <!-- ============================================================== -->
