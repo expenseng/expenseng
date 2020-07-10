@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @push('css')
-  <link rel="stylesheet" href="{{ asset('css/about us-header_footer.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/aboutus-header_footer.css') }}">
   <link rel="stylesheet" href="{{asset('css/ministry_list.css') }}">
   <title>FG Expense - Ministry List</title>
 @endpush
@@ -10,8 +10,7 @@
   <!-------------Header ends here-------------->
 
 
-
-  @section('content')
+@section('content')
   <div class="wrapper">
     <div class="content-1">
       <div class="container-fluid">
@@ -101,9 +100,5 @@
 @endsection
 
 @section('js')
-  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <script src="/js/ministry_list.js" type="text/javascript"></script>
-  <script></script>
-  @endsection
+  <script src="/js/ministry_list.js" type="application/javascript"></script>
+@endsection

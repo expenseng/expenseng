@@ -57,60 +57,7 @@
        <p class="label">Latest Government Expenses</p>
        <div class="p-3 p-lg-5">
             <div class="expenses">
-                <div class="exp-card">
-                  <div class="graph-cont">
-                  <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                  <img src="{{asset('/images/Vector2.png')}}" alt="graph">
-                  </div>
-                  <p class="exp-card1">Health</p>
-                  <p class="exp-card2">#123,446,332</p>
-                  <p class="exp-card3">2020</p>
-                </div>
-                <div class="exp-card">
-                 <div class="graph-cont">
-                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                   <img src="{{asset('/images/Vector2.png')}}" alt="graph">
-                  </div>
-                  <p class="exp-card1">Salary</p>
-                  <p class="exp-card2">#123,446,332</p>
-                  <p class="exp-card3">2020</p>
-                </div>
-                <div class="exp-card">
-                 <div class="graph-cont">
-                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                   <img src="{{asset('/images/Vector2.png')}}" alt="graph">
-                  </div>
-                  <p class="exp-card1">Agriculture</p>
-                  <p class="exp-card2">#123,446,332</p>
-                  <p class="exp-card3">2020</p>
-                </div>
-                <div class="exp-card">
-                 <div class="graph-cont">
-                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                   <img src="{{asset('/images/Vector2.png')}}" alt="graph">
-                  </div>
-                  <p class="exp-card1">Security</p>
-                  <p class="exp-card2">#123,446,332</p>
-                  <p class="exp-card3">2020</p>
-                </div>
-                <div class="exp-card">
-                 <div class="graph-cont">
-                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                   <img src="{{asset('/images/Vector2.png')}}" alt="graph">
-                  </div>
-                  <p class="exp-card1">Power</p>
-                  <p class="exp-card2">#123,446,332</p>
-                  <p class="exp-card3">2020</p>
-                </div>
-                <div class="exp-card">
-                 <div class="graph-cont">
-                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                   <img src="{{asset('/images/Vector2.png')}}" alt="graph">
-                  </div>
-                  <p class="exp-card1">Infrastructure</p>
-                  <p class="exp-card2">#123,446,332</p>
-                  <p class="exp-card3">2020</p>
-                </div>
+                <govt-expense></govt-expense>
                 <a href="{{route('expense.reports')}}" class="mt-4 mb-5">View Expenditure Report</a>
             </div>
        </div>
@@ -120,10 +67,17 @@
        <div class="ministry">
            <div class="ministry-heading">
              <div class="ministry-head">
-               <p>Ministry of Agriculture</p>
-                <i class="fa fa-caret-down"></i>
+              <select class="ministry-picker">
+                <option value="agric">Ministry of Agriculture</option>
+                <option value="grei">Ministry of Agriculture</option>
+                <option>Ministry of Agriculture</option>
+                <option>Ministry of Agriculture</option>
+                <option>Ketchup</option>
+                <option>Barbecue</option>
+              </select>
+              <i class="fa fa-caret-down"></i>
              </div>
-             <p class="profile">View all profiles</p>
+             <a href="{{ route('ministries') }}" class="profile">View all profiles</a>
            </div>
            <div class="ministry-stat">
                  <div class="stat-a p-4">
@@ -308,8 +262,5 @@
   @endsection
 
 @section('js')
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
   <script src="{{asset('js/index.js')}}"></script>
 @endsection

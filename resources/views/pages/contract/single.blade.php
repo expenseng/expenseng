@@ -3,7 +3,6 @@
 <link rel="stylesheet" href="{{ asset('css/aboutus-header_footer.css') }}">
 <link rel="stylesheet" href="{{ asset('css/contracts_awarded.css') }}">
 <link rel="stylesheet" href="{{ asset('css/director_board.css') }}">
-<link rel="stylesheet" href="{{ asset('css/contracts_awarded_comments.css') }}">
 
 <title>FG Expense - Contracts</title>
 @endpush
@@ -30,7 +29,9 @@
           <span>&#8226;</span>
         </li>
         <li>
-          <a>COMPANY PROFILE</a>
+          <a>
+          {{ $company->name }}
+          </a>
         </li>
       </ul>
     </div>
@@ -261,8 +262,5 @@
 @endsection
 
 @section('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
 {{-- <script src="assets/js/main.js" type="text/javascript"></script> --}}
 @endsection

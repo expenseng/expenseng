@@ -9,11 +9,11 @@ $factory->define(People::class, function (Faker $faker) {
     return [
         //
         'name' => $faker->name,
-        'position' => $faker->default('servant'),
-        'company_id' =>$faker->random_int,
-        'twitter_handle' =>$faker->unique()->name,
-        'facebook_handle' =>$faker->unique()->name,
-        'linkedin' =>$faker->unique()->name,
+        'position' => ucfirst($faker->word(20)),
+        'company_id' => factory(App\Company::class),
+        'twitter' => $faker->unique()->name,
+        'facebook' => $faker->unique()->name,
+        'linkedin' => $faker->unique()->name,
         'email' => $faker->unique()->safeEmail,
     ];
 });
