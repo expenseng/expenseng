@@ -5,7 +5,7 @@
 
 .background{
     background: linear-gradient(0deg, rgba(50, 62, 72, 0.4), rgba(50, 62, 72, 0.4)), linear-gradient(0deg, rgba(0, 148, 94, 0.32), rgba(0, 148, 94, 0.32)), url(../images/flag.jpg);
-    
+
 }
 
 .arrow-right,
@@ -48,8 +48,8 @@ button.btn.scroll-down::after{
     justify-content: flex-end;
 }
 .carets img{
-    width: 25px;
-    height: 25px;
+    width: 42px;
+    height: 42px;
 }
 .carets img:nth-child(1){
     margin-right: 2rem;
@@ -81,19 +81,21 @@ button.btn.scroll-down::after{
     display: flex;
     position: relative;
     height:380px;
+    margin-right: -170px;
     overflow-x: hidden;
-} 
+    padding-top: 25px;
+}
 
 .ministry-top{
     display: flex;
     justify-content: space-between;
 }
- 
+
 .scroll-down > a{
 color: rgba(0, 0, 0, 0 );
 }
 
-p.tag{
+.tag{
     padding: 0.3rem 1rem;
     color: #005938;
     background-color: white;
@@ -108,14 +110,14 @@ p.tag{
     background-size: 100% 100%;
     position: absolute;
     width: 70%;
-    height: 100%;
+    height: 95%;
     border: white 0.7px solid;
     transition: ease-in-out all 0.5s;
-    padding: 0rem 1rem;   
+    padding: 0rem 1rem;
 }
 .card1{
     background-image: url(../images/card2.jpg);
-    
+
 }
 .card2{
     background-image: url(../images/road.svg);
@@ -183,7 +185,7 @@ div.expenses{
 
  div.graph-cont{
    position: relative;
-  
+
 }
 div.graph-cont img{
     width: 100%;
@@ -226,13 +228,13 @@ p.exp-card3{
     margin-bottom: 2rem;
     align-items: baseline;
     width: 100%;
-    background-color: white;   
+    background-color: white;
     border: #33A97E 1px solid;
 }
 p.profile{
     color: #33A97E;
     border-bottom: #33A97E 1px solid;
-    cursor: pointer;  
+    cursor: pointer;
 }
 .ministry-stat{
     display: flex;
@@ -387,7 +389,7 @@ p.profile{
   }
   .gallery{
     width: 40%;
- 
+
 flex: 1;
 margin-top: -2rem;
 text-align: end;}
@@ -420,7 +422,7 @@ text-align: end;}
    .tweet{
        width: 35%;
    }
-   
+
    .ministry{
        width: 80%;
    }
@@ -459,7 +461,7 @@ text-align: end;}
     .ministry-stat{
         flex-direction: row;
     }
-    
+
     .tweet{
         width: 25%;
     }
@@ -480,7 +482,7 @@ text-align: end;}
       flex-direction: column;
       justify-content: space-between;
      }
-   
+
     .companies .comp-card:nth-child(even){
         margin: 0rem 0rem;
     }
@@ -493,7 +495,7 @@ text-align: end;}
 }
 
 @media(max-width:600px){
-    
+
 .specific{
     width: 50%;
 }

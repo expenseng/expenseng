@@ -27,7 +27,9 @@
               </div>
               <div class="gallery">
                 <div class="card1 card">
-                    <p class="tag">New</p>
+                    <div class="tag">
+                        <p>New</p>
+                    </div>
                   <div class="project">
                         <p>Contruction of Lagos-Ibadan Express road <br>
                         Ministry of Power, Works and Housing</p>
@@ -38,7 +40,9 @@
                   </div>
                 </div>
                 <div class="card2 card">
-                  <p class="tag">New</p>
+                    <div class="tag">
+                        <p>New</p>
+                    </div>
                   <div class="project">
                     <p>Contruction of Lagos-Ibadan Express road <br>
                       Ministry of Power, Works and Housing</p>
@@ -58,7 +62,7 @@
   @endsection
 
   @section('content')
-    <section id="main" class="">     
+    <section id="main" class="">
        <!-- Expenses section -->
        <div id="expenses">
         <p class="label">Latest Government Expenses</p>
@@ -257,7 +261,7 @@
       </div>
        <!-- conversation section -->
        <div class="convo-background">
-          
+
        <div class="convo container">
                 <div class="tweet">
                    <div class="twt-handle">
@@ -276,9 +280,6 @@
   @endsection
 
 @section('js')
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="{{asset('js/index.js')}}"></script>
+<script src="{{asset('js/index.js')}}"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @endsection
