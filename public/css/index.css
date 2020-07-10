@@ -80,6 +80,10 @@ button.btn.scroll-down::after{
     font-size: 1.5rem;
     line-height: 124.8%;
 }
+.summary .bolding{
+    font-weight: bolder;
+    
+}
 
 .para{
     margin-top: 2rem;
@@ -275,7 +279,7 @@ p.profile{
 }
 
 .explore{
-    background: linear-gradient(0deg, rgba(50, 62, 72, 0.33), rgba(50, 62, 72, 0.33)), url('../images/HOA.png');
+    background: linear-gradient(0deg, rgba(50, 62, 72, 0.33), rgba(50, 62, 72, 0.33)), url('../images/Group 1394.png');
     background-size: cover;
     background-repeat: no-repeat;
     padding: 1rem;
@@ -609,6 +613,9 @@ p.profile{
         margin-bottom: 3rem;
         font-size: 1rem;
         font-weight: 200;
+    }
+    #compu{
+        font-size: 15px;
     }
     
     }

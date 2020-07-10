@@ -17,7 +17,8 @@
             </div>
             <div class="target">
               <div class="summary">
-                  <h4> In 2019, <br> the government spent <br> $4.45 trillion.</h4>
+                  <h4> In 2019, <br> the government spent </h4> 
+                  <h4 class="bolding"> $4.45 trillion.</h4>
                   <div class="para">
                   <p>ExpenseNG tracks federal spending to ensure taxpayers can 
                    <p> see how their money is being used in communities across </p>
