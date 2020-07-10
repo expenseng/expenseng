@@ -8,7 +8,7 @@
             <p class="exp-card1">{{ card }}</p>
             <p class="exp-card2">
                 {{ 
-                    "₦" + Number((series[card.toLowerCase()].total.reduce( (a,b) => a+b, 0)).toFixed(1)).toLocaleString()
+                    "₦" + Number(series[card.toLowerCase()].total.toFixed(1)).toLocaleString()
                  }}
             </p>
             <p class="exp-card3">{{ new Date().getFullYear() }}</p>
@@ -23,32 +23,28 @@ export default {
     data() {
         return {
             cards: [],
+            currentYear: new Date().getFullYear(),
             series: {
                 health: {
                     data: [],
-                    total: [],
+                    total: '',
                 },
                 defence: {
                     data: [],
-                    total: [],
+                    total: '',
                 },
                 housing: {
                     data: [],
-                    total: []
+                    total: ''
                 },
                 education: {
                     data: [],
-                    total: []
+                    total: ''
                 },
             },
         }
     },    
-    
-    computed: {
-        currentYear(){
-            return new Date().getFullYear();
-        }
-    },
+
     components:{
         Chart
     },
@@ -61,6 +57,7 @@ export default {
                     if(element.label == "Health"){
                         element.data.map(item => {  
                             if(item.year == this.currentYear){
+                                console.log(item.year)
                                 this.series.health.total = item.amount;
                             }
                             this.series.health.data.push({amount: item.amount, year: item.year})
