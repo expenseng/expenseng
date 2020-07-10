@@ -2,6 +2,9 @@
 .card{
     margin-top: 30px;
 }
+#board .card img{
+    background-color: #ccc;
+}
 
 .hero-link{
     font-weight: bold;

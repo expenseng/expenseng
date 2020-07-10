@@ -1,10 +1,8 @@
 @extends('layouts.master')
-
   @push('css')
     <title>FG Expense - Home</title>
     <link rel="stylesheet" href="{{ asset('css/index.css')}}">
   @endpush
-
   @section('banner')
         <!-- banner -->
         <div class=" background">
@@ -51,6 +49,15 @@
                         <p id="cost">&#8358;20bn</p>
                     </div>
                   </div>
+              </div>
+            </div>
+            <div class="card2 card">
+              <div class="project">
+                <p>Contruction of Lagos-Ibadan Express road <br>
+                  Ministry of Power, Works and Housing</p>
+                <div class="d-flex justify-content-between mt-4">
+                    <p>Cost of Project: </p>
+                    <p id="cost">&#8358;20bn</p>
                 </div>
               </div>
             </div>
@@ -59,8 +66,17 @@
             </button>
           </div>
         </div>
+        <button class="btn scroll-down" >
+          <a href="#expenses"></a>
+        </button>
+      </div>
+    </div>
+    <div class="scroll-down">
+      <a href="#compu">
+      <img src="{{asset('img\min_comment_img\mdi_arrow-right-drop-circle.png')}}" alt="arrow">
+      </a>
+    </div>
   @endsection
-
   @section('content')
     <section id="main" class="">
        <!-- Expenses section -->
@@ -74,9 +90,8 @@
         </div>
        </div>
 
-       <!-- Ministry section -->
+<!-- Ministry section -->
        <div>
-
         <p class="label mb-5 specific">Ministry Expenditures</p>
         <div class="ministry container mt-4">
             <div class="ministry-top">
@@ -142,7 +157,6 @@
             </div>
         </div>
        </div>
-
        <!-- Explore section -->
        <div class="explore">
          <div id="my-expense" class="container">
@@ -151,16 +165,15 @@
           <button class="g-shadow"><a href="{{ route('expense.reports') }}">Explore</a></button>
          </div>
        </div>
-
        <!-- Company section -->
-       <p class="label mt-5 mb-5 ">Companies that received money</p>
+       <p class="label mt-5 mb-5 " id="compu">Companies that received money</p>
        <div class="companies container">
             <div class="comp-card">
                <div class="awarded">
-                 <div class="graph-cont">
-                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                   <img src="{{asset('/images/vector2.png')}}" alt="graph">
-                  </div>
+                <div class="graph-cont">
+                  <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                  <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                 </div>
                   <div class="ml-5">
                      <p class="exp-card1">Total amount Awarded</p>
                      <p class="exp-card2">&#8358;123,446,332</p>
@@ -273,16 +286,16 @@
                     <a href="https://twitter.com/expenseng">@expenseNG</a>
                    </div>
                 </div>
-               <div class="query ">
+               <div class="query">
                   <p>Join the conversation</p>
                   <p>We want to know how we can serve you better.
                   Drop by our community page to ask questions,
                   propose new features, sign up for testing, and join the conversation about federal spending data.</p>
               </div>
        </div>
+      </div>
     </section>
   @endsection
-
 @section('js')
   <script src="{{asset('js/index.js')}}"></script>
 @endsection

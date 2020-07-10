@@ -10,7 +10,7 @@
     <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" />
-        
+
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
         <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <title>ExpenseNg - Companies</title>
@@ -39,20 +39,20 @@
                                                 <th>CEO</th>
                                                 <th>CEO Twitter</th>
                                                 <th>Actions</th>
-                                                
+
                                             </tr>
                                         </thead>
 
                                         <tbody>
                                         @if (count($companies ) > 0)
-                                        
+
                                             <tr>
                                             @foreach ($companies as $company)
                                                 <td>
                                                     {{$company->id}}
                                                 </td>
                                                 <td>{{$company->name}}</td>
-                                                <td>{{$company->shortname}}</td>
+                                            <td><a href="/admin/{{$company->shortname}}/people"></a>{{$company->shortname}}</td>
                                                 <td>{{$company->industry}}</td>
                                                 <td>{{$company->ceo}}</td>
                                                 <td>{{$company->twitter}}</td>
@@ -61,17 +61,43 @@
                                                         <div class="col-md-6">
                                                             <a href="{{'/admin/company/edit/' . $company->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
                                                         </div>
-                                                        <div class="col-md-6">
-                                                            <a href="#"><i class="fa fa-trash" style="color: red"></i> </a>
-                                                        </div>
+                                                        <!--modal begin-->
 
+                                                            <div class="col-md-6">
+                                                            <i class="fa fa-trash" data-toggle="modal" data-target="#exampleModal" style="color: red"></i>
+                                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Are you sure???</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    <form action="{{'/admin/company/delete/'. $ministry->id}}" method="post" >
+                                                                @method('delete')
+                                                                @csrf
+                                                                <button type="button" class="btn btn-danger">Delete</button>
+                                                                </form>
+                                                                </div>
+                                                                </div>
+  </div>
+</div>
                                                     </div>
+                                                    </div>
+
+
                                                 </td>
                                             </tr>
-                                            
+
                                         @endforeach
                                         @endif
-                                            
+
                                         </tbody>
                                         <tfoot>
                                             <tr>
@@ -102,7 +128,7 @@
     <script src="{{ asset('js/dashboard-ecommerce.js') }}" type="text/javascript"></script>
 
 
-    
+
     <!-- bootstap bundle js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.js"></script>
@@ -126,7 +152,8 @@
     $('#example').DataTable();
     } );
     </script>
-    
+
 
 
 @endsection
+
