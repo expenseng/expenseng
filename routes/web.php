@@ -72,7 +72,11 @@ Route::group(['middleware' => ['auth']], function (){
 
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');  // Matches The "/admin/dashboard" URL
-    Route::post('/expense', 'DashboardController@createExpense');
+
+    Route::get('/expense', 'DashboardController@getExpense')->name('expense.view');
+    Route::get('/expense/create', 'DashboardController@newExpense')->name('expense.new');
+    Route::post('/expense/create', 'DashboardController@createExpense')->name('expense.create');
+
     Route::post('/company', 'DashboardController@createCompany');
 
     Route::get('/company/create', 'CompanyController@create')->name('company.create'); // Matches The "/admin/company/create" URL

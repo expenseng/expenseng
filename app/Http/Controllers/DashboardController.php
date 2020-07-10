@@ -35,19 +35,12 @@ class DashboardController extends Controller
         $amount = 0; // initialize total budget amount
         $recent_expenses = Expense::orderBY('id', 'DESC')->limit(7)->get();
 
-
-
-        
         if (count($total_budgets)> 0) {
             for ($i=0; $i< count($total_budgets); $i++) {
                 $amount += $total_budgets[$i]->amount;
             }
         } else {
         }
-           
-            
-                
-             
 
         return view('backend.dashboard')
         ->with(['total_ministry' => $total_ministry,
@@ -70,6 +63,18 @@ class DashboardController extends Controller
         Session::flash('flash_message', 'New Expense successfully added!');
         return redirect()->back();
     }
+
+    public function getExpense(Request $request)
+    {
+        $expenses = Expense::all();
+        return view('backend.expense.view')->with(['expenses' => $expenses]);
+    }
+
+    public function newExpense(Request $request)
+    {
+         return view('backend.expense.create');
+    }
+
 
     public function createCompany(Request $request)
     {
