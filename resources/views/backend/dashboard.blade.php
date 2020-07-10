@@ -8,19 +8,39 @@
 <div class="dashboard-wrapper">
             <div class="dashboard-ecommerce">
                 <div class="container-fluid dashboard-content ">
+                 <!-- ============================================================== -->
+                    <!-- Flash Messages  -->
+                    <!-- ============================================================== -->
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            @if($errors->any())
+                                <div class="alert alert-danger">
+                                    @foreach($errors->all() as $error)
+                                        <p>{{ $error }}</p>
+                                    @endforeach
+                                </div>
+                            @endif
+
+                            @if(Session::has('flash_message'))
+                                <div class="alert alert-success">
+                                    {{ Session::get('flash_message') }}
+                                </div>
+                            @endif
+                        </div>
+                    </div>
                     <!-- ============================================================== -->
                     <!-- pageheader  -->
                     <!-- ============================================================== -->
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <h2 class="pageheader-title">E-commerce Dashboard Template </h2>
+                                <h2 class="pageheader-title">ExpenseNG Admin Dashboard </h2>
                                 <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">E-Commerce Dashboard Template</li>
+                                            <li class="breadcrumb-item active" aria-current="page">Admin Dashboard</li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -36,13 +56,11 @@
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="text-muted">Total Revenue</h5>
+                                        <h5 class="text-muted">Total Comments</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">$12099</h1>
+                                            <h1 class="mb-1">100</h1>
                                         </div>
-                                        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
-                                            <span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>
-                                        </div>
+                                        
                                     </div>
                                     <div id="sparkline-revenue"></div>
                                 </div>
@@ -50,12 +68,15 @@
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="text-muted">Affiliate Revenue</h5>
+                                        <h5 class="text-muted">Total Budget for {{date('Y')}}</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">$12099</h1>
+                                            <h3 class="mb-1">
+                                            ₦{{number_format($amount, 2)}}
+                                                    
+                                            </h3>
                                         </div>
                                         <div class="metric-label d-inline-block float-right text-success font-weight-bold">
-                                            <span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>
+                                            
                                         </div>
                                     </div>
                                     <div id="sparkline-revenue2"></div>
@@ -64,13 +85,11 @@
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="text-muted">Refunds</h5>
+                                        <h5 class="text-muted">Total Number of Ministries</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">0.00</h1>
+                                            <h1 class="mb-1">{{$total_ministry}}</h1>
                                         </div>
-                                        <div class="metric-label d-inline-block float-right text-primary font-weight-bold">
-                                            <span>N/A</span>
-                                        </div>
+
                                     </div>
                                     <div id="sparkline-revenue3"></div>
                                 </div>
@@ -78,13 +97,11 @@
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="text-muted">Avg. Revenue Per User</h5>
+                                        <h5 class="text-muted">Total Number of Companies</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">$28000</h1>
+                                            <h1 class="mb-1">{{$total_company}}</h1>
                                         </div>
-                                        <div class="metric-label d-inline-block float-right text-secondary font-weight-bold">
-                                            <span>-2.00%</span>
-                                        </div>
+
                                     </div>
                                     <div id="sparkline-revenue4"></div>
                                 </div>
@@ -99,38 +116,38 @@
                             <!-- ============================================================== -->
                             <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
                                 <div class="card">
-                                    <h5 class="card-header">Recent Orders</h5>
+                                    <h5 class="card-header"><strong> Recent Expenses</strong></h5>
                                     <div class="card-body p-0">
                                         <div class="table-responsive">
                                             <table class="table">
                                                 <thead class="bg-light">
                                                     <tr class="border-0">
-                                                        <th class="border-0">#</th>
+
                                                         <th class="border-0">Image</th>
-                                                        <th class="border-0">Product Name</th>
-                                                        <th class="border-0">Product Id</th>
-                                                        <th class="border-0">Quantity</th>
-                                                        <th class="border-0">Price</th>
-                                                        <th class="border-0">Order Time</th>
-                                                        <th class="border-0">Customer</th>
+                                                        <th class="border-0">Contractors</th>
+                                                        <th class="border-0">Contract Awarded</th>
+                                                        <th class="border-0">Awarding Ministry</th>
+                                                        <th class="border-0">Amount</th>
                                                         <th class="border-0">Status</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @if (count($recent_expenses)> 0)
+                                                        @foreach ($recent_expenses as $recent_expense)
                                                     <tr>
-                                                        <td>1</td>
+                                                        
                                                         <td>
                                                             <div class="m-r-10"><img src="/images/product-pic.jpg" alt="user" class="rounded" width="45"></div>
                                                         </td>
-                                                        <td>Product #1 </td>
-                                                        <td>id000001 </td>
-                                                        <td>20</td>
-                                                        <td>$80.00</td>
-                                                        <td>27-08-2018 01:22:12</td>
-                                                        <td>Patricia J. King </td>
-                                                        <td><span class="badge-dot badge-brand mr-1"></span>InTransit </td>
+                                                        <td>{{$recent_expense->year}} </td>
+                                                        <td>{{$recent_expense->project}}  </td>
+                                                        <td>{{$recent_expense->month}}</td>
+                                                        <td>₦{{number_format($recent_expense->amount_spent,2)}}</td>
+                                                        <td><span class="badge-dot badge-brand mr-1"></span>Not Completed </td>
                                                     </tr>
-                                                    <tr>
+                                                    @endforeach
+                                                    @endif
+                                                    <!--<tr>
                                                         <td>2</td>
                                                         <td>
                                                             <div class="m-r-10"><img src="/images/product-pic-2.jpg" alt="user" class="rounded" width="45"></div>
@@ -168,7 +185,7 @@
                                                         <td>23-08-2018 09:12:35</td>
                                                         <td>Michael K. Ledford </td>
                                                         <td><span class="badge-dot badge-success mr-1"></span>Delivered </td>
-                                                    </tr>
+                                                    </tr>-->
                                                     <tr>
                                                         <td colspan="9"><a href="#" class="btn btn-outline-light float-right">View Details</a></td>
                                                     </tr>
@@ -209,11 +226,11 @@
                             <!-- end customer acquistion  -->
                             <!-- ============================================================== -->
                         </div>
-                        <div class="row">
+                        <!--<div class="row">
                             <!-- ============================================================== -->
               				                        <!-- product category  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <!--<div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <h5 class="card-header"> Product Category</h5>
                                     <div class="card-body">
@@ -238,7 +255,7 @@
                             <!-- end product category  -->
                                    <!-- product sales  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <!--<div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-header">
                                         <!-- <div class="float-right">
@@ -249,7 +266,7 @@
                                                     <option value="3">Yearly</option>
                                                 </select>
                                             </div> -->
-                                        <h5 class="mb-0"> Product Sales</h5>
+                                       <!-- <h5 class="mb-0"> Product Sales</h5>
                                     </div>
                                     <div class="card-body">
                                         <div class="ct-chart-product ct-golden-section"></div>
@@ -259,12 +276,12 @@
                             <!-- ============================================================== -->
                             <!-- end product sales  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-3 col-lg-12 col-md-6 col-sm-12 col-12">
+                           <!-- <div class="col-xl-3 col-lg-12 col-md-6 col-sm-12 col-12">
                                 <!-- ============================================================== -->
                                 <!-- top perfomimg  -->
                                 <!-- ============================================================== -->
                                 <div class="card">
-                                    <h5 class="card-header">Top Performing Campaigns</h5>
+                                    <h5 class="card-header">Top Performing Companies</h5>
                                     <div class="card-body p-0">
                                         <div class="table-responsive">
                                             <table class="table no-wrap p-table">
@@ -322,11 +339,11 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <!--<div class="row">
                             <!-- ============================================================== -->
                             <!-- sales  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                           <!-- <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                 <div class="card border-3 border-top border-top-primary">
                                     <div class="card-body">
                                         <h5 class="text-muted">Sales</h5>
@@ -345,7 +362,7 @@
                             <!-- ============================================================== -->
                             <!-- new customer  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                            <!--<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                 <div class="card border-3 border-top border-top-primary">
                                     <div class="card-body">
                                         <h5 class="text-muted">New Customer</h5>
@@ -364,7 +381,7 @@
                             <!-- ============================================================== -->
                             <!-- visitor  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                            <!--<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                 <div class="card border-3 border-top border-top-primary">
                                     <div class="card-body">
                                         <h5 class="text-muted">Visitor</h5>
@@ -383,7 +400,7 @@
                             <!-- ============================================================== -->
                             <!-- total orders  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                            <!--<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                 <div class="card border-3 border-top border-top-primary">
                                     <div class="card-body">
                                         <h5 class="text-muted">Total Orders</h5>
@@ -399,7 +416,7 @@
                             <!-- ============================================================== -->
                             <!-- end total orders  -->
                             <!-- ============================================================== -->
-                        </div>
+                        <!--</div>
                         <div class="row">
                             <!-- ============================================================== -->
                             <!-- total revenue  -->
@@ -410,7 +427,7 @@
                             <!-- ============================================================== -->
                             <!-- category revenue  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12">
+                            <!--<div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12">
                                 <div class="card">
                                     <h5 class="card-header">Revenue by Category</h5>
                                     <div class="card-body">
@@ -422,7 +439,7 @@
                             <!-- end category revenue  -->
                             <!-- ============================================================== -->
 
-                            <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12">
+                            <!--<div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12">
                                 <div class="card">
                                     <h5 class="card-header"> Total Revenue</h5>
                                     <div class="card-body">
@@ -439,7 +456,7 @@
                                 <!-- ============================================================== -->
                                 <!-- social source  -->
                                 <!-- ============================================================== -->
-                                <div class="card">
+                                <!--<div class="card">
                                     <h5 class="card-header"> Sales By Social Source</h5>
                                     <div class="card-body p-0">
                                         <ul class="social-sales list-group list-group-flush">
@@ -462,12 +479,12 @@
                                 <!-- ============================================================== -->
                                 <!-- end social source  -->
                                 <!-- ============================================================== -->
-                            </div>
+                            <!--</div>
                             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <!-- ============================================================== -->
                                 <!-- sales traffice source  -->
                                 <!-- ============================================================== -->
-                                <div class="card">
+                                <!--<div class="card">
                                     <h5 class="card-header"> Sales By Traffic Source</h5>
                                     <div class="card-body p-0">
                                         <ul class="traffic-sales list-group list-group-flush">
@@ -498,7 +515,7 @@
                             <!-- ============================================================== -->
                             <!-- sales traffic country source  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-3 col-lg-12 col-md-6 col-sm-12 col-12">
+                           <!-- <div class="col-xl-3 col-lg-12 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <h5 class="card-header">Sales By Country Traffic Source</h5>
                                     <div class="card-body p-0">
@@ -524,31 +541,130 @@
                             <!-- ============================================================== -->
                             <!-- end sales traffice country source  -->
                             <!-- ============================================================== -->
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        <!--</div>-->
+
+
+                         
+                        <div class="//row pt-4" style="background: white">
+                            <!-- ============================================================== -->
+                            <!-- Tabbed Quick Forms -->
+                            <!-- ============================================================== -->
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h2 class="ml-3 mb-4 card-header">Quick Forms</h2>
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                  <li class="nav-item">
+                                    <a class="nav-link active" id="expense_form-tab" data-toggle="tab" href="#expense_form" role="tab" aria-controls="expense_form" aria-selected="true">EXPENSE</a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a class="nav-link" id="company_form-tab" data-toggle="tab" href="#company_form" role="tab" aria-controls="company_form" aria-selected="false">COMPANY</a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a class="nav-link" id="payments_form-tab" data-toggle="tab" href="#payments_form" role="tab" aria-controls="payments_form" aria-selected="false">PAYMENTS</a>
+                                  </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="expense_form" role="tabpanel" aria-labelledby="expense_form-tab">
+                                        <div class="col-md-8 mt-4 offset-2">
+                                            <div class="card">
+                                                <h5 class="card-header">CREATE NEW EXPENSE</h5>
+                                                <div class="card-body">
+                                                    <form class="" method="post" action="{{action('DashboardController@createExpense')}}">
+                                                        {{csrf_field()}}
+                                                        <label class="label-for-amount" >Amount</label>
+                                                        <input type="text" required = 'required' name="amount_spent" id="amount_spent" class="form-control">
+                                                        <p id="ammountErr" class="text-danger"></p>
+                                                        <label class="label-for-amount" >Year</label>
+                                                        <input type="text" required = 'required' name="year" id="year" class="form-control">
+                                                        <p id="yearErr" class="text-danger"></p>
+                                                        <label class="label-for-amount" >Month</label>
+                                                        <input type="text" required = 'required' name="month" id="month" class="form-control">
+                                                        <p id="monthErr" class="text-danger"></p>
+                                                        <label class="label-for-amount" >Project</label>
+                                                        <textarea  required = 'required' name="project" id="project" class="form-control" rows=3></textarea>
+                                                        <p id="projectErr" class="text-danger"></p>
+                                                        <button type="submit" value="Create" class="btn btn-primary" name="createExpense" >Create</button>     
+                                                   </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="company_form" role="tabpanel" aria-labelledby="company_form-tab">
+                                    <div class="col-md-8 mt-4 offset-2">
+                                            <div class="card">
+                                                <h5 class="card-header">CREATE NEW COMPANY</h5>
+                                                <div class="card-body p-3 form-group">
+                                                    <form class="" method="post" action="{{action('DashboardController@createCompany')}}">
+                                                        {{csrf_field()}}
+                                                        <label class="label-for-name" >Name</label>
+                                                        <input typ0e="text" required = 'required' name="name" id="name" class="form-control">
+                                                        <p id="nameErr" class="text-danger"></p>
+
+                                                        <label class="label-for-shortname">Short Name</label>
+                                                        <input type="text"  required = 'required' name="shortname" id="short_name" class="form-control">
+                                                        <p id="snameErr" class="text-danger"></p>
+
+                                                        <label class="label-for-industry">Industry</label>
+                                                        <input type="text" required = 'required' name="industry" id="industry" class="form-control">
+                                                        <p id="industryErr" class="text-danger"></p>
+
+                                                        <label class="label-for-ceo">CEO</label>
+                                                        <input type="ceo" required = 'required' name="ceo"  id="ceo" class="form-control">
+                                                        <p id="ceoErr" class="text-danger"></p>
+
+                                                        <label class="label-for-twitter">Twitter</label>
+                                                        <input type="twitter" required = 'required'  name="twitter" id="twitter" class="form-control">
+                                                        <p id="twitterErr" class="text-danger"></p>
+
+                                                        <button type="submit" value="Add" class="btn btn-primary" name="addCompany" onmouseover="validateAddNew('submit')">Add</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="payments_form" role="tabpanel" aria-labelledby="payments_form-tab-tab">
+                                        <div class="col-md-8 mt-4 offset-2">
+                                            <div class="card">
+                                                <h5 class="card-header">CREATE NEW PAYMENTS</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- END Tabbed Quick Forms -->
+                            <!-- ============================================================== -->
+                        </div> <!-- ROW -->
+                    <!--</div>
+
+      
             <!-- ============================================================== -->
             <!-- ============================================================== -->
-        </div>
-        <!-- ============================================================== -->
-        <!-- end wrapper  -->
-        <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- end main wrapper  -->
-    <!-- ============================================================== -->
+        
     @endsection
     @section('js')
     <!-- Optional JavaScript -->
+
+    <!-- Optional JavaScript -->
     <!-- jquery 3.3.1 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <!-- main js -->
+    <script src="{{ asset('js/main-js.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/dashboard-ecommerce.js') }}" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+
+    <!-- Jquery js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous">
+    </script>
     <script src="/vendor/jquery/jquery-3.3.1.min.js"></script>
     <!-- bootstap bundle js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
     <!-- slimscroll js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/slimscroll/jquery.slim.min.js"></script>
     <script src="/vendor/slimscroll/jquery.slimscroll.js"></script>
-    <!-- main js -->
-    <script src="/js/main-js.js"></script>
     <!-- chart chartist js -->
     <script src="/vendor/charts/chartist-bundle/chartist.min.js"></script>
     <!-- sparkline js -->
@@ -560,5 +676,4 @@
     <script src="/vendor/charts/c3charts/c3.min.js"></script>
     <script src="/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="/vendor/charts/c3charts/C3chartjs.js"></script>
-    <script src="/js/dashboard-ecommerce.js"></script>
-@endsection
+   @endsection
