@@ -5,9 +5,6 @@
   <link rel="stylesheet" href="{{asset('css/ministry_list.css') }}">
   <title>FG Expense - Ministry List</title>
 @endpush
-  <!-------------Header starts here-------------->
-  <!-- <<br><br> -->
-  <!-------------Header ends here-------------->
 
 
 @section('content')
@@ -67,10 +64,10 @@
           @if (count($ministries) >0)
           @foreach($ministries as $ministry)
           <div data-id="{{$ministry->shortname()}}" 
-            class="col-lg-3 col-md-6 col-sm-12 ministry-cards" 
+            class="col-lg-3 col-md-6 col-sm-12 ministry-cards d-flex" 
             style="cursor:pointer"
           >
-            <div class="cont-1">
+            <div class="cont-1 d-flex flex-column justify-content-center">
               <div class="img">
                 <span class="circle"></span>
               </div>
@@ -80,13 +77,13 @@
                   <h4>{{$ministry->name}}</h4>
                 </div>
               </div>
-              <div class="texts">
+              <div class="texts d-flex flex-column text-center">
                 <h4>Total amount Spent</h4>
-                <p class="num">#123,446,332</p>
+              <p class="num">₦{{number_format($ministry->total)}}</p>
                 <p class="year">{{date('Y')}}</p>
               </div>
             </div>
-            <a href="{{ route('ministries.single', $ministry->shortname()) }}"></a>
+            <a title="Click to view profile" href="{{ route('ministries.single', $ministry->shortname()) }}"></a>
           </div>
 
          
@@ -96,9 +93,14 @@
         </div>
       </div>
     </div>
+  </div>
 
 @endsection
 
 @section('js')
-  <script src="/js/ministry_list.js" type="application/javascript"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="{{ asset('js/ministry_list.js') }}" type="text/javascript"></script>
 @endsection
+

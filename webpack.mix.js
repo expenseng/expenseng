@@ -16,3 +16,6 @@ mix.js('resources/js/app.js', 'public/js')
 
 mix.sass('resources/sass/header-footer.scss', 'public/css');
 
+    mix.sass('resources/sass/app.scss', 'public/css')
+    .js('node_modules/popper.js/dist/popper.js', 'public/js')
+    .sourceMaps();
