@@ -13,3 +13,5 @@ yarn-error.log
 .github/*
 /public/js/app.js
 /public/css/app.css
+composer.lock
+package-lock.json
