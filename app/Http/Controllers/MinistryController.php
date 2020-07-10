@@ -162,7 +162,7 @@ class MinistryController extends Controller
     }
 
      /**
-     * Display a form for creating companies.
+     * Display a form for creating ministries.
      *
      * @return \Illuminate\Http\Response
      */
@@ -172,7 +172,7 @@ class MinistryController extends Controller
     }
 
     /**
-     * Display a listing of the companies.
+     * Display a listing of the ministries.
      *
      * @return view
      */
@@ -222,7 +222,7 @@ class MinistryController extends Controller
         return view('backend.ministry.edit')->with(['details' => $details]);
     }
 
-    public function editCompany(Request $request, $id)
+    public function editMinistry(Request $request, $id)
     {
         validator(
             [
@@ -253,6 +253,17 @@ class MinistryController extends Controller
         } else {
             echo ("<script>alert('Cannot edit ministry detail'); 
             window.location.replace('/admin/ministry/edit/$id');</script>");
+        }
+    }
+
+    public function deleteMinistry($id){
+        $delete = Ministry::where('id', $id)->delete();
+        if ($delete) {
+            echo ("<script>alert(' Ministry details deleted successfully');
+             window.location.replace('/admin/ministry/view');</script>");
+        } else {
+            echo ("<script>alert('Cannot Delete ministry detail'); 
+            window.location.replace('/admin/ministry/view');</script>");
         }
     }
 }
