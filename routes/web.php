@@ -41,12 +41,12 @@ Route::get('/filtermodal2', function(){
  * Ministry Endpoints
  */
 
-Route::get('/ministry_profile', function(){
-    return view('pages.ministry_profile');
+Route::get('/ministry/single', function(){
+    return view('pages.ministry.single');
 });
 
 Route::get('/ministries', 'MinistryController@profile')->name('ministries');
-Route::get('/ministries/{ministry}', 'MinistryController@show')->name('ministries.single');
+Route::get('/ministries/ {ministry}', 'MinistryController@show')->name('ministries.single');
 Route::get('ministries/hall', 'MinistryController@index')->name('ministry_hall');
 Route::post('/ministries', 'MinistryController@store')->name('ministry_store');
 Route::patch('/ministries/{ministry}', 'MinistryController@update')->name('ministry_update');

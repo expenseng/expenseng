@@ -11,16 +11,25 @@
     margin-bottom: 5rem;
 }
 
-button.btn.scroll-down{
-    margin: auto;
-    position: relative;
-    top: 3.6rem;
-    height: 64px;
-    width: 64px;
-    background: white;
-    border-radius: 100%;
-    border: 2px solid green;
-    display: block;
+.scroll-down{
+    width: 100%;
+    /* Firefox */
+    display: -moz-box;
+    -moz-box-pack: center;
+    -moz-box-align: center;
+    /* Safari and Chrome */
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    /* W3C */
+    display: box;
+    box-pack: center;
+    box-align: center;
+    margin-top: -7rem;
+}
+
+.scroll-down img{
+    height: 80px;
 }
 
 button.btn.scroll-down::after{
@@ -42,7 +51,7 @@ button.btn.scroll-down::after{
     height: 25px;
 }
 .carets img:nth-child(1){
-    margin-right: 2rem;
+    margin-right: 3rem;
 }
 
 #caret{
@@ -55,33 +64,42 @@ button.btn.scroll-down::after{
    transform: translateX(0%);
 }
 .summary{
-    margin-right: 4rem;
+    margin-left: 2rem;
 }
 .summary h4{
-    font-weight: 300;
-    font-size: 3rem;
+    font-weight: 200;
+    font-size: 1.5rem;
     line-height: 124.8%;
 }
-.summary p{
+
+.para{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.para p{
+    margin-bottom: -5px;
+    
     font-weight: 300;
-    font-size: 1rem;
+    font-size: 0.6rem;
     line-height: 204.8%;
 }
 .gallery{
     display: flex;
     position: relative;
-    height:380px;
+    height:250px;
     overflow-x: hidden;
 } 
-p.tag{
-    padding: 0.3rem 1rem;
+.tag{
+
+   padding: 0.3rem 1rem;
     color: #005938;
     background-color: white;
     font-weight: 700;
+    margin-top: -10px;
     align-self: flex-start;
     position: absolute;
     left: 10%;
-    top: -3%;
+    top: -2%;
     z-index: 23;
 }
 .card{
@@ -238,19 +256,21 @@ p.profile{
 }
 
 .explore{
-    background: linear-gradient(0deg, rgba(50, 62, 72, 0.33), rgba(50, 62, 72, 0.33)), rgba(0, 148, 94, 0.67);
+    background: linear-gradient(0deg, rgba(50, 62, 72, 0.4), rgba(50, 62, 72, 0.4)), linear-gradient(0deg, rgba(0, 148, 94, 0.32), rgba(0, 148, 94, 0.32)), url('/images/Group 1394.png');
     padding: 1rem;
     color: white;
     margin: 4rem 0rem;
- 
+    height: 70vh;
 }
 .explore p:nth-child(1){
-    font-size: 1.6rem;
+    margin-bottom: 5rem;
+    font-size: 2rem;
     line-height: 150%;
     font-weight: 300;
 }
 .explore p:nth-child(2){
-    font-size: 0.9rem;
+    margin-bottom: 5rem;
+    font-size: 1.4rem;
     font-weight: 300;
 }
 .explore button{
@@ -441,6 +461,24 @@ p.profile{
 }
 
 @media only screen and (min-width: 1020px) {
+    .summary h4{
+        font-weight: 200;
+        font-size: 3rem;
+        line-height: 124.8%;
+    }
+    .para p{
+        margin-bottom: -5px;
+        
+        font-weight: 300;
+        font-size: 1.2rem;
+        line-height: 204.8%;
+    }
+
+    .scroll-down img{
+        height: 150px;
+    }
+    
+
     .comp-card{
         flex-direction: row;
         justify-content: space-between;
