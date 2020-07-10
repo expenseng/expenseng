@@ -16,58 +16,61 @@ class CommentController extends Controller
 
     public function __construct()
     {
+        $this->token = env("COMMENTS_TOKEN");
         
         $this->http = new Client([
             'base_uri' => $this->baseUri,
             'headers' => [
                 'Authorization' => 'Bearer ' .$this->token,
             ]
-        ]);
-        
-        $this->org = Comment::first(); //our table should contain only one org?
-        /**
-         * Every instance we check if we have a valid API token
-         */
-        $token = Comment::where('adminEmail', env("COMMENT_EMAIL"))
-                            ->where('adminPassword', env("COMMENT_PASSWORD"));
-
-        if (!$token->exists() || $token->pluck('token')[0]->created_at) {
-            /**
-             * Token doesn't exist of has expired
-             */
-            $this->createToken();
-        }else{
-            $this->token = $token->pluck('token')[0];
-        }
+        ]);        
     }
 
     /**
      * Creats org => POST: /organizations
      */
     public function createOrg(){
-        //
+        
     }
 
     /**
      * Send POST to /organization/token
     */
     public function createToken(){
-        $response = $this->http->post('/organizations/token', [
+        $response = $this->http->post('/applications', [
             "organizationEmail" => env("COMMENT_ORG_EMAIL", $this->org->email),
             "password" => env("COMMENT_PASSWORD", $this->org->password),
             "organizationId" => env("COMMENT_ORG_ID", $this->org->id),
         ]);
         
         //Assuming all goes well!
+        $response = json_encode($response->getBody());
         $this->token = $response['data']['organizationToken'];
     }
 
     /**
      * POST request to /comments
      */
-    public function store(){
+    public function store(Request $request){
         $response = $this->http->post('/comments', [
+            "refId" => rand(),
+            "ownerId" => $request->email,
+            "content" => "😉" . $request->body,
+            "origin" => $request->origin, //this will be a combination of page name "expense" + model id
+        ]);
 
-        ])
+        $response = json_encode($response->getBody());
+
+        if($response['status'] == "success"){
+            return true;
+        }
+    }
+
+    public function show(Request $request){
+        $response = $this->http->get('/comments', [
+            'query' => [
+                'origin' => $request->origin
+            ]
+        ]);
     }
 }

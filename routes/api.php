@@ -19,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/expense/health', 'BudgetController@health');
+Route::post('/comments', 'CommentController@store');
+Route::get('/comments/{origin}', 'CommentController@show');
