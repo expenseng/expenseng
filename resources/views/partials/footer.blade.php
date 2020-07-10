@@ -1,73 +1,44 @@
 <!-------------Footer starts here-------------->
-<footer class=" container-fluid my-footer">
-  <div class="container" style ="background-color: #323E48 !important;">
-      <div class="row">
-          <div class="col-md-2 footer-brand ">
-              <a href="{{ url('/') }}">
-                  <img src="{{asset('images/Logo.svg')}}" class="ft">
-              </a> <br><br>
-              <a href=""><i class="fab fa-twitter" aria-hidden="true"></i><small> @expenseng</small></a>
-          </div>
-          <div class="col-md-4">
 
-          </div>
-          <div class="col-md-2 mt-3">
-              <h6>Pages</h6>
-              <ul >
-                  <li>
-                      <a  href="index.html"><small>Home</small></a>
-                  </li>
-                  <li>
-                      <a  href="#"><small>Daily Report</small></a>
-                  </li>
-                  <li>
-                      <a href="#"><small>Ministry Report</small></a>
-                  </li>
-                  <li>
-                      <a href="#"><small>Company Report</small></a>
-                  </li>
-              </ul>
 
-          </div>
-          <div class=" mt-3 col-md-2">
-              <h6>Profile</h6>
-              <ul>
-                  <li>
-                      <a  href="ministry_list/ministry_list_federal_ministries.html"><small>Ministry Search</small></a>
-                  </li>
-                  <li>
-                      <a href="/company/search"><small>Company Search</small></a>
-                  </li>
-              </ul>
-          </div>
-          <div class="col-md-2 mt-3">
-              <h6>Reference</h6>
-              <ul >
-                  <li>
-                      <a href="index.html"><small>Government handles</small></a>
-                  </li>
-                  <li>
-                      <a href="{{ route('about') }}"><small>About us</small></a>
-                  </li>
-                  <li>
-        <a href="{{ route('contact') }}"><small>Contact us</small></a>
-      </li>
-              </ul>
-          </div>
-      </div><br><br>
-  </div>
- 
-    <div class="container">
-        <div class="row ">
-            <div class="col-md-9">
-                <a href=""><small>Accessibility</small></a>-
-                <a href=""><small> | Privacy Policy</small></a>-
-                <a href=""><small> | Freedom of Information Act</small></a>
+<footer>
+    <div class="main-footer-wrapper">
+        <div class="main-box1">
+            <div class="brand-logo">
+                <img src="{{asset('/images/f-expense-logo.png')}}"><br>
             </div>
-            <div class="col-md-3">
-                <a href=""><small><span>&#169</span>2020EXPENSENG.com</small></a>
+            <div class="twitter">
+                <img src="{{asset('/images/f-twitter-logo.png')}}">
+                <a href="https://twitter.com/expenseng">@expenseng</a>
+            </div>
+        </div>
+        <div class="main-box2">
+            <div class="box1">
+                <h4>Pages</h4>
+                <a href="{{ route('home') }}">Home</a>
+                <a href="{{ route('ministries') }}">Ministries</a>
+                <a href="{{ route('contractors') }}">Contractors</a>
+            </div>
+            <div class="box2">
+                <h4>Spending</h4>
+                <a href="{{ route('expense.reports') }}">Expenditure Report</a>
+                <a href="{{ route('expense.ministry') }}">Ministry Spending</a>
+            </div>
+            <div class="box3">
+                <h4>About us</h4>
+                <a href="{{ route('about') }}">About us</a>
+                <a href="{{ route('contact') }}">Contact us</a>
             </div>
         </div>
     </div>
-  
+    <div class="last-footer">
+        <ul>
+            <li><a href="#">Accessibility |</a></li>
+            <li><a href="#">&nbspPrivacy Policy |</a></li>
+            <li><a href="#">&nbspFreedom of Information Act</a></li>
+            <li class="push">
+                <a href="#">&#169; 2020 EXPENSENG.com</a>
+            </li>
+        </ul>
+    </div>
 </footer>

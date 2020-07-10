@@ -4,7 +4,7 @@
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <!-- <link rel="stylesheet" href="{{asset('/css/expense_report.css')}}"> -->
-  <link rel="stylesheet" href="{{asset('/css/header_footer.css')}}">
+  <link rel="stylesheet" href="{{asset('/css/header-footer.css')}}">
   <link rel="stylesheet" href="{{asset('css/index.blade.css')}}">
 
   <title>FG Expense - Expense Report</title>
@@ -20,7 +20,7 @@
   <div class="first">
     <a href="#" class="first1">HOME<span class="circle-1"></span></a>
     <a href="#" class="first1">SPENDING<span class="circle-1"></span></a>
-    <a href="#" class="first1">EXPENSE REPORT</a> 
+    <a href="#" class="first1">EXPENSE REPORT</a>
   </div>
   <div class="col-md-12 second">
     <span class="exp1"><h3>Expense Report</h3></span>
@@ -59,7 +59,7 @@
   </div>
   </div>
 </div>
- 
+
 @endsection
 <!-- Footer End -->
 
