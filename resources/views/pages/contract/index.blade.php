@@ -40,10 +40,7 @@
             <hr>
           </div>
           <div id="search-area" class="offset-md-1 col-md-5 mt-3 mt-md-0">
-            <input type="search" id="ministry_search" class="form-control form-control-lg mb-2 se" placeholder="&#xf002; Search for companies and Organisations">
-            <div id="ministryList"></div>
-            {{-- <button type="submit" id="submit" class="btn btn-block btn-success">Find</button> --}}
-            @csrf
+            <input onkeyup="doFilter()" type="search" id="searchInput" class="form-control form-control-lg mb-2 se" placeholder="&#xf002; Search for companies and Organisations" />
           </div>
         </div>
       </div>
@@ -51,10 +48,11 @@
   </header>
   
     <br />
-    <div class="container">
-    <div class="row">
+    <div id="company" class="container">
+    <div class="row" id="company-div">
+
       @foreach ($companies as $company)
-        <div class="col-md-4 mb-3">
+        <div class="col-md-3 mb-3 card-col">
           <div class="card shadow">
             <div class="card-body">
                 <chart label="myVueChart" 
@@ -63,13 +61,13 @@
                 <div class="company mb-2">
                     <img src="{{ asset('images/image 13.png') }}" height="30" class="mr-3" alt="">
                     <a href="{{ route('contractors.single', ['company' => $company->shortname()]) }}">
-                      <h5 class="heading mb-0">
+                      <h5 class="card-title mb-0" class="company-name">
                         {{ $company->name }}
                       </h5>
                     </a>
                 </div>
                 <h5 class="amount">Total amount Awarded</h5>
-                <h5 class="text-success">#123,334,334</h5>
+                <h5 class="text-success">&#8358;#123,334,334</h5>
                 <h6 class="m-0 mb-0 text-sm-left text-black-50">2019</h6>
             </div>
           </div>
