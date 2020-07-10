@@ -1,5 +1,6 @@
 <template>
     <div class="d-flex flex-wrap w-100">
+        <img :src="this.loaderGif" v-if="this.loading" alt="Loading..." srcset="">
         <div class="exp-card" v-for="card in cards" :key="card">
             <div class="graph-cont">
                 <chart :element="card.toLowerCase()" :label="card" 
@@ -24,6 +25,7 @@ export default {
         return {
             cards: [],
             currentYear: new Date().getFullYear(),
+            loadingGif: require('../../../img/EXPENSE LOADER.gif'),
             series: {
                 health: {
                     data: [],
@@ -50,8 +52,10 @@ export default {
     },
 
     mounted() {
+        this.loading = true;
         axios.get('/api/expense/health')
             .then(response => {
+                this.loading = false;
                 response.data.forEach(element => {
                     this.cards.push(element.label); 
                     if(element.label == "Health"){
