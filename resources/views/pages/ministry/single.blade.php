@@ -50,7 +50,7 @@
         </div>
         <div class="col">
             <p>Total Amount Spent</p>
-            <h4><span class="text-success">&#8358;{{number_format($trend["2020"])}}</span></h4>
+            <h4><span class="text-success">&#8358;{{number_format($trend["2020"], 2)}}</span></h4>
             <small>{{date('Y')}}</small>
         </div>
         <div class="col">
@@ -119,7 +119,7 @@
                                         <tr class="{{$shade}}">
                                             <td> {{$payment->description}}</td>
                                             <td> {{$payment->beneficiary}}</td>
-                                            <td> ₦{{number_format($payment->amount)}}</td>
+                                            <td> ₦{{number_format($payment->amount, 2)}}</td>
                                             <td> {{date('jS, M Y', strtotime($payment->payment_date))}}</td>
                                         </tr>
                                     @endforeach
@@ -171,7 +171,7 @@
                                             <td class="text-success"> TOTAL<br>AMOUNT </td>
                                             
                                             @foreach($trend as $key => $value)
-                                             <td>₦{{ number_format($value) }}</td>
+                                             <td>₦{{ number_format($value, 2) }}</td>
                                             @endforeach
     
                                         </tr>
@@ -231,7 +231,12 @@
             @endif
         </div>
 
+        
+
     </div>
+
+
+    
 
     <!--3-->
         <div id="comments" class="tab-pane fade">

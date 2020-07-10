@@ -192,10 +192,10 @@
        <div class="companies">
             <div class="comp-card">
                <div class="awarded">
-                 <div class="graph-cont">
-                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                   <img src="{{asset('/images/vector2.png')}}" alt="graph">
-                  </div>
+                <div class="graph-cont">
+                  <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                  <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                 </div>
                   <div class="ml-5">
                      <p class="exp-card1">Total amount Awarded</p>
                      <p class="exp-card2">#123,446,332</p>
