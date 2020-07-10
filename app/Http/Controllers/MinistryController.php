@@ -57,7 +57,7 @@ class MinistryController extends Controller
             'code' => 'required',
             'name' => 'required',
             'shortname' => 'required',
-            'twitter_handle' => 'required',
+            'twitter' => 'required',
             'website' => 'required',
             'sector_id' => 'required'
         ]);
@@ -72,23 +72,40 @@ class MinistryController extends Controller
      * Called when user clicks on a ministry in profile.blade.php
      */
     public function show(Ministry $ministry)
-    {     
+    {
             $code = $ministry->code;
             $cabinets = $ministry->cabinet;
-            $payments = DB::table('payments')->where('payment_code', 'LIKE', "$code%")->get();
-            $filtered = $payments->filter(function ($value, $key) {
-                return $value->payment_date >= date("Y");
-            });
-            $count = $filtered->count();
-            $sum = $filtered->sum('amount');
+            $payments = DB::table('payments')
+                        ->where('payment_code', 'LIKE', "$code%")
+                        ->orderby('payment_date', 'desc')
+                        ->get();
+
+        function getTrend($payments)
+        {
+            $currentYr = date("Y");
+            $years = [$currentYr, $currentYr - 1, $currentYr - 2, $currentYr - 3, $currentYr - 4];
+            $yearByYear = [];
+            $currentYrPmts = [];
+            for ($x = 0; $x < count($years); $x++) {
+                $filtered = $payments->filter(function ($value, $key) use (&$years, $x) {
+                    return date('Y', strtotime($value->payment_date)) == $years[$x];
+                });
+                if ($x == 0) {
+                    $currentYrPmts = $filtered;
+                }
+                $sum = $filtered->sum('amount');
+                $yearByYear[$years[$x]] = $sum;
+            }
+            return [$currentYrPmts, $yearByYear];
+        }
+
+            $data = getTrend($payments);
             return view('pages.ministry.single')
-            ->with(['ministry'=> $ministry, 
-                     'cabinets' => $cabinets,
-                     'payments' => $filtered,
-                      'sum' => $sum,
-                      'count' => $count
-                    ]);
-        
+            ->with(['ministry'=> $ministry,
+                    'cabinets' => $cabinets,
+                    'payments' => $data[0],
+                    'trend' => $data[1]
+                 ]);
     }
 
     /**
@@ -96,7 +113,6 @@ class MinistryController extends Controller
      */
     public function edit($id)
     {
-        
     }
 
     /**
@@ -108,7 +124,7 @@ class MinistryController extends Controller
             'code' => 'required',
             'name' => 'required',
             'shortname' => 'required',
-            'twitter_handle' => 'required',
+            'twitter' => 'required',
             'website' => 'required',
             'sector_id' => 'required'
         ]);
@@ -120,7 +136,7 @@ class MinistryController extends Controller
      * Remove the specified resource from storage.
      *
      */
-    public function destroy($ministry=29)
+    public function destroy($ministry = 29)
     {
         echo "deleted";
         // Ministry::where('id', $ministry)->delete();
@@ -139,5 +155,4 @@ class MinistryController extends Controller
             echo $data;
         }
     }
-    
 }

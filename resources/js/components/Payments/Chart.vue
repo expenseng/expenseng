@@ -26,17 +26,8 @@ export default {
                     width: 1
                 },
                 series: [{
-                    name: 'Expenses',
-                    data: [
-                        {
-                            x: "2032",
-                            y: 223912
-                        },
-                        {
-                            x: "2022",
-                            y: 223992032
-                        }
-                    ]
+                    name: '',
+                    data: []
                 }],
                 grid: {
                     show: false

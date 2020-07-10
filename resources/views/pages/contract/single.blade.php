@@ -3,7 +3,6 @@
 <link rel="stylesheet" href="{{ asset('css/aboutus-header_footer.css') }}">
 <link rel="stylesheet" href="{{ asset('css/contracts_awarded.css') }}">
 <link rel="stylesheet" href="{{ asset('css/director_board.css') }}">
-<link rel="stylesheet" href="{{ asset('css/contracts_awarded_comments.css') }}">
 
 <title>FG Expense - Contracts</title>
 @endpush
@@ -18,41 +17,49 @@
     <div class="navigation-links">
       <ul>
         <li>
-          <a href="">HOME</a>
+          <a href="{{ route('home') }}">HOME</a>
         </li>
         <li>
           <span>&#8226;</span>
         </li>
         <li>
-          <a href="">CONTRACTORS</a>
+          <a href="{{ route('contractors') }}">CONTRACTORS</a>
         </li>
         <li>
           <span>&#8226;</span>
         </li>
         <li>
-          <a href="">COMPANY PROFILE</a>
+          <a>
+          {{ $company->name }}
+          </a>
         </li>
       </ul>
     </div>
 
     <div class="user-profile">
-      <h3 class="name brand-name">Julius Berger <img src="{{ asset('images/image 13.png') }}" alt="Berger logo"></h3>
+      <h3 class="name brand-name">
+        {{ $company->name }} 
+        <img src="{{ asset('images/image 13.png') }}" alt="Berger logo">
+      </h3>
       <div class="profile-overview mt-3">
         <div class="row">
           <div class="col-sm-4">
             <p class="font-weight-bold">Company twitter handle</p>
-            <p><a href="" class="twitter-handle">@JuliusBergerO</a></p>
-            <p class="year">2000</p>
+            <p><a href="{{ $company->twitterUrl() }}" class="twitter-handle">{{ $company->twitter }}</a></p>
           </div>
           <div class="col-sm-4">
             <p class="font-weight-bold">Total amount rewarded</p>
-            <p class="amount-rewarded">#38.8M</p>
-            <p class="year">2000</p>
+            <p class="amount-rewarded">
+              {{ $company->contract(date("Y"))->amount }}
+            </p>
+            <p class="year">{{ date("Y") }}</p>
           </div>
           <div class="col-sm-4">
             <p class="font-weight-bold">Total number contracts awarded</p>
-            <p class="contract-number">27</p>
-            <p class="year">2000</p>
+            <p class="contract-number">
+              {{ 20 }}
+            </p>
+            <p class="year">{{ date("Y") }}</p>
           </div>
         </div>
       </div>
@@ -72,7 +79,7 @@
     <div class="card">
       <div class="card-body">
         <div class="card-title">
-          <h5>Date: 28th May, 2020</h5>
+          <h5>Date: {{ date("dS M, Y") }}</h5>
           <button class="btn date-btn">
             Select Date
             <i class="fa fa-filter" aria-hidden="true"></i>
@@ -222,212 +229,24 @@
     <div class="container-fluid padding"  >
       <!-- cards -->
       <div class="row padding">
+        @foreach($company->people as $people)
         <div class="col-md-3">
             <div class="card">
-              <img src="{{ asset('images/row1-1.png') }}" alt="Mutiu Sunmonu" class="img-fluid">
+              <img src="{{ asset('images/row1-1.png') }}" alt="{{ $people->name }}" class="img-fluid">
                 <div class="card-body">
-                    <h1 class="card-title director-name mt-2">Mutiu Sunmonu</h1>
-                    <span class="director-title">Chairman of the board</span>
+                    <h1 class="card-title director-name mt-2">{{ $people->name }}</h1>
+                    <span class="director-title">{{ $people->position }}</span>
                     <div class="socials d-flex justify-content-center align-items-center mt-2">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="{{ $people->facebook }}"><i class="fab fa-facebook"></i></a>
+                        <a href="{{ $people->twitter }}"><i class="fab fa-twitter"></i></a>
+                        <a href="{{ $people->linkedin }}"><i class="fab fa-linkedin"></i></a>
+                        <a href="{{ $people->email }}"><i class="fab fa-envelop"></i></a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card">
-              <img src="{{ asset('images/row1-2.png') }}" alt="Engr. Dr.Lars Richter" class="img-fluid">
-                <div class="card-body">
-                    <h1 class="card-title director-name mt-2">Engr. Dr.Lars Richter</h1>
-                    <span class="director-title">Managing Director</span>
-                    <div class="socials d-flex justify-content-center align-items-center mt-2">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-              <img src="{{ asset('images/row1-3.png') }}" alt="Martin Brack" class="img-fluid">
-                <div class="card-body">
-                    <h1 class="card-title director-name mt-2">Martin Brack</h1>
-                    <span class="director-title">Financial Director</span>
-                    <div class="socials d-flex justify-content-center align-items-center mt-2">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-              <img src="{{ asset('images/row1-4.png') }}" alt="George Marks" class="img-fluid">
-                <div class="card-body">
-                    <h1 class="card-title director-name mt-2">George Marks</h1>
-                    <span class="director-title">Vice Chairman</span>
-                    <div class="socials d-flex justify-content-center align-items-center mt-2">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
-    <!-- card 2 -->
-    <div class="row padding">
-        <div class="col-md-3">
-            <div class="card">
-              <img src="{{ asset('images/row2-1.png') }}" alt="Ernest Chukwudi Ebi" class="img-fluid">
-                <div class="card-body">
-                    <h1 class="card-title director-name mt-2">Ernest Chukwudi Ebi</h1>
-                    <span class="director-title">Independent Director</span>
-                    <div class="socials d-flex justify-content-center align-items-center mt-2">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-              <img src="{{ asset('images/row2-2.png') }}" alt="Belinda Ajoke Disu" class="img-fluid">
-                <div class="card-body">
-                    <h1 class="card-title director-name mt-2">Belinda Ajoke Disu</h1>
-                    <span class="director-title">Non-executive Director</span>
-                    <div class="socials d-flex justify-content-center align-items-center mt-2">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-              <img src="{{ asset('images/row2-3.png') }}" alt="Dr. Ernest N. Azudialu" class="img-fluid">
-                <div class="card-body">
-                    <h1 class="card-title director-name mt-2">Dr. Ernest N. Azudialu</h1>
-                    <span class="director-title">Non-executive Director</span>
-                    <div class="socials d-flex justify-content-center align-items-center mt-2">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-              <img src="{{ asset('images/row2-4.png') }}" alt="Tobias Meletschus" class="img-fluid">
-                <div class="card-body">
-                    <h1 class="card-title director-name mt-2">Tobias Meletschus</h1>
-                    <span class="director-title">Director Corporate Development</span>
-                    <div class="socials d-flex justify-content-center align-items-center mt-2">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- card 3 -->
-    <div class="row padding">
-        <div class="col-md-3">
-            <div class="card">
-              <img src="{{ asset('images/row3-1.png') }}" alt="Alhaji Zubairu I. Bayi" class="img-fluid">
-                <div class="card-body">
-                    <h1 class="card-title director-name mt-2">Alhaji Zubairu I. Bayi</h1>
-                    <span class="director-title">Director Administration</span>
-                    <div class="socials d-flex justify-content-center align-items-center mt-2">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-              <img src="{{ asset('images/row3-2.png') }}" alt="Karsten Hensel" class="img-fluid">
-                <div class="card-body">
-                    <h1 class="card-title director-name mt-2">Karsten Hensel</h1>
-                    <span class="director-title">Non-executive Director</span>
-                    <div class="socials d-flex justify-content-center align-items-center mt-2">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-              <img src="{{ asset('images/row3-3.png') }}" alt="Gladys O.Talabi" class="img-fluid">
-                <div class="card-body">
-                    <h1 class="card-title director-name mt-2">Gladys O.Talabi</h1>
-                    <span class="director-title">Non-executive Director</span>
-                    <div class="socials d-flex justify-content-center align-items-center mt-2">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-              <img src="{{ asset('images/row3-4.png') }}" alt="Engr. Gomi M.Sheikh" class="img-fluid">
-                <div class="card-body">
-                    <h1 class="card-title director-name mt-2">Engr. Gomi M.Sheikh</h1>
-                    <span class="director-title">Non-executive Director</span>
-                    <div class="socials d-flex justify-content-center align-items-center mt-2">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- card 4 -->
-    <div class="row padding">
-      <div class="col-md-3">
-          <div class="card">
-            <img src="{{ asset('images/row4-1.png') }}" alt="Engr.Jafaru Damulak" class="img-fluid">
-              <div class="card-body">
-                  <h1 class="card-title director-name mt-2">Engr.Jafaru Damulak</h1>
-                  <span class="director-title">Non-executive Director</span>
-                  <div class="socials d-flex justify-content-center align-items-center mt-2">
-                      <a href="#"><i class="fab fa-facebook"></i></a>
-                      <a href="#"><i class="fab fa-twitter"></i></a>
-                      <a href="#"><i class="fab fa-linkedin"></i></a>
-                      <a href="#"><i class="fab fa-instagram"></i></a>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
 </div>
 </div>
 
@@ -443,8 +262,5 @@
 @endsection
 
 @section('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
 {{-- <script src="assets/js/main.js" type="text/javascript"></script> --}}
 @endsection
