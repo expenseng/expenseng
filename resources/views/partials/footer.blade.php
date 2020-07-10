@@ -1,6 +1,6 @@
 <!-------------Footer starts here-------------->
-<footer class="my-footer">
-  <div class="container">
+<footer class=" container-fluid my-footer">
+  <div class="container" style ="background-color: #323E48 !important;">
       <div class="row">
           <div class="col-md-2 footer-brand ">
               <a href="{{ url('/') }}">
@@ -56,7 +56,7 @@
           </div>
       </div><br><br>
   </div>
-  <div class="container-fluid lower">
+ 
     <div class="container">
         <div class="row ">
             <div class="col-md-9">
@@ -69,5 +69,5 @@
             </div>
         </div>
     </div>
-  </div>
+  
 </footer>
