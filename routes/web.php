@@ -53,6 +53,18 @@ Auth::routes();
 /**
  * Admin Routes
  */
+// Route::prefix('admin')->group(function () {
+//     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');  // Matches The "/admin/dashboard" URL
+//     Route::post('/create_expense', 'DashboardController@createExpense');
+     Route::post('/create_company', 'DashboardController@createCompany');
+// });
+
+Route::group(['middleware' => ['auth']], function (){
+    Route::get('/admin/company/create', 'CompanyController@create')->name('company.create');
+    Route::post('/admin/company/create', 'CompanyController@createCompany')->name('create.company');
+    Route::get('/admin/company/view', 'CompanyController@viewCompanies')->name('company.view');
+});
+
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');  // Matches The "/admin/dashboard" URL
     Route::post('/expense', 'DashboardController@createExpense');

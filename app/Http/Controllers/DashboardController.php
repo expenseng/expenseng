@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Expense;
 use App\Company;
+use App\Ministry;
 use Illuminate\Support\Facades\Session;
 
 class DashboardController extends Controller
@@ -26,7 +27,12 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('backend.dashboard');
+        $total_ministry = count(Ministry::all());
+        $total_company = count(Company::all());
+
+        return view('backend.dashboard')
+        ->with(['total_ministry' => $total_ministry,
+        'total_company' => $total_company]);
     }
 
     public function createExpense(Request $request)

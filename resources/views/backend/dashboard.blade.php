@@ -84,13 +84,11 @@
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="text-muted">Refunds</h5>
+                                        <h5 class="text-muted">Total Number of Ministries</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">0.00</h1>
+                                            <h1 class="mb-1">{{$total_ministry}}</h1>
                                         </div>
-                                        <div class="metric-label d-inline-block float-right text-primary font-weight-bold">
-                                            <span>N/A</span>
-                                        </div>
+
                                     </div>
                                     <div id="sparkline-revenue3"></div>
                                 </div>
@@ -98,13 +96,11 @@
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="text-muted">Avg. Revenue Per User</h5>
+                                        <h5 class="text-muted">Total Number of Companies</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">$28000</h1>
+                                            <h1 class="mb-1">{{$total_company}}</h1>
                                         </div>
-                                        <div class="metric-label d-inline-block float-right text-secondary font-weight-bold">
-                                            <span>-2.00%</span>
-                                        </div>
+
                                     </div>
                                     <div id="sparkline-revenue4"></div>
                                 </div>
@@ -597,7 +593,7 @@
                                             <div class="card">
                                                 <h5 class="card-header">CREATE NEW COMPANY</h5>
                                                 <div class="card-body p-3 form-group">
-                                                    {{ Form::open(array('action' => 'DashboardController@createCompany')) }}
+                                                   {{Form::open(array('action' => 'DashboardController@createCompany')) }}
                                                     {{Form::token()}}
                                                     <label class="label-for-name" >Name</label>
                                                     <input typ0e="text" required = 'required' name="name" id="name" class="form-control">
@@ -657,6 +653,9 @@
     @section('js')
     <!-- Optional JavaScript -->
 
+    <!-- Optional JavaScript -->
+    <!-- jquery 3.3.1 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <!-- main js -->
     <script src="{{ asset('js/main-js.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/dashboard-ecommerce.js') }}" type="text/javascript"></script>
@@ -670,7 +669,13 @@
     <!-- slimscroll js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/slimscroll/jquery.slim.min.js"></script>
     <script src="/vendor/slimscroll/jquery.slimscroll.js"></script>
-   
+    <!-- chart chartist js -->
+    <script src="/vendor/charts/chartist-bundle/chartist.min.js"></script>
+    <!-- sparkline js -->
+    <script src="/vendor/charts/sparkline/jquery.sparkline.js"></script>
+    <!-- morris js -->
+    <script src="/vendor/charts/morris-bundle/raphael.min.js"></script>
+    <script src="/vendor/charts/morris-bundle/morris.js"></script>
     <!-- chart c3 js -->
     <script src="/vendor/charts/c3charts/c3.min.js"></script>
     <script src="/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
