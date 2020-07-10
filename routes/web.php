@@ -65,6 +65,10 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('/admin/company/view', 'CompanyController@viewCompanies')->name('company.view');
     Route::get('/admin/company/edit/{company_id}', 'CompanyController@showEditForm')->name('company.view.edit');
     Route::put('/admin/company/edit/{company_id}', 'CompanyController@editCompany')->name('company.edit');
+
+    Route::get('/admin/ministry/create', 'MinistryController@viewCreateMinistry')->name('ministry.create');
+    Route::post('/admin/ministry/create', 'MinistryController@createMinistry')->name('create.ministry');
+    Route::get('/admin/ministry/view', 'MinistryController@viewMinistries')->name('ministry.view');
 });
 
 Route::prefix('admin')->group(function () {

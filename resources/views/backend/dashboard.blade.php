@@ -142,7 +142,7 @@
                                                         <td>{{$recent_expense->year}} </td>
                                                         <td>{{$recent_expense->project}}  </td>
                                                         <td>{{$recent_expense->month}}</td>
-                                                        <td>{{$recent_expense->amount_spent}}</td>
+                                                        <td>₦{{number_format($recent_expense->amount_spent,2)}}</td>
                                                         <td><span class="badge-dot badge-brand mr-1"></span>Not Completed </td>
                                                     </tr>
                                                     @endforeach

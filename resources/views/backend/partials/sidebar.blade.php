@@ -32,6 +32,21 @@
                                     </ul>
                                 </div>
                             </li>
+                            <li class="nav-item">
+                                <a class="{{Route::is('ministry.create') || Route::is('ministry.view')? 'nav-link active': 'nav-link'}}" href="#" 
+                                data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3">
+                                <i class="fa fa-fw fa-folder"></i>Ministry</a>
+                                <div id="submenu-3" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{route('ministry.create')}}">Create Ministry <span class="badge badge-secondary">New</span></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{route('ministry.view')}}">View Ministries</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
                             <!--
                             <li class="nav-item">
                                 <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-fw fa-chart-pie"></i>Chart</a>
