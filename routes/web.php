@@ -63,16 +63,30 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/admin/company/create', 'CompanyController@createCompany')->name('create.company');
     Route::get('/admin/company/view', 'CompanyController@viewCompanies')->name('company.view');
     Route::get('/admin/company/edit/{company_id}', 'CompanyController@showEditForm')->name('company.view.edit');
-    Route::get('/admin/{company}/{people}', 'CompanyController@showPeople');
     Route::put('/admin/company/edit/{company_id}', 'CompanyController@editCompany')->name('company.edit');
+    Route::delete('/admin/company/delete/{company_id}', 'CompanyController@deleteCompany')->name('company.delete');
+
+    //People
+    Route::get('/admin/{company}/{people}', 'CompanyController@showPeople');
+
     Route::get('/admin/ministry/create', 'MinistryController@viewCreateMinistry')->name('ministry.create');
     Route::post('/admin/ministry/create', 'MinistryController@createMinistry')->name('create.ministry');
     Route::get('/admin/ministry/view', 'MinistryController@viewMinistries')->name('ministry.view');
+    Route::get('/admin/ministry/edit/{ministry_id}', 'MinistryController@showEditForm')->name('ministry.view.edit');
+    Route::put('/admin/ministry/edit/{ministry_id}', 'MinistryController@editMinistry')->name('ministry.edit');
+    Route::delete('/admin/ministry/delete/{ministry_id}', 'MinistryController@deleteMinistry')->name('ministry.delete');
 });
 
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
     Route::post('/expense', 'DashboardController@createExpense');
+
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
+
+    Route::get('/expense', 'DashboardController@getExpense')->name('expense.view');
+    Route::get('/expense/create', 'DashboardController@newExpense')->name('expense.new');
+    Route::post('/expense/create', 'DashboardController@createExpense')->name('expense.create');
+
     Route::post('/company', 'DashboardController@createCompany');
 
     Route::get('/company/create', 'CompanyController@create')->name('company.create'); // Matches The "/admin/company/create" URL
@@ -81,5 +95,4 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/companies/{company}', 'CompanyController@adminShow'); // Matches The "/admin/companies/{company}" URL
     Route::get('/companies', 'CompanyController@adminIndex');
-
 });

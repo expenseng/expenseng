@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class CompanyController extends Controller
 {
-
     public function index()
     {
         $companies = Company::paginate(20);
@@ -147,5 +146,18 @@ class CompanyController extends Controller
             'company' => $company,
         ]);
         //return $company->people;
+    }
+
+    public function deleteCompany($id)
+    {
+
+        $delete = Company::where('id', $id)->delete();
+        if ($delete) {
+            echo ("<script>alert(' Company  deleted successfully');
+             window.location.replace('/admin/company/view');</script>");
+        } else {
+            echo ("<script>alert('Cannot Delete Company');
+            window.location.replace('/admin/company/view');</script>");
+        }
     }
 }
