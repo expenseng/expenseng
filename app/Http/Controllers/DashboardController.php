@@ -28,11 +28,14 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $year = date('Y');
+        $year = date('Y'); // get current year
         $total_ministry = count(Ministry::all());
         $total_company = count(Company::all());
         $total_budgets = Budget::where('year', $year)->get('amount');
-        $amount = 0;
+        $amount = 0; // initialize total budget amount
+        $recent_expenses = Expense::orderBY('id', 'DESC')->limit(7)->get();
+
+
 
         
         if (count($total_budgets)> 0) {
@@ -49,7 +52,7 @@ class DashboardController extends Controller
         return view('backend.dashboard')
         ->with(['total_ministry' => $total_ministry,
         'total_company' => $total_company, 'total_budgets' => $total_budgets,
-        'amount' => $amount,
+        'amount' => $amount, 'recent_expenses' => $recent_expenses,
         ]);
     }
 

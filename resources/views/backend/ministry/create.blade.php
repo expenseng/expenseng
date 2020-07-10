@@ -1,7 +1,7 @@
 @extends('layouts.home')
 @push('css')
 <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-<title>ExpenseNg - Create Company</title>
+<title>ExpenseNg - Create Ministry</title>
 @endpush
 
 @section('content')
@@ -14,42 +14,54 @@
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="section-block" id="basicform">
-                                    <h3 class="section-title">Create New Company</h3>
+                                    <h3 class="section-title">Create New Ministry</h3>
                                     <p></p>
                                 </div>
                                 <div class="card">
                                     
                                     <div class="card-body">
-                                        <form method="post" action="{{route('create.company')}}">
+                                        <form method="post" action="{{route('create.ministry')}}">
                                             @csrf
                                             <div class="form-group">
-                                                <label for="inputText3" class="col-form-label">Company Name</label>
-                                                <input id="inputText3" name="company_name" type="text" 
-                                                class="form-control" placeholder="e.g example company" required />
+                                                <label for="inputText3" class="col-form-label">Ministry Name</label>
+                                                <input id="inputText3" name="ministry_name" 
+                                                type="text" class="form-control" 
+                                                placeholder="e.g Ministry of Agriculture" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="ministryCode">Ministry Code</label>
+                                                <input type="number" name="code" class="form-control" 
+                                                placeholder="e.g 003" required/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">Short Name</label>
-                                                <input id="inputEmail" name="company_shortname" type="text"
-                                                 placeholder="e.g example" class="form-control" required />
+                                                <input id="inputEmail" name="ministry_shortname" type="text" 
+                                                placeholder="e.g Agric" class="form-control" required />
                                                 
                                             </div>
                                             <div class="form-group">
-                                                <label for="inputText4" class="col-form-label">Company Twitter Handle</label>
-                                                <input id="inputText4" name="company_twitter" type="text" 
+                                                <label for="sector_id">Sector Id</label>
+                                                <input type="number" name="sector_id" class="form-control" 
+                                                placeholder="e.g 13" required/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputText4" class="col-form-label">Ministry Twitter Handle</label>
+                                                <input id="inputText4" name="ministry_twitter" type="text" 
                                                 class="form-control" placeholder="e.g @example" required />
                                             </div>
                                             <div class="form-group">
-                                                <label for="inputPassword">CEO Name</label>
-                                                <input id="inputPassword" name="company_ceo" type="text" 
-                                                placeholder="e.g Samuel Ogbede" class="form-control" required />
+                                                <label for="inputPassword">Ministry Head</label>
+                                                <input id="inputPassword" name="ministry_head" type="text" 
+                                                placeholder="e.g Audu Ogbe" class="form-control" required />
                                             </div>
                                             <div class="form-group">
-                                                <label for="inputPassword">CEO Twitter hande</label>
-                                                <input id="inputPassword" name="ceo_handle" type="text" 
-                                                placeholder="e.g  @Ogbede" class="form-control" required />
+                                                <label for="inputPassword">Ministry's Website</label>
+                                                <input id="inputPassword" name="website" type="url"
+                                                 placeholder="e.g  https://example.gov.ng" class="form-control" required>
                                             </div>
+                                           
                                             <div class="form-group text-right">
-                                                <input type="submit" value="Create New Company"
+                                                <input type="submit" value="Create New Ministry"
                                                 class="form-control" 
                                                 style="background-color: #00945E; color:honeydew; border: none; border-radius: 12px; width: 12rem"/>
                                             </div>

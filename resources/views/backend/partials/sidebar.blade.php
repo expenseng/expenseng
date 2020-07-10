@@ -13,14 +13,14 @@
                                 Menu
                             </li>
                             <li class="nav-item ">
-                                <a class="{{Route::has('dashbord')? 'nav-link active': 'nav-link'}}"  href="{{route('dashboard')}}"  data-target="#submenu-1" aria-controls="submenu-1">
+                                <a class="{{Route::has('/admin/dashbord')? 'nav-link active': 'nav-link'}}"  href="{{route('dashboard')}}"  data-target="#submenu-1" aria-controls="submenu-1">
                                     <i class="fa fa-fw fa-user-circle"></i>Dashboard <span class="badge badge-success">6</span></a>
                             </li>
                     
                         
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Company</a>
+                                <a class="{{Route::is('company.create') || Route::is('company.view')? 'nav-link active': 'nav-link'}}" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Company</a>
                                 <div id="submenu-2" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
@@ -28,6 +28,21 @@
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="{{route('company.view')}}">View Companies</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="{{Route::is('ministry.create') || Route::is('ministry.view')? 'nav-link active': 'nav-link'}}" href="#" 
+                                data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3">
+                                <i class="fa fa-fw fa-folder"></i>Ministry</a>
+                                <div id="submenu-3" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{route('ministry.create')}}">Create Ministry <span class="badge badge-secondary">New</span></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{route('ministry.view')}}">View Ministries</a>
                                         </li>
                                     </ul>
                                 </div>
