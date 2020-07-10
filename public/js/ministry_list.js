@@ -1,6 +1,13 @@
 $(document).ready(function(){
-    
-    const card = (id, name,total)=>{
+
+  const insertCommas = amount =>{
+      const parts = amount.toString().split(".");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return parts.join(".");
+  }
+
+      
+  const card = (id, name,total)=>{
       return (
         ` <div data-id="${id}" 
             class="col-lg-3 col-md-6 col-sm-12 ministry-cards d-flex" 
@@ -20,7 +27,7 @@ $(document).ready(function(){
                 </div>
                 <div class="texts d-flex flex-column text-center">
                   <h4>Total amount Spent</h4>
-                  <p class="num">${total}</p>
+                  <p class="num">₦${insertCommas(total)}</p>
                   <p class="year">${new Date().getFullYear()}</p>
                 </div>
               </div>
