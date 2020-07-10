@@ -79,60 +79,6 @@
         <div class="p-3  p-lg-5">
              <div class="expenses container">
                  <govt-expense></govt-expense>
-                 <div class="exp-card">
-                   <div class="graph-cont">
-                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                   <img src="{{asset('/images/Vector2.png')}}" alt="graph">
-                   </div>
-                   <p class="exp-card1">Health</p>
-                   <p class="exp-card2">&#8358;123,446,332</p>
-                   <p class="exp-card3">2020</p>
-                 </div>
-                 <div class="exp-card">
-                  <div class="graph-cont">
-                    <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                    <img src="{{asset('/images/Vector2.png')}}" alt="graph">
-                   </div>
-                   <p class="exp-card1">Salary</p>
-                   <p class="exp-card2">&#8358;123,446,332</p>
-                   <p class="exp-card3">2020</p>
-                 </div>
-                 <div class="exp-card">
-                  <div class="graph-cont">
-                    <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                    <img src="{{asset('/images/Vector2.png')}}" alt="graph">
-                   </div>
-                   <p class="exp-card1">Agriculture</p>
-                   <p class="exp-card2">&#8358;123,446,332</p>
-                   <p class="exp-card3">2020</p>
-                 </div>
-                 <div class="exp-card">
-                  <div class="graph-cont">
-                    <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                    <img src="{{asset('/images/Vector2.png')}}" alt="graph">
-                   </div>
-                   <p class="exp-card1">Security</p>
-                   <p class="exp-card2">&#8358;123,446,332</p>
-                   <p class="exp-card3">2020</p>
-                 </div>
-                 <div class="exp-card">
-                  <div class="graph-cont">
-                    <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                    <img src="{{asset('/images/Vector2.png')}}" alt="graph">
-                   </div>
-                   <p class="exp-card1">Power</p>
-                   <p class="exp-card2">&#8358;123,446,332</p>
-                   <p class="exp-card3">2020</p>
-                 </div>
-                 <div class="exp-card">
-                  <div class="graph-cont">
-                    <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                    <img src="{{asset('/images/Vector2.png')}}" alt="graph">
-                   </div>
-                   <p class="exp-card1">Infrastructure</p>
-                   <p class="exp-card2">&#8358;123,446,332</p>
-                   <p class="exp-card3">2020</p>
-                 </div>
                  <a href="{{route('expense.reports')}}" class="mt-4 mb-5">View Expenditure Report</a>
              </div>
         </div>

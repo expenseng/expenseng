@@ -82,7 +82,7 @@
                     <div class="container pb-3 pt-1 py-4">
                         <div class="row centerize">
                             <div class="col">
-                                <h3 class="index"> Date:28th May, 2020</h1>
+                                <h3 class="index">Date: {{date("jS F, Y")}}</h1>
                             </div>
 
                             <div class="col">

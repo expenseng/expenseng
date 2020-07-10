@@ -1,12 +1,12 @@
 $(document).ready(function(){
     
-    const card = (id, name)=>{
+    const card = (id, name,total)=>{
       return (
         ` <div data-id="${id}" 
-            class="col-lg-3 col-md-6 col-sm-12 ministry-cards" 
+            class="col-lg-3 col-md-6 col-sm-12 ministry-cards d-flex" 
             style="cursor:pointer"
           >
-              <div class="cont-1">
+              <div class="cont-1 d-flex flex-column justify-content-center">
                 <div class="img">
                   <span class="circle"></span>
                   <img src="/images/Vector 3.svg" alt="" class="vector" style="width:100%">
@@ -18,9 +18,9 @@ $(document).ready(function(){
                     <h4>${name}</h4>
                   </div>
                 </div>
-                <div class="texts">
+                <div class="texts d-flex flex-column text-center">
                   <h4>Total amount Spent</h4>
-                  <p class="num">#123,446,332</p>
+                  <p class="num">${total}</p>
                   <p class="year">${new Date().getFullYear()}</p>
                 </div>
               </div>
@@ -50,8 +50,8 @@ $(document).ready(function(){
           let ministryCards = '';
           if(data.length>0){    
                 data.forEach(ministry=>{
-                    const {shortname, name} = ministry;
-                    ministryCards += card(shortname, name);
+                    const {shortname, name, total} = ministry;
+                    ministryCards += card(shortname, name, total);
                 })
                 
                 $('#cards-container').html(ministryCards);
@@ -80,9 +80,9 @@ $(document).ready(function(){
                 if(data.length>0){
                   suggestions = `<ul class="dropdown-menu" style="display:block; position:absolute">`;
                     data.forEach(ministry=>{
-                        const {shortname, name} = ministry;
+                        const {shortname, name, total} = ministry;
                         suggestions += `<li class="pb-2 px-3"><a href="#" class="text-muted "> ${name}</a></li>`
-                        ministryCards += card(shortname, name);
+                        ministryCards += card(shortname, name, total);
                     })
                       suggestions += '</ul>';
                       $('#ministryList').html(suggestions).fadeIn();
@@ -114,8 +114,8 @@ $(document).ready(function(){
                 console.log(data)
                   data = JSON.parse(data)
                   console.log(data)
-                  const {shortname, name} = data[0]
-                  $('#cards-container').html(card(shortname, name))
+                  const {shortname, name, total} = data[0]
+                  $('#cards-container').html(card(shortname, name, total))
               }
 
           })
