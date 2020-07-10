@@ -12,7 +12,3 @@ arrowRight.click(function(e){
     slide+=90;
     card.css("transform","translateX("+slide+"%)");
 });
-
-$('.ministry-picker').selectpicker();
-
-$('select').selectpicker();

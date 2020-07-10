@@ -5,9 +5,6 @@
   <link rel="stylesheet" href="{{asset('css/ministry_list.css') }}">
   <title>FG Expense - Ministry List</title>
 @endpush
-  <!-------------Header starts here-------------->
-  <!-- <<br><br> -->
-  <!-------------Header ends here-------------->
 
 
 @section('content')
@@ -100,5 +97,5 @@
 @endsection
 
 @section('js')
-  <script src="/js/ministry_list.js" type="application/javascript"></script>
+  <script src="{{ asset('js/ministry_list.js') }}" type="application/javascript"></script>
 @endsection

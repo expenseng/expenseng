@@ -16,11 +16,11 @@
 	<header class="container section-wrapper">
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb bg-white">
-				<li class="breadcrumb-item not-active"><a href="#">HOME</a></li>
+				<li class="breadcrumb-item not-active"><a href="{{ url('/') }}">HOME</a></li>
 				<span>&#8226;</span>
-				<li class="breadcrumb-item not-active"><a href="#">SPENDING</a></li>
+				<li class="breadcrumb-item not-active"><a>Expense</a></li>
 				<span>&#8226;</span>
-				<li class="breadcrumb-item active" aria-current="page"><a href="#">MINISTRY SPENDING</a></li>
+				<li class="breadcrumb-item active" aria-current="page"><a href="{{ url('/expense/ministry') }}">MINISTRY SPENDING</a></li>
 			</ol>
 		</nav>
 	</header>
@@ -40,7 +40,7 @@
             <a class="btn-marg text-left active button" data-toggle="tab" role="tab" href="#table">Expense Summary</a>
             <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Project Summary</a>
             <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Purchases Summary</a>
-            <a class="btn-marg text-left button" data-toggle="tab" role="tab"href="">No Description</a>
+            <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="#description">No Description</a>
             <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="#comments">Comments</a>
           </div>
         </div>
@@ -54,7 +54,7 @@
 				<div class="table-section reponsive-div">
 					<div class="main-table">
 						<div class="table-top p-3 d-flex justify-content-between align-items-center">
-							<h3 class="align-self-center">Date: 28th, May 2020</h3>
+							<h3 class="align-self-center">Date: {{ date("dS, M Y") }}</h3>
 							<button>Filter <i class="fas fa-filter px-1"></i></button>
 						</div>
 						<div class="table-data">
@@ -70,170 +70,27 @@
 										</tr>
 									</thead>
 									<tbody>
-										{{-- @foreach ($expenses as $expense)
-										<tr>
-										<td class="section-shadow"><a href="#" class="text-success">{{Str::ucfirst($expense->ministry)}}</a></td>
-										<td>{{$expense->description}}</td>
-										<td>{{$expense->company}}</td>
-											<td>{{$expense->amount}}</td>
-											<td>20th,May 2020</td>
-										</tr>
-										@endforeach --}}
-										
-										<tr>
-											<td class="section-shadow"><a href="#" class="text-success">Education</a></td>
-											<td class="table-overflow" >Building of Class Blocks</td>
-											<td>Samsung</td>
-											<td>&#8358;65,001,901,123</td>
-											<td>20th,May 2020</td>
-										</tr>
-										<tr>
-											<td class="section-shadow"><a href="#" class="text-success">Energy</a></td>
-											<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
-											<td>Julius Berger</td>
-											<td>&#8358;72,902,001,229</td>
-											<td>20th,May 2020</td>
-										</tr>
-										<tr>
-											<td class="section-shadow"><a href="#" class="text-success">Labour</a></td>
-											<td class="table-overflow" >Building of Class Blocks</td>
-											<td>Samsung</td>
-											<td>&#8358;65,001,901,123</td>
-											<td>20th,May 2020</td>
-										</tr>
-										<tr>
-											<td class="section-shadow"><a href="#" class="text-success">Agriculture</a></td>
-											<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
-											<td>Julius Berger</td>
-											<td>&#8358;72,902,001,229</td>
-											<td>20th,May 2020</td>
-										</tr>
-										<tr>
-											<td class="section-shadow"><a href="#" class="text-success">Education</a></td>
-											<td class="table-overflow" >Building of Class Blocks</td>
-											<td>Samsung</td>
-											<td>&#8358;65,001,901,123</td>
-											<td>20th,May 2020</td>
-										</tr>
-										<tr>
-											<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
-											<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
-											<td>Julius Berger</td>
-											<td>&#8358;72,902,001,229</td>
-											<td>20th,May 2020</td>
-										</tr>
-										<tr>
-											<td class="section-shadow"><a href="#" class="text-success">Education</a></td>
-											<td class="table-overflow" >Building of Class Blocks</td>
-											<td>Samsung</td>
-											<td>&#8358;65,001,901,123</td>
-											<td>20th,May 2020</td>
-										</tr>
-										<tr>
-											<td class="section-shadow"><a href="#" class="text-success">Transport</a></td>
-											<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
-											<td>Julius Berger</td>
-											<td>&#8358;72,902,001,229</td>
-											<td>20th,May 2020</td>
-										</tr>
-										<tr>
-											<td class="section-shadow"><a href="#" class="text-success">Education</a></td>
-											<td class="table-overflow" >Building of Class Blocks</td>
-											<td>Samsung</td>
-											<td>&#8358;65,001,901,123</td>
-											<td>20th,May 2020</td>
-										</tr>
-										<tr>
-											<td class="section-shadow"><a href="#" class="text-success">Transport</a></td>
-											<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
-											<td>Julius Berger</td>
-											<td>&#8358;72,902,001,229</td>
-											<td>20th,May 2020</td>
-										</tr>
-										<tr>
-											<td class="section-shadow"><a href="#" class="text-success">Education</a></td>
-											<td class="table-overflow" >Building of Class Blocks</td>
-											<td>Samsung</td>
-											<td>&#8358;65,001,901,123</td>
-											<td>20th,May 2020</td>
-										</tr>
-										<tr>
-											<td class="section-shadow"><a href="#" class="text-success">Energy</a></td>
-											<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
-											<td>Julius Berger</td>
-											<td>&#8358;72,902,001,229</td>
-											<td>20th,May 2020</td>
-										</tr>
-										<tr>
-											<td class="section-shadow"><a href="#" class="text-success">Labour</a></td>
-											<td class="table-overflow" >Building of Class Blocks</td>
-											<td>Samsung</td>
-											<td>&#8358;65,001,901,123</td>
-											<td>20th,May 2020</td>
-										</tr>
-										<tr>
-											<td class="section-shadow"><a href="#" class="text-success">Agriculture</a></td>
-											<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
-											<td>Julius Berger</td>
-											<td>&#8358;72,902,001,229</td>
-											<td>20th,May 2020</td>
-										</tr>
-										<tr>
-											<td class="section-shadow"><a href="#" class="text-success">Education</a></td>
-											<td class="table-overflow" >Building of Class Blocks</td>
-											<td>Samsung</td>
-											<td>&#8358;65,001,901,123</td>
-											<td>20th,May 2020</td>
-										</tr>
-										<tr>
-											<td class="section-shadow"><a href="#" class="text-success">Aviation</a></td>
-											<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
-											<td>Julius Berger</td>
-											<td>&#8358;72,902,001,229</td>
-											<td>20th,May 2020</td>
-										</tr>
-										<tr>
-											<td class="section-shadow"><a href="#" class="text-success">Education</a></td>
-											<td class="table-overflow" >Building of Class Blocks</td>
-											<td>Samsung</td>
-											<td>&#8358;65,001,901,123</td>
-											<td>20th,May 2020</td>
-										</tr>
-										<tr>
-											<td class="section-shadow"><a href="#" class="text-success">Transport</a></td>
-											<td class="table-overflow" >Rehabilitation of Lagos Ibadan Express-way</td>
-											<td>Julius Berger</td>
-											<td>&#8358;72,902,001,229</td>
-											<td>20th,May 2020</td>
-										</tr>
-										<tr>
-											<td class="section-shadow"><a href="#" class="text-success">Education</a></td>
-											<td class="table-overflow" >Building of Class Blocks</td>
-											<td>Samsung</td>
-											<td>&#8358;65,001,901,123</td>
-											<td>20th,May 2020</td>
-										</tr>
+										@foreach ($summary as $expense)
+											<tr>
+												<td class="section-shadow">
+													<a href="{{ route('ministries.single', ['ministry' => $expense->ministry->shortname()]) }}" class="text-success">
+														{{ucfirst($expense->ministry->name)}}
+													</a>
+												</td>
+												<td>{{$expense->description}}</td>
+												<td>{{$expense->beneficiary}}</td>
+												<td>&#8358;{{$expense->amount()}}</td>
+												<td>{{ $expense->payment_date }}</td>
+											</tr>
+										@endforeach
 									</tbody>
 								</table>
 							</div>
 						</div>
 						<!---PAGINATION--->
-						<div class="table-footer d-flex align-items-center pagination1">
-						<span>1-20 of 320 results</span>
-						<div class="pagination">
-							<a id="prev" href="#">&#8249;</a>
-							<a class="active" href="#">1</a>
-							<a href="#">2</a>
-							<a href="#">3</a>
-							<a href="#">..</a>
-							<a href="#">6</a>
-							<a id="next" href="#">&#8250;</a>
-						</div>
-					</div>
+						@include('partials.pagination', ['data' => $summary])
 					</div>
 				</div>
-		
-				<!-- Filter Modal -->
 			</section>
 			<section class="container">
 				<div class="row">
@@ -277,6 +134,51 @@
 								<a id="next" href="#">&#8250;</a>
 							</div>
 						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<div class="section-2 tab-pane show fade active" id="description" role="tabpanel">
+			<section class="container bordered">
+				<div class="table-section reponsive-div">
+					<div class="main-table">
+						<div class="table-top p-3 d-flex justify-content-between align-items-center">
+							<h3 class="align-self-center">Date: {{ date("dS, M Y") }}</h3>
+							<button>Filter <i class="fas fa-filter px-1"></i></button>
+						</div>
+						<div class="table-data">
+							<div style="overflow-x: auto;">
+								<table id="Table" cell-spacing="0" data-pagination="true" data-page-size="10" class="table table-striped table-responsive-sm">
+									<thead>
+										<tr>
+											<th class="section-shadow row-ministry">Ministry</th>
+											<th class="row-project">Project</th>
+											<th class="row-company">Company</th>
+											<th class="row-amount">Amount</th>
+											<th class="row-date">Date</th>
+										</tr>
+									</thead>
+									<tbody>
+										@foreach ($summary as $expense)
+											<tr>
+												<td class="section-shadow">
+													<a href="{{ route('ministries.single', ['ministry' => $expense->ministry->shortname()]) }}" class="text-success">
+														{{ucfirst($expense->ministry->name)}}
+													</a>
+												</td>
+												<td>{{$expense->description}}</td>
+												<td>{{$expense->beneficiary}}</td>
+												<td>&#8358;{{$expense->amount}}</td>
+												<td>{{ $expense->payment_date }}</td>
+											</tr>
+										@endforeach
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!---PAGINATION--->
+						@include('partials.pagination', ['data' => $summary])
+					</div>
 					</div>
 				</div>
 			</section>

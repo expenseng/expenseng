@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Expense;
+use App\Payment;
 use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
@@ -15,6 +16,7 @@ class ExpenseController extends Controller
 
     public function ministry()
     {
-        return view('pages.expense.ministry');
+        $summary = Payment::where('description', '!=', '')->paginate(20);
+        return view('pages.expense.ministry')->with('summary', $summary);
     }
 }

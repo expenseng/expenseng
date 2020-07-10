@@ -5,6 +5,7 @@
  */
 
 require('./bootstrap');
+import VueApexCharts from 'vue-apexcharts'
 
 window.Vue = require('vue');
 
@@ -18,14 +19,12 @@ window.Vue = require('vue');
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
+Vue.component('apexchart', VueApexCharts);
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('comments', require('./components/Comments.vue').default);
 Vue.component('chart', require('./components/Payments/Chart.vue').default);
 Vue.component('govt-expense', require('./components/Home/GovtExpenses.vue').default);
 
-import VueApexCharts from 'vue-apexcharts'
-Vue.component('apexchart', VueApexCharts);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

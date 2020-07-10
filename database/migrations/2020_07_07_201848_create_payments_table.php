@@ -17,7 +17,7 @@ class CreatePaymentsTable extends Migration
             $table->increments('id');
             $table->string('payment_no');
             $table->string('payment_code')->index();
-            $table->string('organization');
+            $table->integer('organization_id');  //this is the id of ministry. references ministry.id
             $table->string('beneficiary', 191);
             $table->bigInteger('amount');
             $table->date('payment_date');
