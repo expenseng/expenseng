@@ -210,5 +210,4 @@ class MinistryController extends Controller
             window.location.replace('/admin/ministry/create');</script>");
         }
     }
-
 }

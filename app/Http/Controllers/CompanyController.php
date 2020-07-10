@@ -102,13 +102,13 @@ class CompanyController extends Controller
         }
     }
 
-    public function showEditForm ( $id)
+    public function showEditForm($id)
     {
         $details = Company::findOrFail($id);
         return view('backend.company.edit')->with(['details' => $details]);
     }
 
-    public function editCompany (Request $request, $id)
+    public function editCompany(Request $request, $id)
     {
         validator(
             [
