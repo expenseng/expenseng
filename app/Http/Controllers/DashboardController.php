@@ -57,7 +57,7 @@ class DashboardController extends Controller
            'shortname' => 'required',
            'industry' => 'required',
            'ceo' => 'required',
-           'twitter' => 'required'
+           'twitter' => ''
         ]);
         
         $input = $request->all();

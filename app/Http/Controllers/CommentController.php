@@ -17,7 +17,7 @@ class CommentController extends Controller
         $token = Comment::where('adminEmail', env("COMMENT_EMAIL"))
                             ->where('adminPassword', env("COMMENT_PASSWORD"));
 
-        if(!$token->exists() || $token->pluck('token')[0]->created_at){
+        if (!$token->exists() || $token->pluck('token')[0]->created_at) {
             /**
              * Token doesn't exist of has expired
              */
