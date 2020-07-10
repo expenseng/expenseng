@@ -33,7 +33,7 @@
               </div>
               <div class="gallery">
                 <div class="card1 card">
-                    {{-- <p class="tag">New</p> --}}
+                    <p class="tag">New</p>
                   <div class="project">
                         <p>Contruction of Lagos-Ibadan Express road <br>
                         Ministry of Power, Works and Housing</p>
@@ -44,7 +44,7 @@
                   </div>
                 </div>
                 <div class="card2 card">
-                  {{-- <p class="tag">New</p> --}}
+                  <p class="tag">New</p>
                   <div class="project">
                     <p>Contruction of Lagos-Ibadan Express road <br>
                       Ministry of Power, Works and Housing</p>
@@ -157,7 +157,7 @@
                <a href="{{ route('ministries') }}" class="profile">View all profiles</a>
              </div>
              <div class="ministry-stat">
-                   <div class="stat-a p-4">
+                   {{-- <div class="stat-a p-4">
                      <div class="graph-cont">
                        <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
                        <img src="{{asset('/images/Vector2.png')}}" alt="graph">
@@ -167,7 +167,7 @@
                        <p class="exp-card2">#123,446,332</p>
                        <p class="exp-card3">2020</p>
               </div>
-            </div>
+            </div> --}}
             <div class="ministry-stat stata">
                   <div class="stat-a p-4">
                     <div class="graph-cont">
@@ -230,6 +230,7 @@
 
        <!-- Company section -->
        <p class="label mt-5 mb-5 " id="compu">Companies that received money</p>
+      
        <div class="companies container">
             <div class="comp-card">
                <div class="awarded">
@@ -243,6 +244,7 @@
                      <p class="exp-card3">2019</p>
                   </div>
               </div>
+              
               <div>
                  <div class="d-flex align-items-center mb-3">
                    <img src="{{asset('/images/berger.jpg')}}" alt="">
@@ -333,7 +335,12 @@
               </div>
            </div>
             </div>
+          
        </div>
+
+      </div>
+      <div class="move">
+        <a href="{{ route('contractors') }}" class="profile">View all Companies</a>
       </div>
        <!-- conversation section -->
        <div class="convo-background">
@@ -351,6 +358,7 @@
                   Drop by our community page to ask questions,
                   propose new features, sign up for testing, and join the conversation about federal spending data.</p>
               </div>
+       </div>
        </div>
     </section>
   @endsection

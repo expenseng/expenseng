@@ -100,7 +100,7 @@
      display: flex;
      position: relative;
      height:400px;
-     overflow-x: hidden;
+     /* overflow-x: hidden; */
  } 
  
  .ministry-top{
@@ -349,6 +349,12 @@
      font-size: 1rem;
      color: #6765EC;
  }
+
+ .move{
+     margin: 20px;
+     margin-left: 10rem;
+
+ }
  
  .convo-background{
      background: linear-gradient(0deg, rgba(50, 62, 72, 0.33), rgba(50, 62, 72, 0.33)), rgba(0, 148, 94, 0.67);
@@ -370,6 +376,7 @@
      background-size: contain;
      background-position: center;
      background-repeat: no-repeat;
+     z-index: -1;
  }
  
  .query{
@@ -396,8 +403,10 @@
      width: auto;
  }
  .twt-handle img{
+     
     width: 20px;
     height: 20px;
+    z-index: -1;
  }
  
  @media only screen and (min-width: 768px) {
@@ -554,7 +563,7 @@
          display: flex;
          position: relative;
          height:300px;
-         overflow-x: hidden;
+        /*  overflow-x: hidden; */
      } 
      .banner{
          height: /* 90% */ 45vh;
@@ -591,7 +600,7 @@
          display: flex;
          position: relative;
          height:250px;
-         overflow-x: hidden;
+         /* overflow-x: hidden; */
      } 
      .banner{
          height: /* 90% */ 100vh;
