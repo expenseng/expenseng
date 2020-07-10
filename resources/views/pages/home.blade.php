@@ -17,15 +17,9 @@
             </div>
             <div class="target">
               <div class="summary">
-                  <h4> In 2019, <br> the government spent </h4> 
-                  <h4 class="bolding"> $4.45 trillion.</h4>
-                  <div class="para">
-                  <p>ExpenseNG tracks federal spending to ensure taxpayers can 
-                   <p> see how their money is being used in communities across </p>
-                    <p>Nigeria.
-                  Learn more on how this money was spent with </p>
-                  <p> tools to help you navigate spending from top to bottom.</p>
-                </div>
+                  <h4> In 2019, <br> the government spent $4.45 trillion.</h4>
+                  <p>ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities across Nigeria.
+                  Learn more on how this money was spent with tools to help you navigate spending from top to bottom.</p>
               </div>
               <div class="carets my-4" id="caret-alt">
               <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left2">
@@ -33,7 +27,7 @@
               </div>
               <div class="gallery">
                 <div class="card1 card">
-                    {{-- <p class="tag">New</p> --}}
+                    <p class="tag">New</p>
                   <div class="project">
                         <p>Contruction of Lagos-Ibadan Express road <br>
                         Ministry of Power, Works and Housing</p>
@@ -44,7 +38,7 @@
                   </div>
                 </div>
                 <div class="card2 card">
-                  {{-- <p class="tag">New</p> --}}
+                  <p class="tag">New</p>
                   <div class="project">
                     <p>Contruction of Lagos-Ibadan Express road <br>
                       Ministry of Power, Works and Housing</p>
@@ -61,14 +55,6 @@
             </button>
           </div>
         </div>
-      </div>
-      
-    </div>
-    <div class="scroll-down">
-      <a href="#compu">
-      <img src="{{asset('images/mdi_arrow-right-drop-circle.png')}}" alt="">
-      </a>
-    </div>
   @endsection
 
   @section('content')
@@ -114,7 +100,7 @@
                        <p class="exp-card3">2020</p>
               </div>
             </div>
-            <div class="ministry-stat stata">
+            <div class="ministry-stat">
                   <div class="stat-a p-4">
                     <div class="graph-cont">
                       <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
@@ -175,14 +161,14 @@
        </div>
 
        <!-- Company section -->
-       <p class="label mt-5 mb-5 " id="compu">Companies that received money</p>
+       <p class="label mt-5 mb-5 ">Companies that received money</p>
        <div class="companies container">
             <div class="comp-card">
                <div class="awarded">
-                <div class="graph-cont">
-                  <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                  <img src="{{asset('/images/Vector2.png')}}" alt="graph">
-                 </div>
+                 <div class="graph-cont">
+                   <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
+                   <img src="{{asset('/images/vector2.png')}}" alt="graph">
+                  </div>
                   <div class="ml-5">
                      <p class="exp-card1">Total amount Awarded</p>
                      <p class="exp-card2">&#8358;123,446,332</p>
