@@ -31,7 +31,6 @@ Route::get('/ministries/{ministry}', 'MinistryController@show')->name('ministrie
 Route::post('/ministries', 'MinistryController@store')->name('ministry_store');
 Route::patch('/ministries/{ministry}', 'MinistryController@update')->name('ministry_update');
 Route::delete('/ministries/{ministry}', 'MinistryController@destroy')->name('ministry_destroy');
-Route::get('/ministries/display', 'MinistryController@showMatch')->name('ministry_get_clicked');
 Route::post('/ministries/autocomplete', 'MinistryController@autocomplete')->name('ministry_autocomplete');
 
 /**
