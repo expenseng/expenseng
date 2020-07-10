@@ -23,7 +23,7 @@
 button.btn.scroll-down{
     margin: auto;
     position: relative;
-    top: 3.6rem;
+    top: 2.6rem;
     margin-bottom: 7rem;
     height: 64px;
     width: 64px;
@@ -89,6 +89,9 @@ button.btn.scroll-down::after{
     justify-content: space-between;
 }
  
+.scroll-down > a{
+color: rgba(0, 0, 0, 0 );
+}
 
 p.tag{
     padding: 0.3rem 1rem;
@@ -153,12 +156,12 @@ p.label{
     background: #353A45;
     width: 65%;
     left: 0;
-    padding:1rem;
+    padding:0.25;
     color: white;
     font-size: 1rem;
     line-height: 190%;
     margin-top: -3rem;
-    text-align: end;
+    text-align: center;
 }
 
 div.expenses{
@@ -384,7 +387,10 @@ p.profile{
   }
   .gallery{
     width: 40%;
-  }
+ 
+flex: 1;
+margin-top: -2rem;
+text-align: end;}
   p.label{
       width: 47%;
       font-size: 1.2rem;
