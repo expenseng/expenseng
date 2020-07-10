@@ -16,7 +16,8 @@ class ExpenseController extends Controller
 
     public function ministry()
     {
-        $summary = Payment::where('description', '!=', '')->paginate(20);
-        return view('pages.expense.ministry')->with('summary', $summary);
+        $collection['nondescriptive'] = Payment::where('description', '')->paginate(20);
+        $collection['summary'] = Payment::where('description', '!=', '')->paginate(20);
+        return view('pages.expense.ministry')->with('collection', $collection);
     }
 }
