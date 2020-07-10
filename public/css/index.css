@@ -68,7 +68,7 @@ button.btn.scroll-down::after{
     margin-right: 4rem;
 }
 .summary h4{
-    font-weight: 300;
+    font-weight: bold;
     font-size: 3rem;
     line-height: 124.8%;
 }
@@ -83,7 +83,7 @@ button.btn.scroll-down::after{
     height:380px;
     margin-right: -170px;
     overflow-x: hidden;
-    padding-top: 25px;
+    padding-top: 15px;
 }
 
 .ministry-top{
@@ -105,6 +105,10 @@ color: rgba(0, 0, 0, 0 );
     left: 10%;
     top: -3%;
     z-index: 23;
+}
+
+.tag p {
+    margin-bottom: 0;
 }
 .card{
     background-size: 100% 100%;
@@ -236,6 +240,18 @@ p.profile{
     border-bottom: #33A97E 1px solid;
     cursor: pointer;
 }
+
+.g-contractors-p {
+    font-size: 24px;
+    color: #33A97E;
+    margin: auto;
+}
+
+.g-contractors-p a{
+    color: #33A97E;
+    text-decoration: underline;
+}
+
 .ministry-stat{
     display: flex;
     flex-direction: column;
@@ -286,6 +302,19 @@ p.profile{
    background: #FFFFFF;
    border: none;
    border-radius: 0.3rem;
+}
+
+button.g-shadow {
+    box-shadow: 0 0 5px 2px #C8C8C8;
+}
+
+.g-shadow a {
+    color: #00945E;
+    text-decoration: none;
+}
+
+.g-shadow a:hover {
+    cursor: pointer;
 }
 
 .companies{
@@ -339,6 +368,7 @@ p.profile{
     display: flex;
     flex-direction: column;
     color: white;
+    margin-bottom: 90px;
 }
 .tweet{
     background-image: url(../images/twitter1.png);
@@ -499,4 +529,93 @@ text-align: end;}
 .specific{
     width: 50%;
 }
+}
+
+@media screen and (max-width: 1024px) {
+    .carets {
+        padding-right: 0;
+    }
+
+    .summary {
+        margin-right: 0;
+    }
+
+    .gallery{
+        display: flex;
+        position: relative;
+        height:380px;
+        margin-right: -45px;
+        overflow-x: hidden;
+        padding-top: 15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .carets img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .summary h4 {
+        font-size: 2.4rem;
+    }
+
+    .summary p {
+        font-size: 1.2rem;
+        line-height: 27px;
+    }
+
+    .gallery{
+        display: flex;
+        position: relative;
+        height:380px;
+        margin-right: -38px;
+        overflow-x: hidden;
+        padding-top: 15px;
+    }
+
+    .convo {
+        margin-bottom: 70px;
+    }
+
+    .g-contractors-p {
+        margin: auto;
+        padding-top: 40px;
+        font-size: 21px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+
+    .target {
+        margin-top: 0;
+    }
+
+    .carets img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .summary h4 {
+        font-size: 2.2rem;
+    }
+
+    .summary p {
+        font-size: 1rem;
+        line-height: 27px;
+    }
+
+    .gallery{
+        display: flex;
+        position: relative;
+        height:380px;
+        margin-right: -15px;
+        overflow-x: hidden;
+        padding-top: 15px;
+    }
+
+    .convo {
+        margin-bottom: 50px;
+    }
 }

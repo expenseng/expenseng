@@ -17,7 +17,7 @@
             </div>
             <div class="target">
               <div class="summary">
-                  <h4> In 2019, <br> the government spent $4.45 trillion.</h4>
+                  <h4> In 2019, <br> the government spent <br> $4.45 trillion.</h4>
                   <p>ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities across Nigeria.
                   Learn more on how this money was spent with tools to help you navigate spending from top to bottom.</p>
               </div>
@@ -55,7 +55,7 @@
               </div>
             </div>
             <button class="btn scroll-down" >
-              <a href="#expenses">s</a>
+              <a href="#my-expense">s</a>
             </button>
           </div>
         </div>
@@ -64,7 +64,7 @@
   @section('content')
     <section id="main" class="">
        <!-- Expenses section -->
-       <div id="expenses">
+       <div>
         <p class="label">Latest Government Expenses</p>
         <div class="p-3  p-lg-5">
              <div class="expenses container">
@@ -145,10 +145,10 @@
 
        <!-- Explore section -->
        <div class="explore">
-         <div class="container">
+         <div id="my-expense" class="container">
           <p>A big-picture view of the daily spending <br> of the federal government</p>
           <p>Use our explorer to view how government spends our money daily</p>
-          <button>Explore</button>
+          <button class="g-shadow"><a href="{{ route('expense.reports') }}">Explore</a></button>
          </div>
        </div>
 
@@ -257,8 +257,12 @@
               </div>
            </div>
             </div>
+
+            <div class="g-contractors-p">
+                <a href="#">View Contractor Profiles</a>
+            </div>
        </div>
-      </div>
+
        <!-- conversation section -->
        <div class="convo-background">
 
@@ -266,7 +270,7 @@
                 <div class="tweet">
                    <div class="twt-handle">
                      <img src="{{asset('/images/twitter.png')}}" alt="">
-                    <a href="#">@expenseNG</a>
+                    <a href="https://twitter.com/expenseng">@expenseNG</a>
                    </div>
                 </div>
                <div class="query ">

@@ -34,7 +34,7 @@
           </div>
           <div class="col-md-6">
             <aside class="banner">
-                <h4 class="pt-3">Keep in touch with us</h4>
+                <h4 class="l-in-touch pt-3">Keep in touch with us</h4>
                 <hr class="banner-hr">
                 <div class="row">
                     <div class="align col-sm-4">
