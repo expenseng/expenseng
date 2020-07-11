@@ -8,26 +8,6 @@
 <div class="dashboard-wrapper">
     <div class="dashboard-ecommerce">
         <div class="container-fluid dashboard-content ">
-         <!-- ============================================================== -->
-            <!-- Flash Messages  -->
-            <!-- ============================================================== -->
-            <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    @if($errors->any())
-                        <div class="alert alert-danger">
-                            @foreach($errors->all() as $error)
-                                <p>{{ $error }}</p>
-                            @endforeach
-                        </div>
-                    @endif
-
-                    @if(Session::has('flash_message'))
-                        <div class="alert alert-success">
-                            {{ Session::get('flash_message') }}
-                        </div>
-                    @endif
-                </div>
-            </div>
             <!-- ============================================================== -->
             <!-- pageheader  -->
             <!-- ============================================================== -->
@@ -50,6 +30,15 @@
             <!-- ============================================================== -->
             <!-- end pageheader  -->
             <!-- ============================================================== -->
+
+            <!-- ============================================================== -->
+            <!-- flash messages  -->
+            <!-- ============================================================== -->
+                @include('backend.partials.flash')
+             <!-- ============================================================== -->
+            <!-- end flash messages  -->
+            <!-- ============================================================== -->
+            
             <div class="ecommerce-widget">
 
                 <div class="row">
@@ -314,7 +303,7 @@
                                 <div class="card">
                                     <h5 class="card-header">CREATE NEW EXPENSE</h5>
                                     <div class="card-body">
-                                        <form class="" method="post" action="{{action('DashboardController@createExpense')}}">
+                                        <form class="" method="post" action="{{action('Admin\ExpenseController@storeExpense')}}">
                                             {{csrf_field()}}
                                             <label class="label-for-amount" >Amount</label>
                                             <input type="text" required = 'required' name="amount_spent" id="amount_spent" class="form-control">
@@ -339,7 +328,7 @@
                                 <div class="card">
                                     <h5 class="card-header">CREATE NEW COMPANY</h5>
                                     <div class="card-body p-3 form-group">
-                                        <form class="" method="post" action="{{action('DashboardController@createCompany')}}">
+                                        <form class="" method="post" action="{{action('Admin\CompanyController@createCompany')}}">
                                             {{csrf_field()}}
                                             <label class="label-for-name" >Name</label>
                                             <input typ0e="text" required = 'required' name="name" id="name" class="form-control">
