@@ -1,7 +1,7 @@
 @extends('layouts.home')
 @push('css')
 <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-<title>ExpenseNg - Create Ministry</title>
+<title>ExpenseNg - Create Expense</title>
 @endpush
 
 @section('content')

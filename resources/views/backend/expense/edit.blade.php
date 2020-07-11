@@ -1,7 +1,7 @@
 @extends('layouts.home')
 @push('css')
 <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-<title>ExpenseNg - Edit Company</title>
+<title>ExpenseNg - Edit Expense</title>
 @endpush
 
 @section('content')
@@ -22,7 +22,7 @@
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="section-block" id="basicform">
-                                    <h3 class="section-title">Edit Company</h3>
+                                    <h3 class="section-title">Edit Expense</h3>
                                     <p></p>
                                 </div>
                                 <div class="card">
