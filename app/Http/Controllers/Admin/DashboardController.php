@@ -49,5 +49,4 @@ class DashboardController extends Controller
         'amount' => $amount, 'recent_expenses' => $recent_expenses,
         ]);
     }
-
 }

@@ -31,14 +31,14 @@ class CompanyController extends Controller
         return view('backend.company.view')->with(['companies' => $companies]);
     }
 
-     public function createCompany(Request $request)
+    public function createCompany(Request $request)
     {
         $this->validate($request, [
-           'name' => 'required',
-           'shortname' => 'required',
-           'industry' => 'required',
-           'ceo' => 'required',
-           'twitter' => ''
+          'name' => 'required',
+          'shortname' => 'required',
+          'industry' => 'required',
+          'ceo' => 'required',
+          'twitter' => ''
         ]);
         
         $input = $request->all();

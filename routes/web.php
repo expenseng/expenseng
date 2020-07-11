@@ -92,5 +92,6 @@ Auth::routes();
     Route::delete('/ministry/delete/{ministry_id}', 'Admin\MinistryController@deleteMinistry')->name('ministry.delete');
 
     //People CRUD
-    //Route::get('/admin/{company}/{people}', 'Admin\CompanyController@showPeople');
+    Route::get('/admin/{company}/{people}', 'Admin\CompanyController@showPeople');
+
  });

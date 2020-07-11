@@ -7,11 +7,10 @@ use Illuminate\Http\Request;
 use App\Expense;
 use Illuminate\Support\Facades\Session;
 
-
 class ExpenseController extends Controller
 {
-	// display all expenses
-	public function index(Request $request)
+    // display all expenses
+    public function index(Request $request)
     {
         $expenses = Expense::all();
         return view('backend.expense.view')->with(['expenses' => $expenses]);
@@ -23,7 +22,7 @@ class ExpenseController extends Controller
          return view('backend.expense.create');
     }
 
-	// store expenses
+    // store expenses
     public function storeExpense(Request $request)
     {
         $this->validate($request, [
@@ -74,7 +73,8 @@ class ExpenseController extends Controller
     }
 
 
-    public function deleteExpense($id){
+    public function deleteExpense($id)
+    {
         $delete = Expense::where('id', $id)->delete();
         if ($delete) {
             Session::flash('flash_message', 'Expense  deleted successfully!');
@@ -83,5 +83,4 @@ class ExpenseController extends Controller
             return redirect()->back();
         }
     }
-
 }
