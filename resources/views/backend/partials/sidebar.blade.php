@@ -48,16 +48,16 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="{{Route::is('ministry.create') || Route::is('ministry.view')? 'nav-link active': 'nav-link'}}" href="#" 
+                                <a class="{{Route::is('expenses.new') || Route::is('expenses.view')? 'nav-link active': 'nav-link'}}" href="#" 
                                 data-toggle="collapse" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4">
                                 <i class="fa fa-fw fa-book"></i>Expense</a>
                                 <div id="submenu-4" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{route('expense.new')}}">Create Expense <span class="badge badge-secondary">New</span></a>
+                                            <a class="nav-link" href="{{route('expenses.create')}}">Create Expense <span class="badge badge-secondary">New</span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{route('expense.view')}}">View Expenses <span class="badge badge-secondary">New</span></a>
+                                            <a class="nav-link" href="{{route('expenses.view')}}">View Expenses <span class="badge badge-secondary">New</span></a>
                                         </li>
                                     </ul>
                                 </div>
