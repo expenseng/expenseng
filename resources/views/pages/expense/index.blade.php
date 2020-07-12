@@ -15,13 +15,14 @@
 <br>
 <br>
 <br>
-
-<div class="container">
+<br>
+<div class="container wrapper">
   <div class="first">
-    <a href="#" class="first1">HOME<span class="circle-1"></span></a>
-    <a href="#" class="first1">SPENDING<span class="circle-1"></span></a>
-    <a href="#" class="first1">EXPENSE REPORT</a> 
-  </div>
+    <a href="#" class="first1"><h5>HOME &#8226;</h5></a>
+    <a href="#" class="first1"><h5>SPENDING &#8226;</h5></a>
+    <a href="#" class="first1"><h5>EXPENSE REPORT</h5></a> 
+  </div> 
+  
   <div class="col-md-12 second">
     <span class="exp1"><h3>Expense Report</h3></span>
     <div class="second1">
@@ -31,28 +32,28 @@
   <br>
   <br>
   <br>
-  <div class="col-md-12 col-sm-12">
-    <div class="wrap" style="overflow-x:auto;">
-      <div class="col-12 off-1 bottom-border">
-        <a href="" class="active">Daily Expenditure</a>
-        <a href="">Power</a>
-        <a href="">Education</a>
-        <a href="">Security</a>
-        <a href="" class="padding">Agriculture</a>
-        <a href="">Infastructure</a>
+  <div class="col-md-12 col-sm-12 ">
+    <div class=" wrap" style="overflow-x:auto;">
+      <div class="col-12 off-1 bottom-border ">
+        <a href="" class="active off-0">Daily Expenditure</a>
+        <a href="" class="off-0">Power</a>
+        <a href=""class="off-0">Education</a>
+        <a href=""class="off-0">Security</a>
+        <a href="" class="padding off-0">Agriculture</a>
+        <a href="" class="off-0">Infastructure</a>
         <a href="">Comments</a>
       </div>
     </div>
   </div>
   <div class="container">
-    <div class="col-md-12 ">
+    <div class="col-md-12 " style="padding: 20px;">
       <a href="#" class="drop">Chart<i class="fas fa-sort-down fa-2x"></i></a>
     </div>
   </div>
   <div class="container col-md-12">
     <div class="label">
       <a><h6>Graph(Daily):12th May 2019</h6></a>
-      <div><button class="btn-sm  filter"><h5>Select Date</h5> <i class="fas fa-filter fa-2x"></i></button></div>
+      <div><button class="btn-sm  filter">Select Date<i class="fas fa-filter "></i></button></div>
     </div>
   <div id = "chart">
 

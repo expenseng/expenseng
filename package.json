@@ -31,11 +31,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-<<<<<<< Updated upstream
         "apexcharts": "^3.19.3",
         "vue-apexcharts": "^1.5.3"
-=======
-        "apexcharts": "^3.19.3"
->>>>>>> Stashed changes
     }
 }
