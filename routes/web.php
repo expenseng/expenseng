@@ -49,50 +49,49 @@ Route::get('/ministry/getUrl', 'PageController@ministryGetUrl')->name('ministry_
 
 Auth::routes();
 
-/**
- * Admin Routes
+
+/*
+|--------------------------------------------------------------------------
+| ADMIN Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register admin routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "auth" middleware group. Now create something great!
+|
  */
-// Route::prefix('admin')->group(function () {
-//     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');  // Matches The "/admin/dashboard" URL
-//     Route::post('/create_expense', 'DashboardController@createExpense');
-Route::post('/create_company', 'DashboardController@createCompany');
-// });
 
-Route::group(['middleware' => ['auth']], function () {
-    Route::get('/admin/company/create', 'CompanyController@create')->name('company.create');
-    Route::post('/admin/company/create', 'CompanyController@createCompany')->name('create.company');
-    Route::get('/admin/company/view', 'CompanyController@viewCompanies')->name('company.view');
-    Route::get('/admin/company/edit/{company_id}', 'CompanyController@showEditForm')->name('company.view.edit');
-    Route::put('/admin/company/edit/{company_id}', 'CompanyController@editCompany')->name('company.edit');
-    Route::delete('/admin/company/delete/{company_id}', 'CompanyController@deleteCompany')->name('company.delete');
+ Route::group(['prefix' => 'admin', 'middleware' => [] ], function() {          
+    Route::get('/dashboard', 'Admin\DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
 
-    //People
-    Route::get('/admin/{company}/{people}', 'CompanyController@showPeople');
+    // Expense CRUD
+    Route::get('/expenses', 'Admin\ExpenseController@index')->name('expenses.view');
+    Route::get('/expenses/create', 'Admin\ExpenseController@createExpense')->name('expenses.create');
+    Route::post('/expenses/create', 'Admin\ExpenseController@storeExpense')->name('expenses.store');
+    Route::get('/expenses/edit/{expense_id}', 'Admin\ExpenseController@editExpense')->name('expenses.edit');
+    Route::put('/expenses/edit/{expense_id}', 'Admin\ExpenseController@updateExpense')->name('expenses.update');
+    Route::delete('/expenses/delete/{expense_id}', 'Admin\ExpenseController@deleteExpense')->name('expenses.delete');
+   
 
-    Route::get('/admin/ministry/create', 'MinistryController@viewCreateMinistry')->name('ministry.create');
-    Route::post('/admin/ministry/create', 'MinistryController@createMinistry')->name('create.ministry');
-    Route::get('/admin/ministry/view', 'MinistryController@viewMinistries')->name('ministry.view');
-    Route::get('/admin/ministry/edit/{ministry_id}', 'MinistryController@showEditForm')->name('ministry.view.edit');
-    Route::put('/admin/ministry/edit/{ministry_id}', 'MinistryController@editMinistry')->name('ministry.edit');
-    Route::delete('/admin/ministry/delete/{ministry_id}', 'MinistryController@deleteMinistry')->name('ministry.delete');
-});
+    // Company CRUD
+    Route::get('/company/create', 'Admin\CompanyController@create')->name('company.create');
+    Route::post('/company/create', 'Admin\CompanyController@createCompany')->name('create.company');
+    Route::get('/company/view', 'Admin\CompanyController@viewCompanies')->name('company.view');
+    Route::get('/company/edit/{company_id}', 'Admin\CompanyController@showEditForm')->name('company.view.edit');
+    Route::put('/company/edit/{company_id}', 'Admin\CompanyController@editCompany')->name('company.edit');
+    Route::delete('/company/delete/{company_id}', 'Admin\CompanyController@deleteCompany')->name('company.delete');
 
-Route::prefix('admin')->group(function () {
-    Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
-    Route::post('/expense', 'DashboardController@createExpense');
 
-    Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
 
-    Route::get('/expense', 'DashboardController@getExpense')->name('expense.view');
-    Route::get('/expense/create', 'DashboardController@newExpense')->name('expense.new');
-    Route::post('/expense/create', 'DashboardController@createExpense')->name('expense.create');
+    // MiNISTY CRUD
+    Route::get('/ministry/create', 'Admin\MinistryController@viewCreateMinistry')->name('ministry.create');
+    Route::post('/ministry/create', 'Admin\MinistryController@createMinistry')->name('create.ministry');
+    Route::get('/ministry/view', 'Admin\MinistryController@viewMinistries')->name('ministry.view');
+    Route::get('/ministry/edit/{ministry_id}', 'Admin\MinistryController@showEditForm')->name('ministry.view.edit');
+    Route::put('/ministry/edit/{ministry_id}', 'Admin\MinistryController@editMinistry')->name('ministry.edit');
+    Route::delete('/ministry/delete/{ministry_id}', 'Admin\MinistryController@deleteMinistry')->name('ministry.delete');
 
-    Route::post('/company', 'DashboardController@createCompany');
+    //People CRUD
+    Route::get('/admin/{company}/{people}', 'Admin\CompanyController@showPeople');
 
-    Route::get('/company/create', 'CompanyController@create')->name('company.create'); // Matches The "/admin/company/create" URL
-    Route::post('/company/create', 'CompanyController@createCompany')->name('create.company');
-    Route::get('/company/view', 'CompanyController@viewCompanies')->name('company.view');
-
-    Route::get('/companies/{company}', 'CompanyController@adminShow'); // Matches The "/admin/companies/{company}" URL
-    Route::get('/companies', 'CompanyController@adminIndex');
-});
+ });

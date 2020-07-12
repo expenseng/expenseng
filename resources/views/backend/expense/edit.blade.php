@@ -1,7 +1,7 @@
 @extends('layouts.home')
 @push('css')
 <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-<title>ExpenseNg - Create Expense</title>
+<title>ExpenseNg - Edit Expense</title>
 @endpush
 
 @section('content')
@@ -22,29 +22,29 @@
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="section-block" id="basicform">
-                                    <h3 class="section-title">Create New Expense</h3>
+                                    <h3 class="section-title">Edit Expense</h3>
                                     <p></p>
                                 </div>
                                 <div class="card">
                                     
                                     <div class="card-body">
-                                        <form class="" method="post" action="{{action('Admin\ExpenseController@storeExpense')}}">
-                                            {{csrf_field()}}
+                                        <form class="" method="post" action="{{'/admin/expenses/edit/' . $details->id}}">
+                                            @method('put')
+                                            @csrf
                                             <label class="label-for-amount" >Amount</label>
-                                            <input type="text" required = 'required' name="amount_spent" id="amount_spent" class="form-control">
+                                            <input type="text" required = 'required' name="amount_spent"  id="amount_spent" value="{{$details->amount_spent}}" class="form-control">
                                             <p id="ammountErr" class="text-danger"></p>
                                             <label class="label-for-amount" >Year</label>
-                                            <input type="text" required = 'required' name="year" id="year" class="form-control">
+                                            <input type="text" required = 'required' name="year" value="{{$details->year}}" id="year" class="form-control">
                                             <p id="yearErr" class="text-danger"></p>
                                             <label class="label-for-amount" >Month</label>
-                                            <input type="text" required = 'required' name="month" id="month" class="form-control">
+                                            <input type="text" required = 'required' name="month" value="{{$details->month}}" id="month" class="form-control">
                                             <p id="monthErr" class="text-danger"></p>
                                             <label class="label-for-amount" >Project</label>
-                                            <textarea  required = 'required' name="project" id="project" class="form-control" rows=3></textarea>
+                                            <textarea  required = 'required' name="project"  id="project" class="form-control" rows=3>{{$details->project}}</textarea>
                                             <p id="projectErr" class="text-danger"></p>
                                             <button type="submit" value="Create" class="btn btn-primary" name="createExpense" >Create</button>     
                                        </form>
-                                        
                                     </div>
                                 </div>
                             </div>

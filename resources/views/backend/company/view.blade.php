@@ -79,7 +79,7 @@
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                    <form action="{{'/admin/company/delete/'. $ministry->id}}" method="post" >
+                                                                    <form action="{{'/admin/company/delete/'. $company->id}}" method="post" >
                                                                 @method('delete')
                                                                 @csrf
                                                                 <button type="button" class="btn btn-danger">Delete</button>
