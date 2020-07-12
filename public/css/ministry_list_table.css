@@ -181,12 +181,8 @@ float: right;
 }
 
 
-<<<<<<< HEAD
-.pagination a:hover:not(.active) {background-color:#00945E;}
-=======
 
 .pagination a:hover:not(.active),.mini-pagination a:hover:not(.active) {background-color:#00945E;}
->>>>>>> 678284e4d162c51d33b664a4c100a88a6c385b5f
 
 th,td{
     padding: 2%;
@@ -344,3 +340,31 @@ text-align: center;
     margin-right: 1rem;
 }
 
+.btn-date,
+.btn-amount {
+    border: 1px solid#00945E;
+    background-color: #EBF1EF;
+}
+
+.btn.active {
+    background-color: #00945E;
+    color: #FFFFFF;
+}
+
+.ui-datepicker-calendar { display: none !important; }
+#ui-datepicker-div{
+    position: absolute !important;
+    /* top: 410px !important; */
+}
+[data-handler="today"] {
+    display: none
+}
+
+.switch-list li.active{
+    border-bottom: 2px solid #00945e;
+}
+
+#select-month,
+#select-year{
+    display: none;
+}

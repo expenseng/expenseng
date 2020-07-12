@@ -1,9 +1,10 @@
 @extends('layouts.master')
-@section('css')
+@push('css')
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="{{asset('/css/aboutus-header_footer.css')}}">
 <title>FG Expense - Profile</title>
-@endsection
+@endpush
 
 @section('content')
 
@@ -65,9 +66,9 @@
 <div class="list">
     <!--Tabs Header-->
     <ul class="nav container nav-tabs switch-list py-3 mb-3">
-        <li class="ml-3"><a data-toggle="tab" class="active" href="#expense">Expense Summary</a></li>
-        <li><a data-toggle="tab" href="#board">Cabinet</a></li>
-        <li><a data-toggle="tab" href="#comments">Comments</a></li>
+        <li class="ml-3 tabs active"><a data-toggle="tab" class="active" href="#expense">Expense Summary</a></li>
+        <li class="tabs"><a data-toggle="tab" href="#board">Cabinet</a></li>
+        <li class="tabs"><a data-toggle="tab" href="#comments">Comments</a></li>
     </ul>
 
     <hr>
@@ -82,16 +83,73 @@
                     <div class="container pb-3 pt-1 py-4">
                         <div class="row centerize">
                             <div class="col">
-                                <h3 class="index">Date: {{date("jS F, Y")}}</h1>
+                                <h3 id="said-date" class="index">Date: {{date("jS F, Y")}}</h1>
                             </div>
 
                             <div class="col">
-                                <button type="button" class="btn btn-success filter"> Select Date <img
+                               
+                                <button type="button"  data-toggle="modal" data-target="#filterModal" class="btn btn-success filter"> Select Date <img
                                         src="/img/vector__2_.png"></button>
                             </div>
                         </div>
                     </div>
 
+                     <!-- Filter Modal -->
+                    <div id="modal" class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <!-- Header -->
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="filterModalLabel">Filter</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <!-- Body -->
+                                    <div class="modal-body">
+                                    <section class="row">
+                                        <div class="col-6" style="position:relative">
+                                        <p id="filter-choice" class="font-weight-bold">Select Date</p>
+                                        <input name="select-date" id="select-date" type="date" class="form-control">
+                                        <input name="select-month" id="select-month" class="monthYearPicker form-control" />
+                                        <input name="select-year" id="select-year" class="yearPicker form-control" />
+                                    </section>
+                                    <br>
+                                    <section>
+                                        <p class="font-weight-bold">View by</p>
+                                        <div class="row">
+                                            <div class="col-4">
+                                            <button id="day" class="btn btn-block btn-date active">Day</button>
+                                            </div>
+                                            <div class="col-4">
+                                            <button id="month" class="btn btn-block btn-date">Month</button>
+                                            </div>
+                                            <div class="col-4">
+                                            <button id="year" class="btn btn-block btn-date">Year</button>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <br>
+                                    <section>
+                                        <p class="font-weight-bold">Sort by</p>
+                                        <div class="mx-3">
+                                            <button id="desc" class="btn btn-block btn-amount">Amount (Highest to Lowest)</button>
+                                            <button id="asc" class="btn btn-block btn-amount">Amount (Lowest to Highest)</button>
+                                        </div>
+                                    </section>
+                                    </div>
+                                    <!-- Footer -->
+                                    <div class="modal-footer">
+                                    <button type="button" data-id="{{$ministry->id}}" id="apply-filter" class="btn btn-block active mx-5" data-dismiss="modal">Apply Filter</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- End of Filter Modal -->
 
                     <div class="container">
                         <div class="table-div">
@@ -105,24 +163,24 @@
                                     </tr>
                                 </thead>
 
-                                <tbody>
+                                <tbody id="expense-table">
                                     @if (count($payments) > 0)
-                                    @php
-                                    $back = true;
-                                    @endphp
-                                    @foreach($payments as $payment)
-                                
-                                    @php
-                                    $back = !$back;
-                                    $shade = $back ? 'back': '';
-                                    @endphp
-                                        <tr class="{{$shade}}">
-                                            <td> {{$payment->description}}</td>
-                                            <td> {{$payment->beneficiary}}</td>
-                                            <td> ₦{{number_format($payment->amount, 2)}}</td>
-                                            <td> {{date('jS, M Y', strtotime($payment->payment_date))}}</td>
-                                        </tr>
-                                    @endforeach
+                                        @php
+                                        $back = true;
+                                        @endphp
+                                        @foreach($payments as $payment)
+                                    
+                                        @php
+                                        $back = !$back;
+                                        $shade = $back ? 'back': '';
+                                        @endphp
+                                            <tr  class="{{$shade}}">
+                                                <td> {{$payment->description}}</td>
+                                                <td> {{$payment->beneficiary}}</td>
+                                                <td> ₦{{number_format($payment->amount, 2)}}</td>
+                                                <td> {{date('jS, M Y', strtotime($payment->payment_date))}}</td>
+                                            </tr>
+                                        @endforeach
                                 @endif
                                 
                                 </tbody>
@@ -148,9 +206,6 @@
                     </div>
 
                 </div>
-
-
-
 
                 <div class="mt-5 mb-5">
                     <div class="container mt-5">
@@ -179,19 +234,7 @@
                                 </table>
                             </div>
                         </div>
-                            {{-- <div class=" row mt-4  container centerize">
-                                <div class=" col-md min-pag-parent text-muted">1-20 of 320 results </div>
-                                <div class=" pagination">
-                                    <a href="#">&laquo;</a>
-                                    <a class="active" href="#">1</a>
-                                    <a href="#">2</a>
-                                    <a href="#">3</a>
-                                    <a href="#">4</a>
-                                    <a href="#">...</a>
-                                    <a href="#">6</a>
-                                    <a href="#">&raquo;</a>
-                                </div>
-                            </div> --}}
+                            
                     </div>
                 </div>
             </div>
@@ -243,12 +286,152 @@
 
 
 @section('js')
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-    $('.tab').click(function() {
-        $('.toggle-list.active').removeClass("active");
-        $(this).addClass("active");
+        
+    ///////////////////////////////////////////////////////////////////////
+    //                 Custom Date-Picker                               //
+    /////////////////////////////////////////////////////////////////////
+        $(function() {
+                $('.monthYearPicker').datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    showButtonPanel: true,
+                    dateFormat: 'MM yy'
+                }).focus(function() {
+                    let thisCalendar = $(this);
+                    $('.ui-datepicker-calendar').detach();
+                    $('.ui-datepicker-close').click(function() {
+            let month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+            let year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+            thisCalendar.datepicker('setDate', new Date(year, month, 1));
+                    });
+                });
+            });
+
+            $(function() {
+                $('.yearPicker').datepicker({
+                    changeMonth: false,
+                    changeYear: true,
+                    showButtonPanel: true,
+                    dateFormat: 'yy'
+                }).focus(function() {
+                    let thisCalendar = $(this);
+                    $('.ui-datepicker-calendar').detach();
+                    $('[data-handler="prev"]').hide()
+                    $('[data-handler="next"]').hide()
+                    $('.ui-datepicker-month').hide()
+                    $('.ui-datepicker-close').click(function() {
+                    let year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                    thisCalendar.datepicker('setDate', new Date(year, 1, 1));
+                    });
+                });
+            });
+           
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+     const insertCommas = amount =>{
+            const parts = amount.toString().split(".");
+            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            return parts.join(".");
+        }
+
+    const formatDate = date => {
+        const createDate = new Date(date)
+        const parts = createDate.toString().split(" ").filter((item, i) => i > 0 && i < 4) 
+        return `${parts[1]} ${parts[0]}, ${parts[2]}`
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+     $('.tabs').click(function() {
+            $('.tabs.active').removeClass("active");
+            $(this).addClass("active");
+     });
+
+        $('#modal').on('click', '.btn', function(e) {
+            if(e.target.classList.contains('btn-amount')){
+                $('.btn-amount.active').removeClass("active");
+                $(this).addClass("active");
+            }else if(e.target.classList.contains('btn-date')){
+                $('.btn-date.active').removeClass("active");
+                $(this).addClass("active");
+                if($('.btn-date.active').attr('id') === 'month'){
+                    $('#select-date').hide()
+                    $('#select-month').show()   
+                    $('#select-year').hide()
+                    $('#filter-choice').text('Select Month')
+                }else if($('.btn-date.active').attr('id') === 'day'){
+                    $('#select-date').show()
+                    $('#select-month').hide()
+                    $('#select-year').hide()
+                    $('#filter-choice').text('Select Date')
+                }else if($('.btn-date.active').attr('id') === 'year'){
+                    $('#select-date').hide()
+                    $('#select-month').hide()
+                    $('#select-year').show()
+                    $('#filter-choice').text('Select Year')
+                }
+            }        
+        });
+
+        $('#apply-filter').on('click', function(){
+            const id = $(this).attr("data-id");
+            let date, sort;
+           
+            if($('.btn-date.active').attr('id') === 'day'){
+                date = $('#select-date').val()
+            }
+            else if($('.btn-date.active').attr('id') === 'month'){
+                date = $('#select-month').val()
+            }
+            else if($('.btn-date.active').attr('id') === 'year'){
+                date = $('#select-year').val()
+            }
+            if($('.btn-amount.active').attr('id') === 'asc'){
+                sort = 'asc'
+            }else if($('.btn-amount.active').attr('id') === 'desc'){
+                sort = 'desc'
+            }
+   
+            const data = {id, date}
+            if(sort !== undefined){
+                data.sort = sort;
+            }
+            console.log(data)
+            $.ajax({
+                    url: "/ministry/filterExpenses",
+                    method: "GET",
+                    data: data,
+                    success: function(data){
+                        
+                        data = JSON.parse(data)
+                        console.log(data)
+                        const {payments} = data
+                        let back = true;
+                        let html = "";
+                        if(payments.length > 0){
+                            for(payment of payments){
+                            back = !back;
+                            let shade = back ? 'back': '';
+                            html +=  `<tr  class="{shade}">
+                                        <td> ${payment.description}</td>
+                                        <td> ${payment.beneficiary}</td>
+                                        <td> ₦${insertCommas(payment.amount.toFixed(2))}</td>
+                                        <td> ${formatDate(payment.payment_date)}</td>
+                                    </tr>`                     
+                            }
+                        }else{
+                            html += `<b style="color: red">No data available for this day</b>`
+                        }
+                        let reportDate = /\d{4}-\d{2}-\d{2}/.test(data.givenTime)? formatDate(data.givenTime) : data.givenTime
+                        $('#said-date').html(`Date: <span style="color:#1e7e34">${reportDate}</span>`)
+                        $('#expense-table').html(html)
+                    }
+
+                })
+        })
     });
-});
 </script>
 @endsection
