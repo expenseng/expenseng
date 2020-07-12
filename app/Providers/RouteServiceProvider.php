@@ -72,7 +72,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-        Route::domain('api.dev.expenseng.com')
+        Route::domain('api.fg-expenses.herokuapp.com')
         // Route::prefix('api')
             ->middleware('api')
             ->namespace($this->namespace)
