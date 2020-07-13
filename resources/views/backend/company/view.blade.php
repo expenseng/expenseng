@@ -17,8 +17,9 @@
 @endpush
 
 @section('content')
-<div class="dashboard-wrapper">
-            <div class="container-fluid dashboard-content">
+<div class="content">
+        <div class="container-fluid">
+      
                 <div class="row">
                     <div class="col-xl-12">
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -79,7 +80,7 @@
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                    <form action="{{'/admin/company/delete/'. $ministry->id}}" method="post" >
+                                                                    <form action="{{'/admin/company/delete/'. $company->id}}" method="post" >
                                                                 @method('delete')
                                                                 @csrf
                                                                 <button type="button" class="btn btn-danger">Delete</button>

@@ -12,13 +12,14 @@
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" />
         
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
-        <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <title>ExpenseNg - Ministries</title>
 @endpush
 
 @section('content')
-<div class="dashboard-wrapper">
-            <div class="container-fluid dashboard-content">
+<div class="content">
+        <div class="container-fluid">
+      
                 <div class="row">
                     <div class="col-xl-12">
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">

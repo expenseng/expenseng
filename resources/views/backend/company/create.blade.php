@@ -1,12 +1,13 @@
 @extends('layouts.home')
 @push('css')
-<link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ asset('css/dash.css') }}">
 <title>ExpenseNg - Create Company</title>
 @endpush
 
 @section('content')
-    <div class="dashboard-wrapper">
-            <div class="container-fluid dashboard-content">
+<div class="content">
+        <div class="container-fluid">
+      
                 <div class="row">
                     <div class="col-xl-10">
 <!-- basic form  -->

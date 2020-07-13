@@ -24,14 +24,17 @@
               <p>User Profile</p>
             </a>
           </li>
-          <li class="{{Route::has('company') ? 'nav-item active' : 'nav-item'}} ">
-            <a class="nav-link" href="{{Route::has('company') ? '#' : route('company.view')}}">
+          <li class="{{Route::is('company.view') || Route::is('company.create') || Route::is('company.edit') 
+          ? 'nav-item active' : 'nav-item'}} ">
+            <a class="nav-link" href="{{Route::is('company.view') || Route::is('company.create') || Route::is('company.edit') ? '#' : route('company.view')}}">
               <i class="material-icons">content_paste</i>
               <p>Company</p>
             </a>
           </li>
-          <li class="{{Route::has('ministry') ? 'nav-item active' : 'nav-item'}} ">
-            <a class="nav-link" href="{{Route::has('ministry') ? '#' : route('ministry.view')}}">
+          <li class="{{Route::is('ministry.view') || Route::is('ministry.create') || Route::is('ministry.edit')
+           ? 'nav-item active' : 'nav-item'}} ">
+            <a class="nav-link" href="{{Route::is('ministry.view') || Route::is('ministry.create') || Route::is('ministry.edit')
+             ? '#' : route('ministry.view')}}">
               <i class="material-icons">library_books</i>
               <p>Ministry</p>
             </a>
