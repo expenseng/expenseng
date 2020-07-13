@@ -1,9 +1,11 @@
 @extends('layouts.master')
-@section('css')
+@push('css')
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+{{-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/le-frog/jquery-ui.css"> --}}
 <link rel="stylesheet" href="{{asset('/css/aboutus-header_footer.css')}}">
 <title>FG Expense - Profile</title>
-@endsection
+@endpush
 
 @section('content')
 
@@ -65,9 +67,9 @@
 <div class="list">
     <!--Tabs Header-->
     <ul class="nav container nav-tabs switch-list py-3 mb-3">
-        <li class="ml-3"><a data-toggle="tab" class="active" href="#expense">Expense Summary</a></li>
-        <li><a data-toggle="tab" href="#board">Cabinet</a></li>
-        <li><a data-toggle="tab" href="#comments">Comments</a></li>
+        <li class="ml-3 tabs active"><a data-toggle="tab" class="active" href="#expense">Expense Summary</a></li>
+        <li class="tabs"><a data-toggle="tab" href="#board">Cabinet</a></li>
+        <li class="tabs"><a data-toggle="tab" href="#comments">Comments</a></li>
     </ul>
 
     <hr>
@@ -82,16 +84,74 @@
                     <div class="container pb-3 pt-1 py-4">
                         <div class="row centerize">
                             <div class="col">
-                                <h3 class="index">Date: {{date("jS F, Y")}}</h1>
+                                <h3 id="said-date" class="index">Date: {{date("jS F, Y")}}</h1>
                             </div>
 
                             <div class="col">
-                                <button type="button" class="btn btn-success filter"> Select Date <img
+                               
+                                <button type="button"  data-toggle="modal" data-target="#filterModal" class="btn btn-success filter"> Select Date <img
                                         src="/img/vector__2_.png"></button>
                             </div>
                         </div>
                     </div>
 
+                     <!-- Filter Modal -->
+                    <div id="modal" class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <!-- Header -->
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="filterModalLabel">Filter</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <!-- Body -->
+                                    <div class="modal-body">
+                                        <section>
+                                            <p id="view" class="font-weight-bold">View by</p>
+                                            <div id="date-btn" class="row">
+                                                <div class="col-4">
+                                                <button id="day" class="btn btn-block btn-date active">Day</button>
+                                                </div>
+                                                <div class="col-4">
+                                                <button id="month" class="btn btn-block btn-date">Month</button>
+                                                </div>
+                                                <div class="col-4">
+                                                <button id="year" class="btn btn-block btn-date">Year</button>
+                                                </div>
+                                            </div>
+                                        </section>                   
+                                        <br>
+                                        <section class="row">
+                                            <div class="col-12" style="position:relative">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                            <input placeholder="Select Date" name="select-date" id="select-date"  class="form-control">
+                                            <input placeholder="Select Month" name="select-month" id="select-month" class="monthYearPicker form-control" />
+                                            <input placeholder="Select Year" name="select-year" id="select-year" class="yearPicker form-control" />
+                                            <small id="date-format-err"></small>
+                                        </section>
+                                        <br>
+                                        <section id="sort-options">
+                                            <p class="font-weight-bold">Sort by</p>
+                                            <div>
+                                                <button id="desc" class="btn btn-block btn-amount">Amount (Highest to Lowest)</button>
+                                                <button id="asc" class="btn btn-block btn-amount">Amount (Lowest to Highest)</button>
+                                            </div>
+                                        </section>
+                                    </div>
+                                    <!-- Footer -->
+                                    <div class="modal-footer">
+                                    <button type="button" data-id="{{$ministry->id}}" id="apply-filter" class="btn btn-block active mx-5" data-dismiss="modal">Apply Filter</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- End of Filter Modal -->
 
                     <div class="container">
                         <div class="table-div">
@@ -105,24 +165,24 @@
                                     </tr>
                                 </thead>
 
-                                <tbody>
+                                <tbody id="expense-table">
                                     @if (count($payments) > 0)
-                                    @php
-                                    $back = true;
-                                    @endphp
-                                    @foreach($payments as $payment)
-                                
-                                    @php
-                                    $back = !$back;
-                                    $shade = $back ? 'back': '';
-                                    @endphp
-                                        <tr class="{{$shade}}">
-                                            <td> {{$payment->description}}</td>
-                                            <td> {{$payment->beneficiary}}</td>
-                                            <td> ₦{{number_format($payment->amount, 2)}}</td>
-                                            <td> {{date('jS, M Y', strtotime($payment->payment_date))}}</td>
-                                        </tr>
-                                    @endforeach
+                                        @php
+                                        $back = true;
+                                        @endphp
+                                        @foreach($payments as $payment)
+                                    
+                                        @php
+                                        $back = !$back;
+                                        $shade = $back ? 'back': '';
+                                        @endphp
+                                            <tr  class="{{$shade}}">
+                                                <td> {{$payment->description}}</td>
+                                                <td> {{$payment->beneficiary}}</td>
+                                                <td> ₦{{number_format($payment->amount, 2)}}</td>
+                                                <td> {{date('jS, M Y', strtotime($payment->payment_date))}}</td>
+                                            </tr>
+                                        @endforeach
                                 @endif
                                 
                                 </tbody>
@@ -148,9 +208,6 @@
                     </div>
 
                 </div>
-
-
-
 
                 <div class="mt-5 mb-5">
                     <div class="container mt-5">
@@ -179,6 +236,7 @@
                                 </table>
                             </div>
                         </div>
+                            
                     </div>
                 </div>
             </div>
@@ -187,26 +245,27 @@
 
     <!--2-->
     <div id="board" class="tab-pane fade">
-        <div class="row mt-5 pl-3 d-flex justify-content-lg-around">
+        <div class="row my-5 pl-3 d-flex justify-content-lg-around">
             @if ($cabinets)
                 @foreach($cabinets as $cabinet)
                 @php
                     $ministerHandle = substr($cabinet->twitter, 1)
                 @endphp
             <div class="col-lg-3 card border-top-0 border-left-0 border-right-0">
-                <div class="card-img" style="display:flex; justify-content: center">
+                <div class="card-img" style="display:flex; justify-content: center; padding:1.25rem 1.25rem 0;">
                     <img src="{{$cabinet->avatar}}" class="img-fluid" alt="{{$cabinet->name}}">
                 </div>
                 <div class="card-body">
                     <div class="card-title">
-                    <p class="text-center">{{$cabinet->name}}</p>
+                    <p id="minister-name" class="text-center font-weight-bold">{{$cabinet->name}}</p>
+                    <p class="text-success text-center">{{$cabinet->role}}</p>
                     </div>
-                    <div class="card-text">
+                    
                         
-                        <p class="green text-center">{{$cabinet->role}}</p>
-                    </div>
+                       
+                
                     <div class="social-handle text-center">
-                        <a href="#" class="link ml-2"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#" class="link"><i class="fab fa-facebook" aria-hidden="true"></i></a>
                         <a href="{!! url("https://twitter.com/$ministerHandle") !!}" class="link ml-2"><i class="fab fa-twitter" aria-hidden="true"></i></a>
                         <a href="#" class="link ml-2"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
                         <a href="#" class="link ml-2"><i class="fab fa-instagram" aria-hidden="true"></i></a>
@@ -230,12 +289,6 @@
 
 
 @section('js')
-<script type="text/javascript">
-    $(document).ready(function() {
-    $('.tab').click(function() {
-        $('.toggle-list.active').removeClass("active");
-        $(this).addClass("active");
-    });
-});
-</script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="{{ asset('js/ministry_profile.js') }}" type="text/javascript"></script>
 @endsection

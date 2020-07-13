@@ -46,6 +46,7 @@ Route::get('/project-modal', 'PageController@projectModal')->name('project-modal
 Route::get('/ministry/details', 'MinistrySearchController@show')->name('get_ministry_details');
 Route::get('/ministry/all', 'MinistrySearchController@index')->name('ministry_all');
 Route::get('/ministry/getUrl', 'PageController@ministryGetUrl')->name('ministry_get_url');
+Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses')->name('ministry_filter_expenses');
 
 Auth::routes();
 

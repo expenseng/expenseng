@@ -48,7 +48,7 @@
             <hr>
           </div>
           <div id="search-area" class="offset-md-1 col-md-5 mt-3 mt-md-0">
-            <input type="search" id="ministry_search" class="form-control form-control-lg mb-2" placeholder="Search for a ministry">
+            <input type="search" id="ministry_search" class="form-control form-control-lg mb-2" style="font-family:Arial, FontAwesome" placeholder="&#xf002; Search for a ministry">
             <div id="ministryList"></div>
             {{-- <button type="submit" id="submit" class="btn btn-block btn-success">Find</button> --}}
             @csrf
@@ -68,6 +68,9 @@
             style="cursor:pointer"
           >
             <div class="cont-1 d-flex flex-column justify-content-center">
+              <chart label="myVueChart" 
+                        v-bind:data="[{amount:32424, year:2039},{amount:12920923, year:2010}]" 
+                        element="{{ $ministry->shortname() }}"></chart>
               <div class="img">
                 <span class="circle"></span>
               </div>
@@ -78,7 +81,7 @@
                 </div>
               </div>
               <div class="texts d-flex flex-column text-center">
-                <h4>Total amount Spent</h4>
+                <p>Total amount Spent</p>
               <p class="num">₦{{number_format($ministry->total,2)}}</p>
                 <p class="year">{{date('Y')}}</p>
               </div>
