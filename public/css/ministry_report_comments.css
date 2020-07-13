@@ -114,6 +114,23 @@ span > p{
     margin-top: .9rem;
     margin-right: 5rem;
 }
+#minister-name{
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+.social-handle.text-center{
+    display: flex;
+    justify-content: center;
+}
+.social-handle.text-center a{
+    color: #000;
+    border: 1px solid #222;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 @media (max-width: 768px){
     .paragraph{

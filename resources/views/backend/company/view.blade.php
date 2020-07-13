@@ -1,6 +1,5 @@
 @extends('layouts.home')
 @push('css')
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="/extras/datatables/css/buttons.bootstrap4.css">
@@ -10,16 +9,18 @@
     <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" />
-
+        <link rel="stylesheet" href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2">
+  
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
         <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <title>ExpenseNg - Companies</title>
 @endpush
 
 @section('content')
-<div class="dashboard-wrapper">
-            <div class="container-fluid dashboard-content">
-                <div class="row">
+<div class="content">
+        <div class="container-fluid">
+      
+        <div class="row">
                     <div class="col-xl-12">
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
@@ -39,20 +40,20 @@
                                                 <th>CEO</th>
                                                 <th>CEO Twitter</th>
                                                 <th>Actions</th>
-
+                                                
                                             </tr>
                                         </thead>
 
                                         <tbody>
                                         @if (count($companies ) > 0)
-
+                                        
                                             <tr>
                                             @foreach ($companies as $company)
                                                 <td>
                                                     {{$company->id}}
                                                 </td>
                                                 <td>{{$company->name}}</td>
-                                            <td><a href="/admin/{{$company->shortname}}/people"></a>{{$company->shortname}}</td>
+                                                <td>{{$company->shortname}}</td>
                                                 <td>{{$company->industry}}</td>
                                                 <td>{{$company->ceo}}</td>
                                                 <td>{{$company->twitter}}</td>
@@ -62,7 +63,7 @@
                                                             <a href="{{'/admin/company/edit/' . $company->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
                                                         </div>
                                                         <!--modal begin-->
-
+                                                        
                                                             <div class="col-md-6">
                                                             <i class="fa fa-trash" data-toggle="modal" data-target="#exampleModal" style="color: red"></i>
                                                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -75,7 +76,7 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-
+                                                                    
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -91,13 +92,13 @@
                                                     </div>
                                                     </div>
 
-
+                                                    
                                                 </td>
                                             </tr>
-
+                                            
                                         @endforeach
                                         @endif
-
+                                            
                                         </tbody>
                                         <tfoot>
                                             <tr>
