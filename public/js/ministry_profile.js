@@ -3,6 +3,17 @@ $(document).ready(function() {
     ///////////////////////////////////////////////////////////////////////
     //                  Date-Picker                               //
     /////////////////////////////////////////////////////////////////////
+
+        $( function() {
+            $( "#select-date" ).datepicker({
+                dateFormat: 'dd-mm-yy',
+                changeMonth: true,
+                changeYear: true,
+            }).focus(function(){
+                $('.ui-datepicker-calendar').show();
+            });
+          });
+
         $(function() {
                 $('.monthYearPicker').datepicker({
                     changeMonth: true,
@@ -20,26 +31,28 @@ $(document).ready(function() {
                 });
             });
 
-            $(function() {
-                $('.yearPicker').datepicker({
-                    changeMonth: false,
-                    changeYear: true,
-                    showButtonPanel: true,
-                    dateFormat: 'yy'
-                }).focus(function() {
-                    let thisCalendar = $(this);
-                    $('.ui-datepicker-calendar').detach();
-                    $('[data-handler="prev"]').hide()
-                    $('[data-handler="next"]').hide()
-                    $('.ui-datepicker-month').hide()
-                    $('.ui-datepicker-close').click(function() {
-                    let year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-                    thisCalendar.datepicker('setDate', new Date(year, 1, 1));
-                    });
+        $(function() {
+            $('.yearPicker').datepicker({
+                changeMonth: false,
+                changeYear: true,
+                showButtonPanel: true,
+                dateFormat: 'yy'
+            }).focus(function() {
+                let thisCalendar = $(this);
+                $('.ui-datepicker-calendar').detach();
+                $('[data-handler="prev"]').hide()
+                $('[data-handler="next"]').hide()
+                $('.ui-datepicker-month').hide()
+                $('.ui-datepicker-close').click(function() {
+                let year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                thisCalendar.datepicker('setDate', new Date(year, 1, 1));
                 });
             });
-           
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+        });
+
+    ///////////////////////////////////////////////////////////////////////////////////       
+    //////////                 Utilities                                //////////////
+    /////////////////////////////////////////////////////////////////////////////////
         
      const insertCommas = amount =>{
             const parts = amount.toString().split(".");
@@ -51,6 +64,14 @@ $(document).ready(function() {
         const createDate = new Date(date)
         const parts = createDate.toString().split(" ").filter((item, i) => i > 0 && i < 4) 
         return `${parts[1]} ${parts[0]}, ${parts[2]}`
+    }
+
+    const reverseDateFormat= date => {
+        
+        let splitDate = date.split('-'); 
+        let reverseArray = splitDate.reverse(); 
+        let joinArray = reverseArray.join('-'); 
+        return joinArray; 
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -71,45 +92,81 @@ $(document).ready(function() {
                     $('#select-date').hide()
                     $('#select-month').show()   
                     $('#select-year').hide()
-                    $('#filter-choice').text('Select Month')
                 }else if($('.btn-date.active').attr('id') === 'day'){
                     $('#select-date').show()
                     $('#select-month').hide()
                     $('#select-year').hide()
-                    $('#filter-choice').text('Select Date')
                 }else if($('.btn-date.active').attr('id') === 'year'){
                     $('#select-date').hide()
                     $('#select-month').hide()
                     $('#select-year').show()
-                    $('#filter-choice').text('Select Year')
                 }
             }        
         });
 
-        $('#apply-filter').on('click', function(){
+        $('#apply-filter').on('click', function(e){
             const id = $(this).attr("data-id");
-            let date, sort;
+            let invalid = false;
+            let date, sort, active;
            
             if($('.btn-date.active').attr('id') === 'day'){
-                date = $('#select-date').val()
+                date = $('#select-date').val();
+                active = 'day';
             }
             else if($('.btn-date.active').attr('id') === 'month'){
                 date = $('#select-month').val()
+                active = 'month';
             }
             else if($('.btn-date.active').attr('id') === 'year'){
-                date = $('#select-year').val()
+                date = $('#select-year').val();
+                active = 'year';
             }
             if($('.btn-amount.active').attr('id') === 'asc'){
                 sort = 'asc'
             }else if($('.btn-amount.active').attr('id') === 'desc'){
                 sort = 'desc'
             }
-   
-            const data = {id, date}
+           
+            if(date === ''){
+                invalid = true;
+                $('#date-format-err').hide().html('Please select a date or click <b style="color:black; font-size:12px">&times;</b> to exit')
+                .fadeIn().delay(3000).fadeOut('slow')
+            }else{
+                if(active === 'day'){
+                    if(!/^(\d{2})-(\d{2})-(\d{4})$/.test(date)){
+                        invalid = true;
+                        $('#date-format-err').hide().html('Invalid Format! Format: <b>dd-mm-yyyy</b> e.g 01-10-2020')
+                        .fadeIn().delay(3000).fadeOut('slow');
+                    }       
+                }else if(active === 'month'){
+                    if(!/^([A-Za-z]+)\s(\d{4})$/.test(date)){
+                        invalid = true;
+                        $('#date-format-err').hide().html('Invalid Format! Format: <b>MM yyyy</b> e.g May 2020')
+                        .fadeIn().delay(3000).fadeOut('slow')
+                    }       
+                }else if(active === 'year'){
+                    if(!/^\d{4}$/.test(date)){
+                        invalid = true;
+                        $('#date-format-err').hide().html('Invalid Format! Format: <b>yyyy</b> e.g 2020')
+                        .fadeIn().delay(3000).fadeOut('slow')
+                    }       
+                }
+            }
+            
+            $('.modal').on('hide.bs.modal', function(e) {        
+                 if(invalid) {           
+                    e.preventDefault();
+                    $('.modal').off('hide.bs.modal')
+                 }  
+             });
+            
+            if(invalid) return;
+            date = reverseDateFormat(date);
+            const data = {id, date};
             if(sort !== undefined){
                 data.sort = sort;
             }
-            console.log(data)
+           
             $.ajax({
                     url: "/ministry/filterExpenses",
                     method: "GET",

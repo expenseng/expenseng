@@ -2,6 +2,7 @@
 @push('css')
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+{{-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/le-frog/jquery-ui.css"> --}}
 <link rel="stylesheet" href="{{asset('/css/aboutus-header_footer.css')}}">
 <title>FG Expense - Profile</title>
 @endpush
@@ -109,36 +110,37 @@
                                     </div>
                                     <!-- Body -->
                                     <div class="modal-body">
-                                    <section class="row">
-                                        <div class="col-6" style="position:relative">
-                                        <p id="filter-choice" class="font-weight-bold">Select Date</p>
-                                        <input name="select-date" id="select-date" type="date" class="form-control">
-                                        <input name="select-month" id="select-month" class="monthYearPicker form-control" />
-                                        <input name="select-year" id="select-year" class="yearPicker form-control" />
-                                    </section>
-                                    <br>
-                                    <section>
-                                        <p class="font-weight-bold">View by</p>
-                                        <div class="row">
-                                            <div class="col-4">
-                                            <button id="day" class="btn btn-block btn-date active">Day</button>
+                                        <section>
+                                            <p id="view" class="font-weight-bold">View by</p>
+                                            <div id="date-btn" class="row">
+                                                <div class="col-4">
+                                                <button id="day" class="btn btn-block btn-date active">Day</button>
+                                                </div>
+                                                <div class="col-4">
+                                                <button id="month" class="btn btn-block btn-date">Month</button>
+                                                </div>
+                                                <div class="col-4">
+                                                <button id="year" class="btn btn-block btn-date">Year</button>
+                                                </div>
                                             </div>
-                                            <div class="col-4">
-                                            <button id="month" class="btn btn-block btn-date">Month</button>
+                                        </section>                   
+                                        <br>
+                                        <section class="row">
+                                            <div class="col-12" style="position:relative">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                            <input placeholder="Select Date" name="select-date" id="select-date"  class="form-control">
+                                            <input placeholder="Select Month" name="select-month" id="select-month" class="monthYearPicker form-control" />
+                                            <input placeholder="Select Year" name="select-year" id="select-year" class="yearPicker form-control" />
+                                            <small id="date-format-err"></small>
+                                        </section>
+                                        <br>
+                                        <section id="sort-options">
+                                            <p class="font-weight-bold">Sort by</p>
+                                            <div>
+                                                <button id="desc" class="btn btn-block btn-amount">Amount (Highest to Lowest)</button>
+                                                <button id="asc" class="btn btn-block btn-amount">Amount (Lowest to Highest)</button>
                                             </div>
-                                            <div class="col-4">
-                                            <button id="year" class="btn btn-block btn-date">Year</button>
-                                            </div>
-                                        </div>
-                                    </section>
-                                    <br>
-                                    <section>
-                                        <p class="font-weight-bold">Sort by</p>
-                                        <div class="mx-3">
-                                            <button id="desc" class="btn btn-block btn-amount">Amount (Highest to Lowest)</button>
-                                            <button id="asc" class="btn btn-block btn-amount">Amount (Lowest to Highest)</button>
-                                        </div>
-                                    </section>
+                                        </section>
                                     </div>
                                     <!-- Footer -->
                                     <div class="modal-footer">
