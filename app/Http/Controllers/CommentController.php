@@ -34,7 +34,7 @@ class CommentController extends Controller
     }
 
     /**
-     * Send POST to /organization/token
+     * Send POST to /applications
     */
     public function createToken(){
         $response = $this->http->post('/applications', [

@@ -21,7 +21,7 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 Vue.component('apexchart', VueApexCharts);
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('comments', require('./components/Comments.vue').default);
+Vue.component('comments', require('./components/Chat/Comments.vue').default);
 Vue.component('chart', require('./components/Payments/Chart.vue').default);
 Vue.component('govt-expense', require('./components/Home/GovtExpenses.vue').default);
 

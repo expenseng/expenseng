@@ -1,21 +1,17 @@
 <template lang="">
     <div>
-        <div class="container mb-4 mt-4">
+        <div class="container mb-4 mt-4" v-for="data in comments">
             <div class="card p-3">
-                <div class="container" v-for="comments in data">
+                <div class="container">
                     <div class="row occupy">
                         <div class="col-sm-1 mt-1 row d-flex container">
-                            <img src="/images/profile-image.svg"class="resize"alt="profile-image">
-                            <div class="ml-3 mt-2 be-gone">
-                                <p class="green-text">{{ this.getUsername(data.ownerId) }}<br>
-                                <span class="mt-0 grey-text small mt-1">2mins ago</span></p>
-                            </div>
+                            <img :src="getAvatar(reply.ownerId)" class="resize" alt="profile-image">
                         </div>
                         <div class="col-sm-11" :id="data.commentId">
                             <div class="d-flex justify-content-between  no-show">
                                 <div class="d-flex">
-                                    <p class="green-text">James Emmanuel</p>
-                                    <p class="ml-3 grey-text small mt-1">2mins ago</p>
+                                    <p class="green-text">{{ getUsername(data.ownerId) }}</p>
+                                    <p class="ml-3 grey-text small mt-1">{{ data.time }}</p>
                                 </div>
                                 <i class="fas fa-ellipsis-h grey-text"></i>
                             </div>
@@ -30,36 +26,9 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="container mb-4 mt-4" v-if="this.data.numOfReplies > 0">
-                            <div class="container p-2">
-                                <div class="container">
-                                    <div class="row container occupy">
-                                        <div class="col-sm-1 mt-1 row d-flex container">
-                                            <img src="/images/profile-image.svg"class="reduce"alt="profile-image">
-                                            <div class="ml-3 mt-2 be-gone">
-                                                <p class="green-text">James Emmanuel<br>
-                                                <span class="mt-0 grey-text small mt-1">2mins ago</span></p>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-11 ">
-                                            <div class="d-flex justify-content-between ">
-                                                <div class="d-flex no-show">
-                                                    <p class="green-text">Kingsley Adams</p>
-                                                    <p class="ml-3 grey-text small mt-1">2mins ago</p>
-                                                </div>
-                                                <i class="fas fa-ellipsis-h grey-text no-show"></i>
-                                            </div>
-                                            <div>
-                                                <p>Yes, I agree. It's Amazing!</p>
-                                            </div>
-                                            <div class="d-flex text-center align-content-center  icons justify-content-start">
-                                                <span class="d-flex mr-3"><i class="far fa-thumbs-up"></i><p class="small mt-1">23</p></span>
-                                                <span class="d-flex mr-3"><i class="far fa-thumbs-down"></i> <p class="small mt-1">0</p></span>
-                                                <span class="d-flex mr-3"><i class="far fa-comment"></i><p class="small mt-1">Reply</p></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
+                        <div class="container mb-4 mt-4" v-if="data.numOfReplies > 0">
+                            <div class="container p-2" v-for="reply in data.replies">
+                                
                             </div>
                         </div>
                     </div>
@@ -75,12 +44,55 @@ export default {
         return {
             comment: '',
             origin: '',
-            data: [],
+            comments: [
+                {
+                    "commentId": "5f0b822e47fc48001694258b",
+                    "refId": "1",
+                    "applicationId": "5f08a7c604c43b0014558260",
+                    "ownerId": "001",
+                    "content": "Hola mi corazon 😉",
+                    "origin": "expense page",
+                    "numOfVotes": 0,
+                    "numOfUpVotes": 0,
+                    "numOfDownVotes": 0,
+                    "numOfFlags": 0,
+                    "numOfReplies": 0,
+                    "replies": [],
+                },
+                {
+                    "commentId": "5f0b822e47fc48001694258b",
+                    "refId": "1",
+                    "applicationId": "5f08a7c604c43b0014558260",
+                    "ownerId": "001",
+                    "content": "Hola mi corazon 😉",
+                    "origin": "expense page",
+                    "numOfVotes": 0,
+                    "numOfUpVotes": 0,
+                    "numOfDownVotes": 0,
+                    "numOfFlags": 0,
+                    "numOfReplies": 1,
+                    "replies": [],
+                },
+            ],
         }
     },
 
     mounted() {
-            
+        //get associated first repliy for comments with a reply
+        this.comments.map(comment => {
+            if(comment.numOfReplies > 0){
+                comment.replies.push(
+                    {
+                        "ownerId": "001",
+                        "content": "A reply to a certain comment"
+                    },
+                    {
+                        "ownerId": "001",
+                        "content": "A reply to a certain comment"
+                    }
+                )
+            }
+        })
     },
 
     methods: {
@@ -101,6 +113,10 @@ export default {
             
         },
 
+        getAvatar(ownerId){
+
+        },
+
         send(){
             axios.post('/api/comments', {
                 email: "olaegbesamuel@gmail.com",
@@ -111,6 +127,10 @@ export default {
             }).catch(err => {
                 console.log(err);
             })
+        },
+
+        getUsername(){
+            return "Samuel";
         }
     },
 }
