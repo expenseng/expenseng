@@ -17,11 +17,7 @@
                         <div>
                             <p>{{ reply.content }}</p>
                         </div>
-                        <div class="d-flex text-center align-content-center  icons justify-content-start">
-                            <span class="d-flex mr-3"><i class="far fa-thumbs-up"></i><p class="small mt-1">23</p></span>
-                            <span class="d-flex mr-3"><i class="far fa-thumbs-down"></i> <p class="small mt-1">0</p></span>
-                            <span class="d-flex mr-3"><i class="far fa-comment"></i><p class="small mt-1">Reply</p></span>
-                        </div>
+                        <reactions :data="reply"></reactions>
                     </div>
                 </div>
             </div> 
@@ -31,11 +27,16 @@
 
 <script>
 import CommentService from '../../Service/CommentService';
+import Reactions from './Reactions';
 export default {
     data() {
         return {
             comment: new CommentService(),
         }
+    },
+
+    components:{
+        Reactions
     },
 
     props:{

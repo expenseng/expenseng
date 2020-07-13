@@ -18,13 +18,7 @@
                             <div>
                                 <p>{{ data.content }}</p>
                             </div>
-                            <div class="d-flex text-center align-content-center  icons justify-content-start">
-                                <span class="d-flex mr-3"><i class="far fa-thumbs-up"></i><p class="small mt-1">{{ data.numOfUpVotes }}</p></span>
-                                <span class="d-flex mr-3"><i class="far fa-thumbs-down"></i> <p class="small mt-1">{{ data.numOfDownVotes }}</p></span>
-                                <span class="d-flex mr-3" style="cursor:pointer" @click="comment.reply(data.commentId)"><i class="far fa-comment"></i>
-                                    <p class="small mt-1"> {{ data.numOfReplies > 0 ? "Replies " + data.numOfReplies : "Reply" }} </p>
-                                </span>
-                            </div>
+                            <reactions :data="data"></reactions>
                         </div>
                         <div class="container mb-4 mt-4" v-if="data.numOfReplies > 0">
                             <replies :replies="data.replies"></replies>
@@ -42,6 +36,7 @@
 import CommentService from '../../Service/CommentService';
 import Comment from './Comment';
 import Replies from './Replies'
+import Reactions from './Reactions';
 
 export default {
     data() {
@@ -84,7 +79,8 @@ export default {
 
     components:{
         Replies,
-        Comment
+        Comment,
+        Reactions
     },
 
     mounted() {
