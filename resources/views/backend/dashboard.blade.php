@@ -350,7 +350,7 @@
                                             <input type="twitter" required = 'required'  name="twitter" id="twitter" class="form-control">
                                             <p id="twitterErr" class="text-danger"></p>
 
-                                            <button type="submit" value="Add" class="btn btn-primary" name="addCompany" onmouseover="validateAddNew('submit')">Add</button>
+                                            <button type="submit" value="Add" class="btn btn-primary" name="addCompany">Add</button>
                                         </form>
                                     </div>
                                 </div>

@@ -15,6 +15,7 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
+        "santigarcor/laratrust": "^6.1",
         "squizlabs/php_codesniffer": "*"
     },
     "require-dev": {

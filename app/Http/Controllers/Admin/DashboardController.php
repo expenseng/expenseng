@@ -8,7 +8,6 @@ use App\Budget;
 use App\Expense;
 use App\Company;
 use App\Ministry;
-use Illuminate\Support\Facades\Session;
 
 class DashboardController extends Controller
 {
@@ -19,7 +18,6 @@ class DashboardController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
     }
 
     /**

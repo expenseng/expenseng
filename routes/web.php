@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contactUs')->name('contact');
@@ -47,7 +48,8 @@ Route::get('/ministry/details', 'MinistrySearchController@show')->name('get_mini
 Route::get('/ministry/all', 'MinistrySearchController@index')->name('ministry_all');
 Route::get('/ministry/getUrl', 'PageController@ministryGetUrl')->name('ministry_get_url');
 
-Auth::routes();
+
+
 
 
 /*
@@ -61,7 +63,7 @@ Auth::routes();
 |
  */
 
- Route::group(['prefix' => 'admin', 'middleware' => [] ], function() {          
+ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function() {          
     Route::get('/dashboard', 'Admin\DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
 
     // Expense CRUD
@@ -94,4 +96,14 @@ Auth::routes();
     //People CRUD
     Route::get('/admin/{company}/{people}', 'Admin\CompanyController@showPeople');
 
+     // USERS CRUD
+    Route::get('/users', 'Admin\UserController@index')->name('users.view');
+    Route::get('/users/create', 'Admin\ExpenseController@createExpense')->name('users.create');
+    Route::post('/users/create', 'Admin\ExpenseController@storeExpense')->name('users.store');
+    Route::get('/users/edit/{expense_id}', 'Admin\ExpenseController@editExpense')->name('users.edit');
+    Route::put('/users/edit/{expense_id}', 'Admin\ExpenseController@updateExpense')->name('users.update');
+    Route::delete('/users/delete/{expense_id}', 'Admin\ExpenseController@deleteExpense')->name('users.delete');
+
  });
+
+ Auth::routes();

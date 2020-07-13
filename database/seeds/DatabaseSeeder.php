@@ -25,5 +25,6 @@ class DatabaseSeeder extends Seeder
         $this->call(BudgetSeeder::class);  
         $this->call(MinistrySeeder::class);
         $this->call(CabinetSeeder::class);
+        $this->call(LaratrustSeeder::class);
     }
 }
