@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Comment;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Cookie;
+use App\Citizen;
 use Illuminate\Support\Facades\Log;
 
 use function GuzzleHttp\json_decode;
@@ -102,5 +104,16 @@ class CommentController extends Controller
             Log::error('Error while fetching replies to '.$request->commentId);
             return false;
         }
+    }
+
+    public function onboardUser(Request $request){
+        Cookie::queue("commentator", "true");
+        Cookie::queue("user", $request->user);
+        Cookie::queue("email", $request->email);
+
+        return Citizen::create([
+            "name" => $request->name,
+            "email" => $request->email,
+        ]);
     }
 }

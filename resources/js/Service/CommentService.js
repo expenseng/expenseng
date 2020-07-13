@@ -1,10 +1,5 @@
 class CommentService{
 
-    constructor(){
-        this.user = getUser();
-        this.comment = "";
-    }
-
     getAvatar(ownerId){
         return "https://en.gravatar.com/userimage/109657943/5d0f4515d1fc87ab9acaf9eebf82f99e.png";
     }
@@ -14,6 +9,7 @@ class CommentService{
     }
 
     getUsername(ownerId){
+        axios.get('/api/comments/user')
         return "Olaegbe Samuel";
     }
 
@@ -22,8 +18,12 @@ class CommentService{
         document.cookie = "user="+name;
         document.cookie = "email="+email;
 
-        this.user.name = name;
-        this.user.email = email;
+        axios.post('/api/comments/user')
+        .then(response => {
+            return response.data;
+        }).catch(err => {
+            console.log(err);
+        })
     }
 
     getUser(){
