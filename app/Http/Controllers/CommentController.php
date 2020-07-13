@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Comment;
-use Carbon\Carbon;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Log;
+
+use function GuzzleHttp\json_decode;
 
 class CommentController extends Controller
 {
@@ -17,13 +19,15 @@ class CommentController extends Controller
     public function __construct()
     {
         $this->token = env("COMMENTS_TOKEN");
-        
+        $this->baseUri = "https://comment.microapi.dev/v1/";
+
         $this->http = new Client([
             'base_uri' => $this->baseUri,
             'headers' => [
+                'Content-Type' => 'application/json',
                 'Authorization' => 'Bearer ' .$this->token,
             ]
-        ]);        
+        ]);      
     }
 
     /**
@@ -48,29 +52,55 @@ class CommentController extends Controller
         $this->token = $response['data']['organizationToken'];
     }
 
-    /**
-     * POST request to /comments
-     */
+
     public function store(Request $request){
-        $response = $this->http->post('/comments', [
-            "refId" => rand(),
-            "ownerId" => $request->email,
-            "content" => "😉" . $request->body,
-            "origin" => $request->origin, //this will be a combination of page name "expense" + model id
+        $response = $this->http->post('comments', [
+            "body" => json_encode([
+                "refId" => $request->userId, 
+                "ownerId" => $request->ownerId, //email
+                "content" => "😉" . $request->content,
+                "origin" => $request->origin, //this will be the url of the page where comment happened
+            ])
         ]);
 
-        $response = json_encode($response->getBody());
+        $response = json_decode($response->getBody(), true);
 
         if($response['status'] == "success"){
-            return true;
+            return $response['data'];
+        }else{
+            Log::error("Error from creating a comment" . $response);
+            return false;
         }
+
     }
 
     public function show(Request $request){
-        $response = $this->http->get('/comments', [
+        $response = $this->http->get('comments', [
             'query' => [
-                'origin' => $request->origin
+                'origin' => $request->query('origin')
             ]
         ]);
+
+        $data = json_decode($response->getBody(), true);
+
+        if($data['status'] == "success"){
+            return $data['data'];
+        }else{
+            Log::error("Error from fetching comments" . $data);
+            return false;
+        }
+    }
+
+    public function replies(Request $request){
+        $response = $this->http->get('comments/' . $request->commentId . '/replies');
+
+        $data = json_decode($response->getBody(), true);
+
+        if($data['status'] == "success"){
+            return $data['data'];
+        }else{
+            Log::error('Error while fetching replies to '.$request->commentId);
+            return false;
+        }
     }
 }

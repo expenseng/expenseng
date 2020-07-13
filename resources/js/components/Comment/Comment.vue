@@ -5,12 +5,13 @@
             <input placeholder="Email" v-model="email" v-if="showName" required class="p-2 mb-2">
             <textarea placeholder="Write a comment" v-model="comment" v-if="showName" required class="p-2 mb-2"></textarea>
             <input placeholder="Write a Comment" v-if="!hideSmallComment" @focus="startComment" class="p-2">
-            <button class="btn btn-primary" v-if="showName">Comment</button>
+            <button class="btn btn-primary" @click="send" v-if="showName">Comment</button>
         </div>
     </div>
 </template>
 
 <script>
+import Comment from '../../Service/CommentService';
 export default {
     data() {
         return {
@@ -18,7 +19,8 @@ export default {
             hideSmallComment: false,
             comment: "",
             email: "",
-            name: ""
+            name: "",
+            comment: new Comment()
         }
     },
 
@@ -33,7 +35,13 @@ export default {
         },
 
         autoFocusName(){
-            this.$refs.commentatorName.focus()
+            // TODO: Auto focus the name input
+            // this.$refs.commentatorName.focus()
+        },
+
+        send(){
+            //save the cookies
+            comment.storeUser()
         },
     },
 
