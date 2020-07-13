@@ -1,6 +1,7 @@
 @extends('layouts.home')
 @push('css')
-<link rel="stylesheet" href="{{ asset('css/dash.css') }}">
+<link rel="stylesheet" href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2">
+  
 <title>ExpenseNg - Create Company</title>
 @endpush
 

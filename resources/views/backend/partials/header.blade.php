@@ -26,7 +26,7 @@
   <meta property="og:title" content="ExpenseNg admin dashboard" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://expenseng.com" />
-  <meta property="og:description" content="Amin Dashboard for expenseng website" />
+  <meta property="og:description" content="Admin Dashboard for expenseng website" />
   <meta property="og:site_name" content="ExpenseNg" />
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
