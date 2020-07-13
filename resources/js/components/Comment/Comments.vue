@@ -5,12 +5,12 @@
                 <div class="container">
                     <div class="row occupy">
                         <div class="col-sm-1 mt-1 row d-flex container">
-                            <img :src="getAvatar(reply.ownerId)" class="resize" alt="profile-image">
+                            <img :src="comment.getAvatar(reply.ownerId)" class="resize" alt="profile-image">
                         </div>
                         <div class="col-sm-11" :id="data.commentId">
                             <div class="d-flex justify-content-between  no-show">
                                 <div class="d-flex">
-                                    <p class="green-text">{{ getUsername(data.ownerId) }}</p>
+                                    <p class="green-text">{{ comment.getUsername(data.ownerId) }}</p>
                                     <p class="ml-3 grey-text small mt-1">{{ data.time }}</p>
                                 </div>
                                 <i class="fas fa-ellipsis-h grey-text"></i>
@@ -21,28 +21,33 @@
                             <div class="d-flex text-center align-content-center  icons justify-content-start">
                                 <span class="d-flex mr-3"><i class="far fa-thumbs-up"></i><p class="small mt-1">{{ data.numOfUpVotes }}</p></span>
                                 <span class="d-flex mr-3"><i class="far fa-thumbs-down"></i> <p class="small mt-1">{{ data.numOfDownVotes }}</p></span>
-                                <span class="d-flex mr-3" style="cursor:pointer" @click="reply(data.commentId)"><i class="far fa-comment"></i>
+                                <span class="d-flex mr-3" style="cursor:pointer" @click="comment.reply(data.commentId)"><i class="far fa-comment"></i>
                                     <p class="small mt-1"> {{ data.numOfReplies > 0 ? "Replies " + data.numOfReplies : "Reply" }} </p>
                                 </span>
                             </div>
                         </div>
                         <div class="container mb-4 mt-4" v-if="data.numOfReplies > 0">
-                            <div class="container p-2" v-for="reply in data.replies">
-                                
-                            </div>
+                            <replies :replies="data.replies"></replies>
                         </div>
                     </div>
                 </div> 
             </div>
         </div>
+        <comment></comment>
     </div>
 </template>
 
 <script>
+
+import CommentService from '../../Service/CommentService';
+import Comment from './Comment';
+import Replies from './Replies'
+
 export default {
     data() {
         return {
-            comment: '',
+            comment: new CommentService(),
+            text: '',
             origin: '',
             comments: [
                 {
@@ -75,6 +80,11 @@ export default {
                 },
             ],
         }
+    },
+
+    components:{
+        Replies,
+        Comment
     },
 
     mounted() {
@@ -138,7 +148,7 @@ export default {
 
 <style scoped>
 .comments .top img{
-padding-right: 10px;
+    padding-right: 10px;
 }
 
 .coat h1{
