@@ -21,7 +21,7 @@
                                 <div class="card">
                                     
                                     <div class="card-body">
-                                        <form method="post" action="{{'/admin/company/edit/' . $details->id}}">
+                                        <form method="post" action="{{'/admin/expense/edit/' . $details->id}}">
                                             @method('put')
                                             @csrf
                                             <div class="form-group">
