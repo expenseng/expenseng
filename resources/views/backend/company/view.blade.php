@@ -1,6 +1,6 @@
 @extends('layouts.home')
 @push('css')
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="/extras/datatables/css/buttons.bootstrap4.css">
@@ -20,7 +20,7 @@
 <div class="content">
         <div class="container-fluid">
       
-                <div class="row">
+        <div class="row">
                     <div class="col-xl-12">
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
@@ -40,20 +40,20 @@
                                                 <th>CEO</th>
                                                 <th>CEO Twitter</th>
                                                 <th>Actions</th>
-
+                                                
                                             </tr>
                                         </thead>
 
                                         <tbody>
                                         @if (count($companies ) > 0)
-
+                                        
                                             <tr>
                                             @foreach ($companies as $company)
                                                 <td>
                                                     {{$company->id}}
                                                 </td>
                                                 <td>{{$company->name}}</td>
-                                            <td><a href="/admin/{{$company->shortname}}/people"></a>{{$company->shortname}}</td>
+                                                <td>{{$company->shortname}}</td>
                                                 <td>{{$company->industry}}</td>
                                                 <td>{{$company->ceo}}</td>
                                                 <td>{{$company->twitter}}</td>
@@ -63,7 +63,7 @@
                                                             <a href="{{'/admin/company/edit/' . $company->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
                                                         </div>
                                                         <!--modal begin-->
-
+                                                        
                                                             <div class="col-md-6">
                                                             <i class="fa fa-trash" data-toggle="modal" data-target="#exampleModal" style="color: red"></i>
                                                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -76,11 +76,11 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-
+                                                                    
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                    <form action="{{'/admin/company/delete/'. $company->id}}" method="post" >
+                                                                    <form action="{{'/admin/company/delete/'. $ministry->id}}" method="post" >
                                                                 @method('delete')
                                                                 @csrf
                                                                 <button type="button" class="btn btn-danger">Delete</button>
@@ -92,13 +92,13 @@
                                                     </div>
                                                     </div>
 
-
+                                                    
                                                 </td>
                                             </tr>
-
+                                            
                                         @endforeach
                                         @endif
-
+                                            
                                         </tbody>
                                         <tfoot>
                                             <tr>
