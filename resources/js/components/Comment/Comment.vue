@@ -20,7 +20,14 @@ export default {
             comment: "",
             email: "",
             name: "",
-            comment: new Comment()
+            commentService: new Comment()
+        }
+    },
+
+    props:{
+        origin: {
+            required: true,
+            type: String
         }
     },
 
@@ -40,8 +47,10 @@ export default {
         },
 
         send(){
-            //save the cookies
-            comment.storeUser()
+            this.commentService
+            .storeComments(this.origin, this.comment, this.email, this.name)
+
+            this.$emit('comment', this.comment);
         },
     },
 

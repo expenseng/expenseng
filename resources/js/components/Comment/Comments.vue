@@ -1,6 +1,6 @@
 <template lang="">
     <div>
-        <div class="container mb-4 mt-4" v-for="data in comments">
+        <div class="container mb-4 mt-4" v-if="comments.length > 0" v-for="data in comments">
             <div class="card p-3">
                 <div class="container">
                     <div class="row occupy">
@@ -27,7 +27,10 @@
                 </div> 
             </div>
         </div>
-        <comment></comment>
+        <div class="container mb-4 mt-4">
+            <h2 class="text-center">No comments found for this resource yet.</h2>
+        </div>
+        <comment :origin="origin"></comment>
     </div>
 </template>
 
@@ -43,37 +46,8 @@ export default {
         return {
             comment: new CommentService(),
             text: '',
-            origin: '',
-            comments: [
-                {
-                    "commentId": "5f0b822e47fc48001694258b",
-                    "refId": "1",
-                    "applicationId": "5f08a7c604c43b0014558260",
-                    "ownerId": "001",
-                    "content": "Hola mi corazon 😉",
-                    "origin": "expense page",
-                    "numOfVotes": 0,
-                    "numOfUpVotes": 0,
-                    "numOfDownVotes": 0,
-                    "numOfFlags": 0,
-                    "numOfReplies": 0,
-                    "replies": [],
-                },
-                {
-                    "commentId": "5f0b822e47fc48001694258b",
-                    "refId": "1",
-                    "applicationId": "5f08a7c604c43b0014558260",
-                    "ownerId": "001",
-                    "content": "Hola mi corazon 😉",
-                    "origin": "expense page",
-                    "numOfVotes": 0,
-                    "numOfUpVotes": 0,
-                    "numOfDownVotes": 0,
-                    "numOfFlags": 0,
-                    "numOfReplies": 1,
-                    "replies": [],
-                },
-            ],
+            origin: document.location.pathname, //we are using this as the origin/resourcename
+            comments: []
         }
     },
 
@@ -85,20 +59,27 @@ export default {
 
     mounted() {
         //get associated first repliy for comments with a reply
-        this.comments.map(comment => {
-            if(comment.numOfReplies > 0){
-                comment.replies.push(
-                    {
-                        "ownerId": "001",
-                        "content": "A reply to a certain comment"
-                    },
-                    {
-                        "ownerId": "001",
-                        "content": "A reply to a certain comment"
-                    }
-                )
-            }
-        })
+        // this.comments.map(comment => {
+        //     if(comment.numOfReplies > 0){
+        //         comment.replies.push(
+        //             {
+        //                 "ownerId": "001",
+        //                 "content": "A reply to a certain comment"
+        //             },
+        //             {
+        //                 "ownerId": "001",
+        //                 "content": "A reply to a certain comment"
+        //             }
+        //         )
+        //     }
+        // })
+        console.log(this.comment.getResourceComments(this.origin));
+
+        this.comment.getResourceComments(this.origin)
+                    .then(response => {
+                        this.comments = response
+                        console.log(response);
+                    })
     },
 
     methods: {
