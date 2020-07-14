@@ -15,7 +15,7 @@
               <h6>Pages</h6>
               <ul >
                   <li>
-                      <a  href="index.html"><small>Home</small></a>
+                      <a  href="/"><small>Home</small></a>
                   </li>
                   <li>
                       <a  href="#"><small>Daily Report</small></a>
@@ -33,7 +33,7 @@
               <h6>Profile</h6>
               <ul>
                   <li>
-                      <a  href="ministry_list/ministry_list_federal_ministries.html"><small>Ministry Search</small></a>
+                      <a  href="#"><small>Ministry Search</small></a>
                   </li>
                   <li>
                       <a href="/company/search"><small>Company Search</small></a>
@@ -44,7 +44,7 @@
               <h6>Reference</h6>
               <ul >
                   <li>
-                      <a href="index.html"><small>Government handles</small></a>
+                      <a href="#"><small>Government handles</small></a>
                   </li>
                   <li>
                       <a href="{{ route('about') }}"><small>About us</small></a>
