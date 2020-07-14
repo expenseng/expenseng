@@ -65,8 +65,6 @@
                         {{ csrf_field() }}
                     </form>
 
-                     <!-- <a class="dropdown-item" href="{{Auth::logout()}}">Log out</a> -->
-
                 </div>
               </li>
             </ul>

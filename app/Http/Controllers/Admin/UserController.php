@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
-use App\ROle;
+use App\Role;
 use App\Status;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;

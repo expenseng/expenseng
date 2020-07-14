@@ -34,7 +34,7 @@
                     <i class="material-icons">account_balance_wallet</i>
                   </div>
                   <p class="card-category">Total {{date('Y')}} Budget</p>
-                  <h3 class="card-title">₦{{number_format($amount)}}</h3>
+                  <h3 class="card-title">₦{{number_format($year_budget)}}</h3>
 
                 </div> <hr />
               </div>
