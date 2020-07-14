@@ -1,11 +1,14 @@
 <template>
     <div>
-        <div class="container w-75 d-flex flex-column align-content-center justify-content-center">
+        <div class="container w-75 d-flex flex-column align-content-center justify-content-center" v-if="firstComment">
             <input placeholder="Name" ref="commentatorName" v-model="name" v-if="showName" required class="p-2 mb-2">
             <input placeholder="Email" v-model="email" v-if="showName" required class="p-2 mb-2">
             <textarea placeholder="Write a comment" v-model="comment" v-if="showName" required class="p-2 mb-2"></textarea>
             <input placeholder="Write a Comment" v-if="!hideSmallComment" @focus="startComment" class="p-2">
             <button class="btn btn-primary" @click="send" v-if="showName">Comment</button>
+        </div>
+        <div class="container w-75 d-flex flex-column align-content-center justify-content-center" v-else>
+            <input placeholder="Write a Comment" v-model="comment" @keydown.enter="send" class="p-2">
         </div>
     </div>
 </template>
@@ -18,7 +21,7 @@ export default {
             showName: false,
             hideSmallComment: false,
             comment: "",
-            email: "",
+            // email: "",
             name: "",
             commentService: new Comment()
         }
@@ -61,11 +64,25 @@ export default {
          * And so we won't have to show them the {name} & {email} fields
          */
         firstComment(){
-            if(document.cookie.indexOf("commentator") > 1){
+            if(document.cookie.indexOf("commentatorName") > 1){
                 //then name and email must exist in the cookie
                 return false; //don't show the name & email form
             }else{
                 return true;
+            }
+        },
+
+        email:{
+            set(newValue){
+                return newValue;
+            },
+
+            get(){
+                if(this.commentService.cookieExists()){
+                    return this.commentService.getCookieValue("commentatorEmail");
+                }else{
+                    return this.email;
+                }
             }
         }
     },
