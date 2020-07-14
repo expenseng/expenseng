@@ -64,6 +64,9 @@
                     <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
                     </form>
+
+                     <!-- <a class="dropdown-item" href="{{Auth::logout()}}">Log out</a> -->
+
                 </div>
               </li>
             </ul>

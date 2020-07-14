@@ -35,6 +35,7 @@
                   </div>
                   <p class="card-category">Total {{date('Y')}} Budget</p>
                   <h3 class="card-title">₦{{number_format($amount)}}</h3>
+
                 </div> <hr />
               </div>
             </div>
