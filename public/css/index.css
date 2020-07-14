@@ -2,24 +2,19 @@
     min-height: 100vh;
     font-family: 'Lato', sans-serif;
  }
- 
  .background{
      background: linear-gradient(0deg, rgba(50, 62, 72, 0.4), rgba(50, 62, 72, 0.4)), linear-gradient(0deg, rgba(0, 148, 94, 0.32), rgba(0, 148, 94, 0.32)), url(../images/flag.jpg);
-     
  }
- 
  .arrow-right,
  .arrow-left{
      margin-top: 1rem;
      cursor: pointer;
  }
- 
  .banner{
      height: /* 90% */ 100vh;
      color: white;
      margin-bottom: 5rem;
  }
- 
  .scroll-down{
      width: 100%;
      /* Firefox */
@@ -36,17 +31,13 @@
      box-align: center;
      margin-top: -8rem;
  }
- 
  .scroll-down img{
      height: 80px;
  }
- 
  button.btn.scroll-down::after{
      position: absolute;
      content: "";
  }
- 
- 
  .target{
      margin-top: 3rem;
  }
@@ -62,7 +53,6 @@
  .carets img:nth-child(1){
      margin-right: 3rem;
  }
- 
  #caret{
     opacity: 0;
  }
@@ -82,16 +72,13 @@
  }
  .summary .bolding{
      font-weight: bolder;
-     
  }
- 
  .para{
      margin-top: 2rem;
      margin-bottom: 2rem;
  }
  .para p{
      margin-bottom: -5px;
-     
      font-weight: 300;
      font-size: 0.6rem;
      line-height: 204.8%;
@@ -100,15 +87,12 @@
      display: flex;
      position: relative;
      height:400px;
-     /* overflow-x: hidden; */
- } 
- 
+     overflow-x: hidden;
+ }
  .ministry-top{
      display: flex;
      justify-content: space-between;
  }
-  
- 
  p.tag{
      padding: 0.3rem 1rem;
      color: #005938;
@@ -128,11 +112,10 @@
      height: 100%;
      border: white 0.7px solid;
      transition: ease-in-out all 0.5s;
-     padding: 0rem 1rem;   
+     padding: 0rem 1rem;
  }
  .card1{
      background-image: url(../images/card2.jpg);
-     
  }
  .card2{
      background-image: url(../images/road.svg);
@@ -168,7 +151,6 @@
      position: relative;
      top: 3.6rem;
  }
- 
  p.label{
      background: #353A45;
      width: 65%;
@@ -180,7 +162,6 @@
      margin-top: -3rem;
      text-align: end;
  }
- 
  div.expenses{
      display: flex;
      flex-wrap: wrap;
@@ -197,10 +178,8 @@
      box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04);
      box-sizing: border-box;
  }
- 
   div.graph-cont{
     position: relative;
-   
  }
  div.graph-cont img{
      width: 100%;
@@ -208,25 +187,20 @@
  div.graph-cont img:nth-child(1){
      position: absolute;
  }
- 
- 
  p.exp-card1{
       font-size: 1rem;
       font-weight: 700;
  }
- 
  p.exp-card2{
       font-size: 1.1rem;
       color: #33A97E;
       font-weight: 700;
  }
- 
  p.exp-card3{
       font-size: 0.8rem;
       line-height: 0%;
       font-weight: 700;
  }
- 
  .ministry{
      width: 90%;
      margin: auto;
@@ -237,19 +211,18 @@
      justify-content: space-between;
      align-items: center;
  }
- 
  .ministry-head{
      display: flex;
      margin-bottom: 2rem;
      align-items: baseline;
      width: 100%;
-     background-color: white;   
+     background-color: white;
      border: #33A97E 1px solid;
  }
  p.profile{
      color: #33A97E;
      border-bottom: #33A97E 1px solid;
-     cursor: pointer;  
+     cursor: pointer;
  }
  .ministry-stat{
      display: flex;
@@ -258,10 +231,6 @@
      min-height: 450px;
      box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04)
  }
- .stata{
-     box-shadow: none;
- }
- 
  .ministry-stat .exp-card{
      height: auto;
  }
@@ -271,16 +240,13 @@
      flex-direction: column;
      justify-content: space-between;
  }
- 
  .stat-b{
      width: 100%;
  }
- 
  .divide{
    border-top: 1px solid gray;
    border-bottom:1px solid gray ;
  }
- 
  .explore{
      background: linear-gradient(0deg, rgba(50, 62, 72, 0.33), rgba(50, 62, 72, 0.33)), url('../images/Group 1394.png');
      background-size: cover;
@@ -307,7 +273,6 @@
     border: none;
     border-radius: 0.3rem;
  }
- 
  .companies{
     display: flex;
     flex-wrap: wrap;
@@ -333,7 +298,6 @@
      font-weight: 700;
      line-height: 30%;
  }
- 
  .profile p:nth-child(2){
      font-size: 1.1rem;
      color: #33A97E;
@@ -349,25 +313,23 @@
      font-size: 1rem;
      color: #6765EC;
  }
-
- .move{
-     margin: 20px;
+ .vll{
+     align-items: center;
      margin-left: 10rem;
-
+     margin: 50px;
  }
- 
  .convo-background{
      background: linear-gradient(0deg, rgba(50, 62, 72, 0.33), rgba(50, 62, 72, 0.33)), rgba(0, 148, 94, 0.67);
  }
- 
  .convo{
+     z-index: -1;
      padding: 1rem;
      display: flex;
      flex-direction: column;
      color: white;
  }
  .tweet{
-     background-image: url(../images/twitter1.png);
+     background: url(../images/twitter1.png);
      height: 200px;
      background-size: 100% 100%;
      display: flex;
@@ -376,11 +338,8 @@
      background-size: contain;
      background-position: center;
      background-repeat: no-repeat;
-     z-index: -1;
  }
- 
  .query{
- 
      display: flex;
      flex-direction: column;
      justify-content: flex-end;
@@ -393,7 +352,6 @@
  .query p:nth-child(2){
       font-size: 0.9rem;
  }
- 
  .twt-handle{
      padding: 0.3rem 0.5rem;
      background-color: white;
@@ -403,12 +361,9 @@
      width: auto;
  }
  .twt-handle img{
-     
     width: 20px;
     height: 20px;
-    z-index: -1;
  }
- 
  @media only screen and (min-width: 768px) {
    .target{
      display:flex;
@@ -426,7 +381,6 @@
    .exp-card{
        width: 44%;
    }
- 
    .ministry-heading{
        flex-direction: row;
    }
@@ -436,7 +390,6 @@
    .query{
      width: 50%;
     }
- 
    .query p:nth-child(1){
      text-align: left;
    }
@@ -448,7 +401,6 @@
     .tweet{
         width: 35%;
     }
-    
     .ministry{
         width: 80%;
     }
@@ -465,7 +417,6 @@
          opacity: 0;
     }
  }
- 
  @media only screen and (min-width: 910px) {
      p.label{
          width: 35%;
@@ -487,7 +438,6 @@
      .ministry-stat{
          flex-direction: row;
      }
-     
      .tweet{
          width: 25%;
      }
@@ -495,7 +445,6 @@
          width: 28%;
      }
  }
- 
  @media only screen and (min-width: 1020px) {
      .summary h4{
          font-weight: 200;
@@ -504,17 +453,13 @@
      }
      .para p{
          margin-bottom: -5px;
-         
          font-weight: 300;
          font-size: 1.2rem;
          line-height: 204.8%;
      }
- 
      .scroll-down img{
          height: 150px;
      }
-     
- 
      .comp-card{
          flex-direction: row;
          justify-content: space-between;
@@ -526,7 +471,6 @@
        flex-direction: column;
        justify-content: space-between;
       }
-    
      .companies .comp-card:nth-child(even){
          margin: 0rem 0rem;
      }
@@ -537,47 +481,38 @@
          margin-top: 2%;
      }
  }
- 
- 
  @media only screen and (max-width: 800px){
-     
      .summary h4{
          font-weight: 200;
          font-size: 1.5rem;
          line-height: 124.8%;
      }
-     
      .para{
          margin-top: 2rem;
          margin-bottom: 2rem;
      }
      .para p{
          margin-bottom: -5px;
-         
          font-weight: 300;
          font-size: 0.71rem;
          line-height: 204.8%;
      }
- 
      .gallery{
          display: flex;
          position: relative;
          height:300px;
-        /*  overflow-x: hidden; */
-     } 
+         overflow-x: hidden;
+     }
      .banner{
          height: /* 90% */ 45vh;
      }
-     
      .scroll-down img{
          height: 80px;
          margin-bottom: -80px;
      }
-     
      #main{
          margin-top: 10rem;
      }
-     
      .explore p:nth-child(1){
          margin-bottom: 3rem;
          font-size: 1.3rem;
@@ -590,9 +525,7 @@
          font-weight: 200;
      }
  }
- 
  @media only screen and (max-width:600px){
-     
      .specific{
          width: 50%;
      }
@@ -600,21 +533,18 @@
          display: flex;
          position: relative;
          height:250px;
-         /* overflow-x: hidden; */
-     } 
-     .banner{
-         height: /* 90% */ 100vh;
+         overflow-x: hidden;
      }
-     
+     .banner{
+         height: /* 90% */ 120vh;
+     }
      .scroll-down img{
          height: 60px;
          margin-bottom: -80px;
      }
-     
      #main{
          margin-top: 10rem;
      }
-     
      .explore p:nth-child(1){
          margin-bottom: 3rem;
          font-size: 1.3rem;
@@ -626,20 +556,7 @@
          font-size: 1rem;
          font-weight: 200;
      }
-
-     /* p.label{
-        font-size: 5px;
-    }  */
      #compu{
-         font-size: 13px;
+         font-size: 15px;
      }
-     #comput{
-        font-size: 13px;
-    }
-    #compute{
-        font-size: 13px;
-    }
-     
-         
-     
      }
