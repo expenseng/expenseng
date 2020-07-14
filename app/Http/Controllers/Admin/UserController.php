@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -28,7 +29,8 @@ class UserController extends Controller
     public function index()
     {
         //
-        $users = User::all();
+        //$users = User::all()->with('role');
+        $users = User::with(['role', 'status'])->get();
         return view('backend.users.index')->with(['users' => $users]);
     }
 
@@ -56,13 +58,16 @@ class UserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+         ]);
 
-        $input = $validator->validate();
-        User::create($input);
+        $validator->validate();
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
         Session::flash('flash_message', 'New User successfully added!');
         return redirect()->back();
-        
     }
 
     /**
@@ -85,6 +90,8 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        $details = User::findOrFail($id);
+        return view('backend.users.edit')->with(['details' => $details]);
     }
 
     /**

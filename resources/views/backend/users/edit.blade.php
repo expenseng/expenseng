@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="dashboard-wrapper">
-            <div class="container-fluid dashboard-content">
+        <div class="container-fluid dashboard-content">
             <!-- ============================================================== -->
             <!-- flash messages  -->
             <!-- ============================================================== -->
@@ -15,46 +15,80 @@
             <!-- end flash messages  -->
             <!-- ============================================================== -->
 
-                <div class="row">
-                    <div class="col-xl-10">
-                        <!-- basic form  -->
-                        <!-- ============================================================== -->
-                        <div class="row">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="section-block" id="basicform">
-                                    <h3 class="section-title">Edit Expense</h3>
-                                    <p></p>
-                                </div>
+            <div class="row">
+                <div class="container" style="display:">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
                                 <div class="card">
-                                    
+                                    <div class="card-header text-center">{{ __('Register') }}</div>
+
                                     <div class="card-body">
-                                        <form class="" method="post" action="{{'/admin/expenses/edit/' . $details->id}}">
-                                            @method('put')
+                                        <form method="POST" action="{{ route('users.store') }}">
                                             @csrf
-                                            <label class="label-for-amount" >Amount</label>
-                                            <input type="text" required = 'required' name="amount_spent"  id="amount_spent" value="{{$details->amount_spent}}" class="form-control">
-                                            <p id="ammountErr" class="text-danger"></p>
-                                            <label class="label-for-amount" >Year</label>
-                                            <input type="text" required = 'required' name="year" value="{{$details->year}}" id="year" class="form-control">
-                                            <p id="yearErr" class="text-danger"></p>
-                                            <label class="label-for-amount" >Month</label>
-                                            <input type="text" required = 'required' name="month" value="{{$details->month}}" id="month" class="form-control">
-                                            <p id="monthErr" class="text-danger"></p>
-                                            <label class="label-for-amount" >Project</label>
-                                            <textarea  required = 'required' name="project"  id="project" class="form-control" rows=3>{{$details->project}}</textarea>
-                                            <p id="projectErr" class="text-danger"></p>
-                                            <button type="submit" value="Create" class="btn btn-primary" name="createExpense" >Create</button>     
-                                       </form>
+
+                                            <div class="form-group row">
+                                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                                                <div class="col-md-6">
+                                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$details->name}}" required autocomplete="name" autofocus>
+                                                    @error('name')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+                                                <div class="col-md-6">
+                                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                                                    @error('email')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                                                <div class="col-md-6">
+                                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                                    @error('password')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+
+                                                <div class="col-md-6">
+                                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-0">
+                                                <div class="col-md-6 offset-md-4">
+                                                    <button type="submit" class="btn btn-primary">
+                                                        {{ __('Register') }}
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- ============================================================== -->
-                        <!-- end basic form  -->
-                        <!-- ============================================================== -->
-                    </div>
                 </div>
             </div>
+        </div>
     </div>
 @endsection
 @section('js')

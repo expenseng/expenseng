@@ -97,7 +97,7 @@ Route::get('/ministry/getUrl', 'PageController@ministryGetUrl')->name('ministry_
     Route::get('/users', 'Admin\UserController@index')->name('users.view');
     Route::get('/users/create', 'Admin\UserController@create')->name('users.create');
     Route::post('/users/create', 'Admin\UserController@store')->name('users.store');
-    Route::get('/users/edit/{expense_id}', 'Admin\ExpenseController@editExpense')->name('users.edit');
+    Route::get('/users/edit/{user_id}', 'Admin\UserController@edit')->name('users.edit');
     Route::put('/users/edit/{expense_id}', 'Admin\ExpenseController@updateExpense')->name('users.update');
     Route::delete('/users/delete/{user_id}', 'Admin\UserController@destroy')->name('users.delete');
 

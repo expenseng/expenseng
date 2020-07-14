@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Company;
 use Illuminate\Http\Request;
 
-
 class CompanyController extends Controller
 {
     public function index()
@@ -18,6 +17,4 @@ class CompanyController extends Controller
     {
         return view('pages.contract.single')->with('company', $company);
     }
-
-  
 }

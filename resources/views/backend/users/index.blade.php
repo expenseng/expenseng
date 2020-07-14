@@ -46,13 +46,21 @@
                                         @if (count($users ) > 0)
                                          @foreach ($users as $user)
                                             <tr>
-                                                <td>{{ $user->id }}</td>
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td>{{$user->name}}</td>
                                                 <td>{{$user->email}}</td>
-                                                <td>{{$user->id }}</td>
-                                                <td>{{$user->email}}</td>
                                                 <td>
-                                                    <a href="{{'/admin/user/edit/' . $user->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
+                                                     @if($user->role)
+                                                        {{$user->role->name }}
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if($user->status)
+                                                        {{$user->status->name}}
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <a href="{{'/admin/users/edit/' . $user->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
                                                     <form method="POST" style="display: inline-flex;" action="{{'/admin/users/delete/'. $user->id}}">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
