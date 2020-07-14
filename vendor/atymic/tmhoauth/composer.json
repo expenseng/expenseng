@@ -1,0 +1,31 @@
+{
+  "name": "atymic/tmhoauth",
+  "description": "A maintained fork of themattharris/tmhOAuth",
+  "license": "Apache-2.0",
+  "authors": [
+    {
+      "name": "themattharris",
+      "email": "matt@themattharris.com",
+      "role": "Developer"
+    },
+    {
+      "name": "atymic",
+      "email": "atymicq@gmail.com",
+      "role": "Maintainer"
+    }
+  ],
+  "keywords": [
+    "twitter",
+    "oauth"
+  ],
+  "support": {
+    "issues": "https://github.com/atymic/tmhOAuth/issues"
+  },
+  "require": {
+    "php": ">=5.3.0",
+    "ext-curl": "*"
+  },
+  "autoload": {
+    "psr-0": { "tmhOAuth": "" }
+  }
+}
