@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contactUs')->name('contact');
@@ -48,8 +49,6 @@ Route::get('/ministry/all', 'MinistrySearchController@index')->name('ministry_al
 Route::get('/ministry/getUrl', 'PageController@ministryGetUrl')->name('ministry_get_url');
 Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses')->name('ministry_filter_expenses');
 
-Auth::routes();
-
 
 /*
 |--------------------------------------------------------------------------
@@ -62,8 +61,37 @@ Auth::routes();
 |
  */
 
- Route::group(['prefix' => 'admin', 'middleware' => [] ], function() {          
-    Route::get('/dashboard', 'Admin\DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
+
+// Route::prefix('admin')->group(function () {
+//     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');  // Matches The "/admin/dashboard" URL
+//     Route::post('/create_expense', 'DashboardController@createExpense');
+// Route::post('/create_company', 'DashboardController@createCompany');
+// });
+
+/*Route::group(['middleware' => ['auth']], function (){
+    Route::get('/admin/company/create', 'CompanyController@create')->name('company.create');
+    Route::post('/admin/company/create', 'CompanyController@createCompany')->name('create.company');
+    Route::get('/admin/company/view', 'CompanyController@viewCompanies')->name('company.view');
+    Route::get('/admin/company/edit/{company_id}', 'CompanyController@showEditForm')->name('company.view.edit');
+    Route::put('/admin/company/edit/{company_id}', 'CompanyController@editCompany')->name('company.edit');
+    Route::delete('/admin/company/delete/{company_id}', 'CompanyController@deleteCompany')->name('company.delete');
+
+    Route::get('/admin/ministry/create', 'MinistryController@viewCreateMinistry')->name('ministry.create');
+    Route::post('/admin/ministry/create', 'MinistryController@createMinistry')->name('create.ministry');
+    Route::get('/admin/ministry/view', 'MinistryController@viewMinistries')->name('ministry.view');
+    Route::get('/admin/ministry/edit/{ministry_id}', 'MinistryController@showEditForm')->name('ministry.view.edit');
+    Route::put('/admin/ministry/edit/{ministry_id}', 'MinistryController@editMinistry')->name('ministry.edit');
+    Route::delete('/admin/ministry/delete/{ministry_id}', 'MinistryController@deleteMinistry')->name('ministry.delete');
+});*/
+
+
+ // Route::group(['prefix' => 'admin', 'middleware' => [] ], function() {          
+ //    Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
+
+
+ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function() {          
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
+
 
     // Expense CRUD
     Route::get('/expenses', 'Admin\ExpenseController@index')->name('expenses.view');
@@ -75,24 +103,37 @@ Auth::routes();
    
 
     // Company CRUD
-    Route::get('/company/create', 'Admin\CompanyController@create')->name('company.create');
-    Route::post('/company/create', 'Admin\CompanyController@createCompany')->name('create.company');
-    Route::get('/company/view', 'Admin\CompanyController@viewCompanies')->name('company.view');
-    Route::get('/company/edit/{company_id}', 'Admin\CompanyController@showEditForm')->name('company.view.edit');
-    Route::put('/company/edit/{company_id}', 'Admin\CompanyController@editCompany')->name('company.edit');
-    Route::delete('/company/delete/{company_id}', 'Admin\CompanyController@deleteCompany')->name('company.delete');
+    Route::get('/company/create', 'CompanyController@create')->name('company.create');
+    Route::post('/company/create', 'CompanyController@createCompany')->name('create.company');
+    Route::get('/company/view', 'CompanyController@viewCompanies')->name('company.view');
+    Route::get('/company/edit/{company_id}', 'CompanyController@showEditForm')->name('company.view.edit');
+    Route::put('/company/edit/{company_id}', 'CompanyController@editCompany')->name('company.edit');
+    Route::delete('/company/delete/{company_id}', 'CompanyController@deleteCompany')->name('company.delete');
 
 
 
     // MiNISTY CRUD
-    Route::get('/ministry/create', 'Admin\MinistryController@viewCreateMinistry')->name('ministry.create');
-    Route::post('/ministry/create', 'Admin\MinistryController@createMinistry')->name('create.ministry');
-    Route::get('/ministry/view', 'Admin\MinistryController@viewMinistries')->name('ministry.view');
-    Route::get('/ministry/edit/{ministry_id}', 'Admin\MinistryController@showEditForm')->name('ministry.view.edit');
-    Route::put('/ministry/edit/{ministry_id}', 'Admin\MinistryController@editMinistry')->name('ministry.edit');
+    Route::get('/ministry/create', 'MinistryController@viewCreateMinistry')->name('ministry.create');
+    Route::post('/ministry/create', 'MinistryController@createMinistry')->name('create.ministry');
+    Route::get('/ministry/view', 'MinistryController@viewMinistries')->name('ministry.view');
+    Route::get('/ministry/edit/{ministry_id}', 'MinistryController@showEditForm')->name('ministry.view.edit');
+    Route::put('/ministry/edit/{ministry_id}', 'MinistryController@editMinistry')->name('ministry.edit');
     Route::delete('/ministry/delete/{ministry_id}', 'Admin\MinistryController@deleteMinistry')->name('ministry.delete');
 
     //People CRUD
-    Route::get('/admin/{company}/{people}', 'Admin\CompanyController@showPeople');
+    Route::get('/admin/{company}/{people}', 'CompanyController@showPeople');
+
+     // USERS CRUD
+    Route::get('/users', 'Admin\UserController@index')->name('users.view');
+    Route::get('/users/create', 'Admin\UserController@create')->name('users.create');
+    Route::post('/users/create', 'Admin\UserController@store')->name('users.store');
+    Route::get('/users/edit/{user_id}', 'Admin\UserController@edit')->name('users.edit');
+    Route::put('/users/edit/{user_id}', 'Admin\UserController@update')->name('users.update');
+    Route::put('/users/change_password/{user_id}', 'Admin\UserController@updatePassword')->name('users.change_password');
+    Route::delete('/users/delete/{user_id}', 'Admin\UserController@destroy')->name('users.delete');
 
  });
+
+
+Auth::routes();
+

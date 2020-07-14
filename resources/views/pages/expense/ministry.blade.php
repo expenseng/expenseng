@@ -73,8 +73,8 @@
 										@foreach ($collection['summary'] as $expense)
 											<tr>
 												<td class="section-shadow">
-													<a href="{{ route('ministries.single', ['ministry' => $expense->ministry->shortname()]) }}" class="text-success">
-														{{ucfirst($expense->ministry->name)}}
+													<a href="{{ route('ministries.single', ['ministry' => strtolower($expense->ministry()['shortname']) ]) }}" class="text-success">
+														{{ucfirst($expense->ministry()['name'])}}
 													</a>
 												</td>
 												<td>{{$expense->description}}</td>
@@ -161,8 +161,8 @@
 										@foreach ($collection['nondescriptive'] as $expense)
 											<tr>
 												<td class="section-shadow">
-													<a href="{{ route('ministries.single', ['ministry' => $expense->ministry->shortname()]) }}" class="text-success">
-														{{ucfirst($expense->ministry->name)}}
+													<a href="{{ route('ministries.single', ['ministry' => strtolower($expense->ministry()['shortname']) ]) }}" class="text-success">
+														{{ucfirst($expense->ministry()['name'])}}
 													</a>
 												</td>
 												<td>{{$expense->beneficiary}}</td>

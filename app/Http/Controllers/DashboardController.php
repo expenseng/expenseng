@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Budget;
+use Illuminate\Http\Request;
 use App\Expense;
 use App\Company;
 use App\Ministry;
+use Illuminate\Support\Facades\Session;
 
 class DashboardController extends Controller
 {
@@ -35,17 +35,55 @@ class DashboardController extends Controller
         $amount = 0; // initialize total budget amount
         $recent_expenses = Expense::orderBY('id', 'DESC')->limit(7)->get();
 
+
+
+        
         if (count($total_budgets)> 0) {
             for ($i=0; $i< count($total_budgets); $i++) {
                 $amount += $total_budgets[$i]->amount;
             }
         } else {
         }
+           
+            
+                
+             
 
         return view('backend.dashboard')
         ->with(['total_ministry' => $total_ministry,
         'total_company' => $total_company, 'total_budgets' => $total_budgets,
-        'amount' => $amount, 'recent_expenses' => $recent_expenses,
+        'year_budget' => $amount, 'recent_expenses' => $recent_expenses,
         ]);
+    }
+
+    public function createExpense(Request $request)
+    {
+        $this->validate($request, [
+           'amount_spent' => 'required',
+           'year' => 'required',
+           'month' => 'required',
+           'project' => 'required'
+        ]);
+        
+        $input = $request->all();
+        Expense::create($input);
+        Session::flash('flash_message', 'New Expense successfully added!');
+        return redirect()->back();
+    }
+
+    public function createCompany(Request $request)
+    {
+        $this->validate($request, [
+           'name' => 'required',
+           'shortname' => 'required',
+           'industry' => 'required',
+           'ceo' => 'required',
+           'twitter' => ''
+        ]);
+        
+        $input = $request->all();
+        Company::create($input);
+        Session::flash('flash_message', 'New Company successfully added!');
+        return redirect()->back();
     }
 }
