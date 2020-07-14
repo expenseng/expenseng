@@ -55,33 +55,14 @@
                                                 <td>Ministry of Works and Housing</td>
                                                 <td>
                                                     <a href="{{'/admin/expenses/edit/' . $expense->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
-                                                    <i class="fa fa-trash" data-toggle="modal" data-target="#exampleModal" style="color: red"></i>
-                                                        <!--modal begin-->
-                                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Are you sure???</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                    <form action="{{'/admin/expense/delete/'. $expense->id}}" method="post" >
-                                                                    @method('delete')
-                                                                    @csrf
-                                                                    <button type="button" class="btn btn-danger">Delete</button>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                         </div>
-                                                    </div>
+                                                    <form method="POST" style="display: inline-flex;" action="{{'/admin/expenses/delete/'. $expense->id}}">
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
+                                                        <a type="submit" class="trash delete-expense">
+                                                            <i class="fa fa-trash" style="color: red"></i>
+                                                        </a>
+                                                    </form>          
                                                 </td>
-                                            </td>          
                                         </tr>
                                             @endforeach
                                         @endif
@@ -138,6 +119,15 @@
         jQuery(document).ready(function() {
     $('#example').DataTable();
     } );
+    </script>
+    <script>
+        $('.delete-expense').click(function(e){
+            e.preventDefault() // Don't post the form, unless confirmed
+            if (confirm('Are you sure?')) {
+                // Post the form
+                $(e.target).closest('form').submit() // Post the surrounding form
+            }
+        });
     </script>
     
 

@@ -49,9 +49,6 @@ Route::get('/ministry/all', 'MinistrySearchController@index')->name('ministry_al
 Route::get('/ministry/getUrl', 'PageController@ministryGetUrl')->name('ministry_get_url');
 
 
-
-
-
 /*
 |--------------------------------------------------------------------------
 | ADMIN Routes
@@ -98,12 +95,13 @@ Route::get('/ministry/getUrl', 'PageController@ministryGetUrl')->name('ministry_
 
      // USERS CRUD
     Route::get('/users', 'Admin\UserController@index')->name('users.view');
-    Route::get('/users/create', 'Admin\ExpenseController@createExpense')->name('users.create');
-    Route::post('/users/create', 'Admin\ExpenseController@storeExpense')->name('users.store');
+    Route::get('/users/create', 'Admin\UserController@create')->name('users.create');
+    Route::post('/users/create', 'Admin\UserController@store')->name('users.store');
     Route::get('/users/edit/{expense_id}', 'Admin\ExpenseController@editExpense')->name('users.edit');
     Route::put('/users/edit/{expense_id}', 'Admin\ExpenseController@updateExpense')->name('users.update');
-    Route::delete('/users/delete/{expense_id}', 'Admin\ExpenseController@deleteExpense')->name('users.delete');
+    Route::delete('/users/delete/{user_id}', 'Admin\UserController@destroy')->name('users.delete');
 
  });
 
- Auth::routes();
+
+Auth::routes();

@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
@@ -37,6 +40,7 @@ class UserController extends Controller
     public function create()
     {
         //
+        return view('backend.users.create');
     }
 
     /**
@@ -47,7 +51,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+ 
+         $validator = Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        $input = $validator->validate();
+        User::create($input);
+        Session::flash('flash_message', 'New User successfully added!');
+        return redirect()->back();
+        
     }
 
     /**
@@ -93,5 +108,9 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+         $user = User::findOrFail($id);
+         $user->delete();
+        Session::flash('flash_message', "User Deleted successfully" . $user);
+        return redirect()->back();
     }
 }
