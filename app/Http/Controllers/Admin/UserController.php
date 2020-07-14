@@ -44,7 +44,10 @@ class UserController extends Controller
     public function create()
     {
         //
-        return view('backend.users.create');
+        $roles = Role::select('name', 'id')->get();
+        $status = Status::select('name', 'id')->get();
+        return view('backend.users.create')->with(['roles' => $roles, 'status' =>$status]);
+        ;
     }
 
     /**
@@ -60,12 +63,16 @@ class UserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role_id' => '',
+            'status_id' => '',
          ]);
 
         $validator->validate();
         User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'role_id' => $request->role_id,
+            'status_id' => $request->status_id,
             'password' => Hash::make($request->password),
         ]);
         Session::flash('flash_message', 'New User successfully added!');
@@ -107,44 +114,26 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        if(isset($request->password)){
-            $validator = Validator::make($request->all(), [ 
-                'password' => ['required', 'string', 'min:8'],
-            ]);
-            $validator->validate();
-            $update = User::where('id', $id)
-                ->update(
-                    [
-                        'password' => Hash::make($request->password),
-                    ]
-                );
-            Session::flash('flash_message', 'User password changed successfully!');
-            return redirect()->back();
-        }
-        else{
-            $validator = Validator::make($request->all(), [
-                'name' => ['required', 'string', 'max:255'],
-                'email_address' => 'sometimes|required|email|unique:users',
-                'role_id' => '',
-                'status_id' => '',
-            ]);
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'email_address' => 'sometimes|required|email|unique:users',
+            'role_id' => '',
+            'status_id' => '',
+         ]);
 
-            $validator->validate();
-            $update = User::where('id', $id)
+        $validator->validate();
+
+        $update = User::where('id', $id)
             ->update(
                 [
                     'name' => $request->name,
                     'email' => $request->email,
-                    //'password' => Hash::make($request->password),
                     'role_id' => $request->role_id,
                     'status_id' => $request->status_id,
                 ]
             );
-            Session::flash('flash_message', 'User  updated successfully!');
-            return redirect()->back();
-        }
-        
+        Session::flash('flash_message', 'User  updated successfully!');
+        return redirect()->back();
     }
 
     /**
@@ -159,6 +148,23 @@ class UserController extends Controller
          $user = User::findOrFail($id);
          $user->delete();
         Session::flash('flash_message', "User Deleted successfully" . $user);
+        return redirect()->back();
+    }
+
+
+    public function updatePassword(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+        $validator->validate();
+        $update = User::where('id', $id)
+            ->update(
+                [
+                    'password' => Hash::make($request->password),
+                ]
+            );
+        Session::flash('flash_message', 'User password changed successfully!');
         return redirect()->back();
     }
 }

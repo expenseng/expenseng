@@ -66,7 +66,7 @@
                                                         <option value="{{ $role->id }}">{{ $role->name }}</option>
                                                     @endforeach
                                                 </select>
-                                                @error('email')
+                                                @error('role')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -82,13 +82,13 @@
                                                         <option value="{{$user->status->id}}"  style="display:none">{{$user->status->name}}</option>
                                                     @endisset
                                                     @empty($user->status->id)
-                                                        <option value=""  style="display:none">Select Role</option>
+                                                        <option value=""  style="display:none">Select Status</option>
                                                     @endempty
                                                     @foreach ($status as $status)
                                                         <option value="{{ $status->id }}">{{ $status->name }}</option>
                                                     @endforeach
                                                 </select>
-                                                @error('email')
+                                                @error('status')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -102,9 +102,8 @@
                                             </div>
 
                                             <div class="col-md-3">
-                                                <!-- <button type="submit" class="btn btn-warning">
-                                                    {{ __('Change Password') }}
-                                                </button> -->
+                                                <a class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" style="color: red">{{ __('Change Password') }}
+                                                </a>
                                             </div>
                                         </div>
                                     </form>
@@ -114,7 +113,6 @@
 
                         <!--modal begin-->
                         <div class="col-md-6">
-                            <i class="fa fa-trash" data-toggle="modal" data-target="#exampleModal" style="color: red"></i>
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -125,6 +123,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
+                                            <form action="{{'/admin/users/change_password/' . $user->id}}" method="post" id="change_password" >
                                             <div class="form-group">
                                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="new-password">
 
@@ -142,12 +141,10 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <form action="{{'/admin/users/edit/' . $user->id}}" method="post" id="change_password" >
                                             @method('put')
                                             @csrf
                                             <input type="submit" class="btn btn-danger changePass" value="Change" id="changePass">
                                             </form>
-
                                         </div>
                                     </div>
                                 </div>

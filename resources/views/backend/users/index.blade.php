@@ -24,7 +24,8 @@
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="mb-0">All Users </h3>
+                                <h3 class="mb-0" style="float:left">All Users </h3>
+                                <a href="{{'/admin/users/create/'}}" class="btn btn-primary" style="float:right">ADD NEW</a>
                                 <p></p>
                             </div>
                             <div class="card-body">
@@ -62,8 +63,8 @@
                                                 <td>
                                                     <a href="{{'/admin/users/edit/' . $user->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
                                                     <form method="POST" style="display: inline-flex;" action="{{'/admin/users/delete/'. $user->id}}">
-                                                        {{ csrf_field() }}
-                                                        {{ method_field('DELETE') }}
+                                                       @method('delete')
+                                                        @csrf
                                                         <a type="submit" class="trash delete-user">
                                                             <i class="fa fa-trash" style="color: red"></i>
                                                         </a>
