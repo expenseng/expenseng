@@ -16,8 +16,8 @@ class CreatePaymentsTable extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->increments('id');
             $table->string('payment_no');
-            $table->string('payment_code')->index();
-            $table->integer('organization_id');  //this is the id of ministry. references ministry.id
+            $table->string('payment_code')->index(); //the first 4 digits here determine the ministry the organization is under
+            $table->string('organization');  //an organization is classified under a ministry but may not necessarily be a ministry
             $table->string('beneficiary', 191);
             $table->bigInteger('amount');
             $table->date('payment_date');
