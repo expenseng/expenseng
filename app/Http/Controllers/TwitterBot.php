@@ -25,7 +25,6 @@ class TwitterBot extends Controller
         $process_id = $this->getProcessId();
         if ($process_id != 0) {
             exec('kill '.$process_id);
-            putenv('BG_TWT_PROCESS_ID');
             return  ' retweet stopped';
         } else {
             return ' retweet  is not on ';
