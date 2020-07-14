@@ -24,6 +24,13 @@
               <p>User Profile</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('users.view')}}">
+              <i class="material-icons">persons</i>
+              <p>Users</p>
+            </a>   
+          </li>
+          
           <li class="{{Route::is('company.view') || Route::is('company.create') || Route::is('company.edit') 
           ? 'nav-item active' : 'nav-item'}} ">
             <a class="nav-link" href="{{Route::is('company.view') || Route::is('company.create') || Route::is('company.edit') ? '#' : route('company.view')}}">
@@ -53,7 +60,7 @@
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="#">
-              <i class="material-icons">persons</i>
+              <i class="material-icons">supervisor_account</i>
               <p>People</p>
             </a>
           </li>
