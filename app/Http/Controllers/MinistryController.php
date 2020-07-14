@@ -256,7 +256,8 @@ class MinistryController extends Controller
         }
     }
 
-    public function deleteMinistry($id){
+    public function deleteMinistry($id)
+    {
         $delete = Ministry::where('id', $id)->delete();
         if ($delete) {
             echo ("<script>alert(' Ministry details deleted successfully');

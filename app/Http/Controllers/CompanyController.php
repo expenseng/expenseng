@@ -138,7 +138,8 @@ class CompanyController extends Controller
         }
     }
 
-    public function deleteCompany($id){
+    public function deleteCompany($id)
+    {
 
         $delete = Company::where('id', $id)->delete();
         if ($delete) {
