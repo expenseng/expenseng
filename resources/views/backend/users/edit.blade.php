@@ -5,8 +5,8 @@
 @endpush
 
 @section('content')
-    <div class="dashboard-wrapper">
-        <div class="container-fluid dashboard-content">
+    <div class="content">
+        <div class="container-fluid">
             <!-- ============================================================== -->
             <!-- flash messages  -->
             <!-- ============================================================== -->
@@ -97,12 +97,12 @@
                                         </div>
 
                                         <div class="form-group row mb-0">
-                                            <div class="col-md-5 offset-md-4">
+                                            <div class="col-md-4 offset-md-4">
                                                 <input type="submit" class="btn btn-primary" form="update_user" value="{{ __('Update') }}">
                                             </div>
 
-                                            <div class="col-md-3">
-                                                <a class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" style="color: red">{{ __('Change Password') }}
+                                            <div class="col-md-2">
+                                                <a class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">{{ __('Change Password') }}
                                                 </a>
                                             </div>
                                         </div>

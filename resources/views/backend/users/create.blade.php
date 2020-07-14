@@ -5,8 +5,8 @@
 @endpush
 
 @section('content')
-    <div class="dashboard-wrapper">
-        <div class="container-fluid dashboard-content">
+    <div class="content">
+        <div class="container-fluid">
         <!-- ============================================================== -->
         <!-- flash messages  -->
         <!-- ============================================================== -->
