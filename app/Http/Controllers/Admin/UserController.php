@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\ROle;
+use App\Status;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
@@ -90,8 +92,10 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-        $details = User::findOrFail($id);
-        return view('backend.users.edit')->with(['details' => $details]);
+        $user = User::findOrFail($id);
+        $roles = Role::select('name', 'id')->get();
+        $status = Status::select('name', 'id')->get();
+        return view('backend.users.edit')->with(['user' => $user, 'roles' => $roles, 'status' =>$status]);
     }
 
     /**
@@ -104,6 +108,43 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        if(isset($request->password)){
+            $validator = Validator::make($request->all(), [ 
+                'password' => ['required', 'string', 'min:8'],
+            ]);
+            $validator->validate();
+            $update = User::where('id', $id)
+                ->update(
+                    [
+                        'password' => Hash::make($request->password),
+                    ]
+                );
+            Session::flash('flash_message', 'User password changed successfully!');
+            return redirect()->back();
+        }
+        else{
+            $validator = Validator::make($request->all(), [
+                'name' => ['required', 'string', 'max:255'],
+                'email_address' => 'sometimes|required|email|unique:users',
+                'role_id' => '',
+                'status_id' => '',
+            ]);
+
+            $validator->validate();
+            $update = User::where('id', $id)
+            ->update(
+                [
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    //'password' => Hash::make($request->password),
+                    'role_id' => $request->role_id,
+                    'status_id' => $request->status_id,
+                ]
+            );
+            Session::flash('flash_message', 'User  updated successfully!');
+            return redirect()->back();
+        }
+        
     }
 
     /**

@@ -17,75 +17,143 @@
 
             <div class="row">
                 <div class="container" style="display:">
-                        <div class="row justify-content-center">
-                            <div class="col-md-8">
-                                <div class="card">
-                                    <div class="card-header text-center">{{ __('Register') }}</div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header text-center">{{ __('Update User') }}</div>
+                                <div class="card-body">
+                                    <form method="POST" action="{{'/admin/users/edit/' . $user->id}}" id="update_user">
+                                        @method('put')
+                                        @csrf
 
-                                    <div class="card-body">
-                                        <form method="POST" action="{{ route('users.store') }}">
-                                            @csrf
+                                        <div class="form-group row">
+                                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                                            <div class="col-md-6">
+                                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$user->name}}" required autocomplete="name" autofocus>
+                                                @error('name')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
 
-                                            <div class="form-group row">
-                                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-                                                <div class="col-md-6">
-                                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$details->name}}" required autocomplete="name" autofocus>
-                                                    @error('name')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
+                                        <div class="form-group row">
+                                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                            <div class="col-md-6">
+                                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{$user->email}}" required autocomplete="email" autofocus>
+
+                                                @error('email')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group row">
+                                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
+                                            <div class="col-md-6">
+                                                <select name="role_id" class="form-control">
+                                                    @isset($user->role->id)
+                                                        <option value="{{$user->role->id}}"  style="display:none">{{$user->role->name}}</option>
+                                                    @endisset
+                                                    @empty($user->role->id)
+                                                        <option value=""  style="display:none">Select Role</option>
+                                                    @endempty
+                                                    @foreach ($roles as $role)
+                                                        <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('email')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Status') }}</label>
+                                            <div class="col-md-6">
+                                                <select name="status_id" class="form-control">
+                                                    @isset($user->status->id)
+                                                        <option value="{{$user->status->id}}"  style="display:none">{{$user->status->name}}</option>
+                                                    @endisset
+                                                    @empty($user->status->id)
+                                                        <option value=""  style="display:none">Select Role</option>
+                                                    @endempty
+                                                    @foreach ($status as $status)
+                                                        <option value="{{ $status->id }}">{{ $status->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('email')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mb-0">
+                                            <div class="col-md-5 offset-md-4">
+                                                <input type="submit" class="btn btn-primary" form="update_user" value="{{ __('Update') }}">
                                             </div>
 
-                                            <div class="form-group row">
-                                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                                                <div class="col-md-6">
-                                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                                    @error('email')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
+                                            <div class="col-md-3">
+                                                <!-- <button type="submit" class="btn btn-warning">
+                                                    {{ __('Change Password') }}
+                                                </button> -->
                                             </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
 
-                                            <div class="form-group row">
-                                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                                                <div class="col-md-6">
-                                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                        <!--modal begin-->
+                        <div class="col-md-6">
+                            <i class="fa fa-trash" data-toggle="modal" data-target="#exampleModal" style="color: red"></i>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">New Password</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="new-password">
 
                                                     @error('password')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
                                                     @enderror
-                                                </div>
+                                                <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
                                             </div>
 
-                                            <div class="form-group row">
-                                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                                                <div class="col-md-6">
-                                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                                                </div>
+                                            <div class="form-group">
+                                                <input id="password-confirm" type="password" class="form-control" placeholder="Repeat your password" name="password_confirmation" required autocomplete="new-password">
                                             </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <form action="{{'/admin/users/edit/' . $user->id}}" method="post" id="change_password" >
+                                            @method('put')
+                                            @csrf
+                                            <input type="submit" class="btn btn-danger changePass" value="Change" id="changePass">
+                                            </form>
 
-                                            <div class="form-group row mb-0">
-                                                <div class="col-md-6 offset-md-4">
-                                                    <button type="submit" class="btn btn-primary">
-                                                        {{ __('Register') }}
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -117,4 +185,5 @@
     <script src="/vendor/charts/c3charts/c3.min.js"></script>
     <script src="/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="/vendor/charts/c3charts/C3chartjs.js"></script>
+
     @endsection
