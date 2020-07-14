@@ -13,7 +13,7 @@
         
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
         <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-<title>ExpenseNg - Expenses</title>
+<title>ExpenseNg - Users</title>
 @endpush
 
 @section('content')
@@ -24,7 +24,8 @@
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="mb-0">All Expenses </h3>
+                                <h3 class="mb-0" style="float:left">All Users </h3>
+                                <a href="{{'/admin/users/create/'}}" class="btn btn-primary" style="float:right">ADD NEW</a>
                                 <p></p>
                             </div>
                             <div class="card-body">
@@ -33,52 +34,47 @@
                                         <thead>
                                             <tr>
                                             <th>SN</th>
-                                            <th>Year</th>
-                                            <th>Month</th>
-                                            <th>Project</th>
-                                            <th>Amount</th>
-                                            <th>Ministry</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Role</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                             </tr>
                                         </thead>
                                         
                                         
                                         <tbody>
-                                        @if (count($expenses ) > 0)
-                                         @foreach ($expenses as $expense)
+                                        @if (count($users ) > 0)
+                                         @foreach ($users as $user)
                                             <tr>
-                                                <td>{{$expense->id}} </td>
-                                                <td>{{$expense->year}} </td>
-                                                <td>{{$expense->month}}</td>
-                                                <td>{{$expense->project}}  </td>
-                                                <td>₦{{number_format($expense->amount_spent,2)}}</td>
-                                                <td>Ministry of Works and Housing</td>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{$user->name}}</td>
+                                                <td>{{$user->email}}</td>
                                                 <td>
-                                                    <a href="{{'/admin/expenses/edit/' . $expense->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
-                                                    <form method="POST" style="display: inline-flex;" action="{{'/admin/expenses/delete/'. $expense->id}}">
-                                                        {{ csrf_field() }}
-                                                        {{ method_field('DELETE') }}
-                                                        <a type="submit" class="trash delete-expense">
+                                                     @if($user->role)
+                                                        {{$user->role->name }}
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if($user->status)
+                                                        {{$user->status->name}}
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <a href="{{'/admin/users/edit/' . $user->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
+                                                    <form method="POST" style="display: inline-flex;" action="{{'/admin/users/delete/'. $user->id}}">
+                                                       @method('delete')
+                                                        @csrf
+                                                        <a type="submit" class="trash delete-user">
                                                             <i class="fa fa-trash" style="color: red"></i>
                                                         </a>
                                                     </form>          
                                                 </td>
+                                            </td>          
                                         </tr>
                                             @endforeach
                                         @endif
                                         </tbody>
-                                       
-                                        <tfoot>
-                                            <tr>
-                                            <th>SN</th>
-                                            <th>Contractors</th>
-                                            <th>Contract Awarded</th>
-                                            <th>Awarding Ministry</th>
-                                            <th>Amount</th>
-                                            <th>Ministry</th>
-                                            <th>Action</th>
-                                            </tr>
-                                        </tfoot>
                                     </table>
                                 </div>
                             </div>
@@ -120,15 +116,16 @@
     $('#example').DataTable();
     } );
     </script>
-    <script>
-        $('.delete-expense').click(function(e){
-            e.preventDefault() // Don't post the form, unless confirmed
-            if (confirm('Are you sure?')) {
-                // Post the form
-                $(e.target).closest('form').submit() // Post the surrounding form
-            }
-        });
-    </script>
+
+<script>
+    $('.delete-user').click(function(e){
+        e.preventDefault() // Don't post the form, unless confirmed
+        if (confirm('Are you sure?')) {
+            // Post the form
+            $(e.target).closest('form').submit() // Post the surrounding form
+        }
+    });
+</script>
     
 
 
