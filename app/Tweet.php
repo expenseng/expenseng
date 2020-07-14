@@ -2,20 +2,21 @@
 
 
 namespace App;
+
 use File;
 use Twitter;
 
 class Tweet
 {
     private $status;
-    private  $media;
+    private $media;
 
     /**
      * Tweet constructor.
      * @param $media
      * @param string $status
      */
-    public function __construct( $status = ' ', $media = null)
+    public function __construct($status = ' ', $media = null)
     {
         $this->status = $status;
         $this->media = $media;
@@ -26,7 +27,8 @@ class Tweet
      * @param $media
      * @return $this
      */
-    public function attach($media){
+    public function attach($media)
+    {
         $this->media = $media;
         return $this;
     }
@@ -35,8 +37,9 @@ class Tweet
      * @param $string
      * @return $this
      */
-    public function HashTag(...$string){
-        foreach ($string as $tag){
+    public function HashTag(...$string)
+    {
+        foreach ($string as $tag) {
             $this->status = $this->status . " #".$tag;
         }
         return $this;
@@ -58,7 +61,7 @@ class Tweet
      */
     public function tag(...$string)
     {
-        foreach ($string as $tag){
+        foreach ($string as $tag) {
             $this->status = $this->status . " @".$tag;
         }
         return $this;
@@ -66,12 +69,10 @@ class Tweet
 
     public function send()
     {
-        if($this->media !== null){
+        if ($this->media !== null) {
             $uploaded_media = Twitter::uploadMedia(['media' => File::get($this->media)]);
             return Twitter::postTweet(['status' => $this->status, 'media_ids' => $uploaded_media->media_id_string, 'format' => 'json']);
         }
         return Twitter::postTweet(['status' => $this->status , 'format' => 'json']);
-
     }
-
 }

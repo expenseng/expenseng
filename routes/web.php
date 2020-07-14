@@ -84,9 +84,9 @@ Auth::routes();
     Route::delete('/admin/ministry/delete/{ministry_id}', 'MinistryController@deleteMinistry')->name('ministry.delete');
 });*/
 
-
-
- Route::group(['prefix' => 'admin', 'middleware' => [] ], function() {          
+Route::get('/startRT', 'TwitterBot@startLiveRetweet');
+Route::get('/stopRT', 'TwitterBot@stopLiveRetweet');
+ Route::group(['prefix' => 'admin', 'middleware' => [] ], function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
 
     // Expense CRUD
@@ -96,7 +96,7 @@ Auth::routes();
     Route::get('/expenses/edit/{expense_id}', 'Admin\ExpenseController@editExpense')->name('expenses.edit');
     Route::put('/expenses/edit/{expense_id}', 'Admin\ExpenseController@updateExpense')->name('expenses.update');
     Route::delete('/expenses/delete/{expense_id}', 'Admin\ExpenseController@deleteExpense')->name('expenses.delete');
-   
+
 
     // Company CRUD
     Route::get('/company/create', 'CompanyController@create')->name('company.create');
@@ -118,5 +118,4 @@ Auth::routes();
 
     //People CRUD
     Route::get('/admin/{company}/{people}', 'CompanyController@showPeople');
-
  });

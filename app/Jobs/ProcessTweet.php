@@ -32,14 +32,14 @@ class ProcessTweet implements ShouldQueue
     public function handle()
     {
         //
-        $tweet = json_decode($this->tweet,true);
+        $tweet = json_decode($this->tweet, true);
         $tweet_text = isset($tweet['text']) ? $tweet['text'] : null;
         $user_screen_name = isset($tweet['user']['screen_name']) ? $tweet['user']['screen_name'] : null;
         $status = "https://twitter.com/".$user_screen_name."/status/".$tweet['id_str'];
-        try{
+        try {
             Twitter::postRt($tweet['id_str']);
-        }catch (\Exception $exception){
-            echo $exception->getMessage();
+        } catch (\Exception $exception) {
+            return;
         }
     }
 }
