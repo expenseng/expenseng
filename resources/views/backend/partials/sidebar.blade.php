@@ -18,12 +18,6 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="#"> <!--/*Route::is('profile')? '#' :route('profile')*/-->
-              <i class="material-icons">account_circle</i>
-              <p>User Profile</p>
-            </a>
-          </li>
 
           <li class="{{Route::is('users.view') || Route::is('users.create') || Route::is('users.edit') 
           ? 'nav-item active' : 'nav-item'}} ">
