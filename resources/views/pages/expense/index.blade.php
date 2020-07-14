@@ -14,52 +14,84 @@
 @endpush
 
 @section('content')
-<!-- Main body start -->
-<br>
-<br>
-<br>
-<br>
-<div class="container wrapper">
-  <div class="first">
-    <a href="#" class="first1"><h5>HOME &#8226;</h5></a>
-    <a href="#" class="first1"><h5>SPENDING &#8226;</h5></a>
-    <a href="#" class="first1"><h5>EXPENSE REPORT</h5></a> 
-  </div> 
-  
-  <div class="col-md-12 second">
-    <span class="exp1"><h3>Expense Report</h3></span>
-    <div class="second1">
-      <span class="exp2"><h5>Expense report gives an insight to how much is being spent by the<br> federal government on a daily basis and how much is spent in major<br> sectors in Nigeria.</h5></span>
-    </div>
-  </div>
-  <br>
-  <br>
-  <br>
-  <div class="col-md-12 col-sm-12 ">
-    <div class=" wrap" style="overflow-x:auto;">
-      <div class="col-12 off-1 bottom-border ">
-        <a href="" class="active off-0">Daily Expenditure</a>
-        <a href="" class="off-0">Power</a>
-        <a href=""class="off-0">Education</a>
-        <a href=""class="off-0">Security</a>
-        <a href="" class="padding off-0">Agriculture</a>
-        <a href="" class="off-0">Infastructure</a>
-        <a href="">Comments</a>
+
+<header class="container section-wrapper">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb bg-white">
+    <li class="breadcrumb-item not-active"><a href="{{ route('home') }}">HOME</a></li>
+      <span>&#8226;</span>
+      <li class="breadcrumb-item not-active"><a href="#">SPENDING</a></li>
+      <span>&#8226;</span>
+      <li class="breadcrumb-item active" aria-current="page"><a href="#">EXPENSE REPORT</a></li>
+    </ol>
+  </nav>
+</header>
+<section>
+  <div class="container ">
+    <div class="row">
+      <div class="col-md-8 col-lg-12 section-heading">
+        <h1 class="section-heading-title">Expense Report</h1>
+        <p class="section-heading-paragraph">Expense report gives an insight to how much is being spent by the federal government on a daily basis and how much is spent in major sectors in Nigeria.</p>
       </div>
     </div>
   </div>
-  <div class="container">
-    <div class="col-md-12 " style="padding: 20px;">
-      <a href="#" class="drop">Chart<i class="fas fa-sort-down fa-2x"></i></a>
+  <div class="section-button">
+    <div class="container">
+      <div class="row px-1">
+        <div class="btn-group col-lg-12 col-md-12 d-flex justify-content-between responsive-button nav nav-tabs" style="overflow-x: scroll;">
+          <a class="btn-marg text-left active button" data-toggle="tab" role="tab" href="#navchart">Daily Expenditure</a>
+          <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Power</a>
+          <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Education</a>
+          <a class="btn-marg text-left button" data-toggle="tab" role="tab"href="">Security</a>
+          <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Agriculture</a>
+          <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Infastructure</a>
+          <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="#comments">Comments</a>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="container col-md-12">
-    <div class="label">
-      <a><h6>Graph(Daily):12th May 2019</h6></a>
-      <div><button class="btn-sm  filter">Select Date<i class="fas fa-filter "></i></button></div>
-    </div>
-  {{-- </div> --}}
+</section>
+<div class="tab-content">
+    <div class="tab-content">
+      <div class="container tab-pane show fade active" id="navchart" role="tabpanel">
+        <div class="dropdown nav m-4">
+          <button class="btn btn-outline-light dropdown-toggle text-success nav-chart" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Chart
+          </button>
+          <div class="dropdown-menu nav-tabs-dropdown" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" data-toggle="tab" role="tab" href="#navchart">Chart</a>
+            <a class="dropdown-item" data-toggle="tab" role="tab" href="#table">Table</a>
+          </div>
+        </div>
+        
+        <div class="container col-sm-12 col-md-7">
+          <div class="table-top d-flex justify-content-between align-items-center">
+            <h4>Graph(Daily):12th May 2019</h4>
+            <button class="nav-button">Select Date<i class="fas fa-filter px-1" style="font-size: var(--fs-reg);"></i></button>
+          </div>
+          <div class="main-chart">
+            <div id ="chart">
   
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container tab-pane fade" id="table" role="tabpanel">
+        <div class="dropdown nav m-5">
+          <button class="btn btn-outline-light dropdown-toggle text-success nav-chart" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Table
+          </button>
+          <div class="dropdown-menu nav-tabs-dropdown" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item not" data-toggle="tab" role="tab" href="#navchart">Chart</a>
+            <a class="dropdown-item" data-toggle="tab" role="tab" href="#table">Table</a>
+          </div>
+        @include('partials.expense-table')
+      </div>
+    </div>
+    <div class="container tab-pane fade" id="comments" role="tabpanel">
+      @include('partials.comments')
+    </div>
+  </div>
 </div>
  
 @endsection
