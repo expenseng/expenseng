@@ -86,7 +86,12 @@ export default {
             
             this.hideSmallComment = false; //show the small comment box     
             
-            this.$emit('comment', 'new');
+            /**
+             * now we want to display replies in real time.
+             * if commentId is empty, then it is a new comment
+             * and a reply otherwise
+             * */
+            this.$emit('comment', this.commentId);
         },
     },
 

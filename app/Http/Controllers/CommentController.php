@@ -122,6 +122,8 @@ class CommentController extends Controller
         $data = json_decode($response->getBody(), true);
 
         if($data['status'] == "success"){
+            //broadcast the new comment
+            event(new NewCommentOnResource($data));
             return $data['data'];
         }else{
             Log::error('Error while posting replies to '.$request->commentId);

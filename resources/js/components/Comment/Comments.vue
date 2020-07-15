@@ -30,7 +30,7 @@
         <div class="container mb-4 mt-4" v-if="this.comments.length == 0">
             <h2 class="text-center">No comments found for this resource yet.</h2>
         </div>
-        <comment v-on:newComment="updateUI"></comment>
+        <comment v-on:comment="updateUI"></comment>
     </div>
 </template>
 
@@ -58,6 +58,7 @@ export default {
     },
 
     mounted() {
+        this.comments.replies = []; //initialize empty arrays for comments
         this.comment.getResourceComments(this.origin)
                     .then(response => {
                         this.comments = response.records
@@ -70,10 +71,22 @@ export default {
             var parentEl = document.querySelector("#"+id).prepend("");
         },
 
-        updateUI(){
+        updateUI(commentId){
+
             window.Echo.channel('expense-comment')
             .listen('NewCommentOnResource', (e) => {
-                this.comments.push(e.data);
+                if(commentId == ""){
+                    console.log("new");
+                    this.comments.push(e.data);
+                }else{
+                    console.log("reply");
+                    this.comments.map(comment => {
+                        if(comment.commentId == commentId){
+                            console.log("reply");
+                            comment.replies = e.data
+                        }
+                    })
+                }
             });
             
             console.log("My child has given me new comments");
