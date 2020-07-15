@@ -11,7 +11,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class NewCommentOnResource
+class NewCommentOnResource implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
     public $comment;
@@ -42,9 +42,9 @@ class NewCommentOnResource
     /**
      * We are setting our custom event name here
      */
-    public function broadCastAs(){
-        return 'new.comment';
-    }
+    // public function broadCastAs(){
+    //     return 'new.comment';
+    // }
 
     /**
      * Get the data to broadcast

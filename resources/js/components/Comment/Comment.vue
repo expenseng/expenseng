@@ -71,13 +71,8 @@ export default {
             this.showName = false;
             
             this.hideSmallComment = false; //show the small comment box
-            // Form()
-            Echo.channel('expense-comment')
-            .listen('new.comment', (e) => {
-                console.log(e);
-            });
             
-            this.$emit('comment', this.comment);
+            this.$emit('newComment');
         },
     },
 

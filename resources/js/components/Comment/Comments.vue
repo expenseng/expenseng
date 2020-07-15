@@ -30,7 +30,7 @@
         <div class="container mb-4 mt-4" v-if="this.comments.length == 0">
             <h2 class="text-center">No comments found for this resource yet.</h2>
         </div>
-        <comment :origin="origin"></comment>
+        <comment :origin="origin" v-on:newComment="updateUI"></comment>
     </div>
 </template>
 
@@ -60,8 +60,7 @@ export default {
     mounted() {
         this.comment.getResourceComments(this.origin)
                     .then(response => {
-                        this.comments = response
-                        console.log(response);
+                        this.comments = response.records
                     })
     },
 
@@ -71,13 +70,20 @@ export default {
             var parentEl = document.querySelector("#"+id).prepend("");
         },
 
+        updateUI(){
+            window.Echo.channel('expense-comment')
+            .listen('NewCommentOnResource', (e) => {
+                this.comments.push(e.data);
+            });
+            
+            console.log("My child has given me new comments");
+        },
+
         createNewReplyDom(parentId){
             
         },
 
         getAvatar(ownerId){
-            console.log(ownerId);
-            console.log(this.comment.getAvatar(ownerId));
             return this.comment.getAvatar(ownerId);
         },
     },
