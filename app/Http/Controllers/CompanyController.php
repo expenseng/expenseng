@@ -95,12 +95,12 @@ class CompanyController extends Controller
         $save_new_company = $new_company->save();
 
         if ($save_new_company) {
-            Session::flash('flash_message', 'New Company created successfully!');
-            return redirect('company.view');
+            return
+            ("<script>alert('$request->company_name Company created Successfully');
+            window.location.replace('/admin/company/view')");
         } else {
             Session::flash('flash_message', 'Cannot create new Company!');
             return redirect()->back();
-            
         }
     }
 
@@ -133,8 +133,8 @@ class CompanyController extends Controller
             ]
         );
         if ($update) {
-            Session::flash('flash_message', 'Company Details successfully Edited!');
-            return redirect(route('company.view'));
+            echo ("<script>alert(' Company details edited successfully');
+            window.location.replace('/admin/company/view');</script>");
         } else {
             Session::flash('flash_message', ' Company was not edited!');
             return redirect()->back();
@@ -149,8 +149,8 @@ class CompanyController extends Controller
             echo ("<script>alert(' Company  deleted successfully');
              window.location.replace('/admin/company/view');</script>");
         } else {
-            echo ("<script>alert('Cannot Delete Company'); 
-            window.location.replace('/admin/company/view');</script>");
+            Session::flash('flash_message', ' Company was not deleted!');
+            return redirect()->back();
         }
     }
 }

@@ -25,6 +25,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="mb-0">All Ministries </h3>
+                                <a href="{{route('ministry.create')}}" class="btn btn-primary" style="float:right">CREATE NEW MINISTRY</a>
                                 <p></p>
                             </div>
                             <div class="card-body">
