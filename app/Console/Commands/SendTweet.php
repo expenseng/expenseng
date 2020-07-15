@@ -48,7 +48,7 @@ class SendTweet extends Command
         foreach ($tweets as $tweet) {
             try {
                 $tweet = new Tweet($tweet);
-                $tweet->HashTag('expanseng')->send();
+                $tweet->HashTag('expenseng')->send();
             } catch (\Exception $e) {
                 continue;
             }

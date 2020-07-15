@@ -73,7 +73,7 @@ class TwitterBot extends Controller
      */
     public function paymentTweets()
     {
-        $payments = Payment::where('payment_date', '>=', Carbon::now()->subDay())->get();
+        $payments = Payment::where('payment_date', '>=', Carbon::now()->subMonth())->get();
         foreach ($payments as $payment) {
             array_push($this->tweets, $this->filterPaymentTweet($payment));
         }
@@ -87,10 +87,10 @@ class TwitterBot extends Controller
     private function filterPaymentTweet($payment)
     {
         $amount = $payment->amount;
-        $ministry = $payment->ministry->name;
-        $ministry_handle = $payment->ministry->twitter;
-        $minister = $payment->ministry->cabinet->where('role', '=', 'Minister')->first()->name;
-        $minister_handle = @$payment->ministry->cabinet->where('role', '=', 'Minister')->first()->twitter_handle;
+        $ministry = $payment->ministry()['name'];
+        $ministry_handle = $payment->ministry()['twitter'];
+        $minister = $payment->ministry()['cabinet']->where('role', '=', 'Minister')->first()->name;
+        $minister_handle = $payment->ministry()['cabinet']->where('role', '=', 'Minister')->first()->twitter_handle;
         $description  = $payment->description;
 //        l jS \\of F Y
         $date = Carbon::createFromFormat('Y-m-d', $payment->payment_date)->format('l \\T\\h\\e jS \\of F Y');
