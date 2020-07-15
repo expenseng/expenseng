@@ -1,0 +1,126 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+body {
+  font-family: Lato;
+}
+.wrapper{
+  max-width:1440px;
+  margin:0 auto;
+}
+#chart {
+  max-width: 650px;
+  margin: 35px auto;
+}
+.first{
+    font-weight: bold;
+    /* font-size: 2vw; */
+    display: flex;
+    flex-direction: row;
+    color: #00945E;
+    font-family: lato;
+    margin-bottom: 5%;
+}
+.first1{
+    color: #00945E;
+    margin: 1%;
+}
+.first1:hover{
+    color: #00945E; 
+}
+.label{
+    /* padding:20px; */
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly ;
+    margin: 3%;
+    font-family: Lato;
+}
+.label  a h6 {
+    margin-top: 9%;
+    color: black;
+}
+.filter{
+    display: flex;
+    flex-direction: row;
+    background-color: #00945E;
+    color: white;
+}
+.circle-1{
+    width:10px;
+    height:10px;
+    background-color:#00945E;
+    border-radius:flex;
+    border-radius:50%;
+    display:inline-block;
+    margin:1%;
+}
+.exp1 h3{
+    font-weight: bold;
+    font-size: 279%;
+    font-family: lato;
+    margin-bottom: 3%;
+
+}
+.exp2{
+  letter-spacing: 0.05rem;
+}
+.drop{
+    font-family:lato ;
+    color: #00945E;
+    font-size: 150%;
+    border-bottom:2px solid #005938 ;
+    margin-right: 5%;;
+}
+.drop:hover {
+    color:#00945E
+  }
+  .bottom-border a {
+    display: block;
+    color:#A1A3A8;
+    text-align: center;
+    padding: 14px 30px;
+    text-decoration: none;
+    font-size: 17px;
+    border-bottom: 3px solid transparent;
+  }
+  
+  .bottom-border a:hover {
+    border-bottom: 3px solid #00945E;
+    color: #00945E;
+  }
+  
+  .bottom-border a.active {
+    border-bottom: 3px solid #00945E;
+    color: #00945E;
+  }
+  .bottom-dropdown a.active {
+    border-bottom: 1px solid #00945E;
+    color: #00945E;
+  }
+  .btn-sm{
+    border-radius: 3px;
+    font-size: 100%;
+    margin-top: 10px;
+    display: inline-block;
+  }
+  .btn-sm-border {
+    border: 0.5px solid #ddd;
+  }
+  .off-1{
+    font-size: 150%;
+    display: flex;
+    flex-direction: row;
+    justify-items:space-evenly;
+    text-align: center;
+  }
+  .off-0{
+    margin-right: 1%;
+  }
+
+  @media only screen and (max-width: 400px) {
+
+    .first { 
+       font-size: 105%; 
+    }
+ 
+ }

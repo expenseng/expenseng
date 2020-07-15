@@ -1,39 +1,11 @@
-/* body{
-    overflow-x: hidden;
+
+.card{
+    margin-top: 30px;
 }
-.nav-link{
-	color: black !important;
+#board .card img{
+    background-color: #ccc;
 }
-.nav-link:hover{
-	color: grey !important;
-}
-.my-footer ul {
-  list-style-type: none;
-  padding-left: 0;
-  color: white;
-}.my-footer a {
-  color: #fff !important;
-}
-.my-footer {
-  background-color: #323E48 !important;
-}
-h6{
-	color: white;
-	margin-top: 25px;
-}
-.fa-search{
-	color: grey !important;
-}
-.fa-search:hover{
-	color: black !important;
-}
-.ft{
-	margin-top: 25px;
-}
-.lower{
-	background-color: #1F2430;
-	padding: 10px;
-} */
+
 .hero-link{
     font-weight: bold;
     font-size: 20px;
@@ -86,6 +58,9 @@ h6{
     padding-left: 2.5rem;
     padding-right: 2rem;
 }
+#board{
+    margin-top: 30px;
+}
 .board-intro{
     border-bottom: 1px solid #d5d9d8;
 }
@@ -101,26 +76,34 @@ h6{
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
 }
 .director-name{
-    font-size: 20px;
+    font-size: 18px;
     line-height: 24px;
     font-weight: bold;
     display: flex;
+    justify-content: center;
     align-items: center;
     letter-spacing: 0.05em;
     color: #353A45;
 }
-.director-title{
+#board p{
+    text-align: center;
     font-size: 14px;
+    font-weight: bold;
+    justify-content: center;
     line-height: 17px;
     font-weight: 600;
     letter-spacing: 0.05em;
     color: #005D3B;
+}
+.card{
+    margin-top: 20px;
 }
 .socials i{
     font-size:1.5rem;
     color: #000;
     padding: 0 10px;
 }
+
 @media only screen and (max-width:768px){
 .hero-link{
     font-size: 18px;

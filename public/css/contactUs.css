@@ -3,17 +3,18 @@ body {
 }
 
 #banner {
-	margin: 60px 0px 150px -10px;
+	margin: 60px 0px 150px -15px;
 }
 h1{
-	font-size: 30px;
+	font-size: 24px;
 	font-weight: bold;
 }
 #banner p{
 	font-size: 16px;
 }
 .contact h2{
-	font-size: 30px;
+	font-size: 24px;
+	font-weight: bold;
 	color: #00945E;
 	margin-top: -105px;
 }
@@ -65,7 +66,6 @@ h4 {
 	font-size: 24px;
 	line-height: 135.5%;
 	text-align: center;
-	/* margin-left: 55px; */
 }
 
 .fa-map-marker,
@@ -82,14 +82,14 @@ span {
 }
 .col-sm-8{
 	text-align: center;
-	margin-left: 100px;
+	margin-left: 120px;
 	margin-top: -52px;
 	font-size: 14px;
 }
 .greenify {
-	margin-top: 50px;
-	margin-bottom: 50px;
-	padding: 50px 20px;
+	margin-top: 35px;
+	margin-bottom: 35px;
+	padding: 30px 30px;
 	width: 100%;
 	background: linear-gradient(0deg,rgba(50, 62, 72, 0.33),rgba(50, 62, 72, 0.33)),rgba(0, 148, 94, 0.67);
 }
@@ -97,13 +97,14 @@ span {
 	color: #55acee;
 }
 .greenify h2{
-	font-size: 30px;
+	font-size: 24px;
+	font-weight: bold;
 	text-align: left;
 	margin-top: -10px;
 }
 .greenify p{
 	text-align: left;
-	font-size: 14px;
+	font-size: 16px;
 	margin-top: -15px;
 }
 .twitter-back {
@@ -164,18 +165,19 @@ span {
 		overflow-x: hidden;
 	}
 #banner {
-	margin: 100px 0px 150px 20px;
+	margin: 60px 0px 150px -15px;
 }
 h1{
-	font-size: 56px;
+	font-size: 35px;
 	width: 120%;
 }
 #banner p{
-	font-size: 24px;
+	font-size: 20px;
 	width: 150%;
 }
 .contact h2{
-	font-size: 40px;
+	font-size: 32px;
+	font-weight: bold;
 	color: #00945E;
 }
 .contact .para{
@@ -186,17 +188,17 @@ input{
 	font-size: 16px;
 }
 .btn-success {
-	width: 220px;
-	font-size: 24px;
+	width: 150px;
+	font-size: 18px;
 	font-weight: bold;
-	margin: 30px 0px;
+	margin: 25px 0px;
 	border-radius: 5px;
 	padding: 10px;
 }
 
 .contact{
-	margin-left: 145px;
-	margin-top: 220px;
+	/* margin-left: 145px; */
+	margin-top: 180px;
 }
 aside {
 	color: white;
@@ -256,11 +258,11 @@ span {
 }
 .greenify {
 	margin-left: 210px;
-	margin-top: 80px;
-	margin-bottom: 80px;
+	margin-top: 30px;
+	margin-bottom: 40px;
 	padding: 60px;
 	width: 120%;
-	height: 452px;
+	height: 400px;
 	background: linear-gradient(0deg,rgba(50, 62, 72, 0.33),rgba(50, 62, 72, 0.33)),rgba(0, 148, 94, 0.67);
 }
 .greenify .fa-twitter{
@@ -269,17 +271,16 @@ span {
 .greenify h2{
 	margin-left: -40px;
 	margin-top: 60px;
-	font-size: 40px;
+	font-size: 34px;
 }
 .greenify p{
-	font-size: 20px;
+	font-size: 18px;
 	margin-left: -40px;
-	margin-top: 0;
 }
 .twitter-back {
 	margin-top: 70px;
 	opacity: 0.2;
-	width: 400px;
+	width: 350px;
 	z-index: -1;
 }
 
@@ -287,7 +288,7 @@ span {
 	width: 200px;
 	border: none;
 	position: absolute;
-	top: 230px;
+	top: 210px;
 	left: 70px;
 	padding: 8px 25px;
 }

@@ -12,6 +12,7 @@ body{
 
 /*content 1 */
 .wrapper{
+  width:85%;
   max-width:1440px;
   margin:0 auto;
 }
@@ -53,6 +54,7 @@ body{
 /*content-3 */
 .money-spent{
   margin:1rem 0;
+  margin-top: 0;
 }
 .money-spent .paragraph{
   position:relative;
@@ -69,7 +71,7 @@ body{
   position:absolute;
   display: block;
   width:50%;
-  top:98%;
+  top:70%;
   height: 3px;
   background-color:#00945E;
   transition:.5s ease;
@@ -143,7 +145,7 @@ body{
     font-weight:200;
 }
 .ministry h4{
-  font-size: 16px;
+  font-size: 20px;
 }
 .circle{
   top:15%;
@@ -173,7 +175,7 @@ body{
     top:7%;
   }
   .money-spent .paragraph:before{
-    width:30%;
+    width:35%;
   }
 }
 @media only screen and (max-width:850px){

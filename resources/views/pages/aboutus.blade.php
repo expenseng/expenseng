@@ -2,7 +2,7 @@
 @push('css')
 <title>FG Expense - Home</title>
 <link rel="stylesheet" href="{{ asset('css/aboutus-header_footer.css') }}">
-<link rel="stylesheet" href="{{ asset('css/aboutus.style.css') }}">
+<link rel="stylesheet" href="{{ asset('css/aboutus.style.css')}}">
 @endpush
 
 @section('content')
@@ -36,7 +36,9 @@
 					</p>
 
 					<div class="twitter">
-						<img src="{{ asset('images/aboutus/twitter.jpg') }}" alt="">
+						<a href="https://twitter.com/expenseng">
+							<img src="{{ asset('images/aboutus/twitter.jpg') }}" alt="">
+						</a>
 					</div>
 
 				</div>
@@ -75,7 +77,7 @@
 						<img src="{{ asset('images/aboutus/our_mission.jpg') }}" alt="">
 					</div>
 				</div>
-				<div class="col-lg-5 col-md-5 col-sm-12 mission_text">
+				<div class="col-lg-5 col-md-5 col-sm-12 mission_text d-flex flex-column justify-content-center">
 					<h2 class="section-small-font">
 						Our Mission
 					</h2>
@@ -86,7 +88,7 @@
 			</div>
 
 			<div class="row d-flex justify-content-around">
-				<div class="col-lg-5 col-md-5 col-sm-12 vision_text">
+				<div class="col-lg-5 col-md-5 col-sm-12 vision_text d-flex flex-column justify-content-center">
 
 					<h2 class="section-small-font">
 						Our Vision
@@ -170,9 +172,6 @@
 @endsection
 
 @section('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	// Detect request animation frame
 	var scroll = window.requestAnimationFrame ||
