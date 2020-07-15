@@ -7,6 +7,7 @@ use App\Comment;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Cookie;
 use App\Citizen;
+use App\Events\NewCommentOnResource;
 use Illuminate\Support\Facades\Log;
 
 use function GuzzleHttp\json_decode;
@@ -69,6 +70,9 @@ class CommentController extends Controller
         $response = json_decode($response->getBody(), true);
 
         if($response['status'] == "success"){
+            //broadcast the new comment
+            event(new NewCommentOnResource($response));
+            
             return $response['data'];
         }else{
             Log::error("Error from creating a comment" . $response);

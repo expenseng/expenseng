@@ -18,6 +18,7 @@ class CreateCitizensTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone')->nullable();
+            $table->string('password');
             $table->timestamps();
         });
     }
