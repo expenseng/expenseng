@@ -18,6 +18,12 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contactUs')->name('contact');
 
+    //Twitter
+Route::get('/tweets/create', 'TweetsController@create')->name('twitter.create');
+Route::get('/tweets/edit', 'TweetsController@edit')->name('twitter.edit');
+Route::post('/tweets/save', 'TweetsController@store')->name('twitter.save');
+Route::put('/tweets/update', 'TweetsController@update')->name('twitter.edit');
+
 /**
  * Reports Endpoints
  */
@@ -94,11 +100,7 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
  Route::group(['prefix' => 'admin', 'middleware' => [] ], function() {          
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
     
-    //Twitter
-    Route::get('/tweets/create', 'Admin\TweetsController@create')->name('twitter.create');
-    Route::get('/tweets/edit', 'Admin\TweetsController@edit')->name('twitter.edit');
-    Route::post('/tweets/save', 'Admin\TweetsController@store')->name('twitter.save');
-    Route::put('/tweets/update', 'Admin\TweetsController@update')->name('twitter.edit');
+
 
 
     // Expense CRUD
