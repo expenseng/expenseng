@@ -130,6 +130,13 @@ class CommentService{
             return response.data;
         })
     }
+
+    fetchReplies(commentId){
+        return axios.get('/api/comments/' + commentId + '/replies')
+        .then(response => {
+            return response.data;
+        })
+    }
 }
 
 export default CommentService;

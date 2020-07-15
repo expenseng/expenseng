@@ -98,15 +98,15 @@ class CommentController extends Controller
         }
     }
 
-    public function replies(Request $request){
-        $response = $this->http->get('comments/' . $request->commentId . '/replies');
+    public function replies($commentId){
+        $response = $this->http->get('comments/' . $commentId . '/replies');
 
         $data = json_decode($response->getBody(), true);
 
         if($data['status'] == "success"){
             return $data['data'];
         }else{
-            Log::error('Error while fetching replies to '.$request->commentId);
+            Log::error('Error while fetching replies to '.$commentId);
             return false;
         }
     }
