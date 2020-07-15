@@ -89,7 +89,7 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
  //    Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
 
 
- Route::group(['prefix' => 'admin', 'middleware' => [] ], function() {
+ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function() {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
 
 
@@ -136,7 +136,6 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
 
 
 Auth::routes();
-
 
 Route::get('/startRT', 'TwitterBot@startLiveRetweet');
 Route::get('/stopRT', 'TwitterBot@stopLiveRetweet');
