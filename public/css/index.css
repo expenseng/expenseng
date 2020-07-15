@@ -1,159 +1,184 @@
 #main{
-   min-height: 100vh;
-   font-family: 'Lato', sans-serif;
-}
-
-.background{
-    background: linear-gradient(0deg, rgba(50, 62, 72, 0.4), rgba(50, 62, 72, 0.4)), linear-gradient(0deg, rgba(0, 148, 94, 0.32), rgba(0, 148, 94, 0.32)), url(../images/flag.jpg);
-
-}
-
-.arrow-right,
-.arrow-left{
-    margin-top: 1rem;
-    cursor: pointer;
-}
-
-.banner{
-    height: 90%;
-    color: white;
-    margin-bottom: 5rem;
-}
-
-button.btn.scroll-down{
-    margin: auto;
-    position: relative;
-    top: 2.6rem;
-    margin-bottom: 7rem;
-    height: 64px;
-    width: 64px;
-    background: white;
-    display: block;
-    background: url('../images/arrow-down-vector.png');
-    background-size: contain;
-}
-
-button.btn.scroll-down::after{
-    position: absolute;
-    content: "";
-}
-
-
-.target{
-    margin-top: 3rem;
-}
-.carets{
-    display: flex;
-    padding-right: 3rem;
-    justify-content: flex-end;
-}
-.carets img{
-    width: 42px;
-    height: 42px;
-}
-.carets img:nth-child(1){
-    margin-right: 2rem;
-}
-
-#caret{
-   opacity: 0;
-}
-.slide-left{
-   transform: translateX(-90%);
-}
-.slide-right{
-   transform: translateX(0%);
-}
-.summary{
-    margin-right: 4rem;
-}
-.summary h4{
-    font-weight: bold;
-    font-size: 3rem;
-    line-height: 124.8%;
-}
-.summary p{
-    font-weight: 300;
-    font-size: 1rem;
-    line-height: 204.8%;
-}
-.gallery{
-    display: flex;
-    position: relative;
-    height:380px;
-    margin-right: -170px;
-    overflow-x: hidden;
-    padding-top: 15px;
-}
-
-.ministry-top{
-    display: flex;
-    justify-content: space-between;
-}
-
-.scroll-down > a{
-color: rgba(0, 0, 0, 0 );
-}
-
-.tag{
-    padding: 0.3rem 1rem;
-    color: #005938;
-    background-color: white;
-    font-weight: 700;
-    align-self: flex-start;
-    position: absolute;
-    left: 10%;
-    top: -3%;
-    z-index: 23;
-}
-
-.tag p {
-    margin-bottom: 0;
-}
-.card{
-    background-size: 100% 100%;
-    position: absolute;
-    width: 70%;
-    height: 95%;
-    border: white 0.7px solid;
-    transition: ease-in-out all 0.5s;
-    padding: 0rem 1rem;
-}
-.card1{
-    background-image: url(../images/card2.jpg);
-
-}
-.card2{
-    background-image: url(../images/road.svg);
-    background-size: contain;
-    left: 80%;
-}
-.project{
-    margin-top: auto;
-}
-.project p{
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: rgba(240, 240, 240, 0.945);
-}
-.project p#cost{
-    font-size: 1.4rem;
-    font-weight: 700;
-}
-.warning{
-    font-size: 1rem;
-    color: crimson;
-    text-align: center;
-}
-.arrow-down{
-    width:  60px;
-    height: 60px;
-    margin: auto;
-    display: block;
-    border: green 2px solid;
-    background:green;
-    border-radius: 100%;
-    z-index: 777;
+    min-height: 100vh;
+    font-family: 'Lato', sans-serif;
+ }
+ .background{
+     background: linear-gradient(0deg, rgba(50, 62, 72, 0.4), rgba(50, 62, 72, 0.4)), linear-gradient(0deg, rgba(0, 148, 94, 0.32), rgba(0, 148, 94, 0.32)), url(../images/flag.jpg);
+ }
+ .arrow-right,
+ .arrow-left{
+     margin-top: 1rem;
+     cursor: pointer;
+ }
+ .banner{
+     height: /* 90% */ 100vh;
+     color: white;
+     margin-bottom: 5rem;
+ }
+ .scroll-down{
+     width: 100%;
+     /* Firefox */
+     display: -moz-box;
+     -moz-box-pack: center;
+     -moz-box-align: center;
+     /* Safari and Chrome */
+     display: -webkit-box;
+     -webkit-box-pack: center;
+     -webkit-box-align: center;
+     /* W3C */
+     display: box;
+     box-pack: center;
+     box-align: center;
+     margin-top: -8rem;
+ }
+ .scroll-down img{
+     height: 80px;
+ }
+ button.btn.scroll-down::after{
+     position: absolute;
+     content: "";
+ }
+ .target{
+     margin-top: 3rem;
+ }
+ .carets{
+     display: flex;
+     padding-right: 3rem;
+     justify-content: flex-end;
+ }
+ .carets img{
+     width: 25px;
+     height: 25px;
+ }
+ .carets img:nth-child(1){
+     margin-right: 3rem;
+ }
+ #caret{
+    opacity: 0;
+ }
+ .slide-left{
+    transform: translateX(-90%);
+ }
+ .slide-right{
+    transform: translateX(0%);
+ }
+ .summary{
+     margin-left: 2rem;
+ }
+ .summary h4{
+     font-weight: 200;
+     font-size: 1.5rem;
+     line-height: 124.8%;
+ }
+ .summary .bolding{
+     font-weight: bolder;
+ }
+ .para{
+     margin-top: 2rem;
+     margin-bottom: 2rem;
+ }
+ .para p{
+     margin-bottom: -5px;
+     font-weight: 300;
+     font-size: 0.6rem;
+     line-height: 204.8%;
+ }
+ .gallery{
+     display: flex;
+     position: relative;
+     height:400px;
+     overflow-x: hidden;
+ }
+ .ministry-top{
+     display: flex;
+     justify-content: space-between;
+ }
+ p.tag{
+     padding: 0.3rem 1rem;
+     color: #005938;
+     background-color: white;
+     font-weight: 700;
+     margin-top: -10px;
+     align-self: flex-start;
+     position: absolute;
+     left: 10%;
+     top: -2%;
+     z-index: 23;
+ }
+ .card{
+     background-size: 100% 100%;
+     position: absolute;
+     width: 70%;
+     height: 100%;
+     border: white 0.7px solid;
+     transition: ease-in-out all 0.5s;
+     padding: 0rem 1rem;
+ }
+ .card1{
+     background-image: url(../images/card2.jpg);
+ }
+ .card2{
+     background-image: url(../images/road.svg);
+     background-size: cover;
+     left: 80%;
+ }
+ .project{
+     margin-top: auto;
+ }
+ .project p{
+     font-size: 0.8rem;
+     font-weight: 700;
+     color: rgba(240, 240, 240, 0.945);
+ }
+ .project p#cost{
+     font-size: 1.4rem;
+     font-weight: 700;
+ }
+ .warning{
+     font-size: 1rem;
+     color: crimson;
+     text-align: center;
+ }
+ .arrow-down{
+     width:  60px;
+     height: 60px;
+     margin: auto;
+     display: block;
+     border: green 2px solid;
+     background:green;
+     border-radius: 100%;
+     z-index: 777;
+     position: relative;
+     top: 3.6rem;
+ }
+ p.label{
+     background: #353A45;
+     width: 65%;
+     left: 0;
+     padding:1rem;
+     color: white;
+     font-size: 1rem;
+     line-height: 190%;
+     margin-top: -3rem;
+     text-align: end;
+ }
+ div.expenses{
+     display: flex;
+     flex-wrap: wrap;
+     align-items: center;
+     justify-content: center;
+ }
+ .expenses a{
+     color: #33A97E;
+ }
+ .exp-card{
+     width: 100%;
+     margin: 2%;
+     padding: 1.1rem;
+     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04);
+     box-sizing: border-box;
+ }
+  div.graph-cont{
     position: relative;
  }
  div.graph-cont img{
@@ -251,34 +276,25 @@ color: rgba(0, 0, 0, 0 );
  .companies{
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-}
-.expenses a{
-    color: #33A97E;
-}
-.exp-card{
-    width: 100%;
-    margin: 2%;
-    padding: 1.1rem;
-    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04);
-    box-sizing: border-box;
-}
-
- div.graph-cont{
-   position: relative;
-
-}
-div.graph-cont img{
-    width: 100%;
-}
-div.graph-cont img:nth-child(1){
-    position: absolute;
-}
-
-
-p.exp-card1{
-     font-size: 1rem;
+    margin-bottom: 4rem;
+ }
+ .comp-card{
+     width:100%;
+     display: flex;
+     flex-direction: column;
+     padding: 2rem;
+     box-shadow: 0px 0px 1.01639px rgba(0, 0, 0, 0.04), 0px 4.06557px 8.13115px rgba(0, 0, 0, 0.04), 0px 16.2623px 24.3934px rgba(0, 0, 0, 0.04), 0px 24.3934px 32.5246px rgba(0, 0, 0, 0.04);
+ }
+ .companies .comp-card:nth-child(even){
+     margin: 2rem 0rem;
+ }
+ .awarded{
+     display: flex;
+     justify-content: space-between;
+     margin-bottom: 2rem;
+ }
+ .profile p:nth-child(1){
+     font-size: .9rem;
      font-weight: 700;
      line-height: 30%;
  }
@@ -292,238 +308,71 @@ p.exp-card1{
      font-size: 0.7rem;
      line-height: 30%;
      font-weight: 700;
-}
-
-.ministry{
-    width: 90%;
-    margin: auto;
-}
-.ministry-heading{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.ministry-head{
-    display: flex;
-    margin-bottom: 2rem;
-    align-items: baseline;
-    width: 100%;
-    background-color: white;
-    border: #33A97E 1px solid;
-}
-p.profile{
-    color: #33A97E;
-    border-bottom: #33A97E 1px solid;
-    cursor: pointer;
-}
-
-.g-contractors-p {
-    font-size: 24px;
-    color: #33A97E;
-    margin: auto;
-}
-
-.g-contractors-p a{
-    color: #33A97E;
-    text-decoration: underline;
-}
-
-.ministry-stat{
-    display: flex;
-    flex-direction: column;
-    padding: 1.5rem;
-    min-height: 450px;
-    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04)
-}
-
-.ministry-stat .exp-card{
-    height: auto;
-}
-.stat-a{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.stat-b{
-    width: 100%;
-}
-
-.divide{
-  border-top: 1px solid gray;
-  border-bottom:1px solid gray ;
-}
-
-.explore{
-    background: linear-gradient(0deg, rgba(50, 62, 72, 0.33), rgba(50, 62, 72, 0.33)), url('../images/HOA.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding: 1rem;
-    color: white;
-    margin: 4rem 0rem;
-}
-.explore p:nth-child(1){
-    font-size: 1.6rem;
-    line-height: 150%;
-    font-weight: 300;
-}
-.explore p:nth-child(2){
-    font-size: 0.9rem;
-    font-weight: 300;
-}
-.explore button{
-   color:  #00945E;
-   padding: 0.4rem 3rem;
-   background: #FFFFFF;
-   border: none;
-   border-radius: 0.3rem;
-}
-
-button.g-shadow {
-    box-shadow: 0 0 5px 2px #C8C8C8;
-}
-
-.g-shadow a {
-    color: #00945E;
-    text-decoration: none;
-}
-
-.g-shadow a:hover {
-    cursor: pointer;
-}
-
-.companies{
-   display: flex;
-   flex-wrap: wrap;
-   margin-bottom: 4rem;
-}
-.comp-card{
-    width:100%;
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    box-shadow: 0px 0px 1.01639px rgba(0, 0, 0, 0.04), 0px 4.06557px 8.13115px rgba(0, 0, 0, 0.04), 0px 16.2623px 24.3934px rgba(0, 0, 0, 0.04), 0px 24.3934px 32.5246px rgba(0, 0, 0, 0.04);
-}
-.companies .comp-card:nth-child(even){
-    margin: 2rem 0rem;
-}
-.awarded{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 2rem;
-}
-.profile p:nth-child(1){
-    font-size: .9rem;
-    font-weight: 700;
-    line-height: 30%;
-}
-
-.profile p:nth-child(2){
-    font-size: 1.1rem;
-    color: #33A97E;
-    line-height: 30%;
-    font-weight: 700;
-}
-.profile p:nth-child(3){
-    font-size: 0.7rem;
-    line-height: 30%;
-    font-weight: 700;
-}
-#handle{
-    font-size: 1rem;
-    color: #6765EC;
-}
-
-.convo-background{
-    background: linear-gradient(0deg, rgba(50, 62, 72, 0.33), rgba(50, 62, 72, 0.33)), rgba(0, 148, 94, 0.67);
-}
-
-.convo{
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    color: white;
-    margin-bottom: 90px;
-}
-.tweet{
-    background-image: url(../images/twitter1.png);
-    height: 200px;
-    background-size: 100% 100%;
-    display: flex;
-    width: 45%;
-    margin: auto;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.query{
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-}
-.query p:nth-child(1){
-    font-size: 1.6rem;
-    line-height: 200%;
-    text-align: center;
-}
-.query p:nth-child(2){
-     font-size: 0.9rem;
-}
-
-.twt-handle{
-    padding: 0.3rem 0.5rem;
-    background-color: white;
-    border-radius: 0.3rem;
-    margin: auto;
-    text-align: center;
-    width: auto;
-}
-.twt-handle img{
-   width: 20px;
-   height: 20px;
-}
-
-@media only screen and (min-width: 768px) {
-  .target{
-    display:flex;
-  }
-  .summary{
-      width: 60%;
-  }
-  .gallery{
-    width: 40%;
-
-flex: 1;
-margin-top: -2rem;
-text-align: end;}
-  p.label{
-      width: 47%;
-      font-size: 1.2rem;
-  }
-  .exp-card{
-      width: 44%;
-  }
-
-  .ministry-heading{
-      flex-direction: row;
-  }
-  .ministry-head{
-      width: 15em;
-  }
-  .query{
-    width: 50%;
+ }
+ #handle{
+     font-size: 1rem;
+     color: #6765EC;
+ }
+ .vll{
+     align-items: center;
+     margin-left: 10rem;
+     margin: 50px;
+ }
+ .convo-background{
+     background: linear-gradient(0deg, rgba(50, 62, 72, 0.33), rgba(50, 62, 72, 0.33)), rgba(0, 148, 94, 0.67);
+ }
+ .convo{
+     z-index: -1;
+     padding: 1rem;
+     display: flex;
+     flex-direction: column;
+     color: white;
+ }
+ .tweet{
+     background: url(../images/twitter1.png);
+     height: 200px;
+     background-size: 100% 100%;
+     display: flex;
+     width: 45%;
+     margin: auto;
+     background-size: contain;
+     background-position: center;
+     background-repeat: no-repeat;
+ }
+ .query{
+     display: flex;
+     flex-direction: column;
+     justify-content: flex-end;
+ }
+ .query p:nth-child(1){
+     font-size: 1.6rem;
+     line-height: 200%;
+     text-align: center;
+ }
+ .query p:nth-child(2){
+      font-size: 0.9rem;
+ }
+ .twt-handle{
+     padding: 0.3rem 0.5rem;
+     background-color: white;
+     border-radius: 0.3rem;
+     margin: auto;
+     text-align: center;
+     width: auto;
+ }
+ .twt-handle img{
+    width: 20px;
+    height: 20px;
+ }
+ @media only screen and (min-width: 768px) {
+   .target{
+     display:flex;
    }
    .summary{
        width: 60%;
    }
-
-   .ministry{
-       width: 80%;
+   .gallery{
+     width: 40%;
    }
    p.label{
        width: 47%;
@@ -541,14 +390,14 @@ text-align: end;}
    .query{
      width: 50%;
     }
-    .stat-b img{
-        width: 25%;
-        margin-right: 2rem;
-    }
-    .ministry-stat{
-        flex-direction: row;
-    }
-
+   .query p:nth-child(1){
+     text-align: left;
+   }
+   .convo{
+     flex-direction: row;
+     justify-content: space-between;
+     background-position: left;
+   }
     .tweet{
         width: 35%;
     }
@@ -558,15 +407,8 @@ text-align: end;}
     .explore{
         padding: 3rem;
     }
-    .awarded{
-      width: 35%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-     }
-
-    .companies .comp-card:nth-child(even){
-        margin: 0rem 0rem;
+    .convo{
+        padding: 3rem;
     }
     #caret{
        opacity: 1;
@@ -574,100 +416,147 @@ text-align: end;}
     #caret-alt{
          opacity: 0;
     }
-}
-
-@media(max-width:600px){
-
-.specific{
-    width: 50%;
-}
-}
-
-@media screen and (max-width: 1024px) {
-    .carets {
-        padding-right: 0;
-    }
-
-    .summary {
-        margin-right: 0;
-    }
-
-    .gallery{
-        display: flex;
-        position: relative;
-        height:380px;
-        margin-right: -45px;
-        overflow-x: hidden;
-        padding-top: 15px;
-    }
-}
-
-@media screen and (max-width: 768px) {
-
-    .carets img {
-        width: 35px;
-        height: 35px;
-    }
-
-    .summary h4 {
-        font-size: 2.4rem;
-    }
-
-    .summary p {
-        font-size: 1.2rem;
-        line-height: 27px;
-    }
-
-    .gallery{
-        display: flex;
-        position: relative;
-        height:380px;
-        margin-right: -38px;
-        overflow-x: hidden;
-        padding-top: 15px;
-    }
-
-    .convo {
-        margin-bottom: 70px;
-    }
-
-    .g-contractors-p {
-        margin: auto;
-        padding-top: 40px;
-        font-size: 21px;
-    }
-}
-
-@media screen and (max-width: 575px) {
-
-    .target {
-        margin-top: 0;
-    }
-
-    .carets img {
-        width: 35px;
-        height: 35px;
-    }
-
-    .summary h4 {
-        font-size: 2.2rem;
-    }
-
-    .summary p {
-        font-size: 1rem;
-        line-height: 27px;
-    }
-
-    .gallery{
-        display: flex;
-        position: relative;
-        height:380px;
-        margin-right: -15px;
-        overflow-x: hidden;
-        padding-top: 15px;
-    }
-
-    .convo {
-        margin-bottom: 50px;
-    }
-}
+ }
+ @media only screen and (min-width: 910px) {
+     p.label{
+         width: 35%;
+         font-size: 1.4rem;
+     }
+     .stat-a{
+         width: 40%;
+         border: none;
+         border-right: 1px solid gray;
+         margin-right: 2rem;
+     }
+     .stat-b{
+         width: 60%;
+     }
+     .stat-b img{
+         width: 25%;
+         margin-right: 2rem;
+     }
+     .ministry-stat{
+         flex-direction: row;
+     }
+     .tweet{
+         width: 25%;
+     }
+     .exp-card{
+         width: 28%;
+     }
+ }
+ @media only screen and (min-width: 1020px) {
+     .summary h4{
+         font-weight: 200;
+         font-size: 3rem;
+         line-height: 124.8%;
+     }
+     .para p{
+         margin-bottom: -5px;
+         font-weight: 300;
+         font-size: 1.2rem;
+         line-height: 204.8%;
+     }
+     .scroll-down img{
+         height: 150px;
+     }
+     .comp-card{
+         flex-direction: row;
+         justify-content: space-between;
+         width: 49%;
+     }
+     .awarded{
+       width: 35%;
+       display: flex;
+       flex-direction: column;
+       justify-content: space-between;
+      }
+     .companies .comp-card:nth-child(even){
+         margin: 0rem 0rem;
+     }
+     .companies .comp-card:nth-child(odd){
+         margin-right: 2%;
+     }
+     .companies .comp-card:nth-child(3){
+         margin-top: 2%;
+     }
+ }
+ @media only screen and (max-width: 800px){
+     .summary h4{
+         font-weight: 200;
+         font-size: 1.5rem;
+         line-height: 124.8%;
+     }
+     .para{
+         margin-top: 2rem;
+         margin-bottom: 2rem;
+     }
+     .para p{
+         margin-bottom: -5px;
+         font-weight: 300;
+         font-size: 0.71rem;
+         line-height: 204.8%;
+     }
+     .gallery{
+         display: flex;
+         position: relative;
+         height:300px;
+         overflow-x: hidden;
+     }
+     .banner{
+         height: /* 90% */ 45vh;
+     }
+     .scroll-down img{
+         height: 80px;
+         margin-bottom: -80px;
+     }
+     #main{
+         margin-top: 10rem;
+     }
+     .explore p:nth-child(1){
+         margin-bottom: 3rem;
+         font-size: 1.3rem;
+         line-height: 150%;
+         font-weight: 200;
+     }
+     .explore p:nth-child(2){
+         margin-bottom: 3rem;
+         font-size: 1rem;
+         font-weight: 200;
+     }
+ }
+ @media only screen and (max-width:600px){
+     .specific{
+         width: 50%;
+     }
+     .gallery{
+         display: flex;
+         position: relative;
+         height:250px;
+         overflow-x: hidden;
+     }
+     .banner{
+         height: /* 90% */ 120vh;
+     }
+     .scroll-down img{
+         height: 60px;
+         margin-bottom: -80px;
+     }
+     #main{
+         margin-top: 10rem;
+     }
+     .explore p:nth-child(1){
+         margin-bottom: 3rem;
+         font-size: 1.3rem;
+         line-height: 150%;
+         font-weight: 200;
+     }
+     .explore p:nth-child(2){
+         margin-bottom: 3rem;
+         font-size: 1rem;
+         font-weight: 200;
+     }
+     #compu{
+         font-size: 15px;
+     }
+     }

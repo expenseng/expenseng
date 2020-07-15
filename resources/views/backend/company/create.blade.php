@@ -1,12 +1,14 @@
 @extends('layouts.home')
 @push('css')
-<link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+<link rel="stylesheet" href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2">
+  
 <title>ExpenseNg - Create Company</title>
 @endpush
 
 @section('content')
-    <div class="dashboard-wrapper">
-            <div class="container-fluid dashboard-content">
+<div class="content">
+        <div class="container-fluid">
+      
                 <div class="row">
                     <div class="col-xl-10">
 <!-- basic form  -->
@@ -17,6 +19,11 @@
                                     <h3 class="section-title">Create New Company</h3>
                                     <p></p>
                                 </div>
+                                @if (Session::has('flash_message'))
+                                <div class="alert alert-primary" role="alert">
+                                    {{session('flash_message')}}
+                                </div>
+                                @endif
                                 <div class="card">
                                     
                                     <div class="card-body">
