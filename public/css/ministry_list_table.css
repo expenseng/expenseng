@@ -357,8 +357,10 @@ text-align: center;
 
 .ui-datepicker-calendar { display: none; }
 #ui-datepicker-div{
-    position: absolute !important;
-    /* top: 410px !important; */
+    position: fixed !important;
+    top: 49% !important;
+    left: 44% !important;
+    transform: translate(-50%, -50%);
 }
 [data-handler="today"] {
     display: none

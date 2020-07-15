@@ -126,7 +126,7 @@
                                         </section>                   
                                         <br>
                                         <section class="row">
-                                            <div class="col-12" style="position:relative">
+                                            <div class="col-12" >
                                             <i class="fa fa-calendar" aria-hidden="true"></i>
                                             <input placeholder="Select Date" name="select-date" id="select-date"  class="form-control">
                                             <input placeholder="Select Month" name="select-month" id="select-month" class="monthYearPicker form-control" />
