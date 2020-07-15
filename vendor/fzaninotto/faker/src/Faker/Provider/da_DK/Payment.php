@@ -2,7 +2,13 @@
 
 namespace Faker\Provider\da_DK;
 
-class Payment extends \Faker\Provider\Payment
+class
+
+
+
+
+
+Payment extends \Faker\Provider\Payment
 {
     /**
      * International Bank Account Number (IBAN)

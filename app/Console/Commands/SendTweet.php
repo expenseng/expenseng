@@ -2,8 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Http\Controllers\TwitterBot;
+use App\Payment;
 use App\Tweet;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
+use mysql_xdevapi\Exception;
 
 class SendTweet extends Command
 {
@@ -38,9 +42,16 @@ class SendTweet extends Command
      */
     public function handle()
     {
-        $int = random_int(2,1000);
-        $tweet = new Tweet('sample testing tweet bot'.$int. " ");
-        $tweet->HashTag('Laravel')->tag('expenseng')->send();
-
+        $bot = new TwitterBot();
+        $tweets = $bot->paymentTweets();
+//        dd($tweets);
+        foreach ($tweets as $tweet) {
+            try {
+                $tweet = new Tweet($tweet);
+                $tweet->HashTag('expanseng')->send();
+            } catch (\Exception $e) {
+                continue;
+            }
+        }
     }
 }

@@ -43,6 +43,7 @@ class ComposerStaticInita5de79811cabf0fbece3276cd0a2761c
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
+            'phirehose\\' => 10,
         ),
         'X' => 
         array (
@@ -180,6 +181,10 @@ class ComposerStaticInita5de79811cabf0fbece3276cd0a2761c
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+        ),
+        'phirehose\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/fennb/phirehose/lib',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -505,6 +510,7 @@ class ComposerStaticInita5de79811cabf0fbece3276cd0a2761c
         'App\\Comment' => __DIR__ . '/../..' . '/app/Comment.php',
         'App\\Company' => __DIR__ . '/../..' . '/app/Company.php',
         'App\\Console\\Commands\\ConnectToStreamingAPI' => __DIR__ . '/../..' . '/app/Console/Commands/ConnectToStreamingAPI.php',
+        'App\\Console\\Commands\\SendTweet' => __DIR__ . '/../..' . '/app/Console/Commands/SendTweet.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Employee' => __DIR__ . '/../..' . '/app/Employee.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -2933,7 +2939,7 @@ class ComposerStaticInita5de79811cabf0fbece3276cd0a2761c
         'NunoMaduro\\Collision\\Provider' => __DIR__ . '/..' . '/nunomaduro/collision/src/Provider.php',
         'NunoMaduro\\Collision\\SolutionsRepositories\\NullSolutionsRepository' => __DIR__ . '/..' . '/nunomaduro/collision/src/SolutionsRepositories/NullSolutionsRepository.php',
         'NunoMaduro\\Collision\\Writer' => __DIR__ . '/..' . '/nunomaduro/collision/src/Writer.php',
-        'OauthPhirehose' => __DIR__ . '/..' . '/fennb/phirehose/lib/OauthPhirehose.php',
+        'OauthPhirehose' => __DIR__ . '/../..' . '/fennb/phirehose/lib/OauthPhirehose.php',
         'Opis\\Closure\\Analyzer' => __DIR__ . '/..' . '/opis/closure/src/Analyzer.php',
         'Opis\\Closure\\ClosureContext' => __DIR__ . '/..' . '/opis/closure/src/ClosureContext.php',
         'Opis\\Closure\\ClosureScope' => __DIR__ . '/..' . '/opis/closure/src/ClosureScope.php',
@@ -3403,10 +3409,10 @@ class ComposerStaticInita5de79811cabf0fbece3276cd0a2761c
         'PharIo\\Version\\VersionConstraintParser' => __DIR__ . '/..' . '/phar-io/version/src/VersionConstraintParser.php',
         'PharIo\\Version\\VersionConstraintValue' => __DIR__ . '/..' . '/phar-io/version/src/VersionConstraintValue.php',
         'PharIo\\Version\\VersionNumber' => __DIR__ . '/..' . '/phar-io/version/src/VersionNumber.php',
-        'Phirehose' => __DIR__ . '/..' . '/fennb/phirehose/lib/Phirehose.php',
-        'PhirehoseConnectLimitExceeded' => __DIR__ . '/..' . '/fennb/phirehose/lib/Phirehose.php',
-        'PhirehoseException' => __DIR__ . '/..' . '/fennb/phirehose/lib/Phirehose.php',
-        'PhirehoseNetworkException' => __DIR__ . '/..' . '/fennb/phirehose/lib/Phirehose.php',
+        'Phirehose' => __DIR__ . '/../..' . '/fennb/phirehose/lib/Phirehose.php',
+        'PhirehoseConnectLimitExceeded' => __DIR__ . '/../..' . '/fennb/phirehose/lib/Phirehose.php',
+        'PhirehoseException' => __DIR__ . '/../..' . '/fennb/phirehose/lib/Phirehose.php',
+        'PhirehoseNetworkException' => __DIR__ . '/../..' . '/fennb/phirehose/lib/Phirehose.php',
         'PhpOption\\LazyOption' => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption/LazyOption.php',
         'PhpOption\\None' => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption/None.php',
         'PhpOption\\Option' => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption/Option.php',
@@ -4877,7 +4883,7 @@ class ComposerStaticInita5de79811cabf0fbece3276cd0a2761c
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Property\\Property' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Property/Property.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
-        'UserstreamPhirehose' => __DIR__ . '/..' . '/fennb/phirehose/lib/UserstreamPhirehose.php',
+        'UserstreamPhirehose' => __DIR__ . '/../..' . '/fennb/phirehose/lib/UserstreamPhirehose.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'Webmozart\\Assert\\Mixin' => __DIR__ . '/..' . '/webmozart/assert/src/Mixin.php',
