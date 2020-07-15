@@ -1,5 +1,4 @@
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
       <!--
@@ -18,12 +17,15 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="#"> <!--/*Route::is('profile')? '#' :route('profile')*/-->
-              <i class="material-icons">account_circle</i>
-              <p>User Profile</p>
-            </a>
+
+          <li class="{{Route::is('users.view') || Route::is('users.create') || Route::is('users.edit') 
+          ? 'nav-item active' : 'nav-item'}} ">
+            <a class="nav-link" href="{{Route::is('users.view') || Route::is('users.create') || Route::is('users.edit') ? '#' : route('users.view')}}">
+              <i class="material-icons">persons</i>
+              <p>Users</p>
+            </a>   
           </li>
+          
           <li class="{{Route::is('company.view') || Route::is('company.create') || Route::is('company.edit') 
           ? 'nav-item active' : 'nav-item'}} ">
             <a class="nav-link" href="{{Route::is('company.view') || Route::is('company.create') || Route::is('company.edit') ? '#' : route('company.view')}}">
@@ -39,8 +41,9 @@
               <p>Ministry</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="#">
+          <li class="{{Route::is('expenses.view') || Route::is('expenses.create') || Route::is('expenses.edit') 
+          ? 'nav-item active' : 'nav-item'}} ">
+            <a class="nav-link" href="{{Route::is('expenses.view') || Route::is('expenses.create') || Route::is('expenses.edit') ? '#' : route('expenses.view')}}">
               <i class="material-icons">bubble_chart</i>
               <p>Expenses</p>
             </a>
@@ -53,7 +56,7 @@
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="#">
-              <i class="material-icons">persons</i>
+              <i class="material-icons">supervisor_account</i>
               <p>People</p>
             </a>
           </li>

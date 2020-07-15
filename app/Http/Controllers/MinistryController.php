@@ -6,6 +6,7 @@ use App\Ministry;
 use App\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class MinistryController extends Controller
 {
@@ -211,8 +212,8 @@ class MinistryController extends Controller
             echo ("<script>alert('New ministry created successfully');
              window.location.replace('/admin/ministry/view');</script>");
         } else {
-            echo ("<script>alert('Cannot create New ministry'); 
-            window.location.replace('/admin/ministry/create');</script>");
+            Session::flash('flash_message', 'Cannot create new Ministry!');
+            return redirect()->back();
         }
     }
 
@@ -251,19 +252,20 @@ class MinistryController extends Controller
             echo ("<script>alert(' Ministry details edited successfully');
              window.location.replace('/admin/ministry/view');</script>");
         } else {
-            echo ("<script>alert('Cannot edit ministry detail'); 
-            window.location.replace('/admin/ministry/edit/$id');</script>");
+            Session::flash('flash_message', ' Ministry was not edited!');
+            return redirect()->back();
         }
     }
 
-    public function deleteMinistry($id){
+    public function deleteMinistry($id)
+    {
         $delete = Ministry::where('id', $id)->delete();
         if ($delete) {
             echo ("<script>alert(' Ministry details deleted successfully');
              window.location.replace('/admin/ministry/view');</script>");
         } else {
-            echo ("<script>alert('Cannot Delete ministry detail'); 
-            window.location.replace('/admin/ministry/view');</script>");
+            Session::flash('flash_message', ' Ministry was not deleted!');
+            return redirect()->back();
         }
     }
 }

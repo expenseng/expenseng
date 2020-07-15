@@ -8,12 +8,13 @@ class Ministry extends Model
 {
     //
 
-
+    
     protected $fillable = [
-        'code',
-        'name',
+        'code', 
+        'name', 
         'shortname',
         'twitter',
+        'head', 
         'website',
         'sector_id'
     ];
@@ -36,7 +37,7 @@ class Ministry extends Model
          * Return only the first word if the word is greater than 10
          * Return the entire word in lowercase with spaces removed otherwise
          */
-        return strlen($this->shortname) > 10 ?
+        return strlen($this->shortname) > 10 ? 
                 strtolower(explode(" ", $this->shortname)[0]) : strtolower(str_replace(" ", "-", $this->shortname));
     }
 

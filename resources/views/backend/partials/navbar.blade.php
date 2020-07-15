@@ -57,7 +57,11 @@
                   <a class="dropdown-item" href="#">Profile</a>
                   <a class="dropdown-item" href="#">Settings</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{Auth::logout()}}">Log out</a>
+                  
+                  <a  class="dropdown-item" href="{{ Auth::logout() }}" >
+                      <i class="fas fa-power-off mr-2"></i>Logout
+                  </a>
+
                 </div>
               </li>
             </ul>

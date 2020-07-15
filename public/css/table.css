@@ -1,0 +1,8 @@
+.dataTable>tbody>tr>td, 
+        .dataTable>tbody>tr>th, 
+        .dataTable>tfoot>tr>td, 
+        .dataTable>tfoot>tr>th, 
+        .dataTable>thead>tr>td, 
+        .dataTable>thead>tr>th {
+            padding: 12px!important;
+        }

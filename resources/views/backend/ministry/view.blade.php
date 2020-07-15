@@ -25,6 +25,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="mb-0">All Ministries </h3>
+                                <a href="{{route('ministry.create')}}" class="btn btn-primary" style="float:right">CREATE NEW MINISTRY</a>
                                 <p></p>
                             </div>
                             <div class="card-body">
@@ -66,9 +67,9 @@
                                                             <a href="{{'/admin/ministry/edit/' . $ministry->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <i class="fa fa-trash" data-toggle="modal" data-target="#exampleModal" style="color: red"></i>
+                                                            <i class="fa fa-trash" data-toggle="modal" data-target="{{'#exampleModal'.$ministry->id}}" style="color: red"></i>
                                                         <!-- Modal -->
-                                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal fade" id="{{'exampleModal'. $ministry->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                             <div class="modal-header">
@@ -78,14 +79,14 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                Deleting  from Ministry
+                                                                Deleting <strong>{{$ministry->name}}</strong> from Ministry
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                                 <form action="{{'/admin/ministry/delete/'. $ministry->id}}" method="post" >
                                                                 @method('delete')
                                                                 @csrf
-                                                                <button type="button" class="btn btn-danger">Delete</button>
+                                                                <button type="" class="btn btn-danger">Delete</button>
                                                                 </form>
                                                             </div>
                                                             </div>

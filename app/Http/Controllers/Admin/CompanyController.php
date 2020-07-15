@@ -75,11 +75,7 @@ class CompanyController extends Controller
                 ]
             );
         if ($update) {
-            echo ("<script>alert(' Company details edited successfully');
-             window.location.replace('/admin/company/view');</script>");
         } else {
-            echo ("<script>alert('Cannot edit Company detail');
-            window.location.replace('/admin/company/edit/$id');</script>");
         }
     }
 
@@ -99,11 +95,7 @@ class CompanyController extends Controller
 
         $delete = Company::where('id', $id)->delete();
         if ($delete) {
-            echo ("<script>alert(' Company  deleted successfully');
-             window.location.replace('/admin/company/view');</script>");
         } else {
-            echo ("<script>alert('Cannot Delete Company');
-            window.location.replace('/admin/company/view');</script>");
         }
     }
 }

@@ -47,7 +47,7 @@ class MinistrySearchController extends Controller
     }
 
     public function filterExpenses(Request $request)
-    {  
+    {
         $id = $request->get('id');
         $givenTime = $request->get('date');
 
@@ -57,7 +57,7 @@ class MinistrySearchController extends Controller
         $mth_pattern = '/([A-Za-z]+)\s(\d{4})/';
         $yr_pattern = '/\d{4}/';
 
-        if(preg_match($mth_pattern, $givenTime, $match)){
+        if (preg_match($mth_pattern, $givenTime, $match)) {
             $m = date_parse($match[1]);
             $month = $m['month'];
             $year = $match[2];
@@ -65,13 +65,11 @@ class MinistrySearchController extends Controller
                     ->where('payment_code', 'LIKE', "$code%")
                     ->whereMonth('payment_date', '=', $month)
                     ->whereYear('payment_date', '=', $year);
-                    
-        }else if(preg_match($day_pattern, $givenTime, $match)){
+        } elseif (preg_match($day_pattern, $givenTime, $match)) {
             $payments = DB::table('payments')
                     ->where('payment_code', 'LIKE', "$code%")
                     ->where('payment_date', '=', "$givenTime");
-
-        }else if(preg_match($yr_pattern, $givenTime, $match)){
+        } elseif (preg_match($yr_pattern, $givenTime, $match)) {
             $payments = DB::table('payments')
                     ->where('payment_code', 'LIKE', "$code%")
                     ->whereYear('payment_date', '=', "$givenTime");
@@ -79,7 +77,7 @@ class MinistrySearchController extends Controller
 
         if ($request->has('sort')) {
             $payments = $payments->orderby('amount', $request->get('sort'));
-        }else{
+        } else {
             $payments = $payments->orderby('payment_date', 'desc');
         }
         

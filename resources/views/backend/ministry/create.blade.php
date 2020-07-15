@@ -19,6 +19,11 @@
                                     <h3 class="section-title">Create New Ministry</h3>
                                     <p></p>
                                 </div>
+                                @if (Session::has('flash_message'))
+                                <div class="alert alert-primary" role="alert">
+                                    {{session('flash_message')}}
+                                </div>
+                                @endif
                                 <div class="card">
                                     
                                     <div class="card-body">
