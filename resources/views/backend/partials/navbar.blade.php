@@ -57,7 +57,16 @@
                   <a class="dropdown-item" href="#">Profile</a>
                   <a class="dropdown-item" href="#">Settings</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Log out</a>
+                  
+                  <a  class="dropdown-item" href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                      <i class="fas fa-power-off mr-2"></i>Logout
+                  </a>
+                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+
+                     <!-- <a class="dropdown-item" href="{{Auth::logout()}}">Log out</a> -->
+
                 </div>
               </li>
             </ul>
