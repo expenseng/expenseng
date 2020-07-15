@@ -1,5 +1,6 @@
 <template lang="">
     <div class="pb-5">
+        <!-- insert page loader here -->
         <div class="container mb-4 mt-4" v-if="comments.length > 0" v-for="data in comments">
             <div class="card p-3">
                 <div class="container">
@@ -27,9 +28,13 @@
                 </div> 
             </div>
         </div>
-        <div class="container mb-4 mt-4" v-if="this.comments.length == 0">
-            <h2 class="text-center">No comments found for this resource yet.</h2>
+        <div class="container mb-4 mt-4" v-if="this.busy">
+            <h2 class="text-center">Please wait while we fetch comments.</h2>
         </div>
+        <div class="container mb-4 mt-4" v-if="!this.busy && this.comments.length < 1">
+            <h2 class="text-center">No comments found for this resource.</h2>
+        </div>
+        
         <comment v-on:comment="updateUI"></comment>
     </div>
 </template>
@@ -46,6 +51,7 @@ export default {
         return {
             comment: new CommentService(),
             text: '',
+            busy: true,
             comments: [],
             origin: document.location.pathname, //we are using this as the origin/resourcename
         }
@@ -61,6 +67,7 @@ export default {
         this.comments.replies = []; //initialize empty arrays for comments
         this.comment.getResourceComments(this.origin)
                     .then(response => {
+                        this.busy = false;
                         this.comments = response.records
                     })
     },
