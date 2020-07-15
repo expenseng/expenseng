@@ -30,7 +30,7 @@
         <div class="container mb-4 mt-4" v-if="this.comments.length == 0">
             <h2 class="text-center">No comments found for this resource yet.</h2>
         </div>
-        <comment :origin="origin" v-on:newComment="updateUI"></comment>
+        <comment v-on:newComment="updateUI"></comment>
     </div>
 </template>
 
@@ -46,8 +46,8 @@ export default {
         return {
             comment: new CommentService(),
             text: '',
+            comments: [],
             origin: document.location.pathname, //we are using this as the origin/resourcename
-            comments: []
         }
     },
 

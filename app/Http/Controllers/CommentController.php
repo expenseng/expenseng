@@ -72,7 +72,7 @@ class CommentController extends Controller
         if($response['status'] == "success"){
             //broadcast the new comment
             event(new NewCommentOnResource($response));
-            
+
             return $response['data'];
         }else{
             Log::error("Error from creating a comment" . $response);
@@ -107,6 +107,24 @@ class CommentController extends Controller
             return $data['data'];
         }else{
             Log::error('Error while fetching replies to '.$request->commentId);
+            return false;
+        }
+    }
+
+    public function reply(Request $request){
+        $response = $this->http->post('comments/' . $request->commentId . '/replies', [
+            "body" => json_encode([
+                "ownerId" => $request->email,
+                "content" => $request->content,
+            ])
+        ]);
+
+        $data = json_decode($response->getBody(), true);
+
+        if($data['status'] == "success"){
+            return $data['data'];
+        }else{
+            Log::error('Error while posting replies to '.$request->commentId);
             return false;
         }
     }

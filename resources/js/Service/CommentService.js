@@ -117,6 +117,19 @@ class CommentService{
             return response.data;
         })
     }
+
+    storeReply(comment, email, name, commentId){
+        if(!this.cookieExists()){
+            this.firstComment(email, name)
+        }
+
+        return axios.post('/api/comments/' + commentId + '/replies', {
+            content: comment,
+            email: this.email,
+        }).then(response => {
+            return response.data;
+        })
+    }
 }
 
 export default CommentService;

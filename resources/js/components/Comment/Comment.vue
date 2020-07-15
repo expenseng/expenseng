@@ -1,12 +1,10 @@
 <template>
-    <div>
-        <div class="container w-75 d-flex flex-column align-content-center justify-content-center">
-            <input placeholder="Name" ref="commentatorName" v-model="name" v-if="showName" required class="p-2 mb-2">
-            <input placeholder="Email" v-model="email" v-if="showName" required class="p-2 mb-2">
-            <textarea placeholder="Write a comment" v-model="comment" v-if="showName" required class="p-2 mb-2"></textarea>
-            <input placeholder="Write a Comment" v-if="!hideSmallComment" v-model="comment" @keydown.enter="send" @focus="startComment" class="p-2">
-            <button class="btn btn-primary" @click="send" v-if="showName">Comment</button>
-        </div>
+    <div :class="isContained ? 'container' : '' " class="w-75 d-flex flex-column align-content-center justify-content-center">
+        <input placeholder="Name" ref="commentatorName" v-model="name" v-if="showName" required class="p-2 mb-2">
+        <input placeholder="Email" v-model="email" v-if="showName" required class="p-2 mb-2">
+        <textarea placeholder="Write a comment" v-model="comment" v-if="showName" required class="p-2 mb-2"></textarea>
+        <input placeholder="Write a Comment" v-if="!hideSmallComment" v-model="comment" @keydown.enter="send" @focus="startComment" class="p-2">
+        <button class="btn btn-primary" @click="send" v-if="showName">Comment</button>
     </div>
 </template>
 
@@ -20,14 +18,26 @@ export default {
             comment: "",
             email: "",
             name: "",
-            commentService: new Comment()
+            commentService: new Comment(),
+            origin: document.location.pathname, //we are using this as the origin/resourcename
         }
     },
 
     props:{
-        origin: {
-            required: true,
-            type: String
+        isContained: {
+            required: false,
+            type: Boolean,
+            default: true
+        },
+        isReply: {
+            required: false,
+            type: Boolean,
+            default: false
+        },
+        commentId:{
+            required: false,
+            type: String,
+            default: ""
         }
     },
 
@@ -61,8 +71,12 @@ export default {
         },
 
         send(){
-            const response = this.commentService
-                            .storeComments(this.origin, this.comment, this.email, this.name)
+            if(this.isReply){
+                this.commentService.storeReply(this.comment, this.email, this.name, this.commentId);
+            }else{
+                const response = this.commentService
+                .storeComments(this.origin, this.comment, this.email, this.name);
+            }
 
             //empty values of comment
             this.comment = this.email = this.name = "";
@@ -70,9 +84,9 @@ export default {
             //you've finished first comment and are registered in DB
             this.showName = false;
             
-            this.hideSmallComment = false; //show the small comment box
+            this.hideSmallComment = false; //show the small comment box     
             
-            this.$emit('newComment');
+            this.$emit('comment', 'new');
         },
     },
 
