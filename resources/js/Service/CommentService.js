@@ -1,18 +1,37 @@
 class CommentService{
 
     constructor(){
-        this.name = "";
-        this.email = "";
-        this.avatar = "";
+        if(this.cookieExists()){
+            this.name = this.getCookieValue("commentatorName");
+            this.email = this.getCookieValue("commentatorEmail");
+            this.avatar = "";
+        }else{
+            this.name = "";
+            this.email = "";
+            this.avatar = "";
+        }
     }
 
     getAvatar(ownerId){
-        axios.get('/api/comments/user/avatar', {
-            email: ownerId
-        })
-        .then(response => {
-            return response.data.name;
-        })
+        const gravatar = "https://www.gravatar.com/avatar/";
+        const userEmail = this.getCookieValue("commentatorEmail");
+        const userHash = this.getCookieValue("commentatorAvatar");
+        /**
+         * If the same email we have stored in the cookie is the one whose
+         * avatar we have to display then fetch it and do so
+         */
+        if(userEmail == ownerId){
+            return gravatar + userHash;
+        }else{
+            // return axios.get('/api/comments/user/avatar', {
+            //     email: ownerId
+            // })
+            // .then(response => {
+            //     return response.data;
+            // })
+
+            return "";
+        }
     }
 
     reply(comemntId){
@@ -20,7 +39,7 @@ class CommentService{
     }
 
     cookieExists(){
-        return document.cookie.indexOf("commentatorName") > 1;
+        return document.cookie.indexOf("commentatorName") > -1;
     }
 
     /**
@@ -28,17 +47,12 @@ class CommentService{
      * @param {string} ownerId 
      */
     getUsername(ownerId){
-        if(this.cookieExists()){
-            return this.getCookieValue("commentatorName");
-        }else{
-            axios.get('/api/comments/user', {
-                email: ownerId
-            })
-            .then(response => {
-                return response.data.name;
-            })
-        }
-        
+        return axios.get('/api/comments/user', {
+            email: ownerId
+        })
+        .then(response => {
+            return response;
+        })        
     }
 
     getCookieValue(a) {
@@ -54,30 +68,23 @@ class CommentService{
         //Set cookie to expire after 100 days
         var expires = date.setDate(100);
 
+        //now store the user
+        this.storeUser(email, name)
+            .then(response => {
+                // store the user md5 hash to be used for gravatar
+                var user = response;
+                document.cookie = "commentatorAvatar="+user.md5Hash;
+            })
+
         document.cookie = "commentatorName="+name;
         document.cookie = "commentatorEmail="+email;
         document.cookie = "expires="+expires
-
-        //now store the user
-        this.storeUser(email, name);
     }
 
     storeUser(email, name){
         return axios.post('/api/comments/user', {
             email: email,
             name: name
-        })
-        .then(response => {
-            // this.email = response.data;
-            return response.data;
-        }).catch(err => {
-            console.log(err);
-        })
-    }
-
-    getUser(){
-        axios.post('/api/comments/user', {
-            email: this.email
         })
         .then(response => {
             return response.data;
@@ -96,17 +103,19 @@ class CommentService{
     }
 
     storeComments(origin, comment, email, name){
-        if(this.cookieExists()){
-            return axios.post('/api/comments', {
-                origin: origin,
-                content: comment,
-                ownerId: email,
-            }).then(response => {
-                return response.data;
-            })
-        }else{
+
+        if(!this.cookieExists()){
             this.firstComment(email, name)
         }
+
+        return axios.post('/api/comments', {
+            origin: origin,
+            content: comment,
+            ownerId: this.email,
+            refId: this.name,
+        }).then(response => {
+            return response.data;
+        })
     }
 }
 

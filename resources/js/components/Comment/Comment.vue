@@ -1,14 +1,11 @@
 <template>
     <div>
-        <div class="container w-75 d-flex flex-column align-content-center justify-content-center" v-if="firstComment">
+        <div class="container w-75 d-flex flex-column align-content-center justify-content-center">
             <input placeholder="Name" ref="commentatorName" v-model="name" v-if="showName" required class="p-2 mb-2">
             <input placeholder="Email" v-model="email" v-if="showName" required class="p-2 mb-2">
             <textarea placeholder="Write a comment" v-model="comment" v-if="showName" required class="p-2 mb-2"></textarea>
-            <input placeholder="Write a Comment" v-if="!hideSmallComment" @focus="startComment" class="p-2">
+            <input placeholder="Write a Comment" v-if="!hideSmallComment" v-model="comment" @keydown.enter="send" @focus="startComment" class="p-2">
             <button class="btn btn-primary" @click="send" v-if="showName">Comment</button>
-        </div>
-        <div class="container w-75 d-flex flex-column align-content-center justify-content-center" v-else>
-            <input placeholder="Write a Comment" v-model="comment" @keydown.enter="send" class="p-2">
         </div>
     </div>
 </template>
@@ -21,7 +18,7 @@ export default {
             showName: false,
             hideSmallComment: false,
             comment: "",
-            // email: "",
+            email: "",
             name: "",
             commentService: new Comment()
         }
@@ -36,7 +33,7 @@ export default {
 
     methods: {
         startComment(){
-            if(this.firstComment){
+            if(this.firstComment()){
                 this.showName = true;
                 this.hideSmallComment = true;
             }
@@ -49,22 +46,13 @@ export default {
             // this.$refs.commentatorName.focus()
         },
 
-        send(){
-            this.commentService
-            .storeComments(this.origin, this.comment, this.email, this.name)
-
-            this.$emit('comment', this.comment);
-        },
-    },
-
-    computed: {
         /**
          * Check if we have the user details saved in the cookie
          * Which will mean the user has commented previously
          * And so we won't have to show them the {name} & {email} fields
          */
         firstComment(){
-            if(document.cookie.indexOf("commentatorName") > 1){
+            if(document.cookie.indexOf("commentatorName") > -1){
                 //then name and email must exist in the cookie
                 return false; //don't show the name & email form
             }else{
@@ -72,20 +60,22 @@ export default {
             }
         },
 
-        email:{
-            set(newValue){
-                return newValue;
-            },
+        send(){
+            const response = this.commentService
+                            .storeComments(this.origin, this.comment, this.email, this.name)
 
-            get(){
-                if(this.commentService.cookieExists()){
-                    return this.commentService.getCookieValue("commentatorEmail");
-                }else{
-                    return this.email;
-                }
-            }
-        }
+            //empty values of comment
+            this.comment = this.email = this.name = "";
+
+            //you've finished first comment and are registered in DB
+            this.showName = false;
+            
+            this.hideSmallComment = false; //show the small comment box
+
+            this.$emit('comment', this.comment);
+        },
     },
+
 }
 </script>
 

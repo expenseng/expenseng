@@ -1,16 +1,16 @@
 <template lang="">
-    <div>
+    <div class="pb-5">
         <div class="container mb-4 mt-4" v-if="comments.length > 0" v-for="data in comments">
             <div class="card p-3">
                 <div class="container">
                     <div class="row occupy">
                         <div class="col-sm-1 mt-1 row d-flex container">
-                            <img :src="comment.getAvatar(reply.ownerId)" class="resize" alt="profile-image">
+                            <img :src="getAvatar(data.ownerId)" class="resize" alt="profile-image">
                         </div>
                         <div class="col-sm-11" :id="data.commentId">
                             <div class="d-flex justify-content-between  no-show">
                                 <div class="d-flex">
-                                    <p class="green-text">{{ comment.getUsername(data.ownerId) }}</p>
+                                    <p class="green-text">{{ data.refId }}</p>
                                     <p class="ml-3 grey-text small mt-1">{{ data.time }}</p>
                                 </div>
                                 <i class="fas fa-ellipsis-h grey-text"></i>
@@ -27,7 +27,7 @@
                 </div> 
             </div>
         </div>
-        <div class="container mb-4 mt-4">
+        <div class="container mb-4 mt-4" v-if="this.comments.length == 0">
             <h2 class="text-center">No comments found for this resource yet.</h2>
         </div>
         <comment :origin="origin"></comment>
@@ -58,23 +58,6 @@ export default {
     },
 
     mounted() {
-        //get associated first repliy for comments with a reply
-        // this.comments.map(comment => {
-        //     if(comment.numOfReplies > 0){
-        //         comment.replies.push(
-        //             {
-        //                 "ownerId": "001",
-        //                 "content": "A reply to a certain comment"
-        //             },
-        //             {
-        //                 "ownerId": "001",
-        //                 "content": "A reply to a certain comment"
-        //             }
-        //         )
-        //     }
-        // })
-        console.log(this.comment.getResourceComments(this.origin));
-
         this.comment.getResourceComments(this.origin)
                     .then(response => {
                         this.comments = response
@@ -83,14 +66,6 @@ export default {
     },
 
     methods: {
-        fetch(){
-            axios.get('/api/comments/' + this.origin)
-                .then(response => {
-                    this.data = response.data;
-                }).catch(err => {
-                    console.log(err);
-                })
-        },
 
         reply(id){
             var parentEl = document.querySelector("#"+id).prepend("");
@@ -101,7 +76,9 @@ export default {
         },
 
         getAvatar(ownerId){
-
+            console.log(ownerId);
+            console.log(this.comment.getAvatar(ownerId));
+            return this.comment.getAvatar(ownerId);
         },
 
         send(){
@@ -115,10 +92,6 @@ export default {
                 console.log(err);
             })
         },
-
-        getUsername(){
-            return "Samuel";
-        }
     },
 }
 </script>

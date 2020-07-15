@@ -57,12 +57,11 @@ class CommentController extends Controller
 
     public function store(Request $request){
         
-        $refId = $request->name . time(); 
         $response = $this->http->post('comments', [
             "body" => json_encode([
-                "refId" => $refId, 
+                "refId" => $request->refId, //username
                 "ownerId" => $request->ownerId, //email
-                "content" => "😉" . $request->content,
+                "content" => $request->content,
                 "origin" => $request->origin, //this will be the url of the page where comment happened
             ])
         ]);
@@ -115,18 +114,23 @@ class CommentController extends Controller
     public function onboardUser(Request $request){
         Cookie::queue("commentator", "true");
 
-        return Citizen::firstOrcreate([
+        $user = Citizen::firstOrcreate([
             "name" => $request->name,
             "email" => $request->email,
         ]);
+
+        $user['md5Hash'] = md5(strtolower(trim($user['email'])));
+
+        return $user;
     }
 
     public function fetchUser(Request $request){
-        return Citizen::where('email', $request->email)->get();
+        return Citizen::whereEmail($request->email)->get();
     }
 
     public function avatar(Request $request){
-        $email = Citizen::whereEmail($request->email)->get();
-        return md5($email);
+        $user = Citizen::firstOrCreate([ "email" => $request->email ]);
+        $email = $user->email;
+        return md5(strtolower(trim($email)));
     }
 }
