@@ -20,9 +20,13 @@
                                     <p></p>
                                 </div>
                                 <div class="card">
-                                    
+                                @if (Session::has('flash_message'))
+                                <div class="alert alert-primary" role="alert">
+                                    {{session('flash_message')}}
+                                </div>
+                                @endif
                                     <div class="card-body">
-                                        <form method="post" action="{{'/admin/company/edit/' . $details->id}}">
+                                        <form method="post" action="{{'/admin/ministry/edit/' . $details->id}}">
                                             @method('put')
                                             @csrf
                                             <div class="form-group">

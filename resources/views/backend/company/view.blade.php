@@ -65,8 +65,8 @@
                                                         <!--modal begin-->
                                                         
                                                             <div class="col-md-6">
-                                                            <i class="fa fa-trash" data-toggle="modal" data-target="#exampleModal" style="color: red"></i>
-                                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <i class="fa fa-trash" data-toggle="modal" data-target="{{'#exampleModal'. $company->id}}" style="color: red"></i>
+                                                            <div class="modal fade" id="{{'exampleModal' . $company->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
                                                                 <div class="modal-header">
@@ -76,14 +76,14 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    
+                                                                Deleting <strong>{{$company->name}}</strong> from Companies
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                                     <form action="{{'/admin/company/delete/'. $company->id}}" method="post" >
                                                                 @method('delete')
                                                                 @csrf
-                                                                <button type="button" class="btn btn-danger">Delete</button>
+                                                                <button type="" class="btn btn-danger">Delete</button>
                                                                 </form>
                                                                 </div>
                                                                 </div>

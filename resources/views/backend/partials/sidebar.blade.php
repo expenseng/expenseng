@@ -27,7 +27,7 @@
             </a>   
           </li>
           
-          <li class="{{Route::is('company.view') || Route::is('company.create') || Route::is('company.edit') 
+          <li class="{{Route::is('company.view') || Route::is('company.create') || Route::has('company.edit') 
           ? 'nav-item active' : 'nav-item'}} ">
             <a class="nav-link" href="{{Route::is('company.view') || Route::is('company.create') || Route::is('company.edit') ? '#' : route('company.view')}}">
               <i class="material-icons">content_paste</i>

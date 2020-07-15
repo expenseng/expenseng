@@ -66,9 +66,9 @@
                                                             <a href="{{'/admin/ministry/edit/' . $ministry->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <i class="fa fa-trash" data-toggle="modal" data-target="#exampleModal" style="color: red"></i>
+                                                            <i class="fa fa-trash" data-toggle="modal" data-target="{{'#exampleModal'.$ministry->id}}" style="color: red"></i>
                                                         <!-- Modal -->
-                                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal fade" id="{{'exampleModal'. $ministry->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                             <div class="modal-header">
@@ -78,14 +78,14 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                Deleting  from Ministry
+                                                                Deleting <strong>{{$ministry->name}}</strong> from Ministry
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                                 <form action="{{'/admin/ministry/delete/'. $ministry->id}}" method="post" >
                                                                 @method('delete')
                                                                 @csrf
-                                                                <button type="button" class="btn btn-danger">Delete</button>
+                                                                <button type="" class="btn btn-danger">Delete</button>
                                                                 </form>
                                                             </div>
                                                             </div>
