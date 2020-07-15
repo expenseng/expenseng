@@ -80,18 +80,6 @@ export default {
             console.log(this.comment.getAvatar(ownerId));
             return this.comment.getAvatar(ownerId);
         },
-
-        send(){
-            axios.post('/api/comments', {
-                email: "olaegbesamuel@gmail.com",
-                body: this.comment,
-                origin: "fgexpense",
-            }).then(response => {
-                console.log(response);
-            }).catch(err => {
-                console.log(err);
-            })
-        },
     },
 }
 </script>
