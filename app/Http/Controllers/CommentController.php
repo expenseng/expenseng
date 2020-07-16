@@ -181,7 +181,12 @@ class CommentController extends Controller
     }
 
     public function avatar(Request $request){
-        $user = Citizen::firstOrCreate([ "email" => $request->email ]);
+        /**
+         * Since a first time user must have been 
+         * stored in the DB, we will check if the user 
+         * exists and fetch their email
+         */
+        $user = Citizen::firstOrNew([ "email" => $request->email ]);
         $email = $user->email;
         return md5(strtolower(trim($email)));
     }

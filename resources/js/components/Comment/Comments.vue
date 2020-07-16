@@ -6,13 +6,13 @@
                 <div class="container">
                     <div class="row occupy">
                         <div class="col-sm-1 mt-1 row d-flex container">
-                            <img :src="getAvatar(data.ownerId)" class="resize" alt="profile-image">
+                            <user-image :ownerId="data.ownerId"></user-image>
                         </div>
                         <div class="col-sm-11" :id="data.commentId">
                             <div class="d-flex justify-content-between  no-show">
                                 <div class="d-flex">
-                                    <p class="green-text">{{ data.refId }}</p>
-                                    <p class="ml-3 grey-text small mt-1">{{ data.time }}</p>
+                                    <p class="green-text">{{ data.ownerId }}</p>
+                                    <p class="ml-3 grey-text small mt-1">{{ data.createdAt | ago }}</p>
                                 </div>
                                 <i class="fas fa-ellipsis-h grey-text"></i>
                             </div>
@@ -45,6 +45,8 @@ import CommentService from '../../Service/CommentService';
 import Comment from './Comment';
 import Replies from './Replies'
 import Reactions from './Reactions';
+import UserImage from './UserImage';
+import moment from 'moment';
 
 export default {
     data() {
@@ -59,6 +61,7 @@ export default {
 
     components:{
         Replies,
+        UserImage,
         Comment,
         Reactions
     },
@@ -68,7 +71,7 @@ export default {
         this.comment.getResourceComments(this.origin)
                     .then(response => {
                         this.busy = false;
-                        this.comments = response.records
+                        this.comments = response.records;
                     })
 
         /**
@@ -80,11 +83,11 @@ export default {
         });
     },
 
-    methods: {
-        getAvatar(ownerId){
-            return this.comment.getAvatar(ownerId);
-        },
-    },
+    filters:{
+        ago(value){
+            return moment(value).fromNow();
+        }
+    }
 }
 </script>
 

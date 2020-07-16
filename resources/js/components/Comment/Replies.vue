@@ -10,7 +10,7 @@
                 <div class="container">
                     <div class="row container occupy">
                         <div class="col-sm-1 mt-1 row d-flex container">
-                            <img :src="comment.getAvatar(reply.ownerId)" class="resize h-50" alt="profile-image">
+                            <user-image :ownerId="reply.ownerId" class="h-50"></user-image>
                         </div>
                         <div class="col-sm-11 ">
                             <div class="d-flex justify-content-between ">
@@ -36,6 +36,8 @@
 import CommentService from '../../Service/CommentService';
 import Reactions from './Reactions';
 import moment from 'moment';
+import UserImage from './UserImage';
+
 export default {
     data() {
         return {
@@ -47,7 +49,8 @@ export default {
     },
 
     components:{
-        Reactions
+        Reactions,
+        UserImage
     },
 
     props:{

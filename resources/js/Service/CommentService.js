@@ -23,14 +23,12 @@ class CommentService{
         if(userEmail == ownerId){
             return gravatar + userHash;
         }else{
-            // return axios.get('/api/comments/user/avatar', {
-            //     email: ownerId
-            // })
-            // .then(response => {
-            //     return response.data;
-            // })
-
-            return "";
+            return axios.get('/api/comments/user/avatar', {
+                email: ownerId
+            })
+            .then(response => {
+                return gravatar + response.data;
+            })
         }
     }
 
@@ -46,7 +44,7 @@ class CommentService{
      * 
      * @param {string} ownerId 
      */
-    getUsername(ownerId){
+    getUser(ownerId){
         return axios.get('/api/comments/user', {
             email: ownerId
         })
