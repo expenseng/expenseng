@@ -10,12 +10,12 @@
                 <div class="container">
                     <div class="row container occupy">
                         <div class="col-sm-1 mt-1 row d-flex container">
-                            <img :src="comment.getAvatar(reply.ownerId)" class="resize h-50" alt="profile-image">
+                            <user-image :isSmall="true" :ownerId="reply.ownerId"></user-image>
                         </div>
                         <div class="col-sm-11 ">
                             <div class="d-flex justify-content-between ">
                                 <div class="d-flex no-show">
-                                    <p class="green-text">{{ comment.getUsername(reply.ownerId) }}</p>
+                                    <username :ownerId="reply.ownerId"></username>
                                     <p class="ml-3 grey-text small mt-1">{{ reply.createdAt | ago }}</p>
                                 </div>
                                 <i class="fas fa-ellipsis-h grey-text no-show"></i>
@@ -36,6 +36,9 @@
 import CommentService from '../../Service/CommentService';
 import Reactions from './Reactions';
 import moment from 'moment';
+import UserImage from './UserImage';
+import Username from './Username';
+
 export default {
     data() {
         return {
@@ -47,7 +50,9 @@ export default {
     },
 
     components:{
-        Reactions
+        Reactions,
+        Username,
+        UserImage
     },
 
     props:{

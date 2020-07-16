@@ -23,19 +23,13 @@ class CommentService{
         if(userEmail == ownerId){
             return gravatar + userHash;
         }else{
-            // return axios.get('/api/comments/user/avatar', {
-            //     email: ownerId
-            // })
-            // .then(response => {
-            //     return response.data;
-            // })
-
-            return "";
+            return axios.get('/api/comments/user/avatar', {
+                email: ownerId
+            })
+            .then(response => {
+                return gravatar + response.data;
+            })
         }
-    }
-
-    reply(comemntId){
-
     }
 
     cookieExists(){
@@ -47,11 +41,12 @@ class CommentService{
      * @param {string} ownerId 
      */
     getUsername(ownerId){
-        return axios.get('/api/comments/user', {
+        return axios.post('/api/citizens', {
             email: ownerId
         })
         .then(response => {
-            return response;
+            console.log(response);
+            return response.data;
         })        
     }
 
