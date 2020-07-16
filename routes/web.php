@@ -21,6 +21,8 @@ Route::get('/contact', 'PageController@contactUs')->name('contact');
  * Reports Endpoints
  */
 Route::get('/expense/report', 'ExpenseController@report')->name('expense.reports');
+Route::post('/expense/report', 'ExpenseController@store')->name('expense.reports');
+
 Route::get('/expense/ministry', 'ExpenseController@ministry')->name('expense.ministry');
 
 /***
@@ -85,7 +87,7 @@ Auth::routes();
 
 
 
- Route::group(['prefix' => 'admin', 'middleware' => [] ], function() {          
+ Route::group(['prefix' => 'admin', 'middleware' => [] ], function() {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
 
     // Expense CRUD
@@ -95,7 +97,7 @@ Auth::routes();
     Route::get('/expenses/edit/{expense_id}', 'Admin\ExpenseController@editExpense')->name('expenses.edit');
     Route::put('/expenses/edit/{expense_id}', 'Admin\ExpenseController@updateExpense')->name('expenses.update');
     Route::delete('/expenses/delete/{expense_id}', 'Admin\ExpenseController@deleteExpense')->name('expenses.delete');
-   
+
 
     // Company CRUD
     Route::get('/company/create', 'CompanyController@create')->name('company.create');

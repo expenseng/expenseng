@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="{{asset('/css/header_footer.css')}}">
   <link rel="stylesheet" href="{{asset('css/index.blade.css')}}">
 
+    @toastr_css
+
   <title>FG Expense - Expense Report</title>
 @endpush
 
@@ -20,13 +22,21 @@
   <div class="first">
     <a href="#" class="first1"><h5>HOME &#8226;</h5></a>
     <a href="#" class="first1"><h5>SPENDING &#8226;</h5></a>
-    <a href="#" class="first1"><h5>EXPENSE REPORT</h5></a> 
-  </div> 
-  
+    <a href="#" class="first1"><h5>EXPENSE REPORT</h5></a>
+  </div>
+
   <div class="col-md-12 second">
     <span class="exp1"><h3>Expense Report</h3></span>
     <div class="second1">
       <span class="exp2"><h5>Expense report gives an insight to how much is being spent by the<br> federal government on a daily basis and how much is spent in major<br> sectors in Nigeria.</h5></span>
+      <h5>Subscribe to daily Expense Report</h5>
+      <span>
+          <form method="POST" action="{{ url('expense/report')}}">
+            @csrf
+            <input type="text" class="form-control" name="email" style="width: 50%;">
+            <button type="submit" class="btn-sm filter">Subscribe</button>
+        </form>
+    </span>
     </div>
   </div>
   <br>
@@ -60,11 +70,15 @@
   </div>
   </div>
 </div>
- 
+
+
 @endsection
 <!-- Footer End -->
 
 @section('js')
 <script type="text/javascript" src="/js/expenditure_report.js"></script>
 <script type="text/javascript" src="/js/index_blade.js"></script>
+@jquery
+@toastr_js
+@toastr_render
 @endsection
