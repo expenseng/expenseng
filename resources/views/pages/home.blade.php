@@ -29,27 +29,18 @@
             <img src="{{asset('images/angle-right.svg')}}" alt="" class="arrow-right2">
           </div>
           <div class="gallery">
-            <div class="card1 card">
+          @foreach($recent_projects as $recent_project)
+            <div class="card{{$loop->iteration}} card">
                 {{-- <p class="tag">New</p> --}}
               <div class="project">
-                  <p>Contruction of Lagos-Ibadan Express road <br>
-                    Ministry of Power, Works and Housing</p>
+                  <p>{{$recent_project->project}}<br></p>
                   <div class="d-flex justify-content-between mt-4 align-items-center">
                       <p>Cost of Project: </p>
-                      <p id="cost">&#8358;20bn</p>
+                      <p id="cost">{{$recent_project->amount_spent}}</p>
                   </div>
               </div>
-            </div>
-            <div class="card2 card">
-              <div class="project">
-                <p>Contruction of Lagos-Ibadan Express road <br>
-                  Ministry of Power, Works and Housing</p>
-                <div class="d-flex justify-content-between mt-4">
-                    <p>Cost of Project: </p>
-                    <p id="cost">&#8358;20bn</p>
-                </div>
-              </div>
-            </div>
+            </div>   
+          @endForeach
           </div>
         </div>
         <button class="btn scroll-down" >
@@ -284,3 +275,6 @@
   <script src="{{asset('js/index.js')}}"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @endsection
+                  
+                 
+
