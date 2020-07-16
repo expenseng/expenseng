@@ -24,6 +24,32 @@ class MinistryController extends Controller
         }
         return $ministries;
     }
+
+    /**
+     * Gets the total expenditure for each of last 5 years
+     */
+    public function fiveYearTrend($code)
+    {
+        $payments = DB::table('payments')
+                    ->where('payment_code', 'LIKE', "$code%")
+                    ->orderby('payment_date', 'desc')
+                    ->get();
+        $currentYr = date("Y");
+        $years = [$currentYr, $currentYr - 1, $currentYr - 2, $currentYr - 3, $currentYr - 4];
+        $yearByYear = [];
+        for ($x = 0; $x < count($years); $x++) {
+            $filtered = $payments->filter(function ($value, $key) use (&$years, $x) {
+                return date('Y', strtotime($value->payment_date)) == $years[$x];
+            });
+            if($x == 0){
+                $count = count($filtered);
+            }
+            $sum = $filtered->sum('amount'); 
+            $yearByYear[$years[$x]] = $sum;
+        }
+        return [$count, $yearByYear];
+    }
+    
     /**
      * List ministries on page load
      */
@@ -31,7 +57,15 @@ class MinistryController extends Controller
     {
         $data = Ministry::all();
         $ministries = $this->getMinistries($data);
+        foreach ($data as $ministry){
+            $totals = $this->fiveYearTrend($ministry->code)[1];
+            $ministry->chartData = $totals;
+        }
+
+        // echo json_encode($data[0]->chartData->2016);
+        
         return view('pages.ministry.index')->with('ministries', $ministries);
+                                                    
     }
 
     /**
@@ -60,31 +94,6 @@ class MinistryController extends Controller
         Ministry::create($data);
 
         return back();
-    }
-
-    /**
-     * Gets the total expenditure for each of last 5 years
-     */
-    public function fiveYearTrend($code)
-    {
-        $payments = DB::table('payments')
-                    ->where('payment_code', 'LIKE', "$code%")
-                    ->orderby('payment_date', 'desc')
-                    ->get();
-        $currentYr = date("Y");
-        $years = [$currentYr, $currentYr - 1, $currentYr - 2, $currentYr - 3, $currentYr - 4];
-        $yearByYear = [];
-        for ($x = 0; $x < count($years); $x++) {
-            $filtered = $payments->filter(function ($value, $key) use (&$years, $x) {
-                return date('Y', strtotime($value->payment_date)) == $years[$x];
-            });
-            if($x == 0){
-                $count = count($filtered);
-            }
-            $sum = $filtered->sum('amount'); 
-            $yearByYear[$years[$x]] = $sum;
-        }
-        return [$count, $yearByYear];
     }
 
     /**
