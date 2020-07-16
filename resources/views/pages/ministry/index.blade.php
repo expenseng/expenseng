@@ -68,7 +68,7 @@
             style="cursor:pointer"
           >
             <div class="cont-1 d-flex flex-column justify-content-center py-0">
-              <chart label="myVueChart" 
+              <chart label="5-year Trend" 
                         v-bind:data="[{amount:{{$ministry->chartData['2016']}}, year:2016},
                                     {amount:{{$ministry->chartData['2017']}}, year:2017},
                                     {amount:{{$ministry->chartData['2018']}}, year:2018},
