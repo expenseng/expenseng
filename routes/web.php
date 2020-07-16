@@ -138,3 +138,9 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
 
 Auth::routes();
 
+//admin route
+Route::get('/admin', function()
+   {
+
+     return redirect (route('dashboard'));
+});
