@@ -132,6 +132,11 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
     Route::put('/users/change_password/{user_id}', 'Admin\UserController@updatePassword')->name('users.change_password');
     Route::delete('/users/delete/{user_id}', 'Admin\UserController@destroy')->name('users.delete');
 
+    // upload spreadsheet
+    Route::get('/upload', 'UploadController@uploadFile');
+    Route::post('/upload', 'UploadController@uploadSheet')->name('uploadsheet');
+    
+
  });
 
 
