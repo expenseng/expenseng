@@ -123,7 +123,7 @@ class TwitterBot extends Controller
             if ($sector == null) {
                 return 'the amount of ₦'.$budget->amount." was allocated for ".$budget->classification." in the ".$budget->year ." budget";
             }
-            return "from The " . $sector->name . " sector The " . $ministry->name . " was allocated ₦" . $budget->amount . " in the " . $budget->year . " budget,for " . $budget->classification;
+            return "from The " . $sector->name . ", sector The " . $ministry->name . " was allocated ₦" . $budget->amount . " in the " . $budget->year . " budget,for " . $budget->classification;
         } else {
             return 'the amount of ₦'.$budget->amount." was allocated for ".$budget->classification." in the ".$budget->year ." budget";
         }
