@@ -26,6 +26,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
          $schedule->command('SendTweet')->monthly();
+         $schedule->command('budgetTweet')->everyFiveMinutes();
     }
 
     /**
