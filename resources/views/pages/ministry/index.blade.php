@@ -68,7 +68,7 @@
             style="cursor:pointer"
           >
             <div class="cont-1 d-flex flex-column justify-content-center py-0">
-              <chart label="5-year Expenses Trend" 
+              <chart label="5-year Trend" 
             v-bind:data="{{json_encode($ministry->chartData)}}" 
                         element="{{ $ministry->shortname() }}"></chart>
               <div class="img">
