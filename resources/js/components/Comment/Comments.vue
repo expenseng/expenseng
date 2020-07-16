@@ -21,9 +21,7 @@
                             </div>
                             <reactions :data="data"></reactions>
                         </div>
-                        <div class="container mb-4 mt-4" v-if="data.numOfReplies > 0">
-                            <replies :commentId="data.commentId" :replyCount="data.numOfReplies"></replies>
-                        </div>
+                        <replies :commentId="data.commentId" :replyCount="data.numOfReplies"></replies>
                     </div>
                 </div> 
             </div>

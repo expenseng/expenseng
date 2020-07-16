@@ -78,6 +78,7 @@ export default {
         send(){
             if(this.isReply){
                 this.commentService.storeReply(this.comment, this.email, this.name, this.commentId);
+                    
             }else{
                 const response = this.commentService
                 .storeComments(this.origin, this.comment, this.email, this.name);
