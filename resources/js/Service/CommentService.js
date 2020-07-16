@@ -132,8 +132,10 @@ class CommentService{
         })
     }
 
-    upvote(commentId){
-        return axios.patch('/api/comments/' + commentId + '/votes/upvote')
+    upvote(commentId, ownerId){
+        return axios.patch('/api/comments/' + commentId + '/votes/upvote', {
+            ownerId: ownerId
+        })
                     .then(response => {
                         return response.data;
                     })

@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Cookie;
 use App\Citizen;
 use App\Events\NewCommentOnResource;
+use App\Events\NewReactionOnComment;
 use App\Events\NewReplyOnComment;
 use Illuminate\Support\Facades\Log;
 use function GuzzleHttp\json_decode;
@@ -130,14 +131,18 @@ class CommentController extends Controller
         }
     }
 
-    public function upvote($commentId){
-        $response = $this->http->patch('comments/' . $commentId . '/votes/upvote');
+    public function upvote(Request $request, $commentId){
+        $response = $this->http->patch('comments/' . $commentId . '/votes/upvote', [
+            "body" => json_encode([
+                "ownerId" => $request->ownerId
+            ])
+        ]);
 
         $data = json_decode($response->getBody(), true);
 
         if($data['status'] == "success"){
             // broadcast the new thumbs up
-            event(new NewCommentOnResource($data));
+            event(new NewReactionOnComment($data));
             return $data['data'];
         }else{
             Log::error('Error while posting upvote to '.$commentId);
@@ -151,8 +156,8 @@ class CommentController extends Controller
         $data = json_decode($response->getBody(), true);
 
         if($data['status'] == "success"){
-            // broadcast the new thumbs up
-            event(new NewCommentOnResource($data));
+            // broadcast the new thumbs down
+            event(new NewReactionOnComment($data));
             return $data['data'];
         }else{
             Log::error('Error while posting downvote to '.$commentId);
