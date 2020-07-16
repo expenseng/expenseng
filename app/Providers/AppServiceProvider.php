@@ -2,9 +2,7 @@
 
 namespace App\Providers;
 
-use App\TwitterStream;
 use Illuminate\Support\ServiceProvider;
-use Phirehose;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,6 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        if ($this->app->isLocal()) {
+            $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
+            $this->app->register(TelescopeServiceProvider::class);
+        }
         //
         $this->app->bind('App\TwitterStream', function ($app) {
             $twitter_access_token = env('TWITTER_ACCESS_TOKEN', null);

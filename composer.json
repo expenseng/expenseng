@@ -14,9 +14,11 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
+        "fzaninotto/faker": "^1.9.1",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
-        "squizlabs/php_codesniffer": "*",
+        "pusher/pusher-php-server": "~4.0",
+        "squizlabs/php_codesniffer": "*"
         "thujohn/twitter": "^2.2"
     },
     "repositories": [
@@ -48,8 +50,7 @@
         },
         "classmap": [
             "database/seeds",
-            "database/factories",
-            "vendor/fennb/phirehose/lib"
+            "database/factories"
         ]
     },
     "autoload-dev": {
