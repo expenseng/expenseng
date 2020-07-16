@@ -6,17 +6,18 @@ use App\Ministry;
 use App\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class MinistryController extends Controller
 {
     public function getMinistries($ministries)
     {
-        $currentYr = date("Y").'-01-01';
+        $currentYr = date("Y");
         foreach ($ministries as $ministry) {
             $code = $ministry->code;
             $payments = DB::table('payments')
                         ->where('payment_code', 'LIKE', "$code%")
-                        ->where('payment_date', '>=', "$currentYr")
+                        ->whereYear('payment_date', '=', "$currentYr")
                         ->get();
             $total = $payments->sum('amount');
             $ministry->total = $total;
@@ -32,17 +33,6 @@ class MinistryController extends Controller
         $ministries = $this->getMinistries($data);
         return view('pages.ministry.index')->with('ministries', $ministries);
     }
-
-     /**
-     * Re-renders all the ministries each time the search box's content is cleared
-     * Was getting 404 error, Moved back to MinistrySearchController
-     */
-    // public function index()
-    // {
-    //     $data = Ministry::all();
-    //     $ministries = $this->getMinistries($data);
-    //     echo $ministries;
-    // }
 
     /**
      * Show the form for creating a new resource.
@@ -73,45 +63,55 @@ class MinistryController extends Controller
     }
 
     /**
+     * Gets the total expenditure for each of last 5 years
+     */
+    public function fiveYearTrend($code)
+    {
+        $payments = DB::table('payments')
+                    ->where('payment_code', 'LIKE', "$code%")
+                    ->orderby('payment_date', 'desc')
+                    ->get();
+        $currentYr = date("Y");
+        $years = [$currentYr, $currentYr - 1, $currentYr - 2, $currentYr - 3, $currentYr - 4];
+        $yearByYear = [];
+        for ($x = 0; $x < count($years); $x++) {
+            $filtered = $payments->filter(function ($value, $key) use (&$years, $x) {
+                return date('Y', strtotime($value->payment_date)) == $years[$x];
+            });
+            if($x == 0){
+                $count = count($filtered);
+            }
+            $sum = $filtered->sum('amount'); 
+            $yearByYear[$years[$x]] = $sum;
+        }
+        return [$count, $yearByYear];
+    }
+
+    /**
      * Display the specified resource.
      * Called when user clicks on a ministry card in index.blade.php
      */
     public function show(Ministry $ministry)
     {
-            $code = $ministry->code;
-            $cabinets = $ministry->cabinet;
-            $payments = DB::table('payments')
-                        ->where('payment_code', 'LIKE', "$code%")
-                        ->orderby('payment_date', 'desc')
-                        ->get();
-
-        function getTrend($payments)
-        {
-            $currentYr = date("Y");
-            $years = [$currentYr, $currentYr - 1, $currentYr - 2, $currentYr - 3, $currentYr - 4];
-            $yearByYear = [];
-            $currentYrPmts = [];
-            for ($x = 0; $x < count($years); $x++) {
-                $filtered = $payments->filter(function ($value, $key) use (&$years, $x) {
-                    return date('Y', strtotime($value->payment_date)) == $years[$x];
-                });
-                if ($x == 0) {
-                    $currentYrPmts = $filtered;
-                }
-                $sum = $filtered->sum('amount');
-                $yearByYear[$years[$x]] = $sum;
-            }
-            return [$currentYrPmts, $yearByYear];
-        }
-
-            $data = getTrend($payments);
-            return view('pages.ministry.single')
-            ->with(['ministry'=> $ministry,
-                    'cabinets' => $cabinets,
-                    'payments' => $data[0],
-                    'trend' => $data[1]
-                 ]);
+        $code = $ministry->code;
+        $cabinets = $ministry->cabinet;
+        $yr = date("Y");
+        $payments = DB::table('payments')
+                    ->where('payment_code', 'LIKE', "$code%")
+                    ->whereYear('payment_date', '=', "$yr")
+                    ->orderby('payment_date', 'desc')
+                    ->paginate(2);
+    
+        $data = $this->fiveYearTrend($code);
+        return view('pages.ministry.single')
+        ->with(['ministry'=> $ministry,
+                'cabinets' => $cabinets,
+                'payments' => $payments,
+                'trend' => $data[1],
+                'count' => $data[0]
+                ]);
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -211,8 +211,8 @@ class MinistryController extends Controller
             echo ("<script>alert('New ministry created successfully');
              window.location.replace('/admin/ministry/view');</script>");
         } else {
-            echo ("<script>alert('Cannot create New ministry'); 
-            window.location.replace('/admin/ministry/create');</script>");
+            Session::flash('flash_message', 'Cannot create new Ministry!');
+            return redirect()->back();
         }
     }
 
@@ -251,19 +251,20 @@ class MinistryController extends Controller
             echo ("<script>alert(' Ministry details edited successfully');
              window.location.replace('/admin/ministry/view');</script>");
         } else {
-            echo ("<script>alert('Cannot edit ministry detail'); 
-            window.location.replace('/admin/ministry/edit/$id');</script>");
+            Session::flash('flash_message', ' Ministry was not edited!');
+            return redirect()->back();
         }
     }
 
-    public function deleteMinistry($id){
+    public function deleteMinistry($id)
+    {
         $delete = Ministry::where('id', $id)->delete();
         if ($delete) {
             echo ("<script>alert(' Ministry details deleted successfully');
              window.location.replace('/admin/ministry/view');</script>");
         } else {
-            echo ("<script>alert('Cannot Delete ministry detail'); 
-            window.location.replace('/admin/ministry/view');</script>");
+            Session::flash('flash_message', ' Ministry was not deleted!');
+            return redirect()->back();
         }
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
  */
+
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'PageController@about')->name('about');
@@ -48,8 +50,7 @@ Route::get('/project-modal', 'PageController@projectModal')->name('project-modal
 Route::get('/ministry/details', 'MinistrySearchController@show')->name('get_ministry_details');
 Route::get('/ministry/all', 'MinistrySearchController@index')->name('ministry_all');
 Route::get('/ministry/getUrl', 'PageController@ministryGetUrl')->name('ministry_get_url');
-
-Auth::routes();
+Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses')->name('ministry_filter_expenses');
 
 
 /*
@@ -63,10 +64,11 @@ Auth::routes();
 |
  */
 
+
 // Route::prefix('admin')->group(function () {
 //     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');  // Matches The "/admin/dashboard" URL
 //     Route::post('/create_expense', 'DashboardController@createExpense');
-     Route::post('/create_company', 'DashboardController@createCompany');
+// Route::post('/create_company', 'DashboardController@createCompany');
 // });
 
 /*Route::group(['middleware' => ['auth']], function (){
@@ -86,9 +88,13 @@ Auth::routes();
 });*/
 
 
+ // Route::group(['prefix' => 'admin', 'middleware' => [] ], function() {
+ //    Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
 
- Route::group(['prefix' => 'admin', 'middleware' => [] ], function() {
+
+ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function() {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
+
 
     // Expense CRUD
     Route::get('/expenses', 'Admin\ExpenseController@index')->name('expenses.view');
@@ -120,4 +126,19 @@ Auth::routes();
     //People CRUD
     Route::get('/admin/{company}/{people}', 'CompanyController@showPeople');
 
+     // USERS CRUD
+    Route::get('/users', 'Admin\UserController@index')->name('users.view');
+    Route::get('/users/create', 'Admin\UserController@create')->name('users.create');
+    Route::post('/users/create', 'Admin\UserController@store')->name('users.store');
+    Route::get('/users/edit/{user_id}', 'Admin\UserController@edit')->name('users.edit');
+    Route::put('/users/edit/{user_id}', 'Admin\UserController@update')->name('users.update');
+    Route::put('/users/change_password/{user_id}', 'Admin\UserController@updatePassword')->name('users.change_password');
+    Route::delete('/users/delete/{user_id}', 'Admin\UserController@destroy')->name('users.delete');
+
  });
+
+
+Auth::routes();
+
+Route::get('/startRT', 'TwitterBot@startLiveRetweet');
+Route::get('/stopRT', 'TwitterBot@stopLiveRetweet');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class CompanyController extends Controller
 {
@@ -94,13 +95,15 @@ class CompanyController extends Controller
         $save_new_company = $new_company->save();
 
         if ($save_new_company) {
-            echo ("<script>alert('New Company created successfully');
-             window.location.replace('/admin/company/view');</script>");
+            return
+            ("<script>alert('$request->company_name Company created Successfully');
+            window.location.replace('/admin/company/view')");
         } else {
-            echo ("<script>alert('Cannot create New Company'); 
-            window.location.replace('/admin/company/create');</script>");
+            Session::flash('flash_message', 'Cannot create new Company!');
+            return redirect()->back();
         }
     }
+
 
     public function showEditForm($id)
     {
@@ -131,22 +134,23 @@ class CompanyController extends Controller
         );
         if ($update) {
             echo ("<script>alert(' Company details edited successfully');
-             window.location.replace('/admin/company/view');</script>");
+            window.location.replace('/admin/company/view');</script>");
         } else {
-            echo ("<script>alert('Cannot edit Company detail'); 
-            window.location.replace('/admin/company/edit/$id');</script>");
+            Session::flash('flash_message', ' Company was not edited!');
+            return redirect()->back();
         }
     }
 
-    public function deleteCompany($id){
+    public function deleteCompany($id)
+    {
 
         $delete = Company::where('id', $id)->delete();
         if ($delete) {
             echo ("<script>alert(' Company  deleted successfully');
              window.location.replace('/admin/company/view');</script>");
         } else {
-            echo ("<script>alert('Cannot Delete Company'); 
-            window.location.replace('/admin/company/view');</script>");
+            Session::flash('flash_message', ' Company was not deleted!');
+            return redirect()->back();
         }
     }
 }

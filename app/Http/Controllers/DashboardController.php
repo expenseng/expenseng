@@ -52,7 +52,7 @@ class DashboardController extends Controller
         return view('backend.dashboard')
         ->with(['total_ministry' => $total_ministry,
         'total_company' => $total_company, 'total_budgets' => $total_budgets,
-        'amount' => $amount, 'recent_expenses' => $recent_expenses,
+        'year_budget' => $amount, 'recent_expenses' => $recent_expenses,
         ]);
     }
 
