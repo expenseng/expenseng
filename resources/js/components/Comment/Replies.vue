@@ -6,7 +6,7 @@
             <div class="spinner-border spinner-border-sm ml-auto" role="status" aria-hidden="true"></div>
         </div>
         <div v-if="showReply">
-            <div class="container p-2" v-for="reply in replies" :key="reply.commentId">
+            <div class="container p-2" v-for="reply in replies" :key="reply.replyId">
                 <div class="container">
                     <div class="row container occupy">
                         <div class="col-sm-1 mt-1 row d-flex container">
