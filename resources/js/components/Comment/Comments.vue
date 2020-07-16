@@ -11,7 +11,7 @@
                         <div class="col-sm-11" :id="data.commentId">
                             <div class="d-flex justify-content-between  no-show">
                                 <div class="d-flex">
-                                    <p class="green-text">{{ data.ownerId }}</p>
+                                    <username :ownerId="data.ownerId"></username>
                                     <p class="ml-3 grey-text small mt-1">{{ data.createdAt | ago }}</p>
                                 </div>
                                 <i class="fas fa-ellipsis-h grey-text"></i>
@@ -45,6 +45,7 @@ import CommentService from '../../Service/CommentService';
 import Comment from './Comment';
 import Replies from './Replies'
 import Reactions from './Reactions';
+import Username from './Username';
 import UserImage from './UserImage';
 import moment from 'moment';
 
@@ -62,6 +63,7 @@ export default {
     components:{
         Replies,
         UserImage,
+        Username,
         Comment,
         Reactions
     },

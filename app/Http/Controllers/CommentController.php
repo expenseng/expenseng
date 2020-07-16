@@ -176,8 +176,9 @@ class CommentController extends Controller
         return $user;
     }
 
-    public function fetchUser(Request $request){
-        return Citizen::whereEmail($request->email)->get();
+    public function fetchUser($email){
+        $user = Citizen::where('email', $email)->first('name');
+        return $user;
     }
 
     public function avatar(Request $request){

@@ -23,9 +23,8 @@ Route::get('/expense/health', 'BudgetController@health');
 /***
  * Comment Instantiation
  */
-Route::post('/comments/user', 'CommentController@onboardUser');
-Route::get('/comments/user', 'CommentController@fetchUser');
 Route::get('/comments/user/avatar', 'CommentController@avatar');
+Route::post('/comments/user', 'CommentController@onboardUser');
 
 /***
  * Comments
@@ -44,3 +43,8 @@ Route::post('/comments/{commentId}/replies', 'CommentController@reply');
  */
 Route::patch('/comments/{commentId}/votes/upvote', 'CommentController@upvote');
 Route::patch('/comments/{commentId}/votes/downvote', 'CommentController@downvote');
+
+/**
+ * Citizens
+ */
+Route::post('/citizens', 'CitizenController@userApi');

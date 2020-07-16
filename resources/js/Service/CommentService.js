@@ -32,10 +32,6 @@ class CommentService{
         }
     }
 
-    reply(comemntId){
-
-    }
-
     cookieExists(){
         return document.cookie.indexOf("commentatorName") > -1;
     }
@@ -44,12 +40,13 @@ class CommentService{
      * 
      * @param {string} ownerId 
      */
-    getUser(ownerId){
-        return axios.get('/api/comments/user', {
+    getUsername(ownerId){
+        return axios.post('/api/citizens', {
             email: ownerId
         })
         .then(response => {
-            return response;
+            console.log(response);
+            return response.data;
         })        
     }
 

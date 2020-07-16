@@ -50,6 +50,17 @@ class CitizenController extends Controller
     }
 
     /**
+     * Return the specified resource.
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function userApi(Request $request)
+    {
+        return Citizen::where('email', $request->email)->first();
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Citizen  $citizen
