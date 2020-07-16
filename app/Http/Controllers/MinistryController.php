@@ -47,6 +47,7 @@ class MinistryController extends Controller
             $sum = $filtered->sum('amount'); 
             $yearByYear[$years[$x]] = $sum;
         }
+       
         return [$count, $yearByYear];
     }
     
@@ -55,15 +56,22 @@ class MinistryController extends Controller
      */
     public function profile()
     {
+        
         $data = Ministry::all();
         $ministries = $this->getMinistries($data);
-        foreach ($data as $ministry){
+        foreach ($ministries as $ministry){
+            $chartData = array();
             $totals = $this->fiveYearTrend($ministry->code)[1];
-            $ministry->chartData = $totals;
+            $reversed = array_reverse($totals, true);
+            foreach($reversed as $key => $value){
+                $item = new \stdClass;
+                $item->year = $key;
+                $item->amount = $value;
+                array_push($chartData, $item);
+            }
+            $ministry->chartData = $chartData;
         }
 
-        // echo json_encode($data[0]->chartData->2016);
-        
         return view('pages.ministry.index')->with('ministries', $ministries);
                                                     
     }
@@ -104,10 +112,11 @@ class MinistryController extends Controller
     {
         $code = $ministry->code;
         $cabinets = $ministry->cabinet;
-        $yr = date("Y");
+        $date = date("Y-m-d");
+    
         $payments = DB::table('payments')
                     ->where('payment_code', 'LIKE', "$code%")
-                    ->whereYear('payment_date', '=', "$yr")
+                    ->whereDate('payment_date', '=', "$date")
                     ->orderby('payment_date', 'desc')
                     ->paginate(2);
     
