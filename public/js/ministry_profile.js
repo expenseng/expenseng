@@ -104,10 +104,12 @@ $(document).ready(function() {
             }        
         });
 
+        let date, sort, active;
+
         $('#apply-filter').on('click', function(e){
             const id = $(this).attr("data-id");
             let invalid = false;
-            let date, sort, active;
+            
            
             if($('.btn-date.active').attr('id') === 'day'){
                 date = $('#select-date').val();
@@ -173,30 +175,34 @@ $(document).ready(function() {
                     data: data,
                     success: function(data){
                         
-                        data = JSON.parse(data)
-                        console.log(data)
-                        const {payments} = data
-                        let back = true;
-                        let html = "";
-                        if(payments.length > 0){
-                            for(payment of payments){
-                            back = !back;
-                            let shade = back ? 'back': '';
-                            html +=  `<tr  class="{shade}">
-                                        <td> ${payment.description}</td>
-                                        <td> ${payment.beneficiary}</td>
-                                        <td> ₦${insertCommas(payment.amount.toFixed(2))}</td>
-                                        <td> ${formatDate(payment.payment_date)}</td>
-                                    </tr>`                     
-                            }
-                        }else{
-                            html += `<b style="color: red">No data available for this day</b>`
-                        }
-                        let reportDate = /\d{4}-\d{2}-\d{2}/.test(data.givenTime)? formatDate(data.givenTime) : data.givenTime
+                        $('#tbl').html(data)
+                        let reportDate = /\d{4}-\d{2}-\d{2}/.test(date)? formatDate(date) : date
                         $('#said-date').html(`Date: <span style="color:#1e7e34">${reportDate}</span>`)
                         $('#expense-table').html(html)
                     }
 
                 })
         })
+
+        $(document).on('click', '.pagination a', function(){
+            event.preventDefault();
+            let page = $(this).attr('href').split('page=')[1]
+            fetch_data(page, date, sort)
+        })
+
+        function fetch_data(page, date, sort){
+            const id = $('#apply-filter').attr("data-id");
+            const data = {id, date, sort};
+            $.ajax({
+                url: "/ministry/filterExpenses?page="+page,
+                method: "GET",
+                data: data,
+                success: function(data){
+                    $('#tbl').html(data)                   
+                },
+                error: function(error){
+                    console.log(error)
+                }
+            })
+        }
     });
