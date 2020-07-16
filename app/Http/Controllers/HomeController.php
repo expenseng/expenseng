@@ -17,7 +17,7 @@ class HomeController extends Controller
     {   
         $recent_projects = Expense::orderBy('created_at','DESC')
                 ->skip(0)
-                ->take(2)
+                ->take(4)
                 ->get();
 
         $collection['health'] = Budget::where('project_name', 'Health')->get();
