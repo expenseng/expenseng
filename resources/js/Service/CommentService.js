@@ -4,7 +4,7 @@ class CommentService{
         if(this.cookieExists()){
             this.name = this.getCookieValue("commentatorName");
             this.email = this.getCookieValue("commentatorEmail");
-            this.avatar = "";
+            this.avatar = this.getCookieValue("commentatorAvatar");
         }else{
             this.name = "";
             this.email = "";
@@ -136,6 +136,13 @@ class CommentService{
         .then(response => {
             return response.data;
         })
+    }
+
+    upvote(commentId){
+        return axios.patch('/api/comments/' + commentId + '/votes/upvote')
+                    .then(response => {
+                        return response.data;
+                    })
     }
 }
 

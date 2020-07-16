@@ -35,7 +35,7 @@
             <h2 class="text-center">No comments found for this resource.</h2>
         </div>
         
-        <comment v-on:comment="updateUI"></comment>
+        <comment></comment>
     </div>
 </template>
 
@@ -64,45 +64,23 @@ export default {
     },
 
     mounted() {
-        this.comments.replies = []; //initialize empty arrays for comments
+
         this.comment.getResourceComments(this.origin)
                     .then(response => {
                         this.busy = false;
                         this.comments = response.records
                     })
+
+        /**
+         * Start listening for new comments
+         */
+        window.Echo.channel('expense-comment')
+        .listen('NewCommentOnResource', (e) => {
+                this.comments.push(e.data);
+        });
     },
 
     methods: {
-
-        reply(id){
-            var parentEl = document.querySelector("#"+id).prepend("");
-        },
-
-        updateUI(commentId){
-
-            window.Echo.channel('expense-comment')
-            .listen('NewCommentOnResource', (e) => {
-                if(commentId == ""){
-                    console.log("new");
-                    this.comments.push(e.data);
-                }else{
-                    console.log("reply");
-                    this.comments.map(comment => {
-                        if(comment.commentId == commentId){
-                            console.log("reply");
-                            comment.replies = e.data
-                        }
-                    })
-                }
-            });
-            
-            console.log("My child has given me new comments");
-        },
-
-        createNewReplyDom(parentId){
-            
-        },
-
         getAvatar(ownerId){
             return this.comment.getAvatar(ownerId);
         },

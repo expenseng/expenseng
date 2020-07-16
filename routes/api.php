@@ -38,3 +38,9 @@ Route::post('/comments', 'CommentController@store');
  */
 Route::get('/comments/{commentId}/replies', 'CommentController@replies');
 Route::post('/comments/{commentId}/replies', 'CommentController@reply');
+
+/**
+ * Reactions
+ */
+Route::patch('/comments/{commentId}/votes/upvote', 'CommentController@upvote');
+Route::patch('/comments/{commentId}/votes/downvote', 'CommentController@downvote');

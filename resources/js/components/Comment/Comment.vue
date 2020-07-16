@@ -10,6 +10,7 @@
 
 <script>
 import Comment from '../../Service/CommentService';
+import Comments from '../Comment/Comments';
 export default {
     data() {
         return {
@@ -21,6 +22,10 @@ export default {
             commentService: new Comment(),
             origin: document.location.pathname, //we are using this as the origin/resourcename
         }
+    },
+
+    components:{
+        Comments
     },
 
     props:{
@@ -85,13 +90,6 @@ export default {
             this.showName = false;
             
             this.hideSmallComment = false; //show the small comment box     
-            
-            /**
-             * now we want to display replies in real time.
-             * if commentId is empty, then it is a new comment
-             * and a reply otherwise
-             * */
-            this.$emit('comment', this.commentId);
         },
     },
 

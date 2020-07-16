@@ -122,11 +122,41 @@ class CommentController extends Controller
         $data = json_decode($response->getBody(), true);
 
         if($data['status'] == "success"){
-            //broadcast the new comment
+            //broadcast the new reply
             event(new NewCommentOnResource($data));
             return $data['data'];
         }else{
             Log::error('Error while posting replies to '.$request->commentId);
+            return false;
+        }
+    }
+
+    public function upvote($commentId){
+        $response = $this->http->patch('comments/' . $commentId . '/votes/upvote');
+
+        $data = json_decode($response->getBody(), true);
+
+        if($data['status'] == "success"){
+            // broadcast the new thumbs up
+            event(new NewCommentOnResource($data));
+            return $data['data'];
+        }else{
+            Log::error('Error while posting upvote to '.$commentId);
+            return false;
+        }
+    }
+
+    public function downvote($commentId){
+        $response = $this->http->patch('comments/' . $commentId . '/votes/downvote');
+
+        $data = json_decode($response->getBody(), true);
+
+        if($data['status'] == "success"){
+            // broadcast the new thumbs up
+            event(new NewCommentOnResource($data));
+            return $data['data'];
+        }else{
+            Log::error('Error while posting downvote to '.$commentId);
             return false;
         }
     }
