@@ -10,18 +10,19 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class NewReactionOnComment
+class NewReactionOnComment implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    private $votes;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($votes)
     {
-        //
+        $this->votes = $votes;
     }
 
     /**
@@ -31,6 +32,10 @@ class NewReactionOnComment
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('channel-name');
+        return new Channel('expense-reaction');
+    }
+
+    public function broadCastWith(){
+        return $this->votes;
     }
 }
