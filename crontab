@@ -1,0 +1,1 @@
+* * * * * php /home/boluwatife/Documents/HNG_intern/expenseng/artisan schedule:run >> /dev/null 2>&1
