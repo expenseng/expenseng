@@ -26,7 +26,7 @@
                             <div>
                                 <p>{{ reply.content }}</p>
                             </div>
-                            <reactions :data="reply"></reactions>
+                            <reactions :data="reply" :hideReply="true"></reactions>
                         </div>
                     </div>
                 </div> 
