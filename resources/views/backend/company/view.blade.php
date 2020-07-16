@@ -1,6 +1,5 @@
 @extends('layouts.home')
 @push('css')
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="/extras/datatables/css/buttons.bootstrap4.css">
@@ -10,16 +9,18 @@
     <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" />
-        
+        <link rel="stylesheet" href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2">
+  
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
         <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <title>ExpenseNg - Companies</title>
 @endpush
 
 @section('content')
-<div class="dashboard-wrapper">
-            <div class="container-fluid dashboard-content">
-                <div class="row">
+<div class="content">
+        <div class="container-fluid">
+      
+        <div class="row">
                     <div class="col-xl-12">
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
@@ -61,11 +62,37 @@
                                                         <div class="col-md-6">
                                                             <a href="{{'/admin/company/edit/' . $company->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
                                                         </div>
-                                                        <div class="col-md-6">
-                                                            <a href="#"><i class="fa fa-trash" style="color: red"></i> </a>
-                                                        </div>
-
+                                                        <!--modal begin-->
+                                                        
+                                                            <div class="col-md-6">
+                                                            <i class="fa fa-trash" data-toggle="modal" data-target="#exampleModal" style="color: red"></i>
+                                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Are you sure???</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    <form action="{{'/admin/company/delete/'. $company->id}}" method="post" >
+                                                                @method('delete')
+                                                                @csrf
+                                                                <button type="button" class="btn btn-danger">Delete</button>
+                                                                </form>
+                                                                </div>
+                                                                </div>
+  </div>
+</div>
                                                     </div>
+                                                    </div>
+
+                                                    
                                                 </td>
                                             </tr>
                                             
@@ -102,7 +129,7 @@
     <script src="{{ asset('js/dashboard-ecommerce.js') }}" type="text/javascript"></script>
 
 
-    
+
     <!-- bootstap bundle js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.js"></script>
@@ -126,7 +153,8 @@
     $('#example').DataTable();
     } );
     </script>
-    
+
 
 
 @endsection
+

@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\DB;
 class MinistryController extends Controller
 {
     public function getMinistries($ministries)
-    {   
+    {
         $currentYr = date("Y").'-01-01';
-        foreach($ministries as $ministry){
+        foreach ($ministries as $ministry) {
             $code = $ministry->code;
             $payments = DB::table('payments')
                         ->where('payment_code', 'LIKE', "$code%")
@@ -162,7 +162,7 @@ class MinistryController extends Controller
     }
 
      /**
-     * Display a form for creating companies.
+     * Display a form for creating ministries.
      *
      * @return \Illuminate\Http\Response
      */
@@ -172,7 +172,7 @@ class MinistryController extends Controller
     }
 
     /**
-     * Display a listing of the companies.
+     * Display a listing of the ministries.
      *
      * @return view
      */
@@ -213,6 +213,58 @@ class MinistryController extends Controller
         } else {
             echo ("<script>alert('Cannot create New ministry'); 
             window.location.replace('/admin/ministry/create');</script>");
+        }
+    }
+
+    public function showEditForm($id)
+    {
+        $details = Ministry::findOrFail($id);
+        return view('backend.ministry.edit')->with(['details' => $details]);
+    }
+
+    public function editMinistry(Request $request, $id)
+    {
+        validator(
+            [
+                'ministry_name' => 'required',
+                'code' => 'required | number',
+                'ministry_shortname' => 'required',
+                'ministry_twitter' => 'required',
+                'ministry_head' => 'required',
+                'website' => 'required',
+                'sector_id' => 'required|number'
+            ]
+        );
+        $update = Ministry::where('id', $id)
+        ->update(
+            [
+                'name' => $request->ministry_name,
+                'code' => $request->code,
+                'shortname' => $request->ministry_shortname,
+                'twitter' => $request->ministry_twitter,
+                'head' => $request->ministry_head,
+                'website' => $request->website,
+                'sector_id' => $request->sector_id
+            ]
+        );
+        if ($update) {
+            echo ("<script>alert(' Ministry details edited successfully');
+             window.location.replace('/admin/ministry/view');</script>");
+        } else {
+            echo ("<script>alert('Cannot edit ministry detail'); 
+            window.location.replace('/admin/ministry/edit/$id');</script>");
+        }
+    }
+
+    public function deleteMinistry($id)
+    {
+        $delete = Ministry::where('id', $id)->delete();
+        if ($delete) {
+            echo ("<script>alert(' Ministry details deleted successfully');
+             window.location.replace('/admin/ministry/view');</script>");
+        } else {
+            echo ("<script>alert('Cannot Delete ministry detail'); 
+            window.location.replace('/admin/ministry/view');</script>");
         }
     }
 }

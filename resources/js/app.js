@@ -5,7 +5,7 @@
  */
 
 require('./bootstrap');
-import VueApexCharts from 'vue-apexcharts'
+import VueApexCharts from 'vue-apexcharts';
 
 window.Vue = require('vue');
 

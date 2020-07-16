@@ -1,16 +1,14 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Comment;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Cookie;
 use App\Citizen;
 use App\Events\NewCommentOnResource;
 use Illuminate\Support\Facades\Log;
-
 use function GuzzleHttp\json_decode;
+use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
@@ -49,7 +47,7 @@ class CommentController extends Controller
             "password" => env("COMMENT_PASSWORD", $this->org->password),
             "organizationId" => env("COMMENT_ORG_ID", $this->org->id),
         ]);
-        
+
         //Assuming all goes well!
         $response = json_encode($response->getBody());
         $this->token = $response['data']['organizationToken'];
