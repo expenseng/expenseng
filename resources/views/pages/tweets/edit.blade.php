@@ -1,4 +1,4 @@
-@extends('layouts.scaffold')
+@extends('layouts.master')
 @push('css')
 <title>FG Expense - Home</title>
 <link rel="stylesheet" href="{{ asset('css/aboutus-header_footer.css') }}">

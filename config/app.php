@@ -227,6 +227,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Twitter'=> Thujohn\Twitter\TwitterFacade::class,
+        'Form' => 'Collective\Html\FormFacade',
 
     ],
 

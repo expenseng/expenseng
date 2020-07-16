@@ -96,10 +96,13 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
     
     //Twitter
-    Route::get('/tweets/create', 'Admin\TweetsController@create')->name('twitter.create');
-    Route::get('/tweets/edit', 'Admin\TweetsController@edit')->name('twitter.edit');
-    Route::post('/tweets/save', 'Admin\TweetsController@store')->name('twitter.save');
-    Route::put('/tweets/update', 'Admin\TweetsController@update')->name('twitter.edit');
+
+
+    Route::get('/tweets', 'Admin\TweetsController')->name('tweets');
+    Route::get('/tweets/create', 'Admin\TweetsController@create')->name('tweets.create');
+    Route::get('/tweets/edit', 'Admin\TweetsController@edit')->name('tweets.edit');
+    Route::post('/tweets/save', 'Admin\TweetsController@store')->name('tweets.store');
+    Route::put('/tweets/update', 'Admin\TweetsController@update')->name('tweets.edit');
 
 
     // Expense CRUD

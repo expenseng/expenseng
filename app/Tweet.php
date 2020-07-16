@@ -11,8 +11,8 @@ class Tweet extends Model {
 		'body' => 'required'
 	);
 
-	public function tags() {
-		return $this->belongsToMany('Tag');
+	public function expenses() {
+		return $this->belongsTo('App\Expense');
 	}
 }
 ?>

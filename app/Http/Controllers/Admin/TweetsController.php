@@ -1,24 +1,44 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Expense;
 use App\Payment;
-use Illuminate\Http\Request;
+use App\Tweet;
+use App\Tag;
+
 
 class TweetsController extends Controller
 {
+
 /**
  * Show the form for creating a new resource.
  *
  * @return Response
  */
-    public function create()
-    {
-        $expenses = Expense::all();
-        $tags = Tag::lists('tag', 'id');
+public function __invoke()
+{
+   return $this->create();
+}
 
-        return View::make('tweets.create', compact('tags'))->with(['expenses' => $expenses]);
+public function __construct()
+{
+    $this->middleware('auth');
+}
+
+    public function index()
+    {
+        //
+        $tweets = Tweet::with(['expenses'])->get();
+        return view('pages.tweet.index')->with(['tweets' => $tweets]);
+    }
+
+    public function create()
+    {   
+        $expenses = Expense::all();
+        return View('pages.tweets.create', compact('expenses'));
     }
 
 /**
@@ -27,16 +47,17 @@ class TweetsController extends Controller
  * @return Response
  */
     public function store()
-    {
-        $input = array_except(Input::all(), array('tags'));
+    {   
+        $expenses = Expense::all();
+        $input = array_except(Input::all(), $expenses);
         $validation = Validator::make($input, Tweet::$rules);
         if ($validation->passes()) {
             $tweet = $this->tweet->create($input);
-            $tags = Input::get('tags');
-            $tweet->tags()->sync($tags);
-            return Redirect::route('tweets.index');
+            $expenses = Input::get('expenses');
+            $tweet->expenses()->sync($expenses);
+            return Redirect::route('pages.tweets.index');
         }
-        return Redirect::route('tweets.create')
+        return Redirect::route('pages.tweets.create')
         ->withInput()
         ->withErrors($validation)
         ->with('message', 'There were validation errors.');
@@ -50,8 +71,8 @@ class TweetsController extends Controller
     public function edit($id)
     {
         $tweet = $this->tweet->find($id);
-        $tags = Tag::lists('tag', 'id');
-        $tweetTags = $tweet->tags()->get();
+        $tags = Expense::lists('expense', 'id');
+        $tweetTags = $tweet->expenses()->get();
 
         $selectedTags = array();
         foreach ($tweetTags as $tag) {
@@ -59,10 +80,10 @@ class TweetsController extends Controller
         }
 
         if (is_null($tweet)) {
-            return Redirect::route('tweets.index');
+            return Redirect::route('pages.tweets.index');
         }
 
-        return View::make('tweets.edit', compact('tweet', 'tags', 'selectedTags'));
+        return View::make('pages.tweets.edit', compact('tweet', 'tags', 'selectedTags'));
     }
 
 /**
@@ -73,23 +94,25 @@ class TweetsController extends Controller
  */
     public function update($id)
     {
-        $input = array_except(Input::all(), array('_method', 'tags'));
+        $input = array_except(Input::all(), array('_method', 'expenses'));
         $validation = Validator::make($input, Tweet::$rules);
 
         if ($validation->passes()) {
             $tweet = $this->tweet->find($id);
 
             $tweet->update($input);
-            $tags = Input::get('tags');
+            $tags = Input::get('expenses');
 
-            $tweet->tags()->sync($tags);
+            $tweet->expenses()->sync($tags);
 
-            return Redirect::route('tweets.show', $id);
+            return Redirect::route('pages.tweets.show', $id);
         }
 
-        return Redirect::route('tweets.edit', $id)
+        return Redirect::route('pages.tweets.edit', $id)
         ->withInput()
         ->withErrors($validation)
         ->with('message', 'There were validation errors.');
     }
 }
+
+?>
