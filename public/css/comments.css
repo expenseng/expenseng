@@ -7,6 +7,12 @@
 padding-right: 10px;
 }
 
+img.resize {
+    border-radius: 100%;
+    height: 60px;
+    margin-top: 5px;
+}
+
 .coat h1{
 display: inline-block;
 left: 106px;

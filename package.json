@@ -32,6 +32,9 @@
     },
     "dependencies": {
         "apexcharts": "^3.19.3",
+        "laravel-echo": "^1.8.0",
+        "moment": "^2.27.0",
+        "pusher-js": "^6.0.3",
         "vue-apexcharts": "^1.5.3"
     }
 }
