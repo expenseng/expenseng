@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Budget;
+use App\Expense;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,12 +14,17 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        $recent_projects = Expense::orderBy('created_at','DESC')
+                ->skip(0)
+                ->take(2)
+                ->get();
+
         $collection['health'] = Budget::where('project_name', 'Health')->get();
         $collection['education'] = Budget::where('project_name', 'Education')->get();
         $collection['defence'] = Budget::where('project_name', 'Defence')->get();
         $collection['housing'] = Budget::where('project_name', 'Housing and Community Amenities')->get();
-        return view('pages.home')->with('charts', $collection);
+        return view('pages.home')->with(['charts' => $collection, 'recent_projects' => $recent_projects]);
     }
 
     /**
@@ -87,3 +93,7 @@ class HomeController extends Controller
         //
     }
 }
+
+
+    
+    
