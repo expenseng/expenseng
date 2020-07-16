@@ -130,7 +130,6 @@ class TwitterBot extends Controller
             }
         } else {
             return 'The amount of ₦'.$budget->amount." was allocated for ".$budget->project_name." in the ".$budget->year ." budget";
-            return 'The amount of ₦'.$budget->amount." was allocated for ".$budget->project_name." in the ".$budget->year ." budget";
         }
     }
 }
