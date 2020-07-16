@@ -120,10 +120,14 @@ class TwitterBot extends Controller
             $sector_code = $code[0];
             $ministry = Ministry::where('shortname', 'LIKE', "{$ministry_code}%")->first();
             $sector = Sector::whereId($sector_code)->first();
-            if ($sector == null) {
+            if (is_null($sector)) {
                 return 'the amount of ₦'.$budget->amount." was allocated for ".$budget->classification." in the ".$budget->year ." budget";
+            } else {
+                if (is_null($ministry)) {
+                    return 'the amount of ₦'.$budget->amount." was allocated for ".$budget->classification." in the ".$budget->year ." budget";
+                }
+                return "from The " . $sector->name . " sector, The " . $ministry->name . " was allocated ₦" . $budget->amount . " in the " . $budget->year . " budget,for " . $budget->classification;
             }
-            return "from The " . $sector->name . ", sector The " . $ministry->name . " was allocated ₦" . $budget->amount . " in the " . $budget->year . " budget,for " . $budget->classification;
         } else {
             return 'the amount of ₦'.$budget->amount." was allocated for ".$budget->classification." in the ".$budget->year ." budget";
         }
