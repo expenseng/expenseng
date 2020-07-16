@@ -1,12 +1,15 @@
 <template>
-    <div>
-        <a href="#" @click.prevent="fetchReplies()">{{!this.showReply ? "Display" : "Hide"}} {{this.replyCount}} {{ this.replyCount > 1 ? " replies" : " reply" }} to this comment</a>
+    <div class="container mb-4 mt-4" v-if="this.replyCount > 0">
+        <a href="#" @click.prevent="fetchReplies()">
+            {{!this.showReply ? "Display" : "Hide"}} {{this.replyCount}} 
+            {{ this.replyCount > 1 ? " replies" : " reply" }} to this comment
+        </a>
         <div class="d-flex align-items-center" v-if="busy">
             <strong>Loading...</strong>
             <div class="spinner-border spinner-border-sm ml-auto" role="status" aria-hidden="true"></div>
         </div>
         <div v-if="showReply">
-            <div class="container p-2" v-for="reply in replies" :key="reply.commentId">
+            <div class="container p-2" v-for="reply in replies" :key="reply.replyId">
                 <div class="container">
                     <div class="row container occupy">
                         <div class="col-sm-1 mt-1 row d-flex container">
@@ -23,7 +26,7 @@
                             <div>
                                 <p>{{ reply.content }}</p>
                             </div>
-                            <reactions :data="reply"></reactions>
+                            <reactions :data="reply" :hideReply="true"></reactions>
                         </div>
                     </div>
                 </div> 
@@ -67,18 +70,21 @@ export default {
     },
 
     methods: {
-        fetchReplies(){
+        fetchReplies(commentId = null){
 
             this.showReply = !this.showReply;
 
             /**
              * Since this can be toggeled, we want to only make 
              * a request when the reply has not been fetched
+             * EDIT: We want to make the request when the replyCount 
+             * is higher than the replies length because we will be 
+             * mutating replyCount although Vue.js doesn't like it 👅
              */
-            if(this.replies.length == 0){
+            if(this.replies.length < this.replyCount){
                 this.busy = true;
                 
-                this.comment.fetchReplies(this.commentId)
+                this.comment.fetchReplies( commentId ?? this.commentId )
                 .then(response => {
                     this.busy = false;
                     this.replies = response.records;
@@ -86,6 +92,21 @@ export default {
             }
 
         }
+    },
+
+    mounted() {
+        /**
+         * Start listening for new replies
+         */
+        window.Echo.channel('expense-comment')
+                    .listen('NewReplyOnComment', (e) => {
+                        if(e.data.commentId == this.commentId){
+                            this.replies.push(e.data);
+                            this.replyCount += 1;
+                            this.showReply = true;
+                        }
+                    });
+        
     },
 
     filters:{

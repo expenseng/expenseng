@@ -45,7 +45,6 @@ class CommentService{
             email: ownerId
         })
         .then(response => {
-            console.log(response);
             return response.data;
         })        
     }

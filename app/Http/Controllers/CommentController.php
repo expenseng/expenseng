@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Cookie;
 use App\Citizen;
 use App\Events\NewCommentOnResource;
+use App\Events\NewReplyOnComment;
 use Illuminate\Support\Facades\Log;
 use function GuzzleHttp\json_decode;
 use Illuminate\Http\Request;
@@ -121,7 +122,7 @@ class CommentController extends Controller
 
         if($data['status'] == "success"){
             //broadcast the new reply
-            event(new NewCommentOnResource($data));
+            event(new NewReplyOnComment($data));
             return $data['data'];
         }else{
             Log::error('Error while posting replies to '.$request->commentId);
