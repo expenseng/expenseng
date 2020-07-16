@@ -18,7 +18,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
         "pusher/pusher-php-server": "~4.0",
-        "squizlabs/php_codesniffer": "*"
+        "squizlabs/php_codesniffer": "*",
         "thujohn/twitter": "^2.2"
     },
     "repositories": [
