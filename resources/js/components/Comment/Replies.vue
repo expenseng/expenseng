@@ -10,7 +10,7 @@
                 <div class="container">
                     <div class="row container occupy">
                         <div class="col-sm-1 mt-1 row d-flex container">
-                            <user-image :ownerId="reply.ownerId" class="h-50"></user-image>
+                            <user-image :isSmall="true" :ownerId="reply.ownerId"></user-image>
                         </div>
                         <div class="col-sm-11 ">
                             <div class="d-flex justify-content-between ">

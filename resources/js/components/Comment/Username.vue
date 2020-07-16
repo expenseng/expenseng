@@ -19,7 +19,6 @@ export default {
         this.commentService.getUsername(this.ownerId)
             .then(response => {
                 this.username = response;
-                console.log(response);
             })
     },
 

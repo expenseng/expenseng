@@ -1,6 +1,6 @@
 <template>
     <div>
-        <img :src="this.image" class="resize" alt="profile-image">
+        <img :src="this.image" class="resize" :class="isSmall ? 'h-50' : ''" alt="profile-image">
     </div>
 </template>
 
@@ -31,6 +31,10 @@ export default {
         ownerId: {
             required: true,
             type: String
+        },
+        isSmall:{
+            required: false,
+            type: Boolean
         }
     }
 }
