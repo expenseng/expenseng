@@ -16,33 +16,6 @@
 @endpush
 
 @section('content')
-<<<<<<< HEAD
-<!-- Main body start -->
-<br>
-<br>
-<br>
-<br>
-<div class="container wrapper">
-  <div class="first">
-    <a href="#" class="first1"><h5>HOME &#8226;</h5></a>
-    <a href="#" class="first1"><h5>SPENDING &#8226;</h5></a>
-    <a href="#" class="first1"><h5>EXPENSE REPORT</h5></a>
-  </div>
-
-  <div class="col-md-12 second">
-    <span class="exp1"><h3>Expense Report</h3></span>
-    <div class="second1">
-      <span class="exp2"><h5>Expense report gives an insight to how much is being spent by the<br> federal government on a daily basis and how much is spent in major<br> sectors in Nigeria.</h5></span>
-      <h5>Subscribe to daily Expense Report</h5>
-      <span>
-          <form method="POST" action="{{ url('expense/report')}}">
-            @csrf
-            <input type="text" class="form-control" name="email" style="width: 50%;">
-            <button type="submit" class="btn-sm filter">Subscribe</button>
-        </form>
-    </span>
-=======
-
 <header class="container section-wrapper">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb bg-white">
@@ -60,8 +33,24 @@
       <div class="col-md-8 col-lg-12 section-heading">
         <h1 class="section-heading-title">Expense Report</h1>
         <p class="section-heading-paragraph">Expense report gives an insight to how much is being spent by the federal government on a daily basis and how much is spent in major sectors in Nigeria.</p>
-      </div>
->>>>>>> 6dfa0fc3a8d75b0e8ec5d4ca143005358a4319de
+        <h5>Subscribe to daily Expense Report</h5>
+        <span>
+            <form method="POST" action="{{ url('expense/report')}}">
+              @csrf
+              <input type="text" class="form-control" name="email" placeholder="Enter Your Email" style="width: 50%;">
+              <br>
+              <select name="subscription_type" id="" class="form-control" style="width: 50%;">
+                  <option value="">Select The Report type</option>
+                  <option value="ministry">Ministry</option>
+                  <option value="contract">Contract</option>
+                  <option value="daily&expense">Daily Expense</option>
+                  <option value="payment">Payments W/0 description</option>
+              </select>
+              <button type="submit" class="btn-sm filter">Subscribe</button>
+          </form>
+      </span>
+
+    </div>
     </div>
   </div>
   <div class="section-button">
@@ -92,7 +81,7 @@
             <a class="dropdown-item" data-toggle="tab" role="tab" href="#table">Table</a>
           </div>
         </div>
-        
+
         <div class="container col-sm-12 col-md-7">
           <div class="table-top d-flex justify-content-between align-items-center">
             <h4>Graph(Daily):12th May 2019</h4>
@@ -100,7 +89,7 @@
           </div>
           <div class="main-chart">
             <div id ="chart">
-  
+
             </div>
           </div>
         </div>
@@ -130,10 +119,8 @@
 @section('js')
 <script type="text/javascript" src="/js/expenditure_report.js"></script>
 <script type="text/javascript" src="/js/index_blade.js"></script>
-<<<<<<< HEAD
 @jquery
 @toastr_js
 @toastr_render
-=======
->>>>>>> 6dfa0fc3a8d75b0e8ec5d4ca143005358a4319de
+
 @endsection
