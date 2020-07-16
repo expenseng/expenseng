@@ -69,11 +69,7 @@
           >
             <div class="cont-1 d-flex flex-column justify-content-center py-0">
               <chart label="5-year Trend" 
-                        v-bind:data="[{amount:{{$ministry->chartData['2016']}}, year:2016},
-                                    {amount:{{$ministry->chartData['2017']}}, year:2017},
-                                    {amount:{{$ministry->chartData['2018']}}, year:2018},
-                                    {amount:{{$ministry->chartData['2019']}}, year:2019},
-                                    {amount:{{$ministry->chartData['2020']}}, year:2020}]" 
+            v-bind:data="{{json_encode($ministry->chartData)}}" 
                         element="{{ $ministry->shortname() }}"></chart>
               <div class="img">
                 <span class="circle"></span>
