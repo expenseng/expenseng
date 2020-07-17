@@ -21,7 +21,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/admin/dashboard'; //redirect home to dashboard
+    public const HOME = '/admin'; //redirect home to dashboard
 
     /**
      * Define your route model bindings, pattern filters, etc.
