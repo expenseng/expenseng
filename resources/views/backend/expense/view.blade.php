@@ -49,7 +49,9 @@
                                             <th>Project</th>
                                             <th>Amount</th>
                                             <th>Ministry</th>
+                                            @can('manage')
                                             <th>Action</th>
+                                            @endcan
                                             </tr>
                                         </thead>
                                         
@@ -64,16 +66,23 @@
                                                 <td>{{$expense->project}}  </td>
                                                 <td>₦{{number_format($expense->amount_spent,2)}}</td>
                                                 <td>Ministry of Works and Housing</td>
+                                                @can('manage')
                                                 <td>
+                                                    @can('edit')
                                                     <a href="{{'/admin/expenses/edit/' . $expense->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
+                                                    @endcan
+
+                                                    @can('delete')
                                                     <form method="POST" style="display: inline-flex;" action="{{'/admin/expenses/delete/'. $expense->id}}">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
                                                         <a type="submit" class="trash delete-expense">
                                                             <i class="fa fa-trash" style="color: red"></i>
                                                         </a>
-                                                    </form>          
+                                                    </form>   
+                                                    @endcan       
                                                 </td>
+                                                @endcan
                                         </tr>
                                             @endforeach
                                         @endif
@@ -87,7 +96,9 @@
                                             <th>Awarding Ministry</th>
                                             <th>Amount</th>
                                             <th>Ministry</th>
+                                            @can('manage')
                                             <th>Action</th>
+                                            @endcan
                                             </tr>
                                         </tfoot>
                                     </table>

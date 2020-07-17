@@ -23,8 +23,38 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        /**
+         * Admin privilages start
+         */
+
         $this->registerPolicies();
 
-        //
+        //edit rules
+        Gate::define('edit', function ($user) {
+            return $user->hasAnyRoles(['admin', 'manager', 'editor']);
+        });
+
+        //delete rules
+        Gate::define('delete', function ($user) {
+            return $user->hasRole('admin');
+        });
+
+        //create  rules
+        Gate::define('add', function ($user) {
+            return $user->hasRole('admin');
+        });
+
+        //edit privilage rules
+        Gate::define('manage', function ($user) {
+            return $user->hasAnyRoles(['admin', 'manager', 'editor']);
+        });
+
+        //user-management  rules
+        Gate::define('manage-user', function ($user) {
+            return $user->hasAnyRoles(['admin', 'manager']);
+        });
+        /**
+         * Admin privilages end
+         */
     }
 }
