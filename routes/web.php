@@ -136,10 +136,7 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
     Route::put('/users/change_password/{user_id}', 'Admin\UserController@updatePassword')->name('users.change_password');
     Route::delete('/users/delete/{user_id}', 'Admin\UserController@destroy')->name('users.delete');
 
-    Route::get('/profile', function(){
-        $user = Auth::user();
-        return view('backend.profile.index')->with(['user' => $user]);
-    });
+    Route::get('/profile', 'ProfileController@viewProfile')->name('profile');
 
  });
 

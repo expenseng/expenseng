@@ -14,9 +14,10 @@ class ExpenseController extends Controller
     public function index(Request $request)
     {
        
-        if (Gate::denies('manage')) {
-            return redirect(route('home'));
+        if (Gate::denies('active', 'manage')) {
+            return redirect(route('profile'));
         }
+
         $expenses = Expense::all();
         return view('backend.expense.view')->with(['expenses' => $expenses]);
     }

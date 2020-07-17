@@ -34,6 +34,7 @@ class UserController extends Controller
         if (Gate::denies('manage-user')) {
             return redirect(route('ministry.view'));
         }
+
         $users = User::all();
         return view('backend.users.index')->with('users', $users);
     }
