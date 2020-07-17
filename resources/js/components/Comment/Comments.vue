@@ -79,7 +79,10 @@ export default {
          */
         window.Echo.channel('expense-comment')
         .listen('NewCommentOnResource', (e) => {
+            console.log(e.data);
+            if(decodeURIComponent(e.data.origin) == this.origin){
                 this.comments.push(e.data);
+            }
         });
     },
 
