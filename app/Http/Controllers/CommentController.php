@@ -150,8 +150,12 @@ class CommentController extends Controller
         }
     }
 
-    public function downvote($commentId){
-        $response = $this->http->patch('comments/' . $commentId . '/votes/downvote');
+    public function downvote(Request $request, $commentId){
+        $response = $this->http->patch('comments/' . $commentId . '/votes/downvote', [
+            "body" => json_encode([
+                "ownerId" => $request->ownerId
+            ])
+        ]);
 
         $data = json_decode($response->getBody(), true);
 
