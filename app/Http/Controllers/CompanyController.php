@@ -89,7 +89,11 @@ class CompanyController extends Controller
         
         $companies = Company::all();
 
-        return view('backend.company.view')->with(['companies' => $companies]);
+        return view('backend.company.view')
+        ->with([
+            'companies' => $companies,
+            'count' => 0
+            ]);
     }
 
     public function createCompany(Request $request)
