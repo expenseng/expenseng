@@ -32,7 +32,7 @@
           <div class="col-md-6">
             <h1>Federal Ministries</h1>
             <p>ExpenseNG tracks federal spending to ensure taxpayers can see how their money
-              is being used in communities across America.
+              is being used in communities across Nigeria.
               Learn more on how this money was spent with tools to help you navigate
               spending from top to bottom.</p>
           </div>
@@ -67,9 +67,9 @@
             class="col-lg-3 col-md-6 col-sm-12 ministry-cards d-flex" 
             style="cursor:pointer"
           >
-            <div class="cont-1 d-flex flex-column justify-content-center">
-              <chart label="myVueChart" 
-                        v-bind:data="[{amount:32424, year:2039},{amount:12920923, year:2010}]" 
+            <div class="cont-1 d-flex flex-column justify-content-center py-0">
+              <chart label="5-year Trend" 
+            v-bind:data="{{json_encode($ministry->chartData)}}" 
                         element="{{ $ministry->shortname() }}"></chart>
               <div class="img">
                 <span class="circle"></span>

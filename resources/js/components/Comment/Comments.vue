@@ -9,7 +9,7 @@
                             <user-image :ownerId="data.ownerId"></user-image>
                         </div>
                         <div class="col-sm-11" :id="data.commentId">
-                            <div class="d-flex justify-content-between  no-show">
+                            <div class="d-flex justify-content-between">
                                 <div class="d-flex">
                                     <username :ownerId="data.ownerId"></username>
                                     <p class="ml-3 grey-text small mt-1">{{ data.createdAt | ago }}</p>
@@ -21,9 +21,7 @@
                             </div>
                             <reactions :data="data"></reactions>
                         </div>
-                        <div class="container mb-4 mt-4" v-if="data.numOfReplies > 0">
-                            <replies :commentId="data.commentId" :replyCount="data.numOfReplies"></replies>
-                        </div>
+                        <replies :commentId="data.commentId" :replyCount="data.numOfReplies"></replies>
                     </div>
                 </div> 
             </div>
@@ -81,7 +79,10 @@ export default {
          */
         window.Echo.channel('expense-comment')
         .listen('NewCommentOnResource', (e) => {
-                this.comments.push(e.data);
+            console.log(e.data);
+            if(decodeURIComponent(e.data.origin) == this.origin){
+                this.comments.unshift(e.data);
+            }
         });
     },
 

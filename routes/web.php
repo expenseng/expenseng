@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,8 @@ Route::get('/contact', 'PageController@contactUs')->name('contact');
  * Reports Endpoints
  */
 Route::get('/expense/report', 'ExpenseController@report')->name('expense.reports');
+Route::post('/subscribe', 'SubscriptionController@store');
+
 Route::get('/expense/ministry', 'ExpenseController@ministry')->name('expense.ministry');
 
 /***
@@ -133,17 +136,24 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
     Route::put('/users/change_password/{user_id}', 'Admin\UserController@updatePassword')->name('users.change_password');
     Route::delete('/users/delete/{user_id}', 'Admin\UserController@destroy')->name('users.delete');
 
-    // upload spreadsheet
-    Route::get('/import', 'UploadController@importFile');
-    Route::post('/import', 'UploadController@importExcel')->name('importExcel');
-    // Route::get('/upload', 'UploadController@uploadFile');
-    // Route::post('/upload', 'UploadController@uploadSheet')->name('uploadsheet');
-    
+   //Profile Page
+    Route::get('/profile', 'ProfileController@viewProfile')->name('profile');
+    Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
 
  });
 
 
+
+
 Auth::routes();
+
+
+//admin route
+Route::get('/admin', function()
+   {
+     return redirect (route('dashboard'));
+});
 
 Route::get('/startRT', 'TwitterBot@startLiveRetweet');
 Route::get('/stopRT', 'TwitterBot@stopLiveRetweet');
+
