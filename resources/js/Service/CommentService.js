@@ -14,22 +14,12 @@ class CommentService{
 
     getAvatar(ownerId){
         const gravatar = "https://www.gravatar.com/avatar/";
-        const userEmail = this.getCookieValue("commentatorEmail");
-        const userHash = this.getCookieValue("commentatorAvatar");
-        /**
-         * If the same email we have stored in the cookie is the one whose
-         * avatar we have to display then fetch it and do so
-         */
-        if(userEmail == ownerId){
-            return gravatar + userHash;
-        }else{
-            return axios.get('/api/comments/user/avatar', {
-                email: ownerId
-            })
-            .then(response => {
-                return gravatar + response.data;
-            })
-        }
+        return axios.get('/api/comments/user/avatar', {
+            email: ownerId
+        })
+        .then(response => {
+            return gravatar + response.data;
+        })
     }
 
     cookieExists(){
