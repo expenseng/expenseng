@@ -268,47 +268,4 @@ class MinistryController extends Controller
             return redirect()->back();
         }
     }
-    public function filterModal(Request $request)
-    {
-        $id = $request->get('id');
-        $givenTime = $request->get('date');
-
-        $ministry = Ministry::find($id);
-        $code = $ministry->code;
-        $day_pattern = '/(\d{4})-(\d{2})-(\d{2})/';
-        $mth_pattern = '/([A-Za-z]+)\s(\d{4})/';
-        $yr_pattern = '/\d{4}/';
-
-        if (preg_match($mth_pattern, $givenTime, $match)) {
-            $m = date_parse($match[1]);
-            $month = $m['month'];
-            $year = $match[2];
-            $payments = DB::table('payments')
-                    ->where('payment_code', 'LIKE', "$code%")
-                    ->whereMonth('payment_date', '=', $month)
-                    ->whereYear('payment_date', '=', $year);
-        } elseif (preg_match($day_pattern, $givenTime, $match)) {
-            $payments = DB::table('payments')
-                    ->where('payment_code', 'LIKE', "$code%")
-                    ->where('payment_date', '=', "$givenTime");
-        } elseif (preg_match($yr_pattern, $givenTime, $match)) {
-            $payments = DB::table('payments')
-                    ->where('payment_code', 'LIKE', "$code%")
-                    ->whereYear('payment_date', '=', "$givenTime");
-        };
-
-        if ($request->has('sort')) {
-            $payments = $payments->orderby('amount', $request->get('sort'));
-        } else {
-            $payments = $payments->orderby('payment_date', 'desc');
-        }
-        
-        $payments = $payments->get();
-        $total = $payments->sum('amount');
-        $ministry->payments = $payments;
-        $ministry->total = $total;
-        $ministry->givenTime = $givenTime;
-      
-        echo $ministry;
-    }
-}
+}    
