@@ -6,13 +6,13 @@
                 <div class="container">
                     <div class="row occupy">
                         <div class="col-sm-1 mt-1 row d-flex container">
-                            <img :src="getAvatar(data.ownerId)" class="resize" alt="profile-image">
+                            <user-image :ownerId="data.ownerId"></user-image>
                         </div>
                         <div class="col-sm-11" :id="data.commentId">
-                            <div class="d-flex justify-content-between  no-show">
+                            <div class="d-flex justify-content-between">
                                 <div class="d-flex">
-                                    <p class="green-text">{{ data.refId }}</p>
-                                    <p class="ml-3 grey-text small mt-1">{{ data.time }}</p>
+                                    <username :ownerId="data.ownerId"></username>
+                                    <p class="ml-3 grey-text small mt-1">{{ data.createdAt | ago }}</p>
                                 </div>
                                 <i class="fas fa-ellipsis-h grey-text"></i>
                             </div>
@@ -21,9 +21,7 @@
                             </div>
                             <reactions :data="data"></reactions>
                         </div>
-                        <div class="container mb-4 mt-4" v-if="data.numOfReplies > 0">
-                            <replies :commentId="data.commentId" :replyCount="data.numOfReplies"></replies>
-                        </div>
+                        <replies :commentId="data.commentId" :replyCount="data.numOfReplies"></replies>
                     </div>
                 </div> 
             </div>
@@ -45,6 +43,9 @@ import CommentService from '../../Service/CommentService';
 import Comment from './Comment';
 import Replies from './Replies'
 import Reactions from './Reactions';
+import Username from './Username';
+import UserImage from './UserImage';
+import moment from 'moment';
 
 export default {
     data() {
@@ -59,6 +60,8 @@ export default {
 
     components:{
         Replies,
+        UserImage,
+        Username,
         Comment,
         Reactions
     },
@@ -68,7 +71,7 @@ export default {
         this.comment.getResourceComments(this.origin)
                     .then(response => {
                         this.busy = false;
-                        this.comments = response.records
+                        this.comments = response.records;
                     })
 
         /**
@@ -76,15 +79,18 @@ export default {
          */
         window.Echo.channel('expense-comment')
         .listen('NewCommentOnResource', (e) => {
+            console.log(e.data);
+            if(decodeURIComponent(e.data.origin) == this.origin){
                 this.comments.push(e.data);
+            }
         });
     },
 
-    methods: {
-        getAvatar(ownerId){
-            return this.comment.getAvatar(ownerId);
-        },
-    },
+    filters:{
+        ago(value){
+            return moment(value).fromNow();
+        }
+    }
 }
 </script>
 

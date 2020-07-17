@@ -14,28 +14,12 @@ class CommentService{
 
     getAvatar(ownerId){
         const gravatar = "https://www.gravatar.com/avatar/";
-        const userEmail = this.getCookieValue("commentatorEmail");
-        const userHash = this.getCookieValue("commentatorAvatar");
-        /**
-         * If the same email we have stored in the cookie is the one whose
-         * avatar we have to display then fetch it and do so
-         */
-        if(userEmail == ownerId){
-            return gravatar + userHash;
-        }else{
-            // return axios.get('/api/comments/user/avatar', {
-            //     email: ownerId
-            // })
-            // .then(response => {
-            //     return response.data;
-            // })
-
-            return "";
-        }
-    }
-
-    reply(comemntId){
-
+        return axios.get('/api/comments/user/avatar', {
+            email: ownerId
+        })
+        .then(response => {
+            return gravatar + response.data;
+        })
     }
 
     cookieExists(){
@@ -47,11 +31,11 @@ class CommentService{
      * @param {string} ownerId 
      */
     getUsername(ownerId){
-        return axios.get('/api/comments/user', {
+        return axios.post('/api/citizens', {
             email: ownerId
         })
         .then(response => {
-            return response;
+            return response.data;
         })        
     }
 
@@ -138,11 +122,22 @@ class CommentService{
         })
     }
 
-    upvote(commentId){
-        return axios.patch('/api/comments/' + commentId + '/votes/upvote')
-                    .then(response => {
-                        return response.data;
-                    })
+    upvote(commentId, ownerId){
+        return axios.patch('/api/comments/' + commentId + '/votes/upvote', {
+            ownerId: ownerId
+        })
+        .then(response => {
+            return response.data;
+        })
+    }
+
+    downvote(commentId, ownerId){
+        return axios.patch('/api/comments/' + commentId + '/votes/downvote', {
+            ownerId: ownerId
+        })
+        .then(response => {
+            return response.data;
+        })
     }
 }
 

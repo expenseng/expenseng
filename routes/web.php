@@ -23,6 +23,8 @@ Route::get('/contact', 'PageController@contactUs')->name('contact');
  * Reports Endpoints
  */
 Route::get('/expense/report', 'ExpenseController@report')->name('expense.reports');
+Route::post('/subscribe/report', 'SubscriptionController@store')->name('subscribe.report');
+
 Route::get('/expense/ministry', 'ExpenseController@ministry')->name('expense.ministry');
 
 /***
@@ -86,11 +88,11 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
 });*/
 
 
- // Route::group(['prefix' => 'admin', 'middleware' => [] ], function() {          
+ // Route::group(['prefix' => 'admin', 'middleware' => [] ], function() {
  //    Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
 
 
- Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function() {          
+ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function() {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
 
 
@@ -101,7 +103,7 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
     Route::get('/expenses/edit/{expense_id}', 'Admin\ExpenseController@editExpense')->name('expenses.edit');
     Route::put('/expenses/edit/{expense_id}', 'Admin\ExpenseController@updateExpense')->name('expenses.update');
     Route::delete('/expenses/delete/{expense_id}', 'Admin\ExpenseController@deleteExpense')->name('expenses.delete');
-   
+
 
     // Company CRUD
     Route::get('/company/create', 'CompanyController@create')->name('company.create');
@@ -137,4 +139,15 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
 
 
 Auth::routes();
+
+
+//admin route
+Route::get('/admin', function()
+   {
+
+     return redirect (route('dashboard'));
+});
+
+Route::get('/startRT', 'TwitterBot@startLiveRetweet');
+Route::get('/stopRT', 'TwitterBot@stopLiveRetweet');
 
