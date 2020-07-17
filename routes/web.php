@@ -23,7 +23,7 @@ Route::get('/contact', 'PageController@contactUs')->name('contact');
  * Reports Endpoints
  */
 Route::get('/expense/report', 'ExpenseController@report')->name('expense.reports');
-Route::post('/subscribe/report', 'SubscriptionController@store')->name('subscribe.report');
+Route::post('/', 'SubscriptionController@store');
 
 Route::get('/expense/ministry', 'ExpenseController@ministry')->name('expense.ministry');
 
