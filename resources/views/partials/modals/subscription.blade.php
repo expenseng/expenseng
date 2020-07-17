@@ -4,8 +4,6 @@
 <link rel="stylesheet" href="{{ asset('css/modal/style.css')}}">
 @endpush
 
-<script src="https://kit.fontawesome.com/9b1c8d52ed.js" crossorigin="anonymous"></script>
-<!-- Button trigger modal -->
 <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModalCenter">
 Subscribe
 </button>
