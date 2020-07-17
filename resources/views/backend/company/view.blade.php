@@ -28,7 +28,9 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="mb-0">Registered Companies </h3>
+                                @can('add')
                                 <a href="{{route('company.create')}}" class="btn btn-primary" style="float:right">CREATE NEW COMPANY</a>
+                                @endcan
                                 <p></p>
                             </div>
                             <div class="card-body">
@@ -42,8 +44,9 @@
                                                 <th>Company Twitter</th>
                                                 <th>CEO</th>
                                                 <th>CEO Twitter</th>
+                                                @can('manage')
                                                 <th>Actions</th>
-                                                
+                                                @endcan
                                             </tr>
                                         </thead>
 
@@ -60,15 +63,21 @@
                                                 <td>{{$company->industry}}</td>
                                                 <td>{{$company->ceo}}</td>
                                                 <td>{{$company->twitter}}</td>
+                                                @can('manage')
                                                 <td>
                                                     <div class="row">
                                                         <div class="col-md-6">
+                                                            @can('edit')
                                                             <a href="{{'/admin/company/edit/' . $company->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
+                                                            @endcan
                                                         </div>
                                                         <!--modal begin-->
                                                         
                                                             <div class="col-md-6">
+                                                            @can('delete')
                                                             <i class="fa fa-trash" data-toggle="modal" data-target="{{'#exampleModal'. $company->id}}" style="color: red"></i>
+                                                            @endcan
+
                                                             <div class="modal fade" id="{{'exampleModal' . $company->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
@@ -97,6 +106,7 @@
 
                                                     
                                                 </td>
+                                                @endcan
                                             </tr>
                                             
                                         @endforeach
@@ -111,7 +121,10 @@
                                                 <th>Company Twitter</th>
                                                 <th>CEO</th>
                                                 <th>CEO Twitter</th>
-                                                <th>Actions</th>
+                                                @can('manage')
+                                                    <th>Actions</th>
+                                                @endcan
+                                                
                                             </tr>
                                         </tfoot>
                                     </table>
