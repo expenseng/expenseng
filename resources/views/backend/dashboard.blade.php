@@ -62,7 +62,7 @@
               </div>
             </div>
           </div>
-          <div class="row ">
+          <!--<div class="row ">
 
             <div class="col-md-4">
             <a href="{{route('company.create')}}">
@@ -117,7 +117,7 @@
               </div>
             </div>
             </a>
-          </div>
+          </div>-->
           <div class="row">
             <!--<div class="col-lg-6 col-md-12">
               <div class="card">

@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Cookie;
 use App\Citizen;
 use App\Events\NewCommentOnResource;
+use App\Events\NewReactionOnComment;
 use App\Events\NewReplyOnComment;
 use Illuminate\Support\Facades\Log;
 use function GuzzleHttp\json_decode;
@@ -62,7 +63,7 @@ class CommentController extends Controller
                 "refId" => $request->refId, //username
                 "ownerId" => $request->ownerId, //email
                 "content" => $request->content,
-                "origin" => $request->origin, //this will be the url of the page where comment happened
+                "origin" => urlencode($request->origin), //this will be the url of the page where comment happened
             ])
         ]);
 
@@ -83,7 +84,8 @@ class CommentController extends Controller
     public function show(Request $request){
         $response = $this->http->get('comments', [
             'query' => [
-                'origin' => $request->query('origin')
+                'origin' => urlencode($request->query('origin')),
+                'sort' => 'descending',
             ]
         ]);
 
@@ -130,14 +132,18 @@ class CommentController extends Controller
         }
     }
 
-    public function upvote($commentId){
-        $response = $this->http->patch('comments/' . $commentId . '/votes/upvote');
+    public function upvote(Request $request, $commentId){
+        $response = $this->http->patch('comments/' . $commentId . '/votes/upvote', [
+            "body" => json_encode([
+                "ownerId" => $request->ownerId
+            ])
+        ]);
 
         $data = json_decode($response->getBody(), true);
 
         if($data['status'] == "success"){
             // broadcast the new thumbs up
-            event(new NewCommentOnResource($data));
+            event(new NewReactionOnComment($data));
             return $data['data'];
         }else{
             Log::error('Error while posting upvote to '.$commentId);
@@ -145,14 +151,18 @@ class CommentController extends Controller
         }
     }
 
-    public function downvote($commentId){
-        $response = $this->http->patch('comments/' . $commentId . '/votes/downvote');
+    public function downvote(Request $request, $commentId){
+        $response = $this->http->patch('comments/' . $commentId . '/votes/downvote', [
+            "body" => json_encode([
+                "ownerId" => $request->ownerId
+            ])
+        ]);
 
         $data = json_decode($response->getBody(), true);
 
         if($data['status'] == "success"){
-            // broadcast the new thumbs up
-            event(new NewCommentOnResource($data));
+            // broadcast the new thumbs down
+            event(new NewReactionOnComment($data));
             return $data['data'];
         }else{
             Log::error('Error while posting downvote to '.$commentId);

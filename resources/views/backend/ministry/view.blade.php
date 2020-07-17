@@ -7,12 +7,15 @@
     <link rel="stylesheet" type="text/css" href="/extras/datatables/css/fixedHeader.bootstrap4.css">
     <script src="/extras/jquery/jquery-3.3.1.min.js"></script>
     <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" />
-        <link rel="stylesheet" href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2">
+
+    <!-- causes toggle error in navbar -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2">
   
-        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
-        <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <title>ExpenseNg - Ministries</title>
 @endpush
 
@@ -25,7 +28,9 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="mb-0">All Ministries </h3>
+                                @can('add')
                                 <a href="{{route('ministry.create')}}" class="btn btn-primary" style="float:right">CREATE NEW MINISTRY</a>
+                                @endcan
                                 <p></p>
                             </div>
                             <div class="card-body">
@@ -40,7 +45,9 @@
                                                 <th>Minister in charge</th>
                                                 <th>Ministry's Twitter Handle</th>
                                                 <th>Website</th>
+                                                @can('manage')
                                                 <th>Action</th>
+                                                @endcan
                                             </tr>
                                         </thead>
                                         
@@ -61,13 +68,19 @@
                                                 <td>
                                                     {{$ministry->website}}
                                                 </td>
+                                                @can('manage')
                                                 <td>
                                                     <div class="row">
                                                         <div class="col-md-6">
+                                                            @can('edit')
                                                             <a href="{{'/admin/ministry/edit/' . $ministry->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
+                                                            @endcan
                                                         </div>
+                                                        
                                                         <div class="col-md-6">
+                                                            @can('delete')
                                                             <i class="fa fa-trash" data-toggle="modal" data-target="{{'#exampleModal'.$ministry->id}}" style="color: red"></i>
+                                                            @endcan
                                                         <!-- Modal -->
                                                         <div class="modal fade" id="{{'exampleModal'. $ministry->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
@@ -98,6 +111,7 @@
 
                                                     </div>
                                                 </td>
+                                                @endcan
                                                 
                                             </tr>
                                             @endforeach
@@ -113,7 +127,9 @@
                                                 <th>Minister in charge</th>
                                                 <th>Ministry's Twitter Handle</th>
                                                 <th>Website</th>
+                                                @can('manage')
                                                 <th>Actions</th>
+                                                @endcan
                                             </tr>
                                         </tfoot>
                                     </table>
