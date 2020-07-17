@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Ministry;
 use App\Payment;
+use App\Sector;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -197,7 +198,14 @@ class MinistryController extends Controller
         if (Gate::denies('add')) {
             return redirect(route('ministry.view'));
         }
-        return view('backend.ministry.create');
+        $ministry_codes = Ministry::all('code');
+        $sectors = Sector::all();
+        return view('backend.ministry.create')
+        ->with([
+            'ministry_codes' => $ministry_codes,
+            'sectors' => $sectors
+        ]
+        );
     }
 
     /**
@@ -229,10 +237,13 @@ class MinistryController extends Controller
             'website' => 'required',
             'sector_id' => 'required|number',
         ]);
+        //replace spaces with dash in shortname
+        $ministry_shortname = preg_replace('/[[:space:]]+/','-', $request->ministry_shortname); 
 
+        //save new ministry
         $new_ministry = new Ministry();
         $new_ministry->name = $request->ministry_name;
-        $new_ministry->shortname = $request->ministry_shortname;
+        $new_ministry->shortname = $ministry_shortname;
         $new_ministry->twitter = $request->ministry_twitter;
         $new_ministry->head = $request->ministry_head;
         $new_ministry->website = $request->website;
