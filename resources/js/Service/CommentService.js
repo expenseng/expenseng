@@ -10,11 +10,12 @@ class CommentService{
             this.email = "";
             this.avatar = "";
         }
+        // this.email = this.getCookieValue("commentatorEmail");
     }
 
     getAvatar(ownerId){
         const gravatar = "https://www.gravatar.com/avatar/";
-        return axios.get('/api/comments/user/avatar', {
+        return axios.post('/api/comments/user/avatar', {
             email: ownerId
         })
         .then(response => {

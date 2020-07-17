@@ -1,22 +1,26 @@
 <template>
-    <div :class="isContained ? 'container' : '' " class="commentTextArea d-flex flex-column align-content-center justify-content-center">
-        <input placeholder="Name" ref="commentatorName" v-model="name" v-if="showName" required class="p-2 mb-2">
-        <input placeholder="Email" v-model="email" v-if="showName" required class="p-2 mb-2">
-        <textarea-autosize
-            placeholder="Write a comment"
-            ref="commentInput"
-            aria-required="true"
-            class="p-2 mb-2"
-            v-model="comment"
-            :min-height="65"
-            :max-height="350"
-            @focus.native="startComment"
-            @keyup.enter.exact.native="send"
-        />
-        <span class="text-muted error alert alert-danger" v-if="error != ''">
-            {{ error }}
+    <div :class="isContained ? 'container' : '' " class="d-flex flex-column align-content-center justify-content-center">
+        <span v-if="errors.length > 0" class="container d-flex justify-content-center">
+            <span class="text-muted error alert alert-danger" v-for="error in errors" :key="error">
+                {{ error }}
+            </span>
         </span>
-        <button class="btn btn-primary" @click="send" v-if="showName">Comment</button>
+        <form @submit.prevent="send" class="commentTextArea d-flex flex-column align-content-center justify-content-center" :class="isContained ? 'container' : '' ">
+            <input placeholder="Name" ref="commentatorName" v-model="name" v-if="showName" required class="p-2 mb-2">
+            <input placeholder="Email" v-model="email" v-if="showName" required class="p-2 mb-2">
+            <textarea-autosize
+                placeholder="Write a comment"
+                ref="commentInput"
+                aria-required="true"
+                class="p-2 mb-2"
+                v-model="comment"
+                :min-height="65"
+                :max-height="350"
+                @focus.native="startComment"
+                @keyup.enter.exact.native="send"
+            />
+            <button class="btn btn-primary" type="submit" v-if="showName">Comment</button>
+        </form>
     </div>
 </template>
 
@@ -31,7 +35,7 @@ export default {
             comment: "",
             email: "",
             name: "",
-            error: "",
+            errors: [],
             commentService: new Comment(),
             origin: document.location.pathname, //we are using this as the origin/resourcename
         }
@@ -65,13 +69,6 @@ export default {
                 this.showName = true;
                 this.hideSmallComment = true;
             }
-
-            this.autoFocusName()
-        },
-
-        autoFocusName(){
-            // TODO: Auto focus the name input
-            // this.$refs.commentatorName.focus()
         },
 
         /**
@@ -89,11 +86,31 @@ export default {
         },
 
         send(){
-            if(this.name == "" || this.email == "") this.error = "Error: all fields are requierd. Please be sure to fill all fields"; return false;
+
+            if(this.firstComment()){
+                if(!this.name){
+                    this.errors.push("Dear friend, we'll love to know your name")
+                    return false;
+                }
+
+                if(!this.email){
+                    this.errors.push("How about a point of contact? We'll use your email to identify you next time you visit.")
+                    return false;
+                }
+
+                if(!this.comment){
+                    this.errors.push("Let your voice be heard today, join thousands of civil Nigerians in the journey to hold the leadership responsible.")
+                    return false;
+                }
+            }
+            
+            if(!this.comment){
+                this.errors.push("Let your voice be heard today, join thousands of civil Nigerians in the journey to hold the leadership responsible.")
+                return false;
+            }
 
             if(this.isReply){
-                this.commentService.storeReply(this.comment, this.email, this.name, this.commentId);
-                    
+                this.commentService.storeReply(this.comment, this.email, this.name, this.commentId);  
             }else{
                 const response = this.commentService
                 .storeComments(this.origin, this.comment, this.email, this.name);
