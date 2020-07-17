@@ -28,7 +28,7 @@ Subscribe
     <div class="modal-body">
         <div class="container">
             <div class="container-grid">
-                <form method="POST" action="{{ action('SubscriptionController@store')}}">
+                <form method="post" action="{{ action('SubscriptionController@store')}}">
                     {{csrf_field()}}
                     <input type="text" class="form-control" name="name" placeholder="Enter Your Name  "  required><br>
                     <input type="email" class="form-control" name="email" placeholder="Enter Your Email"  required>
