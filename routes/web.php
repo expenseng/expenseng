@@ -49,7 +49,7 @@ Route::get('/ministry/details', 'MinistrySearchController@show')->name('get_mini
 Route::get('/ministry/all', 'MinistrySearchController@index')->name('ministry_all');
 Route::get('/ministry/getUrl', 'PageController@ministryGetUrl')->name('ministry_get_url');
 Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses')->name('ministry_filter_expenses');
-Route::get('/ministry/filterModal', 'MinistryController@filterModal')->name('ministry_filter_modal');
+
 
 
 /*
