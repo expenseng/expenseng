@@ -90,7 +90,6 @@ class UserController extends Controller
         ]);
 
         $role_id = $request->role_id;
-
         $user->roles()->attach($role_id);
 
         Session::flash('flash_message', 'New User successfully added!');
@@ -137,7 +136,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, User $user)
     {
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
@@ -148,16 +147,24 @@ class UserController extends Controller
 
         $validator->validate();
 
-        $update = User::where('id', $id)->update([
+        if (Gate::denies('add')) {
+            User::where('id', $id)->update([
+                'name' => $request->name,
+                'email' => $request->email,
+            ]);
+
+            Session::flash('flash_message', 'User updated successfully!');
+            return redirect(route('users.view'));
+        }
+
+        User::where('id', $id)->update([
             'name' => $request->name,
             'email' => $request->email,
             'status_id' => $request->status_id,
         ]);
-        DB::table('role_user')
-            ->where('id', $id)
-            ->update([
-                'role_id' => $request->role_id,
-            ]);
+
+        $user->roles()->sync($request->roles);
+
         Session::flash('flash_message', 'User updated successfully!');
         return redirect(route('users.view'));
     }
@@ -184,7 +191,7 @@ class UserController extends Controller
 
     public function updatePassword(Request $request, $id)
     {
-        if (Gate::denies('edit')) {
+        if (Gate::denies('add')) {
             return redirect(route('users.view'));
         }
 
