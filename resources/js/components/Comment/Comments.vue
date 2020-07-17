@@ -9,7 +9,7 @@
                             <user-image :ownerId="data.ownerId"></user-image>
                         </div>
                         <div class="col-sm-11" :id="data.commentId">
-                            <div class="d-flex justify-content-between  no-show">
+                            <div class="d-flex justify-content-between">
                                 <div class="d-flex">
                                     <username :ownerId="data.ownerId"></username>
                                     <p class="ml-3 grey-text small mt-1">{{ data.createdAt | ago }}</p>
