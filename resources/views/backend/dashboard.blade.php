@@ -373,6 +373,7 @@
                 <div class="card-body table-responsive">
                   <table class="table table-hover">
                     <thead class="text-warning">
+                      <th>S/N</th>
                       <th>Company</th>
                       <th>Project</th>
                       <th>Ministry</th>
@@ -383,7 +384,7 @@
                       
                        @foreach ($recent_expenses as $recent_expense)
                       <tr>
-                        
+                        <td>{{++$count}}</td>
                         <td>{{$recent_expense->year}}</td>
                         <td>{{$recent_expense->project}}</td>
                         <td>{{$recent_expense->month}}</td>

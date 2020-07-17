@@ -223,6 +223,7 @@ class MinistryController extends Controller
 
         return view('backend.ministry.view')->with([
             'ministries' => $ministries,
+            'count' => 0
         ]);
     }
 
