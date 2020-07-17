@@ -28,7 +28,13 @@
 			<div class="row">
 				<div class="col-md-8 section-heading">
 					<h1 class="section-heading-title">Ministry Spending</h1>
-					<p class="section-heading-paragraph">ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities across Nigeria.</p>
+                    <p class="section-heading-paragraph">ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities across Nigeria.</p>
+
+                    <h5>Subscribe to daily  Report</h5>
+                    <span>
+                        @include('partials.modals.subscription')
+
+                  </span>
 				</div>
 			</div>
 		</div>
