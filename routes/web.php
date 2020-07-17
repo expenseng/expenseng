@@ -134,8 +134,10 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
     Route::delete('/users/delete/{user_id}', 'Admin\UserController@destroy')->name('users.delete');
 
     // upload spreadsheet
-    Route::get('/upload', 'UploadController@uploadFile');
-    Route::post('/upload', 'UploadController@uploadSheet')->name('uploadsheet');
+    Route::get('/import', 'UploadController@importFile');
+    Route::post('/import', 'UploadController@importExcel')->name('importExcel');
+    // Route::get('/upload', 'UploadController@uploadFile');
+    // Route::post('/upload', 'UploadController@uploadSheet')->name('uploadsheet');
     
 
  });

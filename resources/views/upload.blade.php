@@ -38,14 +38,42 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <form method="POST" action="{{route('uploadsheet')}}" enctype="multipart/form-data">
-                                    @csrf
-                                    <label for ='file'> choose file 
-                                    </label>
-                                    <input type="file" name='file' />
-                                    <br>
-                                    <button type='submit' name='submit'>upload spreadsheet</button>
+                                  
 
+                                    <form  action="{{route('importExcel')}}"
+                                      method='post' enctype='multipart/form-data'>
+                                    {{ csrf_field() }}
+
+
+                                    @if(session('errors'))
+                                           @foreach($errors as $error)
+                                    <li>
+                                    {{$error}}
+                                    </li>
+                                           @endforeach
+                                    @endif
+
+                                    @if(session('success'))
+                                   
+                                    <li>
+                                    {{ session('success') }}
+                                    </li>
+                                    
+                                    @endif
+
+                                    <br>
+                                    <br>
+
+
+                                    select excel file to upload
+
+                                    <br>
+                                    <br>
+                                        <input type="file" name='file'  id='file'>
+                                        <br><br>
+                                    <button type='submit'>upload file</button>
+                                    
+                                    
                                     </form>
                                 </div>
                             </div>

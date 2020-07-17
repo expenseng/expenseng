@@ -61,7 +61,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{Route::is('dashboard')? '#' :route('dashboard')}}">
               <i class="material-icons">note_add</i>
               <p>Upload Spreadsheet</p>
             </a>
