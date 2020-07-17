@@ -23,6 +23,8 @@ export default {
         return {
             comment: new CommentService(),
             reply: false,
+            didUpvote: false,
+            didDownvote: false,
         }
     },
 
@@ -41,17 +43,23 @@ export default {
 
     methods: {
         upvote(){
+            this.didUpvote = !this.didUpvote;
+
+            this.data.numOfUpVotes = this.didUpvote ? +1 : -1;
+
             this.comment.upvote(this.data.commentId, this.data.ownerId)
                     .then(res => {
-                        // this.data.numOfUpVotes += 1;
                         console.log(res);
                     })
         },
 
         downvote(){
+            this.didDownvote = !this.didDownvote;
+
+            this.data.numOfUpVotes = this.didDownvote ? +1 : -1;
+            
             this.comment.upvote(this.data.commentId, this.data.ownerId)
                     .then(res => {
-                        // this.data.numOfUpVotes += 1;
                         console.log(res);
                     })
         }

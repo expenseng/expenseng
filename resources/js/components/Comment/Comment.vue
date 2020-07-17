@@ -13,6 +13,9 @@
             @focus.native="startComment"
             @keyup.enter.exact.native="send"
         />
+        <span class="text-muted error alert alert-danger" v-if="error != ''">
+            {{ error }}
+        </span>
         <button class="btn btn-primary" @click="send" v-if="showName">Comment</button>
     </div>
 </template>
@@ -28,6 +31,7 @@ export default {
             comment: "",
             email: "",
             name: "",
+            error: "",
             commentService: new Comment(),
             origin: document.location.pathname, //we are using this as the origin/resourcename
         }
@@ -85,6 +89,8 @@ export default {
         },
 
         send(){
+            if(this.name == "" || this.email == "") this.error = "Error: all fields are requierd. Please be sure to fill all fields"; return false;
+
             if(this.isReply){
                 this.commentService.storeReply(this.comment, this.email, this.name, this.commentId);
                     
@@ -107,7 +113,7 @@ export default {
 </script>
 
 <style scoped>
-    input.p-2{
+    input.p-2, textarea{
         outline: -webkit-focus-ring-color auto 1px;
     }   
 
