@@ -63,7 +63,7 @@ class CommentController extends Controller
                 "refId" => $request->refId, //username
                 "ownerId" => $request->ownerId, //email
                 "content" => $request->content,
-                "origin" => $request->origin, //this will be the url of the page where comment happened
+                "origin" => urlencode($request->origin), //this will be the url of the page where comment happened
             ])
         ]);
 
@@ -84,7 +84,7 @@ class CommentController extends Controller
     public function show(Request $request){
         $response = $this->http->get('comments', [
             'query' => [
-                'origin' => $request->query('origin')
+                'origin' => urlencode($request->query('origin'))
             ]
         ]);
 

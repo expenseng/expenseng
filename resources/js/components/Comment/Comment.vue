@@ -1,9 +1,18 @@
 <template>
-    <div :class="isContained ? 'container' : '' " class="w-75 d-flex flex-column align-content-center justify-content-center">
+    <div :class="isContained ? 'container' : '' " class="commentTextArea d-flex flex-column align-content-center justify-content-center">
         <input placeholder="Name" ref="commentatorName" v-model="name" v-if="showName" required class="p-2 mb-2">
         <input placeholder="Email" v-model="email" v-if="showName" required class="p-2 mb-2">
-        <textarea placeholder="Write a comment" v-model="comment" v-if="showName" required class="p-2 mb-2"></textarea>
-        <input placeholder="Write a Comment" v-if="!hideSmallComment" v-model="comment" @keydown.enter="send" @focus="startComment" class="p-2">
+        <textarea-autosize
+            placeholder="Write a comment"
+            ref="commentInput"
+            aria-required="true"
+            class="p-2 mb-2"
+            v-model="comment"
+            :min-height="65"
+            :max-height="350"
+            @focus.native="startComment"
+            @keyup.enter.exact.native="send"
+        />
         <button class="btn btn-primary" @click="send" v-if="showName">Comment</button>
     </div>
 </template>
@@ -98,7 +107,19 @@ export default {
 </script>
 
 <style scoped>
-    input.w-75.p-2{
+    input.p-2{
         outline: -webkit-focus-ring-color auto 1px;
+    }   
+
+    .commentTextArea{
+        width: 100% !important;
     }
+
+    @media screen and (min-width: 600px) {
+        .commentTextArea{
+            width: 75% !important;
+        }
+    }
+
+    
 </style>
