@@ -126,9 +126,18 @@ class CommentService{
         return axios.patch('/api/comments/' + commentId + '/votes/upvote', {
             ownerId: ownerId
         })
-                    .then(response => {
-                        return response.data;
-                    })
+        .then(response => {
+            return response.data;
+        })
+    }
+
+    downvote(commentId, ownerId){
+        return axios.patch('/api/comments/' + commentId + '/votes/downvote', {
+            ownerId: ownerId
+        })
+        .then(response => {
+            return response.data;
+        })
     }
 }
 

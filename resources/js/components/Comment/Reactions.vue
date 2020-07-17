@@ -49,7 +49,7 @@ export default {
         },
 
         downvote(){
-            this.comment.upvote(this.data.commentId)
+            this.comment.upvote(this.data.commentId, this.data.ownerId)
                     .then(res => {
                         // this.data.numOfUpVotes += 1;
                         console.log(res);
