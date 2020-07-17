@@ -98,6 +98,7 @@ $(document).ready(function(){
                 }else{
                     $('#ministryList').fadeOut();
                     $('#cards-container').empty();
+                    $('#cards-container').html('<b class="text-danger pb-5" style="font-size:30px;">Oops! No Ministry matches your search</b>')
                 }
             }
         })
