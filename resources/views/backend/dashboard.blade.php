@@ -364,7 +364,7 @@
                 </div>
               </div>
             </div>-->
-            <div class="col-lg-6 col-md-12">
+            <div class="col-lg-12 col-md-12">
               <div class="card">
                 <div class="card-header card-header-warning">
                   <h4 class="card-title">Recent Expenses</h4>
@@ -373,7 +373,6 @@
                 <div class="card-body table-responsive">
                   <table class="table table-hover">
                     <thead class="text-warning">
-                      <th>S/N</th>
                       <th>Company</th>
                       <th>Project</th>
                       <th>Ministry</th>
@@ -384,7 +383,7 @@
                       
                        @foreach ($recent_expenses as $recent_expense)
                       <tr>
-                        <td></td>
+                        
                         <td>{{$recent_expense->year}}</td>
                         <td>{{$recent_expense->project}}</td>
                         <td>{{$recent_expense->month}}</td>
