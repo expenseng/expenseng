@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -134,8 +135,13 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
     Route::put('/users/edit/{user_id}', 'Admin\UserController@update')->name('users.update');
     Route::put('/users/change_password/{user_id}', 'Admin\UserController@updatePassword')->name('users.change_password');
     Route::delete('/users/delete/{user_id}', 'Admin\UserController@destroy')->name('users.delete');
+    
+   //Profile Page
+    Route::get('/profile', 'ProfileController@viewProfile')->name('profile');
 
  });
+
+
 
 
 Auth::routes();
@@ -144,7 +150,6 @@ Auth::routes();
 //admin route
 Route::get('/admin', function()
    {
-
      return redirect (route('dashboard'));
 });
 

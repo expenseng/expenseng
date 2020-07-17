@@ -83,9 +83,10 @@ class CompanyController extends Controller
      */
     public function viewCompanies()
     {
-        if (Gate::denies('manage')) {
-            return redirect(route('home'));
+         if (Gate::denies('active', 'manage')) {
+            return redirect(route('profile'));
         }
+        
         $companies = Company::all();
 
         return view('backend.company.view')->with(['companies' => $companies]);

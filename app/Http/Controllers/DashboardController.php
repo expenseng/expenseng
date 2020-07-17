@@ -30,9 +30,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        if (Gate::denies('manage')) {
-            Auth::logout();
-            return redirect(route('home'));
+        if (Gate::denies('active', 'manage')) {
+            return redirect(route('profile'));
         }
 
         $year = date('Y'); // get current year

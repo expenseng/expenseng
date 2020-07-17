@@ -53,6 +53,10 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('manage-user', function ($user) {
             return $user->hasAnyRoles(['admin', 'manager']);
         });
+        //active user rules
+        Gate::define('active', function ($user) {
+            return $user->isActive(['admin', 'manager', 'editor','user']);
+        });
         /**
          * Admin privilages end
          */
