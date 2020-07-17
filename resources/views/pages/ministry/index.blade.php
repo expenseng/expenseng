@@ -32,7 +32,7 @@
           <div class="col-md-6">
             <h1>Federal Ministries</h1>
             <p>ExpenseNG tracks federal spending to ensure taxpayers can see how their money
-              is being used in communities across America.
+              is being used in communities across Nigeria.
               Learn more on how this money was spent with tools to help you navigate
               spending from top to bottom.</p>
           </div>

@@ -27,7 +27,13 @@
         <div class="row">
             <div class="col-md-5">
                 <p class="para">ExpenseNG gives an insight to how much is being dispensed to contracted companies.</p>
+                <h5>Subscribe to daily Expense Report</h5>
+                <span>
+                    @include('partials.modals.subscription')
+
+              </span>
             </div>
+
         </div>
         </div>
         <br>
@@ -46,7 +52,7 @@
       </div>
     </div>
   </header>
-  
+
     <br />
     <div id="company" class="container">
     <div class="row" id="company-div">
@@ -55,8 +61,8 @@
         <div class="col-md-3 mb-3 card-col">
           <div class="card shadow">
             <div class="card-body">
-                <chart label="myVueChart" 
-                        v-bind:data="[{amount:32424, year:2039},{amount:12920923, year:2010}]" 
+                <chart label="myVueChart"
+                        v-bind:data="[{amount:32424, year:2039},{amount:12920923, year:2010}]"
                         element="{{ $company->shortname() }}"></chart>
                 <div class="company mb-2">
                     <img src="{{ asset('images/image 13.png') }}" height="30" class="mr-3" alt="">
@@ -72,7 +78,7 @@
             </div>
           </div>
         </div>
-      @endforeach        
+      @endforeach
     </div>
     <div class="table-footer">
       <div class="pagination">
