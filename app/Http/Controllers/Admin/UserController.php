@@ -136,7 +136,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, User $user)
+    public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
@@ -163,7 +163,9 @@ class UserController extends Controller
             'status_id' => $request->status_id,
         ]);
 
-        $user->roles()->sync($request->roles);
+         DB::table('role_user')->where('id', $id)->update([
+                    'role_id' => $request->role_id,
+         ]);
 
         Session::flash('flash_message', 'User updated successfully!');
         return redirect(route('users.view'));
