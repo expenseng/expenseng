@@ -1,5 +1,5 @@
 <template>
-    <div :class="isContained ? 'container' : '' " class="comment d-flex flex-column align-content-center justify-content-center">
+    <div :class="isContained ? 'container' : '' " class="commentTextArea d-flex flex-column align-content-center justify-content-center">
         <input placeholder="Name" ref="commentatorName" v-model="name" v-if="showName" required class="p-2 mb-2">
         <input placeholder="Email" v-model="email" v-if="showName" required class="p-2 mb-2">
         <textarea-autosize
@@ -111,12 +111,12 @@ export default {
         outline: -webkit-focus-ring-color auto 1px;
     }   
 
-    .comment{
+    .commentTextArea{
         width: 100% !important;
     }
 
     @media screen and (min-width: 600px) {
-        .comment{
+        .commentTextArea{
             width: 75% !important;
         }
     }
