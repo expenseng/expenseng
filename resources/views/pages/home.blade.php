@@ -36,7 +36,7 @@
                   <p>{{$recent_project->project}}<br></p>
                   <div class="d-flex justify-content-between mt-4 align-items-center">
                       <p>Cost of Project: </p>
-                      <p id="cost">{{$recent_project->amount_spent}}</p>
+                      <p id="cost">&#8358;{{number_format($recent_project->amount_spent)}}</p>
                   </div>
               </div>
             </div>   
