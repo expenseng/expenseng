@@ -30,17 +30,24 @@
                                                 <input id="inputText3" name="twitter_handle" type="text" 
                                                 class="form-control" placeholder="e.g @expenseng" required />
                                             </div>
+
+                                            <div class="form-group">
+                                                <label for="inputText4" class="col-form-label">Company Twitter Handle</label>
+                                                <input id="inputText4" name="company_twitter" type="text" 
+                                                class="form-control" placeholder="e.g @examplecompany" required />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputText4" class="col-form-label">Ministry Twitter Handle</label>
+                                                <input id="inputText4" name="ministry_twitter" type="text" 
+                                                class="form-control" placeholder="e.g @ministry" required />
+                                            </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">Text</label>
                                                 <textarea id="inputEmail" name="body" type="textarea"
                                                  placeholder="e.g example" class="form-control" required >Type your tweet here</textarea>
                                                 
                                             </div>
-                                            <div class="form-group">
-                                                <label for="inputText4" class="col-form-label">Company Twitter Handle</label>
-                                                <input id="inputText4" name="company_twitter" type="text" 
-                                                class="form-control" placeholder="e.g @examplecompany" required />
-                                            </div>
+                                            
                                             <div class="form-group text-right">
                                                 <input type="submit" value="Post Tweet!"
                                                 class="form-control" 
