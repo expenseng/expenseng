@@ -71,16 +71,6 @@
               <p>Upload Spreadsheet</p>
             </a>
           </li>
-
-
-
-
-         
-
-
-
-
-
           <li class="nav-item active-pro ">
             <a class="nav-link" href="#">
               <i class="material-icons">unarchive</i>
