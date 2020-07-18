@@ -10,7 +10,7 @@
 <br />
 <br />
 <br />
- <header class="container header"><!-- Breadcrumb start -->
+<header class="container header"><!-- Breadcrumb start -->
 	<header class="section-wrapper">
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb bg-white">
@@ -20,6 +20,7 @@
 			</ol>
 		</nav>
 	</header>
+</header>
 	<section>
       <div class="container">
         <h1 class="ws-10 font-weight-bold">Contracted Companies and Organisations</h1>
@@ -31,62 +32,64 @@
                 <span>
                     @include('partials.modals.subscription')
 
-              </span>
+                </span>
             </div>
-
-        </div>
-        </div>
-        <br>
-        <br>
-        <br><div class="contract-awarded">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-6 pt-2 paragraph">
-            <p style="padding:0;">COMPANIES AND TOTAL AMOUNT AWARDED</p>
-            <hr>
-          </div>
-          <div id="search-area" class="offset-md-1 col-md-5 mt-3 mt-md-0">
-            <input onkeyup="doFilter()" type="search" id="searchInput" class="form-control form-control-lg mb-2 se" placeholder="&#xf002; Search for companies and Organisations" />
-          </div>
         </div>
       </div>
-    </div>
-  </header>
-
-    <br />
-    <div id="company" class="container">
-    <div class="row" id="company-div">
-
-      @foreach ($companies as $company)
-        <div class="col-md-3 mb-3 card-col">
-          <div class="card shadow">
-            <div class="card-body">
-                <chart label="myVueChart"
-                        v-bind:data="[{amount:32424, year:2039},{amount:12920923, year:2010}]"
-                        element="{{ $company->shortname() }}"></chart>
-                <div class="company mb-2">
-                    <img src="{{ asset('images/image 13.png') }}" height="30" class="mr-3" alt="">
-                    <a href="{{ route('contractors.single', ['company' => $company->shortname()]) }}">
-                      <h5 class="card-title mb-0" class="company-name">
-                        {{ $company->name }}
-                      </h5>
-                    </a>
-                </div>
-                <h5>Total amount Awarded</h5>
-                <h5 class="text-success">&#8358;123,334,334</h5>
-                <h6 class="m-0 mb-0 text-sm-left text-black-50">2019</h6>
-            </div>
-          </div>
+        <br>
+        <br>
+        <div class="table-responsive pt-3">
+          <h4 style="color: #00945E"><b>Federal Executive Council (FEC) Approved Contracts 2017</b></h4>
+          <table class="table table-bordered">
+           <thead class = "table table-dark">
+             <tr>
+              <th>
+                S/N
+              </th>
+              <th>
+                ITEM/SERVICE
+              </th>
+              <th>
+                NAME OF COMPANY
+              </th>
+              <th>
+                COST
+              </th>
+              <th>
+                DURATION
+              </th>
+            </tr>
+          </thead>
+          @foreach ($companies as $row)
+          <tbody>
+            <tr>
+              <td>{{ $row->id }}</td>
+              <td>{{ $row->service }}</td>
+              <td>{{ $row->companyname }}</td>
+              <td>{{ $row->cost }}</td>
+              <td>{{ $row->duration }}</td>
+            </tr> 
+          </tbody>
+          @endforeach
+          </table>
         </div>
-      @endforeach
-    </div>
-    <div class="table-footer">
-      <div class="pagination">
-        @include('partials.pagination', ['data' => $companies])
+      <div style="background-color: #323E48; padding: 10px;">
+        <h4 style="color: #00945E"><b>Federal Executive Council Approved Contracts</b></h4>
+        <h6 style="color: #00945E">Click to Download</h6>
+        <h5><a href="https://www.bpp.gov.ng/wp-content/uploads/2019/01/FEC-FY2016.pdf"; style="color: white;">FEC Approved Contracts 2016</a></h5>
+        <h5><a href="https://bpp.gov.ng/wp-content/uploads/2019/01/FEC-MAY-20.pdf"; style="color: white;">FEC Approved Contracts 2015</a></h5>
+        <h5><a href="https://bpp.gov.ng/wp-content/uploads/2019/01/FEC-2014-Approved-Contracts.pdf"; style="color: white;">FEC Approved Contracts 2014</a></h5>
+        <h5><a href="https://bpp.gov.ng/wp-content/uploads/2019/01/FEC-APPROVED-CONTRACTS-JAN-MARCH-2013.pdf"; style="color: white;">FEC Approved Contracts 2013</a></h5>
+        <h5><a href="https://www.bpp.gov.ng/wp-content/uploads/2019/01/FEC-APPROVED-CONTRACTS-FOR-FY-2012.pdf"; style="color: white;">FEC Approved Contracts 2012</a></h5>
+        <h5><a href="https://www.bpp.gov.ng/wp-content/uploads/2019/01/FEC-APPROVED-CONTRACTS-FOR-FY-2011.pdf"; style="color: white;">FEC Approved Contracts 2011</a></h5>
+        <h5><a href="https://www.bpp.gov.ng/wp-content/uploads/2019/01/FEC-APPROVED-CONTRACTS-FOR-FY-2010.pdf"; style="color: white;">FEC Approved Contracts 2010</a></h5>
+        <h5><a href="https://www.bpp.gov.ng/wp-content/uploads/2019/01/FEDERAL_EXECUTIVE_COUNCIL_APPROVED_CONTRACTS_OCTOBER_7_2009.pdf"; style="color: white;">FEC Approved Contracts 2009</a></h5>
+        <h5><a href="https://www.bpp.gov.ng/wp-content/uploads/2019/01/FEC-APPROVED-CONTRACTS-FOR-FY-2008-.pdf"; style="color: white;">FEC Approved Contracts 2008</a></h5>
+        <h5><a href="https://www.bpp.gov.ng/wp-content/uploads/2019/01/FEC-APPROVED-CONTRACTS-FOR-FY-2007.pdf"; style="color: white;">FEC Approved Contracts 2007</a></h5>
       </div>
-    </div>
-</div>
-@endsection
+      <br />
+      </div>
+      @endsection
 
 @section('js')
 <script src="{{ asset('js/contract_page.js') }}" type="text/javascript"></script>
