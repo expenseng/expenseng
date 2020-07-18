@@ -33,7 +33,7 @@
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="mb-0">file upload</h3>
+                                <h3 class="mb-0">excel file upload</h3>
                                 <p></p>
                             </div>
                             <div class="card-body">
@@ -69,8 +69,22 @@
 
                                     <br>
                                     <br>
-                                        <input type="file" name='file'  id='file'>
+                                        <input type="file" name='file' required id='file'>
                                         <br><br>
+                                        <label for="sheet">select sheet type to upload</label>
+                                        <select name="sheetType" >
+                                            <option value="budget">budget</option>
+                                            <option value="company">company</option>
+                                            <option value="people">people</option>
+                                            <option value="sector">sector</option>
+                                            <option value="expense">expense</option>
+                                            <!-- <option value="payment">payment</option> -->
+                                            <!-- <option value="ministry">ministry</option>
+                                            <option value="citizen">citizen</option> -->
+                                        </select>
+
+                                        <br>
+                                        <br>
                                     <button type='submit'>upload file</button>
                                     
                                     
