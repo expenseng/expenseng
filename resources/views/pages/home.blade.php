@@ -97,8 +97,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
         <div class="ministry-stat">
               <div class="stat-a p-4">
                 <div class="graph-cont">
-                  <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                  <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                <div id="chart"></div>
                  </div>
                 <div>
                   <p class="exp-card1">Total amount spent</p>
@@ -109,8 +108,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
               <div class="stat-b">
                 <div class="d-flex p-2 justify-content-between">
                   <div class="graph-cont">
-                    <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                    <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                  <div id="chart"></div>
                    </div>
                 <div class="ml-5 w-50">
                   <p class="exp-card1">Total amount spent on projects</p>
@@ -120,8 +118,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
                 </div>
                 <div class="d-flex p-2 justify-content-between">
                   <div class="graph-cont">
-                    <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                    <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                  <div id="chart"></div>
                    </div>
                 <div class="ml-5 w-50">
                   <p class="exp-card1">Total amount spent on salary payments</p>
@@ -131,8 +128,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
                 </div>
                 <div class="d-flex p-2 justify-content-between">
                   <div class="graph-cont">
-                    <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                    <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                  <div id="chart"></div>
                    </div>
                 <div class="ml-5 w-50">
                   <p class="exp-card1">Total amount spent on others</p>
@@ -158,8 +154,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
     <div class="comp-card comp-card-1">
         <div class="awarded">
           <div class="graph-cont">
-            <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-            <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+          <div id="chart"></div>
            </div>
           <div class="ml-1 mr-2">
              <p class="exp-card1">Total amount Awarded</p>
@@ -192,8 +187,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
         <div class="comp-card">
          <div class="awarded">
            <div class="graph-cont">
-             <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-             <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+           <div id="chart"></div>
             </div>
            <div class="ml-1 mr-2">
               <p class="exp-card1">Total amount Awarded</p>
@@ -226,8 +220,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
       <div class="comp-card">
        <div class="awarded">
          <div class="graph-cont">
-           <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-           <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+         <div id="chart"></div>
           </div>
          <div class="ml-1 mr-2">
             <p class="exp-card1">Total amount Awarded</p>
@@ -326,6 +319,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
 @endsection
 @section('js')
 <script src="{{asset('js/index.js')}}"></script>
+<script src="{{asset('js/chart.js')}}"></script>
 <script src="/js/subscription.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @endsection
