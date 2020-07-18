@@ -1,14 +1,15 @@
 @include('backend.partials.header')
 @stack('css')
   <body> 
-    <div class="">
+    
+        @include('backend.partials.sidebar')
         <!-- navbar -->
         @include('backend.partials.navbar')
-        @include('backend.partials.sidebar')
+        
         @yield('banner')
         <!-- content -->
         @yield('content')
-      </div>
+      
     @yield('js')
   </body>
 </html>

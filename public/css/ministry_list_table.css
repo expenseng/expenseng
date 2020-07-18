@@ -181,12 +181,8 @@ float: right;
 }
 
 
-<<<<<<< HEAD
-.pagination a:hover:not(.active) {background-color:#00945E;}
-=======
 
 .pagination a:hover:not(.active),.mini-pagination a:hover:not(.active) {background-color:#00945E;}
->>>>>>> 678284e4d162c51d33b664a4c100a88a6c385b5f
 
 th,td{
     padding: 2%;
@@ -344,3 +340,84 @@ text-align: center;
     margin-right: 1rem;
 }
 
+.btn-date,
+.btn-amount {
+    border: 1px solid#00945E;
+    background-color: #EBF1EF;
+}
+
+.form-control{
+    border: 1px solid#00945E;;
+}
+
+.btn.active {
+    background-color: #00945E;
+    color: #FFFFFF;
+}
+
+.ui-datepicker-calendar { display: none; }
+#ui-datepicker-div{
+    position: fixed !important;
+    top: 49% !important;
+    left: 44% !important;
+    transform: translate(-50%, -50%);
+}
+[data-handler="today"] {
+    display: none
+}
+
+.switch-list li.active{
+    border-bottom: 2px solid #00945e;
+}
+
+#select-month,
+#select-year{
+    display: none;
+}
+
+
+.modal-title{
+color: #00945E;
+padding-left: 20px !important;
+padding-right: 20px !important;
+}
+
+.modal-content{
+    width: 90%;
+    max-width: 360px;
+}
+#modal section{
+padding-left: 20px !important;
+padding-right: 20px !important;
+}
+
+#apply-filter{
+    background-color: rgba(0, 148, 94, 1)
+}
+#apply-filter:hover{
+background-color: rgba(4, 124, 80)
+}
+
+#sort-options{
+margin-bottom: 30px;
+margin-top: 30px;
+}
+
+#view{
+margin-top: 16px;
+}
+
+.modal-footer{
+    padding-bottom: 35px;
+    border-top: none !important;
+}
+
+.fa-calendar{
+    position: absolute;
+    right: 10%;
+    top: 11px;
+}
+
+#date-format-err{
+    color: red;
+}

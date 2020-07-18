@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Expense;
 use App\Payment;
+use App\Subscription;
 use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
 {
-    
+
     public function report()
     {
+
         return view('pages.expense.index');
     }
 
@@ -20,4 +22,8 @@ class ExpenseController extends Controller
         $collection['summary'] = Payment::where('description', '!=', '')->paginate(20);
         return view('pages.expense.ministry')->with('collection', $collection);
     }
+
+
+
+   
 }

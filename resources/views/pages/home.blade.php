@@ -2,6 +2,9 @@
   @push('css')
     <title>FG Expense - Home</title>
     <link rel="stylesheet" href="{{ asset('css/index.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+    integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/modal/style.css">
   @endpush
   @section('banner')
     <!-- banner -->
@@ -275,10 +278,51 @@
                   <p>We want to know how we can serve you better.
                   Drop by our community page to ask questions,
                   propose new features, sign up for testing, and join the conversation about federal spending data.</p>
+                  <p>Want to receive update in your inbox? <button id="open" class="toggle">Register</button></p>
               </div>
        </div>
       </div>
+
+
+      <div class="modal-container" id="modal">
+        <div class="register-modal">
+          <div>
+              <button class="close-btn" id="close"><i class="fa fa-times"></i></button>
+          </div>
+
+          <div class="modal-header">
+              <h3>Create an account</h3>
+          </div>
+          <div class="modal-content">
+              <p>Register with us for more updates and contribute</p>
+              <form action="" class="modal-form">
+                  <div>
+                      <label for="name">Name</label>
+                      <input type="text" id="name" name="name" placeholder="Enter Name" class="form-input">
+                  </div>
+
+                  <div>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Enter Email" class="form-input">
+                </div>
+
+                  <div>
+                      <label for="password">Password</label>
+                      <input type="password" name="password" id="password" placeholder="Enter Password" class="form-input">
+                  </div>
+                  <div>
+                      <label for="cpassword">Confirm Password</label>
+                      <input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" class="form-input">
+                  </div>
+
+                  <button type="submit" class="submit-btn">Submit</button>
+              </form>
+          </div>
+      </div>
+    </div>
+
     </section>
+
 
     <div class='container'>
         <!-- Modal to Enter Form -->
@@ -294,7 +338,6 @@
               </ul>
           </div>
       @endif
-
       
         <form  action=" {!! url('/feedback') !!}" method="POST">
         {{csrf_field()}}
@@ -337,8 +380,10 @@
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
+
   @endsection
 @section('js')
   <script src="{{asset('js/index.js')}}"></script>
+  <script src="/js/subscription.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @endsection

@@ -117,6 +117,12 @@ a:active{
 	margin: 0;
 }
 
+.table-top > h4 {
+	font-size: var(--fs-reg);
+	font-weight: var(--fw-bold);
+	margin: 0;
+}
+
 .ministry{
     color: var(--clr-accent);
 }
@@ -126,10 +132,15 @@ a:active{
 	background: var(--clr-accent);
 	color: var(--clr-light);
 	border-radius: 5px;
-	font-size: var(--fs-h5);
+	font-size: var(--fs-reg);
 	cursor: pointer;
 	border: none;
 	outline: none;
+}
+
+.table-top .nav-button{
+	font-size: var(--fs-reg);
+	padding: .5rem 1rem;
 }
 
 table a {
@@ -222,6 +233,15 @@ tr:nth-child(even) {
 
 #mytable{
 	width: 100%;
+}
+
+button.nav-chart{
+	font-size: var(--fs-h4) !important;
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+	border-radius: 0;
+	border-bottom: 1px solid var(--clr-accent);
 }
 
 /* Pagination */
@@ -353,6 +373,7 @@ tr:nth-child(even) {
     background-color:rgba(0,148,94,0.62);
     -webkit-box-shadow: inset 0 0 6px rgba(90,90,90,0.7);
 }
+
 #myTable::-webkit-scrollbar {
     width: 12px;
 }
@@ -423,22 +444,6 @@ tr:nth-child(even) {
 		color: var(--clr-accent);
 		margin-right: 2rem;
 	}
-		
-	/* .row-ministry{
-		width: 15%;
-	}
-	.row-project{
-		width: 20%;
-	}
-	.row-company{
-		width: 13%;
-	}
-	.row-amount{
-		width: 15%;
-	}
-	.row-date{
-		width: 15%;
-	} */
 }
 
 

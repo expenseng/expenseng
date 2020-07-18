@@ -3,11 +3,10 @@
 	<title>Ministry Expenses</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
 	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Mukta:700|Roboto+Slab&display=swap" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/header_footer.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/ministry-report-table.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/aboutus-header_footer.css') }}">
-<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
+  	<link rel="stylesheet" href="{{ asset('css/ministry-report-table.css') }}">
+  	<link rel="stylesheet" href="{{ asset('css/header-footer.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
 	<script src="https://kit.fontawesome.com/8f691340fb.js" crossorigin="anonymous"></script>
 @endpush
 
@@ -18,7 +17,7 @@
 			<ol class="breadcrumb bg-white">
 				<li class="breadcrumb-item not-active"><a href="{{ url('/') }}">HOME</a></li>
 				<span>&#8226;</span>
-				<li class="breadcrumb-item not-active"><a>Expense</a></li>
+				<li class="breadcrumb-item not-active"><a href="#">EXPENSE</a></li>
 				<span>&#8226;</span>
 				<li class="breadcrumb-item active" aria-current="page"><a href="{{ url('/expense/ministry') }}">MINISTRY SPENDING</a></li>
 			</ol>
@@ -29,7 +28,13 @@
 			<div class="row">
 				<div class="col-md-8 section-heading">
 					<h1 class="section-heading-title">Ministry Spending</h1>
-					<p class="section-heading-paragraph">ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities across Nigeria.</p>
+                    <p class="section-heading-paragraph">ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities across Nigeria.</p>
+
+                    <h5>Subscribe to daily  Report</h5>
+                    <span>
+                        @include('partials.modals.subscription')
+
+                  </span>
 				</div>
 			</div>
 		</div>
@@ -56,7 +61,7 @@
 					<div class="main-table">
 						<div class="table-top p-3 d-flex justify-content-between align-items-center">
 							<h3 class="align-self-center">Date: {{ date("dS, M Y") }}</h3>
-							<button>Filter <i class="fas fa-filter px-1"></i></button>
+							<button class="nav-button">Filter<i class="fas fa-filter px-1" style="font-size: var(--fs-reg);"></i></button>
 						</div>
 						<div class="table-data">
 							<div style="overflow-x: auto;">
@@ -74,8 +79,8 @@
 										@foreach ($collection['summary'] as $expense)
 											<tr>
 												<td class="section-shadow">
-													<a href="{{ route('ministries.single', ['ministry' => $expense->ministry->shortname()]) }}" class="text-success">
-														{{ucfirst($expense->ministry->name)}}
+													<a href="{{ route('ministries.single', ['ministry' => strtolower($expense->ministry()['shortname']) ]) }}" class="text-success">
+														{{ucfirst($expense->ministry()['name'])}}
 													</a>
 												</td>
 												<td>{{$expense->description}}</td>
@@ -162,8 +167,8 @@
 										@foreach ($collection['nondescriptive'] as $expense)
 											<tr>
 												<td class="section-shadow">
-													<a href="{{ route('ministries.single', ['ministry' => $expense->ministry->shortname()]) }}" class="text-success">
-														{{ucfirst($expense->ministry->name)}}
+													<a href="{{ route('ministries.single', ['ministry' => strtolower($expense->ministry()['shortname']) ]) }}" class="text-success">
+														{{ucfirst($expense->ministry()['name'])}}
 													</a>
 												</td>
 												<td>{{$expense->beneficiary}}</td>
@@ -220,4 +225,5 @@
 @section('js')
 	<script src="{{ asset('js/main.js') }}"></script>
 	<script src="{{ asset('js/ExpenditureScript.js') }}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 @endsection
