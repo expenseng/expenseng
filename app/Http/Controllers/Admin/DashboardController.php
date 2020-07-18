@@ -9,6 +9,7 @@ use App\Expense;
 use App\Company;
 use App\Ministry;
 use Illuminate\Support\Facades\Session;
+use App\Feedback;
 
 class DashboardController extends Controller
 {
@@ -36,6 +37,9 @@ class DashboardController extends Controller
         $amount = 0; // initialize total budget amount
         $recent_expenses = Expense::orderBY('id', 'DESC')->limit(7)->get();
 
+
+        // $feedback = count(Feedback::where('isApprove',0)->get());
+        
         if (count($total_budgets)> 0) {
             for ($i=0; $i< count($total_budgets); $i++) {
                 $amount += $total_budgets[$i]->amount;
@@ -43,10 +47,13 @@ class DashboardController extends Controller
         } else {
         }
 
+
+        $feedbacks = Feedback::all();
+
         return view('backend.dashboard')
         ->with(['total_ministry' => $total_ministry,
         'total_company' => $total_company, 'total_budgets' => $total_budgets,
-        'amount' => $amount, 'recent_expenses' => $recent_expenses,
+        'amount' => $amount, 'recent_expenses' => $recent_expenses, 'feedbacks'=> $feedbacks
         ]);
     }
 }
