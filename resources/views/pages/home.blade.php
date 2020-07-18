@@ -277,8 +277,8 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
                 <p>We want to know how we can serve you better.
                 Drop by our community page to ask questions,
                 propose new features, sign up for testing, and join the conversation about federal spending data.</p>
-                <p>Want to receive update in your inbox? 
-                <button id="open" class="toggle">Register</button></p>
+                <p>Want to receive update in your inbox?</p>
+                <button id="open" class="toggle">Register</button>
           </div>
    </div>
   </div>
