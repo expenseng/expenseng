@@ -20,3 +20,7 @@ Broadcast::channel('App.User.{id}', function ($user, $id) {
 Broadcast::channel('expense-comment', function () {
     return true;
 });
+
+Broadcast::channel('expense-reaction', function () {
+    return true;
+});

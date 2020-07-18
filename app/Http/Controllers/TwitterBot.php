@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\BackgroundProcess;
+use App\Budget;
 use App\Console\Commands\ConnectToStreamingAPI;
+use App\Ministry;
 use App\Payment;
 use App\ProcessId;
+use App\Sector;
 use App\Tweet;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -101,5 +104,32 @@ class TwitterBot extends Controller
             $minister.' '.$minister_handle.
             ', Payed The Sum of ₦'.$amount." to ".$benefactor.' '.$company_handle.' for the '.$description;
         return $tweet;
+    }
+
+    public function budgetTweet()
+    {
+        $budget = Budget::inRandomOrder()->first();
+        $tweet = $this->budgetTweetFilter($budget);
+        return $tweet;
+    }
+    public function budgetTweetFilter($budget)
+    {
+        $code = explode('-', $budget->code);
+        if (count($code) > 1) {
+            $ministry_code = $code[1];
+            $sector_code = $code[0];
+            $ministry = Ministry::where('shortname', 'LIKE', "{$ministry_code}%")->first();
+            $sector = Sector::whereId($sector_code)->first();
+            if (is_null($sector)) {
+                return 'The amount of ₦'.$budget->amount." was allocated for ".$budget->project_name." in the ".$budget->year ." budget";
+            } else {
+                if (is_null($ministry)) {
+                    return 'The amount of ₦'.$budget->amount." was allocated for ".$budget->project_name." in the ".$budget->year ." budget";
+                }
+                return "From the " . $sector->name . " sector, The " . $ministry->name . " was allocated ₦" . $budget->amount . " in the " . $budget->year . " budget,for " . $budget->project_name;
+            }
+        } else {
+            return 'The amount of ₦'.$budget->amount." was allocated for ".$budget->project_name." in the ".$budget->year ." budget";
+        }
     }
 }

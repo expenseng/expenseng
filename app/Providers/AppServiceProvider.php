@@ -15,10 +15,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-<<<<<<< HEAD
-        if ($this->app->environment() == 'local') {
-            $this->app->register('Laracasts\Generators\GeneratorsServiceProvider');
-=======
         $this->app->bind('App\TwitterStream', function ($app) {
             $twitter_access_token = env('TWITTER_ACCESS_TOKEN', null);
             $twitter_access_token_secret = env('TWITTER_ACCESS_TOKEN_SECRET', null);
@@ -27,7 +23,6 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->isLocal()) {
             $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
             $this->app->register(TelescopeServiceProvider::class);
->>>>>>> 4f02eec9e624dee9274b08aa70e4b5a57fd2dadb
         }
         //
 

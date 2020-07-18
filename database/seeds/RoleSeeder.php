@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Role;
 
 class RoleSeeder extends Seeder
 {
@@ -12,22 +13,27 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('roles')->insert([
-            [
-                "name" => "Admin", 'description' => 'somebody who has access to all the administration features within a single site.',
-            ],
-            [
-                "name" => "Editor", 'description' => 'somebody who can publish and manage posts including the posts of other users.',
-            ],
-            [
-                "name" => "Author", 'description' => 'somebody who can publish and manage their own posts.',
-            ],
-            [
-                "name" => "Contributor", 'description' => 'somebody who can write and manage their own posts but cannot publish them.',
-            ],
-            [
-                "name" => "Subscriber", 'description' => 'somebody who can only manage their profile.',
-            ],
+        Role::truncate();
+
+        Role::create([
+            'name' => 'admin',
+            'description' =>
+                'somebody who has access to all the administration features within a single site.',
+        ]);
+        Role::create([
+            'name' => 'manager',
+            'description' =>
+                'only update what an admin has created apart from comments, add/delete comments',
+        ]);
+        Role::create([
+            'name' => 'editor',
+            'description' =>
+                'somebody who can publish and manage posts including the posts of other users.',
+        ]);
+        
+        Role::create([
+            'name' => 'user',
+            'description' => 'somebody who can only manage their profile.',
         ]);
     }
 }

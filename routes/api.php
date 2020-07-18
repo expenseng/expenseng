@@ -23,7 +23,7 @@ Route::get('/expense/health', 'BudgetController@health');
 /***
  * Comment Instantiation
  */
-Route::get('/comments/user/avatar', 'CommentController@avatar');
+Route::post('/comments/user/avatar', 'CommentController@avatar');
 Route::post('/comments/user', 'CommentController@onboardUser');
 
 /***

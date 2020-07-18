@@ -7,14 +7,15 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Role;
 use App\Status;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-        /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -30,10 +31,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
-        //$users = User::all()->with('role');
-        $users = User::with(['role', 'status'])->get();
-        return view('backend.users.index')->with(['users' => $users]);
+        if (Gate::denies('manage-user')) {
+            return redirect(route('ministry.view'));
+        }
+
+        $users = User::all();
+        return view('backend.users.index')->with('users', $users);
     }
 
     /**
@@ -43,11 +46,16 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        if (Gate::denies('add')) {
+            return redirect(route('users.view'));
+        }
+
         $roles = Role::select('name', 'id')->get();
         $status = Status::select('name', 'id')->get();
-        return view('backend.users.create')->with(['roles' => $roles, 'status' =>$status]);
-        ;
+        return view('backend.users.create')->with([
+            'roles' => $roles,
+            'status' => $status,
+        ]);
     }
 
     /**
@@ -58,23 +66,32 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
- 
-         $validator = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                'unique:users',
+            ],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'role_id' => '',
             'status_id' => '',
-         ]);
+        ]);
 
         $validator->validate();
-        User::create([
+
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'role_id' => $request->role_id,
             'status_id' => $request->status_id,
             'password' => Hash::make($request->password),
         ]);
+
+        $role_id = $request->role_id;
+        $user->roles()->attach($role_id);
+
         Session::flash('flash_message', 'New User successfully added!');
         return redirect()->back();
     }
@@ -98,11 +115,18 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        if (Gate::denies('manage-user')) {
+            return redirect(route('users.view'));
+        }
+
         $user = User::findOrFail($id);
-        $roles = Role::select('name', 'id')->get();
+        $roles = Role::all();
         $status = Status::select('name', 'id')->get();
-        return view('backend.users.edit')->with(['user' => $user, 'roles' => $roles, 'status' =>$status]);
+        return view('backend.users.edit')->with([
+            'user' => $user,
+            'roles' => $roles,
+            'status' => $status,
+        ]);
     }
 
     /**
@@ -119,21 +143,32 @@ class UserController extends Controller
             'email_address' => 'sometimes|required|email|unique:users',
             'role_id' => '',
             'status_id' => '',
-         ]);
+        ]);
 
         $validator->validate();
 
-        $update = User::where('id', $id)
-            ->update(
-                [
-                    'name' => $request->name,
-                    'email' => $request->email,
+        if (Gate::denies('add')) {
+            User::where('id', $id)->update([
+                'name' => $request->name,
+                'email' => $request->email,
+            ]);
+
+            Session::flash('flash_message', 'User updated successfully!');
+            return redirect(route('users.view'));
+        }
+
+        User::where('id', $id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'status_id' => $request->status_id,
+        ]);
+
+         DB::table('role_user')->where('id', $id)->update([
                     'role_id' => $request->role_id,
-                    'status_id' => $request->status_id,
-                ]
-            );
-        Session::flash('flash_message', 'User  updated successfully!');
-        return redirect()->back();
+         ]);
+
+        Session::flash('flash_message', 'User updated successfully!');
+        return redirect(route('users.view'));
     }
 
     /**
@@ -144,26 +179,31 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
-         $user = User::findOrFail($id);
-         $user->delete();
-        Session::flash('flash_message', "User Deleted successfully" . $user);
+        //checkcsd
+        if (Gate::denies('delete')) {
+            return redirect(route('users.view'));
+        }
+
+        $user = User::findOrFail($id);
+        $user->roles()->detach();
+        $user->delete();
+        Session::flash('flash_message', 'User Deleted successfully');
         return redirect()->back();
     }
 
-
     public function updatePassword(Request $request, $id)
     {
+        if (Gate::denies('add')) {
+            return redirect(route('users.view'));
+        }
+
         $validator = Validator::make($request->all(), [
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
         $validator->validate();
-        $update = User::where('id', $id)
-            ->update(
-                [
-                    'password' => Hash::make($request->password),
-                ]
-            );
+        $update = User::where('id', $id)->update([
+            'password' => Hash::make($request->password),
+        ]);
         Session::flash('flash_message', 'User password changed successfully!');
         return redirect()->back();
     }

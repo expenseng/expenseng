@@ -1,0 +1,95 @@
+body.modal-open {
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+div.register-modal button,
+button.toggle {
+    color: #00945E;
+    padding: 0.4rem 3rem;
+    background: #FFFFFF;
+    border: none;
+    border-radius: 0.3rem;
+}
+
+div.register-modal button {
+    background: var(--green);
+    color: #fff;
+}
+
+
+
+
+div.register-modal button:focus {
+    outline: none;
+}
+
+
+.modal-container {
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.modal-container.show-modal {
+    display: block;
+}
+
+.register-modal {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    width: 400px;
+
+}
+
+.modal-header {
+    background: var(--green);
+    color: #fff;
+    padding: 15px;
+}
+
+.modal-header {
+    margin: 0;
+    border-bottom: 1px solid #333;
+}
+
+.modal-content {
+    padding: 20px;
+}
+
+.modal-form div {
+    margin: 15px 0;
+}
+
+.modal-form label {
+    display: block;
+}
+
+.modal-form .form-input {
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #333;
+}
+
+div.register-modal button.close-btn {
+    background-color: transparent;
+    padding: 15px;
+    font-size: 25px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}

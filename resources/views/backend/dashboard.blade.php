@@ -62,7 +62,7 @@
               </div>
             </div>
           </div>
-          <div class="row ">
+          <!--<div class="row ">
 
             <div class="col-md-4">
             <a href="{{route('company.create')}}">
@@ -117,7 +117,7 @@
               </div>
             </div>
             </a>
-          </div>
+          </div>-->
           <div class="row">
             <!--<div class="col-lg-6 col-md-12">
               <div class="card">
@@ -364,7 +364,7 @@
                 </div>
               </div>
             </div>-->
-            <div class="col-lg-6 col-md-12">
+            <div class="col-lg-12 col-md-12">
               <div class="card">
                 <div class="card-header card-header-warning">
                   <h4 class="card-title">Recent Expenses</h4>
@@ -384,7 +384,7 @@
                       
                        @foreach ($recent_expenses as $recent_expense)
                       <tr>
-                        <td></td>
+                        <td>{{++$count}}</td>
                         <td>{{$recent_expense->year}}</td>
                         <td>{{$recent_expense->project}}</td>
                         <td>{{$recent_expense->month}}</td>

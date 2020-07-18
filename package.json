@@ -35,6 +35,7 @@
         "laravel-echo": "^1.8.0",
         "moment": "^2.27.0",
         "pusher-js": "^6.0.3",
-        "vue-apexcharts": "^1.5.3"
+        "vue-apexcharts": "^1.5.3",
+        "vue-textarea-autosize": "^1.1.1"
     }
 }
