@@ -24,6 +24,10 @@ class TwitterBot extends Controller
      */
     public function startLiveRetweet() //use to start the live retweet
     {
+        $process_id = $this->getProcessId();
+        if($process_id != 0){
+            return 'retweet is already running';
+        }
         $path = realpath('./../artisan');
         $process = new BackgroundProcess('php '.$path.' connect_to_streaming_api');
         $this->setProcessID($process->getProcessId());
