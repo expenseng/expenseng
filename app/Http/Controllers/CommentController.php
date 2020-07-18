@@ -14,21 +14,26 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    protected $token;
-    protected $http;
-    protected $org;
+    private $token;
+    private $http;
+    private $org;
     private $baseUri = "https://comment.microapi.dev/v1/";
 
     public function __construct()
     {
-        $this->token = env("COMMENTS_TOKEN");
+        $this->token = \env("COMMENTS_TOKEN");
         $this->baseUri = "https://comment.microapi.dev/v1/";
+
+        if (!$this->token) {
+            $this->token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBsaWNhdGlvbklkIjoiNWYxMmI4NDI2MzVmM2UwMDE0MmJjOWE2IiwiYWRtaW5JZCI6IjVmMTJiN2UyNjM1ZjNlMDAxNDJiYzlhNSIsImlhdCI6MTU5NTA2MjMzOSwiZXhwIjoxNTk3NjU0MzM5fQ.B6o9MmBZ8GMUFsSnrlrOlq4NlDu7gTrtT17MXGKXS7c";
+        }
 
         $this->http = new Client([
             'base_uri' => $this->baseUri,
             'headers' => [
-                'Content-Type' => 'application/json',
                 'Authorization' => 'Bearer ' .$this->token,
+                'debug' => true,
+                'Content-Type' => 'application/json',
             ]
         ]);      
     }
