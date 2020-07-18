@@ -33,7 +33,7 @@
             <h2 class="text-center">No comments found for this resource.</h2>
         </div>
         
-        <comment></comment>
+        <comment v-on:newComment="pushNewComment"></comment>
     </div>
 </template>
 
@@ -84,6 +84,12 @@ export default {
                 this.comments.push(e.data);
             }
         });
+    },
+
+    methods: {
+        pushNewComment(comment){
+            this.comments.push(comment);
+        }
     },
 
     filters:{

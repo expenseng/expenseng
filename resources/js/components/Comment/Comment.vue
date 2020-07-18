@@ -120,6 +120,7 @@ export default {
                 .storeComments(this.origin, this.comment, this.email, this.name)
                 .then(response => {
                     this.busy = false;
+                    this.$emit('newComment', response);
                 })
             }
 
