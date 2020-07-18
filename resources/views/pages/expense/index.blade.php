@@ -168,6 +168,7 @@
 
 @section('js')
 <script type="text/javascript" src="/js/expenditure_report.js"></script>
+<script type="text/javascript" src="/js/filter.js"></script>
 <script type="text/javascript" src="/js/index_blade.js"></script>
 @jquery
 @toastr_js

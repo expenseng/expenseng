@@ -108,7 +108,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
               <div class="stat-b">
                 <div class="d-flex p-2 justify-content-between">
                   <div class="graph-cont">
-                  <div id="chart"></div>
+                  <div id="chart1"></div>
                    </div>
                 <div class="ml-5 w-50">
                   <p class="exp-card1">Total amount spent on projects</p>
@@ -118,7 +118,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
                 </div>
                 <div class="d-flex p-2 justify-content-between">
                   <div class="graph-cont">
-                  <div id="chart"></div>
+                  <div id="chart2"></div>
                    </div>
                 <div class="ml-5 w-50">
                   <p class="exp-card1">Total amount spent on salary payments</p>
@@ -128,7 +128,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
                 </div>
                 <div class="d-flex p-2 justify-content-between">
                   <div class="graph-cont">
-                  <div id="chart"></div>
+                  <div id="chart3"></div>
                    </div>
                 <div class="ml-5 w-50">
                   <p class="exp-card1">Total amount spent on others</p>
@@ -154,7 +154,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
     <div class="comp-card comp-card-1">
         <div class="awarded">
           <div class="graph-cont">
-          <div id="chart"></div>
+          <div id="chart4"></div>
            </div>
           <div class="ml-1 mr-2">
              <p class="exp-card1">Total amount Awarded</p>
@@ -187,7 +187,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
         <div class="comp-card">
          <div class="awarded">
            <div class="graph-cont">
-           <div id="chart"></div>
+           <div id="chart5"></div>
             </div>
            <div class="ml-1 mr-2">
               <p class="exp-card1">Total amount Awarded</p>
@@ -220,7 +220,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
       <div class="comp-card">
        <div class="awarded">
          <div class="graph-cont">
-         <div id="chart"></div>
+         <div id="chart6"></div>
           </div>
          <div class="ml-1 mr-2">
             <p class="exp-card1">Total amount Awarded</p>

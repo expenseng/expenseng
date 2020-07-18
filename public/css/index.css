@@ -214,16 +214,16 @@ body{
      position: absolute;
  }
  p.exp-card1{
-      font-size: var(--fs-reg);
+      font-size: 17px;
       font-weight: 700;
  }
  p.exp-card2{
-      font-size: var(--fs-reg);
+      font-size: 15px;
       color: #33A97E;
       font-weight: 700;
  }
  p.exp-card3{
-      font-size: var(--fs-h6);
+      font-size: 13px;
       line-height: 0%;
       font-weight: 700;
  }

@@ -339,6 +339,7 @@
 	<!---TABLE ENDS--->
 @section('js')
 	<script src="{{ asset('js/main.js') }}"></script>
+	<script src="{{ asset('js/filter.js') }}"></script>
 	<script src="{{ asset('js/ExpenditureScript.js') }}"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 @endsection
