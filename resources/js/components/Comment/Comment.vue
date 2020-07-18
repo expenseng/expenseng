@@ -34,6 +34,7 @@ export default {
             hideSmallComment: false,
             comment: "",
             email: "",
+            busy: false,
             name: "",
             errors: [],
             commentService: new Comment(),
@@ -86,7 +87,7 @@ export default {
         },
 
         send(){
-
+            this.busy = true;
             if(this.firstComment()){
                 if(!this.name){
                     this.errors.push("Dear friend, we'll love to know your name")
@@ -110,10 +111,16 @@ export default {
             }
 
             if(this.isReply){
-                this.commentService.storeReply(this.comment, this.email, this.name, this.commentId);  
+                this.commentService.storeReply(this.comment, this.email, this.name, this.commentId)
+                    .then(response => {
+                        this.busy = false;
+                    })
             }else{
                 const response = this.commentService
-                .storeComments(this.origin, this.comment, this.email, this.name);
+                .storeComments(this.origin, this.comment, this.email, this.name)
+                .then(response => {
+                    this.busy = false;
+                })
             }
 
             //empty values of comment
