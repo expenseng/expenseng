@@ -17,7 +17,7 @@
               <p>Dashboard</p>
             </a>
           </li>
-
+          @can('manage-user')
           <li class="{{Route::is('users.view') || Route::is('users.create') || Route::is('users.edit') 
           ? 'nav-item active' : 'nav-item'}} ">
             <a class="nav-link" href="{{Route::is('users.view') || Route::is('users.create') || Route::is('users.edit') ? '#' : route('users.view')}}">
@@ -25,7 +25,7 @@
               <p>Users</p>
             </a>   
           </li>
-          
+          @endcan
           <li class="{{Route::is('company.view') || Route::is('company.create') || Route::is('company.edit') 
           ? 'nav-item active' : 'nav-item'}} ">
             <a class="nav-link" href="{{Route::is('company.view') || Route::is('company.create') || Route::is('company.edit') ? '#' : route('company.view')}}">

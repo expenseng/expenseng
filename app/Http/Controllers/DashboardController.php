@@ -8,6 +8,8 @@ use App\Expense;
 use App\Company;
 use App\Ministry;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -28,43 +30,45 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        if (Gate::denies('manage')) {
+            Auth::logout();
+            return redirect(route('home'));
+        }
+
         $year = date('Y'); // get current year
         $total_ministry = count(Ministry::all());
         $total_company = count(Company::all());
         $total_budgets = Budget::where('year', $year)->get('amount');
         $amount = 0; // initialize total budget amount
-        $recent_expenses = Expense::orderBY('id', 'DESC')->limit(7)->get();
+        $recent_expenses = Expense::orderBY('id', 'DESC')
+            ->limit(7)
+            ->get();
 
-
-
-        
-        if (count($total_budgets)> 0) {
-            for ($i=0; $i< count($total_budgets); $i++) {
+        if (count($total_budgets) > 0) {
+            for ($i = 0; $i < count($total_budgets); $i++) {
                 $amount += $total_budgets[$i]->amount;
             }
         } else {
         }
-           
-            
-                
-             
 
-        return view('backend.dashboard')
-        ->with(['total_ministry' => $total_ministry,
-        'total_company' => $total_company, 'total_budgets' => $total_budgets,
-        'year_budget' => $amount, 'recent_expenses' => $recent_expenses,
+        return view('backend.dashboard')->with([
+            'total_ministry' => $total_ministry,
+            'total_company' => $total_company,
+            'total_budgets' => $total_budgets,
+            'year_budget' => $amount,
+            'recent_expenses' => $recent_expenses,
         ]);
     }
 
     public function createExpense(Request $request)
     {
         $this->validate($request, [
-           'amount_spent' => 'required',
-           'year' => 'required',
-           'month' => 'required',
-           'project' => 'required'
+            'amount_spent' => 'required',
+            'year' => 'required',
+            'month' => 'required',
+            'project' => 'required',
         ]);
-        
+
         $input = $request->all();
         Expense::create($input);
         Session::flash('flash_message', 'New Expense successfully added!');
@@ -74,13 +78,13 @@ class DashboardController extends Controller
     public function createCompany(Request $request)
     {
         $this->validate($request, [
-           'name' => 'required',
-           'shortname' => 'required',
-           'industry' => 'required',
-           'ceo' => 'required',
-           'twitter' => ''
+            'name' => 'required',
+            'shortname' => 'required',
+            'industry' => 'required',
+            'ceo' => 'required',
+            'twitter' => '',
         ]);
-        
+
         $input = $request->all();
         Company::create($input);
         Session::flash('flash_message', 'New Company successfully added!');
