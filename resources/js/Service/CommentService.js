@@ -80,7 +80,7 @@ class CommentService{
     }
 
     getResourceComments(resource){
-        return axios.get('/api/comments/resource', {
+        return axios.post('/api/comments/resource', {
             origin: resource
         })
         .then(response => {
