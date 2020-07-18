@@ -85,8 +85,8 @@
           </div>
         </div>
       </div>
-      <div class="container tab-pane fade" id="table" role="tabpanel">
-        <div class="dropdown nav m-5">
+      <div class=" tab-pane fade" id="table" role="tabpanel">
+        <div class="dropdown nav container">
           <button class="btn btn-outline-light dropdown-toggle text-success nav-chart" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Table
           </button>
@@ -95,6 +95,7 @@
             <a class="dropdown-item" data-toggle="tab" role="tab" href="#table">Table</a>
           </div>
         @include('partials.expense-table')
+        </div>
       </div>
     </div>
     <div class="container tab-pane fade" id="comments" role="tabpanel">

@@ -87,9 +87,10 @@ class CommentController extends Controller
     }
 
     public function show(Request $request){
+        $origin = urlencode($request->origin);
         $response = $this->http->get('comments', [
             'query' => [
-                'origin' => urlencode($request->query('origin')),
+                'origin' => $origin,
             ]
         ]);
 
