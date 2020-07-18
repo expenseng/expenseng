@@ -85,7 +85,6 @@ class CommentController extends Controller
         $response = $this->http->get('comments', [
             'query' => [
                 'origin' => urlencode($request->query('origin')),
-                'sort' => 'descending',
             ]
         ]);
 

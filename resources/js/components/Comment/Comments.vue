@@ -81,7 +81,7 @@ export default {
         .listen('NewCommentOnResource', (e) => {
             console.log(e.data);
             if(decodeURIComponent(e.data.origin) == this.origin){
-                this.comments.unshift(e.data);
+                this.comments.push(e.data);
             }
         });
     },
