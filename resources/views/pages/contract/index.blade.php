@@ -64,10 +64,10 @@
           <tbody>
             <tr>
               <td>{{ $row->id }}</td>
-              <td>{{ $row->service }}</td>
-              <td>{{ $row->companyname }}</td>
-              <td>{{ $row->cost }}</td>
-              <td>{{ $row->duration }}</td>
+              <td>{{ $row->shortname }}</td>
+              <td>{{ $row->industry }}</td>
+              <td>{{ $row->ceo }}</td>
+              <td>{{ $row->twitter }}</td>
             </tr> 
           </tbody>
           @endforeach
