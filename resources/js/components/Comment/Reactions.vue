@@ -58,7 +58,7 @@ export default {
 
             this.data.numOfDownVotes = this.didDownvote ? this.data.numOfDownVotes+1 : this.data.numOfDownVotes-1;
 
-            this.comment.upvote(this.data.commentId, this.data.ownerId)
+            this.comment.downvote(this.data.commentId, this.data.ownerId)
                     .then(res => {
                         console.log(res);
                     })
@@ -67,12 +67,12 @@ export default {
 
     mounted() {
         /**
-         * Start listening for new replies
+         * Start listening for new reactions
          */
         window.Echo.channel('expense-reaction')
                     .listen('NewReactionOnComment', (e) => {
                         if(e.data.commentId == this.data.commentId){
-                            // console.log(e.data);
+                            console.log(e.data);
                             this.data.numOfUpVotes = e.data.numOfUpVotes;
                             this.data.numOfDownVotes = e.data.numOfDownVotes;
                         }
