@@ -33,7 +33,7 @@
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="mb-0">excel file upload</h3>
+                                <h3 class="mb-0">excel upload</h3>
                                 <p></p>
                             </div>
                             <div class="card-body">
@@ -65,7 +65,7 @@
                                     <br>
 
 
-                                    select excel file to upload
+                                    select the excel file to upload
 
                                     <br>
                                     <br>
@@ -94,7 +94,7 @@
                         </div>
                     </div>
                     <!-- ============================================================== -->
-                    <!-- end data table  -->
+                    <!-- table ends here  -->
                     <!-- ============================================================== -->
                 </div>
             </div>
