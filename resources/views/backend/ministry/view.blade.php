@@ -58,7 +58,7 @@
                                                 
                                                 @foreach ($ministries as $ministry)
                                                 <td>
-                                                    {{$ministry->id}}
+                                                    {{++$count}}
                                                 </td>
                                                 <td>{{$ministry->name}}</td>
                                                 <td>{{$ministry->shortname}}</td>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,7 @@ Route::get('/contact', 'PageController@contactUs')->name('contact');
  * Reports Endpoints
  */
 Route::get('/expense/report', 'ExpenseController@report')->name('expense.reports');
-Route::post('/subscribe/report', 'SubscriptionController@store')->name('subscribe.report');
+Route::post('/subscribe', 'SubscriptionController@store');
 
 Route::get('/expense/ministry', 'ExpenseController@ministry')->name('expense.ministry');
 
@@ -135,7 +136,17 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
     Route::put('/users/change_password/{user_id}', 'Admin\UserController@updatePassword')->name('users.change_password');
     Route::delete('/users/delete/{user_id}', 'Admin\UserController@destroy')->name('users.delete');
 
+   //Profile Page
+    Route::get('/profile', 'ProfileController@viewProfile')->name('profile');
+    Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
+    
+   //  Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
+    Route::get('/import', 'UploadController@importFile');
+    Route::post('/import', 'UploadController@importExcel')->name('importExcel');
+
  });
+
+
 
 
 Auth::routes();
@@ -144,7 +155,6 @@ Auth::routes();
 //admin route
 Route::get('/admin', function()
    {
-
      return redirect (route('dashboard'));
 });
 

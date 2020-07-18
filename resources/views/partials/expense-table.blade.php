@@ -3,7 +3,7 @@
 @endpush
 
 	<!---TABLE BEGINS--->
-	<section class="bordered">
+	<section class="bordered container">
 		<div class="table-section reponsive-div">
 			<div class="main-table">
 				<div class="table-top p-3 d-flex justify-content-between align-items-center">

@@ -10,17 +10,19 @@ class CommentService{
             this.email = "";
             this.avatar = "";
         }
+        // this.email = this.getCookieValue("commentatorEmail");
     }
 
     getAvatar(ownerId){
         const gravatar = "https://www.gravatar.com/avatar/";
-        return axios.get('/api/comments/user/avatar', {
+        return axios.post('/api/comments/user/avatar', {
             email: ownerId
         })
         .then(response => {
             return gravatar + response.data;
         })
     }
+    
 
     cookieExists(){
         return document.cookie.indexOf("commentatorName") > -1;
@@ -78,12 +80,14 @@ class CommentService{
     }
 
     getResourceComments(resource){
-        return axios.get('/api/comments?origin=' + resource)
-                .then(response => {
-                    return response.data;
-                }).catch(err => {
-                    console.log(err);
-                })
+        return axios.post('/api/comments/resource', {
+            origin: resource
+        })
+        .then(response => {
+            return response.data;
+        }).catch(err => {
+            console.log(err);
+        })
     }
 
     storeComments(origin, comment, email, name){

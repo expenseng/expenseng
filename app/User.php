@@ -67,4 +67,16 @@ class User extends Authenticatable
         }
         return false;
     }
+
+    public function isActive($status)
+    {
+        if (
+            $this->status()
+                ->where('name', $status)
+                ->first()
+        ) {
+            return true;
+        }
+        return false;
+    }
 }

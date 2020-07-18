@@ -56,7 +56,7 @@
                                             <tr>
                                             @foreach ($companies as $company)
                                                 <td>
-                                                    {{$company->id}}
+                                                    {{++$count}}
                                                 </td>
                                                 <td>{{$company->name}}</td>
                                                 <td>{{$company->shortname}}</td>
