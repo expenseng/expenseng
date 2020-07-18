@@ -47,12 +47,12 @@
                                                 style="background-color: #00945E; color:honeydew; border: none; border-radius: 12px; width: 12rem"/>
                                             </div>
                                             </form>
-											<!-- Default checked -->
+                                            <!-- Default checked -->
 											<div class="custom-control custom-switch">
 												&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
 												<label class="custom-control-label" for="customSwitch1">Enable Auto-Tweet</label>
 											</div>
-											<select class="custom-select" size="1">
+											<select name="time-select" class="custom-select" size="1">
 												<option value="" disabled selected>Choose Tweet Interval</option>
 												<option value="1">1 Hour</option>
 												<option value="2">30 Mins</option>
@@ -103,4 +103,55 @@
     <script src="/vendor/charts/c3charts/c3.min.js"></script>
     <script src="/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="/vendor/charts/c3charts/C3chartjs.js"></script>
+    <script>
+        @inject('tweeter', 'App\Http\Controllers\Admin\TweetsController')
+  $(function() {
+    $('.custom-control-input').change(function() {
+        var status = $(this).prop('checked') == true ? 1 : 0; 
+         
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: '/autoTweet',
+            data: {'status': status},
+            success: function(data){
+              if(data == 1){
+                console.log(data.success);
+                 // {{$tweeter->autoTweetStatus()}}
+              }else{
+                  return;
+              }
+            }
+        });
+    })
+  })
+</script>
+@inject('tweeter', 'App\Http\Controllers\Admin\TweetsController')
+@section('php')
+<?php 
+
+    if(isset($_POST['time-select'])){
+      if ( $_POST['time-select'] == '1' ){
+          $schedule->call(function () {
+            // To run every hour here
+            $tweeter->autoTweetStatus();
+        })->everyHour();  
+      }
+      elseif( $_POST['time-select'] == '2' ){
+        $schedule->call(function () {
+            // Tsomething to run every 30 minutes here
+            $tweeter->autoTweetStatus();
+        })->everyThirtyMinutes();
+          }
+      elseif( $_POST['time-select'] == '3' ){
+        $schedule->call(function () {
+            // To run every 15 minutes here
+            $tweeter->autoTweetStatus();
+        })->addMinutes(15);
+    }else {
+        return;
+    }
+}
+
+?>
     @endsection

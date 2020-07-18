@@ -3,11 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Http\Request;
 use App\Expense;
 use App\Payment;
 use App\Tweet;
-use App\Tag;
+use App\Budget;
+use App\Sector;
+use App\Ministry;
+use Carbon\Carbon;
+use Twitter;
 
 
 class TweetsController extends Controller
@@ -18,6 +23,8 @@ class TweetsController extends Controller
  *
  * @return Response
  */
+
+
 public function __invoke()
 {
    return $this->create();
@@ -37,8 +44,7 @@ public function __construct()
 
     public function create()
     {   
-        $expenses = Expense::all();
-        return View('pages.tweets.create', compact('expenses'));
+        return View('pages.tweets.create');
     }
 
 /**
@@ -46,15 +52,16 @@ public function __construct()
  *
  * @return Response
  */
-    public function store()
+    public function store(Request $request)
     {   
-        $expenses = Expense::all();
-        $input = array_except(Input::all(), $expenses);
-        $validation = Validator::make($input, Tweet::$rules);
+        $this->validate($request, [
+            'status' => 'required',
+            'handle' => 'required',
+        ]);
+        $input = $request->all();
         if ($validation->passes()) {
-            $tweet = $this->tweet->create($input);
-            $expenses = Input::get('expenses');
-            $tweet->expenses()->sync($expenses);
+            $tweet = $this->tweet->status($input);
+            Twitter::postTweet(array('status' => $tweet, 'format' => 'json'));
             return Redirect::route('pages.tweets.index');
         }
         return Redirect::route('pages.tweets.create')
@@ -62,28 +69,15 @@ public function __construct()
         ->withErrors($validation)
         ->with('message', 'There were validation errors.');
     }
-/**
- * Show the form for editing the specified resource.
- *
- * @param  int  $id
- * @return Response
- */
-    public function edit($id)
+
+    public function autoTweetStatus()
     {
-        $tweet = $this->tweet->find($id);
-        $tags = Expense::lists('expense', 'id');
-        $tweetTags = $tweet->expenses()->get();
-
-        $selectedTags = array();
-        foreach ($tweetTags as $tag) {
-            $selectedTags[] = $tag->id;
-        }
-
-        if (is_null($tweet)) {
-            return Redirect::route('pages.tweets.index');
-        }
-
-        return View::make('pages.tweets.edit', compact('tweet', 'tags', 'selectedTags'));
+        $budget = Budget::inRandomOrder()->first();
+        $tweet = $budget;
+        /* Twitter::postTweet(array('status' => $budget, 'format' => 'json'));
+        $tweet->save(); */
+  
+        return response()->json(['success'=>' Auto tweet enabled successfully.']);
     }
 
 /**
@@ -95,7 +89,7 @@ public function __construct()
     public function update($id)
     {
         $input = array_except(Input::all(), array('_method', 'expenses'));
-        $validation = Validator::make($input, Tweet::$rules);
+        $validation = Validator::make($input, Tweet::status());
 
         if ($validation->passes()) {
             $tweet = $this->tweet->find($id);
@@ -105,10 +99,10 @@ public function __construct()
 
             $tweet->expenses()->sync($tags);
 
-            return Redirect::route('pages.tweets.show', $id);
+            return Redirect::route('pages.tweets.index', $id);
         }
 
-        return Redirect::route('pages.tweets.edit', $id)
+        return Redirect::route('pages.tweets.create', $id)
         ->withInput()
         ->withErrors($validation)
         ->with('message', 'There were validation errors.');

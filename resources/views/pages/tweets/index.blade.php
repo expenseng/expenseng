@@ -30,7 +30,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="mb-0" style="float:left">All Tweets </h3>
-                        <a href="{{'/admin/users/create/'}}" class="btn btn-primary" style="float:right">ADD NEW</a>
+                        <a href="{{'/pages/tweets/create/'}}" class="btn btn-primary" style="float:right">ADD NEW</a>
                         <p></p>
                     </div>
                     <div class="card-body">
@@ -53,7 +53,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{$tweet->name}}</td>
                                         <td>{{$tweet->id}}</td>
-                                        
+                                        <td>{{$tweet->status}}</td>
                                         <td>
                                             </form>          
                                         </td>
