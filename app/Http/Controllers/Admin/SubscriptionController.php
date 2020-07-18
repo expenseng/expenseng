@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Expense;
 use App\Subscription;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 
-class ExpenseController extends Controller
+class SubscriptionController extends Controller
 {
     // display all expenses
     public function index(Request $request)
