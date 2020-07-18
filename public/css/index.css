@@ -388,7 +388,9 @@ body{
     height: 20px;
  }
  #open{ 
-     margin-top: 1rem;
+     margin: 1rem auto;
+     width: 10rem;
+     padding: 0.4rem 3rem;
  }
 
  /* Responsiveness */
@@ -589,7 +591,7 @@ body{
 }
 @media all and (max-width: 767px){
     .banner{
-        height: /* 90% */ 140vh;
+        height: /* 90% */ 100vh;
     }
 }
  @media only screen and (max-width:600px){
@@ -608,7 +610,7 @@ body{
         overflow-x: hidden;
     }
     .banner{
-        height: /* 90% */ 140vh;
+        height: /* 90% */ 100vh;
         margin: 0 0 5rem 1rem;
     }
     .scroll-down img{
@@ -630,6 +632,17 @@ body{
     #compu{
         font-size: 15px;
     }
+    .tweet{	
+        background: url(../images/twitter1.png);	
+        height: 200px;	
+        background-size: 100% 100%;	
+        display: flex;	
+        width: 45%;	
+        margin: auto;	
+        background-size: contain;	
+        background-position: center;	
+        background-repeat: no-repeat;	
+    }	
 }
 
 @media all and (min-width: 425px){
