@@ -1,12 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Role;
-
 
 class UserSeeder extends Seeder
 {
@@ -17,7 +15,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-
         User::truncate();
         DB::table('role_user')->truncate();
 
@@ -55,6 +52,5 @@ class UserSeeder extends Seeder
         $manager->roles()->attach($managerRole);
         $editor->roles()->attach($editorRole);
         $user->roles()->attach($userRole);
-
     }
 }
