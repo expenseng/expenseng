@@ -21,6 +21,10 @@
             />
             <button class="btn btn-primary" type="submit" v-if="showName">Comment</button>
         </form>
+        <small class="text-muted">Press enter to send</small>
+        <div class="spinner-border spinner-border-sm float-right" v-if="busy" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
     </div>
 </template>
 

@@ -8,7 +8,7 @@
                         <div class="col-sm-1 mt-1 row d-flex container">
                             <user-image :ownerId="data.ownerId"></user-image>
                         </div>
-                        <div class="col-sm-11" :id="data.commentId">
+                        <div class="col-sm-11">
                             <div class="d-flex justify-content-between">
                                 <div class="d-flex">
                                     <username :ownerId="data.ownerId"></username>
