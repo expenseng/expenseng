@@ -8,10 +8,10 @@ use Faker\Generator as Faker;
 $factory->define(Company::class, function (Faker $faker) {
     return [
         //
-        'name' => $faker->name,
-        'shortname' => $faker->word(10),
-        'industry' => $faker->company,
-        'ceo' => $faker->name(2),
-        'twitter' => $faker->unique()->firstName,
+        'snumber' => $faker->snumber,
+        'service' => $faker->service,
+        'companyname' => $faker->companyname,
+        'cost' => $faker->cost,
+        'duration' => $faker->duration,
     ];
 });
