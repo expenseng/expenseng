@@ -3205,6 +3205,7 @@
                 }
             ],
 
+
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "funding": [
@@ -3221,7 +3222,6 @@
                     "type": "tidelift"
                 }
             ],
-
             "time": "2020-06-06T08:49:21+00:00"
         },
         {
