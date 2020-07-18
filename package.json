@@ -31,6 +31,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "ajax": "0.0.4",
         "apexcharts": "^3.19.3",
         "laravel-echo": "^1.8.0",
         "moment": "^2.27.0",
