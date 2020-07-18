@@ -6,6 +6,7 @@
         <!-- navbar -->
         @include('backend.partials.navbar')
         
+        
         @yield('banner')
         <!-- content -->
         @yield('content')

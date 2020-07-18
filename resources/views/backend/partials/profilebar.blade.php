@@ -18,8 +18,8 @@
             </a>
           </li>
 
-          <li class=" {{Route::is('dashboard')? 'nav-item active' : 'nav-item '}}  ">
-            <a class="nav-link" href="{{Route::is('dashboard')? '#' :route('dashboard')}}">
+          <li class=" {{Route::is('home')? 'nav-item active' : 'nav-item '}}  ">
+            <a class="nav-link" href="{{Route::is('home')? '#' :route('home')}}">
               <i class="material-icons">home</i>
               <p>Homepage</p>
             </a>

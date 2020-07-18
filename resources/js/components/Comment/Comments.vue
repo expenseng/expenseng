@@ -8,7 +8,7 @@
                         <div class="col-sm-1 mt-1 row d-flex container">
                             <user-image :ownerId="data.ownerId"></user-image>
                         </div>
-                        <div class="col-sm-11" :id="data.commentId">
+                        <div class="col-sm-11">
                             <div class="d-flex justify-content-between">
                                 <div class="d-flex">
                                     <username :ownerId="data.ownerId"></username>
@@ -33,7 +33,7 @@
             <h2 class="text-center">No comments found for this resource.</h2>
         </div>
         
-        <comment></comment>
+        <comment v-on:newComment="pushNewComment"></comment>
     </div>
 </template>
 
@@ -81,9 +81,15 @@ export default {
         .listen('NewCommentOnResource', (e) => {
             console.log(e.data);
             if(decodeURIComponent(e.data.origin) == this.origin){
-                this.comments.unshift(e.data);
+                this.comments.push(e.data);
             }
         });
+    },
+
+    methods: {
+        pushNewComment(comment){
+            this.comments.push(comment);
+        }
     },
 
     filters:{

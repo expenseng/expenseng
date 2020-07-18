@@ -11,8 +11,4 @@ class Budget extends Model
         "code", "year", "classification"
     ];
 
-    public function graphData(){
-
-    }
-
 }

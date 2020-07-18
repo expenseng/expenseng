@@ -8,6 +8,8 @@ use App\Ministry;
 
 class Payment extends Model
 {
+    public $fillable = ['name', 'shortname', 'industry', 'ceo', 'twitter'];
+
     public function amount(){
         return number_format($this->amount, 2, '.', ',');
     }

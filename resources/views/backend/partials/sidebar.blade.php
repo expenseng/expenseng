@@ -1,6 +1,6 @@
 
   <div class="wrapper ">
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+    <div class="sidebar" data-color="purple" data-background-color="white" data-image="{{asset('img/Frame 390.png')}}">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -60,9 +60,14 @@
               <p>People</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="#">
-              <i class="material-icons">note_add</i>
+          <!-- <li class="nav-item "> -->
+          <li class="{{Route::is('importExcel')
+          ? 'nav-item active' : 'nav-item'}} ">
+            <!-- <a class="nav-link" href="#">
+             -->
+            <a class="nav-link" href="{{Route::is('importExcel')? '#' :route('importExcel')}}">
+
+            <i class="material-icons">note_add</i>
               <p>Upload Spreadsheet</p>
             </a>
           </li>

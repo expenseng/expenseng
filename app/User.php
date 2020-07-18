@@ -68,11 +68,11 @@ class User extends Authenticatable
         return false;
     }
 
-    public function isActive()
+    public function isActive($status)
     {
         if (
             $this->status()
-                ->where('name', 'active')
+                ->where('name', $status)
                 ->first()
         ) {
             return true;

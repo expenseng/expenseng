@@ -56,10 +56,10 @@
                                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
                                             <div class="col-md-6">
                                                 <select name="role_id" class="form-control">
-                                                    @isset($user->role->id)
-                                                        <option value="{{$user->role->id}}"  style="display:none">{{$user->role->name}}</option>
+                                                    @isset($user->roles)
+                                                        <option value="{{implode(', ', $user->roles->pluck('id')->toArray())}}"  style="display:none">{{implode(', ', $user->roles->pluck('name')->toArray())}}</option>
                                                     @endisset
-                                                    @empty($user->role->id)
+                                                    @empty($user->roles)
                                                         <option value=""  style="display:none">Select Role</option>
                                                     @endempty
                                                     @foreach ($roles as $role)

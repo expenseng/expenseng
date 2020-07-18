@@ -81,9 +81,10 @@
                                                     </li>
                                                 </ul>
                                             <br>
-                                            @if($user->status->name != 'active')
-                                            <p class="text-danger text-center">Your account is inactive, you won't be able to access Admin Dahsboard. If its a new account, kindly wait for admin to manually activate your account</p>
+                                            @if($user->status_id != 1)
+                                            <p class="text-danger text-center">Your account is inactive, you won't be able to access Admin Dashboard. If its a new account, kindly wait for admin to manually activate your account</p>
                                             @endif
+
                                             </div>
                                         </div>
 
