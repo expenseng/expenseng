@@ -28,7 +28,7 @@ class CommentController extends Controller
             'base_uri' => $this->baseUri,
             'headers' => [
                 'Authorization' => 'Bearer ' .$this->token,
-                'debug' => true
+                'debug' => true,
                 'Content-Type' => 'application/json',
             ]
         ]);      
