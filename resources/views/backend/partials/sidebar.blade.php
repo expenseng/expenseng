@@ -60,8 +60,13 @@
               <p>People</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="#">
+          <!-- <li class="nav-item "> -->
+          <li class="{{Route::is('importExcel')
+          ? 'nav-item active' : 'nav-item'}} ">
+            <!-- <a class="nav-link" href="#">
+             -->
+            <a class="nav-link" href="{{Route::is('importExcel')? '#' :route('importExcel')}}">
+
             <i class="material-icons">note_add</i>
               <p>Upload Spreadsheet</p>
             </a>
