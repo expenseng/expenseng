@@ -2169,6 +2169,7 @@
             "time": "2018-07-02T15:55:56+00:00"
         },
         {
+
             "name": "paragonie/sodium_compat",
             "version": "v1.13.0",
             "source": {
@@ -2345,6 +2346,7 @@
             "time": "2020-05-31T13:49:28+00:00"
         },
         {
+
             "name": "phpoption/phpoption",
             "version": "1.7.4",
             "source": {
@@ -4347,6 +4349,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/0dd93f2c578bdc9c72697eaa5f1dd25644e618d3",
                 "reference": "0dd93f2c578bdc9c72697eaa5f1dd25644e618d3",
+
                 "shasum": ""
             },
             "require": {
@@ -4413,6 +4416,7 @@
             "time": "2020-07-14T12:35:20+00:00"
         },
         {
+
             "name": "symfony/polyfill-php72",
             "version": "v1.18.0",
             "source": {
@@ -4424,6 +4428,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/639447d008615574653fb3bc60d1986d7172eaae",
                 "reference": "639447d008615574653fb3bc60d1986d7172eaae",
+
                 "shasum": ""
             },
             "require": {
@@ -4486,6 +4491,7 @@
             "time": "2020-07-14T12:35:20+00:00"
         },
         {
+
             "name": "symfony/polyfill-php73",
             "version": "v1.18.0",
             "source": {
@@ -4497,6 +4503,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/polyfill-php73/zipball/fffa1a52a023e782cdcc221d781fe1ec8f87fcca",
                 "reference": "fffa1a52a023e782cdcc221d781fe1ec8f87fcca",
+
                 "shasum": ""
             },
             "require": {

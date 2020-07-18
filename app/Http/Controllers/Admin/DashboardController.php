@@ -1,14 +1,19 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Company;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Budget;
 use App\Expense;
-use App\Company;
 use App\Ministry;
+
+use App\Feeback;
+use Illuminate\Support\Facades\Session;
+
+
 
 class DashboardController extends Controller
 {
@@ -39,8 +44,12 @@ class DashboardController extends Controller
             ->limit(7)
             ->get();
 
+        $feedback = Feedback::where('isApprove',0)->get();
+
+
         if (count($total_budgets) > 0) {
             for ($i = 0; $i < count($total_budgets); $i++) {
+
                 $amount += $total_budgets[$i]->amount;
             }
         } else {

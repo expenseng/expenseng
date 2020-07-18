@@ -70,8 +70,8 @@ class CommentController extends Controller
         $response = json_decode($response->getBody(), true);
 
         if($response['status'] == "success"){
-            //broadcast the new comment
-            event(new NewCommentOnResource($response));
+            //broadcast the new comment to everyone else except the current user
+            broadcast(new NewCommentOnResource($response))->toOthers();
 
             return $response['data'];
         }else{
@@ -85,7 +85,6 @@ class CommentController extends Controller
         $response = $this->http->get('comments', [
             'query' => [
                 'origin' => urlencode($request->query('origin')),
-                'sort' => 'descending',
             ]
         ]);
 

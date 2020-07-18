@@ -8,9 +8,13 @@ include 'SectorSeeder.php';
 include 'ExpenseSeeder.php';
 include 'BudgetSeeder.php';
 include 'CabinetSeeder.php';
+
+include 'FeedbackSeeder.php';
+
 include 'StatusSeeder.php';
 include 'RoleSeeder.php';
 include 'UserSeeder.php';
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,8 +32,12 @@ class DatabaseSeeder extends Seeder
         $this->call(BudgetSeeder::class);  
         $this->call(MinistrySeeder::class);
         $this->call(CabinetSeeder::class);
+
+        $this->call(FeedbackSeeder::class);
+
         $this->call(StatusSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
+
     }
 }

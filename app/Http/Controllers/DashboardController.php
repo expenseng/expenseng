@@ -56,6 +56,7 @@ class DashboardController extends Controller
             'total_budgets' => $total_budgets,
             'year_budget' => $amount,
             'recent_expenses' => $recent_expenses,
+            'count' => 0
         ]);
     }
 
