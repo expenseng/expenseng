@@ -22,6 +22,7 @@ class CommentService{
             return gravatar + response.data;
         })
     }
+    
 
     cookieExists(){
         return document.cookie.indexOf("commentatorName") > -1;
