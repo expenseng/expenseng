@@ -27,7 +27,9 @@ class FeedbackController extends Controller
         $feedback->ministry_id =$request->ministry_id;
         $feedback->sector_id =1;
         $feedback->cabinet_id =1;
+        $feedback->position ='Minister';
         $feedback->isApprove =1;
+
         $feedback->save();
         
         return redirect('/')->with('success','Cabinet Posted! Thanks!');

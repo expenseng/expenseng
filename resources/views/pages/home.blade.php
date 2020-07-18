@@ -282,9 +282,14 @@
 
     <div class='container'>
         <!-- Modal to Enter Form -->
-
-        <h3>Suggest Cabinet Members</h3>
-        
+        <h3 style='color: #353A45; text-align:center;margin-top: 15px'>Suggest Cabinet Members</h3>
+`     
+<center>
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" style="background: 353A45;margin-bottom: 20px;">
+  Suggest a Cabinet Member
+</button>
+</center>
+<!-- Modal -->
         @if ($errors->any())
           <div class="alert alert-danger">
               <ul>
@@ -294,9 +299,20 @@
               </ul>
           </div>
       @endif
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
 
-      
-        <form  action=" {!! url('/feedback') !!}" method="POST">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+      <form  action=" {!! url('/feedback') !!}" method="POST">
         {{csrf_field()}}
         <div class="form-group">
           <label for="firstName">Firstname</label>
@@ -308,7 +324,7 @@
         </div>
         
         <div class="form-group">
-          <label for="ministry">Select Ministry</label>
+          <label for="ministry">Select Cabinet</label>
           <select id="inputState" class="form-control" name="ministry_id">
             <option selected value="1">Works</option>
             <option value="2">Housing</option>
@@ -329,14 +345,27 @@
             <option value="17">Education</option>
             <option value="18">Justice</option>
             <option value="19">Agriculture</option>
-            <option value="20">Agriculture</option>
-            <option value="21">Women Affairs</option>
+            <option value="20">Women Affairs</option>
           </select>
         </div>
-       
-        <button type="submit" class="btn btn-primary">Submit</button>
+       <center>
+        <button type="submit" class="btn btn-primary ">Submit</button>
+      </center>
+
       </form>
+
+
+      </div>
+
+      
     </div>
+  </div>
+</div>
+
+       
+    </div>
+
+    <!-- Modal End -->
   @endsection
 @section('js')
   <script src="{{asset('js/index.js')}}"></script>

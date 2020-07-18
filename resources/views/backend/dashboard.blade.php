@@ -160,7 +160,7 @@
                         <h5 class="card-header">Top Benficiary</h5>
                         <div class="card-body">
                             <div class="ct-chart ct-golden-section" style="height: 54px;">
-                                <span>JuLius Berger</span>
+                                <span>Julius Berger</span>
                                 <span class="legend-item mr-2">N450,000,000<span>
                             </div>
                             <div class="text-center">
@@ -479,6 +479,47 @@
                     <!-- end add comment -->
                     <!-- ============================================================== -->
             </div> <!-- end row -->
+            <div>
+            <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
+                        <div class="card">
+                            <h2 class="p-4 card-header">Visitors Suggestions</h2>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class="bg-light">
+                                            <tr class="border-0">
+
+                                                <th class="border-0">Firstname</th>
+                                                <th class="border-0">Lastname</th>
+                                                <th class="border-0">Cabinet</th>
+                                                <th class="border-0">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        
+                                        @if (count($feedbacks)> 0)
+                                            @foreach ($feedbacks as $feedback)
+                                                <tr>
+                                                    <td>{{$feedback->firstName}} </td>
+                                                    <td>{{$feedback->lastName}}  </td>
+                                                    <td>{{$feedback->position}}</td>
+                                                    <td>
+                                                        <a href='{{}}' class="btn btn-success btn-sm ">Approve</button>
+                                                        <a href='{{}}' class="btn btn-danger btn-sm">Ignore</button>
+
+                                                    </td>
+                                                </tr>
+                                        @endforeach
+                                        @endif
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            
         </div> <!-- END container-fluid dashboard-content  -->
     </div> <!-- end dashboard-ecommerce-->
 </div> <!-- END dashboard-wrapper -->
