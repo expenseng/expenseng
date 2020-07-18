@@ -21,14 +21,15 @@ class CommentController extends Controller
 
     public function __construct()
     {
-        $this->token = env("COMMENTS_TOKEN");
+        $this->token = \env("COMMENTS_TOKEN");
         $this->baseUri = "https://comment.microapi.dev/v1/";
 
         $this->http = new Client([
             'base_uri' => $this->baseUri,
             'headers' => [
-                'Content-Type' => 'application/json',
                 'Authorization' => 'Bearer ' .$this->token,
+                'debug' => true
+                'Content-Type' => 'application/json',
             ]
         ]);      
     }
