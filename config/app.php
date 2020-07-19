@@ -163,11 +163,11 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Yoeunes\Toastr\ToastrServiceProvider::class,
         Thujohn\Twitter\TwitterServiceProvider::class,
-
+        DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         /*
          * Package Service Providers...
          */
-        Thujohn\Twitter\TwitterServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -229,7 +229,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Twitter'=> Thujohn\Twitter\Facades\Twitter::class,
-        'Form' => 'Collective\Html\FormFacade'
+        'Form' => 'Collective\Html\FormFacade',
+        'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
     ],
 
 ];

@@ -9,7 +9,9 @@
 
     <!-- Banner Starts -->
     <section class="container">
+    {{!! Breadcrumbs::view('contact) }}
       <div class="row" id="banner">
+      
         <div class="col-md-6">
           <h1>Connect with us today</h1>
           <p>You can contact us via mail, calls or any of our social media accounts. We’d be happy to respond!</p>

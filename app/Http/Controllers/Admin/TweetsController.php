@@ -66,7 +66,7 @@ public function __construct()
             $tweeter = new Tweet();
             $tweet = array($request->all());
             //Twitter::postTweet(array('status' => $tweet, 'format' => 'json'));
-            return view('pages.tweets.index')->with(['tweets' => $tweet]);
+            return view('pages.tweets.create')->with(['tweets' => $tweet]);
         }
         return view('pages.errors.404_error')
         ->withInput()

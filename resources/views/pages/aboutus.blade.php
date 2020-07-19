@@ -24,7 +24,6 @@
 	<section class="hero">
 
 		<div class="container">
-
 			<div class="row d-flex justify-content-between">
 				<div class="col-lg-8 col-md-8 col-sm-12 left">
 					<h1 class="section-big-font">About ExpenseNG</h1>
