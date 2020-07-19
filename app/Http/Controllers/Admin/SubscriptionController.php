@@ -18,8 +18,8 @@ class SubscriptionController extends Controller
             return redirect(route('profile'));
         }
 
-        $subscribe = Subscription::all()->paginate(10);
-        return view('backend.subscription.index')->with(['subscribe' => $subscribe]);
+        $subscribe = Subscription::all()->simplePaginate(10);
+        return view('backend.subscription.index', compac('subscribe'));
     }
 
 
