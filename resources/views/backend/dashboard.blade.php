@@ -537,7 +537,10 @@
                             jQuery('.alert1').fadeOut(5000);
                             // $('#savingsStatus').html(data);
                     },error: function (data){
-
+                            jQuery('.tweet').val('');
+                            jQuery('.alert1').addClass('alert alert-danger text-white');
+                            jQuery('.alert1').html('tweet not sent');
+                            jQuery('.alert1').fadeOut(5000);
                         }
                     });
 
