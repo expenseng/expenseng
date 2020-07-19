@@ -47,6 +47,7 @@ Route::get('/contractors/{company}', 'CompanyController@show')->name('contractor
 Route::get('/ministry-graph', 'PageController@ministryGraph')->name('ministry-graph');
 Route::get('/expense-graph', 'PageController@expenseGraph')->name('expense-graph');
 Route::get('/project-modal', 'PageController@projectModal')->name('project-modal');
+Route::get('/ministry-chart', 'PageController@ministryChart')->name('expense-chart');
 
 Route::get('/ministry/details', 'MinistrySearchController@show')->name('get_ministry_details');
 Route::get('/ministry/all', 'MinistrySearchController@index')->name('ministry_all');
