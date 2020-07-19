@@ -18,18 +18,7 @@
 
 @section('content')
 
-
-<header class="container section-wrapper">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb bg-white">
-    <li class="breadcrumb-item not-active"><a href="{{ route('home') }}">HOME</a></li>
-      <span>&#8226;</span>
-      <li class="breadcrumb-item not-active"><a href="#">SPENDING</a></li>
-      <span>&#8226;</span>
-      <li class="breadcrumb-item active" aria-current="page"><a href="#">EXPENSE REPORT</a></li>
-    </ol>
-  </nav>
-</header>
+{{ Breadcrumbs::render('expense.reports') }}
 <section>
   <div class="container ">
     <div class="row">

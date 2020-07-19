@@ -12,18 +12,8 @@
 @endpush
 
 @section('content')
-	<!-- Breadcrumb start -->
-	<header class="container section-wrapper">
-		<nav aria-label="breadcrumb">
-			<ol class="breadcrumb bg-white">
-				<li class="breadcrumb-item not-active"><a href="{{ url('/') }}">HOME</a></li>
-				<span>&#8226;</span>
-				<li class="breadcrumb-item not-active"><a href="#">EXPENSE</a></li>
-				<span>&#8226;</span>
-				<li class="breadcrumb-item active" aria-current="page"><a href="{{ url('/expense/ministry') }}">MINISTRY SPENDING</a></li>
-			</ol>
-		</nav>
-	</header>
+{{ Breadcrumbs::render('expense.ministry') }}
+
 	<section>
 		<div class="container ">
 			<div class="row">
