@@ -152,6 +152,14 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
     Route::get('/profile', 'ProfileController@viewProfile')->name('profile');
     Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
 
+   //  Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
+    Route::get('/import', 'UploadController@importFile');
+    Route::post('/import', 'UploadController@importExcel')->name('importExcel');
+
+    Route::get('/subcribe', 'Admin\SubscriptionController@index')->name('subscribeReport');
+
+
+
  });
 
 
@@ -168,4 +176,5 @@ Route::get('/admin', function()
 
 Route::get('/startRT', 'TwitterBot@startLiveRetweet');
 Route::get('/stopRT', 'TwitterBot@stopLiveRetweet');
+Route::post('/post_tweet','TwitterBot@sendTweet');
 

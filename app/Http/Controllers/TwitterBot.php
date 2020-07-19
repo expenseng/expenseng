@@ -11,6 +11,7 @@ use App\ProcessId;
 use App\Sector;
 use App\Tweet;
 use Carbon\Carbon;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
@@ -24,6 +25,10 @@ class TwitterBot extends Controller
      */
     public function startLiveRetweet() //use to start the live retweet
     {
+        $process_id = $this->getProcessId();
+        if ($process_id != 0) {
+            return 'retweet is already running';
+        }
         $path = realpath('./../artisan');
         $process = new BackgroundProcess('php '.$path.' connect_to_streaming_api');
         $this->setProcessID($process->getProcessId());
@@ -130,6 +135,21 @@ class TwitterBot extends Controller
             }
         } else {
             return 'The amount of ₦'.$budget->amount." was allocated for ".$budget->project_name." in the ".$budget->year ." budget";
+        }
+    }
+
+    public function sendTweet(Request $request)
+    {
+        if ($request->ajax()) {
+            try {
+                $tweet = new Tweet($request->tweet);
+                $tweet->send();
+                $response = 'tweet sent';
+                return Response($response);
+            }catch (\Exception $exception){
+                return Response::json(array("errors" => 'error occured'), 422);
+            }
+
         }
     }
 }

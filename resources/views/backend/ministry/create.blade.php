@@ -58,7 +58,7 @@
                                             <div class="form-group">
                                                 <label for="sector_id">Sector</label>
                                                 
-                                                <select name="code" class="form-control">
+                                                <select name="sector_id" class="form-control">
 
                                                 <option value="">Select Sector</option>
                                                 @foreach($sectors as $sector)
