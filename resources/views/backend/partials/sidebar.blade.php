@@ -18,15 +18,15 @@
             </a>
           </li>
           @can('manage-user')
-          <li class="{{Route::is('users.view') || Route::is('users.create') || Route::is('users.edit') 
+          <li class="{{Route::is('users.view') || Route::is('users.create') || Route::is('users.edit')
           ? 'nav-item active' : 'nav-item'}} ">
             <a class="nav-link" href="{{Route::is('users.view') || Route::is('users.create') || Route::is('users.edit') ? '#' : route('users.view')}}">
               <i class="material-icons">persons</i>
               <p>Users</p>
-            </a>   
+            </a>
           </li>
           @endcan
-          <li class="{{Route::is('company.view') || Route::is('company.create') || Route::is('company.edit') 
+          <li class="{{Route::is('company.view') || Route::is('company.create') || Route::is('company.edit')
           ? 'nav-item active' : 'nav-item'}} ">
             <a class="nav-link" href="{{Route::is('company.view') || Route::is('company.create') || Route::is('company.edit') ? '#' : route('company.view')}}">
               <i class="material-icons">content_paste</i>
@@ -41,13 +41,21 @@
               <p>Ministry</p>
             </a>
           </li>
-          <li class="{{Route::is('expenses.view') || Route::is('expenses.create') || Route::is('expenses.edit') 
+          <li class="{{Route::is('expenses.view') || Route::is('expenses.create') || Route::is('expenses.edit')
           ? 'nav-item active' : 'nav-item'}} ">
             <a class="nav-link" href="{{Route::is('expenses.view') || Route::is('expenses.create') || Route::is('expenses.edit') ? '#' : route('expenses.view')}}">
               <i class="material-icons">bubble_chart</i>
               <p>Expenses</p>
             </a>
           </li>
+
+          <li class="nav-item ">
+            <a class="nav-link" href="{{Route::is('subscribe')}}">
+              <i class="material-icons">supervisor_account</i>
+              <p>Subcriptions</p>
+            </a>
+          </li>
+
           <li class="nav-item ">
             <a class="nav-link" href="#">
               <i class="material-icons">create_new_folder</i>
@@ -77,6 +85,7 @@
               <p>Comments</p>
             </a>
           </li>
+
         </ul>
       </div>
     </div>
