@@ -1,0 +1,51 @@
+Phirehose: Connecting to twitter stream: https://stream.twitter.com/1.1/statuses/filter.json with params: array (  'track' => '#expenseg,#laravel,@expenseng,expenseng ',)
+Phirehose: Connecting to ssl://stream.twitter.com, port=443, connectTimeout=5
+Phirehose: Connection established to stream.twitter.com
+Phirehose: POST /1.1/statuses/filter.json HTTP/1.1
+Host: stream.twitter.com:443
+Connection: Close
+Content-type: application/x-www-form-urlencoded
+Content-length: 60
+Accept: */*
+Authorization: OAuth realm="",oauth_consumer_key="GhGWNqjewXbGXdjyDHArzhQpl",oauth_nonce="d9009caf1cde0f07c51d54a599c10297",oauth_signature_method="HMAC-SHA1",oauth_timestamp="1594733605",oauth_version="1.0A",oauth_token="996796568547348480-fe16yi5fmqbXR4NceEsd3NOSCS0gm0F",oauth_signature="cxB3IGTbsyCDjeFGh%2Fr4Rx383C8%3D"
+User-Agent: Phirehose/1.0RC +https://github.com/fennb/phirehose
+
+track=%23expenseg%2C%23laravel%2C%40expenseng%2Cexpenseng%20
+
+
+
+
+  The "-b" option does not exist.
+
+
+Phirehose: Connecting to twitter stream: https://stream.twitter.com/1.1/statuses/filter.json with params: array (  'track' => '#expenseg,#laravel,@expenseng,expenseng ',)
+Phirehose: Connecting to ssl://stream.twitter.com, port=443, connectTimeout=5
+Phirehose: Connection established to stream.twitter.com
+Phirehose: POST /1.1/statuses/filter.json HTTP/1.1
+Host: stream.twitter.com:443
+Connection: Close
+Content-type: application/x-www-form-urlencoded
+Content-length: 60
+Accept: */*
+Authorization: OAuth realm="",oauth_consumer_key="GhGWNqjewXbGXdjyDHArzhQpl",oauth_nonce="44f486c62d403c3bed49e3fea77e24a9",oauth_signature_method="HMAC-SHA1",oauth_timestamp="1594733682",oauth_version="1.0A",oauth_token="996796568547348480-fe16yi5fmqbXR4NceEsd3NOSCS0gm0F",oauth_signature="D6kbAMQ4fPxaup6bJ8nsoASbsMo%3D"
+User-Agent: Phirehose/1.0RC +https://github.com/fennb/phirehose
+
+track=%23expenseg%2C%23laravel%2C%40expenseng%2Cexpenseng%20
+
+
+Phirehose: Connecting to twitter stream: https://stream.twitter.com/1.1/statuses/filter.json with params: array (  'track' => '#expenseg,#laravel,@expenseng,expenseng ',)
+Phirehose: Connecting to ssl://stream.twitter.com, port=443, connectTimeout=5
+Phirehose: Connection established to stream.twitter.com
+Phirehose: POST /1.1/statuses/filter.json HTTP/1.1
+Host: stream.twitter.com:443
+Connection: Close
+Content-type: application/x-www-form-urlencoded
+Content-length: 60
+Accept: */*
+Authorization: OAuth realm="",oauth_consumer_key="GhGWNqjewXbGXdjyDHArzhQpl",oauth_nonce="114813a2763fe70b00b16f22af05dd36",oauth_signature_method="HMAC-SHA1",oauth_timestamp="1594733736",oauth_version="1.0A",oauth_token="996796568547348480-fe16yi5fmqbXR4NceEsd3NOSCS0gm0F",oauth_signature="HZZoTG%2Fgy5lQRveF0Io91F83jmM%3D"
+User-Agent: Phirehose/1.0RC +https://github.com/fennb/phirehose
+
+track=%23expenseg%2C%23laravel%2C%40expenseng%2Cexpenseng%20
+
+Phirehose: Consume rate: 0 status/sec (10 total), avg enqueueStatus(): 982.34ms, avg checkFilterPredicates(): 0ms (5 total) over 70 seconds, max stream idle period: 21 seconds.
+Phirehose: Consume rate: 0 status/sec (2 total), avg enqueueStatus(): 981.99ms, avg checkFilterPredicates(): 0ms (4 total) over 67 seconds, max stream idle period: 22 seconds.

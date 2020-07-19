@@ -1,12 +1,14 @@
 @extends('layouts.home')
 @push('css')
-<link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+< <link rel="stylesheet" href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2">
+  
 <title>ExpenseNg - Create Ministry</title>
 @endpush
 
 @section('content')
-    <div class="dashboard-wrapper">
-            <div class="container-fluid dashboard-content">
+<div class="content">
+        <div class="container-fluid">
+      
                 <div class="row">
                     <div class="col-xl-10">
 <!-- basic form  -->
@@ -17,6 +19,11 @@
                                     <h3 class="section-title">Create New Ministry</h3>
                                     <p></p>
                                 </div>
+                                @if (Session::has('flash_message'))
+                                <div class="alert alert-primary" role="alert">
+                                    {{session('flash_message')}}
+                                </div>
+                                @endif
                                 <div class="card">
                                     
                                     <div class="card-body">
@@ -30,8 +37,17 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="ministryCode">Ministry Code</label>
-                                                <input type="number" name="code" class="form-control" 
-                                                placeholder="e.g 003" required/>
+                                                
+                                                <select name="code" class="form-control" >
+
+                                                <option value="">Select Ministry Code</option>
+                                                @foreach($ministry_codes as $ministry_code)
+                                                <option name="code" class="form-control" 
+                                                value="{{$ministry_code->code}}" required>
+                                                    {{$ministry_code->code}}
+                                                </option>
+                                                @endforeach
+                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">Short Name</label>
@@ -40,9 +56,19 @@
                                                 
                                             </div>
                                             <div class="form-group">
-                                                <label for="sector_id">Sector Id</label>
-                                                <input type="number" name="sector_id" class="form-control" 
-                                                placeholder="e.g 13" required/>
+                                                <label for="sector_id">Sector</label>
+                                                
+                                                <select name="sector_id" class="form-control">
+
+                                                <option value="">Select Sector</option>
+                                                @foreach($sectors as $sector)
+                                                
+                                                <option name="sector_id" class="form-control" 
+                                                value="{{$sector->id}}" required>
+                                                    {{$sector->name}}
+                                                </option>
+                                                @endforeach
+                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputText4" class="col-form-label">Ministry Twitter Handle</label>
@@ -80,7 +106,9 @@
     </div>
 @endsection
 @section('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <!-- causes toggle error in navbar -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script> -->
+    
     <!-- main js -->
     <script src="{{ asset('js/main-js.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/dashboard-ecommerce.js') }}" type="text/javascript"></script>

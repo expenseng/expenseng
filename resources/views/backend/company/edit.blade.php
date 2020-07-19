@@ -1,12 +1,14 @@
 @extends('layouts.home')
 @push('css')
-<link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+<link rel="stylesheet" href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2">
+  
 <title>ExpenseNg - Edit Company</title>
 @endpush
 
 @section('content')
-    <div class="dashboard-wrapper">
-            <div class="container-fluid dashboard-content">
+<div class="content">
+        <div class="container-fluid">
+      
                 <div class="row">
                     <div class="col-xl-10">
 <!-- basic form  -->
@@ -18,9 +20,13 @@
                                     <p></p>
                                 </div>
                                 <div class="card">
-                                    
+                                @if (Session::has('flash_message'))
+                                <div class="alert alert-primary" role="alert">
+                                    {{session('flash_message')}}
+                                </div>
+                                @endif
                                     <div class="card-body">
-                                        <form method="post" action="{{'/admin/expense/edit/' . $details->id}}">
+                                        <form method="post" action="{{'/admin/company/edit/' . $details->id}}">
                                             @method('put')
                                             @csrf
                                             <div class="form-group">
@@ -69,7 +75,9 @@
     </div>
 @endsection
 @section('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <!-- causes toggle error in navbar -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script> -->
+    
     <!-- main js -->
     <script src="{{ asset('js/main-js.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/dashboard-ecommerce.js') }}" type="text/javascript"></script>

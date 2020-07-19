@@ -15,7 +15,6 @@
   @if(Session::has('flash_message'))
     <p class="alert {{Session::get('alert-class','alert-info')}}">{{Session::get('flash_message')}}</p>
   @endif
-  {{$counter_feedback}}
 <div class="dashboard-wrapper">
     <div class="dashboard-ecommerce">
         <div class="container-fluid dashboard-content ">

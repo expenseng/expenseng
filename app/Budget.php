@@ -7,11 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Budget extends Model
 {
     protected $fillable = [
-        "amount", "project_name", 
+        "amount", "project_name",
         "code", "year", "classification"
     ];
 
-    public function graphData(){
-        
-    }
 }

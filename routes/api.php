@@ -19,3 +19,32 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/expense/health', 'BudgetController@health');
+
+/***
+ * Comment Instantiation
+ */
+Route::post('/comments/user/avatar', 'CommentController@avatar');
+Route::post('/comments/user', 'CommentController@onboardUser');
+
+/***
+ * Comments
+ */
+Route::post('/comments/resource', 'CommentController@show');
+Route::post('/comments', 'CommentController@store');
+
+/**
+ * Replies
+ */
+Route::get('/comments/{commentId}/replies', 'CommentController@replies');
+Route::post('/comments/{commentId}/replies', 'CommentController@reply');
+
+/**
+ * Reactions
+ */
+Route::patch('/comments/{commentId}/votes/upvote', 'CommentController@upvote');
+Route::patch('/comments/{commentId}/votes/downvote', 'CommentController@downvote');
+
+/**
+ * Citizens
+ */
+Route::post('/citizens', 'CitizenController@userApi');

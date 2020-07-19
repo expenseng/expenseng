@@ -1,6 +1,6 @@
 var options = {
     chart: {
-      height: 360,
+      height: 330,
       type: "area",
       toolbar: {
         show:false

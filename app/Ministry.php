@@ -13,7 +13,8 @@ class Ministry extends Model
         'code', 
         'name', 
         'shortname',
-        'twitter', 
+        'twitter',
+        'head', 
         'website',
         'sector_id'
     ];
