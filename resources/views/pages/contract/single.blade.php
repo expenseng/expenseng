@@ -9,33 +9,12 @@
 
 @section('content')
 <!-- Main body start -->
+{{ Breadcrumbs::render('contractor', $company) }}
 <section id="main">
 
   <!-- Start here -->
   <!-- Section 1 -->
   <div class="section-1 container">
-    <div class="navigation-links">
-      <ul>
-        <li>
-          <a href="{{ route('home') }}">HOME</a>
-        </li>
-        <li>
-          <span>&#8226;</span>
-        </li>
-        <li>
-          <a href="{{ route('contractors') }}">CONTRACTORS</a>
-        </li>
-        <li>
-          <span>&#8226;</span>
-        </li>
-        <li>
-          <a>
-          {{ $company->name }}
-          </a>
-        </li>
-      </ul>
-    </div>
-
     <div class="user-profile">
       <h3 class="name brand-name">
         {{ $company->name }} 
