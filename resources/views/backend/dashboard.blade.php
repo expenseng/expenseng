@@ -532,6 +532,7 @@
                         data:{'tweet': $tweet},
                         success:function (data) {
                             jQuery('.tweet').val('');
+                            jQuery('.alert1').removeClass('alert-danger');
                             jQuery('.alert1').fadeIn(5000);
                             jQuery('.alert1').addClass('alert alert-success text-white');
                             jQuery('.alert1').html('tweet sent ');
@@ -539,10 +540,12 @@
                             // $('#savingsStatus').html(data);
                     },error: function (data){
                             jQuery('.tweet').val('');
+                            jQuery('.alert1').removeClass('alert-success');
                             jQuery('.alert1').fadeIn(5000);
                             jQuery('.alert1').addClass('alert alert-danger text-white');
                             jQuery('.alert1').html('tweet not sent');
                             jQuery('.alert1').fadeOut(5000);
+
                         }
                     });
 
