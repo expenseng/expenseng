@@ -31,8 +31,8 @@
         {{ $collection['summary']->links() }}
     </div>
 
-{{-- 
+{{
 <div class="row centeri mzet-3 pt-3 pr-3 align-items-center">
     <span class="col-md result text-muted">{{ $payments->firstItem() }} - {{ $payments->lastItem() }} of {{ $payments->total() }} results</span>
     {{ $payments->links() }}
-</div> --}}
+</div> }}
