@@ -64,7 +64,7 @@ class TweetsController extends Controller
         if ($validator->validate()) {
             $tweeter = new Tweet();
             $tweet = array($request->all());
-            //Twitter::postTweet(array('status' => $tweet, 'format' => 'json'));
+            Twitter::postTweet(array('status' => $tweet, 'format' => 'json'));
             return view('pages.tweets.create')->with(['tweets' => $tweet]);
         }
         return view('pages.errors.404_error')
