@@ -19,7 +19,12 @@ class Payment extends Model
      */
     public function ministry(){
         $ministryCode = substr($this->payment_code, 0, 4); //ministry code is first 4 digits in a payment code
-        $ministry = Ministry::where('code', 'LIKE', "$ministryCode%")->get()[0]->only(['shortname', 'name','cabinet','twitter']);
+        $ministry_check = Ministry::where('code', 'LIKE', "$ministryCode%")->get();
+        if($ministry_check){
+        $ministry = $ministry_check[0]->only(['shortname', 'name','cabinet','twitter']);
+        }else{
+            $ministry = null;
+        }
         return $ministry; //return array keyed ['name' => '', 'shortname' => '']
     }
 }
