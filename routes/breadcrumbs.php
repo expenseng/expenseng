@@ -7,37 +7,48 @@ Breadcrumbs::for('home', function ($trail) {
 
 // Home > About
 Breadcrumbs::for('about', function ($trail) {
-    $trail->push('About', route('about'));
+    $trail->parent('home');
+    $trail->push('About Us', route('about'));
 });
 
 // Home > Contact
-Breadcrumbs::for('contactUs', function ($trail) {
+Breadcrumbs::for('contact', function ($trail) {
     $trail->parent('home');
-    $trail->push('Contact', route('contact'));
+    $trail->push('Contact Us', route('contact'));
 });
 
-
-// Home > Expense > Reports
-Breadcrumbs::for('expense', function ($trail) {
+// Home > Expense_Report
+Breadcrumbs::for('expense.reports', function ($trail) {
     $trail->parent('home');
-    $trail->push('Expense', route('expense.reports'));
+    $trail->push('Expense_Report', route('expense.reports'));
 });
 
-// Home > Expense > Ministry
-Breadcrumbs::for('ministry', function ($trail) {
+// Home > Expense_Ministry
+Breadcrumbs::for('expense.ministry', function ($trail) {
     $trail->parent('home');
-    $trail->push('Ministry', route('expense.ministry'));
+    $trail->push('Expense_Ministry', route('expense.ministry'));
 });
 
-/* // Home > Blog > [Category]
-Breadcrumbs::for('category', function ($trail, $category) {
-    $trail->parent('blog');
-    $trail->push($category->title, route('category', $category->id));
+// Home > Ministries
+Breadcrumbs::for('ministries', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Ministries', route('ministries'));
 });
 
-// Home > Blog > [Category] > [Post]
-Breadcrumbs::for('post', function ($trail, $post) {
-    $trail->parent('category', $post->category);
-    $trail->push($post->title, route('post', $post->id));
-}); */
-?>
+// Home > Ministries > [Ministry]
+Breadcrumbs::for('ministry', function ($trail, $ministry) {
+    $trail->parent('ministries');
+    $trail->push($ministry->name, route('ministries.single', $ministry->id));
+});
+
+// Home > Contractors
+Breadcrumbs::for('contractors', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Contractors', route('contractors'));
+});
+
+// Home > Contractors > [Contractor]
+Breadcrumbs::for('contractor', function ($trail, $company) {
+    $trail->parent('contractors');
+    $trail->push($company->name, route('contractors.single', $company->id));
+});

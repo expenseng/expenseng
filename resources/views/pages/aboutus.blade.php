@@ -6,7 +6,7 @@
 @endpush
 
 @section('content')
-
+{{ Breadcrumbs::render('about') }}
 <main role="main" class="">
 
 	<svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg" class="black_tr d-lg-block sla d-md-block d-sm-none">
@@ -24,6 +24,7 @@
 	<section class="hero">
 
 		<div class="container">
+
 			<div class="row d-flex justify-content-between">
 				<div class="col-lg-8 col-md-8 col-sm-12 left">
 					<h1 class="section-big-font">About ExpenseNG</h1>
