@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Feedback;
+use App\Cabinet;
 
 use Illuminate\Http\Request;
 class FeedbackController extends Controller
@@ -10,28 +11,56 @@ class FeedbackController extends Controller
     public function create(Request $request)
     {
 
-        $validatedData = $request->validate([
+        $request->validate([
             'firstName' => 'required|min:4',
             'lastName' => 'required',
         ]);
 
-        if ($validator->fails()) {
-            return redirect('/')
-                        ->withErrors($validator)
-                        ->withInput();
-        }
+        
 
         $feedback = new Feedback();
         $feedback->firstName =$request->firstName;
         $feedback->lastName =$request->lastName;
         $feedback->ministry_id =$request->ministry_id;
-        $feedback->sector_id =1;
-        $feedback->cabinet_id =1;
         $feedback->position ='Minister';
         $feedback->isApprove =1;
 
         $feedback->save();
-        
-        return redirect('/')->with('success','Cabinet Posted! Thanks!');
+
+        Session::flash('flash_message', 'A new Cabinet member has been created!');
+        Session::flash('alert-class', 'alert-info');
+        // $request->session()->flash('status', 'Cabinet was Posted!');
+        return redirect('/')->with('success','Cabinet member  Posted Succesfully!');
     }
+
+    public function approve(Request $request, $id)
+    {
+        $feedback = Feedback::where('id', $id)->where('isApprove', 0)->update(['isApprove'=>1]);
+        
+        $feebacks = Feedback::find($id);
+        $cabinet = new Cabinet();
+        $cabinet->name = $feedbacks->firstName .' '.$feedbacks->lastName;
+        $cabinet->twitter_handle = '';
+        $cabinet->role = '';
+        $cabinet->ministry_code =12;
+        $cabinet->save();
+        // return redirect('/admin/dashboard')->with('success','Cabinet Member Approved');
+        
+        if($request->session()->has('status')){
+            $request->session()->all();
+        }
+        return redirect()->route('dashboard')->with('success','Cabinet Member Approved');
+    }
+    
+    public function ignore(Request $request, $id)
+    {
+        $feedback = Feedback::find($id);
+        $feedback->delete();
+        
+        return redirect()->route('dashboard')->with('success','Cabinet Member Ignored');
+        // return redirect('/admin/dashboard')->with('success','Cabinet Member Ignored');
+    }
+
+
+    
 }
