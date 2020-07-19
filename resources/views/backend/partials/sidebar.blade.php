@@ -48,6 +48,14 @@
               <p>Expenses</p>
             </a>
           </li>
+
+          <li class="nav-item ">
+            <a class="nav-link" href="{{Route::is('subscribe')}}">
+              <i class="material-icons">supervisor_account</i>
+              <p>Subcriptions</p>
+            </a>
+          </li>
+
           <li class="nav-item ">
             <a class="nav-link" href="#">
               <i class="material-icons">create_new_folder</i>

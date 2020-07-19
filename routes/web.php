@@ -139,10 +139,14 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
    //Profile Page
     Route::get('/profile', 'ProfileController@viewProfile')->name('profile');
     Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
-    
+
    //  Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
     Route::get('/import', 'UploadController@importFile');
     Route::post('/import', 'UploadController@importExcel')->name('importExcel');
+
+    Route::post('/subcribe', 'Admin\SubscriptionController@index')->name('subscribe');
+
+
 
  });
 
