@@ -60,7 +60,7 @@
 
                                         @endforeach
                                         @endif
-
+                                        {{ $subscribe->links() }}
                                         </tbody>
                                         <tfoot>
                                             <tr>
