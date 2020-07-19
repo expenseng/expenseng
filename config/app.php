@@ -163,7 +163,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Yoeunes\Toastr\ToastrServiceProvider::class,
         Thujohn\Twitter\TwitterServiceProvider::class,
-        DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -230,7 +229,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Twitter'=> Thujohn\Twitter\Facades\Twitter::class,
         'Form' => 'Collective\Html\FormFacade',
-        'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
     ],
 
 ];
