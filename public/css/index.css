@@ -92,7 +92,7 @@ body{
  .project p{
      font-size: var(--fs-h5);
      margin: 0;
-     color: #ffffff;
+     color: #ffffff; 
  }
  .project p.slightly-bold{
      font-weight: 500;
