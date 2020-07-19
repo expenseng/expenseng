@@ -28,11 +28,7 @@ Breadcrumbs::for('ministry', function ($trail) {
     $trail->parent('home');
     $trail->push('Ministry', route('expense.ministry'));
 });
-// Home > Ministry 
-Breadcrumbs::for('ministry', function ($trail) {
-    $trail->parent('home');
-    $trail->push('Ministry', route('ministry'));
-});
+
 /* // Home > Blog > [Category]
 Breadcrumbs::for('category', function ($trail, $category) {
     $trail->parent('blog');
