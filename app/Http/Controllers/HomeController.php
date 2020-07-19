@@ -15,10 +15,8 @@ class HomeController extends Controller
      */
     public function index()
     {   
-        $recent_projects = Expense::orderBy('created_at','DESC')
-                ->skip(0)
-                ->take(4)
-                ->get();
+        $recent_projects = DB::table('Expense')->oldest()->take(4);
+        
 
         $collection['health'] = Budget::where('project_name', 'Health')->get();
         $collection['education'] = Budget::where('project_name', 'Education')->get();
