@@ -46,7 +46,10 @@ class MinistryController extends Controller
         ];
         $yearByYear = [];
         for ($x = 0; $x < count($years); $x++) {
-            $filtered = $payments->filter(function ($value, $key) use (
+            $filtered = $payments->filter(function (
+                $value,
+                $key
+            ) use (
                 &$years,
                 $x
             ) {
@@ -204,8 +207,7 @@ class MinistryController extends Controller
         ->with([
             'ministry_codes' => $ministry_codes,
             'sectors' => $sectors
-        ]
-        );
+        ]);
     }
 
     /**
@@ -239,7 +241,7 @@ class MinistryController extends Controller
             'sector_id' => 'required|number',
         ]);
         //replace spaces with dash in shortname
-        $ministry_shortname = preg_replace('/[[:space:]]+/','-', $request->ministry_shortname); 
+        $ministry_shortname = preg_replace('/[[:space:]]+/', '-', $request->ministry_shortname);
 
         //save new ministry
         $new_ministry = new Ministry();

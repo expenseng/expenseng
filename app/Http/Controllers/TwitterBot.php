@@ -146,10 +146,9 @@ class TwitterBot extends Controller
                 $tweet->send();
                 $response = 'tweet sent';
                 return Response($response);
-            }catch (\Exception $exception){
+            } catch (\Exception $exception) {
                 return Response::json(array("errors" => 'error occured'), 422);
             }
-
         }
     }
 }

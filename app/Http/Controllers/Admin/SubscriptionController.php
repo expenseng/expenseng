@@ -21,6 +21,4 @@ class SubscriptionController extends Controller
         $subscribe = Subscription::paginate(10);
         return view('backend.subscription.index', compact('subscribe'));
     }
-
-
 }

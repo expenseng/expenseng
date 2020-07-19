@@ -16,7 +16,6 @@ use App\Ministry;
 use Carbon\Carbon;
 use Twitter;
 
-
 class TweetsController extends Controller
 {
 
@@ -27,15 +26,15 @@ class TweetsController extends Controller
  */
 
 
-public function __invoke()
-{
-   return $this->create();
-}
+    public function __invoke()
+    {
+        return $this->create();
+    }
 
-public function __construct()
-{
-    $this->middleware('auth');
-}
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
@@ -45,7 +44,7 @@ public function __construct()
     }
 
     public function create()
-    {   
+    {
         return View('pages.tweets.create');
     }
 
@@ -55,7 +54,7 @@ public function __construct()
  * @return Response
  */
     public function store(Request $request)
-    {   
+    {
         $validator = Validator::make($request->all(), [
             'status' => 'required',
             'company_twitter' => 'required',
@@ -112,5 +111,3 @@ public function __construct()
         ->with('message', 'There were validation errors.');
     }
 }
-
-?>

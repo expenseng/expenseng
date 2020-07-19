@@ -22,8 +22,4 @@ class ExpenseController extends Controller
         $collection['summary'] = Payment::where('description', '!=', '')->paginate(20);
         return view('pages.expense.ministry')->with('collection', $collection);
     }
-
-
-
-   
 }

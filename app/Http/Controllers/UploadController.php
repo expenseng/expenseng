@@ -21,94 +21,89 @@ class UploadController extends Controller
 {
     
 
-    public function importFile(){
+    public function importFile()
+    {
         return view('upload');
     }
 
-    public function importExcel(Request $request){
+    public function importExcel(Request $request)
+    {
         // return view('upload');
-        $validator = \Validator::make($request->all(),[
+        $validator = \Validator::make($request->all(), [
             'file'=> 'required|max:5000|mimes:xlsx,xls,csv,png'
         ]);
-        if ($validator->passes()){
-           $sheet_type=$request->sheetType;
+        if ($validator->passes()) {
+            $sheet_type=$request->sheetType;
             
-           if($sheet_type=='company'){
-            $file = $request-> file('file');
-            Excel::import(new CompanyImport,$file);
-            // return back()-> withStatus('saved');
-            return redirect()->back()
-            ->with(['success'=>'conpany file uploaded successfully']);
-           }
+            if ($sheet_type=='company') {
+                $file = $request-> file('file');
+                Excel::import(new CompanyImport, $file);
+             // return back()-> withStatus('saved');
+                return redirect()->back()
+                ->with(['success'=>'conpany file uploaded successfully']);
+            }
 
-           if($sheet_type=='budget'){
-            $file = $request-> file('file');
-            Excel::import(new BudgetImport,$file);
-            // return back()-> withStatus('saved');
-            return redirect()->back()
-            ->with(['success'=>'budject file uploaded successfully']);
-           }
-           if($sheet_type=='payment'){
-            $file = $request-> file('file');
-            Excel::import(new PaymentImport,$file);
-            // return back()-> withStatus('saved');
-            return redirect()->back()
-            ->with(['success'=>'payment file uploaded successfully']);
-           }
-           if($sheet_type=='ministry'){
-            $file = $request-> file('file');
-            Excel::import(new MinistryImport,$file);
-            // return back()-> withStatus('saved');
-            return redirect()->back()
-            ->with(['success'=>'ministry file uploaded successfully']);
-           }
-           if($sheet_type=='cabinet'){
-            $file = $request-> file('file');
-            Excel::import(new CabinetImport,$file);
-            // return back()-> withStatus('saved');
-            return redirect()->back()
-            ->with(['success'=>'cabinet file uploaded successfully']);
-           }
-           if($sheet_type=='people'){
-            $file = $request-> file('file');
-            Excel::import(new PeopleImport,$file);
-            // return back()-> withStatus('saved');
-            return redirect()->back()
-            ->with(['success'=>'people file uploaded successfully']);
-           }
+            if ($sheet_type=='budget') {
+                $file = $request-> file('file');
+                Excel::import(new BudgetImport, $file);
+             // return back()-> withStatus('saved');
+                return redirect()->back()
+                ->with(['success'=>'budject file uploaded successfully']);
+            }
+            if ($sheet_type=='payment') {
+                $file = $request-> file('file');
+                Excel::import(new PaymentImport, $file);
+             // return back()-> withStatus('saved');
+                return redirect()->back()
+                ->with(['success'=>'payment file uploaded successfully']);
+            }
+            if ($sheet_type=='ministry') {
+                $file = $request-> file('file');
+                Excel::import(new MinistryImport, $file);
+             // return back()-> withStatus('saved');
+                return redirect()->back()
+                ->with(['success'=>'ministry file uploaded successfully']);
+            }
+            if ($sheet_type=='cabinet') {
+                $file = $request-> file('file');
+                Excel::import(new CabinetImport, $file);
+             // return back()-> withStatus('saved');
+                return redirect()->back()
+                ->with(['success'=>'cabinet file uploaded successfully']);
+            }
+            if ($sheet_type=='people') {
+                $file = $request-> file('file');
+                Excel::import(new PeopleImport, $file);
+             // return back()-> withStatus('saved');
+                return redirect()->back()
+                ->with(['success'=>'people file uploaded successfully']);
+            }
            
-           if($sheet_type=='sector'){
-            $file = $request-> file('file');
-            Excel::import(new SectorImport,$file);
-            // return back()-> withStatus('saved');
-            return redirect()->back()
-            ->with(['success'=>'sector file uploaded successfully']);
-           }
-           if($sheet_type=='expense'){
-            $file = $request-> file('file');
-            Excel::import(new SectorImport,$file);
-            // return back()-> withStatus('saved');
-            return redirect()->back()
-            ->with(['success'=>'expense file uploaded successfully']);
-           }
+            if ($sheet_type=='sector') {
+                $file = $request-> file('file');
+                Excel::import(new SectorImport, $file);
+             // return back()-> withStatus('saved');
+                return redirect()->back()
+                ->with(['success'=>'sector file uploaded successfully']);
+            }
+            if ($sheet_type=='expense') {
+                $file = $request-> file('file');
+                Excel::import(new SectorImport, $file);
+             // return back()-> withStatus('saved');
+                return redirect()->back()
+                ->with(['success'=>'expense file uploaded successfully']);
+            }
 
-             if($sheet_type=='citizen'){
-            $file = $request-> file('file');
-            Excel::import(new CitizenImport,$file);
+            if ($sheet_type=='citizen') {
+                $file = $request-> file('file');
+                Excel::import(new CitizenImport, $file);
             // return back()-> withStatus('saved');
-            return redirect()->back()
-            ->with(['success'=>'citizen file uploaded successfully']);
-           }
-           
-           
-           
-           
-           else{
-        return redirect()->back()
+                return redirect()->back()
+                ->with(['success'=>'citizen file uploaded successfully']);
+            } else {
+                return redirect()->back()
                 ->with(['errors'=>[0=>'ivalid excel format']]);
-    
-
-           }
+            }
          
             // $dataTime = date('Ymd_His');
             // $file = $request-> file('file');
@@ -131,12 +126,10 @@ class UploadController extends Controller
 
             // return redirect()->back()
             // ->with(['success'=>'file uploaded successfully']);
-        }else{
+        } else {
             return redirect()->back()
-            ->with(['errors'=>$validator->errors()->all( )]);
+            ->with(['errors'=>$validator->errors()->all()]);
         // return 'File has been uploaded successfully';
-
         }
     }
-
 }

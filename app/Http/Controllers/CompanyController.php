@@ -83,7 +83,7 @@ class CompanyController extends Controller
      */
     public function viewCompanies()
     {
-         if (Gate::denies('active', 'manage')) {
+        if (Gate::denies('active', 'manage')) {
             return redirect(route('profile'));
         }
         
