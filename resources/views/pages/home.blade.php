@@ -5,60 +5,57 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
 integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" />
 <link rel="stylesheet" href="/css/modal/style.css">
 @endpush
 @section('banner')
-<!-- banner -->
-<div class=" background">
-  <div class="banner">
-    {{-- <img src="{{asset('images/flag.jpg')}}" alt=""> --}}
-    <div class="carets" id="caret">
-      <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left">
-      <img src="{{asset('images/angle-right.svg')}}" alt="" class="arrow-right">
-    </div>
-    <div class="target">
-      <div class="summary col-md-7 col-sm-9">
-          <h4 class="slightly-bold"> In 2019,<br> the government spent </h4>
-          <h4 class="bolding"> $4.45 trillion.</h4>
-          <div class="para">
-            <p>ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities across Nigeria. 
-              Learn more on how this money was spent with tools to help you navigate spending from top to bottom.</p>
+<!-- Background start -->
+<div class="background">
+  <div class="banner pt-5 container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="sum">
+        <h4> In 2019,<br> the government spent </h4>
+          <h4> $4.45 trillion.</h4>
+          <div>
+            <p>ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities across Nigeria. Learn more on how this money was spent with tools to help you navigate spending from top to bottom.</p>
           </div>
+          
+        </div>
       </div>
-      <div class="carets my-1 p-3" id="caret-alt">
-        <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left2">
-        <img src="{{asset('images/angle-right.svg')}}" alt="" class="arrow-right2">
-      </div>
-      <div class="gallery p-3">
-        <div class="card1 card">
-            {{-- <p class="tag">New</p> --}}
-          <div class="project">
-            <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
-            <p>  Ministry of Power, Works and Housing</p>
-              <div class="d-flex justify-content-between mt-2 align-items-center">
-                  <p>Cost of Project: </p>
-                  <p id="cost">&#8358;20bn</p>
-              </div>
+      <div class="col-md-4 slick">
+        <div class="slide slide-1">
+          <div class="slider-caption">
+            <p>Construction of lagos-Ibadan Express road Ministry of Power, Works and Housing Cost of Project: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8358;20,000,000,000.00</span></p>
           </div>
         </div>
-        <div class="card2 card">
-          <div class="project">
-            <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
-            <p>  Ministry of Power, Works and Housing</p>
-            <div class="d-flex justify-content-between mt-2">
-                <p>Cost of Project: </p>
-                <p id="cost">&#8358;20bn</p>
-            </div>
+        <div class="slide slide-2">
+          <div class="slider-caption">
+            <p>Construction of lagos-Ibadan Express road Ministry of Power, Works and Housing Cost of Project: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8358;20,000,000,000.00</span></p>
+          </div>
+        </div>
+
+        <div class="slide slide-3">
+          <div class="slider-caption">
+            <p>Construction of lagos-Ibadan Express road Ministry of Power, Works and Housing Cost of Project: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8358;20,000,000,000.00</span></p>
+          </div>
+        </div>
+        <div class="slide slide-4">
+          <div class="slider-caption">
+            <p>Construction of lagos-Ibadan Express road Ministry of Power, Works and Housing Cost of Project: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8358;20,000,000,000.00</span></p>
           </div>
         </div>
       </div>
     </div>
-    <button class="btn scroll-down" >
-      <a href="#expenses"></a>
-    </button>
   </div>
+  <button class="btn scroll-down" >
+            <a href="#expenses"></a>
+          </button>
 </div>
+<!-- Background end -->
 <div class="scroll-down">
+ 
   <a href="#compu">
   <img src="{{asset('img\min_comment_img\mdi_arrow-right-drop-circle.png')}}" alt="arrow">
   </a>
@@ -318,8 +315,9 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
 
 @endsection
 @section('js')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous"></script>
 <script src="{{asset('js/index.js')}}"></script>
 <script src="{{asset('js/chart.js')}}"></script>
 <script src="/js/subscription.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @endsection
