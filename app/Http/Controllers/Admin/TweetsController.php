@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Expense;
 use App\Payment;
@@ -38,8 +40,8 @@ public function __construct()
     public function index()
     {
         //
-        $tweets = Tweet::with(['expenses'])->get();
-        return view('pages.tweet.index')->with(['tweets' => $tweets]);
+        $tweets = DB::table('tweets');
+        return view('pages.tweets.index')->with(['tweets' => $tweets]);
     }
 
     public function create()
@@ -54,17 +56,19 @@ public function __construct()
  */
     public function store(Request $request)
     {   
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'status' => 'required',
-            'handle' => 'required',
+            'company_twitter' => 'required',
+            'ministry_twitter' => 'required',
+            'twitter_handle' => 'required',
         ]);
-        $input = $request->all();
-        if ($validation->passes()) {
-            $tweet = $this->tweet->status($input);
-            Twitter::postTweet(array('status' => $tweet, 'format' => 'json'));
-            return Redirect::route('pages.tweets.index');
+        if ($validator->validate()) {
+            $tweeter = new Tweet();
+            $tweet = array($request->all());
+            //Twitter::postTweet(array('status' => $tweet, 'format' => 'json'));
+            return view('pages.tweets.index')->with(['tweets' => $tweet]);
         }
-        return Redirect::route('pages.tweets.create')
+        return view('pages.errors.404_error')
         ->withInput()
         ->withErrors($validation)
         ->with('message', 'There were validation errors.');

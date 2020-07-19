@@ -45,7 +45,8 @@
                                     </tr>
                                 </thead>
                                 
-                                
+                                @inject('tweeter', 'App\Http\Controllers\Admin\TweetsController')
+                                {{$tweets = $tweeter->index()}}
                                 <tbody>
                                 @if (count($tweets ) > 0)
                                  @foreach ($tweets as $tweet)

@@ -15,6 +15,12 @@ class Tweet
      * @param $media
      * @param string $status
      */
+    protected $fillable = [
+        'status', 
+    ];
+    protected $table = 'tweets';
+    protected $primaryKey = 'id';
+
     public function __construct($status = ' ', $media = null)
     {
         $this->status = $status;

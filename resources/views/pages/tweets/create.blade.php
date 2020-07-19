@@ -43,7 +43,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">Text</label>
-                                                <textarea id="inputEmail" name="body" type="textarea"
+                                                <textarea id="inputEmail" name="status" type="textarea"
                                                  placeholder="e.g example" class="form-control" required >Type your tweet here</textarea>
                                                 
                                             </div>
