@@ -160,4 +160,5 @@ Route::get('/admin', function()
 
 Route::get('/startRT', 'TwitterBot@startLiveRetweet');
 Route::get('/stopRT', 'TwitterBot@stopLiveRetweet');
+Route::post('/post_tweet','TwitterBot@sendTweet');
 
