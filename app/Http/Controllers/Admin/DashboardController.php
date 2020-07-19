@@ -49,11 +49,16 @@ class DashboardController extends Controller
 
 
         $feedbacks = Feedback::all();
+        $counter_feedback = count($feedbacks);
 
         return view('backend.dashboard')
         ->with(['total_ministry' => $total_ministry,
-        'total_company' => $total_company, 'total_budgets' => $total_budgets,
-        'amount' => $amount, 'recent_expenses' => $recent_expenses, 'feedbacks'=> $feedbacks
+                'total_company' => $total_company, 
+                'total_budgets' => $total_budgets,
+                'amount' => $amount, 
+                'recent_expenses' => $recent_expenses,
+                 'feedbacks'=> $feedbacks,
+                 'counter_feedback'=> $counter_feedback,
         ]);
     }
 }
