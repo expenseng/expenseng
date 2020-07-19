@@ -15,45 +15,35 @@ class FeedbackSeeder extends Seeder
             [
                 'firstName'=> 'Adamu',
                 'lastName'=> 'Adamu',
-                'ministry_id'=> 1,
-                'sector_id'=>2,
-                'cabinet_id'=>2,
+                'ministry_id'=> 'Foreign Affairs',
                 'position'=> 'Minister',
                 'isApprove'=> 0
             ],
             [
                 'firstName'=> 'Olamilekan',
                 'lastName'=> 'Adegbite',
-                'ministry_id'=> 3,
-                'sector_id'=>2,
-                'cabinet_id'=>2,
+                'ministry_id'=> 'Petroleum',
                 'position'=> 'Minister',
                 'isApprove'=> 0
             ],
             [
                 'firstName'=> 'Clement',
                 'lastName'=> 'Agba',
-                'ministry_id'=> 5,
-                'sector_id'=>2,
-                'cabinet_id'=>2,
+                'ministry_id'=> 'Works',
                 'position'=> 'Minister',
                 'isApprove'=> 0
             ],
             [
                 'firstName'=> 'Sunday',
                 'lastName'=> 'Dare',
-                'ministry_id'=> 2,
-                'sector_id'=>2,
-                'cabinet_id'=>2,
+                'ministry_id'=> 'Finance',
                 'position'=> 'Minister',
                 'isApprove'=> 0
             ],
             [
                 'firstName'=> 'Adamu',
                 'lastName'=> 'Adamu',
-                'ministry_id'=> 6,
-                'sector_id'=>2,
-                'cabinet_id'=>2,
+                'ministry_id'=> 'Power',
                 'position'=> 'Minister',
                 'isApprove'=> 0
             ]

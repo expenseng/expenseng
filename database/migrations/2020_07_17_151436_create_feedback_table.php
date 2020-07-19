@@ -14,12 +14,10 @@ class CreateFeedbackTable extends Migration
     public function up()
     {
         Schema::create('feedback', function (Blueprint $table) {
-            $table->increments('íd');
+            $table->id();
             $table->string('firstName');
             $table->string('lastName');
-            $table->integer('ministry_id');
-            $table->integer('sector_id');
-            $table->integer('cabinet_id');
+            $table->string('ministry_id');
             $table->string('position');
             $table->string('isApprove');
             $table->timestamps();

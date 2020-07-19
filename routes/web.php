@@ -96,4 +96,8 @@ Auth::routes();
     //People CRUD
     Route::get('/admin/{company}/{people}', 'Admin\CompanyController@showPeople');
 
+   //  Feedback Crud 
+   Route::get('/feedback/approve/{id}', 'FeedbackController@approve')->name('feedback.approve');
+   Route::get('/feedback/ignore/{id}', 'FeedbackController@ignore')->name('feedback.ignore');
+
  });

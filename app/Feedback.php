@@ -18,8 +18,6 @@ class Feedback extends Model
         'firstName',
         'lastName',
         'ministry_id',
-        'sector_id',
-        'cabinet_id',
         'position',
         'isApprove',
     ];

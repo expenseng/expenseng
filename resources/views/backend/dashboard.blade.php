@@ -5,6 +5,17 @@
 @endpush
 
 @section('content')
+@if($message = Session::get('success'))
+    <div class="alert alert-success alert-block">
+      <button type="button" class="close" data-dismiss="alert">x</button>
+      <strong>{{$message}}</strong>
+    </div>
+  @endif
+
+  @if(Session::has('flash_message'))
+    <p class="alert {{Session::get('alert-class','alert-info')}}">{{Session::get('flash_message')}}</p>
+  @endif
+  {{$counter_feedback}}
 <div class="dashboard-wrapper">
     <div class="dashboard-ecommerce">
         <div class="container-fluid dashboard-content ">
@@ -38,7 +49,7 @@
              <!-- ============================================================== -->
             <!-- end flash messages  -->
             <!-- ============================================================== -->
-            
+           
             <div class="ecommerce-widget">
 
                 <div class="row">
@@ -502,10 +513,10 @@
                                                 <tr>
                                                     <td>{{$feedback->firstName}} </td>
                                                     <td>{{$feedback->lastName}}  </td>
-                                                    <td>{{$feedback->position}}</td>
+                                                    <td>{{$feedback->ministry_id}}</td>
                                                     <td>
-                                                        <a href='{{}}' class="btn btn-success btn-sm ">Approve</button>
-                                                        <a href='{{}}' class="btn btn-danger btn-sm">Ignore</button>
+                                                        <a href="{{route('feedback.approve', ['id' => $feedback->id])}}" class="btn btn-success btn-sm ">Approve</button>
+                                                        <a href="{{route('feedback.ignore', ['id' => $feedback->id])}}" class="btn btn-danger btn-sm">Ignore</button>
 
                                                     </td>
                                                 </tr>

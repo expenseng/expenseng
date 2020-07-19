@@ -4,6 +4,12 @@
     <link rel="stylesheet" href="{{ asset('css/index.css')}}">
   @endpush
   @section('banner')
+  @if($message = Session::get('success'))
+    <div class="alert alert-success alert-block">
+      <button type="button" class="close" data-dismiss="alert">x</button>
+      <strong>{{$message}}</strong>
+    </div>
+  @endif
     <!-- banner -->
     <div class=" background">
       <div class="container banner">
@@ -327,25 +333,25 @@
           <label for="ministry">Select Cabinet</label>
           <select id="inputState" class="form-control" name="ministry_id">
             <option selected value="1">Works</option>
-            <option value="2">Housing</option>
-            <option value="3">Interior</option>
-            <option value="4">Petroleum</option>
-            <option value="5">Finance</option>
-            <option value="6">Power</option>
-            <option value="7">Health</option>
-            <option value="8">Labour</option>
-            <option value="9">Environment</option>
-            <option value="10">Water Resouirces</option>
-            <option value="11">Communication</option>
-            <option value="12">Aviation</option>
-            <option value="13">Defense</option>
-            <option value="14">Information</option>
-            <option value="15">Youths and Sports</option>
-            <option value="16">Police Affairs</option>
-            <option value="17">Education</option>
-            <option value="18">Justice</option>
-            <option value="19">Agriculture</option>
-            <option value="20">Women Affairs</option>
+            <option value="Housing">Housing</option>
+            <option value="Interior">Interior</option>
+            <option value="Petroleum">Petroleum</option>
+            <option value="Finance">Finance</option>
+            <option value="Power">Power</option>
+            <option value="Health">Health</option>
+            <option value="Labour">Labour</option>
+            <option value="Environment">Environment</option>
+            <option value="Water Resouirces">Water Resouirces</option>
+            <option value="Communication">Communication</option>
+            <option value="Aviation">Aviation</option>
+            <option value="Defense">Defense</option>
+            <option value="Information">Information</option>
+            <option value="Youths and Sports">Youths and Sports</option>
+            <option value="Police Affairs">Police Affairs</option>
+            <option value="Education">Education</option>
+            <option value="Justice">Justice</option>
+            <option value="Agriculture">Agriculture</option>
+            <option value="Women Affairs">Women Affairs</option>
           </select>
         </div>
        <center>
