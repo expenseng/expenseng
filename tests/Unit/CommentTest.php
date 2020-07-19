@@ -20,6 +20,6 @@ class CommentTest extends TestCase
      * A test of creating a comment.
      */
     public function testCreateComment(){
-        $response = $this->post('/comments');
+        $response = $this->post('/api/comments/');
     }
 }
