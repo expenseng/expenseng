@@ -19,7 +19,7 @@ class SubscriptionController extends Controller
         }
 
         $subscribe = Subscription::all()->simplePaginate(10);
-        return view('backend.subscription.index', compac('subscribe'));
+        return view('backend.subscription.index', compact('subscribe'));
     }
 
 
