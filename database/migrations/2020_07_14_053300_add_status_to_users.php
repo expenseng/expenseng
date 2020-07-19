@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddStatusAndRoleToUsers extends Migration
+class AddStatusToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -16,8 +16,6 @@ class AddStatusAndRoleToUsers extends Migration
         Schema::table('users', function (Blueprint $table) {
             //
             $table->integer('status_id')->nullable();
-            $table->integer('role_id')->nullable();
-
         });
     }
 
@@ -30,7 +28,7 @@ class AddStatusAndRoleToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->dropColumn(['status_id', 'role_id']);
+            $table->dropColumn(['status_id']);
         });
     }
 }

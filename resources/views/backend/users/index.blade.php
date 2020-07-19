@@ -7,9 +7,13 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/extras/datatables/css/fixedHeader.bootstrap4.css">
     <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+    <!-- causes toggle error in navbar -->
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+
+    <!-- <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script> -->
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    
     <style type="text/css">
         .dataTable>tbody>tr>td, 
         .dataTable>tbody>tr>th, 
@@ -26,13 +30,22 @@
 @section('content')
 <div class="content">
     <div class="container-fluid">
+
+        {{-- Flash message --}}
+        <div id="alert">
+         @include('backend.partials.flash')
+        </div>
+         {{-- Flash message end--}}
+
         <div class="row">
             <div class="col-xl-12">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="mb-0" style="float:left">All Users </h3>
+                        @can('add')
                         <a href="{{'/admin/users/create/'}}" class="btn btn-primary" style="float:right">ADD NEW</a>
+                        @endcan
                         <p></p>
                     </div>
                     <div class="card-body">
@@ -45,7 +58,9 @@
                                     <th>Email</th>
                                     <th>Role</th>
                                     <th>Status</th>
+                                    @can('manage')
                                     <th>Action</th>
+                                    @endcan
                                     </tr>
                                 </thead>
                                 
@@ -57,25 +72,25 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
-                                        <td>
-                                             @if($user->role)
-                                                {{$user->role->name }}
-                                            @endif
-                                        </td>
+                                        <td>{{implode(', ', $user->roles->pluck('name')->toArray())}}</td>
                                         <td>
                                             @if($user->status)
                                                 {{$user->status->name}}
                                             @endif
                                         </td>
                                         <td>
+                                            @can('edit')
                                             <a href="{{'/admin/users/edit/' . $user->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
+                                            @endcan
+                                            @can('delete')
                                             <form method="POST" style="display: inline-flex;" action="{{'/admin/users/delete/'. $user->id}}">
                                                @method('delete')
                                                 @csrf
                                                 <a type="submit" class="trash delete-user">
                                                     <i class="fa fa-trash" style="color: red"></i>
                                                 </a>
-                                            </form>          
+                                            </form> 
+                                            @endcan         
                                         </td>
                                     </td>          
                                 </tr>
@@ -134,6 +149,15 @@
     });
 </script>
     
-
+ <script>
+    $("document").ready(function(){
+    setTimeout(function(){
+       $("#alert").remove();
+    }, 3000 ); // 5 secs
+    $("#alert").fadeTo(2000, 500).slideUp(500, function(){
+    $("#alert").slideUp("500");
+});
+});
+</script>
 
 @endsection

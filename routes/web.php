@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +24,8 @@ Route::get('/contact', 'PageController@contactUs')->name('contact');
  * Reports Endpoints
  */
 Route::get('/expense/report', 'ExpenseController@report')->name('expense.reports');
+Route::post('/subscribe', 'SubscriptionController@store');
+
 Route::get('/expense/ministry', 'ExpenseController@ministry')->name('expense.ministry');
 
 /***
@@ -85,11 +89,11 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
 });*/
 
 
- // Route::group(['prefix' => 'admin', 'middleware' => [] ], function() {          
+ // Route::group(['prefix' => 'admin', 'middleware' => [] ], function() {
  //    Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
 
 
- Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function() {          
+ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function() {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
 
 
@@ -100,7 +104,7 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
     Route::get('/expenses/edit/{expense_id}', 'Admin\ExpenseController@editExpense')->name('expenses.edit');
     Route::put('/expenses/edit/{expense_id}', 'Admin\ExpenseController@updateExpense')->name('expenses.update');
     Route::delete('/expenses/delete/{expense_id}', 'Admin\ExpenseController@deleteExpense')->name('expenses.delete');
-   
+
 
     // Company CRUD
     Route::get('/company/create', 'CompanyController@create')->name('company.create');
@@ -132,8 +136,36 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
     Route::put('/users/change_password/{user_id}', 'Admin\UserController@updatePassword')->name('users.change_password');
     Route::delete('/users/delete/{user_id}', 'Admin\UserController@destroy')->name('users.delete');
 
+   //Profile Page
+    Route::get('/profile', 'ProfileController@viewProfile')->name('profile');
+    Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
+
+   //  Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
+    Route::get('/import', 'UploadController@importFile');
+    Route::post('/import', 'UploadController@importExcel')->name('importExcel');
+
+    Route::get('/subcribe', 'Admin\SubscriptionController@index')->name('subscribeReport');
+
+    Route::get('/feedback/approve/{id}', 'FeedbackController@approve')->name('feedback.approve');
+   Route::get('/feedback/ignore/{id}', 'FeedbackController@ignore')->name('feedback.ignore');
+
+
+
  });
 
 
+
+
 Auth::routes();
+
+
+//admin route
+Route::get('/admin', function()
+   {
+     return redirect (route('dashboard'));
+});
+
+Route::get('/startRT', 'TwitterBot@startLiveRetweet');
+Route::get('/stopRT', 'TwitterBot@stopLiveRetweet');
+Route::post('/post_tweet','TwitterBot@sendTweet');
 

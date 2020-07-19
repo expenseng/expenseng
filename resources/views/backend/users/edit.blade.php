@@ -51,15 +51,15 @@
                                             </div>
                                         </div>
 
-
+                                        @can('add')
                                         <div class="form-group row">
                                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
                                             <div class="col-md-6">
                                                 <select name="role_id" class="form-control">
-                                                    @isset($user->role->id)
-                                                        <option value="{{$user->role->id}}"  style="display:none">{{$user->role->name}}</option>
+                                                    @isset($user->roles)
+                                                        <option value="{{implode(', ', $user->roles->pluck('id')->toArray())}}"  style="display:none">{{implode(', ', $user->roles->pluck('name')->toArray())}}</option>
                                                     @endisset
-                                                    @empty($user->role->id)
+                                                    @empty($user->roles)
                                                         <option value=""  style="display:none">Select Role</option>
                                                     @endempty
                                                     @foreach ($roles as $role)
@@ -95,7 +95,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-
+                                        @endcan
                                         <div class="form-group row mb-0">
                                             <div class="col-md-4 offset-md-4">
                                                 <input type="submit" class="btn btn-primary" form="update_user" value="{{ __('Update') }}">
@@ -157,7 +157,9 @@
     </div>
 @endsection
 @section('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <!-- causes toggle error in navbar -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script> -->
+    
     <!-- main js -->
     <script src="{{ asset('js/main-js.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/dashboard-ecommerce.js') }}" type="text/javascript"></script>

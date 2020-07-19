@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Gate;
 use App\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class CompanyController extends Controller
 {
-
     public function index()
     {
         $companies = Company::paginate(20);
@@ -26,7 +27,8 @@ class CompanyController extends Controller
         $monthlyTotals = $this->getMonthlyTotal();
         return [
             'status' => 'success',
-            'message' => 'Total amounts received by various Contractors and Organsations',
+            'message' =>
+                'Total amounts received by various Contractors and Organsations',
             'data' => $yearlyTotals,
         ];
     }
@@ -34,7 +36,11 @@ class CompanyController extends Controller
     public function getYearlyTotal()
     {
         $yearlyTotals = DB::table('expenses')
-            ->select(DB::raw('company, SUM(amount) as total_amount, YEAR(payment_date) as year'))
+            ->select(
+                DB::raw(
+                    'company, SUM(amount) as total_amount, YEAR(payment_date) as year'
+                )
+            )
             ->groupBy(DB::raw('(company) ASC, YEAR(payment_date) ASC'))
             ->get();
         return $yearlyTotals;
@@ -43,10 +49,16 @@ class CompanyController extends Controller
     public function getMonthlyTotal()
     {
         $monthlyTotals = DB::table('expenses')
-            ->select(DB::raw('company, SUM(amount) as total_amount,
+            ->select(
+                DB::raw('company, SUM(amount) as total_amount,
                 YEAR(payment_date) as year,
-                Month(payment_date) as month'))
-            ->groupBy(DB::raw('(company) ASC, YEAR(payment_date) ASC, Month(payment_date) ASC'))
+                Month(payment_date) as month')
+            )
+            ->groupBy(
+                DB::raw(
+                    '(company) ASC, YEAR(payment_date) ASC, Month(payment_date) ASC'
+                )
+            )
             ->get();
         return $monthlyTotals;
     }
@@ -58,6 +70,9 @@ class CompanyController extends Controller
      */
     public function create()
     {
+        if (Gate::denies('add')) {
+            return redirect(route('company.view'));
+        }
         return view('backend.company.create');
     }
 
@@ -68,22 +83,28 @@ class CompanyController extends Controller
      */
     public function viewCompanies()
     {
+         if (Gate::denies('active', 'manage')) {
+            return redirect(route('profile'));
+        }
+        
         $companies = Company::all();
 
-        return view('backend.company.view')->with(['companies' => $companies]);
+        return view('backend.company.view')
+        ->with([
+            'companies' => $companies,
+            'count' => 0
+            ]);
     }
 
     public function createCompany(Request $request)
     {
-        validator(
-            [
-                'company_name' => 'required',
-                'company_shortname' => 'required',
-                'company_twitter' => 'required',
-                'company_ceo' => 'required',
-                'ceo_handle' => 'required'
-            ]
-        );
+        validator([
+            'company_name' => 'required',
+            'company_shortname' => 'required',
+            'company_twitter' => 'required',
+            'company_ceo' => 'required',
+            'ceo_handle' => 'required',
+        ]);
 
         $new_company = new Company();
         $new_company->name = $request->company_name;
@@ -94,60 +115,61 @@ class CompanyController extends Controller
         $save_new_company = $new_company->save();
 
         if ($save_new_company) {
-            echo ("<script>alert('New Company created successfully');
-             window.location.replace('/admin/company/view');</script>");
+            return "<script>alert('$request->company_name Company created Successfully');
+            window.location.replace('/admin/company/view')";
         } else {
-            echo ("<script>alert('Cannot create New Company'); 
-            window.location.replace('/admin/company/create');</script>");
+            Session::flash('flash_message', 'Cannot create new Company!');
+            return redirect()->back();
         }
     }
 
     public function showEditForm($id)
     {
+        if (Gate::denies('edit')) {
+            return redirect(route('company.view'));
+        }
+
         $details = Company::findOrFail($id);
         return view('backend.company.edit')->with(['details' => $details]);
     }
 
     public function editCompany(Request $request, $id)
     {
-        validator(
-            [
-                'company_name' => 'required',
-                'company_shortname' => 'required',
-                'company_twitter' => 'required',
-                'company_ceo' => 'required',
-                'ceo_handle' => 'required'
-            ]
-        );
-        $update = Company::where('id', $id)
-        ->update(
-            [
-                'name' => $request->company_name,
-                'shortname' => $request->company_shortname,
-                'industry' => $request->company_twitter,
-                'ceo' => $request->company_ceo,
-                'twitter' => $request->ceo_handle
-            ]
-        );
+        validator([
+            'company_name' => 'required',
+            'company_shortname' => 'required',
+            'company_twitter' => 'required',
+            'company_ceo' => 'required',
+            'ceo_handle' => 'required',
+        ]);
+        $update = Company::where('id', $id)->update([
+            'name' => $request->company_name,
+            'shortname' => $request->company_shortname,
+            'industry' => $request->company_twitter,
+            'ceo' => $request->company_ceo,
+            'twitter' => $request->ceo_handle,
+        ]);
         if ($update) {
-            echo ("<script>alert(' Company details edited successfully');
-             window.location.replace('/admin/company/view');</script>");
+            echo "<script>alert(' Company details edited successfully');
+            window.location.replace('/admin/company/view');</script>";
         } else {
-            echo ("<script>alert('Cannot edit Company detail'); 
-            window.location.replace('/admin/company/edit/$id');</script>");
+            Session::flash('flash_message', ' Company was not edited!');
+            return redirect()->back();
         }
     }
 
     public function deleteCompany($id)
     {
-
+        if (Gate::denies('delete')) {
+            return redirect(route('company.view'));
+        }
         $delete = Company::where('id', $id)->delete();
         if ($delete) {
-            echo ("<script>alert(' Company  deleted successfully');
-             window.location.replace('/admin/company/view');</script>");
+            echo "<script>alert(' Company  deleted successfully');
+             window.location.replace('/admin/company/view');</script>";
         } else {
-            echo ("<script>alert('Cannot Delete Company'); 
-            window.location.replace('/admin/company/view');</script>");
+            Session::flash('flash_message', ' Company was not deleted!');
+            return redirect()->back();
         }
     }
 }
