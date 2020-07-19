@@ -50,7 +50,7 @@
           </li>
 
           <li class="nav-item ">
-            <a class="nav-link" href="{{Route::is('subscribe')}}">
+            <a class="nav-link" href="{{Route::is('subscribeReport')? '#' :route('subscribeReport')}}">
               <i class="material-icons">supervisor_account</i>
               <p>Subcriptions</p>
             </a>

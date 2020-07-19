@@ -144,7 +144,7 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
     Route::get('/import', 'UploadController@importFile');
     Route::post('/import', 'UploadController@importExcel')->name('importExcel');
 
-    Route::post('/subcribe', 'Admin\SubscriptionController@index')->name('subscribe');
+    Route::get('/subcribe', 'Admin\SubscriptionController@index')->name('subscribeReport');
 
 
 
