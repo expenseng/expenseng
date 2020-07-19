@@ -16,13 +16,13 @@ class MinistryImport implements ToModel
     public function model(array $row)
     {
         return new Ministry([
-    'code'      => $row[0],
-    'name'      => $row[1],
-    'shortname'      => $row[2],
-    'twitter'     => $row[3],
-    'head'     => $row[4],
-    'website'     => $row[5],
-    'sector_id'     => $row[6],
+        'code'      => $row[0],
+        'name'      => $row[1],
+        'shortname'      => $row[2],
+        'twitter'     => $row[3],
+        'head'     => $row[4],
+        'website'     => $row[5],
+        'sector_id'     => $row[6],
         ]);
     }
 }

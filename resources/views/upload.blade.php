@@ -12,11 +12,11 @@
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" />
     <style type="text/css">
-        .dataTable>tbody>tr>td, 
-        .dataTable>tbody>tr>th, 
-        .dataTable>tfoot>tr>td, 
-        .dataTable>tfoot>tr>th, 
-        .dataTable>thead>tr>td, 
+        .dataTable>tbody>tr>td,
+        .dataTable>tbody>tr>th,
+        .dataTable>tfoot>tr>td,
+        .dataTable>tfoot>tr>th,
+        .dataTable>thead>tr>td,
         .dataTable>thead>tr>th {
             padding: 12px!important;
         }
@@ -38,7 +38,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                  
+
 
                                     <form  action="{{route('importExcel')}}"
                                       method='post' enctype='multipart/form-data'>
@@ -47,18 +47,18 @@
 
                                     @if(session('errors'))
                                            @foreach($errors as $error)
-                                    <li>
-                                    {{$error}}
-                                    </li>
+
+                                    <div class="alert alert-danger">{{$error}}</div>
+
                                            @endforeach
                                     @endif
 
                                     @if(session('success'))
-                                   
-                                    <li>
+
+                                    <div class="alert alert-success">
                                     {{ session('success') }}
-                                    </li>
-                                    
+                                    </div>
+
                                     @endif
 
                                     <br>
@@ -86,8 +86,8 @@
                                         <br>
                                         <br>
                                     <button type='submit'>upload file</button>
-                                    
-                                    
+
+
                                     </form>
                                 </div>
                             </div>
@@ -104,7 +104,7 @@
 
 @section('js')
 
-    
+
     <!-- main js -->
     <script src="{{ asset('js/main-js.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/dashboard-ecommerce.js') }}" type="text/javascript"></script>
@@ -141,7 +141,7 @@
             }
         });
     </script>
-    
+
 
 
 @endsection
