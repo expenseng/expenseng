@@ -146,6 +146,9 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
 
     Route::get('/subcribe', 'Admin\SubscriptionController@index')->name('subscribeReport');
 
+    Route::get('/feedback/approve/{id}', 'FeedbackController@approve')->name('feedback.approve');
+   Route::get('/feedback/ignore/{id}', 'FeedbackController@ignore')->name('feedback.ignore');
+
 
 
  });
