@@ -51,7 +51,7 @@
                                             <tr>
                                             @foreach ($subscribe as $sub)
                                                 <td>
-                                                    {{++$count}}
+                                                    {{$sub->id}}
                                                 </td>
                                                 <td>{{$sub->name}}</td>
                                                 <td>{{$sub->email}}</td>
