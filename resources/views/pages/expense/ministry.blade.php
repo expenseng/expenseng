@@ -14,6 +14,7 @@
 
 @section('content')
 	<!-- Breadcrumb start -->
+    {{ Breadcrumbs::render('expense.ministry') }}
 	<header class="container section-wrapper">
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb bg-white">
@@ -127,7 +128,7 @@
 						</div>
 						
 						<!---PAGINATION--->
-						{{-- @include('partials.pagination', ['data' => $collection['summary']]) --}}
+						{{ @include('partials.pagination', ['data' => $collection['summary']]) }}
 					</div>
 				</div>
 			</section>
