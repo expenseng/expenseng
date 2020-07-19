@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Budget;
+use App\Expense;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
