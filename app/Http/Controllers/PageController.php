@@ -124,6 +124,6 @@ class PageController extends Controller
     public function ministryCharts()
     { $budgets = DB::table('Expense')->oldest()->take()
  
-        return response()->json(['anyDataKey'=>$expense_charts])
+        return response()->json(['anyDataKey'=>$expense_charts]);
     }
 }
