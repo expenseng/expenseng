@@ -5,8 +5,10 @@ namespace App\Imports;
 use App\Budget;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class BudgetImport implements ToModel
+class BudgetImport implements ToModel,WithHeadingRow
 {
     /**
      * @param array $row
@@ -16,11 +18,11 @@ class BudgetImport implements ToModel
     public function model(array $row)
     {
         return new Budget([
-           'amount'     => $row[0],
-           'project_name'    => $row[1], 
-           'code'    => $row[2], 
-           'year'    => $row[3], 
-           'classification'    => $row[4], 
+           'amount'     => $row['amount'],
+           'project_name'    => $row['project_name'], 
+           'code'    => $row['code'], 
+           'year'    => $row['year'], 
+           'classification'    => $row['classification'], 
         ]);
     }
 }

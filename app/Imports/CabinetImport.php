@@ -5,8 +5,10 @@ namespace App\Imports;
 use App\Cabinet;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class CabinetImport implements ToModel
+class CabinetImport implements ToModel,WithHeadingRow
 {
     /**
      * @param array $row
@@ -16,11 +18,11 @@ class CabinetImport implements ToModel
     public function model(array $row)
     {
         return new Cabinet([
-           'name'     => $row[0],
-    'twitter_handle'=> $row[0],
-    'role'=> $row[0],
-    'avatar'=> $row[0],
-    'ministry_code'=> $row[0],
+           'name'     => $row['name'],
+    'twitter_handle'=> $row['twitter_handle'],
+    'role'=> $row['role'],
+    'avatar'=> $row['avatar'],
+    'ministry_code'=> $row['ministry_code'],
         ]);
     }
 }

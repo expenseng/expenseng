@@ -6,7 +6,7 @@
 @endpush
 
 @section('content')
-
+{{ Breadcrumbs::render('contact') }}
     <!-- Banner Starts -->
     <section class="container">
       <div class="row" id="banner">

@@ -5,8 +5,10 @@ namespace App\Imports;
 use App\Ministry;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class MinistryImport implements ToModel
+class MinistryImport implements ToModel,WithHeadingRow
 {
     /**
      * @param array $row
