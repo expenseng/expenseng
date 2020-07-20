@@ -63,12 +63,9 @@ class MinistryController extends Controller
     }
 
     /**
-     * List ministries on page load
+     * Get Data for Charts
      */
-    public function profile()
-    {
-        $data = Ministry::all();
-        $ministries = $this->getMinistries($data);
+    public function getChartData($ministries){
         foreach ($ministries as $ministry) {
             $chartData = [];
             $totals = $this->fiveYearTrend($ministry->code)[1];
@@ -81,17 +78,29 @@ class MinistryController extends Controller
             }
             $ministry->chartData = $chartData;
         }
-
-        return view('pages.ministry.index')->with('ministries', $ministries);
+        return $ministries;
     }
-
     /**
-     * Show the form for creating a new resource.
+     * List ministries on page load
      */
-    public function create()
+    public function profile(Request $request)
     {
-        //check user privilage
-        return view('pages.ministry.createForm');
+        
+        if($request->has('ministry')){
+            $ministry_name = $request->get('ministry');
+            $result = DB::table('ministries')->where('name', '=', "$ministry_name")->paginate(8);
+            $ministries = $this->getMinistries($result);
+            $ministries = $this->getChartData($ministries);
+        }else{
+            $data = Ministry::paginate(8);
+            $ministries = $this->getMinistries($data);
+            $ministries = $this->getChartData($ministries);
+        }
+       
+        if($request->ajax()){
+            return view('pages.ministry.cards', compact('ministries'));
+        }
+        return view('pages.ministry.index', compact('ministries'));
     }
 
     /**
@@ -140,13 +149,6 @@ class MinistryController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
-    {
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, $ministry)
@@ -164,15 +166,6 @@ class MinistryController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     */
-    public function destroy($ministry)
-    {
-        Ministry::where('id', $ministry)->delete();
-    }
-
-    /**
      * Suggests words to user while typing
      */
     public function autocomplete(Request $request)
@@ -180,11 +173,16 @@ class MinistryController extends Controller
         // echo $request->get('query');
         if ($request->get('query')) {
             $query = $request->get('query');
-            $data = DB::table('ministries')
+            $lists = DB::table('ministries')
                 ->where('name', 'LIKE', "%$query%")
                 ->get();
+            $data = DB::table('ministries')
+                ->where('name', 'LIKE', "%$query%")
+                ->paginate(8);
             $ministries = $this->getMinistries($data);
-            echo $ministries;
+            $ministries = $this->getChartData($ministries);
+            echo $lists.'?';
+            return view('pages.ministry.cards', compact('ministries'));
         }
     }
 
@@ -314,4 +312,23 @@ class MinistryController extends Controller
             return redirect()->back();
         }
     }
+
+    // public function test(Request $request)
+    // {
+        
+    //     $students = ["Kehinde", "Kemi", "Ifeanyi", "Suke"];
+    //     return view('pages.ministry.insert', compact('students'));
+    // }
+    // public function tests(Request $request)
+    // {
+    //     if($request->ajax()){
+    //         $students = ["Mike", "Smalling", "John", "Fischer"];
+    //     }else{
+    //         $students = ["Kehinde", "Kemi", "Ifeanyi", "Suke"];
+    //     }
+        
+    //     echo "<p>I need to cut you out</p>?";
+
+    //     return view('pages.ministry.test', compact('students'));
+    // }
 }
