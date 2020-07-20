@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Expense;
 use App\Company;
 use App\Ministry;
+use App\Feedback;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
@@ -43,12 +44,19 @@ class DashboardController extends Controller
             ->limit(7)
             ->get();
 
-        if (count($total_budgets) > 0) {
-            for ($i = 0; $i < count($total_budgets); $i++) {
-                $amount += $total_budgets[$i]->amount;
+
+            
+            
+            if (count($total_budgets) > 0) {
+                for ($i = 0; $i < count($total_budgets); $i++) {
+                    $amount += $total_budgets[$i]->amount;
+                }
+            } else {
             }
-        } else {
-        }
+            
+            $feedbacks = Feedback::all();
+
+            $counter_feedback = count($feedbacks);
 
         return view('backend.dashboard')->with([
             'total_ministry' => $total_ministry,
@@ -56,7 +64,9 @@ class DashboardController extends Controller
             'total_budgets' => $total_budgets,
             'year_budget' => $amount,
             'recent_expenses' => $recent_expenses,
-            'count' => 0
+            'count' => 0,
+            'feedbacks'=> $feedbacks,
+            'counter_feedback'=> $counter_feedback
         ]);
     }
 
