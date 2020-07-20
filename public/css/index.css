@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+html{
+
+    font-size: 16px;
+}
+
 :root{
     --fs-h1: 3.25rem;
     --fs-h2: 2rem;
@@ -107,14 +112,14 @@ button.btn.scroll-down::after{
 }
 .para p{
     font-weight: 300;
-    font-size: var(--fs-reg);
+    /* font-size: var(--fs-reg); */
 }
 .gallery{
     display: flex;
     position: relative;
     height:480px;
-    overflow-x:hidden;
-    overflow-y: visible;
+    overflow-x:hidden !important;
+    overflow-y: hidden;
 }
 .gallery::-webkit-scrollbar {
     display: none;
@@ -151,6 +156,7 @@ p.tag{
 }
 .card1{
     background-image: url(../images/card2.jpg);
+    background-repeat: no-repeat;
 }
 .card2{
     background-image: url(../images/road.svg);
@@ -162,12 +168,12 @@ p.tag{
 }
 
 /* Carousel Styling */
-
-
-
+#caret{
+    visibility: hidden;
+}
 
 .carousel-cell {
-    width: 65%;
+    width: 60%;
     margin-right: 10px;
     border-radius: 5px;
   }
@@ -177,7 +183,6 @@ p.tag{
     display: block;
     text-align: center;
     line-height: 200px;
-    font-size: 80px;
     color: white;
   }
 
@@ -192,7 +197,7 @@ p.tag{
 
   .flickity-prev-next-button{
     top: 0% !important;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     width: 5% !important;
     height: 5.5% !important;
   }
@@ -204,13 +209,13 @@ p.tag{
   .next{
       right: 8% !important;
   }
-  
+
 .project{
     margin-top: auto;
     margin-bottom: 3.5rem;
 }
 .project p{
-    font-size: var(--fs-h5);
+    /* font-size: var(--fs-h5); */
     margin: 0;
     color: #ffffff;
 }
@@ -574,7 +579,7 @@ p.profile{
     .gallery{
         display: flex;
         position: relative;
-        height:300px;
+        height:375px;
         overflow-x: hidden;
     }
     .banner{
@@ -617,6 +622,7 @@ p.profile{
 @media only screen and (min-width: 768px) {
     .target{
         display: flex;
+        font-size: 16px;
     }
     .summary{
         margin-right: 1rem;
@@ -681,6 +687,11 @@ p.profile{
     .banner{
         height: /* 90% */ 100vh;
     }
+
+    .card1{
+        background-image: url(../images/card2.jpg);
+        background-repeat: repeat;
+    }
     .vll{
         margin: 3rem auto;
     }
@@ -697,7 +708,7 @@ p.profile{
     .gallery{
         display: flex;
         position: relative;
-        height:250px;
+        height:350px;
         overflow-x: hidden;
     }
     .banner{

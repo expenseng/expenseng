@@ -42,10 +42,6 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
               Learn more on how this money was spent with tools to help you navigate spending from top to bottom.</p>
           </div>
       </div>
-      <!-- <div class="carets my-1 p-3" id="caret-alt">
-        <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left2">
-        <img src="{{asset('images/angle-right.svg')}}" alt="" class="arrow-right2">
-      </div> -->
       <div class="gallery p-3"  data-flickity='{ "freeScroll": true }'>
         <div class="card1 carousel-cell card">
             {{-- <p class="tag">New</p> --}}
