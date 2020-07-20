@@ -312,23 +312,4 @@ class MinistryController extends Controller
             return redirect()->back();
         }
     }
-
-    // public function test(Request $request)
-    // {
-        
-    //     $students = ["Kehinde", "Kemi", "Ifeanyi", "Suke"];
-    //     return view('pages.ministry.insert', compact('students'));
-    // }
-    // public function tests(Request $request)
-    // {
-    //     if($request->ajax()){
-    //         $students = ["Mike", "Smalling", "John", "Fischer"];
-    //     }else{
-    //         $students = ["Kehinde", "Kemi", "Ifeanyi", "Suke"];
-    //     }
-        
-    //     echo "<p>I need to cut you out</p>?";
-
-    //     return view('pages.ministry.test', compact('students'));
-    // }
 }

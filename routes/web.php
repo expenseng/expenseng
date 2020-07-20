@@ -15,8 +15,7 @@ use App\User;
 |
  */
 
-Route::get('/view', 'MinistryController@test')->name('test');
-Route::get('/views', 'MinistryController@tests')->name('test');
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contactUs')->name('contact');
