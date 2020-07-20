@@ -24,26 +24,69 @@ class MinistrySearchController extends Controller
         return $ministries;
     }
 
-     /**
-     * Re-renders all the ministries each time the search box's content is cleared
-     */
-
-    public function index(Request $request)
+    public function fiveYearTrend($code)
     {
-        $result = Ministry::all();
-        $ministries = $this->getMinistries($result);
-        echo $ministries;
+        $payments = DB::table('payments')
+            ->where('payment_code', 'LIKE', "$code%")
+            ->orderby('payment_date', 'desc')
+            ->get();
+        $currentYr = date('Y');
+        $years = [
+            $currentYr,
+            $currentYr - 1,
+            $currentYr - 2,
+            $currentYr - 3,
+            $currentYr - 4,
+        ];
+        $yearByYear = [];
+        for ($x = 0; $x < count($years); $x++) {
+            $filtered = $payments->filter(function ($value, $key) use (
+                &$years,
+                $x
+            ) {
+                return date('Y', strtotime($value->payment_date)) == $years[$x];
+            });
+            if ($x == 0) {
+                $count = count($filtered);
+            }
+            $sum = $filtered->sum('amount');
+            $yearByYear[$years[$x]] = $sum;
+        }
+
+        return [$count, $yearByYear];
     }
-    
+
+    /**
+     * Get Data for Charts
+     */
+   
+    public function getChartData($ministries){
+        foreach ($ministries as $ministry) {
+            $chartData = [];
+            $totals = $this->fiveYearTrend($ministry->code)[1];
+            $reversed = array_reverse($totals, true);
+            foreach ($reversed as $key => $value) {
+                $item = new \stdClass();
+                $item->year = $key;
+                $item->amount = $value;
+                array_push($chartData, $item);
+            }
+            $ministry->chartData = $chartData;
+        }
+        return $ministries;
+    }
+
     /**
      * Renders a specific ministry when a user clicks an autocomplete suggestion
      */
     public function show(Request $request)
     {
         $ministry_name = $request->get('ministry');
-        $result = DB::table('ministries')->where('name', '=', "$ministry_name")->get();
+        $result = DB::table('ministries')->where('name', '=', "$ministry_name")->paginate(8);
         $ministry = $this->getMinistries($result);
-        echo $ministry;
+        $ministry = $this->getChartData($ministry);
+        
+        return view('pages.ministry.cards')->with(['ministries'=> $ministry]);
     }
 
     public function filterExpenses(Request $request)
@@ -90,8 +133,7 @@ class MinistrySearchController extends Controller
         }
         
         $payments = $payments->paginate(2);
-        // dd($payments);
-
+       
         return view('pages.ministry.pagination')
         ->with(['ministry'=> $ministry,
                 'payments' => $payments,

@@ -61,7 +61,7 @@
     <div class="last-section">
       <div class="container-fluid">
         <div id="cards-container" class="row d-flex sec-card" style="min-height: 300px">
-          @if (count($ministries) >0)
+          {{-- @if (count($ministries) >0)
           @foreach($ministries as $ministry)
           <div data-id="{{$ministry->shortname()}}" 
             class="col-lg-3 col-md-6 col-sm-12 ministry-cards d-flex" 
@@ -88,11 +88,11 @@
             </div>
             <a title="Click to view profile" href="{{ route('ministries.single', $ministry->shortname()) }}"></a>
           </div>
-
+          
          
           @endforeach
-          @endif
-          
+          @endif --}}
+          @include('pages.ministry.cards')
         </div>
       </div>
     </div>
@@ -101,6 +101,6 @@
 @endsection
 
 @section('js')
-  <script src="{{ asset('js/ministry_list.js') }}" type="text/javascript"></script>
+  <script src="{{ asset('js/ministry_list - Copy.js') }}" type="text/javascript"></script>
 @endsection
 
