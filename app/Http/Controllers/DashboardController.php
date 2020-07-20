@@ -54,8 +54,8 @@ class DashboardController extends Controller
             } else {
             }
             
-            $feedbacks = Feedback::all();
-
+             
+            $feedbacks = Feedback::where('isApprove','0')->get();
             $counter_feedback = count($feedbacks);
 
         return view('backend.dashboard')->with([

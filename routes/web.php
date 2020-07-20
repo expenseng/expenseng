@@ -21,6 +21,9 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contactUs')->name('contact');
 
+// Feedback
+Route::post('/feedback', 'FeedbackController@create')->name('feedback');
+
 /**
  * Reports Endpoints
  */
