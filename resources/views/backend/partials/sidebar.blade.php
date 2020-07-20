@@ -48,8 +48,9 @@
               <p>Expenses</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="#">
+          <li class="{{Route::is('cabinet.view') || Route::is('cabinet.create') || Route::is('cabinet.edit')
+           ? 'nav-item active' : 'nav-item'}}  ">
+            <a class="nav-link" href="{{route('cabinet.view')}}">
               <i class="material-icons">create_new_folder</i>
               <p>Cabinet</p>
             </a>

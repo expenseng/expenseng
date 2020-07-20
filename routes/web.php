@@ -140,7 +140,7 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
      Route::get('/profile', 'ProfileController@viewProfile')->name('profile');
      Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
 
-     // Company CRUD
+     // Cabinet CRUD
      Route::get('/cabinet/create', 'CabinetController@create')
      ->name('cabinet.create');
 

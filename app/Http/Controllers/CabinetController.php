@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cabinet;
+use App\Ministry;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
@@ -25,7 +26,9 @@ class CabinetController extends Controller
         if (Gate::denies('add')) {
             return redirect(route('cabinet.view'));
         }
-        return view('backend.cabinet.create');
+        $ministry_codes = Ministry::all('code');
+        return view('backend.cabinet.create')
+        ->with(['ministry_codes' => $ministry_codes]);
     }
 
     /**
@@ -58,27 +61,43 @@ class CabinetController extends Controller
     {
         validator(
             [
-            'company_name' => 'required',
-            'company_shortname' => 'required',
-            'company_twitter' => 'required',
-            'company_ceo' => 'required',
-            'ceo_handle' => 'required',
+            'name' => 'required',
+            'twitter' => 'required',
+            'position' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'code' => 'required',
             ]
         );
+        $base_url = \URL::to('/');
+        //replace spaces with dash in shortname
+        $name = preg_replace('/[[:space:]]+/', '-', $request->name); 
 
-        $new_cabinet = new Cabinet();
-        $new_cabinet->name = $request->company_name;
-        $new_cabinet->shortname = $request->company_shortname;
-        $new_cabinet->industry = $request->company_twitter;
-        $new_cabinet->ceo = $request->company_ceo;
-        $new_cabinet->twitter = $request->ceo_handle;
-        $save_new_cabinet = $new_cabinet->save();
+        //upload picture
+        
+        $imageName = $name .time().'.'
+        .$request->image->getClientOriginalExtension();
+        
+        $upload = $request->image->move('uploads', $imageName);
 
-        if ($save_new_cabinet) {
-            return "<script>alert('$request->cabinet_name  created Successfully');
-            window.location.replace('/admin/cabinet/view')";
+        if ($upload) {
+            $new_cabinet = new Cabinet();
+            $new_cabinet->name = $request->name;
+            $new_cabinet->twitter_handle = $request->twitter;
+            $new_cabinet->role = $request->position;
+            $new_cabinet->avatar = $base_url.'/uploads'. '/'.$imageName;
+            $new_cabinet->ministry_code = $request->code;
+            $save_new_cabinet = $new_cabinet->save();
+
+            if ($save_new_cabinet) {
+                return ("<script>
+                alert('$request->name added to cabinet Successfully');
+                window.location.replace('/admin/cabinet/view'); </script>");
+            } else {
+                Session::flash('flash_message', 'Cannot create new Cabinet!!');
+                return redirect()->back();
+            }
         } else {
-            Session::flash('flash_message', 'Cannot create new Cabinet!!');
+            Session::flash('flash_message', 'Cannot upload image!!');
             return redirect()->back();
         }
     }
@@ -97,29 +116,67 @@ class CabinetController extends Controller
     {
         validator(
             [
-            'company_name' => 'required',
-            'company_shortname' => 'required',
-            'company_twitter' => 'required',
-            'company_ceo' => 'required',
-            'ceo_handle' => 'required',
+            'name' => 'required',
+            'twitter' => 'required',
+            'position' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'code' => 'required',
             ]
         );
+        $img_url = Cabinet::findOrFail($id)->avatar;
+        //if image isn't changed
+        
+        if ($request->image == '' ) {
+            $update = Cabinet::where('id', $id)->update(
+                [
+                'name' => $request->name,
+                'twitter_handle' => $request->twitter,
+                'role' => $request->position,
+                //'avatar' => $request->image,
+                'ministry_code' => $request->code,
+                ]
+            );
 
-        $update = Cabinet::where('id', $id)->update(
-            [
-            'name' => $request->company_name,
-            'shortname' => $request->company_shortname,
-            'industry' => $request->company_twitter,
-            'ceo' => $request->company_ceo,
-            'twitter' => $request->ceo_handle,
-            ]
-        );
+            if ($update) {
+                echo "<script>alert(' Cabinet details edited successfully');
+                window.location.replace('/admin/cabinet/view');</script>";
+            } else {
+                Session::flash('flash_message', ' Cabinet was not edited!');
+                return redirect()->back();
+            }
+        }
+        $base_url = \URL::to('/');
+        //replace spaces with dash in shortname
+        $name = preg_replace('/[[:space:]]+/', '-', $request->name); 
 
-        if ($update) {
-            echo "<script>alert(' Cabinet details edited successfully');
-            window.location.replace('/admin/cabinet/view');</script>";
+        //upload picture
+        
+        $imageName = $name .time().'.'
+        .$request->image->getClientOriginalExtension();
+        
+        $upload = $request->image->move('uploads', $imageName);
+
+        if ($upload) {
+
+            $update = Cabinet::where('id', $id)->update(
+                [
+                'name' => $request->name,
+                'twitter_handle' => $request->twitter,
+                'role' => $request->position,
+                'avatar' => $base_url. '/uploads'. '/'. $imageName,
+                'ministry_code' => $request->code,
+                ]
+            );
+
+            if ($update) {
+                echo "<script>alert(' Cabinet details edited successfully');
+                window.location.replace('/admin/cabinet/view');</script>";
+            } else {
+                Session::flash('flash_message', ' Cabinet was not edited!');
+                return redirect()->back();
+            }
         } else {
-            Session::flash('flash_message', ' Cabinet was not edited!');
+            Session::flash('flash_message', ' Image was not uploaded!');
             return redirect()->back();
         }
     }

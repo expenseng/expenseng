@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
     <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-<title>ExpenseNg - Companies</title>
+<title>ExpenseNg - Cabinets</title>
 @endpush
 
 @section('content')
@@ -61,7 +61,7 @@
                                                 <td>{{$cabinet->name}}</td>
                                                 <td>{{$cabinet->twitter_handle}}</td>
                                                 <td>{{$cabinet->role}}</td>
-                                                <td><img src="{{$cabinet->avatar}}" alt="{{$cabinet->name . '\'s image'}}" style="height: 50px; width:50px"></td>
+                                                <td><img src="{{$cabinet->avatar}}" alt="{{$cabinet->name . '\'s image'}}" style="height: 50px; width:50px; border-radius: 50%"></td>
                                                 <td>{{$cabinet->ministry_code}}</td>
                                                 @can('manage')
                                                 <td>
