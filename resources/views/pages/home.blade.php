@@ -8,6 +8,11 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" />
 <link rel="stylesheet" href="/css/modal/style.css">
+<!-- CSS -->
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+
+<!-- JavaScript -->
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
 
 @endpush
@@ -37,12 +42,12 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
               Learn more on how this money was spent with tools to help you navigate spending from top to bottom.</p>
           </div>
       </div>
-      <div class="carets my-1 p-3" id="caret-alt">
+      <!-- <div class="carets my-1 p-3" id="caret-alt">
         <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left2">
         <img src="{{asset('images/angle-right.svg')}}" alt="" class="arrow-right2">
-      </div>
-      <div class="gallery p-3">
-        <div class="card1 card">
+      </div> -->
+      <div class="gallery p-3"  data-flickity='{ "freeScroll": true }'>
+        <div class="card1 carousel-cell card">
             {{-- <p class="tag">New</p> --}}
           <div class="project">
             <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
@@ -53,7 +58,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
               </div>
           </div>
         </div>
-        <div class="card2 card">
+        <div class="card2 card carousel-cell">
           <div class="project">
             <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
             <p>  Ministry of Power, Works and Housing</p>
@@ -63,8 +68,21 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
             </div>
           </div>
         </div>
+        <div class="card3 carousel-cell card">
+            {{-- <p class="tag">New</p> --}}
+          <div class="project">
+            <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
+            <p>  Ministry of Power, Works and Housing</p>
+              <div class="d-flex justify-content-between mt-2 align-items-center">
+                  <p>Cost of Project: </p>
+                  <p id="cost">&#8358;20bn</p>
+              </div>
+          </div>
+        </div>
       </div>
     </div>
+
+    
     <button class="btn scroll-down" >
       <a href="#expenses"></a>
     </button>
