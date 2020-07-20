@@ -415,7 +415,7 @@
         </div>
     </div>
     <div class="row">
-    <div class="col mx-4 ">
+        <div class="col mx-4 ">
         <div class="card px-5">
             <h2 class="p-4 card-header">Visitors Suggestions</h2>
             <div class="card-body p-0">
@@ -453,18 +453,27 @@
             </div>
         </div>
     </div>
-</div>
+    </div>
     <div class="row mr-0 tweet-plugin fixed-plugin ">
         <div class="col d-flex">
             <div class="row ml-auto">
-                <button type="button " class="btn btn-white bg-white text-primary py-4 px-2 tweet-button" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" class="btn btn-white bg-white text-primary py-4 px-2 tweet-button" data-toggle="modal" data-target="#sendTweetModal">
                     <i class="fa fa-twitter fa-10x text-primary"></i> tweet
                 </button>
-                <!-- Modal -->
             </div>
         </div>
     </div>
-<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="row mr-0 tweet-list-plugin fixed-plugin ">
+        <div class="col d-flex">
+            <div class="row ml-auto">
+                <button type="button" class="btn btn-white bg-light text-primary py-4 px-2 tweet-list-button" data-toggle="modal" data-target="#listTweetModal">
+                    <i class="fa fa-twitter fa-10x text-primary"></i>Tweets
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="sendTweetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -492,6 +501,27 @@
     </div>
 </div>
 
+    <div class="modal" id="listTweetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Type in tweet below</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="" id="tweets">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary sendTweet" id="sendTweet">tweet</button>
+            </div>
+        </div>
+    </div>
+    </div>
 
 
     <footer class="footer">
@@ -525,18 +555,14 @@
             </div>
         </div>
     </footer>
-    </div>
-    </div>
+
 @endsection
 @section('js')
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
-
-
     <script>
         jQuery(document).ready(function() {
             jQuery().ready(function() {
@@ -603,7 +629,6 @@
 
 
                 });
-
 
                 jQuery('.fixed-plugin .active-color span').click(function() {
                     $full_page_background = $('.full-page-background');
@@ -753,4 +778,6 @@
 
         });
     </script>
+
+
 @endsection

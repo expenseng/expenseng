@@ -10,11 +10,13 @@ use App\Payment;
 use App\ProcessId;
 use App\Sector;
 use App\Tweet;
+use App\Tweets;
 use Carbon\Carbon;
 use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
+use Thujohn\Twitter\Twitter;
 
 class TwitterBot extends Controller
 {
@@ -143,13 +145,43 @@ class TwitterBot extends Controller
         if ($request->ajax()) {
             try {
                 $tweet = new Tweet($request->tweet);
-                $tweet->send();
+                $tweet_details = $tweet->send();
                 $response = 'tweet sent';
                 return Response($response);
-            }catch (\Exception $exception){
+            } catch (\Exception $exception) {
                 return Response::json(array("errors" => 'error occured'), 422);
             }
+        }
+    }
 
+    public function delete(Request $request)
+    {
+        if ($request->ajax()) {
+            try {
+                $tweet = Tweets::where('id', $request->id)->first();
+                $destroy = Twitter::destroyTweet($tweet->status_id);
+                if ($destroy) {
+                    Tweets::destroy($request->id);
+                    return  Response('tweet destroy');
+                } else {
+                    return Response::json(array("errors" => 'error occured'), 422);
+                }
+            } catch (\Exception $exception) {
+                return Response::json(array("errors" => 'error occured'), 422);
+            }
+        }
+    }
+
+    public function getTweet(Request $request)
+    {
+        if ($request ->ajax()) {
+            try {
+                $tweet = Tweets::all();
+                $tweet_array = json_decode($tweet);
+                return Response($tweet_array);
+            } catch (\Exception $exception) {
+                return Response::json(array("errors" => 'error occured'), 422);
+            }
         }
     }
 }

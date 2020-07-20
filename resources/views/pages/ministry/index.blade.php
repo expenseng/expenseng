@@ -1,3 +1,4 @@
+
 @extends('layouts.master')
 
 @push('css')
@@ -47,13 +48,13 @@
         <div id="cards-container" class="row d-flex sec-card" style="min-height: 300px">
           @if (count($ministries) >0)
           @foreach($ministries as $ministry)
-          <div data-id="{{$ministry->shortname()}}" 
-            class="col-lg-3 col-md-6 col-sm-12 ministry-cards d-flex" 
+          <div data-id="{{$ministry->shortname()}}"
+            class="col-lg-3 col-md-6 col-sm-12 ministry-cards d-flex"
             style="cursor:pointer"
           >
             <div class="cont-1 d-flex flex-column justify-content-center">
-              <chart label="myVueChart" 
-                        v-bind:data="[{amount:32424, year:2039},{amount:12920923, year:2010}]" 
+              <chart label="myVueChart"
+                        v-bind:data="[{amount:32424, year:2039},{amount:12920923, year:2010}]"
                         element="{{ $ministry->shortname() }}"></chart>
               <div class="img">
                 <span class="circle"></span>
@@ -73,10 +74,10 @@
             <a title="Click to view profile" href="{{ route('ministries.single', $ministry->shortname()) }}"></a>
           </div>
 
-         
+
           @endforeach
           @endif
-          
+
         </div>
       </div>
     </div>
