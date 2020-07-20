@@ -47,7 +47,7 @@
 
                                     @if(session('errors'))
                                            @foreach($errors as $error)
-                                    <li>
+                                    <li class='alert alert-danger'>
                                     {{$error}}
                                     </li>
                                            @endforeach
@@ -55,7 +55,7 @@
 
                                     @if(session('success'))
                                    
-                                    <li>
+                                    <li class='alert alert-success'>
                                     {{ session('success') }}
                                     </li>
                                     

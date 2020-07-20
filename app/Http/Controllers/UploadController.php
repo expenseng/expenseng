@@ -28,32 +28,54 @@ class UploadController extends Controller
     public function importExcel(Request $request){
         // return view('upload');
         $validator = \Validator::make($request->all(),[
-            'file'=> 'required|max:5000|mimes:xlsx,xls,csv'
+            'file'=> 'required|max:5000|mimes:xlsx'
         ]);
         if ($validator->passes()){
            $sheet_type=$request->sheetType;
-            
+            // start conpany
            if($sheet_type=='company'){
             $file = $request-> file('file');
             try{
             Excel::import(new CompanyImport,$file);
+            }catch (\Illuminate\Database\QueryException $e){
+                $errorCode = $e->errorInfo[1];          
+                            if($errorCode == 1062){
+            return redirect()->back()
+            ->with(['errors'=>[0=>'this data already exist in the database']]);
+                            } else {
+                                return redirect()->back()
+                                ->with(['errors'=>[0=>'wrong file arrangement']]); 
+                            }
             }
             catch(\Exception $exception){
+                
                 return redirect()->back()
-                ->with(['errors'=>array('data not save, ensure the file is well arranged,also ensure that each person has a unique name and shortname in data base ')]);
+                ->with(['errors'=>array('wrong file format')]);
             }
             return redirect()->back()
             ->with(['success'=>'company file uploaded successfully']);
            }
+            // end conpany
 
            if($sheet_type=='budget'){
             $file = $request-> file('file');
             try{
             Excel::import(new BudgetImport,$file);
                 }
+                catch (\Illuminate\Database\QueryException $e){
+                    $errorCode = $e->errorInfo[1];          
+                                if($errorCode == 1062){
+                return redirect()->back()
+                ->with(['errors'=>[0=>'this data already exist in the database']]);
+                                } else {
+                                    return redirect()->back()
+                                    ->with(['errors'=>[0=>'wrong file arrangement']]); 
+                                }
+                }
                 catch(\Exception $exception){
+                    
                     return redirect()->back()
-                    ->with(['errors'=>array('data not save, ensure the file is well arranged,also ensure that each person has a unique code ')]);
+                    ->with(['errors'=>array('wrong file format')]);
                 }
             // return back()-> withStatus('saved');
             return redirect()->back()
@@ -64,9 +86,20 @@ class UploadController extends Controller
             try{
             Excel::import(new PaymentImport,$file);
                 }
+                catch (\Illuminate\Database\QueryException $e){
+                    $errorCode = $e->errorInfo[1];          
+                                if($errorCode == 1062){
+                return redirect()->back()
+                ->with(['errors'=>[0=>'this data already exist in the database']]);
+                                } else {
+                                    return redirect()->back()
+                                    ->with(['errors'=>[0=>'wrong file arrangement']]); 
+                                }
+                }
                 catch(\Exception $exception){
+                    
                     return redirect()->back()
-                    ->with(['errors'=>array('data not save, ensure the file is well arranged ,also ensure that each person has a unique paymant code')]);
+                    ->with(['errors'=>array('wrong file format')]);
                 }
             // return back()-> withStatus('saved');
             return redirect()->back()
@@ -77,9 +110,20 @@ class UploadController extends Controller
             try{
             Excel::import(new MinistryImport,$file);
                     }
+                    catch (\Illuminate\Database\QueryException $e){
+                        $errorCode = $e->errorInfo[1];          
+                                    if($errorCode == 1062){
+                    return redirect()->back()
+                    ->with(['errors'=>[0=>'this data already exist in the database']]);
+                                    } else {
+                                        return redirect()->back()
+                                        ->with(['errors'=>[0=>'wrong file arrangement']]); 
+                                    }
+                    }
                     catch(\Exception $exception){
+                        
                         return redirect()->back()
-                        ->with(['errors'=>array('data not save, ensure the file is well arranged,also ensure that each person has a unique code')]);
+                        ->with(['errors'=>array('wrong file format')]);
                     }
     
             // return back()-> withStatus('saved');
@@ -91,9 +135,20 @@ class UploadController extends Controller
             try{
             Excel::import(new CabinetImport,$file);
                         }
+                        catch (\Illuminate\Database\QueryException $e){
+                            $errorCode = $e->errorInfo[1];          
+                                        if($errorCode == 1062){
+                        return redirect()->back()
+                        ->with(['errors'=>[0=>'this data already exist in the database']]);
+                                        } else {
+                                            return redirect()->back()
+                                            ->with(['errors'=>[0=>'wrong file arrangement']]); 
+                                        }
+                        }
                         catch(\Exception $exception){
+                            
                             return redirect()->back()
-                            ->with(['errors'=>array('data not save, ensure the file is well arranged, also ensure that each person has a unique ministry code')]);
+                            ->with(['errors'=>array('wrong file format')]);
                         }
     
             return redirect()->back()
@@ -104,9 +159,20 @@ class UploadController extends Controller
             try{
             Excel::import(new PeopleImport,$file);
                             }
+                            catch (\Illuminate\Database\QueryException $e){
+                                $errorCode = $e->errorInfo[1];          
+                                            if($errorCode == 1062){
+                            return redirect()->back()
+                            ->with(['errors'=>[0=>'this data already exist in the database']]);
+                                            } else {
+                                                return redirect()->back()
+                                                ->with(['errors'=>[0=>'wrong file arrangement']]); 
+                                            }
+                            }
                             catch(\Exception $exception){
+                                
                                 return redirect()->back()
-                                ->with(['errors'=>array('Data not saved, ensure the file is well arranged, also ensure that each person has a unique company id ')]);
+                                ->with(['errors'=>array('wrong file format')]);
                             }
                 return redirect()->back()
             ->with(['success'=>'people file uploaded successfully']);
@@ -117,10 +183,20 @@ class UploadController extends Controller
             try{
                 Excel::import(new SectorImport,$file);
             }
+            catch (\Illuminate\Database\QueryException $e){
+                $errorCode = $e->errorInfo[1];          
+                            if($errorCode == 1062){
+            return redirect()->back()
+            ->with(['errors'=>[0=>'this data already exist in the database']]);
+                            } else {
+                                return redirect()->back()
+                                ->with(['errors'=>[0=>'wrong file arrangement']]); 
+                            }
+            }
             catch(\Exception $exception){
+                
                 return redirect()->back()
-                ->with(['errors'=>array('sector file not uploaded, please check the file format')]);
-               
+                ->with(['errors'=>array('wrong file format')]);
             }
             // return back()-> withStatus('saved');
             return redirect()->back()
@@ -131,10 +207,21 @@ class UploadController extends Controller
             try{
             Excel::import(new ExpenseImport,$file);
                                     }
-                    catch(\Exception $exception){
-                  return redirect()->back()
-                ->with(['errors'=>array('Data not saved, ensure the file is well arranged or does not exist in the data base ')]);
-                         }
+                                    catch (\Illuminate\Database\QueryException $e){
+                                        $errorCode = $e->errorInfo[1];          
+                                                    if($errorCode == 1062){
+                                    return redirect()->back()
+                                    ->with(['errors'=>[0=>'this data already exist in the database']]);
+                                                    } else {
+                                                        return redirect()->back()
+                                                        ->with(['errors'=>[0=>'wrong file arrangement']]); 
+                                                    }
+                                    }
+                                    catch(\Exception $exception){
+                                        
+                                        return redirect()->back()
+                                        ->with(['errors'=>array('wrong file format')]);
+                                    }
                 // return back()-> withStatus('saved');
             return redirect()->back()
             ->with(['success'=>'expense file uploaded successfully']);
@@ -145,9 +232,20 @@ class UploadController extends Controller
             try{
             Excel::import(new CitizenImport,$file);
                                 }
+                                catch (\Illuminate\Database\QueryException $e){
+                                    $errorCode = $e->errorInfo[1];          
+                                                if($errorCode == 1062){
+                                return redirect()->back()
+                                ->with(['errors'=>[0=>'this data already exist in the database']]);
+                                                } else {
+                                                    return redirect()->back()
+                                                    ->with(['errors'=>[0=>'wrong file arrangement']]); 
+                                                }
+                                }
                                 catch(\Exception $exception){
+                                    
                                     return redirect()->back()
-                                    ->with(['errors'=>array('invalid file format , please provide the file for Citizen')]);
+                                    ->with(['errors'=>array('wrong file format')]);
                                 }
     
             return redirect()->back()
