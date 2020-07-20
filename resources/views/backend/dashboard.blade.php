@@ -172,7 +172,7 @@
                                             @foreach ($feedbacks as $feedback)
                                                 <tr>
                                                     <td>{{$feedback->firstName}} </td>
-                                                    <td>{{$feedback->lastName}}  </td>
+                                                    <td>{{$feedback->lastName}}  </td> 
                                                     <td>{{$feedback->ministry_id}}</td>
                                                     <td>
                                                         <a href="{{route('feedback.approve', ['id' => $feedback->id])}}" class="btn btn-success btn-sm ">Approve</button>
