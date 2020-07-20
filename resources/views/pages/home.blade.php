@@ -335,7 +335,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
         <div class="form-group">
           <label for="ministry">Select Cabinet</label>
           <select id="inputState" class="form-control" name="ministry_id">
-            <option selected value="1">Works</option>
+            <option selected value="works">Works</option>
             <option value="Housing">Housing</option>
             <option value="Interior">Interior</option>
             <option value="Petroleum">Petroleum</option>
