@@ -5,8 +5,10 @@ namespace App\Imports;
 use App\People;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class PeopleImport implements ToModel
+class PeopleImport implements ToModel,WithHeadingRow
 {
     /**
      * @param array $row
@@ -16,14 +18,14 @@ class PeopleImport implements ToModel
     public function model(array $row)
     {
         return new People([
-           'name'=> $row[0],
-            'position' => $row[1],
-           'company_id'=> $row[2],
-           'twitter'    => $row[3], 
-           'facebook'    => $row[4], 
-           'linkedin'    => $row[5],
-           'avatar'    => $row[6],  
-           'email'    => $row[7], 
+           'name'=> $row['name'],
+            'position' => $row['position'],
+           'company_id'=> $row['company_id'],
+           'twitter'    => $row['twitter'], 
+           'facebook'    => $row['facebook'], 
+           'linkedin'    => $row['linkedin'],
+           'avatar'    => $row['avatar'],  
+           'email'    => $row['email'], 
 
         ]);
     }
