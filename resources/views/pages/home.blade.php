@@ -5,60 +5,57 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
 integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" />
 <link rel="stylesheet" href="/css/modal/style.css">
 @endpush
 @section('banner')
-<!-- banner -->
-<div class=" background">
-  <div class="banner">
-    {{-- <img src="{{asset('images/flag.jpg')}}" alt=""> --}}
-    <div class="carets" id="caret">
-      <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left">
-      <img src="{{asset('images/angle-right.svg')}}" alt="" class="arrow-right">
-    </div>
-    <div class="target">
-      <div class="summary col-md-7 col-sm-9">
-          <h4 class="slightly-bold"> In 2019,<br> the government spent </h4>
-          <h4 class="bolding"> $4.45 trillion.</h4>
-          <div class="para">
-            <p>ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities across Nigeria. 
-              Learn more on how this money was spent with tools to help you navigate spending from top to bottom.</p>
+<!-- Background start -->
+<div class="background">
+  <div class="banner pt-5 container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="sum">
+        <h4> In 2019,<br> the government spent </h4>
+          <h4> $4.45 trillion.</h4>
+          <div>
+            <p>ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities across Nigeria. Learn more on how this money was spent with tools to help you navigate spending from top to bottom.</p>
           </div>
+          
+        </div>
       </div>
-      <div class="carets my-1 p-3" id="caret-alt">
-        <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left2">
-        <img src="{{asset('images/angle-right.svg')}}" alt="" class="arrow-right2">
-      </div>
-      <div class="gallery p-3">
-        <div class="card1 card">
-            {{-- <p class="tag">New</p> --}}
-          <div class="project">
-            <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
-            <p>  Ministry of Power, Works and Housing</p>
-              <div class="d-flex justify-content-between mt-2 align-items-center">
-                  <p>Cost of Project: </p>
-                  <p id="cost">&#8358;20bn</p>
-              </div>
+      <div class="col-md-4 slick">
+        <div class="slide slide-1">
+          <div class="slider-caption">
+            <p>Construction of lagos-Ibadan Express road Ministry of Power, Works and Housing Cost of Project: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8358;20,000,000,000.00</span></p>
           </div>
         </div>
-        <div class="card2 card">
-          <div class="project">
-            <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
-            <p>  Ministry of Power, Works and Housing</p>
-            <div class="d-flex justify-content-between mt-2">
-                <p>Cost of Project: </p>
-                <p id="cost">&#8358;20bn</p>
-            </div>
+        <div class="slide slide-2">
+          <div class="slider-caption">
+            <p>Construction of lagos-Ibadan Express road Ministry of Power, Works and Housing Cost of Project: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8358;20,000,000,000.00</span></p>
+          </div>
+        </div>
+
+        <div class="slide slide-3">
+          <div class="slider-caption">
+            <p>Construction of lagos-Ibadan Express road Ministry of Power, Works and Housing Cost of Project: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8358;20,000,000,000.00</span></p>
+          </div>
+        </div>
+        <div class="slide slide-4">
+          <div class="slider-caption">
+            <p>Construction of lagos-Ibadan Express road Ministry of Power, Works and Housing Cost of Project: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8358;20,000,000,000.00</span></p>
           </div>
         </div>
       </div>
     </div>
-    <button class="btn scroll-down" >
-      <a href="#expenses"></a>
-    </button>
   </div>
+  <button class="btn scroll-down" >
+            <a href="#expenses"></a>
+          </button>
 </div>
+<!-- Background end -->
 <div class="scroll-down">
+ 
   <a href="#compu">
   <img src="{{asset('img\min_comment_img\mdi_arrow-right-drop-circle.png')}}" alt="arrow">
   </a>
@@ -97,8 +94,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
         <div class="ministry-stat">
               <div class="stat-a p-4">
                 <div class="graph-cont">
-                  <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                  <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                <div id="chart"></div>
                  </div>
                 <div>
                   <p class="exp-card1">Total amount spent</p>
@@ -109,8 +105,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
               <div class="stat-b">
                 <div class="d-flex p-2 justify-content-between">
                   <div class="graph-cont">
-                    <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                    <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                  <div id="chart1"></div>
                    </div>
                 <div class="ml-5 w-50">
                   <p class="exp-card1">Total amount spent on projects</p>
@@ -120,8 +115,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
                 </div>
                 <div class="d-flex p-2 justify-content-between">
                   <div class="graph-cont">
-                    <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                    <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                  <div id="chart2"></div>
                    </div>
                 <div class="ml-5 w-50">
                   <p class="exp-card1">Total amount spent on salary payments</p>
@@ -131,8 +125,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
                 </div>
                 <div class="d-flex p-2 justify-content-between">
                   <div class="graph-cont">
-                    <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-                    <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+                  <div id="chart3"></div>
                    </div>
                 <div class="ml-5 w-50">
                   <p class="exp-card1">Total amount spent on others</p>
@@ -158,8 +151,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
     <div class="comp-card comp-card-1">
         <div class="awarded">
           <div class="graph-cont">
-            <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-            <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+          <div id="chart4"></div>
            </div>
           <div class="ml-1 mr-2">
              <p class="exp-card1">Total amount Awarded</p>
@@ -192,8 +184,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
         <div class="comp-card">
          <div class="awarded">
            <div class="graph-cont">
-             <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-             <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+           <div id="chart5"></div>
             </div>
            <div class="ml-1 mr-2">
               <p class="exp-card1">Total amount Awarded</p>
@@ -226,8 +217,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
       <div class="comp-card">
        <div class="awarded">
          <div class="graph-cont">
-           <img src="{{asset('/images/Vector3.svg')}}" alt="graph">
-           <img src="{{asset('/images/Vector2.png')}}" alt="graph">
+         <div id="chart6"></div>
           </div>
          <div class="ml-1 mr-2">
             <p class="exp-card1">Total amount Awarded</p>
@@ -277,55 +267,103 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
                 <p>We want to know how we can serve you better.
                 Drop by our community page to ask questions,
                 propose new features, sign up for testing, and join the conversation about federal spending data.</p>
-                <p>Want to receive update in your inbox? 
-                <button id="open" class="toggle">Register</button></p>
+                <p>Want to receive update in your inbox?</p>
+                <button id="open" class="toggle">Register</button>
           </div>
    </div>
   </div>
 
 
-  <div class="modal-container" id="modal">
-    <div class="register-modal">
-      <div>
-          <button class="close-btn" id="close"><i class="fa fa-times"></i></button>
-      </div>
+  <div class='container'>
+        <!-- Modal to Enter Form -->
+        <h3 style='color: #353A45; text-align:center;margin-top: 15px'>Suggest Cabinet Members</h3>
+`     
+<center>
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" style="background: 353A45;margin-bottom: 20px;">
+  Suggest a Cabinet Member
+</button>
+</center>
+<!-- Modal -->
+        @if ($errors->any())
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+      @endif
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
 
+      <!-- Modal Header -->
       <div class="modal-header">
-          <h3>Create an account</h3>
+        
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-      <div class="modal-content">
-          <p>Register with us for more updates and contribute</p>
-          <form action="" class="modal-form">
-              <div>
-                  <label for="name">Name</label>
-                  <input type="text" id="name" name="name" placeholder="Enter Name" class="form-input">
-              </div>
 
-              <div>
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Enter Email" class="form-input">
-            </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+      <form  action=" {!! url('/feedback') !!}" method="POST">
+        {{csrf_field()}}
+        <div class="form-group">
+          <label for="firstName">Firstname</label>
+          <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Firstname">
+        </div>
+        <div class="form-group">
+          <label for="lastName">Lastname</label>
+          <input type="text" name="lastName" class="form-control" id="exampleInputPassword1" placeholder="Lastname">
+        </div>
+        
+        <div class="form-group">
+          <label for="ministry">Select Cabinet</label>
+          <select id="inputState" class="form-control" name="ministry_id">
+            <option selected value="1">Works</option>
+            <option value="Housing">Housing</option>
+            <option value="Interior">Interior</option>
+            <option value="Petroleum">Petroleum</option>
+            <option value="Finance">Finance</option>
+            <option value="Power">Power</option>
+            <option value="Health">Health</option>
+            <option value="Labour">Labour</option>
+            <option value="Environment">Environment</option>
+            <option value="Water Resouirces">Water Resouirces</option>
+            <option value="Communication">Communication</option>
+            <option value="Aviation">Aviation</option>
+            <option value="Defense">Defense</option>
+            <option value="Information">Information</option>
+            <option value="Youths and Sports">Youths and Sports</option>
+            <option value="Police Affairs">Police Affairs</option>
+            <option value="Education">Education</option>
+            <option value="Justice">Justice</option>
+            <option value="Agriculture">Agriculture</option>
+            <option value="Women Affairs">Women Affairs</option>
+          </select>
+        </div>
+       <center>
+        <button type="submit" class="btn btn-primary ">Submit</button>
+      </center>
 
-              <div>
-                  <label for="password">Password</label>
-                  <input type="password" name="password" id="password" placeholder="Enter Password" class="form-input">
-              </div>
-              <div>
-                  <label for="cpassword">Confirm Password</label>
-                  <input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" class="form-input">
-              </div>
+      </form>
 
-              <button type="submit" class="submit-btn">Submit</button>
-          </form>
+
       </div>
+
+      
+    </div>
   </div>
 </div>
+
 
 </section>
 
 @endsection
 @section('js')
-<script src="{{asset('js/index.js')}}"></script>
-<script src="/js/subscription.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous"></script>
+<script src="{{asset('js/index.js')}}"></script>
+<script src="{{asset('js/chart.js')}}"></script>
+<script src="{{asset('/js/subscription.js')}}"></script>
 @endsection

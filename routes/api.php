@@ -29,7 +29,7 @@ Route::post('/comments/user', 'CommentController@onboardUser');
 /***
  * Comments
  */
-Route::get('/comments', 'CommentController@show');
+Route::post('/comments/resource', 'CommentController@show');
 Route::post('/comments', 'CommentController@store');
 
 /**

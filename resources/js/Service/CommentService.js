@@ -80,12 +80,14 @@ class CommentService{
     }
 
     getResourceComments(resource){
-        return axios.get('/api/comments?origin=' + resource)
-                .then(response => {
-                    return response.data;
-                }).catch(err => {
-                    console.log(err);
-                })
+        return axios.post('/api/comments/resource', {
+            origin: resource
+        })
+        .then(response => {
+            return response.data;
+        }).catch(err => {
+            console.log(err);
+        })
     }
 
     storeComments(origin, comment, email, name){
