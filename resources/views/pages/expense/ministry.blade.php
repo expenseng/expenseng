@@ -13,19 +13,8 @@
 @endpush
 
 @section('content')
-	<!-- Breadcrumb start -->
+
     {{ Breadcrumbs::render('expense.ministry') }}
-	<header class="container section-wrapper">
-		<nav aria-label="breadcrumb">
-			<ol class="breadcrumb bg-white">
-				<li class="breadcrumb-item not-active"><a href="{{ url('/') }}">HOME</a></li>
-				<span>&#8226;</span>
-				<li class="breadcrumb-item not-active"><a href="#">EXPENSE</a></li>
-				<span>&#8226;</span>
-				<li class="breadcrumb-item active" aria-current="page"><a href="{{ url('/expense/ministry') }}">MINISTRY SPENDING</a></li>
-			</ol>
-		</nav>
-	</header>
 	<section>
 		<div class="container ">
 			<div class="row">
@@ -124,11 +113,11 @@
 							<button class="nav-button" data-toggle="modal" data-target="#filterModal">Filter<i class="fas fa-filter px-1" style="font-size: var(--fs-reg);"></i></button>
 						</div>
 						<div class="table-data">
-							@include('partials.expense.ministry_table')
+							@include('partials.ministry_table')
 						</div>
 						
 						<!---PAGINATION--->
-						{{ @include('partials.pagination', ['data' => $collection['summary']]) }}
+						@include('partials.pagination', ['data' => $collection['summary']])
 					</div>
 				</div>
 			</section>
@@ -320,4 +309,3 @@
 	<script src="{{ asset('js/ExpenditureScript.js') }}"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 @endsection
-	 
