@@ -199,8 +199,12 @@
             @if ($cabinets)
                 @foreach($cabinets as $cabinet)
                 @php
-                    $ministerHandle = substr($cabinet->twitter, 1)
+                    $ministerTwitterHandle = substr($cabinet->twitter_handle, 1);
+                    $ministerFacebookHandle = substr($cabinet->facebook_handle, 1);
+                    $ministerLinkedInHandle = substr($cabinet->linkedIn_handle, 1);
+                    $ministerInstagramHandle = substr($cabinet->Instagram_handle, 1);
                 @endphp
+                 
             <div class="col-lg-3 card border-top-0 border-left-0 border-right-0">
                 <div class="card-img" style="display:flex; justify-content: center; padding:1.25rem 1.25rem 0;">
                     <img src="{{$cabinet->avatar}}" class="img-fluid" alt="{{$cabinet->name}}">
@@ -210,15 +214,20 @@
                     <p id="minister-name" class="text-center font-weight-bold">{{$cabinet->name}}</p>
                     <p class="text-success text-center">{{$cabinet->role}}</p>
                     </div>
-                    
-                        
-                       
-                
+                     
                     <div class="social-handle text-center">
+                        @if($ministerFacebookHandle)
                         <a href="#" class="link"><i class="fab fa-facebook" aria-hidden="true"></i></a>
-                        <a href="{!! url("https://twitter.com/$ministerHandle") !!}" class="link ml-2"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        @endif
+                        @if($ministerTwitterHandle)
+                        <a href="{!! url("https://twitter.com/$ministerTwitterHandle") !!}" class="link ml-2"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        @endif
+                        @if($ministerLinkedInHandle)
                         <a href="#" class="link ml-2"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                        @endif
+                        @if($ministerInstagramHandle)
                         <a href="#" class="link ml-2"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        @endif
                     </div>
                 </div>
             </div>

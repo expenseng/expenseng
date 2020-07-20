@@ -27,7 +27,7 @@
     </div>
 @endforeach
 @else
-    <p style="color:red"> Oops! No Ministry matches your search </p>
+    <p style="color:red; font-size:24px"> Oops! No Ministry matches your search </p>
 @endif
 
 <div class="row centeri mzet-3 align-items-center">
