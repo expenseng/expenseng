@@ -5,8 +5,10 @@ namespace App\Imports;
 use App\Company;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class CompanyImport implements ToModel
+class CompanyImport implements ToModel,WithHeadingRow
 {
     /**
      * @param array $row
@@ -16,11 +18,11 @@ class CompanyImport implements ToModel
     public function model(array $row)
     {
         return new Company([
-           'name'     => $row[0],
-           'shortname'     => $row[1],
-           'industry'    => $row[2], 
-           'ceo' => $row[3],
-           'twitter' =>$row[4],
+           'name'     => $row['name'],
+           'shortname'     => $row['shortname'],
+           'industry'    => $row['industry'], 
+           'ceo' => $row['ceo'],
+           'twitter' =>$row['twitter'],
         ]);
     }
 }

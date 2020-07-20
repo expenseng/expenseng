@@ -4,9 +4,15 @@ namespace App\Imports;
 
 use App\Sector;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class SectorImport implements ToModel
+
+
+class SectorImport implements ToModel,WithHeadingRow
+// ,WithValidation
 {
     /**
      * @param array $row
@@ -16,8 +22,10 @@ class SectorImport implements ToModel
     public function model(array $row)
     {
         return new Sector([
-           'name'     => $row[0],
+           'name'     => $row['name'],
            
         ]);
     }
+
+   
 }

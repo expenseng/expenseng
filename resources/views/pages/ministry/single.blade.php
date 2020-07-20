@@ -8,28 +8,11 @@
 @endpush
 
 @section('content')
-
+{{ Breadcrumbs::render('ministry', $ministry) }}
 
 <link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
 <link rel="stylesheet" href="{{asset('/css/ministry_list_table.css')}}">
 <!-- Section-->
-<div class="container mt-4 pt-2">
-    <div class="container mt-4">
-
-        <div class="row">
-            <p id="header" class="font-weight-bold">
-                <span class="head-cont text-success"> HOME</span>
-                <span class="head-cont dot"> &#8226</span>
-                <span class="head-cont text-success"> PROFILES</span>
-                <span class="head-cont dot"> &#8226</span>
-                <span class="head-cont text-success"> MINISTRIES</span>
-                <span class="head-cont dot"> &#8226</span>
-                <span class="head-cont text-success"> MINISTRY PROFILE</span>
-            </p>
-        </div>
-    </div>
-</div>
-
 <div class="container d-flex centerize py-4">
     <div class="ministry-logo d-flex ">
         <img src="{{asset('/img/image_7.png')}}" class="ministry-logo-image" alt="ministry logo">
@@ -52,12 +35,12 @@
         </div>
         <div class="col">
             <p>Total Amount Spent</p>
-            <h4><span class="text-success">&#8358;{{number_format($trend[date('Y')], 2)}}</span></h4>
+            <h4><span class="text-success">&#8358;{{number_format($trend["2020"], 2)}}</span></h4>
             <small>{{date('Y')}}</small>
         </div>
         <div class="col">
             <p>Total Number of Projects</p>
-            <h4><span class="text-success">{{$count}}</span></h4>
+            <h4><span class="text-success">{{count($payments)}}</span></h4>
             <small>{{date('Y')}}</small>
         </div>
     </div>
@@ -126,7 +109,7 @@
                                         </section>                   
                                         <br>
                                         <section class="row">
-                                            <div class="col-12" >
+                                            <div class="col-12" style="position:relative">
                                             <i class="fa fa-calendar" aria-hidden="true"></i>
                                             <input placeholder="Select Date" name="select-date" id="select-date"  class="form-control">
                                             <input placeholder="Select Month" name="select-month" id="select-month" class="monthYearPicker form-control" />
@@ -153,8 +136,58 @@
                     </div>
                      <!-- End of Filter Modal -->
 
-                    <div id="tbl" class="container">
-                        @include('pages.ministry.pagination')
+                    <div class="container">
+                        <div class="table-div">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Project</th>
+                                        <th scope="col">Company</th>
+                                        <th scope="col">Amount</th>
+                                        <th scope="col">Date</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="expense-table">
+                                    @if (count($payments) > 0)
+                                        @php
+                                        $back = true;
+                                        @endphp
+                                        @foreach($payments as $payment)
+                                    
+                                        @php
+                                        $back = !$back;
+                                        $shade = $back ? 'back': '';
+                                        @endphp
+                                            <tr  class="{{$shade}}">
+                                                <td> {{$payment->description}}</td>
+                                                <td> {{$payment->beneficiary}}</td>
+                                                <td> ₦{{number_format($payment->amount, 2)}}</td>
+                                                <td> {{date('jS, M Y', strtotime($payment->payment_date))}}</td>
+                                            </tr>
+                                        @endforeach
+                                @endif
+                                
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                        <div class="row centerize mt-3 pt-3">
+                            <div class="col-md result text-muted"> 1-20 of 320 results</div>
+             
+                                <div class="pagination">
+                                    <a href="#">&laquo;</a>
+                                    <a class="active" href="#">1</a>
+                                    <a href="#">2</a>
+                                    <a href="#">3</a>
+                                    <a href="#">4</a>
+                                    <a href="#">...</a>
+                                    <a href="#">6</a>
+                                    <a href="#">&raquo;</a>
+                                </div>
+                          
+                        </div>
                     </div>
 
                 </div>

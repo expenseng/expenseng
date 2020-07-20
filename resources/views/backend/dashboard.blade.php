@@ -11,6 +11,17 @@
     ExpenseNg - Admin Dashboard
 </title>
 @section('content')
+@if($message = Session::get('success'))
+    <div class="alert alert-success alert-block">
+      <button type="button" class="close" data-dismiss="alert">x</button>
+      <strong>{{$message}}</strong>
+    </div>
+  @endif
+
+  @if(Session::has('flash_message'))
+    <p class="alert {{Session::get('alert-class','alert-info')}}">{{Session::get('flash_message')}}</p>
+  @endif
+  {{$counter_feedback}}
     <div class="content">
         <div class="container-fluid">
             <div class="row ">
@@ -440,6 +451,46 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
+                        <div class="card">
+                            <h2 class="p-4 card-header">Visitors Suggestions</h2>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class="bg-light">
+                                            <tr class="border-0">
+
+                                                <th class="border-0">Firstname</th>
+                                                <th class="border-0">Lastname</th>
+                                                <th class="border-0">Cabinet</th>
+                                                <th class="border-0">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        
+                                        @if (count($feedbacks)> 0)
+                                            @foreach ($feedbacks as $feedback)
+                                                <tr>
+                                                    <td>{{$feedback->firstName}} </td>
+                                                    <td>{{$feedback->lastName}}  </td>
+                                                    <td>{{$feedback->ministry_id}}</td>
+                                                    <td>
+                                                        <a href="{{route('feedback.approve', ['id' => $feedback->id])}}" class="btn btn-success btn-sm ">Approve</button>
+                                                        <a href="{{route('feedback.ignore', ['id' => $feedback->id])}}" class="btn btn-danger btn-sm">Ignore</button>
+
+                                                    </td>
+                                                </tr>
+                                        @endforeach
+                                        @endif
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
     </div>
 
     <footer class="footer">
@@ -532,11 +583,19 @@
                         data:{'tweet': $tweet},
                         success:function (data) {
                             jQuery('.tweet').val('');
+                            jQuery('.alert1').removeClass('alert-danger');
+                            jQuery('.alert1').fadeIn(5000);
                             jQuery('.alert1').addClass('alert alert-success text-white');
                             jQuery('.alert1').html('tweet sent ');
                             jQuery('.alert1').fadeOut(5000);
                             // $('#savingsStatus').html(data);
                     },error: function (data){
+                            jQuery('.tweet').val('');
+                            jQuery('.alert1').removeClass('alert-success');
+                            jQuery('.alert1').fadeIn(5000);
+                            jQuery('.alert1').addClass('alert alert-danger text-white');
+                            jQuery('.alert1').html('tweet not sent');
+                            jQuery('.alert1').fadeOut(5000);
 
                         }
                     });

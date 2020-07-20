@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Citizen extends Model
 {
     protected $fillable = [
-        'name', 'email', 'phone'
+        'name', 'email', 'phone','password'
     ];
 }
