@@ -454,45 +454,43 @@
         </div>
     </div>
 </div>
-    <div class="row mr-5">
+    <div class="row mr-0 tweet-plugin fixed-plugin ">
         <div class="col d-flex">
             <div class="row ml-auto">
-
-                <button type="button " class="btn btn-white py-4" data-toggle="modal" data-target="#exampleModal">
-                    tweet <i class="fa fa-twitter fa-10x text-primary"></i>
+                <button type="button " class="btn btn-white bg-white text-primary py-4 px-2 tweet-button" data-toggle="modal" data-target="#exampleModal">
+                    <i class="fa fa-twitter fa-10x text-primary"></i> tweet
                 </button>
-
                 <!-- Modal -->
-                <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Type in tweet below</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="alert1 " >
-
-                                </div>
-                                <form class="user" action="">
-                                    @csrf
-                                    <div class="form-group">
-                                        <textarea name="tweet"  maxlength="260" class="form-control tweet" id="" cols="50" rows="6"></textarea>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary sendTweet" id="sendTweet">tweet</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
+<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Type in tweet below</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert1 " >
+
+                </div>
+                <form class="user" action="">
+                    @csrf
+                    <div class="form-group">
+                        <textarea name="tweet"  maxlength="260" class="form-control tweet" id="" cols="50" rows="6"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary sendTweet" id="sendTweet">tweet</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
