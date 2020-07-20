@@ -1,4 +1,3 @@
-
 @extends('layouts.master')
 
 @push('css')
@@ -11,13 +10,30 @@
 @section('content')
 {{ Breadcrumbs::render('ministries') }}
   <div class="wrapper">
+    <div class="content-1">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="d-flex">
+              <li class="items"><a href="#">HOME <span class="circle-1"></span></a></li>
+
+              <li class="items"><a href="#">PROFILES</a><span class="circle-1"></span></li>
+
+              <li class="items"><a href="#">MINISTRIES</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <div class="main-header">
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-6">
             <h1>Federal Ministries</h1>
             <p>ExpenseNG tracks federal spending to ensure taxpayers can see how their money
-              is being used in communities across America.
+              is being used in communities across Nigeria.
               Learn more on how this money was spent with tools to help you navigate
               spending from top to bottom.</p>
           </div>
@@ -35,7 +51,7 @@
           <div id="search-area" class="offset-md-1 col-md-5 mt-3 mt-md-0">
             <input type="search" id="ministry_search" class="form-control form-control-lg mb-2" style="font-family:Arial, FontAwesome" placeholder="&#xf002; Search for a ministry">
             <div id="ministryList"></div>
-            {{-- <button type="submit" id="submit" class="btn btn-block btn-success">Find</button> --}}
+
             @csrf
           </div>
         </div>
@@ -46,37 +62,8 @@
     <div class="last-section">
       <div class="container-fluid">
         <div id="cards-container" class="row d-flex sec-card" style="min-height: 300px">
-          @if (count($ministries) >0)
-          @foreach($ministries as $ministry)
-          <div data-id="{{$ministry->shortname()}}"
-            class="col-lg-3 col-md-6 col-sm-12 ministry-cards d-flex"
-            style="cursor:pointer"
-          >
-            <div class="cont-1 d-flex flex-column justify-content-center">
-              <chart label="myVueChart"
-                        v-bind:data="[{amount:32424, year:2039},{amount:12920923, year:2010}]"
-                        element="{{ $ministry->shortname() }}"></chart>
-              <div class="img">
-                <span class="circle"></span>
-              </div>
-              <div class="coat">
-                <img src="{{ asset('images/image 7.png') }}" alt="">
-                <div class="text-center ministry">
-                  <h4>{{$ministry->name}}</h4>
-                </div>
-              </div>
-              <div class="texts d-flex flex-column text-center">
-                <p>Total amount Spent</p>
-              <p class="num">₦{{number_format($ministry->total,2)}}</p>
-                <p class="year">{{date('Y')}}</p>
-              </div>
-            </div>
-            <a title="Click to view profile" href="{{ route('ministries.single', $ministry->shortname()) }}"></a>
-          </div>
 
-
-          @endforeach
-          @endif
+          @include('pages.ministry.cards')
 
         </div>
       </div>
