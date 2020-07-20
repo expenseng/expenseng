@@ -151,7 +151,7 @@
             </div>
         </div>
 
-        <div class="col-xl-8 col-lg-8 col-md-6 col-sm-8 col-8">
+        <div class="col-xl-8 col-lg-12 col-md-8 col-sm-12 col-12">
                         <div class="card">
                             <h2 class="p-4 card-header">Visitors Suggestions</h2>
                             <div class="card-body p-0">
