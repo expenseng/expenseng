@@ -144,6 +144,16 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
     Route::get('/import', 'UploadController@importFile');
     Route::post('/import', 'UploadController@importExcel')->name('importExcel');
 
+     // COMMENTS CRUD
+    Route::get('/comments', 'Admin\CommentController@index')->name('comments.view');
+    // Route::get('/users/create', 'Admin\UserController@create')->name('users.create');
+    // Route::post('/users/create', 'Admin\UserController@store')->name('users.store');
+    // Route::get('/users/edit/{user_id}', 'Admin\UserController@edit')->name('users.edit');
+    // Route::put('/users/edit/{user_id}', 'Admin\UserController@update')->name('users.update');
+    // Route::put('/users/change_password/{user_id}', 'Admin\UserController@updatePassword')->name('users.change_password');
+    // Route::delete('/users/delete/{user_id}', 'Admin\UserController@destroy')->name('users.delete');
+
+
  });
 
 
