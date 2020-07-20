@@ -78,9 +78,10 @@
                                             <option value="people">people</option>
                                             <option value="sector">sector</option>
                                             <option value="expense">expense</option>
-                                            <!-- <option value="payment">payment</option> -->
-                                            <!-- <option value="ministry">ministry</option>
-                                            <option value="citizen">citizen</option> -->
+                                            <!-- <option value="payment">payment</option>  -->
+                                            <!-- <option value="ministry">ministry</option> -->
+                                            <option value="citizen">citizen</option>
+                                            <!-- <option value="cabinet">cabinet</option> -->
                                         </select>
 
                                         <br>
