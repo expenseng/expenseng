@@ -124,11 +124,9 @@
 							<button class="nav-button" data-toggle="modal" data-target="#filterModal">Filter<i class="fas fa-filter px-1" style="font-size: var(--fs-reg);"></i></button>
 						</div>
 						<div class="table-data">
-							@include('partials.expense.ministry_table')
+							@include('pages.expense.ministry_table')
 						</div>
 						
-						<!---PAGINATION--->
-						{{ @include('partials.pagination', ['data' => $collection['summary']]) }}
 					</div>
 				</div>
 			</section>
