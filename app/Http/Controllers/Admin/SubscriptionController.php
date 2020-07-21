@@ -51,7 +51,15 @@ class SubscriptionController extends Controller
                 'sub_type' => 'required',
             ]
         );
-        
+            //check if detail exist before
+            $check = Subscription::where('email', $request->email)->get();
+
+            if (count($check) > 1) {
+                Session::flash('error_message', 'A subscription with '. $request->email.
+                ' has been created initially!!');
+                return redirect()->back();
+            }
+
             $new_subscription = new Subscription();
             $new_subscription->name = $request->name;
             $new_subscription->email = $request->email;
