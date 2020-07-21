@@ -58,9 +58,10 @@
             </a>
           </li>
 
-          <li class="nav-item ">
-            <a class="nav-link" href="{{Route::is('subscribeReport')? '#' :route('subscribeReport')}}">
-              <i class="material-icons">supervisor_account</i>
+          <li class="{{Route::is('subscribe.view') || Route::is('subscribe.create') || Route::is('subscribe.edit')
+           ? 'nav-item active' : 'nav-item'}} ">
+            <a class="nav-link" href="{{Route::is('subscribe.view')? '#' :route('subscribe.view')}}">
+              <i class="material-icons">star_outline</i>
               <p>Subcriptions</p>
             </a>
           </li>
