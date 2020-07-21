@@ -10,20 +10,20 @@ use Illuminate\Queue\SerializesModels;
 class SendSubNotification extends Mailable
 {
     use Queueable, SerializesModels;
-    public $email;
     public $name;
+    public $report;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    /*public function __construct()
     {
         //
-        $this->email = $email;
+        $this->name = $name;
         $this->report = $report;
-    }
+    }*/
 
     /**
      * Build the message.
@@ -32,6 +32,6 @@ class SendSubNotification extends Mailable
      */
     public function build()
     {
-        return $this->view('view.email');
+        return $this->view('email');
     }
 }
