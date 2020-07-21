@@ -8,17 +8,8 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" />
 <link rel="stylesheet" href="/css/modal/style.css">
-
-
 @endpush
 @section('banner')
-
-@if($message = Session::get('success'))
-    <div class="alert alert-success ">
-      <button type="button" class="close" data-dismiss="alert">x</button>
-      <strong>{{$message}}</strong>
-    </div>
-@endif
 <!-- banner -->
 <!-- banner -->
 <div class=" background">
@@ -273,7 +264,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
 <div class="convo container d-flex  justify-content-between mb-3">
             <div class="tweet col-md-5 col-lg-5 d-flex align-items-center justify-content-start">
                <div class="twt-handle">
-                 <img src="{{asset('/images/twitter.png')}}" alt="">
+                 {{-- <img src="{{asset('/images/twitter.png')}}" alt=""> --}}
                 <a href="#">@expenseNG</a>
                </div>
             </div>
@@ -288,13 +279,13 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
    </div>
   </div>
 
-
+{{-- 
   <div class='container'>
         <!-- Modal to Enter Form -->
         <h3 style='color: #353A45; text-align:center;margin-top: 15px'>Suggest Cabinet Members</h3>
-`     
+     
 <center>
-<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" style="background: rgba(49, 139, 108, 0.89);margin-bottom: 20px;border:rgba(49, 139, 108, 0.89); padding: 15px 20px;">
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" style="background: 353A45;margin-bottom: 20px;">
   Suggest a Cabinet Member
 </button>
 </center>
@@ -335,7 +326,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
         <div class="form-group">
           <label for="ministry">Select Cabinet</label>
           <select id="inputState" class="form-control" name="ministry_id">
-            <option selected value="works">Works</option>
+            <option selected value="1">Works</option>
             <option value="Housing">Housing</option>
             <option value="Interior">Interior</option>
             <option value="Petroleum">Petroleum</option>
@@ -358,7 +349,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
           </select>
         </div>
        <center>
-        <button type="submit" class="btn btn-success " style="background:rgba(49, 139, 108, 0.89);border:rgba(49, 139, 108, 0.89);padding: 10px 20px;">Submit</button>
+        <button type="submit" class="btn btn-primary ">Submit</button>
       </center>
 
       </form>
@@ -369,7 +360,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
       
     </div>
   </div>
-</div>
+</div> --}}
 
 
 </section>
@@ -380,9 +371,5 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous"></script>
 <script src="{{asset('js/index.js')}}"></script>
 <script src="{{asset('js/chart.js')}}"></script>
-<script src="{{asset('js/subscription.js')}}"></script>
-<!-- Popper JS -->
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="{{asset('/js/subscription.js')}}"></script>
 @endsection

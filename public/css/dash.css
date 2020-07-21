@@ -4,3 +4,15 @@
   flex-wrap: wrap;
 
 }
+.tweet-plugin{
+    top:250px !important;
+}
+.tweet-button:hover {
+    right: 20px !important;
+}
+.tweet-list-button:hover{
+    right: 30px;
+}
+.tweet-list-plugin{
+    top: 350px;
+}
