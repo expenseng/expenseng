@@ -333,6 +333,16 @@
 
 
                 });
+                $.ajax(
+                    {
+                        url: "{{URL::to('tweets')}}",
+                        type: "get",
+                        datatype: "html"
+                    }).done(function(data){
+                    $("#tweets").empty().html(data);
+                    }).fail(function(jqXHR, ajaxOptions, thrownError){
+                    alert('No response from server');
+                    });
 
 
                 jQuery('.fixed-plugin .active-color span').click(function() {

@@ -176,9 +176,9 @@ class TwitterBot extends Controller
     {
         if ($request ->ajax()) {
             try {
-                $tweet = Tweets::all();
-                $tweet_array = json_decode($tweet);
-                return Response($tweet_array);
+                $tweets = Tweets::paginate(10);
+//               $tweet_array = json_decode($tweet);
+                return view('backend.tweets', compact('tweets'));
             } catch (\Exception $exception) {
                 return Response::json(array("errors" => 'error occured'), 422);
             }
