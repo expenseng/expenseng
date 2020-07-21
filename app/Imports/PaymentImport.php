@@ -5,8 +5,10 @@ namespace App\Imports;
 use App\Payment;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class PaymentImport implements ToModel
+class PaymentImport implements ToModel,WithHeadingRow
 {
     /**
      * @param array $row
@@ -21,8 +23,7 @@ class PaymentImport implements ToModel
         'organization'      => $row[2],
             'beneficiary'     => $row[3],
                 'amount'      => $row[4],
-                    'payment_date'     => $row[5],
-                    	'description'     => $row[6],
+                    	'description'     => $row[5],
         ]);
     }
 }

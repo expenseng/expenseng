@@ -66,6 +66,7 @@
 body{
     padding: 0;
     margin: 0;
+    overflow-x: hidden;
 }
 
 #main{
@@ -161,7 +162,7 @@ button.btn.scroll-down::after{
     display: flex;
     position: relative;
     height:400px;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
 .ministry-top{
     display: flex;
@@ -176,7 +177,6 @@ p.tag{
     align-self: flex-start;
     position: absolute;
     left: 10%;
-    top: -2%;
     z-index: 23;
 }
 .card{
@@ -285,7 +285,7 @@ p.exp-card3{
 }
 .ministry-heading{
     display: flex;
-    flex-direction: column;
+    flex-direction: tlumn;
     justify-content: space-between;
     align-items: center;
 }
@@ -401,13 +401,14 @@ p.profile{
     margin: 50px; */
 }
 .convo-background{
-    background-image: linear-gradient(to bottom, rgba(50, 62, 72, 0.33), rgba(50, 62, 72, 0.33), rgba(49, 139, 108, 0.89)),url(../img/Group\ 1394.svg);
-    background-size: cover;
+    background-image: linear-gradient(to bottom, rgba(49, 139, 108, 0.89), rgba(49, 139, 108, 0.89), rgba(49, 139, 108, 0.89)),url(../images/twitter1.png);
     background-repeat: no-repeat;
+    background-size: inherit;
+    margin-bottom: -20px;
 }
 .convo{
     z-index: -1;
-    /* padding: 1rem; */
+    /* margin-left: 5rem; */
     display: flex;
     flex-direction: column;
     color: white;
@@ -425,15 +426,18 @@ p.profile{
 .query p:nth-child(2){
      font-size: var(--fs-h5);
 }
-.twt-handle{
+.twt-handle a{
     padding: 0.5rem 1.8rem;
     background-color: white;
     border-radius: 0.3rem;
     text-align: center;
     width: auto;
+    margin-left: -90px;
 }
 .twt-handle a{
+    background-color: white;
    font-size: var(--fs-h5);
+
 }
 .twt-handle img{
    width: 20px;
@@ -472,6 +476,7 @@ p.profile{
     .twt-handle{
         padding: 0.5rem 1.3rem;
         margin: 0 0 2rem 3rem;
+        
     }
 }
 
@@ -535,8 +540,10 @@ p.profile{
         width: 28%;
     }
     .twt-handle{
-        padding: 0.3rem 0.8rem;
-        margin: 0 0 2rem 5rem;
+        /* padding: 0.3rem 0.8rem; */
+        /* margin: 0 0 2rem 5rem; */
+        margin-left: 25px;
+        margin-top: 50px;
     }
 }
 
@@ -705,24 +712,38 @@ p.profile{
     #compu{
         font-size: 15px;
     }
+    .companies{
+        margin-bottom: 0;
+    }
+    .convo-background{
+        background: linear-gradient(to bottom, rgba(49, 139, 108, 0.9), rgba(49, 139, 108, 0.9), rgba(49, 139, 108, 0.9));
+    }
     .tweet{	
-        background: url(../images/twitter1.png);	
-        height: 200px;	
-        background-size: 100% 100%;	
+        background: linear-gradient(to bottom, rgba(49, 139, 108, 0.89), rgba(49, 139, 108, 0.89), rgba(49, 139, 108, 0.89)), url(../images/twitter1.png);
+        height: 200px;
+        width: 100%;	
         display: flex;	
-        width: 45%;	
         margin: auto;	
         background-size: contain;	
         background-position: center;	
         background-repeat: no-repeat;	
     }	
+    .twt-handle a{
+        margin-left: 5px;
+    }
     .twt-handle img {
         width: 20px;
         height: 15px;
     }
     .twt-handle{
         padding: 0.1rem 0.6rem;
-        margin: 1rem 0 0 1rem;
+        margin: .1rem 0 0 10.2rem;
+    }
+    .query p:nth-child(2){
+        text-align: center;
+    }
+    p{
+        text-align: center;
     }
 }
 
@@ -733,7 +754,7 @@ p.profile{
         --fs-h3: 1.16rem;
         --fs-h4: 1.02rem;
         --fs-reg: 0.63rem;
-        --fs-h5: 0.6rem;
+        --fs-h5: 0.9rem;
         --fs-h6: 0.45rem;
     }
     .twt-handle img {

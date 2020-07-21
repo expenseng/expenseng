@@ -178,9 +178,11 @@ $(document).ready(function() {
                         $('#tbl').html(data)
                         let reportDate = /\d{4}-\d{2}-\d{2}/.test(date)? formatDate(date) : date
                         $('#said-date').html(`Date: <span style="color:#1e7e34">${reportDate}</span>`)
-                        $('#expense-table').html(html)
+                       
+                    },
+                    error: function(error){
+                        console.log(error)
                     }
-
                 })
         })
 

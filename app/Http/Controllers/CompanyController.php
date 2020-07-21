@@ -115,13 +115,13 @@ class CompanyController extends Controller
         $save_new_company = $new_company->save();
 
         if ($save_new_company) {
-            return "<script>alert('$request->company_name Company created Successfully');
-            window.location.replace('/admin/company/view')";
+            echo ("<script>alert('New company created successfully');
+             window.location.replace('/admin/company/view');</script>");
         } else {
-            Session::flash('flash_message', 'Cannot create new Company!');
-            return redirect()->back();
+            echo ("<script>alert('Cannot create New company'); 
+            window.location.replace('/admin/company/create');</script>");
         }
-    }
+    }   
 
     public function showEditForm($id)
     {
