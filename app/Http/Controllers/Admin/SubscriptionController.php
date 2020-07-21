@@ -62,10 +62,6 @@ class SubscriptionController extends Controller
                 return redirect()->back();
             }
 
-            $name = $request->name;
-            $report = $request->sub_type;
-
-            return Mail::to($request->email)->send(new SendSubNotification($name, $report));
             $new_subscription = new Subscription();
             $new_subscription->name = $request->name;
             $new_subscription->email = $request->email;
