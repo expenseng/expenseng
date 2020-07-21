@@ -86,7 +86,7 @@ class CompanyController extends Controller
          if (Gate::denies('active', 'manage')) {
             return redirect(route('profile'));
         }
-        
+
         $companies = Company::all();
 
         return view('backend.company.view')
@@ -118,10 +118,10 @@ class CompanyController extends Controller
             echo ("<script>alert('New company created successfully');
              window.location.replace('/admin/company/view');</script>");
         } else {
-            echo ("<script>alert('Cannot create New company'); 
+            echo ("<script>alert('Cannot create New company');
             window.location.replace('/admin/company/create');</script>");
         }
-    }   
+    }
 
     public function showEditForm($id)
     {
