@@ -48,6 +48,25 @@ a:active{
 	font-size: var(--fs-h6);
 }
 
+.first{
+	background-color: #f2f2f2;
+	font-weight: bold;
+	padding-left: 2%;
+}
+  
+.first li a{
+	color: #6c757d;
+}
+  
+.first li a:hover{
+	text-decoration: none;
+	color: #00945E;
+}
+  
+.first li.active{
+	color: #00945E;
+}
+
 .breadcrumb span{
 	margin: 0 1rem;
 	color: var(--clr-accent);
