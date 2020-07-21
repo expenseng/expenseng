@@ -54,4 +54,6 @@ Route::post('/citizens', 'CitizenController@userApi');
 // ADMIN - Comments API Calls
  Route::group(['prefix' => '', 'middleware' => ['api'] ], function() {
     Route::get('/comments', 'Admin\CommentController@getAllComments'); //gets all application comments
+    Route::post('/comments/{commentId}', 'Admin\CommentController@DeleteComment'); //delete a comment
+
  });
