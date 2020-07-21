@@ -123,7 +123,7 @@
 
                                                      <div class="form-group">
                                                         <label for="formGroupExampleInput">RefId</label>
-                                                        <input type="text" class="form-control" rows="3" v-model="index">
+                                                        <input type="text" class="form-control" rows="3" v-model="singleComment.refId">
                                                      </div>         
                                                 </form>
                                             </div> 
