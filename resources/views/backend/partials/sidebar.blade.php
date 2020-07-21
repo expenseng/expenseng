@@ -41,6 +41,7 @@
               <p>Ministry</p>
             </a>
           </li>
+
           <li class="{{Route::is('expenses.view') || Route::is('expenses.create') || Route::is('expenses.edit')
           ? 'nav-item active' : 'nav-item'}} ">
             <a class="nav-link" href="{{Route::is('expenses.view') || Route::is('expenses.create') || Route::is('expenses.edit') ? '#' : route('expenses.view')}}">
@@ -48,6 +49,7 @@
               <p>Expenses</p>
             </a>
           </li>
+
           <li class="{{Route::is('cabinet.view') || Route::is('cabinet.create') || Route::is('cabinet.edit')
            ? 'nav-item active' : 'nav-item'}}  ">
             <a class="nav-link" href="{{route('cabinet.view')}}">
@@ -55,18 +57,21 @@
               <p>Cabinet</p>
             </a>
           </li>
+
           <li class="nav-item ">
             <a class="nav-link" href="{{Route::is('subscribeReport')? '#' :route('subscribeReport')}}">
               <i class="material-icons">supervisor_account</i>
               <p>Subcriptions</p>
             </a>
           </li>
+
           <li class="nav-item ">
             <a class="nav-link" href="#">
               <i class="material-icons">supervisor_account</i>
               <p>People</p>
             </a>
           </li>
+
           <!-- <li class="nav-item "> -->
           <li class="{{Route::is('importExcel')
           ? 'nav-item active' : 'nav-item'}} ">
@@ -78,7 +83,8 @@
               <p>Upload Spreadsheet</p>
             </a>
           </li>
-          <li class="nav-item active-pro ">
+          
+          <li class="nav-item ">
             <a class="nav-link" href="#">
               <i class="material-icons">unarchive</i>
               <p>Comments</p>
