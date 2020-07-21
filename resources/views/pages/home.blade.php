@@ -264,7 +264,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
 <div class="convo container d-flex  justify-content-between mb-3">
             <div class="tweet col-md-5 col-lg-5 d-flex align-items-center justify-content-start">
                <div class="twt-handle">
-                 <img src="{{asset('/images/twitter.png')}}" alt="">
+                 {{-- <img src="{{asset('/images/twitter.png')}}" alt=""> --}}
                 <a href="#">@expenseNG</a>
                </div>
             </div>
@@ -279,11 +279,11 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
    </div>
   </div>
 
-
+{{-- 
   <div class='container'>
         <!-- Modal to Enter Form -->
         <h3 style='color: #353A45; text-align:center;margin-top: 15px'>Suggest Cabinet Members</h3>
-`     
+     
 <center>
 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" style="background: 353A45;margin-bottom: 20px;">
   Suggest a Cabinet Member
@@ -360,7 +360,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
       
     </div>
   </div>
-</div>
+</div> --}}
 
 
 </section>

@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
     <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-<title>ExpenseNg - Subscribers</title>
+<title>ExpenseNg - Cabinets</title>
 @endpush
 
 @section('content')
@@ -32,12 +32,10 @@
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="mb-0">Subscribed Users </h3>
+                                <h3 class="mb-0">All Cabinet Members </h3>
                                 @can('add')
-                                <a href="{{route('subscribe.create')}}" class="btn btn-primary" style="float:right">CREATE NEW SUBSCRIPTION</a>
+                                <a href="{{route('cabinet.create')}}" class="btn btn-primary" style="float:right">CREATE A CABINET MEMBER</a>
                                 @endcan
-
-
                                 <p></p>
                             </div>
                             <div class="card-body">
@@ -47,44 +45,45 @@
                                             <tr>
                                                 <th>S/N</th>
                                                 <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Report Type</th>
+                                                <th>Twitter Handle</th>
+                                                <th>Position Held</th>
+                                                <th>Image</th>
+                                                <th>Ministry Code</th>
                                                 @can('manage')
                                                 <th>Actions</th>
                                                 @endcan
-
-
-
                                             </tr>
                                         </thead>
 
                                         <tbody>
-                                        @if (count($subscribe) > 0)
-
+                                        @if (count($cabinets ) > 0)
+                                        
                                             <tr>
-                                            @foreach ($subscribe as $sub)
+                                            @foreach ($cabinets as $cabinet)
                                                 <td>
                                                     {{++$count}}
                                                 </td>
-                                                <td>{{$sub->name}}</td>
-                                                <td>{{$sub->email}}</td>
-                                                <td>{{$sub->subscription_type }}</td>
+                                                <td>{{$cabinet->name}}</td>
+                                                <td>{{$cabinet->twitter_handle}}</td>
+                                                <td>{{$cabinet->role}}</td>
+                                                <td><img src="{{$cabinet->avatar}}" alt="{{$cabinet->name . '\'s image'}}" style="height: 50px; width:50px; border-radius: 50%"></td>
+                                                <td>{{$cabinet->ministry_code}}</td>
                                                 @can('manage')
                                                 <td>
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             @can('edit')
-                                                            <a href="{{'/admin/subscribe/edit/' . $sub->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
+                                                            <a href="{{'/admin/cabinet/edit/' . $cabinet->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
                                                             @endcan
                                                         </div>
                                                         <!--modal begin-->
                                                         
                                                             <div class="col-md-6">
                                                             @can('delete')
-                                                            <i class="fa fa-trash" data-toggle="modal" data-target="{{'#exampleModal'. $sub->id}}" style="color: red"></i>
+                                                            <i class="fa fa-trash" data-toggle="modal" data-target="{{'#exampleModal'. $cabinet->id}}" style="color: red"></i>
                                                             @endcan
 
-                                                            <div class="modal fade" id="{{'exampleModal' . $sub->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal fade" id="{{'exampleModal' . $cabinet->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
                                                                 <div class="modal-header">
@@ -94,19 +93,19 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                Deleting <strong>{{$sub->name}}</strong> from Subscriptions
+                                                                Deleting <strong>{{$cabinet->name}}</strong> from Cabinets
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                    <form action="{{'/admin/subscribe/delete/'. $sub->id}}" method="post" >
+                                                                    <form action="{{'/admin/cabinet/delete/'. $cabinet->id}}" method="post" >
                                                                 @method('delete')
                                                                 @csrf
                                                                 <button type="" class="btn btn-danger">Delete</button>
                                                                 </form>
                                                                 </div>
                                                                 </div>
-                                                                </div>
-                                                                </div>
+  </div>
+</div>
                                                     </div>
                                                     </div>
 
@@ -114,20 +113,24 @@
                                                 </td>
                                                 @endcan
                                             </tr>
-
+                                            
                                         @endforeach
                                         @endif
-                                        {{ $subscribe->links() }}
+                                            
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                                 <th>S/N</th>
                                                 <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Report Type</th>
+                                                <th>Twitter Handle</th>
+                                                <th>Position Held</th>
+                                                <th>Image</th>
+                                                <th>Ministry Code</th>
                                                 @can('manage')
                                                 <th>Actions</th>
                                                 @endcan
+
+                                                
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -143,30 +146,9 @@
 
 @section('js')
 
-    <!-- main js -->
-    <script src="{{ asset('js/main-js.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/dashboard-ecommerce.js') }}" type="text/javascript"></script>
-
-
-
-    <!-- bootstap bundle js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
     <!-- slimscroll js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/slimscroll/jquery.slim.min.js"></script>
-    <script src="/vendor/slimscroll/jquery.slimscroll.js"></script>
-    <!-- datatable  js -->
-    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-    <!-- sparkline js -->
-    <script src="/vendor/charts/sparkline/jquery.sparkline.js"></script>
-    <!-- morris js -->
-    <script src="/vendor/charts/morris-bundle/raphael.min.js"></script>
-    <script src="/vendor/charts/morris-bundle/morris.js"></script>
-    <!-- chart c3 js -->
-    <script src="/vendor/charts/c3charts/c3.min.js"></script>
-    <script src="/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
-    <script src="/vendor/charts/c3charts/C3chartjs.js"></script>
+   
     <script>
         jQuery(document).ready(function() {
     $('#example').DataTable();
