@@ -79,9 +79,20 @@ class CommentService{
         })
     }
 
+     getAllComments(){
+        return axios.get('/api/comments/', {
+           
+        })
+        .then(response => {
+            return response.data;
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+
     getResourceComments(resource){
         return axios.post('/api/comments/resource', {
-            origin: resource
+            //origin: resource
         })
         .then(response => {
             return response.data;

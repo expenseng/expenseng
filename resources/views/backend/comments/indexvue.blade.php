@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/extras/datatables/css/fixedHeader.bootstrap4.css">
     <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css" />
 
     <!-- causes toggle error in navbar -->
     <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
@@ -24,15 +25,14 @@
             padding: 12px!important;
         }
     </style>
-    <title>ExpenseNg - Users</title>
+    <title>ExpenseNg - Comments</title>
 @endpush
 
 @section('content')
-    <div class="content">
+    <div class="content" id="app">
         <div class="container-fluid">
             <admin-comments></admin-comments>
-            <h1>Hello</h1>
-        </div>
+        </div>    
     </div>
 
 @endsection
@@ -67,25 +67,9 @@
     } );
     </script>
 
-<script>
-    $('.delete-user').click(function(e){
-        e.preventDefault() // Don't post the form, unless confirmed
-        if (confirm('Are you sure?')) {
-            // Post the form
-            $(e.target).closest('form').submit() // Post the surrounding form
-        }
-    });
-</script>
-    
- <script>
-    $("document").ready(function(){
-    setTimeout(function(){
-       $("#alert").remove();
-    }, 3000 ); // 5 secs
-    $("#alert").fadeTo(2000, 500).slideUp(500, function(){
-    $("#alert").slideUp("500");
-});
-});
-</script>
+    <script src="{{ asset('js/app.js') }}" type="application/javascript"></script>
+    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+
+
 
 @endsection

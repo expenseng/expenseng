@@ -107,7 +107,7 @@ $(document).ready(function() {
         let date, sort, active;
 
         $('#apply-filter').on('click', function(e){
-            
+            const id = $(this).attr("data-id");
             let invalid = false;
             
            
@@ -164,25 +164,23 @@ $(document).ready(function() {
             
             if(invalid) return;
             date = reverseDateFormat(date);
-            const data = {date};
+            const data = {id, date};
             if(sort !== undefined){
                 data.sort = sort;
             }
-            console.log('data gets here', data)
+           
             $.ajax({
-                    url: "/expense/filterExpensesAll",
+                    url: "/ministry/filterExpenses",
                     method: "GET",
                     data: data,
                     success: function(data){
-                        // console.log(data)
-                        $('.table-data').html(data)
+                        
+                        $('#tbl').html(data)
                         let reportDate = /\d{4}-\d{2}-\d{2}/.test(date)? formatDate(date) : date
                         $('#said-date').html(`Date: <span style="color:#1e7e34">${reportDate}</span>`)
-                       
-                    },
-                    error: function(error){
-                        console.log(error)
+                        $('#expense-table').html(html)
                     }
+
                 })
         })
 
@@ -190,19 +188,17 @@ $(document).ready(function() {
             event.preventDefault();
             let page = $(this).attr('href').split('page=')[1]
             fetch_data(page, date, sort)
-            console.log('I was clicked')
         })
 
         function fetch_data(page, date, sort){
-            const data = {date, sort};
-            console.log('I was clicked 2')
+            const id = $('#apply-filter').attr("data-id");
+            const data = {id, date, sort};
             $.ajax({
-                url: "/expense/filterExpensesAll?page="+page,
+                url: "/ministry/filterExpenses?page="+page,
                 method: "GET",
                 data: data,
                 success: function(data){
-                    console.log(data)
-                    $('.table-data').html(data)                   
+                    $('#tbl').html(data)                   
                 },
                 error: function(error){
                     console.log(error)

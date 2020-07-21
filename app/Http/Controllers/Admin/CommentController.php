@@ -18,10 +18,6 @@ use Illuminate\Support\Facades\Gate;
 class CommentController extends Controller
 {
     
-    private $token;
-    private $http;
-    private $org;
-    private $baseUri = "https://comment.microapi.dev/v1/";
 
     public function __construct()
     {
@@ -42,33 +38,7 @@ class CommentController extends Controller
         ]);      
     }
 
-    /**
-     * Creats org => POST: /organizations
-     */
-    public function createOrg(){
-        
-    }
 
-    /**
-     * Send POST to /applications
-    */
-    public function createToken(){
-        $response = $this->http->post('/applications', [
-            "organizationEmail" => env("COMMENT_ORG_EMAIL", $this->org->email),
-            "password" => env("COMMENT_PASSWORD", $this->org->password),
-            "organizationId" => env("COMMENT_ORG_ID", $this->org->id),
-        ]);
-
-        //Assuming all goes well!
-        $response = json_encode($response->getBody());
-        $this->token = $response['data']['organizationToken'];
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
         // //
@@ -92,6 +62,29 @@ class CommentController extends Controller
        return view('backend.comments.indexvue');
         
     }
+
+
+    public function getAllComments(Request $request){
+        $origin = urlencode($request->origin);
+        $response = $this->http->get('comments', [
+            'query' => [
+                // 'limit'  => 2,
+                // 'page' => 2
+            ]
+        ]);
+
+        $data = json_decode($response->getBody(), true);
+
+        if($data['status'] == "success"){
+            return $data['data'];
+        }else{
+            Log::error("Error from fetching comments" . $data);
+            return false;
+        }
+    }
+
+
+
 
     /**
      * Show the form for creating a new resource.

@@ -37,6 +37,8 @@ Route::post('/ministries', 'MinistryController@store')->name('ministry_store');
 Route::patch('/ministries/{ministry}', 'MinistryController@update')->name('ministry_update');
 Route::delete('/ministries/{ministry}', 'MinistryController@destroy')->name('ministry_destroy');
 Route::post('/ministries/autocomplete', 'MinistryController@autocomplete')->name('ministry_autocomplete');
+Route::get('/expense/filterExpensesAll', 'ExpenseController@filterExpensesAll')->name('all_ministries_filter_expenses');
+
 
 /**
  * Contractor Endpoints
@@ -139,19 +141,23 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
    //Profile Page
     Route::get('/profile', 'ProfileController@viewProfile')->name('profile');
     Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
-    
+
    //  Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
     Route::get('/import', 'UploadController@importFile');
     Route::post('/import', 'UploadController@importExcel')->name('importExcel');
 
-     // COMMENTS CRUD
-    Route::get('/comments', 'Admin\CommentController@index')->name('comments.view');
-    // Route::get('/users/create', 'Admin\UserController@create')->name('users.create');
-    // Route::post('/users/create', 'Admin\UserController@store')->name('users.store');
-    // Route::get('/users/edit/{user_id}', 'Admin\UserController@edit')->name('users.edit');
-    // Route::put('/users/edit/{user_id}', 'Admin\UserController@update')->name('users.update');
-    // Route::put('/users/change_password/{user_id}', 'Admin\UserController@updatePassword')->name('users.change_password');
-    // Route::delete('/users/delete/{user_id}', 'Admin\UserController@destroy')->name('users.delete');
+    // SUBSCRIPTION ROUTES
+    Route::get('/subcribe', 'Admin\SubscriptionController@index')->name('subscribeReport');
+
+    // FEEDBACK ROUTES
+    Route::get('/feedback/approve/{id}', 'FeedbackController@approve')->name('feedback.approve');
+   	Route::get('/feedback/ignore/{id}', 'FeedbackController@ignore')->name('feedback.ignore');
+
+
+     // COMMENTS ROUTES
+    Route::get('/comments', 'Admin\CommentController@index')->name('comments.view');  //Displays the index page for all comments
+ 
+
 
 
  });
@@ -170,4 +176,5 @@ Route::get('/admin', function()
 
 Route::get('/startRT', 'TwitterBot@startLiveRetweet');
 Route::get('/stopRT', 'TwitterBot@stopLiveRetweet');
+Route::post('/post_tweet','TwitterBot@sendTweet');
 
