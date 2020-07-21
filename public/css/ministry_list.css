@@ -227,6 +227,8 @@ body{
   
 }
 
+
+/* Styling for ministry cards section */
 .ministry-cards {
   position: relative;
 }
@@ -240,4 +242,45 @@ body{
   right: 0;
   text-indent: -9999px;
   z-index: 1000;
+}
+
+.centeri{
+  width: 100%;
+  padding: 15px 15px 30px 30px;
+}
+
+.pagination {
+  background-color: #f1f1f1;
+  float: right;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: .25rem;
+}
+
+.pagination a.active {
+  background-color: #00945E;
+  color: white;
+  
+}
+
+.pagination a, .mini-pagination a {
+  color: black;
+  padding: 5px 15px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+@media only screen and (max-width:768px){
+  .centeri{
+    justify-content: center;
+    flex-direction: column-reverse;
+  }
+
+  .centeri>span{
+    text-align: center;
+    margin: 20px;
+  }
+  
 }

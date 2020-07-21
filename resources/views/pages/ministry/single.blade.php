@@ -4,17 +4,32 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 {{-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/le-frog/jquery-ui.css"> --}}
 <link rel="stylesheet" href="{{asset('/css/aboutus-header_footer.css')}}">
-<link rel="stylesheet" href="/css/modal/style.css">
-
 <title>FG Expense - Profile</title>
 @endpush
 
 @section('content')
-{{ Breadcrumbs::render('ministry', $ministry) }}
+
 
 <link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
 <link rel="stylesheet" href="{{asset('/css/ministry_list_table.css')}}">
 <!-- Section-->
+<div class="container mt-4 pt-2">
+    <div class="container mt-4">
+
+        <div class="row">
+            <p id="header" class="font-weight-bold">
+                <span class="head-cont text-success"> HOME</span>
+                <span class="head-cont dot"> &#8226</span>
+                <span class="head-cont text-success"> PROFILES</span>
+                <span class="head-cont dot"> &#8226</span>
+                <span class="head-cont text-success"> MINISTRIES</span>
+                <span class="head-cont dot"> &#8226</span>
+                <span class="head-cont text-success"> MINISTRY PROFILE</span>
+            </p>
+        </div>
+    </div>
+</div>
+
 <div class="container d-flex centerize py-4">
     <div class="ministry-logo d-flex ">
         <img src="{{asset('/img/image_7.png')}}" class="ministry-logo-image" alt="ministry logo">
@@ -37,12 +52,12 @@
         </div>
         <div class="col">
             <p>Total Amount Spent</p>
-            <h4><span class="text-success">&#8358;{{number_format($trend["2020"], 2)}}</span></h4>
+            <h4><span class="text-success">&#8358;{{number_format($trend[date('Y')], 2)}}</span></h4>
             <small>{{date('Y')}}</small>
         </div>
         <div class="col">
             <p>Total Number of Projects</p>
-            <h4><span class="text-success">{{count($payments)}}</span></h4>
+            <h4><span class="text-success">{{$count}}</span></h4>
             <small>{{date('Y')}}</small>
         </div>
     </div>
@@ -111,7 +126,7 @@
                                         </section>                   
                                         <br>
                                         <section class="row">
-                                            <div class="col-12" style="position:relative">
+                                            <div class="col-12" >
                                             <i class="fa fa-calendar" aria-hidden="true"></i>
                                             <input placeholder="Select Date" name="select-date" id="select-date"  class="form-control">
                                             <input placeholder="Select Month" name="select-month" id="select-month" class="monthYearPicker form-control" />
@@ -138,58 +153,8 @@
                     </div>
                      <!-- End of Filter Modal -->
 
-                    <div class="container">
-                        <div class="table-div">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Project</th>
-                                        <th scope="col">Company</th>
-                                        <th scope="col">Amount</th>
-                                        <th scope="col">Date</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody id="expense-table">
-                                    @if (count($payments) > 0)
-                                        @php
-                                        $back = true;
-                                        @endphp
-                                        @foreach($payments as $payment)
-                                    
-                                        @php
-                                        $back = !$back;
-                                        $shade = $back ? 'back': '';
-                                        @endphp
-                                            <tr  class="{{$shade}}">
-                                                <td> {{$payment->description}}</td>
-                                                <td> {{$payment->beneficiary}}</td>
-                                                <td> ₦{{number_format($payment->amount, 2)}}</td>
-                                                <td> {{date('jS, M Y', strtotime($payment->payment_date))}}</td>
-                                            </tr>
-                                        @endforeach
-                                @endif
-                                
-                                </tbody>
-
-                            </table>
-                        </div>
-
-                        <div class="row centerize mt-3 pt-3">
-                            <div class="col-md result text-muted"> 1-20 of 320 results</div>
-             
-                                <div class="pagination">
-                                    <a href="#">&laquo;</a>
-                                    <a class="active" href="#">1</a>
-                                    <a href="#">2</a>
-                                    <a href="#">3</a>
-                                    <a href="#">4</a>
-                                    <a href="#">...</a>
-                                    <a href="#">6</a>
-                                    <a href="#">&raquo;</a>
-                                </div>
-                          
-                        </div>
+                    <div id="tbl" class="container">
+                        @include('pages.ministry.pagination')
                     </div>
 
                 </div>
@@ -234,8 +199,12 @@
             @if ($cabinets)
                 @foreach($cabinets as $cabinet)
                 @php
-                    $ministerHandle = substr($cabinet->twitter, 1)
+                    $ministerTwitterHandle = substr($cabinet->twitter_handle, 1);
+                    $ministerFacebookHandle = substr($cabinet->facebook_handle, 1);
+                    $ministerLinkedInHandle = substr($cabinet->linkedIn_handle, 1);
+                    $ministerInstagramHandle = substr($cabinet->Instagram_handle, 1);
                 @endphp
+                 
             <div class="col-lg-3 card border-top-0 border-left-0 border-right-0">
                 <div class="card-img" style="display:flex; justify-content: center; padding:1.25rem 1.25rem 0;">
                     <img src="{{$cabinet->avatar}}" class="img-fluid" alt="{{$cabinet->name}}">
@@ -245,15 +214,20 @@
                     <p id="minister-name" class="text-center font-weight-bold">{{$cabinet->name}}</p>
                     <p class="text-success text-center">{{$cabinet->role}}</p>
                     </div>
-                    
-                        
-                       
-                
+                     
                     <div class="social-handle text-center">
+                        @if($ministerFacebookHandle)
                         <a href="#" class="link"><i class="fab fa-facebook" aria-hidden="true"></i></a>
-                        <a href="{!! url("https://twitter.com/$ministerHandle") !!}" class="link ml-2"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        @endif
+                        @if($ministerTwitterHandle)
+                        <a href="{!! url("https://twitter.com/$ministerTwitterHandle") !!}" class="link ml-2"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        @endif
+                        @if($ministerLinkedInHandle)
                         <a href="#" class="link ml-2"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                        @endif
+                        @if($ministerInstagramHandle)
                         <a href="#" class="link ml-2"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -269,88 +243,6 @@
             @include('partials.comments')
         </div>
     </div>
-</div>
-{{-- ministry cabinet member suggestion --}}
-<div class='container'>
-    <!-- Modal to Enter Form -->
-    <h3 style='color: #353A45; text-align:center;margin-top: 15px'>Suggest Cabinet Members</h3>
-`     
-<center>
-<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" style="background: 353A45;margin-bottom: 20px;">
-Suggest a Cabinet Member
-</button>
-</center>
-<!-- Modal -->
-    @if ($errors->any())
-      <div class="alert alert-danger">
-          <ul>
-              @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-              @endforeach
-          </ul>
-      </div>
-  @endif
-<!-- The Modal -->
-<div class="modal" id="myModal">
-<div class="modal-dialog">
-<div class="modal-content">
-
-  <!-- Modal Header -->
-  <div class="modal-header">
-    
-    <button type="button" class="close" data-dismiss="modal">&times;</button>
-  </div>
-
-  <!-- Modal body -->
-  <div class="modal-body">
-  <form  action=" {!! url('/feedback') !!}" method="POST">
-    {{csrf_field()}}
-    <div class="form-group">
-      <label for="firstName">Firstname</label>
-      <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Firstname">
-    </div>
-    <div class="form-group">
-      <label for="lastName">Lastname</label>
-      <input type="text" name="lastName" class="form-control" id="exampleInputPassword1" placeholder="Lastname">
-    </div>
-    
-    <div class="form-group">
-      <label for="ministry">Select Cabinet</label>
-      <select id="inputState" class="form-control" name="ministry_id">
-        <option selected value="1">Works</option>
-        <option value="Housing">Housing</option>
-        <option value="Interior">Interior</option>
-        <option value="Petroleum">Petroleum</option>
-        <option value="Finance">Finance</option>
-        <option value="Power">Power</option>
-        <option value="Health">Health</option>
-        <option value="Labour">Labour</option>
-        <option value="Environment">Environment</option>
-        <option value="Water Resouirces">Water Resouirces</option>
-        <option value="Communication">Communication</option>
-        <option value="Aviation">Aviation</option>
-        <option value="Defense">Defense</option>
-        <option value="Information">Information</option>
-        <option value="Youths and Sports">Youths and Sports</option>
-        <option value="Police Affairs">Police Affairs</option>
-        <option value="Education">Education</option>
-        <option value="Justice">Justice</option>
-        <option value="Agriculture">Agriculture</option>
-        <option value="Women Affairs">Women Affairs</option>
-      </select>
-    </div>
-   <center>
-    <button type="submit" class="btn btn-primary ">Submit</button>
-  </center>
-
-  </form>
-
-
-  </div>
-
-  
-</div>
-</div>
 </div>
 @endsection
 
