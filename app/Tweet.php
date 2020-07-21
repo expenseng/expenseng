@@ -75,7 +75,6 @@ class Tweet
             return $tweet;
         }
         $tweet = Twitter::postTweet(['status' => $this->status , 'format' => 'json']);
-        $this->logToDatabase($tweet);
         return $tweet;
     }
 }
