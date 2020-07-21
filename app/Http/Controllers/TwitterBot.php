@@ -16,7 +16,7 @@ use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
-use Thujohn\Twitter\Twitter;
+use Twitter;
 
 class TwitterBot extends Controller
 {
@@ -158,14 +158,8 @@ class TwitterBot extends Controller
     {
         if ($request->ajax()) {
             try {
-                $tweet = Tweets::where('id', $request->id)->first();
-                $destroy = Twitter::destroyTweet($tweet->status_id);
-                if ($destroy) {
-                    Tweets::destroy($request->id);
-                    return  Response('tweet destroy');
-                } else {
-                    return Response::json(array("errors" => 'error occured'), 422);
-                }
+                $destroy = Twitter::destroyTweet(''.($request->id));
+                return  Response('tweet destroy');
             } catch (\Exception $exception) {
                 return Response::json(array("errors" => 'error occured'), 422);
             }
@@ -176,8 +170,7 @@ class TwitterBot extends Controller
     {
         if ($request ->ajax()) {
             try {
-                $tweets = Tweets::paginate(10);
-//               $tweet_array = json_decode($tweet);
+                $tweets=  Twitter::getUserTimeline();
                 return view('backend.tweets', compact('tweets'));
             } catch (\Exception $exception) {
                 return Response::json(array("errors" => 'error occured'), 422);

@@ -212,13 +212,14 @@
                 </button>
             </div>
             <div class="modal-body">
+                <div class="alert2">
+                </div>
                 <div class="" id="tweets">
 
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary sendTweet" id="sendTweet">tweet</button>
             </div>
         </div>
     </div>
@@ -333,17 +334,46 @@
 
 
                 });
-                $.ajax(
-                    {
-                        url: "{{URL::to('tweets')}}",
-                        type: "get",
-                        datatype: "html"
-                    }).done(function(data){
-                    $("#tweets").empty().html(data);
+                jQuery('.tweet-list-button').click(function(){
+                    jQuery.ajax(
+                        {
+                            url: "{{URL::to('tweets')}}",
+                            type: "get",
+                            datatype: "html"
+                        }).done(function(data){
+                        $("#tweets").empty().html(data);
                     }).fail(function(jqXHR, ajaxOptions, thrownError){
-                    alert('No response from server');
+                        $("#tweets").empty().html('<div class="alert alert-danger"> failed to load tweets </div>')
                     });
+                });
+                jQuery.fn.delete =  function(data){
+                    $id = data;
+                    $div = '#'+$id
+                    $confirm = confirm('Are you sure you want to delete this tweet');
+                    if($confirm){
+                        jQuery.ajax(
+                            {
+                                url: "{{URL::to('delete_tweet')}}",
+                                type:"delete",
+                                data:{'id': $id},
+                            }).done(function (data) {
+                            jQuery($div).fadeOut(4000);
+                            jQuery('.alert2').removeClass('alert-danger');
+                            jQuery('.alert2').fadeIn(4000);
+                            jQuery('.alert2').addClass('alert alert-success text-white');
+                            jQuery('.alert2').html('tweet deleted');
+                            jQuery('.alert2').fadeOut(4000);
 
+                        }).fail( function(data){
+                            jQuery('.alert2').removeClass('alert-success');
+                            jQuery('.alert2').fadeIn(4000);
+                            jQuery('.alert2').addClass('alert alert-danger text-white');
+                            jQuery('.alert2').html('tweet not deleted');
+                            jQuery('.alert2').fadeOut(4000);
+                        })
+                    }
+
+                }
 
                 jQuery('.fixed-plugin .active-color span').click(function() {
                     $full_page_background = $('.full-page-background');
