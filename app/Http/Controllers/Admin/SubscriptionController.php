@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Mail\SendSubNotification;
 use App\Subscription;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Mail;
 
 class SubscriptionController extends Controller
 {
@@ -68,6 +70,11 @@ class SubscriptionController extends Controller
             $save_new_subscription = $new_subscription->save();
 
             if ($save_new_subscription) {
+                //send email
+                $email = $request->email;
+                $report = $request->sub_type;
+
+                Mail::to($email)->send(new SendSubNotification($email, $report));
                 
                 Session::flash('flash_message', $request->name. ' added to Subscription Successfully!');
                 return redirect(route('subscribe.view'));
