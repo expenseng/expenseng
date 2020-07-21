@@ -359,7 +359,7 @@
 
                         }
                 });
-                jQuery('.tweet-list-button').click(function(){
+                jQuery('#B2').click(function(){
                     jQuery.ajax(
                         {
                             url: "{{URL::to('tweets')}}",
