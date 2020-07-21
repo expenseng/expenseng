@@ -85,7 +85,7 @@ class CabinetController extends Controller
                 return redirect(route('cabinet.view'));
                 
             } else {
-                Session::flash('flash_message', 'Cannot create new Cabinet!!');
+                Session::flash('error_message', 'Cannot create new Cabinet!!');
                 return redirect()->back();
             }
         }
@@ -117,11 +117,11 @@ class CabinetController extends Controller
                 return redirect(route('cabinet.view'));
                 
             } else {
-                Session::flash('flash_message', 'Cannot create new Cabinet!!');
+                Session::flash('error_message', 'Cannot create new Cabinet!!');
                 return redirect()->back();
             }
         } else {
-            Session::flash('flash_message', 'Cannot upload image!!');
+            Session::flash('error_message', 'Cannot upload image!!');
             return redirect()->back();
         }
     }
@@ -165,7 +165,7 @@ class CabinetController extends Controller
                 Session::flash('flash_message', ' Cabinet details edited successfully!');
                 return redirect(route('cabinet.view'));
             } else {
-                Session::flash('flash_message', ' Cabinet was not edited!');
+                Session::flash('error_message', ' Cabinet was not edited!');
                 return redirect()->back();
             }
         }
@@ -197,11 +197,11 @@ class CabinetController extends Controller
                 Session::flash('flash_message', ' Cabinet details edited successfully!');
                 return redirect(route('cabinet.view'));
             } else {
-                Session::flash('flash_message', ' Cabinet was not edited!');
+                Session::flash('error_message', ' Cabinet was not edited!');
                 return redirect()->back();
             }
         } else {
-            Session::flash('flash_message', ' Image was not uploaded!');
+            Session::flash('error_message', ' Image was not uploaded!');
             return redirect()->back();
         }
     }
@@ -219,10 +219,10 @@ class CabinetController extends Controller
         $delete = Cabinet::where('id', $id)->delete();
         if ($delete) {
              
-             Session::flash('flash_message', 'Cabinet member deleted successfully!');
+             Session::flash('error_message', 'Cabinet member deleted successfully!');
              return redirect(route('cabinet.view'));
         } else {
-            Session::flash('flash_message', ' Cabinet was not deleted!');
+            Session::flash('error_message', ' Cabinet was not deleted!');
             return redirect()->back();
     
         }
