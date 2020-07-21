@@ -247,10 +247,15 @@ p.tag{
   .flickity-prev-next-button{
     top: 0% !important;
     margin-top: 1.5rem;
-    width: 5% !important;
-    height: 5.5% !important;
+    opacity: 1;
+    width: 30px !important;
+    height: 30px !important;
   }
   
+  .flickity-prev-next-button img{
+      width: 100%;
+  }
+
   .previous{
       left: 63% !important;
   }
