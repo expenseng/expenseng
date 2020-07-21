@@ -1,0 +1,36 @@
+.content{
+    padding: 0;
+}
+
+h1{
+    margin-top: 5%;
+}
+
+.conditions{
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+
+p{
+    margin-bottom: 0;
+    color:#353A45;
+}
+
+a.link{
+    color: #00945E;
+    text-decoration: underline;
+}
+
+a.link:hover{
+    color: #076b46;
+}
+
+.pdf-link{
+    margin-top: 3%;
+}
+
+@media screen and (max-width: 568px) {
+    .long-link{
+        word-break: break-all;
+    }
+}

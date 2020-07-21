@@ -62,7 +62,7 @@
             <div class="col-md-9">
                 <a href=""><small>Accessibility</small></a>-
                 <a href=""><small> | Privacy Policy</small></a>-
-                <a href=""><small> | Freedom of Information Act</small></a>
+                <a href="/FOIA"><small> | Freedom of Information Act</small></a>
             </div>
             <div class="col-md-3">
                 <a href=""><small><span>&#169</span>2020EXPENSENG.com</small></a>
