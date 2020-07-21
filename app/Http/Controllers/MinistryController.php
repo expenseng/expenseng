@@ -264,8 +264,15 @@ class MinistryController extends Controller
         if (Gate::denies('edit')) {
             return redirect(route('ministry.view'));
         }
+        
         $details = Ministry::findOrFail($id);
-        return view('backend.ministry.edit')->with(['details' => $details]);
+        $ministry_codes = Ministry::orderBY('code', 'ASC')->where('code', '!=', $details->code)->get();
+        $sectors = Sector::all()->where('id', '!=', $details->sector_id);
+        $sector_id_name = Sector::findOrFail($details->sector_id)->name;
+        return view('backend.ministry.edit')
+        ->with(['details' => $details, 'ministry_codes' => $ministry_codes,
+        'sectors' => $sectors, 'sector_id_name' => $sector_id_name
+        ]);
     }
 
     public function editMinistry(Request $request, $id)
