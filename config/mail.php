@@ -39,8 +39,8 @@ return [
             'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
             'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            'username' => env('MAIL_USERNAME', 'postmaster@sandbox57685afc75814161bd4e82f37d780e66.mailgun.org'),
+            'password' => env('MAIL_PASSWORD', 'c24cfd5e49a8966588f89e8870ccaed4-ffefc4e4-49beefc6'),
             'timeout' => null,
             'auth_mode' => null,
         ],
@@ -84,8 +84,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'expenseng@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'mail@expenseng.com'),
+        'name' => env('MAIL_FROM_NAME', 'ExpenseNG'),
     ],
 
     /*
