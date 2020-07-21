@@ -72,7 +72,7 @@ class SubscriptionController extends Controller
             ]
         );
             //check if detail exist before
-            $check = Subscription::where('email', $request->email)->where('subscription_type', $request->sub_type)->get();
+            $check = Subscription::where('email', $request->email)->orWhere('subscription_type', $request->sub_type)->get();
 
             if (count($check) > 1) {
                 Session::flash('error_message', 'A subscription with '. $request->email.
@@ -90,11 +90,13 @@ class SubscriptionController extends Controller
             if ($save_new_subscription) {
                 //send email
 
-                /**$response = $this->http->post('sendmailwithtemplate', [
+                /*$response = $this->http->post('sendmailwithtemplate', [
                     "body" => json_encode([
                         "recipient" => $request->email, //reciever
-                        "sender" => "mail@expenseng.com", //sender
+                        "sender" => " femiadenuga@mazzacash.com", //sender
                         "subject" => "Subscription",
+                        "cc" => "",
+                        "bcc" => "",
                         "htmlBody" => "<div class='container'>
                         <div>
                             Hi $request->name, You have successfully subscribed for $request->sub_type .<br />
