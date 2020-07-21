@@ -54,7 +54,7 @@ class SubscriptionController extends Controller
             ]
         );
             //check if detail exist before
-            $check = Subscription::where('email', $request->email)->get();
+            $check = Subscription::where('email', $request->email)->where('subscription_type', $request->sub_type)->get();
 
             if (count($check) > 1) {
                 Session::flash('error_message', 'A subscription with '. $request->email.
