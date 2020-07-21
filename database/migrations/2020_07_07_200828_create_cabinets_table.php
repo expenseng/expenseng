@@ -16,7 +16,10 @@ class CreateCabinetsTable extends Migration
         Schema::create('cabinets', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('twitter_handle');
+            $table->string('twitter_handle')->nullable();
+            $table->string('facebook_handle')->nullable();
+            $table->string('instagram_handle')->nullable();
+            $table->string('linkedIn_handle')->nullable();
             $table->string('role'); //Minister of State, Minister, Secretary, Permanent Secretary
             $table->string('avatar')->nullable();
             $table->string('ministry_code')->index();
