@@ -1,30 +1,39 @@
+:root{
+    --fs-h1: 3.25rem;
+    --fs-h2: 2rem;
+    --fs-h3: 1.76rem;
+    --fs-h4: 1.62rem;
+    --fs-reg: 1.23rem;
+    --fs-h5: 1rem;
+    --fs-h6: 0.85rem;
+}
 .back{
 	margin-right: -20px;
 }
-.sart{
-	margin-right: px;
+nav{
+	font-size: var(--fs-h5) !important;
 }
 .navbar{
 	width: 100%;
 	/* margin-left: -120px; */
 }
-.nav-link{
-	color: black !important;
-	font-size: 20px;
+.section-nav-link{
+	color:  #323E48 !important;
 	margin-left: 25px;
 }
 .nav-item , .search{
 	background-color: #ffff !important;
 }
-.nav-link:hover{
-	color: #00945E !important;
+.section-nav-link:hover{
+	font-weight: bold !important;
 }
 .my-footer ul {
   list-style-type: none;
   padding-left: 0;
   color: white;
   height: auto;
-}.my-footer a {
+}
+.my-footer a {
   color: #fff !important;
 }
 .my-footer {
@@ -49,12 +58,63 @@ h6{
 	/* padding: 10px; */
 	height: auto;
 }
+.section-reference-dropdown{
+	font-size: var(--fs-h5);
+}
+
+/* Responsiveness */
+
+@media all and (max-width: 1440px){
+	:root{
+		--fs-h1: 3.25rem;
+		--fs-h2: 2rem;
+		--fs-h3: 1.76rem;
+		--fs-h4: 1.62rem;
+		--fs-reg: 1.23rem;
+		--fs-h5: 1rem;
+		--fs-h6: 0.85rem;
+	}
+}
+ 
+@media all and (max-width: 1024px){
+	:root{
+		--fs-h1: 3.05rem;
+		--fs-h2: 1.6rem;
+		--fs-h3: 1.56rem;
+		--fs-h4: 1.42rem;
+		--fs-reg: 1.03rem;
+		--fs-h5: 0.9rem;
+		--fs-h6: 0.65rem;
+	}
+}
+
+@media only screen and (max-width: 999px){
+    :root{
+        --fs-h1: 2.55rem;
+        --fs-h2: 1.3rem;
+        --fs-h3: 1.26rem;
+        --fs-h4: 1.12rem;
+        --fs-reg: 0.73rem;
+        --fs-h5: 0.8rem;
+        --fs-h6: 0.55rem;
+    }
+}
+
+@media all and (max-width: 768px){
+    :root{
+        --fs-h1: 2.45rem;
+        --fs-h2: 1.2rem;
+        --fs-h3: 1.16rem;
+        --fs-h4: 1.02rem;
+        --fs-reg: 0.63rem;
+        --fs-h5: 0.7rem;
+        --fs-h6: 0.45rem;
+	}
+}
+
 @media only screen and (max-width: 650px){
 	body{
 		overflow-x: hidden;
-	}
-	.nav-link{
-		font-size: 16px;
 	}
 	.navbar{
 		width: 100%;
@@ -66,9 +126,20 @@ h6{
 	}
 	.fa-bars{
 		margin-left: 255px;
-		font-size: 24px;
 	}
-.navbar-brand img{
-	width: 70%;
+	.navbar-brand img{
+		width: 70%;
+	}
 }
+
+@media all and (max-width: 425px){
+    :root{
+        --fs-h1: 2.45rem;
+        --fs-h2: 1.2rem;
+        --fs-h3: 1.16rem;
+        --fs-h4: 1.02rem;
+        --fs-reg: 0.63rem;
+        --fs-h5: 0.7rem;
+        --fs-h6: 0.45rem;
+    }
 }
