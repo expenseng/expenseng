@@ -516,6 +516,27 @@ p.profile{
     width: 10rem;
     padding: 0.4rem 3rem;
 }
+.accessibility-text{
+    font-family: 'Lato', sans-serif;
+}
+.accessibility-text h1{
+    font-weight: bold;
+    color: #353A45;
+}
+.accessibility-text p{
+    text-align: left;
+    line-height: 152%;
+    color: #353A45;
+}
+.accessibility-text li{
+    padding: .75rem 0;
+}
+.accessibility-text a{
+    color: #00945E;
+}
+.accessibility-text a:active{
+    color: #005938;
+}
 
 /* Responsiveness */
 
