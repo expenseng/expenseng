@@ -36,7 +36,7 @@
                       <a class="dropdown-item section-reference-dropdown" href="{{ route('contact') }}">Contact Us</a>
                       <a class="dropdown-item section-reference-dropdown" href="#">Government Twitter Handle</a>
                 </li>
-                <a class="nav-link section-nav-link" href=""><i class="fa fa-search inp"></i></a>
+                <a class="nav-link section-nav-link" href="{{ route('search') }}"><i class="fa fa-search inp"></i></a>
           </ul>
       </div>
     </div>

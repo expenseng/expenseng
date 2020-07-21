@@ -34,6 +34,11 @@ class PageController extends Controller
         return view('pages.aboutus');
     }
 
+    public function search()
+    {
+        return view('pages.search');
+    }
+
     public function error404()
     {
         return view('pages.errors.404_error');
