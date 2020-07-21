@@ -8,7 +8,11 @@
 @section('content')
 <div class="content">
         <div class="container-fluid">
-      
+        {{-- Flash message --}}
+        <div id="alert alert-danger">
+         @include('backend.partials.flash')
+        </div>
+         {{-- Flash message end--}}
                 <div class="row">
                     <div class="col-xl-10">
 <!-- basic form  -->
@@ -20,11 +24,7 @@
                                     <p></p>
                                 </div>
                                 <div class="card">
-                                @if (Session::has('flash_message'))
-                                <div class="alert alert-primary" role="alert">
-                                    {{session('flash_message')}}
-                                </div>
-                                @endif
+    
                                     <div class="card-body">
                                         <form method="post" action="{{route('create.cabinet')}}"
                                         enctype="multipart/form-data"
@@ -38,7 +38,7 @@
                                             <div class="form-group">
                                                 <label for="inputEmail">Twitter Handle</label>
                                                 <input id="inputEmail" name="twitter"
-                                                type="text" placeholder="e.g @example" class="form-control" required>
+                                                type="text" placeholder="e.g @example" class="form-control">
                                                 
                                             </div>
                                             <div class="form-group">
@@ -49,7 +49,7 @@
                                             <div class="form-group">
                                                 <label for="inputPassword">Image</label>
                                                 <input id="inputPassword" name="image" type="file" 
-                                                class="form-control" required>
+                                                class="form-control">
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword">Ministry Code</label>

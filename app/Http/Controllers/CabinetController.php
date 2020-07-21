@@ -68,6 +68,29 @@ class CabinetController extends Controller
             'code' => 'required',
             ]
         );
+        
+        //if no image was uploaded
+        if ($request->image == '' || $request->twitter == '') {
+            $new_cabinet = new Cabinet();
+            $new_cabinet->name = $request->name;
+            $new_cabinet->twitter_handle = $request->twitter;
+            $new_cabinet->role = $request->position;
+            $new_cabinet->avatar = $request->image;
+            $new_cabinet->ministry_code = $request->code;
+            $save_new_cabinet = $new_cabinet->save();
+
+            if ($save_new_cabinet) {
+                
+                Session::flash('flash_message', $request->name. ' added to cabinet Successfully!');
+                return redirect(route('cabinet.view'));
+                
+            } else {
+                Session::flash('flash_message', 'Cannot create new Cabinet!!');
+                return redirect()->back();
+            }
+        }
+
+
         $base_url = \URL::to('/');
         //replace spaces with dash in shortname
         $name = preg_replace('/[[:space:]]+/', '-', $request->name); 
@@ -89,9 +112,10 @@ class CabinetController extends Controller
             $save_new_cabinet = $new_cabinet->save();
 
             if ($save_new_cabinet) {
-                return ("<script>
-                alert('$request->name added to cabinet Successfully');
-                window.location.replace('/admin/cabinet/view'); </script>");
+                
+                Session::flash('flash_message', $request->name. ' added to cabinet Successfully!');
+                return redirect(route('cabinet.view'));
+                
             } else {
                 Session::flash('flash_message', 'Cannot create new Cabinet!!');
                 return redirect()->back();
@@ -138,8 +162,8 @@ class CabinetController extends Controller
             );
 
             if ($update) {
-                echo "<script>alert(' Cabinet details edited successfully');
-                window.location.replace('/admin/cabinet/view');</script>";
+                Session::flash('flash_message', ' Cabinet details edited successfully!');
+                return redirect(route('cabinet.view'));
             } else {
                 Session::flash('flash_message', ' Cabinet was not edited!');
                 return redirect()->back();
@@ -169,8 +193,9 @@ class CabinetController extends Controller
             );
 
             if ($update) {
-                echo "<script>alert(' Cabinet details edited successfully');
-                window.location.replace('/admin/cabinet/view');</script>";
+
+                Session::flash('flash_message', ' Cabinet details edited successfully!');
+                return redirect(route('cabinet.view'));
             } else {
                 Session::flash('flash_message', ' Cabinet was not edited!');
                 return redirect()->back();
@@ -193,8 +218,9 @@ class CabinetController extends Controller
         }
         $delete = Cabinet::where('id', $id)->delete();
         if ($delete) {
-            return ("<script>alert(' Cabinet member deleted successfully');
-             window.location.replace('/admin/cabinet/view');</script>");
+             
+             Session::flash('flash_message', 'Cabinet member deleted successfully!');
+             return redirect(route('cabinet.view'));
         } else {
             Session::flash('flash_message', ' Cabinet was not deleted!');
             return redirect()->back();

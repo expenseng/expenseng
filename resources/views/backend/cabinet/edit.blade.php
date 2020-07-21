@@ -8,7 +8,11 @@
 @section('content')
 <div class="content">
         <div class="container-fluid">
-      
+        {{-- Flash message --}}
+        <div id="alert">
+         @include('backend.partials.flash')
+        </div>
+         {{-- Flash message end--}}
                 <div class="row">
                     <div class="col-xl-10">
 <!-- basic form  -->
