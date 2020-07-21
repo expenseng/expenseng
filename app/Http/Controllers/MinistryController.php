@@ -251,10 +251,10 @@ class MinistryController extends Controller
         $save_new_ministry = $new_ministry->save();
 
         if ($save_new_ministry) {
-            echo "<script>alert('New ministry created successfully');
-             window.location.replace('/admin/ministry/view');</script>";
+             Session::flash('flash_message', 'New ministry created successfully!');
+             return redirect('/admin/ministry/view');
         } else {
-            Session::flash('flash_message', 'Cannot create new Ministry!');
+            Session::flash('error_message', 'Cannot create new Ministry!');
             return redirect()->back();
         }
     }
@@ -288,11 +288,11 @@ class MinistryController extends Controller
             'website' => $request->website,
             'sector_id' => $request->sector_id,
         ]);
-        if ($update) {
-            echo "<script>alert(' Ministry details edited successfully');
-             window.location.replace('/admin/ministry/view');</script>";
+        if ($update) {;
+             Session::flash('flash_message', 'Ministry details edited successfully!');
+             return redirect('/admin/ministry/view');
         } else {
-            Session::flash('flash_message', ' Ministry was not edited!');
+            Session::flash('error_message', ' Ministry was not edited!');
             return redirect()->back();
         }
     }
@@ -305,10 +305,10 @@ class MinistryController extends Controller
 
         $delete = Ministry::where('id', $id)->delete();
         if ($delete) {
-            echo "<script>alert(' Ministry details deleted successfully');
-             window.location.replace('/admin/ministry/view');</script>";
+            Session::flash('error_message', 'Ministry deleted successfully!');
+            return redirect('/admin/ministry/view');
         } else {
-            Session::flash('flash_message', ' Ministry was not deleted!');
+            Session::flash('error_message', ' Ministry was not deleted!');
             return redirect()->back();
         }
     }

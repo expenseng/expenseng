@@ -9,7 +9,7 @@
 <div class="content">
         <div class="container-fluid">
         {{-- Flash message --}}
-        <div id="alert alert-danger">
+        <div id="alert">
          @include('backend.partials.flash')
         </div>
          {{-- Flash message end--}}

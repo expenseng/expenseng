@@ -65,7 +65,7 @@ class SubscriptionController extends Controller
                 return redirect(route('subscribe.view'));
                 
             } else {
-                Session::flash('flash_message', 'Cannot create new Subscription!!');
+                Session::flash('error_message', 'Cannot create new Subscription!!');
                 return redirect()->back();
             }
         
@@ -107,7 +107,7 @@ class SubscriptionController extends Controller
                 Session::flash('flash_message', ' Subscription details edited successfully!');
                 return redirect(route('subscribe.view'));
             } else {
-                Session::flash('flash_message', ' Subscription was not edited!');
+                Session::flash('error_message', ' Subscription was not edited!');
                 return redirect()->back();
             }
         
@@ -130,10 +130,10 @@ class SubscriptionController extends Controller
 
         if ($delete) {
              
-             Session::flash('flash_message', ' Subscription deleted successfully!');
+             Session::flash('error_message', ' Subscription deleted successfully!');
              return redirect(route('subscribe.view'));
         } else {
-            Session::flash('flash_message', ' Subscription was not deleted!');
+            Session::flash('error_message', ' Subscription was not deleted!');
             return redirect()->back();
     
         }
