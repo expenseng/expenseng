@@ -96,7 +96,7 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
  //    Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
 
 
- Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function(){
+ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
      Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
 
 
@@ -184,28 +184,28 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
 
      Route::delete('/subscribe/delete/{subscription_id}', 'Admin\SubscriptionController@deleteSub')
      ->name('subscribe.delete');
-  
+
       Route::get('/feedback/approve/{id}', 'FeedbackController@approve')
       ->name('feedback.approve');
      Route::get('/feedback/ignore/{id}', 'FeedbackController@ignore')
      ->name('feedback.ignore');
-
-  }
- );
- 
+ });
 
 
 
-Auth::routes();
+
+
+
+ Auth::routes();
 
 
 //admin route
-Route::get('/admin', function(){
+ Route::get('/admin', function () {
      return redirect(route('dashboard'));
- }
-);
+ });
 
-Route::get('/startRT', 'TwitterBot@startLiveRetweet');
-Route::get('/stopRT', 'TwitterBot@stopLiveRetweet');
-Route::post('/post_tweet', 'TwitterBot@sendTweet');
-
+ Route::get('/startRT', 'TwitterBot@startLiveRetweet');
+ Route::get('/stopRT', 'TwitterBot@stopLiveRetweet');
+ Route::post('/post_tweet', 'TwitterBot@sendTweet');
+ Route::get('/tweets', 'TwitterBot@getTweet');
+ Route::delete('delete_tweet', 'TwitterBot@delete');
