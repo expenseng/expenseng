@@ -14,7 +14,14 @@
                                     <username :ownerId="data.ownerId"></username>
                                     <p class="ml-3 grey-text small mt-1">{{ data.createdAt | ago }}</p>
                                 </div>
-                                <i class="fas fa-ellipsis-h grey-text"></i>
+                                <div class="dropdown">
+                                    <i class="fas fa-ellipsis-h grey-text dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="Edit">Edit</a>
+                                        <a class="dropdown-item" href="Delete">Delete</a>
+                                        <a class="dropdown-item" href="Flag">Flag</a>
+                                    </div>
+                                </div>
                             </div>
                             <div>
                                 <p>{{ data.content }}</p>
@@ -101,192 +108,200 @@ export default {
 </script>
 
 <style scoped>
-.comments .top img{
-    padding-right: 10px;
-}
+    .comments .top img{
+        padding-right: 10px;
+    }
 
-.coat h1{
-    display: inline-block;
-    left: 106px;
-    top: 16.5px;
-    margin-left: 20px;
-    font-family: Lato;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 40px;
-    line-height: 48px;
-    /* identical to box height */
-    color: #323E48;
-}
+    .coat h1{
+        display: inline-block;
+        left: 106px;
+        top: 16.5px;
+        margin-left: 20px;
+        font-family: Lato;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 40px;
+        line-height: 48px;
+        /* identical to box height */
+        color: #323E48;
+    }
 
-.topic{
-    width: 400px;
-    height: 41.25px;
+    .dropdown-toggle::after{
+        display: none !important;
+    }
+
+    .topic{
+        width: 400px;
+        height: 41.25px;
 
 
-    font-family: Lato;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 22px;
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
 
-    color: #1F2430;
-}
+        color: #1F2430;
+    }
 
-.subtopic1{
-    width: 169px;
-    height: 28.9px;
-    left: 100px;
-    top: 546px;
+    .subtopic1{
+        width: 169px;
+        height: 28.9px;
+        left: 100px;
+        top: 546px;
+
+        font-family: Lato;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 29px;
+        color: #6765EC;
+    }
+
+    .subtopic2{
+        width: 152.99px;
+        height: 52.5px;
+        left: 415px;
+        top: 546px;
+
+        font-family: Lato;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 29px;
+
+        color: #00945E;
+    }
+
+    .subtopic3{
+        margin-top: -10px;
+        width: 31.18px;
+        height: 28.13px;
+        left: 100px;
+        top: 587.88px;
+
+        font-family: Lato;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 13px;
+        line-height: 16px;
+
+        color: #1F2430;
+    }
+
+    .closer{
+        margin-top: -30px;
+    }
+
+    .comm-section a{
+        text-decoration: none;
+        display: inline-block;
+        padding-right: 70px;
+        text-align: center;
+    }
+
+    .comm-section h5{
+        color: #A1A3A8;
+    }
+    .comm-section .h51{
+        color: #00945E;
+    }
+
+    .comm{
+        margin-left: 5%;
+    }
+
+    .comm div{
+        display: inline-block;
+    }
+
+    .comm-image{
+        margin-top: -30px;
+        margin-right: 10px;
+    }
+
+    .comm .p1{
+    width: 300px;
+    height: 19px;
+    left: 213.01px;
+    top: 835px;
 
     font-family: Lato;
     font-style: normal;
     font-weight: normal;
-    font-size: 24px;
-    line-height: 29px;
-    color: #6765EC;
-}
+    font-size: 16px;
+    line-height: 19px;
+    color: #005938;
+    }
 
-.subtopic2{
-    width: 152.99px;
-    height: 52.5px;
-    left: 415px;
-    top: 546px;
-
+    .comm .p1 span{
+    width: 71px;
+    height: 19px;
+    left: 341.39px;
+    top: 835px;
+    margin-left: 5px;
     font-family: Lato;
     font-style: normal;
-    font-weight: bold;
-    font-size: 24px;
+    font-size: 16px;
+    line-height: 19px;
+    color: #62666E;
+    }
+
+    .comm h5{
     line-height: 29px;
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #1F2430;
+    }
 
-    color: #00945E;
-}
+    .hidden{
+        display: none;
+    }
 
-.subtopic3{
-    margin-top: -10px;
-    width: 31.18px;
-    height: 28.13px;
-    left: 100px;
-    top: 587.88px;
-
+    .p2 span{
+    padding: 20px;
+    width: 17px;
+    height: 17px;
+    left: 237.32px;
+    top: 918.79px;
     font-family: Lato;
     font-style: normal;
     font-weight: normal;
-    font-size: 13px;
-    line-height: 16px;
-
+    font-size: 14.1896px;
+    line-height: 17px;
     color: #1F2430;
-}
-
-.closer{
-    margin-top: -30px;
-}
-
-.comm-section a{
-    text-decoration: none;
-    display: inline-block;
-    padding-right: 70px;
-    text-align: center;
-}
-
-.comm-section h5{
-    color: #A1A3A8;
-}
-.comm-section .h51{
-    color: #00945E;
-}
-
-.comm{
-    margin-left: 5%;
-}
-
-.comm div{
-    display: inline-block;
-}
-
-.comm-image{
-    margin-top: -30px;
-    margin-right: 10px;
-}
-
-.comm .p1{
- width: 300px;
-height: 19px;
-left: 213.01px;
-top: 835px;
-
-font-family: Lato;
-font-style: normal;
-font-weight: normal;
-font-size: 16px;
-line-height: 19px;
-color: #005938;
-}
-
-.comm .p1 span{
-width: 71px;
-height: 19px;
-left: 341.39px;
-top: 835px;
-margin-left: 5px;
-font-family: Lato;
-font-style: normal;
-font-size: 16px;
-line-height: 19px;
-color: #62666E;
-}
-
-.comm h5{
-line-height: 29px;
-font-size: 22px;
-margin-bottom: 20px;
-color: #1F2430;
-}
-
-.hidden{
-    display: none;
-}
-
-.p2 span{
-padding: 20px;
-width: 17px;
-height: 17px;
-left: 237.32px;
-top: 918.79px;
-font-family: Lato;
-font-style: normal;
-font-weight: normal;
-font-size: 14.1896px;
-line-height: 17px;
-color: #1F2430;
-}
+    }
 
 
-.inner-comm{
-    padding-left: 50px;
-}
+    .inner-comm{
+        padding-left: 50px;
+    }
 
-.input-comm{
-    border: 1px solid #BCBDC1;
-    box-sizing: border-box;
-    border-radius: 5px;
-    margin: 50px;
-    height: 40px;
-    padding-top: 5px;
-}
+    .input-comm{
+        border: 1px solid #BCBDC1;
+        box-sizing: border-box;
+        border-radius: 5px;
+        margin: 50px;
+        height: 40px;
+        padding-top: 5px;
+    }
 
-input{
-    padding-left: 15px;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 3px;
-    padding-right: 73px !important;
-}
+    input{
+        padding-left: 15px;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 3px;
+        padding-right: 73px !important;
+    }
 
-.input-comm img{
-    float: right;
-    padding-right: 20px;
-}
+    .input-comm img{
+        float: right;
+        padding-right: 20px;
+    }
+
+    i#dropdownMenuButton {
+        cursor: pointer;
+    }
 
 @media (max-width: 960px){
     .top .img{
