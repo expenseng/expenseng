@@ -15,19 +15,28 @@
     <link rel="stylesheet" href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
     <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-<title>ExpenseNg - Companies</title>
+<title>ExpenseNg - Subscribers</title>
 @endpush
 
 @section('content')
 <div class="content">
         <div class="container-fluid">
-
+        {{-- Flash message --}}
+        <div id="alert">
+         @include('backend.partials.flash')
+        </div>
+         {{-- Flash message end--}}
+      
         <div class="row">
                     <div class="col-xl-12">
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="mb-0">Subscribed Users </h3>
+                                @can('add')
+                                <a href="{{route('subscribe.create')}}" class="btn btn-primary" style="float:right">CREATE NEW SUBSCRIPTION</a>
+                                @endcan
+
 
                                 <p></p>
                             </div>
@@ -40,6 +49,10 @@
                                                 <th>Name</th>
                                                 <th>Email</th>
                                                 <th>Report Type</th>
+                                                @can('manage')
+                                                <th>Actions</th>
+                                                @endcan
+
 
 
                                             </tr>
@@ -51,11 +64,55 @@
                                             <tr>
                                             @foreach ($subscribe as $sub)
                                                 <td>
-                                                    {{$sub->id}}
+                                                    {{++$count}}
                                                 </td>
                                                 <td>{{$sub->name}}</td>
                                                 <td>{{$sub->email}}</td>
                                                 <td>{{$sub->subscription_type }}</td>
+                                                @can('manage')
+                                                <td>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            @can('edit')
+                                                            <a href="{{'/admin/subscribe/edit/' . $sub->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
+                                                            @endcan
+                                                        </div>
+                                                        <!--modal begin-->
+                                                        
+                                                            <div class="col-md-6">
+                                                            @can('delete')
+                                                            <i class="fa fa-trash" data-toggle="modal" data-target="{{'#exampleModal'. $sub->id}}" style="color: red"></i>
+                                                            @endcan
+
+                                                            <div class="modal fade" id="{{'exampleModal' . $sub->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Are you sure???</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                Deleting <strong>{{$sub->name}}</strong> from Subscriptions
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    <form action="{{'/admin/subscribe/delete/'. $sub->id}}" method="post" >
+                                                                @method('delete')
+                                                                @csrf
+                                                                <button type="" class="btn btn-danger">Delete</button>
+                                                                </form>
+                                                                </div>
+                                                                </div>
+                                                                </div>
+                                                                </div>
+                                                    </div>
+                                                    </div>
+
+                                                    
+                                                </td>
+                                                @endcan
                                             </tr>
 
                                         @endforeach
@@ -68,6 +125,9 @@
                                                 <th>Name</th>
                                                 <th>Email</th>
                                                 <th>Report Type</th>
+                                                @can('manage')
+                                                <th>Actions</th>
+                                                @endcan
                                             </tr>
                                         </tfoot>
                                     </table>

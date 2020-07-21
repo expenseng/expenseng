@@ -161,12 +161,29 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
 
      Route::delete('/cabinet/delete/{cabinet_id}', 'CabinetController@deleteCabinet')
      ->name('cabinet.delete');
+
       //  Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
       Route::get('/import', 'UploadController@importFile');
       Route::post('/import', 'UploadController@importExcel')->name('importExcel');
-  
+
+      /**SUBSCRIPTION */
       Route::get('/subcribe', 'Admin\SubscriptionController@index')
-      ->name('subscribeReport');
+      ->name('subscribe.view');
+      // Cabinet CRUD
+     Route::get('/subscribe/create', 'Admin\SubscriptionController@create')
+     ->name('subscribe.create');
+
+     Route::post('/subscribe/create', 'Admin\SubscriptionController@createSub')
+     ->name('create.subscribe');
+
+     Route::get('/subscribe/edit/{subscription_id}', 'Admin\SubscriptionController@showEditForm')
+     ->name('subscribe.view.edit');
+
+     Route::put('/subscribe/edit/{subscription_id}', 'Admin\SubscriptionController@editSub')
+     ->name('subscribe.edit');
+
+     Route::delete('/subscribe/delete/{subscription_id}', 'Admin\SubscriptionController@deleteSub')
+     ->name('subscribe.delete');
   
       Route::get('/feedback/approve/{id}', 'FeedbackController@approve')
       ->name('feedback.approve');
