@@ -155,7 +155,7 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
 
 
      // COMMENTS ROUTES
-    Route::get('/comments', 'Admin\CommentController@index')->name('comments.view');  //Displays the index page for all comments
+    Route::get('/comments', 'Admin\CommentController@index')->name('comments');  //Displays the index page for all comments
  
 
 

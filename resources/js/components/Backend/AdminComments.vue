@@ -6,8 +6,8 @@
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="mb-0" style="float:left">All Comments </h3>
-                                <a href="" class="btn btn-primary" style="float:right">ADD NEW</a>
+                                <h5 class="mb-0" style="float:left"> Comments </h5>
+                                <!-- <a href="" class="btn btn-primary" style="float:right">ADD NEW</a> -->
                                 <p></p>
                             </div>
                             <div class="card-body">
@@ -27,7 +27,7 @@
                                         </thead>   
                                         <tbody>
                                             <tr v-for ="comment in comments">
-                                                <td>{{comment.createdAt}}</td>
+                                                <td>{{comment.createdAt | ago}}</td>
                                                 <td>{{cleanOrigin(comment.origin)}}</td>
                                                 <td>{{comment.ownerId}}</td>
                                                 <td>{{comment.refId}}</td>
@@ -35,8 +35,8 @@
                                                 <td>{{comment.numOfReplies}}</td>
                                                 <td>{{comment.numOfVotes}}</td>
                                                 <td class="td-lg">
-                                                    <a :href="{{comment.commentID}}" class="smallbtn btn" title="edit"><i class="fa fa-edit"></i></a>
-                                                    <a href="#" class="smallbtn btn" title="replies" v-b-modal.modal-scrollable v-on:click="viewReplies"><i class=" fa fa-reply"></i></a>
+                                                    <a href="#" class="smallbtn btn" title="edit"><i class="fa fa-edit"></i></a>
+                                                    <a href="#" class="smallbtn btn" title="replies" data-toggle="modal" data-target=".replies-modal" v-on:click="viewReplies(comment.commentId)"><i class=" fa fa-reply"></i></a>
                                                     <a href="#" class="smallbtn btn" title="delete"><i class="text-danger fa fa-trash"></i></a>
                                                 </td>
                                             </tr>
@@ -47,26 +47,48 @@
                         </div>
                     </div>
 
-                    
+            
 
-
-                    <div>
-                        <b-button v-b-modal.modal-scrollable>Launch scrolling modal</b-button>
-
-                        <b-modal id="modal-scrollable" scrollable title="Scrollable Content">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="card">
+                    <!-- Comment Replies Modal -->
+    
+                    <div class="modal fade replies-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="card">
                                     <div class="card-header">
-                                        <h3 class="mb-0" style="float:left"> </h3>
-                                        <a href="{{route('logout')}}" class="btn btn-primary" style="float:right">ADD NEW</a>
-                                        <p></p>
+                                        
                                     </div>
                                     <div class="card-body">
-                                         <replies :commentId="comment.commentId" :replyCount="comment.numOfReplies"></replies>
+                                        <div class="container p-2" >
+                                            <div class="container">
+                                                <div class="row container occupy">
+                                                    <table id="replies" class="table table-striped table-bordered second" style="width:100%">
+                                                        <caption>Replies</caption>
+                                                        <thead class="thead-dark">
+                                                            <tr>
+                                                                <th>avatar</th>
+                                                                <th>author</th>
+                                                                <th>created at</th>
+                                                                <th>content</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr v-for="reply in replies" :key="reply.replyId">
+                                                                <td><user-image :isSmall="true" :ownerId="reply.ownerId"></user-image></td>
+                                                                <td><p>{{reply.ownerId}} </p></td>
+                                                                <td><p class="ml-3 grey-text small mt-1">{{ reply.createdAt | ago }}</p></td>
+                                                                <td><p>{{ reply.content }}</p></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+                                            </div> 
+                                        </div>  
                                     </div>
                                 </div>
-                            </div>
-                        </b-modal>
+                        </div>
+                      </div>
                     </div>
 
 
@@ -79,6 +101,9 @@
 <script>
 import Comment from '../../Service/CommentService';
 import Replies from '../Comment/Replies'
+import UserImage from '../Comment/UserImage';
+import Username from '../Comment/Username';
+
 
     export default {
        
@@ -90,11 +115,14 @@ import Replies from '../Comment/Replies'
                 comments: [],
                 replies: [],
                 origin: document.location.pathname, //we are using this as the origin/resourcename
+                replies: [],
             }
         },
 
         components:{
             Replies,
+            Username,
+            UserImage
     },
 
 
@@ -131,13 +159,20 @@ import Replies from '../Comment/Replies'
             },
 
             viewReplies: function(commentId){
-                this.comment.fetchReplies(commentId)
-                    .then(response => {
-                        this.busy = false;
-                        this.replies = response.records;
-                    })
+               this.comment.fetchReplies( commentId ?? this.commentId )
+                .then(response => {
+                    this.busy = false;
+                    this.replies = response.records;
+                })
             },
+
+        },
+
+        filters:{
+        ago(value){
+            return moment(value).fromNow();
         }
+    }
     }
 
     
@@ -147,4 +182,11 @@ import Replies from '../Comment/Replies'
     .smallbtn{
         padding: 1px 5px;
     }
+
+    .resize{
+    border-radius: 50%;
+    width: 50px;
+}
+
+
 </style>
