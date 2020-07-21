@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Tweet;
+use App\Tweets;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -41,5 +42,9 @@ class ProcessTweet implements ShouldQueue
         } catch (\Exception $exception) {
             return;
         }
+    }
+    public function details()
+    {
+        $details =  Twitter::getCredentials();
     }
 }

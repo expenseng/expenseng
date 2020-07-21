@@ -18,10 +18,60 @@ html{
     --fs-h5: 1rem;
     --fs-h6: 0.85rem;
 }
+/* Back to top */
+
+.back-top {
+    right: 20px;
+    font-size: 26px;
+    position: fixed;
+    z-index: 1600;
+    opacity: 0;
+    visibility: hidden;
+    bottom: 30px;
+    -webkit-background-size: 200% auto;
+    background-size: 200% auto;
+    background-image: -webkit-gradient(linear, left top, right top, from(#51e188), color-stop(51%, #22553d), to(#51e19e));
+    background-image: -webkit-linear-gradient(left, #51e188 0%, #22553d 51%, #51e19e 100%);
+    background-image: -moz-linear-gradient(left, #51e188 0%, #22553d 51%, #51e19e 100%);
+    background-image: -o-linear-gradient(left,#51e188 0%, #22553d 51%, #51e19e 100%);
+    background-image: linear-gradient(to right, #51e188 0%, #22553d 51%, #51e19e 100%);
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0);
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    line-height: 40px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.back-top-visible {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-top,
+.back-top:hover,
+.back-top:focus {
+    color: #fff;
+}
+
+.back-top:hover {
+    background-position: right center;
+}
+
 
 body{
     padding: 0;
     margin: 0;
+    overflow-x: hidden;
 }
 
 #main{
@@ -117,7 +167,7 @@ button.btn.scroll-down::after{
 .gallery{
     display: flex;
     position: relative;
-    height:480px;
+    height:430px;
     overflow-x:hidden !important;
     overflow-y: hidden;
 }
@@ -143,7 +193,6 @@ p.tag{
     align-self: flex-start;
     position: absolute;
     left: 10%;
-    top: -2%;
     z-index: 23;
 }
 .card{
@@ -299,7 +348,7 @@ p.exp-card3{
 }
 .ministry-heading{
     display: flex;
-    flex-direction: column;
+    flex-direction: tlumn;
     justify-content: space-between;
     align-items: center;
 }
@@ -415,13 +464,14 @@ p.profile{
     margin: 50px; */
 }
 .convo-background{
-    background-image: linear-gradient(to bottom, rgba(50, 62, 72, 0.33), rgba(50, 62, 72, 0.33), rgba(49, 139, 108, 0.89)),url(../img/Group\ 1394.svg);
-    background-size: cover;
+    background-image: linear-gradient(to bottom, rgba(49, 139, 108, 0.89), rgba(49, 139, 108, 0.89), rgba(49, 139, 108, 0.89)),url(../images/twitter1.png);
     background-repeat: no-repeat;
+    background-size: inherit;
+    margin-bottom: -20px;
 }
 .convo{
     z-index: -1;
-    /* padding: 1rem; */
+    /* margin-left: 5rem; */
     display: flex;
     flex-direction: column;
     color: white;
@@ -439,15 +489,18 @@ p.profile{
 .query p:nth-child(2){
      font-size: var(--fs-h5);
 }
-.twt-handle{
+.twt-handle a{
     padding: 0.5rem 1.8rem;
     background-color: white;
     border-radius: 0.3rem;
     text-align: center;
     width: auto;
+    margin-left: -90px;
 }
 .twt-handle a{
+    background-color: white;
    font-size: var(--fs-h5);
+
 }
 .twt-handle img{
    width: 20px;
@@ -486,6 +539,7 @@ p.profile{
     .twt-handle{
         padding: 0.5rem 1.3rem;
         margin: 0 0 2rem 3rem;
+        
     }
 }
 
@@ -549,8 +603,10 @@ p.profile{
         width: 28%;
     }
     .twt-handle{
-        padding: 0.3rem 0.8rem;
-        margin: 0 0 2rem 5rem;
+        /* padding: 0.3rem 0.8rem; */
+        /* margin: 0 0 2rem 5rem; */
+        margin-left: 25px;
+        margin-top: 50px;
     }
 }
 
@@ -567,15 +623,6 @@ p.profile{
 }
 
 @media only screen and (max-width: 800px){
-    /* :root{
-        --fs-h1: 2.45rem;
-        --fs-h2: 1.2rem;
-        --fs-h3: 1.16rem;
-        --fs-h4: 1.02rem;
-        --fs-reg: 0.63rem;
-        --fs-h5: 0.6rem;
-        --fs-h6: 0.45rem;
-    } */
     .gallery{
         display: flex;
         position: relative;
@@ -734,24 +781,38 @@ p.profile{
     #compu{
         font-size: 15px;
     }
+    .companies{
+        margin-bottom: 0;
+    }
+    .convo-background{
+        background: linear-gradient(to bottom, rgba(49, 139, 108, 0.9), rgba(49, 139, 108, 0.9), rgba(49, 139, 108, 0.9));
+    }
     .tweet{	
-        background: url(../images/twitter1.png);	
-        height: 200px;	
-        background-size: 100% 100%;	
+        background: linear-gradient(to bottom, rgba(49, 139, 108, 0.89), rgba(49, 139, 108, 0.89), rgba(49, 139, 108, 0.89)), url(../images/twitter1.png);
+        height: 200px;
+        width: 100%;	
         display: flex;	
-        width: 45%;	
         margin: auto;	
         background-size: contain;	
         background-position: center;	
         background-repeat: no-repeat;	
     }	
+    .twt-handle a{
+        margin-left: 5px;
+    }
     .twt-handle img {
         width: 20px;
         height: 15px;
     }
     .twt-handle{
         padding: 0.1rem 0.6rem;
-        margin: 1rem 0 0 1rem;
+        margin: .1rem 0 0 10.2rem;
+    }
+    .query p:nth-child(2){
+        text-align: center;
+    }
+    p{
+        text-align: center;
     }
 }
 
@@ -762,7 +823,7 @@ p.profile{
         --fs-h3: 1.16rem;
         --fs-h4: 1.02rem;
         --fs-reg: 0.63rem;
-        --fs-h5: 0.6rem;
+        --fs-h5: 0.9rem;
         --fs-h6: 0.45rem;
     }
     .twt-handle img {
