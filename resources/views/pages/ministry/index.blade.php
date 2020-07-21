@@ -50,7 +50,7 @@
           <div id="search-area" class="offset-md-1 col-md-5 mt-3 mt-md-0">
             <input type="search" id="ministry_search" class="form-control form-control-lg mb-2" style="font-family:Arial, FontAwesome" placeholder="&#xf002; Search for a ministry">
             <div id="ministryList"></div>
-            {{-- <button type="submit" id="submit" class="btn btn-block btn-success">Find</button> --}}
+            
             @csrf
           </div>
         </div>
@@ -61,37 +61,8 @@
     <div class="last-section">
       <div class="container-fluid">
         <div id="cards-container" class="row d-flex sec-card" style="min-height: 300px">
-          @if (count($ministries) >0)
-          @foreach($ministries as $ministry)
-          <div data-id="{{$ministry->shortname()}}" 
-            class="col-lg-3 col-md-6 col-sm-12 ministry-cards d-flex" 
-            style="cursor:pointer"
-          >
-            <div class="cont-1 d-flex flex-column justify-content-center py-0">
-              <chart label="5-year Trend" 
-            v-bind:data="{{json_encode($ministry->chartData)}}" 
-                        element="{{ $ministry->shortname() }}"></chart>
-              <div class="img">
-                <span class="circle"></span>
-              </div>
-              <div class="coat">
-                <img src="{{ asset('images/image 7.png') }}" alt="">
-                <div class="text-center ministry">
-                  <h4>{{$ministry->name}}</h4>
-                </div>
-              </div>
-              <div class="texts d-flex flex-column text-center">
-                <p>Total amount Spent</p>
-              <p class="num">₦{{number_format($ministry->total,2)}}</p>
-                <p class="year">{{date('Y')}}</p>
-              </div>
-            </div>
-            <a title="Click to view profile" href="{{ route('ministries.single', $ministry->shortname()) }}"></a>
-          </div>
-
-         
-          @endforeach
-          @endif
+          
+          @include('pages.ministry.cards')
           
         </div>
       </div>

@@ -7,9 +7,9 @@
 require('./bootstrap');
 import VueApexCharts from 'vue-apexcharts';
 import TextareaAutosize from 'vue-textarea-autosize'
- 
+
 window.Vue = require('vue');
-Vue.use(TextareaAutosize)
+Vue.use(TextareaAutosize);
 
 /**
  * The following block of code may be used to automatically register your
@@ -26,6 +26,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('comments', require('./components/Comment/Comments.vue').default);
 Vue.component('chart', require('./components/Payments/Chart.vue').default);
 Vue.component('govt-expense', require('./components/Home/GovtExpenses.vue').default);
+Vue.component('ministry-expense', require('./components/Home/MinistryExpense.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

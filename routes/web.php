@@ -20,6 +20,9 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contactUs')->name('contact');
 
+// Feedback
+Route::post('/feedback', 'FeedbackController@create')->name('feedback');
+
 /**
  * Reports Endpoints
  */
@@ -37,6 +40,8 @@ Route::post('/ministries', 'MinistryController@store')->name('ministry_store');
 Route::patch('/ministries/{ministry}', 'MinistryController@update')->name('ministry_update');
 Route::delete('/ministries/{ministry}', 'MinistryController@destroy')->name('ministry_destroy');
 Route::post('/ministries/autocomplete', 'MinistryController@autocomplete')->name('ministry_autocomplete');
+Route::get('/expense/filterExpensesAll', 'ExpenseController@filterExpensesAll')->name('all_ministries_filter_expenses');
+
 
 /**
  * Contractor Endpoints
@@ -48,8 +53,6 @@ Route::get('/ministry-graph', 'PageController@ministryGraph')->name('ministry-gr
 Route::get('/expense-graph', 'PageController@expenseGraph')->name('expense-graph');
 Route::get('/project-modal', 'PageController@projectModal')->name('project-modal');
 
-Route::get('/ministry/details', 'MinistrySearchController@show')->name('get_ministry_details');
-Route::get('/ministry/all', 'MinistrySearchController@index')->name('ministry_all');
 Route::get('/ministry/getUrl', 'PageController@ministryGetUrl')->name('ministry_get_url');
 Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses')->name('ministry_filter_expenses');
 
@@ -158,11 +161,21 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
 
      Route::delete('/cabinet/delete/{cabinet_id}', 'CabinetController@deleteCabinet')
      ->name('cabinet.delete');
-     
+      //  Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
+      Route::get('/import', 'UploadController@importFile');
+      Route::post('/import', 'UploadController@importExcel')->name('importExcel');
+  
+      Route::get('/subcribe', 'Admin\SubscriptionController@index')
+      ->name('subscribeReport');
+  
+      Route::get('/feedback/approve/{id}', 'FeedbackController@approve')
+      ->name('feedback.approve');
+     Route::get('/feedback/ignore/{id}', 'FeedbackController@ignore')
+     ->name('feedback.ignore');
 
   }
  );
-
+ 
 
 
 
@@ -170,11 +183,12 @@ Auth::routes();
 
 
 //admin route
-Route::get('/admin', function()
-   {
-     return redirect (route('dashboard'));
-});
+Route::get('/admin', function(){
+     return redirect(route('dashboard'));
+ }
+);
 
 Route::get('/startRT', 'TwitterBot@startLiveRetweet');
 Route::get('/stopRT', 'TwitterBot@stopLiveRetweet');
+Route::post('/post_tweet', 'TwitterBot@sendTweet');
 
