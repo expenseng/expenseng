@@ -155,25 +155,22 @@
         </div>
     </div>
     </div>
-    <div class="row mr-0 tweet-plugin fixed-plugin ">
-        <div class="col d-flex">
-            <div class="row ml-auto">
-                <button type="button" class="btn btn-white bg-white text-primary py-4 px-2 tweet-button" data-toggle="modal" data-target="#sendTweetModal">
-                    <i class="fa fa-twitter fa-10x text-primary"></i> tweet
-                </button>
-            </div>
+<div class="row justify-content-center">
+    <div class=" offset-1 col-3">
+        <div class="p-1 tweet-plugin fixed-plugin " id="tweetButton">
+                    <button type="button" class="btn  px-4 btn-white bg-white text-primary py-4 px-lg-2  tweet-button" id="B1" data-toggle="modal" data-target="#sendTweetModal">
+                        <i class="fa fa-twitter fa-10x text-primary"></i> tweet
+                    </button>
         </div>
     </div>
-    <div class="row mr-0 tweet-list-plugin fixed-plugin ">
-        <div class="col d-flex">
-            <div class="row ml-auto">
-                <button type="button" class="btn btn-white bg-light text-primary py-4 px-2 tweet-list-button" data-toggle="modal" data-target="#listTweetModal">
-                    <i class="fa fa-twitter fa-10x text-primary"></i>Tweets
-                </button>
-            </div>
+    <div class=" offset-1 col-3 mr-auto ">
+        <div class="p-1 mr-0 tweet-list-plugin fixed-plugin " id="tweetButton2">
+            <button type="button" class="btn btn-white bg-light text-primary border  py-4 px-4 px-lg-2  tweet-list-button" id="B2" data-toggle="modal" data-target="#listTweetModal">
+                <i class="fa fa-twitter fa-10x text-primary"></i>Tweets
+            </button>
         </div>
     </div>
-
+</div>
     <div class="modal" id="sendTweetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -333,6 +330,34 @@
                     });
 
 
+                });
+                if ($(window).width() < 960) {
+                    $('#tweetButton').removeClass('fixed-plugin');
+                    $('#tweetButton').removeClass('tweet-plugin');
+                    $('#tweetButton2').removeClass('fixed-plugin');
+                    $('#tweetButton2').removeClass('tweet-list-plugin');
+                    $('#B1').removeClass('tweet-button');
+                    $('#B2').removeClass('tweet-list-button');
+                }
+
+                $(window).on('resize', function() {
+                        if ($(window).width() < 1000) {
+                            $('#tweetButton').removeClass('fixed-plugin');
+                            $('#tweetButton').removeClass('tweet-plugin');
+                            $('#tweetButton2').removeClass('fixed-plugin');
+                            $('#tweetButton2').removeClass('tweet-list-plugin');
+                            $('#B1').removeClass('tweet-button');
+                            $('#B2').removeClass('tweet-list-button');
+                        } else {
+                            $('#tweetButton').addClass('fixed-plugin');
+                            $('#tweetButton2').addClass('fixed-plugin');
+                            $('#tweetButton2').addClass('tweet-list-plugin');
+                            $('#tweetButton').addClass('tweet-plugin');
+                            $('#B1').addClass('tweet-button');
+                            $('#B2').addClass('tweet-list-button');
+
+
+                        }
                 });
                 jQuery('.tweet-list-button').click(function(){
                     jQuery.ajax(
