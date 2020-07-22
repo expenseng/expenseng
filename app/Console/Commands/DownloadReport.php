@@ -36,22 +36,21 @@ class DownloadReport extends Command
      * Execute the console command.
      *
      * @return int
-     * @throws \Exception
      */
     public function handle()
     {
-        $int = random_int(10, 30);
-        $date = Carbon::now()->subDays()->format('d-m');
+        $int = random_int(23, 40);
+        $date = Carbon::now()->subDays($int)->format('d-m');
         $link = new Scrapping();
         try {
             $result = $link->openTreasury('2020')->selectDate($date)->download();
             if ($result) {
-                echo 'downloaded to the resource folder \n';
+                echo "downloaded to the resource folder \n";
             } else {
-                echo 'resource was not found';
+                echo "resource was not found \n";
             }
         } catch (\Exception $e) {
-            $this->error('error cccured');
+            $this->error('error occurred');
         }
 
         return 0;
