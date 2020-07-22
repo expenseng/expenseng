@@ -19,13 +19,10 @@ use App\User;
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contactUs')->name('contact');
-<<<<<<< HEAD
 Route::get('/report', 'PageController@error404')->name('error404');
-=======
 Route::get('/faq', 'PageController@faq')->name('faq');
 Route::get('/search', 'PageController@search')->name('search');
 Route::get('/handles', 'PageController@handles')->name('handles');
->>>>>>> 329e1759b36bd2361373e1e7f85429630dd60616
 
 // Feedback
 Route::post('/feedback', 'FeedbackController@create')->name('feedback');
