@@ -12,18 +12,20 @@
 </title>
 @section('content')
 @if($message = Session::get('success'))
+    <div class="fixed-bottom">
     <div class="alert alert-success alert-block">
       <button type="button" class="close" data-dismiss="alert">x</button>
       <strong>{{$message}}</strong>
+    </div>
     </div>
   @endif
 
   @if(Session::has('flash_message'))
     <p class="alert {{Session::get('alert-class','alert-info')}}">{{Session::get('flash_message')}}</p>
   @endif
-  {{$counter_feedback}}
-    <div class="content">
-        <div class="container-fluid">
+
+    <div class="content mb-0 pb-0">
+        <div class="container-fluid mb-0">
             <div class="row ">
                 <div class="col-lg-3 col-md-6 col-sm-6 panel">
                     <div class="card card-stats">
@@ -73,308 +75,8 @@
                     </div>
                 </div>
             </div>
-        <!--<div class="row ">
-
-            <div class="col-md-4">
-            <a href="{{route('company.create')}}">
-              <div class="card card-chart">
-                <div class="card-header card-header-success">
-                  <div class="ct-chart" id="dailySalesChart"></div>
-                </div>
-                <div class="card-body">
-                  <h4 class="card-title">Create Company</h4>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            </a>
-            <div class="col-md-4">
-            <a href="{{route('ministry.create')}}">
-              <div class="card card-chart">
-                <div class="card-header card-header-warning">
-                  <div class="ct-chart" id="websiteViewsChart"></div>
-                </div>
-                <div class="card-body">
-                  <h4 class="card-title">Create Ministry</h4>
-                  <p class="card-category"></p>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            </a>
-            <div class="col-md-4">
-            <a href="#">
-              <div class="card card-chart">
-                <div class="card-header card-header-danger">
-                  <div class="ct-chart" id="completedTasksChart"></div>
-                </div>
-                <div class="card-body">
-                  <h4 class="card-title">Create Comment</h4>
-                  <p class="card-category"></p>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            </a>
-          </div>-->
             <div class="row">
-                <!--<div class="col-lg-6 col-md-12">
-                  <div class="card">
-                    <div class="card-header card-header-tabs card-header-primary">
-                      <div class="nav-tabs-navigation">
-                        <div class="nav-tabs-wrapper">
-                          <span class="nav-tabs-title">Tasks:</span>
-                          <ul class="nav nav-tabs" data-tabs="tabs">
-                            <li class="nav-item">
-                              <a class="nav-link active" href="#profile" data-toggle="tab">
-                                <i class="material-icons">bug_report</i> Bugs
-                                <div class="ripple-container"></div>
-                              </a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" href="#messages" data-toggle="tab">
-                                <i class="material-icons">code</i> Website
-                                <div class="ripple-container"></div>
-                              </a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" href="#settings" data-toggle="tab">
-                                <i class="material-icons">cloud</i> Server
-                                <div class="ripple-container"></div>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-body">
-                      <div class="tab-content">
-                        <div class="tab-pane active" id="profile">
-                          <table class="table">
-                            <tbody>
-                              <tr>
-                                <td>
-                                  <div class="form-check">
-                                    <label class="form-check-label">
-                                      <input class="form-check-input" type="checkbox" value="" checked>
-                                      <span class="form-check-sign">
-                                        <span class="check"></span>
-                                      </span>
-                                    </label>
-                                  </div>
-                                </td>
-                                <td>Sign contract for "What are conference organizers afraid of?"</td>
-                                <td class="td-actions text-right">
-                                  <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                                    <i class="material-icons">edit</i>
-                                  </button>
-                                  <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                                    <i class="material-icons">close</i>
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <div class="form-check">
-                                    <label class="form-check-label">
-                                      <input class="form-check-input" type="checkbox" value="">
-                                      <span class="form-check-sign">
-                                        <span class="check"></span>
-                                      </span>
-                                    </label>
-                                  </div>
-                                </td>
-                                <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                                <td class="td-actions text-right">
-                                  <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                                    <i class="material-icons">edit</i>
-                                  </button>
-                                  <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                                    <i class="material-icons">close</i>
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <div class="form-check">
-                                    <label class="form-check-label">
-                                      <input class="form-check-input" type="checkbox" value="">
-                                      <span class="form-check-sign">
-                                        <span class="check"></span>
-                                      </span>
-                                    </label>
-                                  </div>
-                                </td>
-                                <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                                </td>
-                                <td class="td-actions text-right">
-                                  <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                                    <i class="material-icons">edit</i>
-                                  </button>
-                                  <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                                    <i class="material-icons">close</i>
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <div class="form-check">
-                                    <label class="form-check-label">
-                                      <input class="form-check-input" type="checkbox" value="" checked>
-                                      <span class="form-check-sign">
-                                        <span class="check"></span>
-                                      </span>
-                                    </label>
-                                  </div>
-                                </td>
-                                <td>Create 4 Invisible User Experiences you Never Knew About</td>
-                                <td class="td-actions text-right">
-                                  <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                                    <i class="material-icons">edit</i>
-                                  </button>
-                                  <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                                    <i class="material-icons">close</i>
-                                  </button>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                        <div class="tab-pane" id="messages">
-                          <table class="table">
-                            <tbody>
-                              <tr>
-                                <td>
-                                  <div class="form-check">
-                                    <label class="form-check-label">
-                                      <input class="form-check-input" type="checkbox" value="" checked>
-                                      <span class="form-check-sign">
-                                        <span class="check"></span>
-                                      </span>
-                                    </label>
-                                  </div>
-                                </td>
-                                <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                                </td>
-                                <td class="td-actions text-right">
-                                  <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                                    <i class="material-icons">edit</i>
-                                  </button>
-                                  <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                                    <i class="material-icons">close</i>
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <div class="form-check">
-                                    <label class="form-check-label">
-                                      <input class="form-check-input" type="checkbox" value="">
-                                      <span class="form-check-sign">
-                                        <span class="check"></span>
-                                      </span>
-                                    </label>
-                                  </div>
-                                </td>
-                                <td>Sign contract for "What are conference organizers afraid of?"</td>
-                                <td class="td-actions text-right">
-                                  <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                                    <i class="material-icons">edit</i>
-                                  </button>
-                                  <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                                    <i class="material-icons">close</i>
-                                  </button>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                        <div class="tab-pane" id="settings">
-                          <table class="table">
-                            <tbody>
-                              <tr>
-                                <td>
-                                  <div class="form-check">
-                                    <label class="form-check-label">
-                                      <input class="form-check-input" type="checkbox" value="">
-                                      <span class="form-check-sign">
-                                        <span class="check"></span>
-                                      </span>
-                                    </label>
-                                  </div>
-                                </td>
-                                <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                                <td class="td-actions text-right">
-                                  <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                                    <i class="material-icons">edit</i>
-                                  </button>
-                                  <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                                    <i class="material-icons">close</i>
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <div class="form-check">
-                                    <label class="form-check-label">
-                                      <input class="form-check-input" type="checkbox" value="" checked>
-                                      <span class="form-check-sign">
-                                        <span class="check"></span>
-                                      </span>
-                                    </label>
-                                  </div>
-                                </td>
-                                <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                                </td>
-                                <td class="td-actions text-right">
-                                  <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                                    <i class="material-icons">edit</i>
-                                  </button>
-                                  <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                                    <i class="material-icons">close</i>
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <div class="form-check">
-                                    <label class="form-check-label">
-                                      <input class="form-check-input" type="checkbox" value="" checked>
-                                      <span class="form-check-sign">
-                                        <span class="check"></span>
-                                      </span>
-                                    </label>
-                                  </div>
-                                </td>
-                                <td>Sign contract for "What are conference organizers afraid of?"</td>
-                                <td class="td-actions text-right">
-                                  <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                                    <i class="material-icons">edit</i>
-                                  </button>
-                                  <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                                    <i class="material-icons">close</i>
-                                  </button>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>-->
+
                 <div class="col-lg-12 col-md-12">
                     <div class="card">
                         <div class="card-header card-header-warning">
@@ -413,85 +115,113 @@
             </div>
         </div>
     </div>
-    <div class="row mr-5">
-        <div class="col d-flex">
-            <div class="row ml-auto">
+    <div class="row">
+        <div class="col mx-4 ">
+        <div class="card px-5">
+            <h2 class="p-4 card-header">Visitors Suggestions</h2>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="bg-light">
+                        <tr class="border-0">
 
-                <button type="button " class="btn btn-white py-4" data-toggle="modal" data-target="#exampleModal">
-                    tweet <i class="fa fa-twitter fa-10x text-primary"></i>
-                </button>
+                            <th class="border-0">Firstname</th>
+                            <th class="border-0">Lastname</th>
+                            <th class="border-0">Cabinet</th>
+                            <th class="border-0">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
-                <!-- Modal -->
-                <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Type in tweet below</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="alert1 " >
+                        @if (count($feedbacks)> 0)
+                            @foreach ($feedbacks as $feedback)
+                                <tr>
+                                    <td>{{$feedback->firstName}} </td>
+                                    <td>{{$feedback->lastName}}  </td>
+                                    <td>{{$feedback->ministry_id}}</td>
+                                    <td>
+                                        <a href="{{route('feedback.approve', ['id' => $feedback->id])}}" class="btn btn-success btn-sm ">Approve</button>
+                                            <a href="{{route('feedback.ignore', ['id' => $feedback->id])}}" class="btn btn-danger btn-sm">Ignore</button>
 
-                                </div>
-                                <form class="user" action="">
-                                    @csrf
-                                    <div class="form-group">
-                                        <textarea name="tweet"  maxlength="260" class="form-control tweet" id="" cols="50" rows="6"></textarea>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary sendTweet" id="sendTweet">tweet</button>
-                            </div>
-                        </div>
-                    </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                                @endif
+                                </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-
-        <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
-                        <div class="card">
-                            <h2 class="p-4 card-header">Visitors Suggestions</h2>
-                            <div class="card-body p-0">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead class="bg-light">
-                                            <tr class="border-0">
-
-                                                <th class="border-0">Firstname</th>
-                                                <th class="border-0">Lastname</th>
-                                                <th class="border-0">Cabinet</th>
-                                                <th class="border-0">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        
-                                        @if (count($feedbacks)> 0)
-                                            @foreach ($feedbacks as $feedback)
-                                                <tr>
-                                                    <td>{{$feedback->firstName}} </td>
-                                                    <td>{{$feedback->lastName}}  </td>
-                                                    <td>{{$feedback->ministry_id}}</td>
-                                                    <td>
-                                                        <a href="{{route('feedback.approve', ['id' => $feedback->id])}}" class="btn btn-success btn-sm ">Approve</button>
-                                                        <a href="{{route('feedback.ignore', ['id' => $feedback->id])}}" class="btn btn-danger btn-sm">Ignore</button>
-
-                                                    </td>
-                                                </tr>
-                                        @endforeach
-                                        @endif
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            </div>
     </div>
+    </div>
+<div class="row justify-content-center">
+    <div class=" offset-1 col-3">
+        <div class="p-1 tweet-plugin fixed-plugin " id="tweetButton">
+                    <button type="button" class="btn  px-4 btn-white bg-white text-primary py-4 px-lg-2  tweet-button" id="B1" data-toggle="modal" data-target="#sendTweetModal">
+                        <i class="fa fa-twitter fa-10x text-primary"></i> tweet
+                    </button>
+        </div>
+    </div>
+    <div class=" offset-1 col-3 mr-auto ">
+        <div class="p-1 mr-0 tweet-list-plugin fixed-plugin " id="tweetButton2">
+            <button type="button" class="btn btn-white bg-light text-primary border  py-4 px-4 px-lg-2  tweet-list-button" id="B2" data-toggle="modal" data-target="#listTweetModal">
+                <i class="fa fa-twitter fa-10x text-primary"></i>Tweets
+            </button>
+        </div>
+    </div>
+</div>
+    <div class="modal" id="sendTweetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Type in tweet below</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert1 " >
+
+                </div>
+                <form class="user" action="">
+                    @csrf
+                    <div class="form-group">
+                        <textarea name="tweet"  maxlength="260" class="form-control tweet" id="" cols="50" rows="6"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary sendTweet" id="sendTweet">tweet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="modal" id="listTweetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Tweets</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert2">
+                </div>
+                <div class="" id="tweets">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
 
     <footer class="footer">
         <div class="container-fluid">
@@ -524,8 +254,7 @@
             </div>
         </div>
     </footer>
-    </div>
-    </div>
+
 @endsection
 @section('js')
 
@@ -602,7 +331,74 @@
 
 
                 });
+                if ($(window).width() < 960) {
+                    $('#tweetButton').removeClass('fixed-plugin');
+                    $('#tweetButton').removeClass('tweet-plugin');
+                    $('#tweetButton2').removeClass('fixed-plugin');
+                    $('#tweetButton2').removeClass('tweet-list-plugin');
+                    $('#B1').removeClass('tweet-button');
+                    $('#B2').removeClass('tweet-list-button');
+                }
 
+                $(window).on('resize', function() {
+                        if ($(window).width() < 1000) {
+                            $('#tweetButton').removeClass('fixed-plugin');
+                            $('#tweetButton').removeClass('tweet-plugin');
+                            $('#tweetButton2').removeClass('fixed-plugin');
+                            $('#tweetButton2').removeClass('tweet-list-plugin');
+                            $('#B1').removeClass('tweet-button');
+                            $('#B2').removeClass('tweet-list-button');
+                        } else {
+                            $('#tweetButton').addClass('fixed-plugin');
+                            $('#tweetButton2').addClass('fixed-plugin');
+                            $('#tweetButton2').addClass('tweet-list-plugin');
+                            $('#tweetButton').addClass('tweet-plugin');
+                            $('#B1').addClass('tweet-button');
+                            $('#B2').addClass('tweet-list-button');
+
+
+                        }
+                });
+                jQuery('#B2').click(function(){
+                    jQuery.ajax(
+                        {
+                            url: "{{URL::to('tweets')}}",
+                            type: "get",
+                            datatype: "html"
+                        }).done(function(data){
+                        $("#tweets").empty().html(data);
+                    }).fail(function(jqXHR, ajaxOptions, thrownError){
+                        $("#tweets").empty().html('<div class="alert alert-danger"> failed to load tweets </div>')
+                    });
+                });
+                jQuery.fn.delete =  function(data){
+                    $id = data;
+                    $div = '#'+$id
+                    $confirm = confirm('Are you sure you want to delete this tweet');
+                    if($confirm){
+                        jQuery.ajax(
+                            {
+                                url: "{{URL::to('delete_tweet')}}",
+                                type:"delete",
+                                data:{'id': $id},
+                            }).done(function (data) {
+                            jQuery($div).fadeOut(4000);
+                            jQuery('.alert2').removeClass('alert-danger');
+                            jQuery('.alert2').fadeIn(4000);
+                            jQuery('.alert2').addClass('alert alert-success text-white');
+                            jQuery('.alert2').html('tweet deleted');
+                            jQuery('.alert2').fadeOut(4000);
+
+                        }).fail( function(data){
+                            jQuery('.alert2').removeClass('alert-success');
+                            jQuery('.alert2').fadeIn(4000);
+                            jQuery('.alert2').addClass('alert alert-danger text-white');
+                            jQuery('.alert2').html('tweet not deleted');
+                            jQuery('.alert2').fadeOut(4000);
+                        })
+                    }
+
+                }
 
                 jQuery('.fixed-plugin .active-color span').click(function() {
                     $full_page_background = $('.full-page-background');

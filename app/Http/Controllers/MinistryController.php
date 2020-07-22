@@ -251,10 +251,10 @@ class MinistryController extends Controller
         $save_new_ministry = $new_ministry->save();
 
         if ($save_new_ministry) {
-            echo "<script>alert('New ministry created successfully');
-             window.location.replace('/admin/ministry/view');</script>";
+             Session::flash('flash_message', 'New ministry created successfully!');
+             return redirect('/admin/ministry/view');
         } else {
-            Session::flash('flash_message', 'Cannot create new Ministry!');
+            Session::flash('error_message', 'Cannot create new Ministry!');
             return redirect()->back();
         }
     }
@@ -264,8 +264,15 @@ class MinistryController extends Controller
         if (Gate::denies('edit')) {
             return redirect(route('ministry.view'));
         }
+        
         $details = Ministry::findOrFail($id);
-        return view('backend.ministry.edit')->with(['details' => $details]);
+        $ministry_codes = Ministry::orderBY('code', 'ASC')->where('code', '!=', $details->code)->get();
+        $sectors = Sector::all()->where('id', '!=', $details->sector_id);
+        $sector_id_name = Sector::findOrFail($details->sector_id)->name;
+        return view('backend.ministry.edit')
+        ->with(['details' => $details, 'ministry_codes' => $ministry_codes,
+        'sectors' => $sectors, 'sector_id_name' => $sector_id_name
+        ]);
     }
 
     public function editMinistry(Request $request, $id)
@@ -288,11 +295,11 @@ class MinistryController extends Controller
             'website' => $request->website,
             'sector_id' => $request->sector_id,
         ]);
-        if ($update) {
-            echo "<script>alert(' Ministry details edited successfully');
-             window.location.replace('/admin/ministry/view');</script>";
+        if ($update) {;
+             Session::flash('flash_message', 'Ministry details edited successfully!');
+             return redirect('/admin/ministry/view');
         } else {
-            Session::flash('flash_message', ' Ministry was not edited!');
+            Session::flash('error_message', ' Ministry was not edited!');
             return redirect()->back();
         }
     }
@@ -305,30 +312,11 @@ class MinistryController extends Controller
 
         $delete = Ministry::where('id', $id)->delete();
         if ($delete) {
-            echo "<script>alert(' Ministry details deleted successfully');
-             window.location.replace('/admin/ministry/view');</script>";
+            Session::flash('error_message', 'Ministry deleted successfully!');
+            return redirect('/admin/ministry/view');
         } else {
-            Session::flash('flash_message', ' Ministry was not deleted!');
+            Session::flash('error_message', ' Ministry was not deleted!');
             return redirect()->back();
         }
     }
-
-    // public function test(Request $request)
-    // {
-        
-    //     $students = ["Kehinde", "Kemi", "Ifeanyi", "Suke"];
-    //     return view('pages.ministry.insert', compact('students'));
-    // }
-    // public function tests(Request $request)
-    // {
-    //     if($request->ajax()){
-    //         $students = ["Mike", "Smalling", "John", "Fischer"];
-    //     }else{
-    //         $students = ["Kehinde", "Kemi", "Ifeanyi", "Suke"];
-    //     }
-        
-    //     echo "<p>I need to cut you out</p>?";
-
-    //     return view('pages.ministry.test', compact('students'));
-    // }
 }

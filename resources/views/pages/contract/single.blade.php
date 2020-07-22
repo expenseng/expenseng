@@ -429,5 +429,5 @@
 @endsection
 
 @section('js')
-{{-- <script src="assets/js/main.js" type="text/javascript"></script> --}}
+<script src="{{ asset('js/index.js') }}"></script>
 @endsection

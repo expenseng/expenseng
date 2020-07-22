@@ -34,17 +34,28 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">notifications</i>
-                  <span class="notification">5</span>
-                  <p class="d-lg-none d-md-block">
-                    Some Actions
-                  </p>
+                  @if(!empty($counter_feedback))
+                    @if($counter_feedback> 0 && isset($counter_feedback))
+                    <span class="notification">{{$counter_feedback ?? ''}}</span>
+                    @else
+                    @endif
+
+                  @else
+
+                  @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Mike John responded to your email</a>
-                  <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                  <a class="dropdown-item" href="#">You're now friend with Andrew</a>
-                  <a class="dropdown-item" href="#">Another Notification</a>
-                  <a class="dropdown-item" href="#">Another One</a>
+                   @if(!empty($feedbacks))
+                  @if(count($feedbacks) > 0 && isset($feedbacks))
+                    @foreach($feedbacks ?? '' as $feedback)
+                      <a class="dropdown-item" href="#">{{$feedback->firstName}} {{$feedback->lastName}} was created by a Visitor</a>
+                    @endforeach
+                  @else
+                    <a class="dropdown-item" href="#"></a>
+                  @endif
+                @else
+
+                @endif
                 </div>
               </li>
               <li class="nav-item dropdown">

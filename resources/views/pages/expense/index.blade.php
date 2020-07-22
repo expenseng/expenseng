@@ -2,13 +2,9 @@
 
 @push('css')
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-  <!-- <link rel="stylesheet" href="{{asset('/css/expense_report.css')}}"> -->
-  <link rel="stylesheet" href="{{asset('/css/header_footer.css')}}">
   <link rel="stylesheet" href="{{asset('css/index.blade.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/header_footer.css') }}">
   <link rel="stylesheet" href="{{ asset('css/ministry-report-table.css') }}">
   <link rel="stylesheet" href="{{ asset('css/filter.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/aboutus-header_footer.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
 
     @toastr_css
@@ -159,6 +155,7 @@
 <script type="text/javascript" src="/js/expenditure_report.js"></script>
 <script type="text/javascript" src="/js/filter.js"></script>
 <script type="text/javascript" src="/js/index_blade.js"></script>
+<script src="{{ asset('js/index.js') }}"></script>
 @jquery
 @toastr_js
 @toastr_render

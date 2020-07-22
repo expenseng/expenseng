@@ -72,4 +72,5 @@
 
 @section('js')
 <script src="{{ asset('js/contract_page.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/index.js') }}"></script>
 @endsection

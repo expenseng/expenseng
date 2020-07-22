@@ -17,7 +17,9 @@ div.register-modal button {
     color: #fff;
 }
 
-
+.modal-title{
+    color: #FFFFFF !important;
+}
 
 
 div.register-modal button:focus {

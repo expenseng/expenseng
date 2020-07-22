@@ -1,17 +1,17 @@
 @extends('layouts.master')
 @push('css')
+<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
+<link rel="stylesheet" href="{{asset('/css/ministry_list_table.css')}}">
+<link rel="stylesheet" href="/css/modal/style.css">
+
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-{{-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/le-frog/jquery-ui.css"> --}}
-<link rel="stylesheet" href="{{asset('/css/aboutus-header_footer.css')}}">
 <title>FG Expense - Profile</title>
 @endpush
 
 @section('content')
 
 
-<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
-<link rel="stylesheet" href="{{asset('/css/ministry_list_table.css')}}">
+
 <!-- Section-->
 <div class="container mt-4 pt-2">
     <div class="container mt-4">
@@ -244,10 +244,89 @@
         </div>
     </div>
 </div>
+
+{{-- cabinet member --}}
+
+<h3 style='color: #353A45; text-align:center;margin-top: 15px'>Suggest Cabinet Members</h3>
+     
+<center>
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" style="background: 353A45;margin-bottom: 20px;">
+  Suggest a Cabinet Member
+</button>
+</center>
+
+<!-- Modal -->
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" class="text-light">Suggestion</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form  action=" {!! url('/feedback') !!}" method="POST">
+    {{csrf_field()}}
+    <div class="form-group">
+      <label for="firstName">Firstname</label>
+      <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Firstname">
+    </div>
+    <div class="form-group">
+      <label for="lastName">Lastname</label>
+      <input type="text" name="lastName" class="form-control" id="exampleInputPassword1" placeholder="Lastname">
+    </div>
+    
+    <div class="form-group">
+      <label for="ministry">Select Cabinet</label>
+      <select id="inputState" class="form-control" name="ministry_id">
+        <option selected value="1">Works</option>
+        <option value="Housing">Housing</option>
+        <option value="Interior">Interior</option>
+        <option value="Petroleum">Petroleum</option>
+        <option value="Finance">Finance</option>
+        <option value="Power">Power</option>
+        <option value="Health">Health</option>
+        <option value="Labour">Labour</option>
+        <option value="Environment">Environment</option>
+        <option value="Water Resouirces">Water Resouirces</option>
+        <option value="Communication">Communication</option>
+        <option value="Aviation">Aviation</option>
+        <option value="Defense">Defense</option>
+        <option value="Information">Information</option>
+        <option value="Youths and Sports">Youths and Sports</option>
+        <option value="Police Affairs">Police Affairs</option>
+        <option value="Education">Education</option>
+        <option value="Justice">Justice</option>
+        <option value="Agriculture">Agriculture</option>
+        <option value="Women Affairs">Women Affairs</option>
+      </select>
+    </div>
+   <center>
+    <button type="submit" class="btn btn-success ">Submit</button>
+  </center>
+
+  </form>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
 
 
 @section('js')
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="{{ asset('js/index.js') }}"></script>
+
 <script src="{{ asset('js/ministry_profile.js') }}" type="text/javascript"></script>
 @endsection
