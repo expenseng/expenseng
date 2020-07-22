@@ -63,13 +63,13 @@
         <p class="hh8">1-20 of 320 results</p>
         <div class="div7">
             <div class="divb">
-                <div class="divc"><img class="img2" src="{{ asset('/img/dir-left.png') }}" alt="icon"></div>
-                <div class="divc hh9">1</div>
-                <div class="divc">2</div>
-                <div class="divc">3</div>
-                <div class="divc">4</div>
-                <div class="divc">...</div>
-                <div class="divc">6<img class="img3" src="{{ asset('/img/dir-right.png') }}" alt="icon"></div>
+                <div class="divc"><a class="linkka" href="#"><img class="img2" src="{{ asset('/img/dir-left.png') }}" alt="icon"></a></div>
+                <div class="divc hh9"><a class="linkka linkkb" href="#">1</div>
+                <div class="divc"><a class="linkka" href="#">2</a></div>
+                <div class="divc"><a class="linkka" href="#">3</a></div>
+                <div class="divc"><a class="linkka" href="#">4</a></div>
+                <div class="divc"><a class="linkka" href="#">...</a></div>
+                <div class="divc"><a class="linkka" href="#">6<img class="img3" src="{{ asset('/img/dir-right.png') }}" alt="icon"></a></div>
             </div>
         </div>
     </div>

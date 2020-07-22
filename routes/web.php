@@ -93,6 +93,10 @@ Route::get('/accessibility', 'PageController@accessibility');
     Route::get('/admin/company/edit/{company_id}', 'CompanyController@showEditForm')->name('company.view.edit');
     Route::put('/admin/company/edit/{company_id}', 'CompanyController@editCompany')->name('company.edit');
     Route::delete('/admin/company/delete/{company_id}', 'CompanyController@deleteCompany')->name('company.delete');
+<<<<<<< HEAD
+=======
+
+>>>>>>> 72bd45c2c6edd8e604271a0f88ce0d9bce3b8043
     Route::get('/admin/ministry/create', 'MinistryController@viewCreateMinistry')->name('ministry.create');
     Route::post('/admin/ministry/create', 'MinistryController@createMinistry')->name('create.ministry');
     Route::get('/admin/ministry/view', 'MinistryController@viewMinistries')->name('ministry.view');
@@ -202,6 +206,11 @@ Route::get('/accessibility', 'PageController@accessibility');
       ->name('feedback.approve');
      Route::get('/feedback/ignore/{id}', 'FeedbackController@ignore')
      ->name('feedback.ignore');
+
+     // COMMENTS ROUTES
+    Route::get('/comments', 'Admin\CommentController@index')->name('comments');  //Displays the index page for all comments
+
+
  });
 
 
