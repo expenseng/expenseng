@@ -39,7 +39,7 @@ class DownloadReport extends Command
      */
     public function handle()
     {
-        $int = random_int(23, 30);
+        $int = random_int(23, 40);
         $date = Carbon::now()->subDays($int)->format('d-m');
         $link = new Scrapping();
         try {
