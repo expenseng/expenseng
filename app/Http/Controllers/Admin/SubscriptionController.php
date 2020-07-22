@@ -129,7 +129,9 @@ class SubscriptionController extends Controller
         $delete = Subscription::where('id', $id)->delete();
 
         if ($delete) {
-             
+              Activites::create([
+            'description' => 'Admin deleted a subscriber',
+            ]);
              Session::flash('flash_message', ' Subscription deleted successfully!');
              return redirect(route('subscribe.view'));
         } else {

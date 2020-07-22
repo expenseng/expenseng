@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Activites;
 use Illuminate\Support\Facades\Gate;
 use App\Company;
 use Illuminate\Http\Request;
@@ -83,17 +84,16 @@ class CompanyController extends Controller
      */
     public function viewCompanies()
     {
-         if (Gate::denies('active', 'manage')) {
+        if (Gate::denies('active', 'manage')) {
             return redirect(route('profile'));
         }
 
         $companies = Company::all();
 
-        return view('backend.company.view')
-        ->with([
+        return view('backend.company.view')->with([
             'companies' => $companies,
-            'count' => 0
-            ]);
+            'count' => 0,
+        ]);
     }
 
     public function createCompany(Request $request)
@@ -114,12 +114,17 @@ class CompanyController extends Controller
         $new_company->twitter = $request->ceo_handle;
         $save_new_company = $new_company->save();
 
+        Activites::create([
+            'description' =>
+                'Added ' . $request->company_name . ' to companies',
+        ]);
+
         if ($save_new_company) {
-            echo ("<script>alert('New company created successfully');
-             window.location.replace('/admin/company/view');</script>");
+            echo "<script>alert('New company created successfully');
+             window.location.replace('/admin/company/view');</script>";
         } else {
-            echo ("<script>alert('Cannot create New company');
-            window.location.replace('/admin/company/create');</script>");
+            echo "<script>alert('Cannot create New company');
+            window.location.replace('/admin/company/create');</script>";
         }
     }
 
@@ -149,6 +154,11 @@ class CompanyController extends Controller
             'ceo' => $request->company_ceo,
             'twitter' => $request->ceo_handle,
         ]);
+        Activites::create([
+            'description' =>
+                'Updated ' . $request->company_name . ' company details',
+        ]);
+
         if ($update) {
             echo "<script>alert(' Company details edited successfully');
             window.location.replace('/admin/company/view');</script>";
@@ -163,10 +173,18 @@ class CompanyController extends Controller
         if (Gate::denies('delete')) {
             return redirect(route('company.view'));
         }
+
         $delete = Company::where('id', $id)->delete();
+        
+
         if ($delete) {
             echo "<script>alert(' Company  deleted successfully');
              window.location.replace('/admin/company/view');</script>";
+
+            Activites::create([
+                'description' => 'Admin Deleted a company from the companies table',
+            ]);
+
         } else {
             Session::flash('flash_message', ' Company was not deleted!');
             return redirect()->back();

@@ -10,6 +10,7 @@ use App\Payment;
 use App\ProcessId;
 use App\Sector;
 use App\Tweet;
+use App\Activites;
 use Carbon\Carbon;
 use http\Env\Response;
 use Illuminate\Http\Request;
@@ -145,6 +146,10 @@ class TwitterBot extends Controller
                 $tweet = new Tweet($request->tweet);
                 $tweet->send();
                 $response = 'tweet sent';
+            Activites::create([
+            'description' =>
+                'New tweet Made',
+            ]);
                 return Response($response);
             }catch (\Exception $exception){
                 return Response::json(array("errors" => 'error occured'), 422);

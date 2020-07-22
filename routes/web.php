@@ -97,7 +97,10 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
 
 
  Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function(){
-     Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
+     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+      // Matches The "/admin/dashboard" URL
+     Route::delete('/activity/delete/{activity_id}', 'DashboardController@deleteActivity')->name('activity.delete');
+     Route::delete('/activity/delete/all', 'DashboardController@deleteAllActivity')->name('all_activity.delete');
 
 
      // Expense CRUD
@@ -184,6 +187,7 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
 
      Route::delete('/subscribe/delete/{subscription_id}', 'Admin\SubscriptionController@deleteSub')
      ->name('subscribe.delete');
+
   
       Route::get('/feedback/approve/{id}', 'FeedbackController@approve')
       ->name('feedback.approve');

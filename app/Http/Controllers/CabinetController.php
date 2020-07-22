@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cabinet;
 use App\Ministry;
+use App\Activites;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
@@ -112,7 +113,11 @@ class CabinetController extends Controller
             $save_new_cabinet = $new_cabinet->save();
 
             if ($save_new_cabinet) {
-                
+                 Activites::create([
+            'description' =>
+                'Admin added ' .$request->name. 'as a new cabinet member',
+
+            ]);
                 Session::flash('flash_message', $request->name. ' added to cabinet Successfully!');
                 return redirect(route('cabinet.view'));
                 
@@ -162,6 +167,10 @@ class CabinetController extends Controller
             );
 
             if ($update) {
+                  Activites::create([
+            'description' =>
+                'edited cabinet member'. $request->name.' details',
+            ]);
                 Session::flash('flash_message', ' Cabinet details edited successfully!');
                 return redirect(route('cabinet.view'));
             } else {
@@ -193,8 +202,11 @@ class CabinetController extends Controller
             );
 
             if ($update) {
-
-                Session::flash('flash_message', ' Cabinet details edited successfully!');
+                Activites::create([
+                'description' =>
+                'edited cabinet member'. $request->name.' details',
+                ]);
+                 Session::flash('flash_message', ' Cabinet details edited successfully!');
                 return redirect(route('cabinet.view'));
             } else {
                 Session::flash('flash_message', ' Cabinet was not edited!');
@@ -218,7 +230,10 @@ class CabinetController extends Controller
         }
         $delete = Cabinet::where('id', $id)->delete();
         if ($delete) {
-             
+             Activites::create([
+            'description' =>
+                'Admin deleted a cabinet member',
+            ]);
              Session::flash('flash_message', 'Cabinet member deleted successfully!');
              return redirect(route('cabinet.view'));
         } else {

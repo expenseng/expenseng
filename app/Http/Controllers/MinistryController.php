@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Ministry;
 use App\Payment;
 use App\Sector;
+use App\Activites;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -251,6 +252,10 @@ class MinistryController extends Controller
         $save_new_ministry = $new_ministry->save();
 
         if ($save_new_ministry) {
+            Activites::create([
+            'description' =>
+                'Admin added '.$request->ministry_name.' to the minstry table',
+            ]);
             echo "<script>alert('New ministry created successfully');
              window.location.replace('/admin/ministry/view');</script>";
         } else {
@@ -289,6 +294,10 @@ class MinistryController extends Controller
             'sector_id' => $request->sector_id,
         ]);
         if ($update) {
+            Activites::create([
+            'description' =>
+                'updated '.$request->ministry_name.' details',
+            ]);
             echo "<script>alert(' Ministry details edited successfully');
              window.location.replace('/admin/ministry/view');</script>";
         } else {
@@ -305,6 +314,10 @@ class MinistryController extends Controller
 
         $delete = Ministry::where('id', $id)->delete();
         if ($delete) {
+            Activites::create([
+            'description' =>
+                'Admin deleted a ministry from the minstries table',
+            ]);
             echo "<script>alert(' Ministry details deleted successfully');
              window.location.replace('/admin/ministry/view');</script>";
         } else {

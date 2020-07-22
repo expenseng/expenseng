@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Expense;
+use App\Activites;
 use Illuminate\Support\Facades\Session;
 
 class ExpenseController extends Controller
@@ -44,6 +45,11 @@ class ExpenseController extends Controller
 
         $input = $request->all();
         Expense::create($input);
+
+        Activites::create([
+            'description' =>
+                'Added new expense',
+        ]);
         Session::flash('flash_message', 'New Expense successfully added!');
         return redirect()->back();
     }
@@ -74,7 +80,13 @@ class ExpenseController extends Controller
             'month' => $request->month,
             'project' => $request->project,
         ]);
+
         if ($update) {
+            Activites::create([
+            'description' =>
+                'updated expense report on' . $request->project . ' project',
+        ]);
+
             Session::flash('flash_message', 'Expense  updated successfully!');
             return redirect()->back();
         } else {
@@ -89,7 +101,12 @@ class ExpenseController extends Controller
         }
 
         $delete = Expense::where('id', $id)->delete();
+
         if ($delete) {
+            Activites::create([
+            'description' =>
+                'Admin deleted and expense from the expenses table',
+            ]);
             Session::flash('flash_message', 'Expense  deleted successfully!');
             return redirect()->back();
         } else {

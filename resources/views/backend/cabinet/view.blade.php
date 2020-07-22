@@ -99,6 +99,7 @@
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                                     <form action="{{'/admin/cabinet/delete/'. $cabinet->id}}" method="post" >
                                                                 @method('delete')
+                                                                
                                                                 @csrf
                                                                 <button type="" class="btn btn-danger">Delete</button>
                                                                 </form>

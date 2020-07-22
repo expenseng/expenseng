@@ -11,18 +11,12 @@
     ExpenseNg - Admin Dashboard
 </title>
 @section('content')
-@if($message = Session::get('success'))
-    <div class="alert alert-success alert-block">
-      <button type="button" class="close" data-dismiss="alert">x</button>
-      <strong>{{$message}}</strong>
-    </div>
-  @endif
 
-  @if(Session::has('flash_message'))
-    <p class="alert {{Session::get('alert-class','alert-info')}}">{{Session::get('flash_message')}}</p>
-  @endif
     <div class="content">
         <div class="container-fluid">
+            <div id="alert">
+         @include('backend.partials.flash')
+        </div>
             <div class="row ">
                 <div class="col-lg-3 col-md-6 col-sm-6 panel">
                     <div class="card card-stats">
@@ -73,16 +67,16 @@
                 </div>
             </div>
             <div class="row">
-            
+
                 <div class="col-lg-12 col-md-12">
                     <div class="card">
-                        <div class="card-header card-header-warning">
+                        <div class="card-header card-header-primary">
                             <h4 class="card-title">Recent Expenses</h4>
                             <p class="card-category">Last 7 expenses</p>
                         </div>
                         <div class="card-body table-responsive">
                             <table class="table table-hover">
-                                <thead class="text-warning">
+                                <thead class="text-primary">
                                 <th>S/N</th>
                                 <th>Company</th>
                                 <th>Project</th>
@@ -94,11 +88,121 @@
 
                                     @foreach ($recent_expenses as $recent_expense)
                                         <tr>
-                                            <td>{{++$count}}</td>
+                                            <td>{{++$counter}}</td>
                                             <td>{{$recent_expense->year}}</td>
                                             <td>{{$recent_expense->project}}</td>
                                             <td>{{$recent_expense->month}}</td>
                                             <td>₦{{number_format($recent_expense->amount_spent)}}</td>
+                                        </tr>
+                                    @endforeach
+
+                                @endif
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                   <div class="row">
+
+                <div class="col-lg-12 col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Recent Activities</h4>
+
+                            @can('delete')
+                            <button class="btn btn-primary" style="float:right" data-toggle="modal" data-target="#exampleModal1">Delete All notifications</button>
+                                                           
+                                                            @endcan
+
+                                                           
+                                                    </div>    
+                                  <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Are you sure???</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                Deleting all activities
+                                                                </div>
+                                                                
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    <form action="{{'/admin/activity/delete/all'}}" method="post" >
+                                                                @method('delete')
+
+                                                                @csrf
+                                                                <button type="" class="btn btn-danger">Delete</button>
+                                                                </form>
+
+                                                                </div>
+                                                                </div>
+                                                                </div>
+                                                                </div>       
+                     
+                      
+                       
+                        
+                        <div class="card-body table-responsive">
+                            <table class="table table-hover">
+                                <thead class="text-primary">
+                                <th>S/N</th>
+                                <th>Description</th>
+                                <th>Date</th>
+                                 @can('manage')
+                                    <th>Action</th>
+                                @endcan
+                                </thead>
+                                <tbody>
+                                @if (count($recent_activites)>0)
+
+                                    @foreach ($recent_activites as $recent_activity)
+                                        <tr>
+                                            <td>{{++$count}}</td>
+                                            <td>{{$recent_activity->description}}</td>
+                                            <td>{{$recent_activity->created_at}}</td>
+                                            @can('manage')
+                                              <td>
+                                                            <!--modal begin-->                                                     
+                                                            <div class="col-md-6">
+                                                            @can('delete')
+                                                            <i class="fa fa-trash" data-toggle="modal" data-target="{{'#exampleModal'. $recent_activity->id}}" style="color: red"></i>
+                                                            @endcan
+
+                                                            <div class="modal fade" id="{{'exampleModal' . $recent_activity->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Are you sure???</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                Deleting from activities
+                                                                </div>
+                                                                
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    <form action="{{'/admin/activity/delete/'. $recent_activity->id}}" method="post" >
+                                                                @method('delete')
+
+                                                                @csrf
+                                                                <button type="" class="btn btn-danger">Delete</button>
+                                                                </form>
+
+                                                                </div>
+                                                                </div>
+                                                                </div>
+                                                                </div>
+                                                    </div>    
+                                        </td>
+                                        @endcan
                                         </tr>
                                     @endforeach
 
@@ -167,12 +271,12 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        
+
                                         @if (count($feedbacks)> 0 && isset($feedbacks))
                                             @foreach ($feedbacks as $feedback)
                                                 <tr>
                                                     <td>{{$feedback->firstName}} </td>
-                                                    <td>{{$feedback->lastName}}  </td> 
+                                                    <td>{{$feedback->lastName}}  </td>
                                                     <td>{{$feedback->ministry_id}}</td>
                                                     <td>
                                                         <a href="{{route('feedback.approve', ['id' => $feedback->id])}}" class="btn btn-success btn-sm ">Approve</button>
@@ -190,6 +294,7 @@
                         </div>
                     </div>
             </div>
+
     </div>
 
     <footer class="footer">
@@ -451,4 +556,14 @@
 
         });
     </script>
+    <script>
+    $("document").ready(function(){
+    setTimeout(function(){
+       $("#alert").remove();
+    }, 3000 ); // 5 secs
+    $("#alert").fadeTo(2000, 500).slideUp(500, function(){
+    $("#alert").slideUp("500");
+});
+});
+</script>
 @endsection
