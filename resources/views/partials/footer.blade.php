@@ -5,7 +5,7 @@
             <div class="row d-flex justify-content-between">
                 <div class="col-md-3 footer-brand pt-2 d-flex flex-column">
                     <a href="{{ url('/') }}">
-                        <img src="{{asset('images/Logo.svg')}}" class="ft">
+                        <img src=" {{asset('images/Logo.svg')}}" class="ft">
                     </a>
                     <a href="https://twitter.com/expenseng" class="pt-3 footer-twitter"><i class="fab fa-twitter" aria-hidden="true"></i> @expenseng</a>
                 </div>
