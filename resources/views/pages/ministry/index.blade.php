@@ -8,24 +8,6 @@
 
 @section('content')
 {{ Breadcrumbs::render('ministries') }}
-  <div class="wrapper">
-    <div class="content-1">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-6">
-            <ul class="d-flex">
-              <li class="items"><a href="#">HOME <span class="circle-1"></span></a></li>
-
-              <li class="items"><a href="#">PROFILES</a><span class="circle-1"></span></li>
-
-              <li class="items"><a href="#">MINISTRIES</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
     <div class="main-header">
       <div class="container-fluid">
         <div class="row">
