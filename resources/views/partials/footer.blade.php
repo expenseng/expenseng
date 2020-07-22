@@ -11,7 +11,7 @@
                 </div>
                 
                 <div class="col-md-7 section-pages-link d-flex justify-content-md-end justify-content-sm-around pt-4 pb-5">
-                    <div class="footer-first mr-4">
+                    <div class="footer-first mr-4 mr-lg-5">
                         <h6>Pages</h6>
                         <ul >
                             <li class="section-footer-links">
@@ -29,7 +29,7 @@
                         </ul>
         
                     </div>
-                    <div class="footer-second mr-4">
+                    <div class="footer-second mr-4 mr-lg-5">
                         <h6>Profile</h6>
                         <ul>
                             <li class="section-footer-links">
@@ -40,7 +40,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="footer-third mr-4">
+                    <div class="footer-third mr-4 mr-lg-5">
                         <h6>Reference</h6>
                         <ul >
                             <li class="section-footer-links">
