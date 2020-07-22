@@ -169,7 +169,7 @@ button.btn.scroll-down::after{
 .gallery{
     display: flex;
     position: relative;
-    height:430px;
+    height:28rem;
     overflow-x:hidden !important;
     overflow-y: hidden;
 }
@@ -660,7 +660,7 @@ p.profile{
     .gallery{
         display: flex;
         position: relative;
-        height:375px;
+        height:24rem;
         overflow-x: hidden;
     }
     .banner{
@@ -781,7 +781,7 @@ p.profile{
 }
 @media only screen and (max-width:600px){
     .background{
-        height: 105vh;
+        height: 23cm;
     }
     .specific{
         width: 50%;
@@ -806,7 +806,7 @@ p.profile{
     .gallery{
         display: flex;
         position: relative;
-        height:350px;
+        height:20rem;
         overflow-x: hidden;
     }
     .banner{
