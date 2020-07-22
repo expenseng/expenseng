@@ -154,6 +154,9 @@ Route::get('/accessibility', 'PageController@accessibility');
      Route::get('/profile', 'ProfileController@viewProfile')->name('profile');
      Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
 
+     //Settings Page
+     Route::get('/user/settings', 'SettingsController@index')->name('users.settings');
+
      // Cabinet CRUD
      Route::get('/cabinet/create', 'CabinetController@create')
      ->name('cabinet.create');
