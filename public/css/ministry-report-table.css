@@ -368,7 +368,9 @@ button.nav-chart{
 	color: inherit;
 }
 
-
+.btn-date{
+	padding: 6px;
+}
 
 /* scrollbar */
 
@@ -517,6 +519,21 @@ button.nav-chart{
 		color: var(--clr-accent);
 		margin-right: 2rem;
 	}
+	
+	.pagination a{
+
+        display: none;
+    }
+
+    .pagination a:first-child,
+    .pagination a:nth-child( 2 ),
+    .pagination a:nth-last-child( 2 ),
+    .pagination a:last-child,
+    .pagination a.active,
+    .pagination a.disabled {
+
+        display: block;
+    }
 } 
 
 
