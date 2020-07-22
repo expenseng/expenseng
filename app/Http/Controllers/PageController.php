@@ -44,6 +44,11 @@ class PageController extends Controller
         return view('pages.ExpenditureReport');
     }
 
+    public function faq()
+    {
+        return view('pages.faq');
+    }
+
     public function ministryReport()
     {
         return view('pages.ministry.ministry_report_table');
