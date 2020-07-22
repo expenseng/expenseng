@@ -85,9 +85,9 @@
             </a>
           </li>
 
-          <li class="{{Route::is('comments') || Route::is('Comments') || Route::is('Comments')
+          <li class="{{Route::is('comments')
           ? 'nav-item active' : 'nav-item'}} ">
-            <a class="nav-link" href="{{Route::is('Comments') || Route::is('comments') || Route::is('comments') ? '#' : route('comments')}}">
+            <a class="nav-link" href="{{Route::is('comments') ? '#' : route('comments')}}">
               <i class="material-icons">comment</i>
               <p>Comments</p>
             </a>
