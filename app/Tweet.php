@@ -71,8 +71,10 @@ class Tweet
     {
         if ($this->media !== null) {
             $uploaded_media = Twitter::uploadMedia(['media' => File::get($this->media)]);
-            return Twitter::postTweet(['status' => $this->status, 'media_ids' => $uploaded_media->media_id_string, 'format' => 'json']);
+            $tweet =  Twitter::postTweet(['status' => $this->status, 'media_ids' => $uploaded_media->media_id_string, 'format' => 'json']);
+            return $tweet;
         }
-        return Twitter::postTweet(['status' => $this->status , 'format' => 'json']);
+        $tweet = Twitter::postTweet(['status' => $this->status , 'format' => 'json']);
+        return $tweet;
     }
 }
