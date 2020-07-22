@@ -13,7 +13,7 @@ class MinistrySearchController extends Controller
         $id = $request->get('id');
         echo "php-id {$id} <br />";
         $givenTime = null;
-        if ($request->has('date')){
+        if ($request->has('date')) {
             $givenTime = $request->get('date');
         }
         

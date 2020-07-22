@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @push('css')
-<link rel="stylesheet" href="{{ asset('css/aboutus-header_footer.css') }}">
 <link rel="stylesheet" href="{{ asset('css/contracts_awarded.css') }}">
 <link rel="stylesheet" href="{{ asset('css/director_board.css') }}">
 
@@ -429,5 +428,5 @@
 @endsection
 
 @section('js')
-{{-- <script src="assets/js/main.js" type="text/javascript"></script> --}}
+<script src="{{ asset('js/index.js') }}"></script>
 @endsection

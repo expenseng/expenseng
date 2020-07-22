@@ -46,7 +46,10 @@ class MinistryController extends Controller
         ];
         $yearByYear = [];
         for ($x = 0; $x < count($years); $x++) {
-            $filtered = $payments->filter(function ($value, $key) use (
+            $filtered = $payments->filter(function (
+                $value,
+                $key
+            ) use (
                 &$years,
                 $x
             ) {
@@ -65,7 +68,8 @@ class MinistryController extends Controller
     /**
      * Get Data for Charts
      */
-    public function getChartData($ministries){
+    public function getChartData($ministries)
+    {
         foreach ($ministries as $ministry) {
             $chartData = [];
             $totals = $this->fiveYearTrend($ministry->code)[1];
@@ -86,18 +90,18 @@ class MinistryController extends Controller
     public function profile(Request $request)
     {
         
-        if($request->has('ministry')){
+        if ($request->has('ministry')) {
             $ministry_name = $request->get('ministry');
             $result = DB::table('ministries')->where('name', '=', "$ministry_name")->paginate(8);
             $ministries = $this->getMinistries($result);
             $ministries = $this->getChartData($ministries);
-        }else{
+        } else {
             $data = Ministry::paginate(8);
             $ministries = $this->getMinistries($data);
             $ministries = $this->getChartData($ministries);
         }
        
-        if($request->ajax()){
+        if ($request->ajax()) {
             return view('pages.ministry.cards', compact('ministries'));
         }
         return view('pages.ministry.index', compact('ministries'));
@@ -202,8 +206,7 @@ class MinistryController extends Controller
         ->with([
             'ministry_codes' => $ministry_codes,
             'sectors' => $sectors
-        ]
-        );
+        ]);
     }
 
     /**
@@ -237,7 +240,7 @@ class MinistryController extends Controller
             'sector_id' => 'required|number',
         ]);
         //replace spaces with dash in shortname
-        $ministry_shortname = preg_replace('/[[:space:]]+/','-', $request->ministry_shortname); 
+        $ministry_shortname = preg_replace('/[[:space:]]+/', '-', $request->ministry_shortname);
 
         //save new ministry
         $new_ministry = new Ministry();
@@ -295,7 +298,8 @@ class MinistryController extends Controller
             'website' => $request->website,
             'sector_id' => $request->sector_id,
         ]);
-        if ($update) {;
+        if ($update) {
+            ;
              Session::flash('flash_message', 'Ministry details edited successfully!');
              return redirect('/admin/ministry/view');
         } else {

@@ -1,12 +1,8 @@
 @extends('layouts.master')
 @push('css')
 	<title>Ministry Expenses</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
 	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/header_footer.css') }}">
   	<link rel="stylesheet" href="{{ asset('css/ministry-report-table.css') }}">
-	  <link rel="stylesheet" href="{{ asset('css/header-footer.css') }}">
 	  <link rel="stylesheet" href="{{ asset('css/filter.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
 	<script src="https://kit.fontawesome.com/8f691340fb.js" crossorigin="anonymous"></script>
@@ -238,6 +234,7 @@
 	<script src="{{ asset('js/main.js') }}"></script>
 	<script src="{{ asset('js/filter.js') }}"></script>
 	<script src="{{ asset('js/ExpenditureScript.js') }}"></script>
+	<script src="{{ asset('js/index.js') }}"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 @endsection
 	 

@@ -8,7 +8,6 @@ use App\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-
 class ExpenseController extends Controller
 {
 
@@ -24,11 +23,12 @@ class ExpenseController extends Controller
         $miniTableData['all'] = $this->ministriesFiveYear();
         $miniTableData['nondescriptive'] = $this->ministriesFiveYearNoDescription();
         return view('pages.expense.ministry')->with(['collection' => $collection,
-                                                     'miniTableData' => $miniTableData      
+                                                     'miniTableData' => $miniTableData
                                                     ]);
     }
 
-    public function ministriesFiveYear(){
+    public function ministriesFiveYear()
+    {
         
         $payments = DB::table('payments')
         ->select(DB::raw('SUM(amount) as total, YEAR(payment_date) as year'))
@@ -40,7 +40,8 @@ class ExpenseController extends Controller
         return $payments;
     }
 
-    public function ministriesFiveYearNoDescription(){
+    public function ministriesFiveYearNoDescription()
+    {
         
         $payments = DB::table('payments')
         ->select(DB::raw('SUM(amount) as total, YEAR(payment_date) as year'))
@@ -104,5 +105,4 @@ class ExpenseController extends Controller
             return view('pages.expense.tables.ministries_nodesc')->with('collection', $collection);
         }
     }
-  
 }
