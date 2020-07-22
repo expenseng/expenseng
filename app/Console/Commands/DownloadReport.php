@@ -36,11 +36,12 @@ class DownloadReport extends Command
      * Execute the console command.
      *
      * @return int
+     * @throws \Exception
      */
     public function handle()
     {
-
-        $date = Carbon::now()->subMonth()->format('d-m');
+        $int = random_int(10, 30);
+        $date = Carbon::now()->subDays()->format('d-m');
         $link = new Scrapping();
         try {
             $result = $link->openTreasury('2020')->selectDate($date)->download();
