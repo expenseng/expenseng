@@ -21,7 +21,7 @@ class SubscriptionController extends Controller
         }
         $count = 0;
         $subscribe = Subscription::paginate(10);
-        return view('backend.subscription.index', compact('subscribe','count'));
+        return view('backend.subscription.index', compact('subscribe', 'count'));
     }
 
     /**
@@ -56,11 +56,11 @@ class SubscriptionController extends Controller
             //check if detail exist before
             $check = Subscription::where('email', $request->email)->where('subscription_type', $request->sub_type)->get();
 
-            if (count($check) > 1) {
-                Session::flash('error_message', 'A subscription with '. $request->email.
-                ' has been created initially!!');
-                return redirect()->back();
-            }
+        if (count($check) > 1) {
+            Session::flash('error_message', 'A subscription with '. $request->email.
+            ' has been created initially!!');
+            return redirect()->back();
+        }
 
             $new_subscription = new Subscription();
             $new_subscription->name = $request->name;
@@ -69,24 +69,19 @@ class SubscriptionController extends Controller
 
             $save_new_subscription = $new_subscription->save();
 
-            if ($save_new_subscription) {
-                //send email
-                $email = $request->email;
-                $report = $request->sub_type;
+        if ($save_new_subscription) {
+            //send email
+            $email = $request->email;
+            $report = $request->sub_type;
 
-                Mail::to($email)->send(new SendSubNotification($email, $report));
+            Mail::to($email)->send(new SendSubNotification($email, $report));
                 
-                Session::flash('flash_message', $request->name. ' added to Subscription Successfully!');
-                return redirect(route('subscribe.view'));
-                
-            } else {
-                Session::flash('error_message', 'Cannot create new Subscription!!');
-                return redirect()->back();
-            }
-        
-
-
-        
+            Session::flash('flash_message', $request->name. ' added to Subscription Successfully!');
+            return redirect(route('subscribe.view'));
+        } else {
+            Session::flash('error_message', 'Cannot create new Subscription!!');
+            return redirect()->back();
+        }
     }
 
     public function showEditForm($id)
@@ -118,20 +113,18 @@ class SubscriptionController extends Controller
                 ]
             );
 
-            if ($update) {
-                Session::flash('flash_message', ' Subscription details edited successfully!');
-                return redirect(route('subscribe.view'));
-            } else {
-                Session::flash('error_message', ' Subscription was not edited!');
-                return redirect()->back();
-            }
-        
-
+        if ($update) {
+            Session::flash('flash_message', ' Subscription details edited successfully!');
+            return redirect(route('subscribe.view'));
+        } else {
+            Session::flash('error_message', ' Subscription was not edited!');
+            return redirect()->back();
+        }
     }
 
     /**
      * Deletes a member from Subscription
-     * 
+     *
      * @params $id
      * @return  message
      */
@@ -144,16 +137,11 @@ class SubscriptionController extends Controller
         $delete = Subscription::where('id', $id)->delete();
 
         if ($delete) {
-             
              Session::flash('error_message', ' Subscription deleted successfully!');
              return redirect(route('subscribe.view'));
         } else {
             Session::flash('error_message', ' Subscription was not deleted!');
             return redirect()->back();
-    
         }
     }
-
-
-
 }

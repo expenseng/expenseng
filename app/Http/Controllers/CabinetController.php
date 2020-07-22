@@ -80,10 +80,8 @@ class CabinetController extends Controller
             $save_new_cabinet = $new_cabinet->save();
 
             if ($save_new_cabinet) {
-                
                 Session::flash('flash_message', $request->name. ' added to cabinet Successfully!');
                 return redirect(route('cabinet.view'));
-                
             } else {
                 Session::flash('error_message', 'Cannot create new Cabinet!!');
                 return redirect()->back();
@@ -93,7 +91,7 @@ class CabinetController extends Controller
 
         $base_url = \URL::to('/');
         //replace spaces with dash in shortname
-        $name = preg_replace('/[[:space:]]+/', '-', $request->name); 
+        $name = preg_replace('/[[:space:]]+/', '-', $request->name);
 
         //upload picture
         
@@ -112,10 +110,8 @@ class CabinetController extends Controller
             $save_new_cabinet = $new_cabinet->save();
 
             if ($save_new_cabinet) {
-                
                 Session::flash('flash_message', $request->name. ' added to cabinet Successfully!');
                 return redirect(route('cabinet.view'));
-                
             } else {
                 Session::flash('error_message', 'Cannot create new Cabinet!!');
                 return redirect()->back();
@@ -150,7 +146,7 @@ class CabinetController extends Controller
         $img_url = Cabinet::findOrFail($id)->avatar;
         //if image isn't changed
         
-        if ($request->image == '' ) {
+        if ($request->image == '') {
             $update = Cabinet::where('id', $id)->update(
                 [
                 'name' => $request->name,
@@ -171,7 +167,7 @@ class CabinetController extends Controller
         }
         $base_url = \URL::to('/');
         //replace spaces with dash in shortname
-        $name = preg_replace('/[[:space:]]+/', '-', $request->name); 
+        $name = preg_replace('/[[:space:]]+/', '-', $request->name);
 
         //upload picture
         
@@ -181,7 +177,6 @@ class CabinetController extends Controller
         $upload = $request->image->move('uploads', $imageName);
 
         if ($upload) {
-
             $update = Cabinet::where('id', $id)->update(
                 [
                 'name' => $request->name,
@@ -193,7 +188,6 @@ class CabinetController extends Controller
             );
 
             if ($update) {
-
                 Session::flash('flash_message', ' Cabinet details edited successfully!');
                 return redirect(route('cabinet.view'));
             } else {
@@ -207,7 +201,7 @@ class CabinetController extends Controller
     }
     /**
      * Deletes a member from cabinet
-     * 
+     *
      * @params $id
      * @return  message
      */
@@ -218,14 +212,11 @@ class CabinetController extends Controller
         }
         $delete = Cabinet::where('id', $id)->delete();
         if ($delete) {
-             
              Session::flash('error_message', 'Cabinet member deleted successfully!');
              return redirect(route('cabinet.view'));
         } else {
             Session::flash('error_message', ' Cabinet was not deleted!');
             return redirect()->back();
-    
         }
     }
-
 }
