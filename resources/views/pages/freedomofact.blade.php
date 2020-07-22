@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @push('css')
-  <link rel="stylesheet" href="{{ asset('css/aboutus-header_footer.css') }}">
   <link rel="stylesheet" href="{{asset('css/ministry_list.css') }}">
   <link rel="stylesheet" href="{{asset('css/freedomofact.css') }}">
   <title>FG Expense - Freedom of Infromation Act</title>
