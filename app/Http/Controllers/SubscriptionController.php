@@ -11,14 +11,15 @@ class SubscriptionController extends Controller
 
     
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $data = $request->all();
 
         $user = Subscription::create($data);
-        if($user){
+        if ($user) {
             toastr()->success('You have successfully subscribed for this Report!');
-          return  back();
-        }else{
+            return  back();
+        } else {
             toastr()->error('An error has occurred please try again later.');
             return back();
         }
