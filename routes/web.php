@@ -19,6 +19,7 @@ use App\User;
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contactUs')->name('contact');
+Route::get('/report', 'PageController@error404')->name('error404');
 
 // Feedback
 Route::post('/feedback', 'FeedbackController@create')->name('feedback');
