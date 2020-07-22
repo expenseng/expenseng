@@ -39,11 +39,20 @@ class DownloadReport extends Command
      */
     public function handle()
     {
-        $int = random_int(23, 40);
-        $date = Carbon::now()->subDays($int)->format('d-m');
         $link = new Scrapping();
         try {
-            $result = $link->openTreasury('2020')->selectDate($date)->download();
+            $result = $link->openTreasury('2020')->latest()->download();
+            if ($result) {
+                echo "downloaded to the resource folder \n";
+            } else {
+                echo "resource was not found \n";
+            }
+        } catch (\Exception $e) {
+            $this->error('error occurred');
+        }
+        $link = new Scrapping();
+        try {
+            $result = $link->openTreasury('2020',Scrapping::monthlyBudgetPattern)->filterClassification(Scrapping::FGN)->latest()->download();
             if ($result) {
                 echo "downloaded to the resource folder \n";
             } else {
