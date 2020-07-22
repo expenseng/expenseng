@@ -96,7 +96,7 @@ class SubscriptionController extends Controller
                     "body" => json_encode([
                         "recipient" => $request->email, //reciever
                         "sender" => " femiadenuga@mazzacash.com", //sender
-                        "subject" => "EXPENSENG SUBCRIPTION",
+                        "subject" => "EXPENSENG SUBSCRIPTION",
                         "cc" => "",
                         "bcc" => "",
                         "htmlBody" => "<div class='container'>
