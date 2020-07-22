@@ -20,6 +20,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contactUs')->name('contact');
 Route::get('/faq', 'PageController@faq')->name('faq');
+Route::get('/search', 'PageController@about')->name('about');
 
 // Feedback
 Route::post('/feedback', 'FeedbackController@create')->name('feedback');

@@ -39,7 +39,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link section-nav-link" href=""><i class="fa fa-search inp"></i></a>
+                        <a class="nav-link section-nav-link" href="{{ route('search') }}"><i class="fa fa-search inp"></i></a>
                     </li>
                 </ul>
             </div>

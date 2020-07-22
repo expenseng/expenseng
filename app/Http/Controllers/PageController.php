@@ -96,6 +96,11 @@ class PageController extends Controller
         return view('pages.companysearch');
     }
 
+    public function handles()
+    {
+        return view('pages.handles');
+    }
+
     public function companySearchShow()
     {
         request()->validate([
