@@ -108,6 +108,9 @@ $(document).ready(function() {
 
         $('#apply-filter').on('click', function(e){
             const id = $(this).attr("data-id");
+            const idjs = e.target.dataset.id;
+            console.log('id: ', id)
+            console.log('idjs: ', idjs)
             let invalid = false;
             
            
@@ -168,7 +171,7 @@ $(document).ready(function() {
             if(sort !== undefined){
                 data.sort = sort;
             }
-           
+           console.log('data: ', data);
             $.ajax({
                     url: "/ministry/filterExpenses",
                     method: "GET",
