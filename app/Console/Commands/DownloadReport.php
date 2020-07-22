@@ -45,7 +45,7 @@ class DownloadReport extends Command
         try {
             $result = $link->openTreasury('2020')->selectDate($date)->download();
             if ($result) {
-                echo 'download to the resource folder';
+                echo 'downloaded to the resource folder \n';
             } else {
                 echo 'resource was not found';
             }
