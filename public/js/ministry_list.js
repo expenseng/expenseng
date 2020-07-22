@@ -8,15 +8,22 @@ $(document).ready(function(){
 
 
     $('#cards-container').on('click', '.ministry-cards', function(e){
+      console.log($(this))
       const id = $(this).attr("data-id")
-      $.ajax({
-              url: "/ministry/getUrl",
-              method: "GET",
-              data: {id},
-              success: function(data){
-                window.location=data.url;
-              }
-          })
+      const idjs = e.target.dataset.id;
+      console.log('id: ', id )
+      console.log('idjs: ', idjs)
+      // $.ajax({
+      //         url: "/ministry/getUrl",
+      //         method: "GET",
+      //         data: {id},
+      //         success: function(data){
+      //           window.location=data.url;
+      //         },
+      //         error: function(error){
+      //           console.log(error)
+      //         }
+      //     })
     })
 
     const returnDefaults = e =>{
@@ -45,7 +52,7 @@ $(document).ready(function(){
             method: "POST",
             data: {query, _token},
             success: function(data){
-              console.log(data)
+              console.log('typing...')
               // $('#cards-container').html(data)
                 payload = data.split('?')
                 let lists = JSON.parse(payload[0])

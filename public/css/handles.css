@@ -17,7 +17,7 @@
 .heading h1{
     font-style: normal;
     font-weight: bold;
-    font-size: 4vw;
+    font-size: 36px;
     line-height: 152%;
     color: #353A45;
     margin-bottom: 32px;
@@ -27,10 +27,10 @@
     font-family: Lato;
     font-style: normal;
     font-weight: normal;
-    font-size: 1.8vw;
+    font-size: 18px;
     line-height: 35px;
     color: #353A45;
-    width: 60vw;
+    width: 45vw;
 }
 
 .bd-1 {
@@ -47,6 +47,10 @@
     height: 20vh;
     background-color: #00945E;
     color: #FFF;
+}
+
+.bd-1 h2, .bd-2 h2 {
+    font-size: 4.5vh;
 }
 
 i .fa-angle-up .collapsed {
@@ -143,18 +147,18 @@ select {
     width: 30vw
 }
 
+
+
 @media screen and (max-width: 850px) {
-    .pagination{
+.pagination{
         position: relative;
         width: -1vw
 
     }
-    .results {
+.results {
         width: 30vw;
     }
-}
 
-@media screen and (max-width: 850px) {
 .heading h1{
     font-size: 5vw;
 }
@@ -167,15 +171,16 @@ select {
 
 @media screen and (max-width: 461px) {
 .bd-1 h2, .bd-2 h2 {
-        font-size: 4vh;
+        font-size: 3vh;
     }
 
 .heading h1{
-    font-size: 10vw;
+    font-size: 8vw;
     text-align: center
 }
 .heading p {
-    font-size: 5vw;
+    font-size: 4vw;
+    width: auto;
     text-align: center;
     margin: auto;
     }

@@ -62,9 +62,9 @@
         <div class="container">
             <div class="row footer-last p-2">
                 <div class="col-md-9">
-                    <a href="">Accessibility</a>
+                    <a href="/accessibility">Accessibility</a>
                     <a href=""> | Privacy Policy</a>
-                    <a href=""> | Freedom of Information Act</a>
+                    <a href="/FOIA"> | Freedom of Information Act</a>
                 </div>
                 <div class="col-md-3">
                     <a href=""><span>&#169</span>2020EXPENSENG.com</a>

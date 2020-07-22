@@ -1,4 +1,153 @@
-body{
+
+.main{
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    width:100%;
+    height:100%;
+    font-size: 20px;
+    animation: scale 1s ease-in-out infinte;
+    
+}
+.imge{
+    width:200px;
+    height:200px;
+    display:inline-block;
+    z-index: 99;
+    animation-delay: 12s;
+    animation: scales 7s ease-in-out infinite;
+    margin: 10px;
+}
+@keyframes scales{
+   0%{
+       transform: scale(0) rotate(0deg);
+
+   }
+   10%{
+       transform: scale(1.2) rotate(360deg);
+   }
+   90%{
+    transform: scale(1.2) rotate(360deg);
+}
+   100%{
+       transform: scale(0) rotate(0deg);
+   }
+}
+@-webkit-keyframes scales{
+    0%{
+        transform: scale(0) , rotate(0deg);
+        
+    }
+    50%{
+        transform: scale(1.2) , rotate(350deg);
+    }
+    100%{
+        transform: scale(1) , rotate(170deg);
+    }
+ }
+ @-moz-keyframes scales{
+    0%{
+        transform: scale(0) , rotate(0deg);
+        
+    }
+    50%{
+        transform: scale(1.2) , rotate(350deg);
+    }
+    100%{
+        transform: scale(1) , rotate(170deg);
+    }
+ }
+ @keyframes hovers {
+    to { -webkit-transform: scale(1); }
+  }
+  @-webkit-keyframes moves {
+    to { -webkit-transform: scale(1.1); }
+  }
+  @-moz-keyframes moves {
+    to { -moz-transform: scale(1.1); }
+  }
+  @keyframes moves {
+    to { transform: scale(1.1); }
+  }
+.bold-text{
+    font-weight: 100 !important;
+    font-size: 310px;
+    line-height: 180px;
+    padding-top: 50px;
+    padding: 30px;
+}
+.button{
+    width:200px;
+    height:45px;
+    border-radius: 3px;
+    outline:none;
+    border:none;
+    background: #00945E;
+    color:white;
+    font-size: 24px;
+    -webkit-animation: moves .4s infinite alternate;
+    -moz-animation: moves .4s infinite alternate;
+	animation: moves .4s infinite alternate;
+	margin-top: 20px;
+}
+.button:hover{
+        color: white;
+        -webkit-animation: hovers .4s infinite alternate;
+          -moz-animation: hovers .4s infinite alternate;
+          animation: hovers .4s infinite alternate;
+    
+}
+.error{
+    display:flex;
+    justify-content: center;
+    margin-top: 30px !important;
+    padding-top: 50px;
+}
+.message{
+ font-size: 40px;
+}
+h1{
+	font-size: 50px;
+	padding-top:50px
+}
+@media (max-width:700px){
+    .bold-text{
+        font-size: 200px;
+        line-height: 130px;
+        padding: 20px;
+    }
+    .imge{
+        height:150px;
+        width:150px;
+    }
+    .h1{
+        font-size: 38px;
+    }
+    .message{
+        font-size: 35px;
+       }
+}
+@media (max-width:488px){
+    .bold-text{
+        font-size: 150px;
+        line-height: 130px;
+        padding: 0px;
+    }
+    .imge{
+        height:100px;
+        width:100px;
+    }
+    h1{
+        font-size: 45px !important;
+        padding-top: 90px;
+    }
+    .message{
+        font-size: 25px;
+       }
+       .error{
+           padding-top: 0px;
+       }
+}
+/*body{
 	padding: 50px 0px;
 	margin: 0px;
 }
@@ -19,7 +168,6 @@ body{
 .error_body a{
 	height: 40px;
 	width: 150px;
-	background: 
 	font-weight: bold;
 	font-size: 20px;
 	background: #00945E;
@@ -47,13 +195,13 @@ body{
   to { -webkit-transform: scale(1); }
 }
 @-webkit-keyframes bounce {
-  to { -webkit-transform: scale(1.2); }
+  to { -webkit-transform: scale(1.1); }
 }
 @-moz-keyframes bounce {
-  to { -moz-transform: scale(1.2); }
+  to { -moz-transform: scale(1.1); }
 }
 @keyframes bounce {
-  to { transform: scale(1.2); }
+  to { transform: scale(1.1); }
 }
 @media (max-width: 800px){
 	.error_body{
@@ -62,4 +210,4 @@ body{
 	.error_body div img{
 		width: 100%;
 	}
-}
+}*/
