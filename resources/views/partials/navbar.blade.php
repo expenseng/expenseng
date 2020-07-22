@@ -12,17 +12,17 @@
                         <a class="nav-link section-nav-link" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item dropdown position-relative">
-                        
+
                             <a  class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Expense</a>
                             <div class="dropdown-menu">
-                                
+
                                     <a href="{{ route('expense.reports') }}" class="dropdown-item">Expenditure Reports</a>
-                                
-                                
+
+
                                     <a href="{{ route('expense.ministry') }}" class="dropdown-item">Ministry Expense</a>
-                                
+
                             </div>
-                        
+
                     </li>
                     <li class="nav-item">
                         <a class="nav-link section-nav-link" href="{{ route('ministries') }}">Ministries</a>
@@ -35,7 +35,7 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item section-reference-dropdown" href="{{ route('about') }}">About Us</a>
                             <a class="dropdown-item section-reference-dropdown" href="{{ route('contact') }}">Contact Us</a>
-                            <a class="dropdown-item section-reference-dropdown" href="#">Government Twitter Handle</a>
+                            <a class="dropdown-item section-reference-dropdown" href="{{ route('handles') }}">Government Twitter Handle</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -68,10 +68,10 @@
                             <ul class="navbar-nav">
                                 <li class="nav-item">
                                     <a href="{{ route('expense.reports') }}" class="nav-link">Expenditure Reports</a>
-                                </li>    
+                                </li>
                                 <li class="nav-item">
                                     <a href="{{ route('expense.ministry') }}" class="nav-link">Ministry Expense</a>
-                                </li>   
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -89,13 +89,13 @@
                             <ul class="navbar-nav">
                                 <li class="nav-item">
                                     <a href="{{ route('about') }}" class="nav-link">About Us</a>
-                                </li>    
+                                </li>
                                 <li class="nav-item">
                                     <a href="{{ route('contact') }}" class="nav-link">Contact Us</a>
-                                </li>   
+                                </li>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">Government Twitter Handle</a>
-                                </li>  
+                                </li>
                             </ul>
                         </div>
                     </li>

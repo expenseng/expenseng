@@ -9,7 +9,7 @@
                     </a>
                     <a href="https://twitter.com/expenseng" class="pt-3 footer-twitter"><i class="fab fa-twitter" aria-hidden="true"></i> @expenseng</a>
                 </div>
-                
+
                 <div class="col-md-7 section-pages-link d-flex justify-content-md-end justify-content-sm-around pt-4 pb-5">
                     <div class="footer-first mr-4 mr-lg-5">
                         <h6>Pages</h6>
@@ -27,7 +27,7 @@
                                 <a href="#">Company Report</a>
                             </li>
                         </ul>
-        
+
                     </div>
                     <div class="footer-second mr-4 mr-lg-5">
                         <h6>Profile</h6>
@@ -50,7 +50,7 @@
                                 <a href="{{ route('contact') }}">Contact us</a>
                             </li>
                             <li class="section-footer-links">
-                                <a href="#">Government handles</a>
+                                <a href="{{ route('handles') }}">Government handles</a>
                             </li>
                         </ul>
                     </div>
