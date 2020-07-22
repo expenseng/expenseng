@@ -121,4 +121,9 @@ class PageController extends Controller
     {
         return view('pages.ministry_profile');
     }
+
+    public function accessibility()
+    {
+        return view('pages.terms.accessibility');
+    }
 }

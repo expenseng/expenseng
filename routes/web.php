@@ -57,6 +57,13 @@ Route::get('/ministry/getUrl', 'PageController@ministryGetUrl')->name('ministry_
 Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses')->name('ministry_filter_expenses');
 
 
+/* 
+    Terms Of Service Endpoints
+*/
+
+
+Route::get('/accessibility', 'PageController@accessibility');
+
 /*
 |--------------------------------------------------------------------------
 | ADMIN Routes

@@ -60,7 +60,7 @@
     <div class="container">
         <div class="row ">
             <div class="col-md-9">
-                <a href=""><small>Accessibility</small></a>-
+                <a href="/accessibility"><small>Accessibility</small></a>-
                 <a href=""><small> | Privacy Policy</small></a>-
                 <a href=""><small> | Freedom of Information Act</small></a>
             </div>
