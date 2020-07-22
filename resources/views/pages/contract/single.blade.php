@@ -17,7 +17,7 @@
   <div class="section-1 container">
     <div class="user-profile">
       <h3 class="name brand-name">
-        {{ $company->name }} 
+        {{ $company->name }}
         <img src="{{ asset('images/image 13.png') }}" alt="Berger logo">
       </h3>
       <div class="profile-overview mt-3">
