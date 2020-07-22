@@ -84,10 +84,11 @@
               <p>Upload Spreadsheet</p>
             </a>
           </li>
-          
-          <li class="nav-item ">
-            <a class="nav-link" href="#">
-              <i class="material-icons">unarchive</i>
+
+          <li class="{{Route::is('comments')
+          ? 'nav-item active' : 'nav-item'}} ">
+            <a class="nav-link" href="{{Route::is('comments') ? '#' : route('comments')}}">
+              <i class="material-icons">comment</i>
               <p>Comments</p>
             </a>
           </li>

@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+html{
+
+    font-size: 16px;
+}
+
 :root{
     --fs-h1: 3.25rem;
     --fs-h2: 2rem;
@@ -12,6 +17,8 @@
     --fs-reg: 1.23rem;
     --fs-h5: 1rem;
     --fs-h6: 0.85rem;
+    --fs-nav: 1rem;
+    --fs-foot: 0.75rem;
 }
 /* Back to top */
 
@@ -118,6 +125,7 @@ button.btn.scroll-down::after{
 }
 .target{
     margin-top: 3rem;
+    align-items: center;
 }
 #caret{
     display: flex;
@@ -156,14 +164,24 @@ button.btn.scroll-down::after{
 }
 .para p{
     font-weight: 300;
-    font-size: var(--fs-reg);
+    /* font-size: var(--fs-reg); */
 }
 .gallery{
     display: flex;
     position: relative;
-    height:400px;
-    /* overflow-x: hidden; */
+    height:430px;
+    overflow-x:hidden !important;
+    overflow-y: hidden;
 }
+.gallery::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .gallery {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
 .ministry-top{
     display: flex;
     justify-content: space-between;
@@ -180,8 +198,7 @@ p.tag{
     z-index: 23;
 }
 .card{
-    background-size: 100% 100%;
-    position: absolute;
+    background-size: 100%;
     width: 70%;
     height: 100%;
     border: white 0.7px solid;
@@ -190,18 +207,71 @@ p.tag{
 }
 .card1{
     background-image: url(../images/card2.jpg);
+    background-repeat: no-repeat;
 }
 .card2{
     background-image: url(../images/road.svg);
     background-size: cover;
-    left: 80%;
 }
+.card3{
+    background-image: url(../images/oil-rig.jpg);
+    background-size: cover;
+}
+
+/* Carousel Styling */
+#caret{
+    visibility: hidden;
+}
+
+.carousel-cell {
+    width: 40%;
+    margin-right: 10px;
+    border-radius: 5px;
+  }
+  
+  /* cell number */
+  .carousel-cell:before {
+    display: block;
+    text-align: center;
+    line-height: 200px;
+    color: white;
+  }
+
+  .flickity-viewport{
+      position: initial !important;
+      padding-top: 2rem;
+  }
+
+  ol.flickity-page-dots{
+      display: none;
+  }
+
+  .flickity-prev-next-button{
+    top: 0% !important;
+    margin-top: 1.5rem;
+    opacity: 1;
+    width: 30px !important;
+    height: 30px !important;
+  }
+  
+  .flickity-prev-next-button img{
+      width: 100%;
+  }
+
+  .previous{
+      left: 63% !important;
+  }
+
+  .next{
+      right: 8% !important;
+  }
+
 .project{
     margin-top: auto;
-    margin-bottom: 1rem;
+    margin-bottom: 3.5rem;
 }
 .project p{
-    font-size: var(--fs-h5);
+    /* font-size: var(--fs-h5); */
     margin: 0;
     color: #ffffff;
 }
@@ -448,6 +518,27 @@ p.profile{
     width: 10rem;
     padding: 0.4rem 3rem;
 }
+.accessibility-text{
+    font-family: 'Lato', sans-serif;
+}
+.accessibility-text h1{
+    font-weight: bold;
+    color: #353A45;
+}
+.accessibility-text p{
+    text-align: left;
+    line-height: 152%;
+    color: #353A45;
+}
+.accessibility-text li{
+    padding: .75rem 0;
+}
+.accessibility-text a{
+    color: #00945E;
+}
+.accessibility-text a:active{
+    color: #005938;
+}
 
 /* Responsiveness */
 
@@ -460,6 +551,8 @@ p.profile{
        --fs-reg: 1.23rem;
        --fs-h5: 1rem;
        --fs-h6: 0.85rem;
+       --fs-nav: 1.2rem;
+       --fs-foot: 1rem;
    }
 }
 
@@ -472,6 +565,8 @@ p.profile{
         --fs-reg: 1.03rem;
         --fs-h5: 0.8rem;
         --fs-h6: 0.65rem;
+        --fs-nav: 0.8rem;
+        --fs-foot: 0.75rem;
     }
     .twt-handle{
         padding: 0.5rem 1.3rem;
@@ -556,6 +651,8 @@ p.profile{
         --fs-reg: 0.73rem;
         --fs-h5: 0.7rem;
         --fs-h6: 0.55rem;
+        --fs-nav: 1rem;
+        --fs-foot: 0.75rem;
     }
 }
 
@@ -563,7 +660,7 @@ p.profile{
     .gallery{
         display: flex;
         position: relative;
-        height:300px;
+        height:375px;
         overflow-x: hidden;
     }
     .banner{
@@ -594,6 +691,8 @@ p.profile{
         --fs-reg: 0.63rem;
         --fs-h5: 0.6rem;
         --fs-h6: 0.45rem;
+        --fs-nav: 1rem;
+        --fs-foot: 0.75rem;
     }
     .twt-handle{
         padding: 0.3rem 0.8rem;
@@ -606,6 +705,7 @@ p.profile{
 @media only screen and (min-width: 768px) {
     .target{
         display: flex;
+        font-size: 16px;
     }
     .summary{
         margin-right: 1rem;
@@ -670,6 +770,11 @@ p.profile{
     .banner{
         height: /* 90% */ 100vh;
     }
+
+    .card1{
+        background-image: url(../images/card2.jpg);
+        background-repeat: repeat;
+    }
     .vll{
         margin: 3rem auto;
     }
@@ -686,7 +791,7 @@ p.profile{
     .gallery{
         display: flex;
         position: relative;
-        height:250px;
+        height:350px;
         overflow-x: hidden;
     }
     .banner{
@@ -756,6 +861,8 @@ p.profile{
         --fs-reg: 0.63rem;
         --fs-h5: 0.9rem;
         --fs-h6: 0.45rem;
+        --fs-nav: 1rem;
+        --fs-foot: 0.75rem;
     }
     .twt-handle img {
         width: 20px;
@@ -766,3 +873,4 @@ p.profile{
         margin: 1rem 0 0 0.3rem;
     }
 }
+

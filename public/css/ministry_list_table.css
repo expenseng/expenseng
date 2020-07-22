@@ -375,6 +375,9 @@ text-align: center;
     display: none;
 }
 
+.btn-date{
+    padding: 6px;
+}
 
 .modal-title{
 color: #00945E;
