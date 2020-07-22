@@ -49,6 +49,11 @@ class PageController extends Controller
         return view('pages.ExpenditureReport');
     }
 
+    public function faq()
+    {
+        return view('pages.faq');
+    }
+
     public function ministryReport()
     {
         return view('pages.ministry.ministry_report_table');
@@ -125,5 +130,10 @@ class PageController extends Controller
     public function showProfile()
     {
         return view('pages.ministry_profile');
+    }
+
+    public function accessibility()
+    {
+        return view('pages.terms.accessibility');
     }
 }

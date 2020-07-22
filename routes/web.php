@@ -19,6 +19,7 @@ use App\User;
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contactUs')->name('contact');
+Route::get('/faq', 'PageController@faq')->name('faq');
 Route::get('/search', 'PageController@search')->name('search');
 
 // Feedback
@@ -57,6 +58,13 @@ Route::get('/project-modal', 'PageController@projectModal')->name('project-modal
 Route::get('/ministry/getUrl', 'PageController@ministryGetUrl')->name('ministry_get_url');
 Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses')->name('ministry_filter_expenses');
 
+
+/* 
+    Terms Of Service Endpoints
+*/
+
+
+Route::get('/accessibility', 'PageController@accessibility');
 
 /*
 |--------------------------------------------------------------------------
