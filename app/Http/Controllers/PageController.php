@@ -14,6 +14,10 @@ class PageController extends Controller
         return view('pages.contactUs');
     }
 
+    public function search()
+    {
+        return view('pages.search');
+    }
     public function ministryGraph()
     {
         return view('pages.ministry-report-graph');
@@ -34,9 +38,8 @@ class PageController extends Controller
         return view('pages.aboutus');
     }
 
-    public function search()
-    {
-        return view('pages.search');
+    public function FOIA() {
+        return view('pages.freedomofact');
     }
 
     public function error404()
