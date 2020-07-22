@@ -228,3 +228,4 @@ Route::get('/accessibility', 'PageController@accessibility');
  Route::post('/post_tweet', 'TwitterBot@sendTweet');
  Route::get('/tweets', 'TwitterBot@getTweet');
  Route::delete('delete_tweet', 'TwitterBot@delete');
+
