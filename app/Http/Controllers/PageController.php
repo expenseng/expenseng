@@ -34,6 +34,10 @@ class PageController extends Controller
         return view('pages.aboutus');
     }
 
+    public function FOIA() {
+        return view('pages.freedomofact');
+    }
+
     public function error404()
     {
         return view('pages.errors.404_error');

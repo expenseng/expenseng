@@ -24,6 +24,9 @@ Route::get('/faq', 'PageController@faq')->name('faq');
 // Feedback
 Route::post('/feedback', 'FeedbackController@create')->name('feedback');
 
+// freedom of acts
+Route::get('/FOIA', 'PageController@FOIA')->name('FOIA');
+
 /**
  * Reports Endpoints
  */
