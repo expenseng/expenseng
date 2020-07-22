@@ -90,25 +90,22 @@ class SubscriptionController extends Controller
             if ($save_new_subscription) {
                 //send email
 
-                $response = $this->http->post('sendmailwithtemplate', [
+                $response = $this->http->post('sendmailwithtemplate/', [
                     "body" => json_encode([
                         "recipient" => $request->email, //reciever
                         "sender" => " femiadenuga@mazzacash.com", //sender
-                        "subject" => "Subscription",
+                        "subject" => "EXPENSENG SUBCRIPTION",
                         "cc" => "",
                         "bcc" => "",
-                        "htmlBody" => "<div class='container'>
-                        <div>
-                            Hi ".$request->name.", You have successfully subscribed for" . $request->sub_type .".<br />
-                            Regards,<br>
-                            ExpenseNg.
-                        </div>", 
+                        "htmlBody" => "
+                            Hi ". $request->name. ", You have successfully subscribed for ". $request->sub_type ."
+                            on ExpenseNg.", 
                     ])
                 ]);
         
                 $response = json_decode($response->getBody(), true);
         
-                if($response['success'] == 'success'){
+                if($response['status'] == 'success'){
                 
                 Session::flash('flash_message', $request->name. ' added to Subscription Successfully!');
                 return redirect(route('subscribe.view'));
@@ -118,7 +115,7 @@ class SubscriptionController extends Controller
                 }
                 
             } else {
-                Session::flash('error_message', 'Cannot create new Subscription!!');
+                Session::flash('error_message', $response);
                 return redirect()->back();
             }
         
