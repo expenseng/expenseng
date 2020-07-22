@@ -20,6 +20,8 @@ Route::get('/views', 'MinistryController@tests')->name('test');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contactUs')->name('contact');
+Route::get('/handles', 'PageController@handles')->name('handles');
+
 
 /**
  * Reports Endpoints
