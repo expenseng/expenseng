@@ -20,7 +20,6 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contactUs')->name('contact');
 Route::get('/faq', 'PageController@faq')->name('faq');
-Route::get('/search', 'PageController@about')->name('about');
 
 // Feedback
 Route::post('/feedback', 'FeedbackController@create')->name('feedback');
@@ -94,7 +93,6 @@ Route::get('/accessibility', 'PageController@accessibility');
     Route::get('/admin/company/edit/{company_id}', 'CompanyController@showEditForm')->name('company.view.edit');
     Route::put('/admin/company/edit/{company_id}', 'CompanyController@editCompany')->name('company.edit');
     Route::delete('/admin/company/delete/{company_id}', 'CompanyController@deleteCompany')->name('company.delete');
-
     Route::get('/admin/ministry/create', 'MinistryController@viewCreateMinistry')->name('ministry.create');
     Route::post('/admin/ministry/create', 'MinistryController@createMinistry')->name('create.ministry');
     Route::get('/admin/ministry/view', 'MinistryController@viewMinistries')->name('ministry.view');
