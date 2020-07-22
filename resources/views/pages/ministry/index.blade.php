@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @push('css')
-  <link rel="stylesheet" href="{{ asset('css/aboutus-header_footer.css') }}">
   <link rel="stylesheet" href="{{asset('css/ministry_list.css') }}">
   <title>FG Expense - Ministry List</title>
 @endpush
@@ -74,6 +73,7 @@
 @endsection
 
 @section('js')
+<script src="{{ asset('js/index.js') }}"></script>
   <script src="{{ asset('js/ministry_list.js') }}" type="text/javascript"></script>
 @endsection
 
