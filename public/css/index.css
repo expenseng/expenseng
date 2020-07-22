@@ -124,7 +124,7 @@ button.btn.scroll-down::after{
     content: "";
 }
 .target{
-    margin-top: 3rem;
+    margin-top: 2rem;
     align-items: center;
 }
 #caret{
@@ -207,7 +207,7 @@ p.tag{
 }
 .card1{
     background-image: url(../images/card2.jpg);
-    background-repeat: no-repeat;
+    background-size: cover;
 }
 .card2{
     background-image: url(../images/road.svg);
@@ -224,7 +224,7 @@ p.tag{
 }
 
 .carousel-cell {
-    width: 40%;
+    width: 50%;
     margin-right: 10px;
     border-radius: 5px;
   }
@@ -773,15 +773,30 @@ p.profile{
 
     .card1{
         background-image: url(../images/card2.jpg);
-        background-repeat: repeat;
+        
     }
     .vll{
         margin: 3rem auto;
     }
 }
 @media only screen and (max-width:600px){
+    .background{
+        height: 105vh;
+    }
     .specific{
         width: 50%;
+    }
+    .para > p{
+        text-align: left;
+    }
+    .carousel-cell{
+        width: 60%;
+    }
+    .scroll-down{
+        margin-top: -3rem;
+    }
+    .project p{
+        text-align: left;
     }
     #carets-alt{
        display: flex;
