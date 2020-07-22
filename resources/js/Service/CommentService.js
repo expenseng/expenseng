@@ -143,6 +143,68 @@ class CommentService{
             return response.data;
         })
     }
+
+
+
+// ADMIN COMMENTS SERVICES
+    
+     getAllComments(){
+        return axios.get('/api/comments/', {
+
+        })
+        .then(response => {
+            return response.data;
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+    
+
+    deleteComment(commentId, ownerId){
+        return axios.post('/api/comments/' + commentId, {
+            ownerId: ownerId
+        })
+        .then(response => {
+            response = {
+                data: response.data,
+                message: "comment deleted successfully"
+            }
+            return response;
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+
+
+    flagComment(commentId, ownerId){
+        return axios.patch('/api/comments/' + commentId + '/flag', {
+            ownerId: ownerId
+        })
+        .then(response => {
+            response = {
+                data: response.data,
+                message: "comment flagged successfully"
+            }
+            return response;
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+
+    updateComment(commentId, ownerId, content){
+        return axios.patch('/api/comments/' + commentId, {
+            content: content,
+            ownerId: ownerId
+        })
+        .then(response => {
+            response = {
+                data: response.data,
+                message: "comment updated successfully"
+            }
+            return response;
+        })
+    }
+
 }
 
 export default CommentService;

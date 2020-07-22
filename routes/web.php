@@ -179,6 +179,16 @@ Route::get('/accessibility', 'PageController@accessibility');
      Route::delete('/cabinet/delete/{cabinet_id}', 'CabinetController@deleteCabinet')
      ->name('cabinet.delete');
 
+
+    // SUBSCRIPTION ROUTES
+    Route::get('/subcribe', 'Admin\SubscriptionController@index')->name('subscribeReport');
+
+    // FEEDBACK ROUTES
+    Route::get('/feedback/approve/{id}', 'FeedbackController@approve')->name('feedback.approve');
+   	Route::get('/feedback/ignore/{id}', 'FeedbackController@ignore')->name('feedback.ignore');
+
+
+
       //  Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
       Route::get('/import', 'UploadController@importFile');
       Route::post('/import', 'UploadController@importExcel')->name('importExcel');
@@ -189,6 +199,7 @@ Route::get('/accessibility', 'PageController@accessibility');
       // Cabinet CRUD
      Route::get('/subscribe/create', 'Admin\SubscriptionController@create')
      ->name('subscribe.create');
+
 
      Route::post('/subscribe/create', 'Admin\SubscriptionController@createSub')
      ->name('create.subscribe');
@@ -206,6 +217,10 @@ Route::get('/accessibility', 'PageController@accessibility');
       ->name('feedback.approve');
      Route::get('/feedback/ignore/{id}', 'FeedbackController@ignore')
      ->name('feedback.ignore');
+
+
+      // COMMENTS ROUTES
+    Route::get('/comments', 'Admin\CommentController@index')->name('comments');  //Displays the index page for all comments
  });
 
 
