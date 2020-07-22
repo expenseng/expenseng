@@ -2,6 +2,7 @@
 @push('css')
 	<title>Ministry Expenses</title>
 	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   	<link rel="stylesheet" href="{{ asset('css/ministry-report-table.css') }}">
 	  <link rel="stylesheet" href="{{ asset('css/filter.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
