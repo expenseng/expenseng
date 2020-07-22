@@ -5,6 +5,13 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/modal/style.css">
+<!-- Flickity CSS -->
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+
+<!-- Flickity JavaScript -->
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+
 @endpush
 @section('banner')
 <!-- banner -->
@@ -25,12 +32,8 @@
               Learn more on how this money was spent with tools to help you navigate spending from top to bottom.</p>
           </div>
       </div>
-      <div class="carets my-1 p-3" id="caret-alt">
-        <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left2">
-        <img src="{{asset('images/angle-right.svg')}}" alt="" class="arrow-right2">
-      </div>
-      <div class="gallery p-3">
-        <div class="card1 card">
+      <div class="gallery p-3"  data-flickity='{ "freeScroll": true }'>
+        <div class="card1 carousel-cell card">
             {{-- <p class="tag">New</p> --}}
           <div class="project">
             <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
@@ -41,7 +44,7 @@
               </div>
           </div>
         </div>
-        <div class="card2 card">
+        <div class="card2 card carousel-cell">
           <div class="project">
             <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
             <p>  Ministry of Power, Works and Housing</p>
@@ -51,8 +54,21 @@
             </div>
           </div>
         </div>
+        <div class="card3 carousel-cell card">
+            {{-- <p class="tag">New</p> --}}
+          <div class="project">
+            <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
+            <p>  Ministry of Power, Works and Housing</p>
+              <div class="d-flex justify-content-between mt-2 align-items-center">
+                  <p>Cost of Project: </p>
+                  <p id="cost">&#8358;20bn</p>
+              </div>
+          </div>
+        </div>
       </div>
     </div>
+
+    
     <button class="btn scroll-down" >
       <a href="#expenses"></a>
     </button>
@@ -275,91 +291,6 @@
           </div>
    </div>
   </div>
-
-{{-- 
-  <div class='container'>
-        <!-- Modal to Enter Form -->
-        <h3 style='color: #353A45; text-align:center;margin-top: 15px'>Suggest Cabinet Members</h3>
-     
-<center>
-<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" style="background: 353A45;margin-bottom: 20px;">
-  Suggest a Cabinet Member
-</button>
-</center>
-<!-- Modal -->
-        @if ($errors->any())
-          <div class="alert alert-danger">
-              <ul>
-                  @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                  @endforeach
-              </ul>
-          </div>
-      @endif
-<!-- The Modal -->
-<div class="modal" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-      <form  action=" {!! url('/feedback') !!}" method="POST">
-        {{csrf_field()}}
-        <div class="form-group">
-          <label for="firstName">Firstname</label>
-          <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Firstname">
-        </div>
-        <div class="form-group">
-          <label for="lastName">Lastname</label>
-          <input type="text" name="lastName" class="form-control" id="exampleInputPassword1" placeholder="Lastname">
-        </div>
-        
-        <div class="form-group">
-          <label for="ministry">Select Cabinet</label>
-          <select id="inputState" class="form-control" name="ministry_id">
-            <option selected value="1">Works</option>
-            <option value="Housing">Housing</option>
-            <option value="Interior">Interior</option>
-            <option value="Petroleum">Petroleum</option>
-            <option value="Finance">Finance</option>
-            <option value="Power">Power</option>
-            <option value="Health">Health</option>
-            <option value="Labour">Labour</option>
-            <option value="Environment">Environment</option>
-            <option value="Water Resouirces">Water Resouirces</option>
-            <option value="Communication">Communication</option>
-            <option value="Aviation">Aviation</option>
-            <option value="Defense">Defense</option>
-            <option value="Information">Information</option>
-            <option value="Youths and Sports">Youths and Sports</option>
-            <option value="Police Affairs">Police Affairs</option>
-            <option value="Education">Education</option>
-            <option value="Justice">Justice</option>
-            <option value="Agriculture">Agriculture</option>
-            <option value="Women Affairs">Women Affairs</option>
-          </select>
-        </div>
-       <center>
-        <button type="submit" class="btn btn-primary ">Submit</button>
-      </center>
-
-      </form>
-
-
-      </div>
-
-      
-    </div>
-  </div>
-</div> --}}
-
-
 </section>
 
 @endsection

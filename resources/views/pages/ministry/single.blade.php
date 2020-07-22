@@ -245,39 +245,39 @@
     </div>
 </div>
 
-<div class='container'>
-    <!-- Modal to Enter Form -->
-    <h3 style='color: #353A45; text-align:center;margin-top: 15px'>Suggest Cabinet Members</h3>
- 
+{{-- cabinet member --}}
+
+<h3 style='color: #353A45; text-align:center;margin-top: 15px'>Suggest Cabinet Members</h3>
+     
 <center>
-<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" style="background: 353A45;margin-bottom: 20px;">
-Suggest a Cabinet Member
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" style="background: 353A45;margin-bottom: 20px;">
+  Suggest a Cabinet Member
 </button>
 </center>
+
 <!-- Modal -->
-    @if ($errors->any())
-      <div class="alert alert-danger">
-          <ul>
-              @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-              @endforeach
-          </ul>
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" class="text-light">Suggestion</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-  @endif
-<!-- The Modal -->
-<div class="modal" id="myModal">
-<div class="modal-dialog">
-<div class="modal-content">
-
-  <!-- Modal Header -->
-  <div class="modal-header">
-    
-    <button type="button" class="close" data-dismiss="modal">&times;</button>
-  </div>
-
-  <!-- Modal body -->
-  <div class="modal-body">
-  <form  action=" {!! url('/feedback') !!}" method="POST">
+      <div class="modal-body">
+        <form  action=" {!! url('/feedback') !!}" method="POST">
     {{csrf_field()}}
     <div class="form-group">
       <label for="firstName">Firstname</label>
@@ -314,19 +314,14 @@ Suggest a Cabinet Member
       </select>
     </div>
    <center>
-    <button type="submit" class="btn btn-primary ">Submit</button>
+    <button type="submit" class="btn btn-success ">Submit</button>
   </center>
 
   </form>
-
-
+      </div>
+    </div>
   </div>
-
-  
 </div>
-</div>
-</div>
-
 @endsection
 
 
