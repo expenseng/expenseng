@@ -41,6 +41,7 @@
               <p>Ministry</p>
             </a>
           </li>
+
           <li class="{{Route::is('expenses.view') || Route::is('expenses.create') || Route::is('expenses.edit')
           ? 'nav-item active' : 'nav-item'}} ">
             <a class="nav-link" href="{{Route::is('expenses.view') || Route::is('expenses.create') || Route::is('expenses.edit') ? '#' : route('expenses.view')}}">
@@ -49,25 +50,29 @@
             </a>
           </li>
 
-          <li class="nav-item ">
-            <a class="nav-link" href="{{Route::is('subscribeReport')? '#' :route('subscribeReport')}}">
-              <i class="material-icons">supervisor_account</i>
+          <li class="{{Route::is('cabinet.view') || Route::is('cabinet.create') || Route::is('cabinet.edit')
+           ? 'nav-item active' : 'nav-item'}}  ">
+            <a class="nav-link" href="{{route('cabinet.view')}}">
+              <i class="material-icons">create_new_folder</i>
+              <p>Cabinet</p>
+            </a>
+          </li>
+
+          <li class="{{Route::is('subscribe.view') || Route::is('subscribe.create') || Route::is('subscribe.edit')
+           ? 'nav-item active' : 'nav-item'}} ">
+            <a class="nav-link" href="{{Route::is('subscribe.view')? '#' :route('subscribe.view')}}">
+              <i class="material-icons">star_outline</i>
               <p>Subcriptions</p>
             </a>
           </li>
 
           <li class="nav-item ">
             <a class="nav-link" href="#">
-              <i class="material-icons">create_new_folder</i>
-              <p>Cabinet</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="#">
               <i class="material-icons">supervisor_account</i>
               <p>People</p>
             </a>
           </li>
+
           <!-- <li class="nav-item "> -->
           <li class="{{Route::is('importExcel')
           ? 'nav-item active' : 'nav-item'}} ">
@@ -79,9 +84,11 @@
               <p>Upload Spreadsheet</p>
             </a>
           </li>
-          <li class="nav-item active-pro ">
-            <a class="nav-link" href="#">
-              <i class="material-icons">unarchive</i>
+
+          <li class="{{Route::is('comments')
+          ? 'nav-item active' : 'nav-item'}} ">
+            <a class="nav-link" href="{{Route::is('comments') ? '#' : route('comments')}}">
+              <i class="material-icons">comment</i>
               <p>Comments</p>
             </a>
           </li>

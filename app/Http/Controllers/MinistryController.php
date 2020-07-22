@@ -46,7 +46,10 @@ class MinistryController extends Controller
         ];
         $yearByYear = [];
         for ($x = 0; $x < count($years); $x++) {
-            $filtered = $payments->filter(function ($value, $key) use (
+            $filtered = $payments->filter(function (
+                $value,
+                $key
+            ) use (
                 &$years,
                 $x
             ) {
@@ -65,7 +68,8 @@ class MinistryController extends Controller
     /**
      * Get Data for Charts
      */
-    public function getChartData($ministries){
+    public function getChartData($ministries)
+    {
         foreach ($ministries as $ministry) {
             $chartData = [];
             $totals = $this->fiveYearTrend($ministry->code)[1];
@@ -86,18 +90,18 @@ class MinistryController extends Controller
     public function profile(Request $request)
     {
         
-        if($request->has('ministry')){
+        if ($request->has('ministry')) {
             $ministry_name = $request->get('ministry');
             $result = DB::table('ministries')->where('name', '=', "$ministry_name")->paginate(8);
             $ministries = $this->getMinistries($result);
             $ministries = $this->getChartData($ministries);
-        }else{
+        } else {
             $data = Ministry::paginate(8);
             $ministries = $this->getMinistries($data);
             $ministries = $this->getChartData($ministries);
         }
        
-        if($request->ajax()){
+        if ($request->ajax()) {
             return view('pages.ministry.cards', compact('ministries'));
         }
         return view('pages.ministry.index', compact('ministries'));
@@ -202,8 +206,7 @@ class MinistryController extends Controller
         ->with([
             'ministry_codes' => $ministry_codes,
             'sectors' => $sectors
-        ]
-        );
+        ]);
     }
 
     /**
@@ -237,7 +240,7 @@ class MinistryController extends Controller
             'sector_id' => 'required|number',
         ]);
         //replace spaces with dash in shortname
-        $ministry_shortname = preg_replace('/[[:space:]]+/','-', $request->ministry_shortname); 
+        $ministry_shortname = preg_replace('/[[:space:]]+/', '-', $request->ministry_shortname);
 
         //save new ministry
         $new_ministry = new Ministry();
@@ -251,10 +254,10 @@ class MinistryController extends Controller
         $save_new_ministry = $new_ministry->save();
 
         if ($save_new_ministry) {
-            echo "<script>alert('New ministry created successfully');
-             window.location.replace('/admin/ministry/view');</script>";
+             Session::flash('flash_message', 'New ministry created successfully!');
+             return redirect('/admin/ministry/view');
         } else {
-            Session::flash('flash_message', 'Cannot create new Ministry!');
+            Session::flash('error_message', 'Cannot create new Ministry!');
             return redirect()->back();
         }
     }
@@ -264,8 +267,15 @@ class MinistryController extends Controller
         if (Gate::denies('edit')) {
             return redirect(route('ministry.view'));
         }
+        
         $details = Ministry::findOrFail($id);
-        return view('backend.ministry.edit')->with(['details' => $details]);
+        $ministry_codes = Ministry::orderBY('code', 'ASC')->where('code', '!=', $details->code)->get();
+        $sectors = Sector::all()->where('id', '!=', $details->sector_id);
+        $sector_id_name = Sector::findOrFail($details->sector_id)->name;
+        return view('backend.ministry.edit')
+        ->with(['details' => $details, 'ministry_codes' => $ministry_codes,
+        'sectors' => $sectors, 'sector_id_name' => $sector_id_name
+        ]);
     }
 
     public function editMinistry(Request $request, $id)
@@ -289,10 +299,11 @@ class MinistryController extends Controller
             'sector_id' => $request->sector_id,
         ]);
         if ($update) {
-            echo "<script>alert(' Ministry details edited successfully');
-             window.location.replace('/admin/ministry/view');</script>";
+            ;
+             Session::flash('flash_message', 'Ministry details edited successfully!');
+             return redirect('/admin/ministry/view');
         } else {
-            Session::flash('flash_message', ' Ministry was not edited!');
+            Session::flash('error_message', ' Ministry was not edited!');
             return redirect()->back();
         }
     }
@@ -305,10 +316,10 @@ class MinistryController extends Controller
 
         $delete = Ministry::where('id', $id)->delete();
         if ($delete) {
-            echo "<script>alert(' Ministry details deleted successfully');
-             window.location.replace('/admin/ministry/view');</script>";
+            Session::flash('error_message', 'Ministry deleted successfully!');
+            return redirect('/admin/ministry/view');
         } else {
-            Session::flash('flash_message', ' Ministry was not deleted!');
+            Session::flash('error_message', ' Ministry was not deleted!');
             return redirect()->back();
         }
     }

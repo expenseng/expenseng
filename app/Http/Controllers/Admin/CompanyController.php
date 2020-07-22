@@ -18,7 +18,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-          if (Gate::denies('add-company')) {
+        if (Gate::denies('add-company')) {
             return redirect(route('company.view'));
         }
 

@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
 @push('css')
-  <link rel="stylesheet" href="{{ asset('css/aboutus-header_footer.css') }}">
   <link rel="stylesheet" href="{{asset('css/ministry_list.css') }}">
   <title>FG Expense - Ministry List</title>
 @endpush
 
 
 @section('content')
+{{ Breadcrumbs::render('ministries') }}
   <div class="wrapper">
     <div class="content-1">
       <div class="container-fluid">
@@ -50,7 +50,7 @@
           <div id="search-area" class="offset-md-1 col-md-5 mt-3 mt-md-0">
             <input type="search" id="ministry_search" class="form-control form-control-lg mb-2" style="font-family:Arial, FontAwesome" placeholder="&#xf002; Search for a ministry">
             <div id="ministryList"></div>
-            
+
             @csrf
           </div>
         </div>
@@ -61,17 +61,19 @@
     <div class="last-section">
       <div class="container-fluid">
         <div id="cards-container" class="row d-flex sec-card" style="min-height: 300px">
-          
+
           @include('pages.ministry.cards')
-          
+
         </div>
       </div>
     </div>
   </div>
 
+  
 @endsection
 
 @section('js')
+<script src="{{ asset('js/index.js') }}"></script>
   <script src="{{ asset('js/ministry_list.js') }}" type="text/javascript"></script>
 @endsection
 
