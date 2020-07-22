@@ -48,3 +48,14 @@ Route::patch('/comments/{commentId}/votes/downvote', 'CommentController@downvote
  * Citizens
  */
 Route::post('/citizens', 'CitizenController@userApi');
+
+
+
+// ADMIN - Comments API Calls
+ Route::group(['prefix' => '', 'middleware' => ['api'] ], function() {
+    Route::get('/comments', 'Admin\CommentController@getAllComments'); //gets all application comments
+    Route::post('/comments/{commentId}', 'Admin\CommentController@DeleteComment'); //delete a comment
+    Route::patch('/comments/{commentId}/flag', 'Admin\CommentController@FlagComment'); //flag a comment
+    Route::patch('/comments/{commentId}', 'Admin\CommentController@updateComment'); //update a comment
+
+ });

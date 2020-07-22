@@ -14,6 +14,10 @@ class PageController extends Controller
         return view('pages.contactUs');
     }
 
+    public function search()
+    {
+        return view('pages.search');
+    }
     public function ministryGraph()
     {
         return view('pages.ministry-report-graph');
