@@ -7,9 +7,11 @@
 require('./bootstrap');
 import VueApexCharts from 'vue-apexcharts';
 import TextareaAutosize from 'vue-textarea-autosize'
+import VueSweetalert2 from 'vue-sweetalert2';
 
 window.Vue = require('vue');
 Vue.use(TextareaAutosize);
+Vue.use(VueSweetalert2);
 
 /**
  * The following block of code may be used to automatically register your

@@ -70,6 +70,7 @@ class CommentController extends Controller
             'query' => [
                 // 'limit'  => 2,
                 // 'page' => 2
+                'sort' => 'descending',
             ]
         ]);
 
@@ -94,14 +95,54 @@ class CommentController extends Controller
         $data = json_decode($response->getBody(), true);
 
         if($data['status'] == "success"){
-            // broadcast the new thumbs down
-            //event(new NewReactionOnComment($data));
             return $data['data'];
         }else{
-            Log::error('Error while posting downvote to '.$commentId);
+            Log::error('Error while deleting comment - '.$commentId);
             return false;
         }
     }
+
+
+    public function flagComment(Request $request, $commentId){
+        $response = $this->http->patch('comments/' . $commentId . '/flag', [
+            "body" => json_encode([
+                "ownerId" => $request->ownerId
+            ])
+        ]);
+
+        $data = json_decode($response->getBody(), true);
+
+        if($data['status'] == "success"){
+            return $data['data'];
+        }else{
+            Log::error('Error while flagging comment-'.$commentId);
+            return false;
+        }
+    }
+
+
+
+     public function updateComment(Request $request, $commentId){
+        $response = $this->http->patch('comments/' . $commentId, [
+            "body" => json_encode([
+                "ownerId" => $request->ownerId,
+                "content" => $request->content,
+            ])
+        ]);
+
+        $data = json_decode($response->getBody(), true);
+
+        if($data['status'] == "success"){
+            return $data['data'];
+        }else{
+            Log::error('Error while flagging comment-'.$commentId);
+            return false;
+        }
+    }
+
+
+
+
 
     /**
      * Show the form for creating a new resource.

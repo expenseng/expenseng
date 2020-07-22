@@ -55,5 +55,7 @@ Route::post('/citizens', 'CitizenController@userApi');
  Route::group(['prefix' => '', 'middleware' => ['api'] ], function() {
     Route::get('/comments', 'Admin\CommentController@getAllComments'); //gets all application comments
     Route::post('/comments/{commentId}', 'Admin\CommentController@DeleteComment'); //delete a comment
+    Route::patch('/comments/{commentId}/flag', 'Admin\CommentController@FlagComment'); //flag a comment
+    Route::patch('/comments/{commentId}', 'Admin\CommentController@updateComment'); //update a comment
 
  });

@@ -22,11 +22,12 @@
                                                 <th scope="col" >Content</th>
                                                 <th scope="col" >Replies</th>
                                                 <th scope="col">Votes</th>
-                                                <th scope="col" class="text-center">Action</th>
+                                                <th scope="col">Flags</th>
+                                                <th scope="col" class="text-center" style="width:12%">Actions</th>
                                             </tr>
                                         </thead>   
                                         <tbody>
-                                            <tr v-for ="(comment, index) in comments">
+                                            <tr v-for ="(comment, index) in comments" >
                                                 <td>{{comment.createdAt | ago}}</td>
                                                 <td>{{cleanOrigin(comment.origin)}}</td>
                                                 <td>{{comment.ownerId}}</td>
@@ -34,10 +35,12 @@
                                                 <td>{{comment.content}}</td>
                                                 <td>{{comment.numOfReplies}}</td>
                                                 <td>{{comment.numOfVotes}}</td>
+                                                <td>{{comment.numOfFlags}}</td>
                                                 <td class="td-lg">
-                                                    <a href="#" class="smallbtn btn" title="edit" data-toggle="modal" data-target=".update-comment-modal" v-on:click="getComment(comment.commentId)"><i class="fa fa-edit"></i></a>
-                                                    <a href="#" class="smallbtn btn" title="replies" data-toggle="modal" data-target=".replies-modal" v-on:click="viewReplies(comment.commentId)"><i class=" fa fa-reply"></i></a>
-                                                    <!-- <a href="#" class="smallbtn btn" title="delete" v-on:click="removeItem(index)"><i class="text-danger fa fa-trash"></i></a> -->
+                                                    <a href="#" class="smallbtn " title="edit" data-toggle="modal" data-target=".update-comment-modal" v-on:click="getSingleComment(comment.commentId)"><i class="text-dark fa fa-edit"></i></a>
+                                                    <a href="#" class="smallbtn " title="replies" data-toggle="modal" data-target=".replies-modal" v-on:click="viewReplies(comment.commentId)"><i class=" text-info fa fa-reply"></i></a>
+                                                    <a href="" class="smallbtn " title="flag" v-on:click.prevent="flagComment(comment.commentId, comment.ownerId, index)"><i class="text-danger fa fa-flag"></i></a>
+                                                    
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -96,7 +99,7 @@
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <!-- <div class="mx-auto"><user-image :isSmall="true" :ownerId="singleComment.ownerId"></user-image></div> -->
+                                <div class="mx-auto"><user-image :isSmall="true" :ownerId="singleComment.ownerId"></user-image></div>
                             </div>
                             <div class="modal-body">
                                 <div class="card">
@@ -109,7 +112,7 @@
                                                 <form class="form">
                                                     <div class="col-form-group">
                                                         <label for="formGroupExampleInput">Content</label>
-                                                        <textarea class="form-control" rows="3">{{singleComment.content}} </textarea>
+                                                        <textarea v-model="singleComment.content" class="form-control" rows="3">{{singleComment.content}} </textarea>
                                                     </div>
                                                          
                                                     <div class="form-group">
@@ -132,16 +135,14 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">Update</button>
-                                <button type="button" class="btn btn-danger" v-on:click="deleteComment(singleComment.commentId, singleComment.ownerId)">Delete</button>
+                                <button type="button" class="btn btn-primary" v-on:click.prevent="updateComment(singleComment.commentId, singleComment.ownerId, singleComment.content)">Update</button>
+                                <button type="button" class="btn btn-danger" v-on:click.prevent="deleteComment(singleComment.commentId, singleComment.ownerId)">Delete</button>
                                  <!-- <a href="#" class="smallbtn btn" title="delete" v-on:click="deleteComment(singleComment.commentId, singleComment.ownerId)"><i class="text-danger fa fa-trash"></i></a> -->
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                              </div>
                         </div>
                     </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -153,7 +154,6 @@ import Comment from '../../Service/CommentService';
 import Replies from '../Comment/Replies'
 import UserImage from '../Comment/UserImage';
 import Username from '../Comment/Username';
-
 
     export default {
        
@@ -175,7 +175,7 @@ import Username from '../Comment/Username';
             Replies,
             Username,
             UserImage
-    },
+        },
 
 
         mounted() {
@@ -184,7 +184,11 @@ import Username from '../Comment/Username';
                     .then(response => {
                         this.busy = false;
                         this.comments = response.records;
-                    })
+                    });
+
+            window.eventBus.$on('alert', (message) => {
+                this.novinAlert(message);
+    });
 
         },
 
@@ -210,13 +214,32 @@ import Username from '../Comment/Username';
                 this.comment.deleteComment(commentId, ownerId)
                 .then(response => {
                     this.busy = false;
-                    // console.log(response);
+                    this.$swal('Success', response.message, 'OK');
                     this.removeItem(this.index);
                 });
 
             },
 
-            getComment: function(commentId){
+            flagComment: function(commentId, ownerId, index) {
+                this.comment.flagComment(commentId, ownerId)
+                .then(response => {
+                    this.busy = false;
+                    this.$swal('Success', response.message, 'OK');
+                    this.comments[index].numOfFlags = response.data.numOfFlags;
+                });
+
+            },
+
+            updateComment: function(commentId, ownerId, content) {
+                this.comment.updateComment(commentId, ownerId, content)
+                .then(response => {
+                    this.busy = false;
+                    this.$swal('Success', response.message, 'OK');
+                });
+
+            },
+
+            getSingleComment: function(commentId){
                 for(let i in this.comments){
                     if(this.comments[i].commentId == commentId){
                         this.index = i;
@@ -232,10 +255,10 @@ import Username from '../Comment/Username';
         },
 
         filters:{
-        ago(value){
-            return moment(value).fromNow();
+            ago(value){
+                return moment(value).fromNow();
+            }
         }
-    }
     }
 
     
