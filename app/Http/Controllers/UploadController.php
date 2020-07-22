@@ -50,7 +50,7 @@ class UploadController extends Controller
             catch(\Exception $exception){
                 
                 return redirect()->back()
-                ->with(['errors'=>array('wrong file format')]);
+                ->with(['errors'=>array('content in file not well arranged')]);
             }
             return redirect()->back()
             ->with(['success'=>'company file uploaded successfully']);
@@ -75,7 +75,7 @@ class UploadController extends Controller
                 catch(\Exception $exception){
                     
                     return redirect()->back()
-                    ->with(['errors'=>array('wrong file format')]);
+                    ->with(['errors'=>array('content in file not well arranged')]);
                 }
             // return back()-> withStatus('saved');
             return redirect()->back()
@@ -99,7 +99,7 @@ class UploadController extends Controller
                 catch(\Exception $exception){
                     
                     return redirect()->back()
-                    ->with(['errors'=>array('wrong file format')]);
+                    ->with(['errors'=>array('content in file not well arranged')]);
                 }
             // return back()-> withStatus('saved');
             return redirect()->back()
@@ -148,7 +148,7 @@ class UploadController extends Controller
                         catch(\Exception $exception){
                             
                             return redirect()->back()
-                            ->with(['errors'=>array('wrong file format')]);
+                            ->with(['errors'=>array('content in file not well arranged')]);
                         }
     
             return redirect()->back()
@@ -172,7 +172,7 @@ class UploadController extends Controller
                             catch(\Exception $exception){
                                 
                                 return redirect()->back()
-                                ->with(['errors'=>array('wrong file format')]);
+                                ->with(['errors'=>array('content in file not well arranged')]);
                             }
                 return redirect()->back()
             ->with(['success'=>'people file uploaded successfully']);
@@ -196,7 +196,7 @@ class UploadController extends Controller
             catch(\Exception $exception){
                 
                 return redirect()->back()
-                ->with(['errors'=>array('wrong file format')]);
+                ->with(['errors'=>array('wrong file formatcontent in file not well arranged')]);
             }
             // return back()-> withStatus('saved');
             return redirect()->back()
@@ -245,7 +245,7 @@ class UploadController extends Controller
                                 catch(\Exception $exception){
                                     
                                     return redirect()->back()
-                                    ->with(['errors'=>array('wrong file format')]);
+                                    ->with(['errors'=>array('content in file not well arranged')]);
                                 }
     
             return redirect()->back()
@@ -261,28 +261,7 @@ class UploadController extends Controller
     
 
            }
-         
-            // $dataTime = date('Ymd_His');
-            // $file = $request-> file('file');
-            // $fileName = $dataTime . '-' . $file->getClientOriginalName();
-            // $savePath = public_path('/'.'file'.'/');
-            // $file->move($savePath,$fileName);
 
-            // $excel = \Importer::make('Excel');
-            // $excel->load($savePath.$fileName);
-            // $collection - $excel->getCollection();
-
-    //         if(sizeof($collection[1] ==5)){
-    // //     return 'File has been uploaded successfully';
-
-    //         }else{
-    //             return redirect()->back()
-    //         ->with(['errors'=>[0=>'provide the data with the file according to the sampe']]);
-
-    //         }
-
-            // return redirect()->back()
-            // ->with(['success'=>'file uploaded successfully']);
         }else{
             return redirect()->back()
             ->with(['errors'=>$validator->errors()->all( )]);

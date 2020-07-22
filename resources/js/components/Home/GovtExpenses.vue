@@ -10,7 +10,7 @@
                 <p class="exp-card1">{{ card }}</p>
                 <p class="exp-card2">
                     {{ 
-                        "₦" + Number(series[card.toLowerCase()].total.toFixed(1)).toLocaleString()
+                        "₦" + Number(series[card.toLowerCase()].total).toLocaleString()
                     }}
                 </p>
                 <p class="exp-card3">{{ new Date().getFullYear() }}</p>
