@@ -19,9 +19,13 @@ use App\User;
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contactUs')->name('contact');
+Route::get('/faq', 'PageController@faq')->name('faq');
 
 // Feedback
 Route::post('/feedback', 'FeedbackController@create')->name('feedback');
+
+// freedom of acts
+Route::get('/FOIA', 'PageController@FOIA')->name('FOIA');
 
 /**
  * Reports Endpoints
@@ -56,6 +60,13 @@ Route::get('/project-modal', 'PageController@projectModal')->name('project-modal
 Route::get('/ministry/getUrl', 'PageController@ministryGetUrl')->name('ministry_get_url');
 Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses')->name('ministry_filter_expenses');
 
+
+/* 
+    Terms Of Service Endpoints
+*/
+
+
+Route::get('/accessibility', 'PageController@accessibility');
 
 /*
 |--------------------------------------------------------------------------
@@ -143,6 +154,9 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
      Route::get('/profile', 'ProfileController@viewProfile')->name('profile');
      Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
 
+     //Settings Page
+     Route::get('/user/settings', 'SettingsController@index')->name('users.settings');
+
      // Cabinet CRUD
      Route::get('/cabinet/create', 'CabinetController@create')
      ->name('cabinet.create');
@@ -162,16 +176,6 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
      Route::delete('/cabinet/delete/{cabinet_id}', 'CabinetController@deleteCabinet')
      ->name('cabinet.delete');
 
-
-    // SUBSCRIPTION ROUTES
-    Route::get('/subcribe', 'Admin\SubscriptionController@index')->name('subscribeReport');
-
-    // FEEDBACK ROUTES
-    Route::get('/feedback/approve/{id}', 'FeedbackController@approve')->name('feedback.approve');
-   	Route::get('/feedback/ignore/{id}', 'FeedbackController@ignore')->name('feedback.ignore');
-
-
-
       //  Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
       Route::get('/import', 'UploadController@importFile');
       Route::post('/import', 'UploadController@importExcel')->name('importExcel');
@@ -182,7 +186,6 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
       // Cabinet CRUD
      Route::get('/subscribe/create', 'Admin\SubscriptionController@create')
      ->name('subscribe.create');
-
 
      Route::post('/subscribe/create', 'Admin\SubscriptionController@createSub')
      ->name('create.subscribe');
@@ -201,9 +204,10 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
      Route::get('/feedback/ignore/{id}', 'FeedbackController@ignore')
      ->name('feedback.ignore');
 
-
-      // COMMENTS ROUTES
+     // COMMENTS ROUTES
     Route::get('/comments', 'Admin\CommentController@index')->name('comments');  //Displays the index page for all comments
+
+
  });
 
 
