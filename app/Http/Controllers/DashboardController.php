@@ -47,15 +47,15 @@ class DashboardController extends Controller
 
             
             
-            if (count($total_budgets) > 0) {
-                for ($i = 0; $i < count($total_budgets); $i++) {
-                    $amount += $total_budgets[$i]->amount;
-                }
-            } else {
+        if (count($total_budgets) > 0) {
+            for ($i = 0; $i < count($total_budgets); $i++) {
+                $amount += $total_budgets[$i]->amount;
             }
+        } else {
+        }
             
              
-            $feedbacks = Feedback::where('isApprove','0')->get();
+            $feedbacks = Feedback::where('isApprove', '0')->get();
             $counter_feedback = count($feedbacks);
 
         return view('backend.dashboard')->with([

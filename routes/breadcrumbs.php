@@ -17,6 +17,12 @@ Breadcrumbs::for('contact', function ($trail) {
     $trail->push('Contact Us', route('contact'));
 });
 
+// Home > Search
+Breadcrumbs::for('search', function ($trail) {
+    $trail->parent('home');
+    $trail->push('search', route('search'));
+});
+
 // Home > Expense_Report
 Breadcrumbs::for('expense.reports', function ($trail) {
     $trail->parent('home');

@@ -83,7 +83,7 @@ class CompanyController extends Controller
      */
     public function viewCompanies()
     {
-         if (Gate::denies('active', 'manage')) {
+        if (Gate::denies('active', 'manage')) {
             return redirect(route('profile'));
         }
         
@@ -121,7 +121,7 @@ class CompanyController extends Controller
             Session::flash('error_message', ' Cabinet was not deleted!');
             return redirect()->back();
         }
-    }   
+    }
 
     public function showEditForm($id)
     {
@@ -150,7 +150,6 @@ class CompanyController extends Controller
             'twitter' => $request->ceo_handle,
         ]);
         if ($update) {
-
             Session::flash('flash_message', 'Company details edited successfully!');
             return redirect('/admin/company/view');
         } else {
@@ -166,7 +165,6 @@ class CompanyController extends Controller
         }
         $delete = Company::where('id', $id)->delete();
         if ($delete) {
-
              Session::flash('error_message', 'Company  deleted successfully!');
              return redirect('/admin/company/view');
         } else {
