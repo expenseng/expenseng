@@ -50,9 +50,6 @@
                                 <a href="{{ route('contact') }}">Contact us</a>
                             </li>
                             <li class="section-footer-links">
-                                <a href="{{ route('faq') }}">Faq</a>
-                            </li>
-                            <li class="section-footer-links">
                                 <a href="{{ route('handles') }}">Government handles</a>
                             </li>
                         </ul>
@@ -68,6 +65,7 @@
                     <a href="/accessibility">Accessibility</a>
                     <a href=""> | Privacy Policy</a>
                     <a href="/FOIA"> | Freedom of Information Act</a>
+                    <a href="/faq"> | Faq</a>
                 </div>
                 <div class="col-md-3">
                     <a href=""><span>&#169</span>2020EXPENSENG.com</a>
