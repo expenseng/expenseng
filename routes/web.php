@@ -70,7 +70,7 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
 */
 
 
-Route::get('/accessibility', 'PageController@accessibility');
+Route::get('/accessibility', 'PageController@accessibility')->name('accessibility');
 
 /*
 |--------------------------------------------------------------------------

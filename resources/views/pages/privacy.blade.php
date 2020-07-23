@@ -1,11 +1,13 @@
 @extends('layouts.master')
 
 @push('css')
+  <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
   <link rel="stylesheet" href="{{asset('css/privacy.css') }}">
   <title>FG Expense - privacy policy</title>
 @endpush
 
 @section('content')
+{{ Breadcrumbs::render('privacy') }}
     <div class="container">
         <h1>Privacy Policy</h1>
 
