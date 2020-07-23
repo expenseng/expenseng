@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Expense;
+use App\Activites;
 use Illuminate\Support\Facades\Session;
 
 class ExpenseController extends Controller
@@ -13,13 +14,19 @@ class ExpenseController extends Controller
     // display all expenses
     public function index(Request $request)
     {
-       
         if (Gate::denies('active', 'manage')) {
             return redirect(route('profile'));
         }
-
+        $recent_activites = Activites::orderBY('id', 'DESC')
+            ->limit(5)
+            ->get();
+        $total_activity = count(Activites::all());
         $expenses = Expense::all();
-        return view('backend.expense.view')->with(['expenses' => $expenses]);
+        return view('backend.expense.view')->with([
+            'expenses' => $expenses,
+            'recent_activites' => $recent_activites,
+            'total_activity' => $total_activity,
+        ]);
     }
 
     // display new expense form
@@ -28,7 +35,7 @@ class ExpenseController extends Controller
         if (Gate::denies('add')) {
             return redirect(route('expenses.view'));
         }
-        
+
         return view('backend.expense.create');
     }
 
@@ -44,6 +51,10 @@ class ExpenseController extends Controller
 
         $input = $request->all();
         Expense::create($input);
+
+        Activites::create([
+            'description' => 'Added new expense',
+        ]);
         Session::flash('flash_message', 'New Expense successfully added!');
         return redirect()->back();
     }
@@ -74,7 +85,15 @@ class ExpenseController extends Controller
             'month' => $request->month,
             'project' => $request->project,
         ]);
+
         if ($update) {
+            Activites::create([
+                'description' =>
+                    'updated expense report on' .
+                    $request->project .
+                    ' project',
+            ]);
+
             Session::flash('flash_message', 'Expense  updated successfully!');
             return redirect()->back();
         } else {
@@ -89,7 +108,12 @@ class ExpenseController extends Controller
         }
 
         $delete = Expense::where('id', $id)->delete();
+
         if ($delete) {
+            Activites::create([
+                'description' =>
+                    'Admin deleted '.$name.' from the expense table',
+            ]);
             Session::flash('flash_message', 'Expense  deleted successfully!');
             return redirect()->back();
         } else {

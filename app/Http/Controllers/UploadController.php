@@ -13,17 +13,24 @@ use App\Imports\ExpenseImport;
 use App\Imports\MinistryImport;
 use App\Imports\PaymentImport;
 use App\Imports\SectorImport;
+use Illuminate\Support\Facades\Validator;
+use App\Activites;
 use Maatwebsite\Excel\Facades\Excel;
 // use Validator;
 use Importer;
 
 class UploadController extends Controller
 {
-    
-
     public function importFile()
     {
-        return view('upload');
+        $recent_activites = Activites::orderBY('id', 'DESC')
+            ->limit(5)
+            ->get();
+        $total_activity = count(Activites::all());
+        return view('upload')->with([
+            'recent_activites' => $recent_activites,
+            'total_activity' => $total_activity,
+        ]);
     }
 
     public function importExcel(Request $request)
@@ -159,14 +166,14 @@ class UploadController extends Controller
             // $excel->load($savePath.$fileName);
             // $collection - $excel->getCollection();
 
-    //         if(sizeof($collection[1] ==5)){
-    // //     return 'File has been uploaded successfully';
+            //         if(sizeof($collection[1] ==5)){
+            // //     return 'File has been uploaded successfully';
 
-    //         }else{
-    //             return redirect()->back()
-    //         ->with(['errors'=>[0=>'provide the data with the file according to the sampe']]);
+            //         }else{
+            //             return redirect()->back()
+            //         ->with(['errors'=>[0=>'provide the data with the file according to the sampe']]);
 
-    //         }
+            //         }
 
             // return redirect()->back()
             // ->with(['success'=>'file uploaded successfully']);

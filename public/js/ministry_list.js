@@ -13,6 +13,7 @@ $(document).ready(function(){
       const idjs = e.target.dataset.id;
       console.log('id: ', id )
       console.log('idjs: ', idjs)
+      console.log(e)
       // $.ajax({
       //         url: "/ministry/getUrl",
       //         method: "GET",

@@ -41,24 +41,7 @@ class CommentController extends Controller
 
     public function index(Request $request)
     {
-        // //
-        //  $origin = urlencode($request->origin);
-        // $response = $this->http->get('comments', [
-        //     'query' => [
-                
-        //     ]
-        // ]);
 
-        // $data = json_decode($response->getBody(), true);
-        // $comments = $data['data']['records'];
-        // $pageInfo = $data['data']['pageInfo'];
-
-
-        //  if (Gate::denies('manage-user')) {
-        //     return redirect(route('ministry.view'));
-        // }
-        
-       //dump($comments[1]['origin']);
        return view('backend.comments.indexvue');
         
     }
@@ -70,7 +53,7 @@ class CommentController extends Controller
             'query' => [
                 // 'limit'  => 2,
                 // 'page' => 2
-                'sort' => 'descending',
+                //'sort' => 'ascending',
             ]
         ]);
 
@@ -103,6 +86,26 @@ class CommentController extends Controller
     }
 
 
+    // Delete a Reply
+    public function deleteReply(Request $request, $commentId, $replyId){
+        $response = $this->http->delete('comments/' . $commentId  . '/replies/' . $replyId,[
+            "body" => json_encode([
+                "ownerId" => $request->ownerId
+            ])
+        ]);
+
+        $data = json_decode($response->getBody(), true);
+
+        if($data['status'] == "success"){
+            return $data['data'];
+        }else{
+            Log::error('Error while deleting reply - '.$commentId);
+            return false;
+        }
+    }
+
+
+// Flag a Comment
     public function flagComment(Request $request, $commentId){
         $response = $this->http->patch('comments/' . $commentId . '/flag', [
             "body" => json_encode([
@@ -142,72 +145,23 @@ class CommentController extends Controller
 
 
 
+    public function flagReply(Request $request, $commentId, $replyId){
+        $response = $this->http->patch('comments/' . $commentId  . '/replies/' . $replyId . '/flag', [
+            "body" => json_encode([
+                "ownerId" => $request->ownerId
+            ])
+        ]);
 
+        $data = json_decode($response->getBody(), true);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        if($data['status'] == "success"){
+            return $data['data'];
+        }else{
+            Log::error('Error while flagging comment-'.$commentId);
+            return false;
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
 

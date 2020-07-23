@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Subscription;
+use App\Activites;
 use Illuminate\Http\Request;
 
 class SubscriptionController extends Controller
@@ -16,7 +17,10 @@ class SubscriptionController extends Controller
         $data = $request->all();
 
         $user = Subscription::create($data);
-        if ($user) {
+        if($user){
+            Activites::create([
+            'description' => $request->name.' subscribed to recieve latest updates',
+            ]);
             toastr()->success('You have successfully subscribed for this Report!');
             return  back();
         } else {

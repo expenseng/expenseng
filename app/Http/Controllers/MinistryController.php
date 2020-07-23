@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Ministry;
 use App\Payment;
 use App\Sector;
+use App\Activites;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -92,7 +93,9 @@ class MinistryController extends Controller
         
         if ($request->has('ministry')) {
             $ministry_name = $request->get('ministry');
-            $result = DB::table('ministries')->where('name', '=', "$ministry_name")->paginate(8);
+            $result = DB::table('ministries')
+                ->where('name', '=', "$ministry_name")
+                ->paginate(8);
             $ministries = $this->getMinistries($result);
             $ministries = $this->getChartData($ministries);
         } else {
@@ -100,6 +103,7 @@ class MinistryController extends Controller
             $ministries = $this->getMinistries($data);
             $ministries = $this->getChartData($ministries);
         }
+
        
         if ($request->ajax()) {
             return view('pages.ministry.cards', compact('ministries'));
@@ -185,7 +189,7 @@ class MinistryController extends Controller
                 ->paginate(8);
             $ministries = $this->getMinistries($data);
             $ministries = $this->getChartData($ministries);
-            echo $lists.'?';
+            echo $lists . '?';
             return view('pages.ministry.cards', compact('ministries'));
         }
     }
@@ -202,10 +206,9 @@ class MinistryController extends Controller
         }
         $ministry_codes = Ministry::all('code');
         $sectors = Sector::all();
-        return view('backend.ministry.create')
-        ->with([
+        return view('backend.ministry.create')->with([
             'ministry_codes' => $ministry_codes,
-            'sectors' => $sectors
+            'sectors' => $sectors,
         ]);
     }
 
@@ -219,12 +222,18 @@ class MinistryController extends Controller
         if (Gate::denies('manage')) {
             return redirect(route('home'));
         }
-        
+
         $ministries = Ministry::all();
+        $recent_activites = Activites::orderBY('id', 'DESC')
+            ->limit(5)
+            ->get();
+        $total_activity = count(Activites::all());
 
         return view('backend.ministry.view')->with([
             'ministries' => $ministries,
-            'count' => 0
+            'recent_activites' => $recent_activites,
+            'total_activity' => $total_activity,
+            'count' => 0,
         ]);
     }
 
@@ -254,6 +263,13 @@ class MinistryController extends Controller
         $save_new_ministry = $new_ministry->save();
 
         if ($save_new_ministry) {
+            Activites::create([
+                'description' =>
+                    'Admin added ' .
+                    $request->ministry_name .
+                    ' to the minstry table',
+            ]);
+         
              Session::flash('flash_message', 'New ministry created successfully!');
              return redirect('/admin/ministry/view');
         } else {
@@ -299,7 +315,10 @@ class MinistryController extends Controller
             'sector_id' => $request->sector_id,
         ]);
         if ($update) {
-            ;
+            Activites::create([
+                'description' =>
+                    'updated ' . $request->ministry_name . ' details',
+            ]);
              Session::flash('flash_message', 'Ministry details edited successfully!');
              return redirect('/admin/ministry/view');
         } else {
@@ -313,9 +332,17 @@ class MinistryController extends Controller
         if (Gate::denies('delete')) {
             return redirect(route('ministry.view'));
         }
-
+        $username = DB::table('ministries')
+            ->where('id', $id)
+            ->pluck('ministry_name')
+            ->toArray();
+        $name = implode(' ', $username);
         $delete = Ministry::where('id', $id)->delete();
         if ($delete) {
+            Activites::create([
+                'description' =>
+                    'Admin deleted '.$name.' from the minstries table',
+            ]);
             Session::flash('error_message', 'Ministry deleted successfully!');
             return redirect('/admin/ministry/view');
         } else {

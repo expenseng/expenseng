@@ -5,13 +5,15 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" />
-<!-- <link rel="stylesheet" href="/css/modal/style.css"> -->
+<link rel="stylesheet" href="/css/modal/style.css"> 
 <link rel="stylesheet" href="{{ asset('css/index.css')}}">
 <title>FG Expense - Accessibility</title>
 @endpush
 
 @section('content')
-<section class = "container py-5  accessibility-text">
+<body class= "overflow-hidden">
+    
+<section class = "container py-5   accessibility-text">
     <div class="container py-3">
         <h1>Accessibility</h1>
     </div>
@@ -41,11 +43,10 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
         </p>
     </div>
 </section>
+</body>
 @endsection
 @section('js')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous"></script>
-<script src="{{asset('js/index.js')}}"></script>
-<script src="{{asset('js/chart.js')}}"></script>
-<script src="{{asset('/js/subscription.js')}}"></script>
+<script src="{{asset('/js/index.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @endsection

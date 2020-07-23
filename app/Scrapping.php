@@ -19,7 +19,7 @@ class Scrapping
     public const FGN = "FUNCTIONS";
     private $url_array = array();
     private $selected_link;
-    private $pathSuffix;
+    private $pathPrefix;
 
     /**
      * @param string $year
@@ -31,13 +31,13 @@ class Scrapping
     {
         switch ($searchPattern) {
             case Scrapping::dailyPaymentPattern:
-                $this->pathSuffix = '/daily/';
+                $this->pathPrefix = '/daily/';
                 break;
             case Scrapping::monthlyBudgetPattern:
-                $this->pathSuffix = '/monthly/';
+                $this->pathPrefix = '/monthly/';
                 break;
             case Scrapping::quarterlyBudgetPattern:
-                $this->pathSuffix = '/quarterly/';
+                $this->pathPrefix = '/quarterly/';
                 break;
             default:
                 throw new \Exception('Unexpected value');
@@ -71,15 +71,33 @@ class Scrapping
      *      <li> FUNCTIONS</li>
      *      <li> ECONOMIC</li>
      * </ul>
-     * @param string $month
      * @param string $classification
      * @return $this
      */
 
-    public function selectMonth(string $month, string $classification)
+    public function filterClassification(string $classification)
+    {
+        $array = array();
+        if ($this->pathPrefix == '/monthly/') {
+            $this->pathPrefix = $this->pathPrefix.$classification.'/';
+            foreach ($this->url_array as $link) {
+                if (preg_match('/'.$classification.'/i', $link)) {
+                    array_push($array, $link);
+                }
+            }
+            $this->url_array = $array;
+        }
+        return $this;
+    }
+
+    /**
+     * @param string $month
+     * @return $this
+     */
+    public function selectMonth(string $month)
     {
         foreach ($this->url_array as $link) {
-            if (preg_match('/'.$classification.'\/'.$month.'/i', $link)) {
+            if (preg_match('/'.$month.'/i', $link)) {
                 $this->selected_link = $link;
                 return $this;
             }
@@ -135,9 +153,12 @@ class Scrapping
 
                 // Save file into file location
                 $file_name = basename($this->selected_link);
-                $save_file_loc = $dir.$this->pathSuffix. $file_name;
-                if (!is_dir($dir.$this->pathSuffix)) {
-                    mkdir($dir.$this->pathSuffix, 0777, true);
+                $save_file_loc = $dir.$this->pathPrefix. $file_name;
+                if (!is_dir($dir.$this->pathPrefix)) {
+                    mkdir($dir.$this->pathPrefix, 0777, true);
+                }
+                if(is_dir($save_file_loc)){
+                    return true;
                 }
                 $fp = fopen($save_file_loc, 'wb');
 
@@ -160,11 +181,22 @@ class Scrapping
     }
 
     /**
+     *
+     * get this latest resource for this
+     * @return $this
+     */
+    public function latest()
+    {
+        $this->selected_link = end($this->url_array);
+        return $this;
+    }
+
+    /**
      * @return mixed
      */
     public function getPathSuffix()
     {
-        return $this->pathSuffix;
+        return $this->pathPrefix;
     }
 
     public static function downloadLink($link, $pathSuffix)

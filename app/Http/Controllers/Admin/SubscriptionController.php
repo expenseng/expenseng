@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
+use App\Activites;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use function GuzzleHttp\json_decode;
 
@@ -34,13 +36,21 @@ class SubscriptionController extends Controller
     // display all expenses
     public function index(Request $request)
     {
-
         if (Gate::denies('active', 'manage')) {
             return redirect(route('profile'));
         }
+        $recent_activites = Activites::orderBY('id', 'DESC')
+            ->limit(5)
+            ->get();
+        $total_activity = count(Activites::all());
         $count = 0;
         $subscribe = Subscription::paginate(10);
-        return view('backend.subscription.index', compact('subscribe', 'count'));
+        return view('backend.subscription.index')->with([
+            'subscribe' => $subscribe,
+            'count' => $count,
+            'recent_activites' => $recent_activites,
+            'total_activity' => $total_activity,
+        ]);
     }
 
     /**
@@ -56,7 +66,6 @@ class SubscriptionController extends Controller
 
         return view('backend.subscription.create');
     }
-
 
     /**
      * Create  cabinets funtion.
@@ -90,12 +99,15 @@ class SubscriptionController extends Controller
 
         if ($save_new_subscription) {
             //send email
-
+                Activites::create([
+                'description' =>
+                    $request->name . ' subscribed to recieve latest updates',
+                ]);
                 $response = $this->http->post('sendmailwithtemplate/', [
 
                     "body" => json_encode([
                         "recipient" => $request->email, //reciever
-                        "sender" => " femiadenuga@mazzacash.com", //sender
+                        "sender" => "subscribexpenseng@gmail.com", //sender
                         "subject" => "EXPENSENG SUBSCRIPTION",
                         "cc" => "",
                         "bcc" => "",
@@ -106,8 +118,9 @@ class SubscriptionController extends Controller
                             Regards.<br>
                         </div>
                         </div>",
-                ])
-                ]);
+                    ])
+                ]
+            );
 
                 $response = json_decode($response->getBody(), true);
 
@@ -136,31 +149,31 @@ class SubscriptionController extends Controller
         if (Gate::denies('edit')) {
             return redirect(route('subscribe.view'));
         }
-        
+
         $details = Subscription::findOrFail($id);
         return view('backend.subscription.edit')->with(['details' => $details]);
     }
 
     public function editSub(Request $request, $id)
     {
-        validator(
-            [
+        validator([
             'name' => 'required',
             'email' => 'required',
             'sub_type' => 'required',
-            ]
-        );
-        
-        
-            $update = Subscription::where('id', $id)->update(
-                [
-                'name' => $request->name,
-                'email' => $request->email,
-                'subscription_type' => $request->sub_type,
-                ]
-            );
+        ]);
+
+        $update = Subscription::where('id', $id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'subscription_type' => $request->sub_type,
+        ]);
+
 
         if ($update) {
+             Activites::create([
+                'description' =>
+                    'Subscriber '.$request->name . ' details was edited ',
+            ]);
             Session::flash('flash_message', ' Subscription details edited successfully!');
             return redirect(route('subscribe.view'));
         } else {
@@ -184,8 +197,14 @@ class SubscriptionController extends Controller
         $delete = Subscription::where('id', $id)->delete();
 
         if ($delete) {
-             Session::flash('error_message', ' Subscription deleted successfully!');
-             return redirect(route('subscribe.view'));
+            Activites::create([
+                'description' => 'Admin deleted a subscriber',
+            ]);
+            Session::flash(
+                'flash_message',
+                ' Subscription deleted successfully!'
+            );
+            return redirect(route('subscribe.view'));
         } else {
             Session::flash('error_message', ' Subscription was not deleted!');
             return redirect()->back();
