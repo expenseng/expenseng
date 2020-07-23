@@ -534,6 +534,12 @@ a.dropdown-toggle::after {
     padding: 0;
 }
 
+.footer-twitter:hover,
+ a:hover{
+	text-decoration: none !important;
+	color: #00945E !important;
+}
+
 /* Responsiveness */
 
 @media all and (max-width: 1440px){

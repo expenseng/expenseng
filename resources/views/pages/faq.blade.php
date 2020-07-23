@@ -9,7 +9,7 @@
 
 @section('content')
 {{ Breadcrumbs::render('FAQ') }}
-    <div class="container">
+    <div class="container faq">
         <h1>FAQ</h1>
 
         <h4>What is ExpenseNG?</h4>
