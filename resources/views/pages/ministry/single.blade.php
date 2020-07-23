@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @push('css')
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
 <link rel="stylesheet" href="{{asset('/css/ministry_list_table.css')}}">
 <link rel="stylesheet" href="/css/modal/style.css">
@@ -326,7 +327,7 @@
 
 
 @section('js')
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="{{ asset('js/index.js') }}"></script>
-
 <script src="{{ asset('js/ministry_profile.js') }}" type="text/javascript"></script>
 @endsection

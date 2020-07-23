@@ -18,7 +18,6 @@
 <!-- banner -->
 <div class=" background">
   <div class="banner">
-    {{-- <img src="{{asset('images/flag.jpg')}}" alt=""> --}}
     <div class="carets" id="caret">
       <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left">
       <img src="{{asset('images/angle-right.svg')}}" alt="" class="arrow-right">
@@ -55,7 +54,6 @@
           </div>
         </div>
         <div class="card3 carousel-cell card">
-            {{-- <p class="tag">New</p> --}}
           <div class="project">
             <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
             <p>  Ministry of Power, Works and Housing</p>
@@ -277,7 +275,6 @@
 <div class="convo container d-flex  justify-content-between mb-3">
             <div class="tweet col-md-5 col-lg-5 d-flex align-items-center justify-content-start">
                <div class="twt-handle">
-                 {{-- <img src="{{asset('/images/twitter.png')}}" alt=""> --}}
                 <a href="#">@expenseNG</a>
                </div>
             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Activites;
 use Illuminate\Support\Facades\Gate;
 use App\Company;
 use Illuminate\Http\Request;
@@ -86,14 +87,20 @@ class CompanyController extends Controller
         if (Gate::denies('active', 'manage')) {
             return redirect(route('profile'));
         }
-        
+
+        $recent_activites = Activites::orderBY('id', 'DESC')
+            ->limit(5)
+            ->get();
+        $total_activity = count(Activites::all());
+
         $companies = Company::all();
 
-        return view('backend.company.view')
-        ->with([
+        return view('backend.company.view')->with([
             'companies' => $companies,
-            'count' => 0
-            ]);
+            'recent_activites' => $recent_activites,
+            'total_activity' => $total_activity,
+            'count' => 0,
+        ]);
     }
 
     public function createCompany(Request $request)
@@ -115,6 +122,11 @@ class CompanyController extends Controller
         $save_new_company = $new_company->save();
 
         if ($save_new_company) {
+            Activites::create([
+                'description' =>
+                    'Added ' . $request->company_name . ' to companies',
+            ]);
+
              Session::flash('flash_message', 'New company created successfully!');
              return redirect('/admin/company/view');
         } else {
@@ -150,6 +162,10 @@ class CompanyController extends Controller
             'twitter' => $request->ceo_handle,
         ]);
         if ($update) {
+            Activites::create([
+            'description' =>
+                'Updated ' . $request->company_name . ' company details',
+        ]);
             Session::flash('flash_message', 'Company details edited successfully!');
             return redirect('/admin/company/view');
         } else {
@@ -163,8 +179,19 @@ class CompanyController extends Controller
         if (Gate::denies('delete')) {
             return redirect(route('company.view'));
         }
+        $username = DB::table('companies')
+            ->where('id', $id)
+            ->pluck('company_name')
+            ->toArray();
+        $name = implode(' ', $username);
+        
         $delete = Company::where('id', $id)->delete();
+
         if ($delete) {
+
+            Activites::create([
+            'description' => 'Admin deleted '.$name.' from the companies table',
+        ]);
              Session::flash('error_message', 'Company  deleted successfully!');
              return redirect('/admin/company/view');
         } else {

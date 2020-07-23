@@ -2,6 +2,7 @@
 @push('css')
 	<title>Ministry Expenses</title>
 	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   	<link rel="stylesheet" href="{{ asset('css/ministry-report-table.css') }}">
 	  <link rel="stylesheet" href="{{ asset('css/filter.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
@@ -13,7 +14,7 @@
     {{ Breadcrumbs::render('expense.ministry') }}
 	<header class="container section-wrapper">
 		<nav aria-label="breadcrumb">
-			<ol class="breadcrumb bg-white">
+			<ol class="breadcrumb list bg-white">
 				<li class="breadcrumb-item not-active"><a href="{{ url('/') }}">HOME</a></li>
 				<span>&#8226;</span>
 				<li class="breadcrumb-item not-active"><a href="#">EXPENSE</a></li>
@@ -52,63 +53,7 @@
 			</div>
 		</div>
 	</section>
-	<!-- Filter Modal -->
-	<div id="modal" class="row justify-content-center">
-		<div class="col-md-8">
-			<div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<!-- Header -->
-					<div class="modal-header">
-					<h5 class="modal-title" id="filterModalLabel">Filter</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					</div>
-					<!-- Body -->
-					<div class="modal-body">
-						<section>
-							<p id="view" class="font-weight-bold">View by</p>
-							<div id="date-btn" class="row">
-								<div class="col-4">
-								<button id="day" class="btn btn-block btn-date active">Day</button>
-								</div>
-								<div class="col-4">
-								<button id="month" class="btn btn-block btn-date">Month</button>
-								</div>
-								<div class="col-4">
-								<button id="year" class="btn btn-block btn-date">Year</button>
-								</div>
-							</div>
-						</section>                   
-						<br>
-						<section class="row">
-							<div class="col-12" >
-							<i class="fa fa-calendar" aria-hidden="true"></i>
-							<input placeholder="Select Date" name="select-date" id="select-date"  class="byDatePicker form-control">
-							<input placeholder="Select Month" name="select-month" id="select-month" class="monthYearPicker form-control" />
-							<input placeholder="Select Year" name="select-year" id="select-year" class="yearPicker form-control" />
-							<small id="date-format-err"></small>
-						</section>
-						<br>
-						<section id="sort-options">
-							<p class="font-weight-bold">Sort by</p>
-							<div>
-								<button id="desc" class="btn btn-block btn-amount">Amount (Highest to Lowest)</button>
-								<button id="asc" class="btn btn-block btn-amount">Amount (Lowest to Highest)</button>
-							</div>
-						</section>
-					</div>
-					<!-- Footer -->
-					<div class="modal-footer">
-					<button type="button" data-id="apply-filter" id="apply-filter" class="btn btn-block active mx-5 apply-filter" data-dismiss="modal">Apply Filter</button>
-					</div>
-				</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	 <!-- End of Filter Modal -->
+	
 	<!---TABLE BEGINS--->
 	<div class="tab-content">
 		<div class="section-2 tab-pane show fade active" id="table" role="tabpanel">
@@ -116,10 +61,67 @@
 				<div class="table-section reponsive-div">
 					<div class="main-table">
 						<div class="table-top p-3 d-flex justify-content-between align-items-center">
-							<h3 id="said-date" class="align-self-center">Date: {{ date("dS, M Y") }}</h3>
+							<h3 class="align-self-center">Date: <span class="said-date">{{ date("dS, M Y") }}</span></h3>
 							<button class="nav-button" data-toggle="modal" data-target="#filterModal">Filter<i class="fas fa-filter px-1" style="font-size: var(--fs-reg);"></i></button>
 						</div>
-						<div id="main-table" class="table-data">
+						<!-- Filter Modal -->
+						<div id="modal" class="row justify-content-center modals">
+							<div class="col-md-8">
+								<div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
+									<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<!-- Header -->
+										<div class="modal-header">
+										<h5 class="modal-title" id="filterModalLabel">Filter</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+										</div>
+										<!-- Body -->
+										<div class="modal-body">
+											<section>
+												<p id="view" class="font-weight-bold">View by</p>
+												<div id="date-btn" class="row">
+													<div class="col-4">
+													<button id="day" class="btn btn-block btn-date day active">Day</button>
+													</div>
+													<div class="col-4">
+													<button id="month" class="btn btn-block month btn-date">Month</button>
+													</div>
+													<div class="col-4">
+													<button id="year" class="btn btn-block year btn-date">Year</button>
+													</div>
+												</div>
+											</section>                   
+											<br>
+											<section class="row">
+												<div class="col-12" >
+												<i class="fa fa-calendar" aria-hidden="true"></i>
+												<input placeholder="Select Date" name="select-date" id="select-date"  class="byDatePicker form-control">
+												<input placeholder="Select Month" name="select-month" id="select-month" class="monthYearPicker form-control" />
+												<input placeholder="Select Year" name="select-year" id="select-year" class="yearPicker form-control" />
+												<small id="date-format-err"></small>
+											</section>
+											<br>
+											<section id="sort-options">
+												<p class="font-weight-bold">Sort by</p>
+												<div>
+													<button id="desc" class="btn btn-block btn-amount">Amount (Highest to Lowest)</button>
+													<button id="asc" class="btn btn-block btn-amount">Amount (Lowest to Highest)</button>
+												</div>
+											</section>
+										</div>
+										<!-- Footer -->
+										<div class="modal-footer">
+										<button type="button" data-id="apply-filter" id="apply-filter" class="btn btn-block active mx-5 apply-filter" data-dismiss="modal">Apply Filter</button>
+										</div>
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- End of Filter Modal -->
+						<div id="main-table" data-id="apply-filter" class="table-data">
 							@include('pages.expense.tables.ministries')
 						</div>
 						
@@ -143,13 +145,13 @@
 				<div class="table-section reponsive-div">
 					<div class="main-table">
 						<div class="table-top p-3 d-flex justify-content-between align-items-center">
-							<h3 class="align-self-center">Payments without description</h3>
-							<button type="button"  data-toggle="modal" data-target="#filterModal">Filter <i class="fas fa-filter px-1"></i></button>
+							<h3 class="align-self-center">Payments without description: <span class="said-date"></span></h3>
+							<button type="button"  data-toggle="modal" data-target="#filterModal2">Filter <i class="fas fa-filter px-1"></i></button>
 						</div>
 						<!-- Filter Modal -->
-						<div id="modal" class="row justify-content-center">
+						<div id="modal" class="row justify-content-center modals">
                         <div class="col-md-8">
-                            <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="filterModal2" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <!-- Header -->
@@ -165,13 +167,13 @@
                                             <p id="view" class="font-weight-bold">View by</p>
                                             <div id="date-btn" class="row">
                                                 <div class="col-4">
-                                                <button id="day" class="btn btn-block btn-date active">Day</button>
+                                                <button id="day" class="btn btn-block btn-date day active">Day</button>
                                                 </div>
                                                 <div class="col-4">
-                                                <button id="month" class="btn btn-block btn-date">Month</button>
+                                                <button id="month" class="btn btn-block month btn-date">Month</button>
                                                 </div>
                                                 <div class="col-4">
-                                                <button id="year" class="btn btn-block btn-date">Year</button>
+                                                <button id="year" class="btn btn-block year btn-date">Year</button>
                                                 </div>
                                             </div>
                                         </section>                   
@@ -180,7 +182,7 @@
                                             <div class="col-12" >
                                             <i class="fa fa-calendar" aria-hidden="true"></i>
                                             <input placeholder="Select Date" name="select-date" id="select-date2"  class="byDatePicker form-control">
-                                            <input placeholder="Select Month" name="select-month" id="select-month2" class="monthYearPicker form-control" />
+                                            <input placeholder="Select Month" name="select-month" id="select-month2" class="monthYearPicker form-control" autocomplete="false" />
                                             <input placeholder="Select Year" name="select-year" id="select-year2" class="yearPicker form-control" />
                                             <small id="date-format-err"></small>
                                         </section>
@@ -203,36 +205,11 @@
                         </div>
                     </div>
                      <!-- End of Filter Modal -->
-						<div class="table-data">
-							<div style="overflow-x: auto;">
-								<table cell-spacing="0" data-pagination="true" data-page-size="10" class="table table-striped table-responsive-sm">
-									<thead>
-										<tr>
-											<th class="section-shadow row-ministry">Ministry</th>
-											<th class="row-company">Company</th>
-											<th class="row-amount">Amount</th>
-											<th class="row-date">Date</th>
-										</tr>
-									</thead>
-									<tbody>
-										@foreach ($collection['nondescriptive'] as $expense)
-											<tr>
-												<td class="section-shadow">
-													<a href="{{ route('ministries.single', ['ministry' => strtolower($expense->ministry()['shortname']) ]) }}" class="text-success">
-														{{ucfirst($expense->ministry()['name'])}}
-													</a>
-												</td>
-												<td>{{$expense->beneficiary}}</td>
-												<td>&#8358;{{$expense->amount()}}</td>
-												<td>{{ date('d-m-Y', strtotime($expense->payment_date))}}</td>
-											</tr>
-										@endforeach
-									</tbody>
-								</table>
-							</div>
+						<div id="main-table2" data-id="apply-filter2" class="table-data">
+							@include('pages.expense.tables.ministries_nodesc')
 						</div>
 						<!---PAGINATION--->
-						@include('partials.pagination', ['data' => $collection['nondescriptive']])
+						{{-- @include('partials.pagination', ['data' => $collection['nondescriptive']]) --}}
 					</div>
 				</div>
 			</section>

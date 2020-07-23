@@ -11,6 +11,7 @@
                 </tr>
             </thead>
             <tbody>
+                @if (count($collection['summary']) >0)
                 @foreach ($collection['summary'] as $expense)
                     <tr>
                         <td class="section-shadow">
@@ -24,6 +25,9 @@
                         <td>{{ date('d-m-Y', strtotime($expense->payment_date))}}</td>
                     </tr>
                 @endforeach
+                @else
+                <tr><td></td><td style="color:red">No data available for this period<td><td></td></tr>
+                @endif
             </tbody>
         </table>
     </div>

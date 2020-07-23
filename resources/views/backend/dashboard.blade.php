@@ -2,30 +2,26 @@
 @push('css')
 
     <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2">
-    <link rel="stylesheet" href="{{asset('css/dash.css')}}" />
+    <link rel="stylesheet"
+        href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2">
+
+    <link rel="stylesheet" href="{{ asset('css/dash.css') }}" />
+
 @endpush
 <title>
     ExpenseNg - Admin Dashboard
 </title>
 @section('content')
-@if($message = Session::get('success'))
-    <div class="fixed-bottom">
-    <div class="alert alert-success alert-block">
-      <button type="button" class="close" data-dismiss="alert">x</button>
-      <strong>{{$message}}</strong>
-    </div>
-    </div>
-  @endif
 
-  @if(Session::has('flash_message'))
-    <p class="alert {{Session::get('alert-class','alert-info')}}">{{Session::get('flash_message')}}</p>
-  @endif
-
-    <div class="content mb-0 pb-0">
-        <div class="container-fluid mb-0">
+    <div class="content">
+        <div class="container-fluid">
+            <div id="alert">
+                @include('backend.partials.flash')
+            </div>
             <div class="row ">
                 <div class="col-lg-3 col-md-6 col-sm-6 panel">
                     <div class="card card-stats">
@@ -46,10 +42,11 @@
                             <div class="card-icon">
                                 <i class="material-icons">account_balance_wallet</i>
                             </div>
-                            <p class="card-category">Total {{date('Y')}} Budget</p>
-                            <h3 class="card-title">₦{{number_format($year_budget)}}</h3>
+                            <p class="card-category">Total {{ date('Y') }} Budget</p>
+                            <h3 class="card-title">₦{{ number_format($year_budget) }}</h3>
 
-                        </div> <hr />
+                        </div>
+                        <hr />
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 panel">
@@ -59,7 +56,7 @@
                                 <i class="material-icons">account_balance</i>
                             </div>
                             <p class="card-category">Total Ministries</p>
-                            <h3 class="card-title">{{$total_ministry}}</h3>
+                            <h3 class="card-title">{{ $total_ministry }}</h3>
                         </div>
                     </div>
                 </div>
@@ -70,46 +67,180 @@
                                 <i class="material-icons">dns</i>
                             </div>
                             <p class="card-category">Total Companies</p>
-                            <h3 class="card-title">{{$total_company}}</h3>
+                            <h3 class="card-title">{{ $total_company }}</h3>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
 
-                <div class="col-lg-12 col-md-12">
+                <div class="col-lg-6 col-md-12">
                     <div class="card">
-                        <div class="card-header card-header-warning">
+                        <div class="card-header card-header-primary">
                             <h4 class="card-title">Recent Expenses</h4>
                             <p class="card-category">Last 7 expenses</p>
                         </div>
                         <div class="card-body table-responsive">
                             <table class="table table-hover">
-                                <thead class="text-warning">
-                                <th>S/N</th>
-                                <th>Company</th>
-                                <th>Project</th>
-                                <th>Ministry</th>
-                                <th>Amount Spent</th>
+                                <thead class="text-primary">
+                                    <th>S/N</th>
+                                    <th>Company</th>
+                                    <th>Project</th>
+                                    <th>Ministry</th>
+                                    <th>Amount Spent</th>
                                 </thead>
                                 <tbody>
-                                @if (count($recent_expenses)>0)
+                                    @if (count($recent_expenses)>0)
 
-                                    @foreach ($recent_expenses as $recent_expense)
-                                        <tr>
-                                            <td>{{++$count}}</td>
-                                            <td>{{$recent_expense->year}}</td>
-                                            <td>{{$recent_expense->project}}</td>
-                                            <td>{{$recent_expense->month}}</td>
-                                            <td>₦{{number_format($recent_expense->amount_spent)}}</td>
-                                        </tr>
-                                    @endforeach
+                                        @foreach ($recent_expenses as $recent_expense)
+                                            <tr>
+                                                <td>{{ ++$counter }}</td>
+                                                <td>{{ $recent_expense->year }}</td>
+                                                <td>{{ $recent_expense->project }}</td>
+                                                <td>{{ $recent_expense->month }}</td>
+                                                <td>₦{{ number_format($recent_expense->amount_spent) }}</td>
+                                            </tr>
+                                        @endforeach
 
-                                @endif
+                                    @endif
 
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                </div>
+            
+            
+
+                <div class="col-lg-6 col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Recent Activities</h4>
+
+                            @can('delete')
+                                <button class="btn btn-primary" style="float:right" data-toggle="modal"
+                                    data-target="#exampleModal1">Delete All notifications</button>
+
+                            @endcan
+
+
+                        </div>
+                        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Are you sure???</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Deleting all activities
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <form action="{{ '/admin/activity/delete_all/' }}" method="post">
+                                            @method('delete')
+
+                                            @csrf
+                                            <button type="" class="btn btn-danger">Delete</button>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="card-body table-responsive-sm">
+                            <table id='example' class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>S/N</th>
+                                        <th>Description</th>
+                                        <th>Date</th>
+                                        @can('manage')
+                                            <th>Action</th>
+                                        @endcan
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (count($recent_activites)>0)
+
+                                        @foreach ($recent_activites as $recent_activity)
+                                            <tr>
+                                                <td>{{ ++$count }}</td>
+                                                <td>{{ $recent_activity->description }}</td>
+                                                <td>{{ $recent_activity->created_at }}</td>
+                                                @can('manage')
+                                                    <td>
+                                                        <!--modal begin-->
+                                                        <div class="col-md-6">
+                                                            @can('delete')
+                                                                <i class="fa fa-trash" data-toggle="modal"
+                                                                    data-target="{{ '#exampleModal' . $recent_activity->id }}"
+                                                                    style="color: red"></i>
+                                                            @endcan
+
+                                                            <div class="modal fade" id="{{ 'exampleModal' . $recent_activity->id }}"
+                                                                tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                                aria-hidden="true">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="exampleModalLabel">Are you
+                                                                                sure???</h5>
+                                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                                aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            Deleting from activities
+                                                                        </div>
+
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary"
+                                                                                data-dismiss="modal">Close</button>
+                                                                            <form
+                                                                                action="{{ '/admin/activity/delete/' . $recent_activity->id }}"
+                                                                                method="post">
+                                                                                @method('delete')
+
+                                                                                @csrf
+                                                                                <button type="" class="btn btn-danger">Delete</button>
+                                                                            </form>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                @endcan
+                                            </tr>
+                                        @endforeach
+
+                                    @endif
+
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>S/N</th>
+                                        <th>Description</th>
+                                        <th>Date</th>
+                                        @can('manage')
+                                            <th>Action</th>
+                                        @endcan
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -250,7 +381,7 @@
                 </ul>
             </nav>
             <div class="copyright float-right">
-                &copy; {{date('Y')}}, All Rights Reserved
+                &copy; {{ date('Y') }}, All Rights Reserved
             </div>
         </div>
     </footer>
@@ -259,10 +390,18 @@
 @section('js')
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
+        integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
+        crossorigin="anonymous"></script>
 
 
     <script>
@@ -303,22 +442,26 @@
                         }
                     }
                 });
-                jQuery(".sendTweet").click(function () {
-                    var token =  $('input[name="_token"]').attr('value');
+                jQuery(".sendTweet").click(function() {
+                    var token = $('input[name="_token"]').attr('value');
                     $tweet = jQuery('.tweet').val();
                     jQuery.ajax({
-                        type : 'POST',
-                        url : "{{URL::to('post_tweet')}}",
-                        data:{'tweet': $tweet},
-                        success:function (data) {
+                        type: 'POST',
+                        url: "{{ URL::to('post_tweet') }}",
+                        data: {
+                            'tweet': $tweet
+                        },
+                        success: function(data) {
                             jQuery('.tweet').val('');
                             jQuery('.alert1').removeClass('alert-danger');
                             jQuery('.alert1').fadeIn(5000);
-                            jQuery('.alert1').addClass('alert alert-success text-white');
+                            jQuery('.alert1').addClass(
+                                'alert alert-success text-white');
                             jQuery('.alert1').html('tweet sent ');
                             jQuery('.alert1').fadeOut(5000);
                             // $('#savingsStatus').html(data);
-                    },error: function (data){
+                        },
+                        error: function(data) {
                             jQuery('.tweet').val('');
                             jQuery('.alert1').removeClass('alert-success');
                             jQuery('.alert1').fadeIn(5000);
@@ -441,28 +584,36 @@
 
                     var new_image = jQuery(this).find("img").attr('src');
 
-                    if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+                    if ($sidebar_img_container.length != 0 && $(
+                            '.switch-sidebar-image input:checked').length != 0) {
                         $sidebar_img_container.fadeOut('fast', function() {
-                            $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+                            $sidebar_img_container.css('background-image', 'url("' +
+                                new_image + '")');
                             $sidebar_img_container.fadeIn('fast');
                         });
                     }
 
-                    if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-                        var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+                    if ($full_page_background.length != 0 && $(
+                            '.switch-sidebar-image input:checked').length != 0) {
+                        var new_image_full_page = $('.fixed-plugin li.active .img-holder').find(
+                            'img').data('src');
 
                         $full_page_background.fadeOut('fast', function() {
-                            $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+                            $full_page_background.css('background-image', 'url("' +
+                                new_image_full_page + '")');
                             $full_page_background.fadeIn('fast');
                         });
                     }
 
                     if (jQuery('.switch-sidebar-image input:checked').length == 0) {
-                        var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
-                        var new_image_full_page = jQuery('.fixed-plugin li.active .img-holder').find('img').data('src');
+                        var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr(
+                            'src');
+                        var new_image_full_page = jQuery('.fixed-plugin li.active .img-holder')
+                            .find('img').data('src');
 
                         $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-                        $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+                        $full_page_background.css('background-image', 'url("' +
+                            new_image_full_page + '")');
                     }
 
                     if ($sidebar_responsive.length != 0) {
@@ -515,7 +666,8 @@
 
                     } else {
 
-                        jQuery('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
+                        jQuery('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar(
+                            'destroy');
 
                         setTimeout(function() {
                             jQuery('body').addClass('sidebar-mini');
@@ -537,9 +689,11 @@
                 });
             });
         });
+
     </script>
     <noscript>
-        <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=111649226022273&ev=PageView&noscript=1" />
+        <img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=111649226022273&ev=PageView&noscript=1" />
     </noscript>
     <script>
         jQuery(document).ready(function() {
@@ -547,5 +701,23 @@
             md.initDashboardPageCharts();
 
         });
+
+    </script>
+    <script>
+        $("document").ready(function() {
+            setTimeout(function() {
+                $("#alert").remove();
+            }, 3000); // 5 secs
+            $("#alert").fadeTo(2000, 500).slideUp(500, function() {
+                $("#alert").slideUp("500");
+            });
+        });
+
+    </script>
+    <script>
+        jQuery(document).ready(function() {
+            $('#example').DataTable();
+        });
+
     </script>
 @endsection

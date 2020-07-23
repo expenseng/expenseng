@@ -1,5 +1,8 @@
 @extends('layouts.app')
-
+@push('css')
+	<title>FG Expense - Login</title>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+@endpush
 @section('content')
 <div class="limiter">
         <div class="container-login100 text-dark" style="background-image: url('{{ asset('images/bg-01.jpg') }}');">
@@ -7,10 +10,9 @@
                 <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
                     @csrf
                     <span class="mx-auto">
-                        <img  class="mb-5"src="{{ asset('img/logo.png') }}">
                     </span>
                     <span class="login100-form-title p-b-34 p-t-27">
-                        Log in
+                        Login
                     </span>
                     <div class="input100 validate-input" data-validate = "Enter username">
                         <input id="email" placeholder="Email" type="email" class="input-placeholder p-2 input100 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>

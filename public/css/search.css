@@ -10,14 +10,14 @@ body {
 .hh1{
     font-style: normal;
     font-weight: bold;
-    font-size: 56px;
+    font-size: 24px;
     line-height: 152%;
     color: #353A45;
 }
 .hh2{
     font-style: normal;
     font-weight: normal;
-    font-size: 24px;
+    font-size: 16px;
     line-height: 35px;
     color: #353A45;
 }
@@ -39,7 +39,7 @@ body {
     outline: none;
     font-style: normal;
     font-weight: normal;
-    font-size: 24px;
+    font-size: 16px;
     line-height: 29px;
     margin: auto;
     height: 50px;
@@ -50,16 +50,16 @@ body {
     padding-left: 15px;
     padding-right: 10px;
     text-align: left;
-    margin-top: -10px;
+    margin-top: -5px;
 }
 .input2{
     background: #00945E;
     border-radius: 5px;
-    padding: 19px 54px;
+    padding: 12px 34px;
     border: none;
     font-style: normal;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 16px;
     line-height: 29px;
     /* identical to box height */
     outline: none;
@@ -91,17 +91,23 @@ body {
         width: 90%;
     }
 }
+@media only screen and (max-width: 321px) {
+    .input3{
+        width: 76%;
+    }
+}
 .div3{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
 }
+/* 18px */
 .hh3{
     padding: 10px 20px;
     font-style: normal;
     font-weight: normal;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 22px;
     /* identical to box height */
 
@@ -117,7 +123,7 @@ body {
 
     font-style: normal;
     font-weight: normal;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 22px;
     margin-left: 10px;
     margin-right: 10px;
@@ -130,7 +136,7 @@ body {
 .hh5{
     font-style: normal;
     font-weight: normal;
-    font-size: 24px;
+    font-size: 16px;
     line-height: 29px;
     /* identical to box height */
     color: #353A45;
@@ -158,7 +164,7 @@ body {
 .hh6{
     font-style: normal;
     font-weight: normal;
-    font-size: 24px;
+    font-size: 16px;
     line-height: 29px;
     /* identical to box height */
 
@@ -167,7 +173,7 @@ body {
 .hh7{
     font-style: normal;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 16px;
     line-height: 29px;
     /* identical to box height */
 
@@ -182,7 +188,7 @@ body {
 .hh8{
     font-style: normal;
     font-weight: 300;
-    font-size: 17px;
+    font-size: 16px;
     line-height: 20px;
     color: #191E29;
 }
@@ -229,7 +235,7 @@ body {
 .hh10{
     font-style: normal;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 16px;
     line-height: 29px;
     /* identical to box height */
 
@@ -253,7 +259,7 @@ body {
 .hh11{
     font-style: normal;
     font-weight: normal;
-    font-size: 24px;
+    font-size: 16px;
     line-height: 29px;
     /* identical to box height */
 
@@ -263,7 +269,7 @@ body {
 .hh12{
     font-style: normal;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 16px;
     line-height: 29px;
     /* identical to box height */
 
