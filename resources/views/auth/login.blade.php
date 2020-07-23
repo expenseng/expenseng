@@ -7,10 +7,10 @@
                 <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
                     @csrf
                     <span class="mx-auto">
-                        <img  class="mb-5"src="{{ asset('img/logo.png') }}">
+                        {{-- <img  class="mb-5"src="{{ asset('img/logo.png') }}"> --}}
                     </span>
                     <span class="login100-form-title p-b-34 p-t-27">
-                        Log in
+                        Login
                     </span>
                     <div class="input100 validate-input" data-validate = "Enter username">
                         <input id="email" placeholder="Email" type="email" class="input-placeholder p-2 input100 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>

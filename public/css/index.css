@@ -474,7 +474,7 @@ p.profile{
     background-image: linear-gradient(to bottom, rgba(49, 139, 108, 0.89), rgba(49, 139, 108, 0.89), rgba(49, 139, 108, 0.89)),url(../images/twitter1.png);
     background-repeat: no-repeat;
     background-size: inherit;
-    margin-bottom: -20px;
+    margin-bottom: -35px;
 }
 .convo{
     z-index: -1;
@@ -508,10 +508,6 @@ p.profile{
     background-color: white;
    font-size: var(--fs-h5);
 
-}
-.twt-handle img{
-   width: 20px;
-   height: 20px;
 }
 #open{ 
     margin: 1rem auto;
@@ -597,14 +593,11 @@ p.profile{
         flex-direction: column;
         justify-content: space-between;
     }
-    /* .companies .comp-card:nth-child(even){
-        margin: 0rem 0rem;
-    } */
-    /* .companies .comp-card:nth-child(1){
-        margin: 2rem 2% 2rem ;
-    } */
     .companies .comp-card:nth-child(3){
         margin-top: 2%;
+    }
+    .twt-handle a{
+        margin-left: 10px;
     }
 }
 
@@ -834,7 +827,7 @@ p.profile{
         background-repeat: no-repeat;	
     }	
     .twt-handle a{
-        margin-left: 5px;
+        margin-left: -15px;
     }
     .twt-handle img {
         width: 20px;

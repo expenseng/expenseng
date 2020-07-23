@@ -35,6 +35,7 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item section-reference-dropdown" href="{{ route('about') }}">About Us</a>
                             <a class="dropdown-item section-reference-dropdown" href="{{ route('contact') }}">Contact Us</a>
+                            <a class="dropdown-item section-reference-dropdown" href="{{ route('faq') }}">Faq</a>
                             <a class="dropdown-item section-reference-dropdown" href="{{ route('handles') }}">Government Twitter Handle</a>
                         </div>
                     </li>

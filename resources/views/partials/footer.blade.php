@@ -50,6 +50,9 @@
                                 <a href="{{ route('contact') }}">Contact us</a>
                             </li>
                             <li class="section-footer-links">
+                                <a href="{{ route('faq') }}">Faq</a>
+                            </li>
+                            <li class="section-footer-links">
                                 <a href="{{ route('handles') }}">Government handles</a>
                             </li>
                         </ul>
