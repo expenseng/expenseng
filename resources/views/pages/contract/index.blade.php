@@ -19,7 +19,7 @@
         </div>
         <br>
         <br>
-        <br><div class="contract-awarded">
+        <div class="container contract-awarded">
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-6 pt-2 paragraph">
