@@ -8,11 +8,12 @@
 	<link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
 	<script src="https://kit.fontawesome.com/8f691340fb.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
 @endpush
 
 @section('content')
 	<!-- Breadcrumb start -->
-	<header class="container section-wrapper">
+	<header class="container ">
 		{{ Breadcrumbs::render('expense.ministry') }}
 
 		{{-- <nav aria-label="breadcrumb">
@@ -55,7 +56,7 @@
 			</div>
 		</div>
 	</section>
-	
+
 	<!---TABLE BEGINS--->
 	<div class="tab-content">
 		<div class="section-2 tab-pane show fade active" id="table" role="tabpanel">
@@ -94,7 +95,7 @@
 													<button id="year" class="btn btn-block year btn-date">Year</button>
 													</div>
 												</div>
-											</section>                   
+											</section>
 											<br>
 											<section class="row">
 												<div class="col-12" >
@@ -126,7 +127,7 @@
 						<div id="main-table" data-id="apply-filter" class="table-data">
 							@include('pages.expense.tables.ministries')
 						</div>
-						
+
 					</div>
 				</div>
 			</section>
@@ -137,7 +138,7 @@
 							@include('pages.expense.tables.ministries_annual_totals_all')
 						</div>
 						<!---PAGINATION--->
-						
+
 					</div>
 				</div>
 			</section>
@@ -178,7 +179,7 @@
                                                 <button id="year" class="btn btn-block year btn-date">Year</button>
                                                 </div>
                                             </div>
-                                        </section>                   
+                                        </section>
                                         <br>
                                         <section class="row">
                                             <div class="col-12" >
@@ -240,4 +241,4 @@
 	<script src="{{ asset('js/index.js') }}"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 @endsection
-	 
+

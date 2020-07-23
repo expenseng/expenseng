@@ -13,7 +13,7 @@ class DownloadReport extends Command
      *
      * @var string
      */
-    protected $signature = 'ReportLogging';
+    protected $signature = 'PastReportLogging';
 
     /**
      * The console command description.
@@ -41,12 +41,18 @@ class DownloadReport extends Command
     {
         try {
             $scrapping = new Scrapping();
-            $payment = $scrapping->openTreasury('2020')->latest()->logToDatabase();
-            $budget_funcCat = $scrapping->openTreasury('2020', Scrapping::monthlyBudgetPattern)->filterClassification()->latestAll()->logToDatabase();
-            $budget_qfuncCat = $scrapping->openTreasury('2020', Scrapping::quarterlyBudgetPattern)->filterClassification()->latestALL()->logToDatabase();
+            $payment = $scrapping->openTreasury('2020')->latest()->initialLogToDatabase();
+            $payment = $scrapping->openTreasury('2019')->latest()->initialLogToDatabase();
+            $payment = $scrapping->openTreasury('2018')->latest()->initialLogToDatabase();
+            $budget_funcCat = $scrapping->openTreasury('2020', Scrapping::monthlyBudgetPattern)->initialLogToDatabase();
+            $budget_funcCat = $scrapping->openTreasury('2019', Scrapping::monthlyBudgetPattern)->initialLogToDatabase();
+            $budget_funcCat = $scrapping->openTreasury('2018', Scrapping::monthlyBudgetPattern)->initialLogToDatabase();
+            $budget_qfuncCat = $scrapping->openTreasury('2020', Scrapping::quarterlyBudgetPattern)->initialLogToDatabase();
+            $budget_qfuncCat = $scrapping->openTreasury('2018', Scrapping::quarterlyBudgetPattern)->initialLogToDatabase();
+            $budget_qfuncCat = $scrapping->openTreasury('2019', Scrapping::quarterlyBudgetPattern)->initialLogToDatabase();
             echo "loggedTodatabase \n";
         } catch (\Exception $e) {
-            $this->error('error occurred');
+            $this->error('error occurred'.$e->getMessage() );
         }
 
         return 0;

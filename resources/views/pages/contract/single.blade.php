@@ -2,13 +2,16 @@
 @push('css')
 <link rel="stylesheet" href="{{ asset('css/contracts_awarded.css') }}">
 <link rel="stylesheet" href="{{ asset('css/director_board.css') }}">
+<link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
 
 <title>FG Expense - Contracts</title>
 @endpush
 
 @section('content')
 <!-- Main body start -->
-{{ Breadcrumbs::render('contractor', $company) }}
+<div class="container">
+    {{ Breadcrumbs::render('contractor', $company) }}
+</div>
 <section id="main">
 
   <!-- Start here -->
@@ -16,7 +19,7 @@
   <div class="section-1 container">
     <div class="user-profile">
       <h3 class="name brand-name">
-        {{ $company->name }} 
+        {{ $company->name }}
         <img src="{{ asset('images/image 13.png') }}" alt="Berger logo">
       </h3>
       <div class="profile-overview mt-3">

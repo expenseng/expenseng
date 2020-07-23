@@ -10,6 +10,11 @@
     <section class="container">
     {{ Breadcrumbs::render('contact') }}
       <div class="row" id="banner">
+        {{-- Flash message --}}
+            <div id="alert">
+            @include('backend.partials.flash')
+            </div>
+        {{-- Flash message end --}}
         <div class="col-md-6">
           <h1>Connect with us today</h1>
           <p>You can contact us via mail, calls or any of our social media accounts. We’d be happy to respond!</p>
@@ -25,12 +30,24 @@
     <article class="container contact">
         <div class="row">
           <div class="col-md-6">
-            <h2>Contact Form</h2>
-            <p class="para">Fill the Form below and we will get back to you.</p>
-            <input type="text" placeholder="Full Name" class="form-control">
-            <input type="email" placeholder="Email Address" class="form-control">
-            <textarea placeholder="Write Your Message here..." cols="20" rows="10" class="form-control"></textarea>
-            <button class="btn btn-success">Send to us</button>
+            <h2 align="center">Contact Form</h2>
+            <form action="{{URL(route('sendmail'))}}" method="POST">
+                <div class="form-group col-md-12">
+                    <input type="text"  name="name" class="form-control" id="name" placeholder="Full name">
+                </div>
+                <div class="form-group col-md-12">
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Email Address e.g phemmylintry@gmail.com">
+                </div>
+                <div class="form-group col-md-12">
+                    <input type="text" name="subject" class="form-control" id="subject" placeholder="Subject">
+                </div>
+                <div class="form-group col-md-12">
+                    <textarea type="text" class="form-control" id="message" name="message" placeholder="Your message" rows="5"></textarea>
+                </div>
+                <div class="form-group col-md-12">
+                    <button type="submit" class="btn btn-success" name="submitbut" id="submitbut">Submit</button>
+                </div>
+            </form>
           </div>
           <div class="col-md-6">
             <aside class="banner">

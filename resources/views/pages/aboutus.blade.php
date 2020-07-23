@@ -6,10 +6,11 @@
 @endpush
 
 @section('content')
+    <div class="container">
+        {{ Breadcrumbs::render('about') }}
+    </div>
 <main role="main" class="">
-	<div class="container">
-		{{ Breadcrumbs::render('about') }}
-	</div>
+
 	<svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg" class="black_tr d-lg-block sla d-md-block d-sm-none">
 		<path d="M0.871167 4.9915L9.97402 1.64165L14.0098 0.156494L5.70617 18.1301L0.871167 4.9915Z" fill="#353A45" />
 	</svg>
