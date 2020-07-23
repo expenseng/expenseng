@@ -27,6 +27,8 @@
             <hr>
           </div>
           <div id="search-area" class="offset-md-1 col-md-5 mt-3 mt-md-0">
+          <div class="input1">
+                <img class="img-search" src="{{ asset('/img/search-icon.png') }}" alt="icon">
             <input onkeyup="doFilter()" type="search" id="searchInput" class="form-control form-control-lg mb-2 se" placeholder="Search for companies and Organisations" style="font-family:'Lato';"/>
           </div>
         </div>

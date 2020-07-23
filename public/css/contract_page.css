@@ -26,9 +26,21 @@
 }
 
 /* Placeholder Text */
-input {
+.form-control {
     font-family: "Lato";
+    margin-left: rem;
+    padding-left: 50px;
 }
+.img-search {
+    display: inline;
+    position: absolute;
+    padding-left: 15px;
+    padding-right: 10px;
+    text-align: left;
+    margin-top: 15px;
+}
+
+
 /* Add a black background color to the top navigation */
 
   /* breadcrumb */
