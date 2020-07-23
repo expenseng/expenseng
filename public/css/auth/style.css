@@ -197,11 +197,13 @@ body {
   padding: 30px 85px 0px; }
 
 .form-group {
-  overflow: hidden;
+  /* overflow: hidden; */
   margin-bottom: 20px; }
-
+.main{
+  text-align: center;
+}
 .form-input {
-  width: 100%;
+  width: 80%;
   border: 1px solid #ebebeb;
   border-radius: 5px;
   -moz-border-radius: 5px;

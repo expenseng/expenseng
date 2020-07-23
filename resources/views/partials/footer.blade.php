@@ -52,6 +52,9 @@
                             <li class="section-footer-links">
                                 <a href="{{ route('handles') }}">Government handles</a>
                             </li>
+                            <li class="section-footer-links">
+                                <a href="{{ route('login') }}">Login</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -63,7 +66,7 @@
             <div class="row footer-last p-2">
                 <div class="col-md-9">
                     <a href="/accessibility">Accessibility</a>
-                    <a href="/policy"> | Privacy Policy</a>
+                    <a href="/privacy"> | Privacy Policy</a>
                     <a href="/FOIA"> | Freedom of Information Act</a>
                     <a href="/faq"> | Faq</a>
                 </div>
