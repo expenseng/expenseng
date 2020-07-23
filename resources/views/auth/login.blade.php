@@ -7,7 +7,6 @@
                 <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
                     @csrf
                     <span class="mx-auto">
-                        {{-- <img  class="mb-5"src="{{ asset('img/logo.png') }}"> --}}
                     </span>
                     <span class="login100-form-title p-b-34 p-t-27">
                         Login
