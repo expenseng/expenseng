@@ -4,6 +4,7 @@
 namespace App;
 
 use Goutte\Client;
+use phpDocumentor\Reflection\Types\This;
 use Symfony\Component\HttpClient\HttpClient;
 use function Symfony\Component\VarDumper\Dumper\esc;
 
@@ -12,7 +13,7 @@ class Scrapping
 
     public const dailyPaymentPattern = '/-daily-payment/i';
     public const monthlyBudgetPattern = '/-fgn-monthly/i';
-    public const quarterlyBudgetPattern = '/-fgn-quarterly';
+    public const quarterlyBudgetPattern = '/-fgn-quarterly/';
     public const uri = 'https://opentreasury.gov.ng';
     public const ADMIN = "ADMIN";
     public const ECONOMIC = "ECONOMIC";
@@ -20,7 +21,10 @@ class Scrapping
     private $url_array = array();
     private $selected_link;
     private $pathPrefix;
-
+    private $admin_cat = array();
+    private $economic_cat = array();
+    private $function_cat = array();
+    private $allLatest = array();
     /**
      * @param string $year
      * @param string $searchPattern
@@ -75,10 +79,33 @@ class Scrapping
      * @return $this
      */
 
-    public function filterClassification(string $classification)
+    public function filterClassification(string $classification = null)
     {
+        if ($classification == null) {
+            $array_admin = array();
+            foreach ($this->url_array as $link) {
+                if (preg_match('/ADMIN/i', $link)) {
+                    array_push($array_admin, $link);
+                }
+            }
+            $this->admin_cat = $array_admin;
+            $array_eco = array();
+            foreach ($this->url_array as $link) {
+                if (preg_match('/ECONOMIC/i', $link)) {
+                    array_push($array_eco, $link);
+                }
+            }
+            $this->economic_cat = $array_eco;
+            $array_fun = array();
+            foreach ($this->url_array as $link) {
+                if (preg_match('/FUNCTION/i', $link)) {
+                    array_push($array_fun, $link);
+                }
+            }
+            $this->function_cat = $array_fun;
+        }
         $array = array();
-        if ($this->pathPrefix == '/monthly/') {
+        if ($this->pathPrefix == '/monthly/' || $this->pathPrefix == '/quarterly/') {
             $this->pathPrefix = $this->pathPrefix.$classification.'/';
             foreach ($this->url_array as $link) {
                 if (preg_match('/'.$classification.'/i', $link)) {
@@ -157,7 +184,7 @@ class Scrapping
                 if (!is_dir($dir.$this->pathPrefix)) {
                     mkdir($dir.$this->pathPrefix, 0777, true);
                 }
-                if(is_dir($save_file_loc)){
+                if (is_dir($save_file_loc)) {
                     return true;
                 }
                 $fp = fopen($save_file_loc, 'wb');
@@ -231,5 +258,63 @@ class Scrapping
         } else {
             return false;
         }
+    }
+
+    public function filterUrl(string $url)
+    {
+        return ['link'=>$url ,'type' => explode('/', $url)[5],'parsed'=>false];
+    }
+
+    /**
+     * this would store the details of the link to the database
+     * @return bool
+     */
+    public function logToDatabase()
+    {
+        if (!empty($this->allLatest)) {
+            foreach ($this->allLatest as $link) {
+                try {
+                    $array = $this->filterUrl($link);
+                    Report::create($array);
+                } catch (\Exception $exception) {
+                }
+            }
+            return true;
+        }
+        if (!empty($this->url_array)) {
+            try {
+                $array = $this->filterUrl($this->selected_link);
+                Report::create($array);
+                return true;
+            } catch (\Exception $exception) {
+                return false;
+            }
+        }
+    }
+
+    public function initialLogToDatabase()
+    {
+        if (!empty($this->url_array)) {
+            foreach ($this->url_array as $link) {
+                try {
+                    $array = $this->filterUrl($link);
+                    Report::create($array);
+                } catch (\Exception $exception) {
+                    echo $exception->getMessage();
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function latestAll()
+    {
+        $array = array();
+        array_push($array, end($this->function_cat));
+        array_push($array, end($this->economic_cat));
+        array_push($array, end($this->admin_cat));
+        $this->allLatest = $array;
+        return $this;
     }
 }

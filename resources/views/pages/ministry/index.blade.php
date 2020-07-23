@@ -3,14 +3,16 @@
 @push('css')
   <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
   <link rel="stylesheet" href="{{asset('css/ministry_list.css') }}">
+<link rel="stylesheet" href="{{ asset('css/contract_page.css') }}">
+
   <title>FG Expense - Ministry List</title>
 @endpush
 
 
 @section('content')
-{{ Breadcrumbs::render('ministries') }}
     <div class="main-header">
       <div class="container">
+{{ Breadcrumbs::render('ministries') }}
         <div class="row">
           <div class="col-md-12">
             <h1>Federal Ministries</h1>
