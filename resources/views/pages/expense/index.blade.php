@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="{{ asset('css/ministry-report-table.css') }}">
   <link rel="stylesheet" href="{{ asset('css/filter.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
+  <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
 
     @toastr_css
 
@@ -24,7 +25,7 @@
         <h5>Subscribe to daily Expense Report</h5>
         <span>
             @include('partials.modals.subscription')
-     
+
       </span>
 
     </div>
@@ -92,7 +93,7 @@
                                                 <button id="year" class="btn btn-block btn-date">Year</button>
                                                 </div>
                                             </div>
-                                        </section>                   
+                                        </section>
                                         <br>
                                         <section class="row">
                                             <div class="col-12" >

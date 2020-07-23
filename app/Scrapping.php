@@ -297,8 +297,11 @@ class Scrapping
         if (!empty($this->url_array)) {
             foreach ($this->url_array as $link) {
                 try {
-                    $array = $this->filterUrl($link);
-                    Report::create($array);
+                    $check = Report::where('link', $link)->first();
+                    if (empty($check)) {
+                        $array = $this->filterUrl($link);
+                        Report::create($array);
+                    }
                 } catch (\Exception $exception) {
                     echo $exception->getMessage();
                 }
