@@ -76,3 +76,9 @@ Breadcrumbs::for('FAQ', function ($trail) {
     $trail->parent('home');
     $trail->push('FAQ', route('faq'));
 });
+
+//Home > Privacy_Policy
+Breadcrumbs::for('privacy', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Privacy', route('privacy'));
+});

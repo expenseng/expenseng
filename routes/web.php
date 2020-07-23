@@ -21,6 +21,7 @@ Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contactUs')->name('contact');
 Route::get('/report', 'PageController@error404')->name('error404');
 Route::get('/faq', 'PageController@faq')->name('faq');
+Route::get('/privacy', 'PageController@privacy')->name('privacy');
 Route::get('/search', 'PageController@search')->name('search');
 Route::get('/handles', 'PageController@handles')->name('handles');
 
