@@ -63,7 +63,7 @@
             <div class="row footer-last p-2">
                 <div class="col-md-9">
                     <a href="/accessibility">Accessibility</a>
-                    <a href=""> | Privacy Policy</a>
+                    <a href="/policy"> | Privacy Policy</a>
                     <a href="/FOIA"> | Freedom of Information Act</a>
                     <a href="/faq"> | Faq</a>
                 </div>
