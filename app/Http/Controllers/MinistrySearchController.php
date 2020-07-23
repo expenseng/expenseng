@@ -10,12 +10,24 @@ class MinistrySearchController extends Controller
 {
     public function filterExpenses(Request $request)
     {
-        $id = $request->get('id');
+        $id = $request->query('id');
         echo "php-id {$id} <br />";
         $givenTime = null;
         if ($request->has('date')) {
-            $givenTime = $request->get('date');
+            $givenTime = $request->query('date');
         }
+
+        echo 'fullurl: '. $request->fullUrl();
+        echo "<br />";
+        var_dump($request->all());
+        echo "<br />";
+        echo 'query_id: '. $request->query('id');
+        echo "<br />";
+        echo 'query_date: '. $request->query('date');
+        echo "<br />";
+        echo 'input: '. $request->input('id');
+        echo "<br />";
+        
         
         $yr = date("Y");
         $ministry = Ministry::find($id);
@@ -48,7 +60,7 @@ class MinistrySearchController extends Controller
         };
 
         if ($request->has('sort')) {
-            $payments = $payments->orderby('amount', $request->get('sort'));
+            $payments = $payments->orderby('amount', $request->query('sort'));
         } else {
             $payments = $payments->orderby('payment_date', 'desc');
         }
