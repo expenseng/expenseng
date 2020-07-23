@@ -1,5 +1,8 @@
 @extends('layouts.app')
-
+@push('css')
+	<title>FG Expense - Register</title>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+@endpush
 @section('content')
     <div class="main">
 

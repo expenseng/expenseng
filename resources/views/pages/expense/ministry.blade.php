@@ -14,7 +14,7 @@
     {{ Breadcrumbs::render('expense.ministry') }}
 	<header class="container section-wrapper">
 		<nav aria-label="breadcrumb">
-			<ol class="breadcrumb bg-white">
+			<ol class="breadcrumb list bg-white">
 				<li class="breadcrumb-item not-active"><a href="{{ url('/') }}">HOME</a></li>
 				<span>&#8226;</span>
 				<li class="breadcrumb-item not-active"><a href="#">EXPENSE</a></li>

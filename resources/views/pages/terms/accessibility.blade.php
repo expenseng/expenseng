@@ -11,7 +11,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
 @endpush
 
 @section('content')
-<body class= "overflow-hidden">
+<body>
     
 <section class = "container py-5   accessibility-text">
     <div class="container py-3">
