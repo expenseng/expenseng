@@ -1,11 +1,12 @@
 @extends('layouts.master')
 @push('css')
   <title>FG Expense - Contact</title>
+  <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
   <link rel="stylesheet" href="{{ asset('css/contactUs.css') }}">
 @endpush
 
 @section('content')
-{{-- {{ Breadcrumbs::render('contact') }} --}}
+{{ Breadcrumbs::render('contact') }}
     <!-- Banner Starts -->
     <section class="container">
       <div class="row" id="banner">
