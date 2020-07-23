@@ -161,6 +161,7 @@ class SubscriptionController extends Controller
             'email' => 'required',
             'sub_type' => 'required',
         ]);
+        $oldEmail = Subscription::findOrFail($id)->email;
 
         $update = Subscription::where('id', $id)->update([
             'name' => $request->name,
@@ -174,8 +175,92 @@ class SubscriptionController extends Controller
                 'description' =>
                     'Subscriber '.$request->name . ' details was edited ',
             ]);
-            Session::flash('flash_message', ' Subscription details edited successfully!');
-            return redirect(route('subscribe.view'));
+            if ($oldEmail === $request->email) {
+                $response = $this->http->post('sendmailwithtemplate/', [
+
+                    "body" => json_encode([
+                        "recipient" => $request->email, //reciever
+                        "sender" => "subscribexpenseng@gmail.com", //sender
+                        "subject" => "EXPENSENG SUBSCRIPTION",
+                        "cc" => "",
+                        "bcc" => "",
+                        "htmlBody" => "<div class='container'>
+                        <div>
+                            Hi <b> $request->name </b>, You have successfully 
+                            changed your subscription to <b>$request->sub_type </b> 
+                            on ExpenseNG.<br />
+                            Regards.<br>
+                        </div>
+                        </div>",
+                    ])
+                ]
+            );
+
+                $response = json_decode($response->getBody(), true);
+
+        
+                if ($response['status'] == 'success') {
+                    
+                    Session::flash ('flash_message', 
+                    'Subscription details edited successfully!');
+                    return redirect(route('subscribe.view'));
+                } else {
+                    Session::flash('error_message', ' Subscription was not edited!');
+                    return redirect()->back();
+                }
+            }else {
+                $responseOld = $this->http->post('sendmailwithtemplate/', [
+
+                    "body" => json_encode([
+                        "recipient" => $oldEmail, //reciever
+                        "sender" => "subscribexpenseng@gmail.com", //sender
+                        "subject" => "EXPENSENG SUBSCRIPTION",
+                        "cc" => "",
+                        "bcc" => "",
+                        "htmlBody" => "<div class='container'>
+                        <div>
+                            Hi , You have been unsubscribed from recieving
+                            updates on ExpenseNG.<br />
+                            Regards.<br>
+                        </div>
+                        </div>",
+                    ])
+                ]
+            );
+                //send email to both email
+                $response = $this->http->post('sendmailwithtemplate/', [
+
+                    "body" => json_encode([
+                        "recipient" => $request->email, //reciever
+                        "sender" => "subscribexpenseng@gmail.com", //sender
+                        "subject" => "EXPENSENG SUBSCRIPTION",
+                        "cc" => "",
+                        "bcc" => "",
+                        "htmlBody" => "<div class='container'>
+                        <div>
+                            Hi <b> $request->name </b>, You have successfully changed 
+                            your email for <b>$request->sub_type </b> 
+                            subscription on ExpenseNG.<br />
+                            Regards.<br>
+                        </div>
+                        </div>",
+                    ])
+                ]
+            );
+
+                $response = json_decode($response->getBody(), true);
+
+        
+                if ($response['status'] == 'success') {
+                    
+                    Session::flash('flash_message', ' Subscription details edited successfully!');
+                    return redirect(route('subscribe.view'));
+                }else{
+                    Session::flash('error_message', ' Subscription was not edited!');
+                    return redirect()->back();
+                }
+                
+            }
         } else {
             Session::flash('error_message', ' Subscription was not edited!');
             return redirect()->back();
@@ -193,18 +278,48 @@ class SubscriptionController extends Controller
         if (Gate::denies('delete')) {
             return redirect(route('subscribe.view'));
         }
-
+        $subscriber = Subscription::findOrFail($id);
         $delete = Subscription::where('id', $id)->delete();
 
         if ($delete) {
             Activites::create([
                 'description' => 'Admin deleted a subscriber',
             ]);
+            //send unsubscribed email
+
+            $response = $this->http->post('sendmailwithtemplate/', [
+
+                "body" => json_encode([
+                    "recipient" => $subscriber->email, //reciever
+                    "sender" => "subscribexpenseng@gmail.com", //sender
+                    "subject" => "EXPENSENG SUBSCRIPTION",
+                    "cc" => "",
+                    "bcc" => "",
+                    "htmlBody" => "<div class='container'>
+                    <div>
+                        Hi $subscriber->name, You have been unsubscribed from recieving
+                        updates on ExpenseNG.<br />
+                        Regards.<br>
+                    </div>
+                    </div>",
+                ])
+            ]
+        );
+        
+        
+        $response = json_decode($response->getBody(), true);
+
+        
+        if ($response['status'] == 'success') {
             Session::flash(
                 'flash_message',
                 ' Subscription deleted successfully!'
             );
             return redirect(route('subscribe.view'));
+        }else{
+            Session::flash('error_message', ' Subscription was not deleted!');
+            return redirect()->back(); 
+        }
         } else {
             Session::flash('error_message', ' Subscription was not deleted!');
             return redirect()->back();
