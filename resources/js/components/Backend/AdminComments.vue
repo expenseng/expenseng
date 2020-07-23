@@ -1,116 +1,114 @@
 <template>
-    <div class="content">
-        <div class="container-fluid">
+
             <div class="row">
-                <div class="col-xl-12">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0" style="float:left"> Comments </h5>
+                            <!-- <a href="" class="btn btn-primary" style="float:right">ADD NEW</a> -->
+                            <p></p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="example" class="table table-striped table-bordered table-responsive{-sm|-md|-lg|-xl}" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" >Date</th>
+                                            <th scope="col" >Origin</th>
+                                            <th scope="col" >OwnerId</th>
+                                            <th scope="col" >RefId</th>
+                                            <th scope="col" >Content</th>
+                                            <th scope="col" >Replies</th>
+                                            <th scope="col">Votes</th>
+                                            <th scope="col">Flags</th>
+                                            <th scope="col" class="text-center" style="width:13%">Actions</th>
+                                        </tr>
+                                    </thead>   
+                                    <tbody>
+                                        <tr v-for ="(comment, index) in comments" >
+                                            <td>{{comment.createdAt}}</td>
+                                            <td>{{cleanOrigin(comment.origin)}}</td>
+                                            <td>{{comment.ownerId}}</td>
+                                            <td>{{comment.refId}}</td>
+                                            <td>{{comment.content}}</td>
+                                            <td>{{comment.numOfReplies}}</td>
+                                            <td>{{comment.numOfVotes}}</td>
+                                            <td>{{comment.numOfFlags}}</td>
+                                            <td class="td-lg">
+                                                <a href="#" class="smallbtn " title="edit" data-toggle="modal" data-target=".update-comment-modal" v-on:click="getSingleComment(comment.commentId)"><i class="text-dark fa fa-edit"></i></a>
+                                                <a href="#" class="smallbtn " title="replies" data-toggle="modal" data-target=".replies-modal" v-on:click="viewReplies(comment.commentId, index)"><i class=" text-info fa fa-comment"></i></a>
+                                                <a href="" class="smallbtn " title="flag" v-on:click.prevent="flagComment(comment.commentId, comment.ownerId, index)"><i class="text-danger fa fa-flag"></i></a>
+                                                
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            
+                        </div>
+                    </div>
+                </div>
+        
+
+                <!-- Comment Replies Modal -->
+                <div class="modal fade replies-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-scrollable" role="document">
+                    <div class="modal-content" >
                         <div class="card">
-                            <div class="card-header">
-                                <h5 class="mb-0" style="float:left"> Comments </h5>
-                                <!-- <a href="" class="btn btn-primary" style="float:right">ADD NEW</a> -->
-                                <p></p>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table id="example" class="table table-striped table-bordered table-responsive{-sm|-md|-lg|-xl}" style="width:100%">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col" >Date</th>
-                                                <th scope="col" >Origin</th>
-                                                <th scope="col" >OwnerId</th>
-                                                <th scope="col" >RefId</th>
-                                                <th scope="col" >Content</th>
-                                                <th scope="col" >Replies</th>
-                                                <th scope="col">Votes</th>
-                                                <th scope="col">Flags</th>
-                                                <th scope="col" class="text-center" style="width:13%">Actions</th>
-                                            </tr>
-                                        </thead>   
-                                        <tbody>
-                                            <tr v-for ="(comment, index) in comments" >
-                                                <td>{{comment.createdAt}}</td>
-                                                <td>{{cleanOrigin(comment.origin)}}</td>
-                                                <td>{{comment.ownerId}}</td>
-                                                <td>{{comment.refId}}</td>
-                                                <td>{{comment.content}}</td>
-                                                <td>{{comment.numOfReplies}}</td>
-                                                <td>{{comment.numOfVotes}}</td>
-                                                <td>{{comment.numOfFlags}}</td>
-                                                <td class="td-lg">
-                                                    <a href="#" class="smallbtn " title="edit" data-toggle="modal" data-target=".update-comment-modal" v-on:click="getSingleComment(comment.commentId)"><i class="text-dark fa fa-edit"></i></a>
-                                                    <a href="#" class="smallbtn " title="replies" data-toggle="modal" data-target=".replies-modal" v-on:click="viewReplies(comment.commentId, index)"><i class=" text-info fa fa-comment"></i></a>
-                                                    <a href="" class="smallbtn " title="flag" v-on:click.prevent="flagComment(comment.commentId, comment.ownerId, index)"><i class="text-danger fa fa-flag"></i></a>
-                                                    
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                <div class="card-header">
+                                    
+                                </div>
+                                <div class="card-body">
+                                    <div class="container p-2" >
+                                        <div class="container">
+                                            <div class="row occupy">
+                                                <table id="replies" class="table table-striped table-bordered second table-responsive{-sm|-md|-lg|-xl" style="width:100%">
+                                                    <caption v-if="replies[0]" class="small">Replies for Comment {{ replies[0].commentId}}</caption>
+                                                    <thead class="thead-dark">
+                                                        <tr>
+                                                            <th>Author</th>
+                                                            <th>Created at</th>
+                                                            <th>Content</th>
+                                                            <th>Flags</th>
+                                                            <th>Votes</th>
+                                                            <th class="text-center" style="width:13%"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr v-for="(reply, index) in replies" :key="reply.replyId">
+                                                            <td><p class="small">{{reply.ownerId}} </p></td>
+                                                            <td><p class="ml-3 grey-text small mt-1">{{ reply.createdAt | ago }}</p></td>
+                                                            <td><p class="small">{{ reply.content }}</p></td>
+                                                            <td><p class="small">{{ reply.numOfFlags }}</p></td>
+                                                             <td><p class="small">{{ reply.numOfVotes }}</p></td>
+                                                            <td class="td-lg">
+                                                                <a href="#" class="smallbtn " title="edit" v-on:click="getSingleComment(comment.commentId)"><i class="text-dark fa fa-edit"></i></a>
+                                                                <a href="" class="smallbtn " title="delete" v-on:click.prevent="deleteReply(reply.commentId, reply.replyId, reply.ownerId, index)"><i class=" text-danger fa fa-trash"></i></a>
+                                                                <a href="" class="smallbtn " title="flag" v-on:click.prevent="flagReply(reply.commentId, reply.replyId, reply.ownerId, index)"><i class="text-warning fa fa-flag"></i></a>
+                                                                
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                        </div> 
+                                    </div>  
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                
-                            </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
                     </div>
-
-            
-
-                    <!-- Comment Replies Modal -->
-                    <div class="modal fade replies-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="card">
-                                    <div class="card-header">
-                                        
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="container p-2" >
-                                            <div class="container">
-                                                <div class="row occupy">
-                                                    <table id="replies" class="table table-striped table-bordered second" style="width:100%">
-                                                        <caption v-if="replies[0]" class="small">Replies for Comment {{ replies[0].commentId}}</caption>
-                                                        <thead class="thead-dark">
-                                                            <tr>
-                                                                <th>Author</th>
-                                                                <th>Created at</th>
-                                                                <th>Content</th>
-                                                                <th>Flags</th>
-                                                                <th>Votes</th>
-                                                                <th class="text-center" style="width:13%">Action</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr v-for="(reply, index) in replies" :key="reply.replyId">
-                                                                <td><p class="small">{{reply.ownerId}} </p></td>
-                                                                <td><p class="ml-3 grey-text small mt-1">{{ reply.createdAt | ago }}</p></td>
-                                                                <td><p class="small">{{ reply.content }}</p></td>
-                                                                <td><p class="small">{{ reply.numOfFlags }}</p></td>
-                                                                 <td><p class="small">{{ reply.numOfVotes }}</p></td>
-                                                                <td class="td-lg">
-                                                                    <a href="#" class="smallbtn " title="edit" v-on:click="getSingleComment(comment.commentId)"><i class="text-dark fa fa-edit"></i></a>
-                                                                    <a href="" class="smallbtn " title="delete" v-on:click.prevent="deleteReply(reply.commentId, reply.replyId, reply.ownerId, index)"><i class=" text-danger fa fa-trash"></i></a>
-                                                                    <a href="" class="smallbtn " title="flag" v-on:click.prevent="flagReply(reply.commentId, reply.replyId, reply.ownerId, index)"><i class="text-warning fa fa-flag"></i></a>
-                                                                    
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-
-                                                </div>
-                                            </div> 
-                                        </div>  
-                                    </div>
-                                </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                      </div>
-                    </div>
+                  </div>
+                </div>
 
 
-                    <!-- Comment Update Modal -->
-                    <div class="modal fade update-comment-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <!-- Comment Update Modal -->
+                <div class="modal fade update-comment-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -157,11 +155,10 @@
                              </div>
                         </div>
                     </div>
-                    </div>
                 </div>
+
             </div>
-        </div>
-    </div>
+
 </template>
 
 <script>
