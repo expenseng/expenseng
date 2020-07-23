@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use GuzzleHttp\Client;
+use App\Mail\SendSubNotification;
 use App\Subscription;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -9,9 +11,28 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use App\Activites;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use function GuzzleHttp\json_decode;
 
 class SubscriptionController extends Controller
 {
+    private $http;
+    private $baseUri = "https://email.microapi.dev/v1/";
+    
+    public function __construct()
+    {
+
+        $this->baseUri = "https://email.microapi.dev/v1/";
+        
+        $this->http = new Client([
+            'base_uri' => $this->baseUri,
+            'headers' => [
+                'debug' => true,
+                'Content-Type' => 'application/json',
+            ]
+        ]);
+    }
+
     // display all expenses
     public function index(Request $request)
     {
@@ -53,33 +74,73 @@ class SubscriptionController extends Controller
      */
     public function createSub(Request $request)
     {
-        validator([
-            'name' => 'required',
-            'email' => 'required',
-            'sub_type' => 'required',
-        ]);
+        validator(
+            [
+                'name' => 'required',
+                'email' => 'required',
+                'sub_type' => 'required',
+            ]
+        );
+            //check if detail exist before
+            $check = Subscription::where('email', $request->email)->orWhere('subscription_type', $request->sub_type)->get();
 
-        $new_subscription = new Subscription();
-        $new_subscription->name = $request->name;
-        $new_subscription->email = $request->email;
-        $new_subscription->subscription_type = $request->sub_type;
-
-        $save_new_subscription = $new_subscription->save();
-
-        if ($save_new_subscription) {
-            Activites::create([
-                'description' =>
-                    $request->name . ' subscribed to recieve latest updates',
-            ]);
-            Session::flash(
-                'flash_message',
-                $request->name . ' added to Subscription Successfully!'
-            );
-            return redirect(route('subscribe.view'));
-        } else {
-            Session::flash('flash_message', 'Cannot create new Subscription!!');
+        if (count($check) > 1) {
+            Session::flash('error_message', 'A subscription with '. $request->email.
+            ' has been created initially!!');
             return redirect()->back();
         }
+
+            $new_subscription = new Subscription();
+            $new_subscription->name = $request->name;
+            $new_subscription->email = $request->email;
+            $new_subscription->subscription_type = $request->sub_type;
+
+            $save_new_subscription = $new_subscription->save();
+
+        if ($save_new_subscription) {
+            //send email
+                Activites::create([
+                'description' =>
+                    $request->name . ' subscribed to recieve latest updates',
+                ]);
+                $response = $this->http->post('sendmailwithtemplate/', [
+
+                    "body" => json_encode([
+                        "recipient" => $request->email, //reciever
+                        "sender" => " femiadenuga@mazzacash.com", //sender
+                        "subject" => "EXPENSENG SUBSCRIPTION",
+                        "cc" => "",
+                        "bcc" => "",
+                        "htmlBody" => "<div class='container'>
+                        <div>
+                            Hi <b> $request->name </b>, You have successfully subscribed for 
+                            <b>$request->sub_type </b> on ExpenseNG.<br />
+                            Regards.<br>
+                        </div>
+                        </div>",
+                ])
+                ]);
+
+                $response = json_decode($response->getBody(), true);
+
+        
+                if($response['status'] == 'success'){
+
+            Session::flash('flash_message', $request->name. ' added to Subscription Successfully!');
+            return redirect(route('subscribe.view'));
+        } else {
+            Session::flash('error_message', 'Cannot send  Subscription email!!');
+            return redirect()->back();
+        }
+                
+            } else {
+                Session::flash('error_message', $response);
+                return redirect()->back();
+            }
+        
+
+
+        
     }
 
     public function showEditForm($id)
@@ -106,18 +167,16 @@ class SubscriptionController extends Controller
             'subscription_type' => $request->sub_type,
         ]);
 
+
         if ($update) {
-            Activites::create([
+             Activites::create([
                 'description' =>
-                    $request->name . ' details were edited',
+                    'Subscriber '.$request->name . ' details was edited ',
             ]);
-            Session::flash(
-                'flash_message',
-                ' Subscription details edited successfully!'
-            );
+            Session::flash('flash_message', ' Subscription details edited successfully!');
             return redirect(route('subscribe.view'));
         } else {
-            Session::flash('flash_message', ' Subscription was not edited!');
+            Session::flash('error_message', ' Subscription was not edited!');
             return redirect()->back();
         }
     }
@@ -146,7 +205,7 @@ class SubscriptionController extends Controller
             );
             return redirect(route('subscribe.view'));
         } else {
-            Session::flash('flash_message', ' Subscription was not deleted!');
+            Session::flash('error_message', ' Subscription was not deleted!');
             return redirect()->back();
         }
     }

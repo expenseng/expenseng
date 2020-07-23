@@ -19,9 +19,16 @@ use App\User;
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contactUs')->name('contact');
+Route::get('/report', 'PageController@error404')->name('error404');
+Route::get('/faq', 'PageController@faq')->name('faq');
+Route::get('/search', 'PageController@search')->name('search');
+Route::get('/handles', 'PageController@handles')->name('handles');
 
 // Feedback
 Route::post('/feedback', 'FeedbackController@create')->name('feedback');
+
+// freedom of acts
+Route::get('/FOIA', 'PageController@FOIA')->name('FOIA');
 
 /**
  * Reports Endpoints
@@ -58,6 +65,13 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
 
 
 /*
+    Terms Of Service Endpoints
+*/
+
+
+Route::get('/accessibility', 'PageController@accessibility');
+
+/*
 |--------------------------------------------------------------------------
 | ADMIN Routes
 |--------------------------------------------------------------------------
@@ -82,7 +96,6 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
     Route::get('/admin/company/edit/{company_id}', 'CompanyController@showEditForm')->name('company.view.edit');
     Route::put('/admin/company/edit/{company_id}', 'CompanyController@editCompany')->name('company.edit');
     Route::delete('/admin/company/delete/{company_id}', 'CompanyController@deleteCompany')->name('company.delete');
-
     Route::get('/admin/ministry/create', 'MinistryController@viewCreateMinistry')->name('ministry.create');
     Route::post('/admin/ministry/create', 'MinistryController@createMinistry')->name('create.ministry');
     Route::get('/admin/ministry/view', 'MinistryController@viewMinistries')->name('ministry.view');
@@ -146,6 +159,9 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
      Route::get('/profile', 'ProfileController@viewProfile')->name('profile');
      Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
 
+     //Settings Page
+     Route::get('/user/settings', 'SettingsController@index')->name('users.settings');
+
      // Cabinet CRUD
      Route::get('/cabinet/create', 'CabinetController@create')
      ->name('cabinet.create');
@@ -188,28 +204,32 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
      Route::delete('/subscribe/delete/{subscription_id}', 'Admin\SubscriptionController@deleteSub')
      ->name('subscribe.delete');
 
-  
       Route::get('/feedback/approve/{id}', 'FeedbackController@approve')
       ->name('feedback.approve');
      Route::get('/feedback/ignore/{id}', 'FeedbackController@ignore')
      ->name('feedback.ignore');
 
-  }
- );
- 
+     // COMMENTS ROUTES
+    Route::get('/comments', 'Admin\CommentController@index')->name('comments');  //Displays the index page for all comments
+
+
+ });
 
 
 
-Auth::routes();
+
+
+
+ Auth::routes();
 
 
 //admin route
-Route::get('/admin', function(){
+ Route::get('/admin', function () {
      return redirect(route('dashboard'));
- }
-);
+ });
 
-Route::get('/startRT', 'TwitterBot@startLiveRetweet');
-Route::get('/stopRT', 'TwitterBot@stopLiveRetweet');
-Route::post('/post_tweet', 'TwitterBot@sendTweet');
-
+ Route::get('/startRT', 'TwitterBot@startLiveRetweet');
+ Route::get('/stopRT', 'TwitterBot@stopLiveRetweet');
+ Route::post('/post_tweet', 'TwitterBot@sendTweet');
+ Route::get('/tweets', 'TwitterBot@getTweet');
+ Route::delete('delete_tweet', 'TwitterBot@delete');

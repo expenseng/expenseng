@@ -1,17 +1,18 @@
 @extends('layouts.master')
 @push('css')
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-{{-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/le-frog/jquery-ui.css"> --}}
-<link rel="stylesheet" href="{{asset('/css/aboutus-header_footer.css')}}">
+<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
+<link rel="stylesheet" href="{{asset('/css/ministry_list_table.css')}}">
+<link rel="stylesheet" href="/css/modal/style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 <title>FG Expense - Profile</title>
 @endpush
 
 @section('content')
 
 
-<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
-<link rel="stylesheet" href="{{asset('/css/ministry_list_table.css')}}">
+
 <!-- Section-->
 <div class="container mt-4 pt-2">
     <div class="container mt-4">
@@ -43,9 +44,9 @@
     <div class="row stats">
         <div class="col">
             <p>Ministry Twitter Handle</p>
-
+            
             @php
-                $ministryHandle = substr($ministry->twitter, 1)
+                $ministryHandle = substr($ministry->twitter, 1)   
             @endphp
             <div class="sub"><h4 id="minwrks" class="twitter-link"> <a href="{!! url("https://twitter.com/$ministryHandle") !!}">{{$ministry->twitter}}</a></h4>
                  <small>{{date('Y')}}</small></div>
@@ -88,7 +89,7 @@
                             </div>
 
                             <div class="col">
-
+                               
                                 <button type="button"  data-toggle="modal" data-target="#filterModal" class="btn btn-success filter"> Select Date <img
                                         src="/img/vector__2_.png"></button>
                             </div>
@@ -123,7 +124,7 @@
                                                 <button id="year" class="btn btn-block btn-date">Year</button>
                                                 </div>
                                             </div>
-                                        </section>
+                                        </section>                   
                                         <br>
                                         <section class="row">
                                             <div class="col-12" >
@@ -166,27 +167,27 @@
                                 <table class="minitable table-bordered">
                                     <thead class="thead">
                                         <th class="first-th text-white"> YEAR</th>
-
+                                       
                                         @foreach($trend as $key => $value)
                                             <th>{{$key}}</th>
                                         @endforeach
-
+                                       
                                     </thead>
 
                                     <tbody>
                                         <tr>
                                             <td class="text-success"> TOTAL<br>AMOUNT </td>
-
+                                            
                                             @foreach($trend as $key => $value)
                                              <td>₦{{ number_format($value, 2) }}</td>
                                             @endforeach
-
+    
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-
+                            
                     </div>
                 </div>
             </div>
@@ -204,7 +205,7 @@
                     $ministerLinkedInHandle = substr($cabinet->linkedIn_handle, 1);
                     $ministerInstagramHandle = substr($cabinet->Instagram_handle, 1);
                 @endphp
-
+                 
             <div class="col-lg-3 card border-top-0 border-left-0 border-right-0">
                 <div class="card-img" style="display:flex; justify-content: center; padding:1.25rem 1.25rem 0;">
                     <img src="{{$cabinet->avatar}}" class="img-fluid" alt="{{$cabinet->name}}">
@@ -214,7 +215,7 @@
                     <p id="minister-name" class="text-center font-weight-bold">{{$cabinet->name}}</p>
                     <p class="text-success text-center">{{$cabinet->role}}</p>
                     </div>
-
+                     
                     <div class="social-handle text-center">
                         @if($ministerFacebookHandle)
                         <a href="#" class="link"><i class="fab fa-facebook" aria-hidden="true"></i></a>
@@ -231,7 +232,7 @@
                     </div>
                 </div>
             </div>
-
+            
                 @endforeach
             @endif
         </div>
@@ -244,10 +245,89 @@
         </div>
     </div>
 </div>
+
+{{-- cabinet member --}}
+
+<h3 style='color: #353A45; text-align:center;margin-top: 15px'>Suggest Cabinet Members</h3>
+     
+<center>
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" style="background: 353A45;margin-bottom: 20px;">
+  Suggest a Cabinet Member
+</button>
+</center>
+
+<!-- Modal -->
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" class="text-light">Suggestion</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form  action=" {!! url('/feedback') !!}" method="POST">
+    {{csrf_field()}}
+    <div class="form-group">
+      <label for="firstName">Firstname</label>
+      <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Firstname">
+    </div>
+    <div class="form-group">
+      <label for="lastName">Lastname</label>
+      <input type="text" name="lastName" class="form-control" id="exampleInputPassword1" placeholder="Lastname">
+    </div>
+    
+    <div class="form-group">
+      <label for="ministry">Select Cabinet</label>
+      <select id="inputState" class="form-control" name="ministry_id">
+        <option selected value="1">Works</option>
+        <option value="Housing">Housing</option>
+        <option value="Interior">Interior</option>
+        <option value="Petroleum">Petroleum</option>
+        <option value="Finance">Finance</option>
+        <option value="Power">Power</option>
+        <option value="Health">Health</option>
+        <option value="Labour">Labour</option>
+        <option value="Environment">Environment</option>
+        <option value="Water Resouirces">Water Resouirces</option>
+        <option value="Communication">Communication</option>
+        <option value="Aviation">Aviation</option>
+        <option value="Defense">Defense</option>
+        <option value="Information">Information</option>
+        <option value="Youths and Sports">Youths and Sports</option>
+        <option value="Police Affairs">Police Affairs</option>
+        <option value="Education">Education</option>
+        <option value="Justice">Justice</option>
+        <option value="Agriculture">Agriculture</option>
+        <option value="Women Affairs">Women Affairs</option>
+      </select>
+    </div>
+   <center>
+    <button type="submit" class="btn btn-success ">Submit</button>
+  </center>
+
+  </form>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
 
 
 @section('js')
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="{{ asset('js/index.js') }}"></script>
 <script src="{{ asset('js/ministry_profile.js') }}" type="text/javascript"></script>
 @endsection

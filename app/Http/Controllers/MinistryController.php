@@ -47,7 +47,10 @@ class MinistryController extends Controller
         ];
         $yearByYear = [];
         for ($x = 0; $x < count($years); $x++) {
-            $filtered = $payments->filter(function ($value, $key) use (
+            $filtered = $payments->filter(function (
+                $value,
+                $key
+            ) use (
                 &$years,
                 $x
             ) {
@@ -87,6 +90,7 @@ class MinistryController extends Controller
      */
     public function profile(Request $request)
     {
+        
         if ($request->has('ministry')) {
             $ministry_name = $request->get('ministry');
             $result = DB::table('ministries')
@@ -100,6 +104,7 @@ class MinistryController extends Controller
             $ministries = $this->getChartData($ministries);
         }
 
+       
         if ($request->ajax()) {
             return view('pages.ministry.cards', compact('ministries'));
         }
@@ -244,11 +249,7 @@ class MinistryController extends Controller
             'sector_id' => 'required|number',
         ]);
         //replace spaces with dash in shortname
-        $ministry_shortname = preg_replace(
-            '/[[:space:]]+/',
-            '-',
-            $request->ministry_shortname
-        );
+        $ministry_shortname = preg_replace('/[[:space:]]+/', '-', $request->ministry_shortname);
 
         //save new ministry
         $new_ministry = new Ministry();
@@ -268,10 +269,11 @@ class MinistryController extends Controller
                     $request->ministry_name .
                     ' to the minstry table',
             ]);
-            echo "<script>alert('New ministry created successfully');
-             window.location.replace('/admin/ministry/view');</script>";
+         
+             Session::flash('flash_message', 'New ministry created successfully!');
+             return redirect('/admin/ministry/view');
         } else {
-            Session::flash('flash_message', 'Cannot create new Ministry!');
+            Session::flash('error_message', 'Cannot create new Ministry!');
             return redirect()->back();
         }
     }
@@ -281,8 +283,15 @@ class MinistryController extends Controller
         if (Gate::denies('edit')) {
             return redirect(route('ministry.view'));
         }
+        
         $details = Ministry::findOrFail($id);
-        return view('backend.ministry.edit')->with(['details' => $details]);
+        $ministry_codes = Ministry::orderBY('code', 'ASC')->where('code', '!=', $details->code)->get();
+        $sectors = Sector::all()->where('id', '!=', $details->sector_id);
+        $sector_id_name = Sector::findOrFail($details->sector_id)->name;
+        return view('backend.ministry.edit')
+        ->with(['details' => $details, 'ministry_codes' => $ministry_codes,
+        'sectors' => $sectors, 'sector_id_name' => $sector_id_name
+        ]);
     }
 
     public function editMinistry(Request $request, $id)
@@ -310,10 +319,10 @@ class MinistryController extends Controller
                 'description' =>
                     'updated ' . $request->ministry_name . ' details',
             ]);
-            echo "<script>alert(' Ministry details edited successfully');
-             window.location.replace('/admin/ministry/view');</script>";
+             Session::flash('flash_message', 'Ministry details edited successfully!');
+             return redirect('/admin/ministry/view');
         } else {
-            Session::flash('flash_message', ' Ministry was not edited!');
+            Session::flash('error_message', ' Ministry was not edited!');
             return redirect()->back();
         }
     }
@@ -334,10 +343,10 @@ class MinistryController extends Controller
                 'description' =>
                     'Admin deleted '.$name.' from the minstries table',
             ]);
-            echo "<script>alert(' Ministry details deleted successfully');
-             window.location.replace('/admin/ministry/view');</script>";
+            Session::flash('error_message', 'Ministry deleted successfully!');
+            return redirect('/admin/ministry/view');
         } else {
-            Session::flash('flash_message', ' Ministry was not deleted!');
+            Session::flash('error_message', ' Ministry was not deleted!');
             return redirect()->back();
         }
     }

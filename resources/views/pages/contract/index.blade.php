@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @push('css')
-<link rel="stylesheet" href="{{ asset('css/aboutus-header_footer.css') }}">
 <link rel="stylesheet" href="{{ asset('css/contract_page.css') }}">
 <title>FG Expense - Contracts Page</title>
 @endpush
@@ -72,4 +71,5 @@
 
 @section('js')
 <script src="{{ asset('js/contract_page.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/index.js') }}"></script>
 @endsection

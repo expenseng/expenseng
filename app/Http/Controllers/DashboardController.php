@@ -49,6 +49,9 @@ class DashboardController extends Controller
             ->limit(7)
             ->get();
 
+
+            
+            
         if (count($total_budgets) > 0) {
             for ($i = 0; $i < count($total_budgets); $i++) {
                 $amount += $total_budgets[$i]->amount;

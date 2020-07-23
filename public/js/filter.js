@@ -5,7 +5,7 @@ $(document).ready(function() {
     /////////////////////////////////////////////////////////////////////
 
         $( function() {
-            $( "#select-date" ).datepicker({
+            $( ".byDatePicker" ).datepicker({
                 dateFormat: 'dd-mm-yy',
                 changeMonth: true,
                 changeYear: true,
@@ -81,46 +81,49 @@ $(document).ready(function() {
             $(this).addClass("active");
      });
 
-        $('#modal').on('click', '.btn', function(e) {
+        $('.modals').on('click', '.btn', function(e) {
+            console.log(e.target.id)
             if(e.target.classList.contains('btn-amount')){
                 $('.btn-amount.active').removeClass("active");
                 $(this).addClass("active");
             }else if(e.target.classList.contains('btn-date')){
                 $('.btn-date.active').removeClass("active");
                 $(this).addClass("active");
-                if($('.btn-date.active').attr('id') === 'month'){
-                    $('#select-date').hide()
-                    $('#select-month').show()   
-                    $('#select-year').hide()
-                }else if($('.btn-date.active').attr('id') === 'day'){
-                    $('#select-date').show()
-                    $('#select-month').hide()
-                    $('#select-year').hide()
-                }else if($('.btn-date.active').attr('id') === 'year'){
-                    $('#select-date').hide()
-                    $('#select-month').hide()
-                    $('#select-year').show()
+                if($('.btn-date.active').hasClass('month')){
+                    $('.byDatePicker').hide()
+                    $('.monthYearPicker').show()   
+                    $('.yearPicker').hide()
+                }else if($('.btn-date.active').hasClass('day')){
+                    $('.byDatePicker').show()
+                    $('.monthYearPicker').hide()
+                    $('.yearPicker').hide()
+                }else if($('.btn-date.active').hasClass('year')){
+                    $('.byDatePicker').hide()
+                    $('.monthYearPicker').hide()
+                    $('.yearPicker').show()
                 }
             }        
         });
 
         let date, sort, active;
 
-        $('#apply-filter').on('click', function(e){
+        $('.apply-filter').on('click', function(e){
             const id = $(this).attr("data-id");
+            console.log(id)
             let invalid = false;
-            
+            console.log($(this).closest('.modal-content').find('.byDatePicker').val())
            
-            if($('.btn-date.active').attr('id') === 'day'){
-                date = $('#select-date').val();
+            if($('.btn-date.active').hasClass('day')){
+                date = $(this).closest('.modal-content').find('.byDatePicker').val();
                 active = 'day';
+                console.log(date)
             }
-            else if($('.btn-date.active').attr('id') === 'month'){
-                date = $('#select-month').val()
+            else if($('.btn-date.active').hasClass('month')){    
+                date = $(this).closest('.modal-content').find('.monthYearPicker').val()
                 active = 'month';
             }
-            else if($('.btn-date.active').attr('id') === 'year'){
-                date = $('#select-year').val();
+            else if($('.btn-date.active').hasClass('year')){        
+                date = $(this).closest('.modal-content').find('.yearPicker').val();
                 active = 'year';
             }
             if($('.btn-amount.active').attr('id') === 'asc'){
@@ -168,37 +171,43 @@ $(document).ready(function() {
             if(sort !== undefined){
                 data.sort = sort;
             }
-           
+            console.log('data gets here', data)
             $.ajax({
-                    url: "/ministry/filterExpenses",
+                    url: "/expense/filterExpensesAll",
                     method: "GET",
                     data: data,
                     success: function(data){
-                        
-                        $('#tbl').html(data)
-                        let reportDate = /\d{4}-\d{2}-\d{2}/.test(date)? formatDate(date) : date
-                        $('#said-date').html(`Date: <span style="color:#1e7e34">${reportDate}</span>`)
-                        $('#expense-table').html(html)
+                        // console.log(data)
+                        const table = e.target.closest('#modal').nextElementSibling;
+                        const tableDate = table.closest('.main-table').querySelector('.said-date');
+                        table.innerHTML = data;
+                        let reportDate = /\d{4}-\d{2}-\d{2}/.test(date)? formatDate(date) : date;
+                        tableDate.innerHTML = `<span style="color:#1e7e34">${reportDate}</span>`;           
+                    },
+                    error: function(error){
+                        console.log(error)
                     }
-
                 })
         })
 
-        $(document).on('click', '.pagination a', function(){
+        $(document).on('click', '.pagination a', function(e){
             event.preventDefault();
             let page = $(this).attr('href').split('page=')[1]
-            fetch_data(page, date, sort)
+            let table = e.target.closest('.table-data');
+            let id = table.dataset.id
+            fetch_data(e, id, table, page, date, sort)
+
         })
 
-        function fetch_data(page, date, sort){
-            const id = $('#apply-filter').attr("data-id");
+        function fetch_data(e, id, table, page, date, sort){
             const data = {id, date, sort};
             $.ajax({
-                url: "/ministry/filterExpenses?page="+page,
+                url: "/expense/filterExpensesAll?page="+page,
                 method: "GET",
                 data: data,
                 success: function(data){
-                    $('#tbl').html(data)                   
+                    // console.log(data)
+                    table.innerHTML = data;          
                 },
                 error: function(error){
                     console.log(error)

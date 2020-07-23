@@ -127,11 +127,11 @@ class CompanyController extends Controller
                     'Added ' . $request->company_name . ' to companies',
             ]);
 
-            echo "<script>alert('New company created successfully');
-             window.location.replace('/admin/company/view');</script>";
+             Session::flash('flash_message', 'New company created successfully!');
+             return redirect('/admin/company/view');
         } else {
-            echo "<script>alert('Cannot create New company');
-            window.location.replace('/admin/company/create');</script>";
+            Session::flash('error_message', ' Cabinet was not deleted!');
+            return redirect()->back();
         }
     }
 
@@ -161,16 +161,15 @@ class CompanyController extends Controller
             'ceo' => $request->company_ceo,
             'twitter' => $request->ceo_handle,
         ]);
-        Activites::create([
+        if ($update) {
+            Activites::create([
             'description' =>
                 'Updated ' . $request->company_name . ' company details',
         ]);
-
-        if ($update) {
-            echo "<script>alert(' Company details edited successfully');
-            window.location.replace('/admin/company/view');</script>";
+            Session::flash('flash_message', 'Company details edited successfully!');
+            return redirect('/admin/company/view');
         } else {
-            Session::flash('flash_message', ' Company was not edited!');
+            Session::flash('error_message', ' Company was not edited!');
             return redirect()->back();
         }
     }
@@ -180,7 +179,6 @@ class CompanyController extends Controller
         if (Gate::denies('delete')) {
             return redirect(route('company.view'));
         }
-
         $username = DB::table('companies')
             ->where('id', $id)
             ->pluck('company_name')
@@ -190,15 +188,14 @@ class CompanyController extends Controller
         $delete = Company::where('id', $id)->delete();
 
         if ($delete) {
+
             Activites::create([
             'description' => 'Admin deleted '.$name.' from the companies table',
         ]);
-
-            echo "<script>alert(' Company  deleted successfully');
-             window.location.replace('/admin/company/view');</script>";
-            ]);
+             Session::flash('error_message', 'Company  deleted successfully!');
+             return redirect('/admin/company/view');
         } else {
-            Session::flash('flash_message', ' Company was not deleted!');
+            Session::flash('error_message', ' Company was not deleted!');
             return redirect()->back();
         }
     }
