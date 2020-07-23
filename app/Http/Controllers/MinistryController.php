@@ -66,7 +66,8 @@ class MinistryController extends Controller
     /**
      * Get Data for Charts
      */
-    public function getChartData($ministries){
+    public function getChartData($ministries)
+    {
         foreach ($ministries as $ministry) {
             $chartData = [];
             $totals = $this->fiveYearTrend($ministry->code)[1];
@@ -86,19 +87,20 @@ class MinistryController extends Controller
      */
     public function profile(Request $request)
     {
-        
-        if($request->has('ministry')){
+        if ($request->has('ministry')) {
             $ministry_name = $request->get('ministry');
-            $result = DB::table('ministries')->where('name', '=', "$ministry_name")->paginate(8);
+            $result = DB::table('ministries')
+                ->where('name', '=', "$ministry_name")
+                ->paginate(8);
             $ministries = $this->getMinistries($result);
             $ministries = $this->getChartData($ministries);
-        }else{
+        } else {
             $data = Ministry::paginate(8);
             $ministries = $this->getMinistries($data);
             $ministries = $this->getChartData($ministries);
         }
-       
-        if($request->ajax()){
+
+        if ($request->ajax()) {
             return view('pages.ministry.cards', compact('ministries'));
         }
         return view('pages.ministry.index', compact('ministries'));
@@ -182,7 +184,7 @@ class MinistryController extends Controller
                 ->paginate(8);
             $ministries = $this->getMinistries($data);
             $ministries = $this->getChartData($ministries);
-            echo $lists.'?';
+            echo $lists . '?';
             return view('pages.ministry.cards', compact('ministries'));
         }
     }
@@ -199,12 +201,10 @@ class MinistryController extends Controller
         }
         $ministry_codes = Ministry::all('code');
         $sectors = Sector::all();
-        return view('backend.ministry.create')
-        ->with([
+        return view('backend.ministry.create')->with([
             'ministry_codes' => $ministry_codes,
-            'sectors' => $sectors
-        ]
-        );
+            'sectors' => $sectors,
+        ]);
     }
 
     /**
@@ -217,12 +217,18 @@ class MinistryController extends Controller
         if (Gate::denies('manage')) {
             return redirect(route('home'));
         }
-        
+
         $ministries = Ministry::all();
+        $recent_activites = Activites::orderBY('id', 'DESC')
+            ->limit(5)
+            ->get();
+        $total_activity = count(Activites::all());
 
         return view('backend.ministry.view')->with([
             'ministries' => $ministries,
-            'count' => 0
+            'recent_activites' => $recent_activites,
+            'total_activity' => $total_activity,
+            'count' => 0,
         ]);
     }
 
@@ -238,7 +244,11 @@ class MinistryController extends Controller
             'sector_id' => 'required|number',
         ]);
         //replace spaces with dash in shortname
-        $ministry_shortname = preg_replace('/[[:space:]]+/','-', $request->ministry_shortname); 
+        $ministry_shortname = preg_replace(
+            '/[[:space:]]+/',
+            '-',
+            $request->ministry_shortname
+        );
 
         //save new ministry
         $new_ministry = new Ministry();
@@ -253,8 +263,10 @@ class MinistryController extends Controller
 
         if ($save_new_ministry) {
             Activites::create([
-            'description' =>
-                'Admin added '.$request->ministry_name.' to the minstry table',
+                'description' =>
+                    'Admin added ' .
+                    $request->ministry_name .
+                    ' to the minstry table',
             ]);
             echo "<script>alert('New ministry created successfully');
              window.location.replace('/admin/ministry/view');</script>";
@@ -295,8 +307,8 @@ class MinistryController extends Controller
         ]);
         if ($update) {
             Activites::create([
-            'description' =>
-                'updated '.$request->ministry_name.' details',
+                'description' =>
+                    'updated ' . $request->ministry_name . ' details',
             ]);
             echo "<script>alert(' Ministry details edited successfully');
              window.location.replace('/admin/ministry/view');</script>";
@@ -311,12 +323,16 @@ class MinistryController extends Controller
         if (Gate::denies('delete')) {
             return redirect(route('ministry.view'));
         }
-
+        $username = DB::table('ministries')
+            ->where('id', $id)
+            ->pluck('ministry_name')
+            ->toArray();
+        $name = implode(' ', $username);
         $delete = Ministry::where('id', $id)->delete();
         if ($delete) {
             Activites::create([
-            'description' =>
-                'Admin deleted a ministry from the minstries table',
+                'description' =>
+                    'Admin deleted '.$name.' from the minstries table',
             ]);
             echo "<script>alert(' Ministry details deleted successfully');
              window.location.replace('/admin/ministry/view');</script>";

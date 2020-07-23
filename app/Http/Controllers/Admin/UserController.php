@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Role;
 use App\Status;
+use App\Activites;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -34,9 +35,17 @@ class UserController extends Controller
         if (Gate::denies('manage-user')) {
             return redirect(route('ministry.view'));
         }
+        $recent_activites = Activites::orderBY('id', 'DESC')
+            ->limit(5)
+            ->get();
+        $total_activity = count(Activites::all());
 
         $users = User::all();
-        return view('backend.users.index')->with('users', $users);
+        return view('backend.users.index')->with([
+            'users' => $users,
+            'recent_activites' => $recent_activites,
+            'total_activity' => $total_activity,
+        ]);
     }
 
     /**
@@ -91,6 +100,11 @@ class UserController extends Controller
 
         $role_id = $request->role_id;
         $user->roles()->attach($role_id);
+
+        Activites::create([
+            'description' =>
+                'Admin Added ' . $request->name . ' to the users table',
+        ]);
 
         Session::flash('flash_message', 'New User successfully added!');
         return redirect()->back();
@@ -153,6 +167,11 @@ class UserController extends Controller
                 'email' => $request->email,
             ]);
 
+            Activites::select([
+                'description' =>
+                    'A Manager updated user ' . $request->name . ' details',
+            ]);
+
             Session::flash('flash_message', 'User updated successfully!');
             return redirect(route('users.view'));
         }
@@ -163,9 +182,15 @@ class UserController extends Controller
             'status_id' => $request->status_id,
         ]);
 
-         DB::table('role_user')->where('id', $id)->update([
-                    'role_id' => $request->role_id,
-         ]);
+        DB::table('role_user')
+            ->where('id', $id)
+            ->update([
+                'role_id' => $request->role_id,
+            ]);
+        Activites::create([
+            'description' =>
+                'Admin updated user ' . $request->name . ' details',
+        ]);
 
         Session::flash('flash_message', 'User updated successfully!');
         return redirect(route('users.view'));
@@ -183,6 +208,14 @@ class UserController extends Controller
         if (Gate::denies('delete')) {
             return redirect(route('users.view'));
         }
+        $username = DB::table('users')
+            ->where('id', $id)
+            ->pluck('name')
+            ->toArray();
+        $name = implode(' ', $username);
+        Activites::create([
+            'description' => 'Admin removed '.$name.' from the users table',
+        ]);
 
         $user = User::findOrFail($id);
         $user->roles()->detach();

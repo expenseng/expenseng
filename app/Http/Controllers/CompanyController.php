@@ -88,10 +88,17 @@ class CompanyController extends Controller
             return redirect(route('profile'));
         }
 
+        $recent_activites = Activites::orderBY('id', 'DESC')
+            ->limit(5)
+            ->get();
+        $total_activity = count(Activites::all());
+
         $companies = Company::all();
 
         return view('backend.company.view')->with([
             'companies' => $companies,
+            'recent_activites' => $recent_activites,
+            'total_activity' => $total_activity,
             'count' => 0,
         ]);
     }
@@ -114,12 +121,12 @@ class CompanyController extends Controller
         $new_company->twitter = $request->ceo_handle;
         $save_new_company = $new_company->save();
 
-        Activites::create([
-            'description' =>
-                'Added ' . $request->company_name . ' to companies',
-        ]);
-
         if ($save_new_company) {
+            Activites::create([
+                'description' =>
+                    'Added ' . $request->company_name . ' to companies',
+            ]);
+
             echo "<script>alert('New company created successfully');
              window.location.replace('/admin/company/view');</script>";
         } else {
@@ -174,17 +181,22 @@ class CompanyController extends Controller
             return redirect(route('company.view'));
         }
 
-        $delete = Company::where('id', $id)->delete();
+        $username = DB::table('companies')
+            ->where('id', $id)
+            ->pluck('company_name')
+            ->toArray();
+        $name = implode(' ', $username);
         
+        $delete = Company::where('id', $id)->delete();
 
         if ($delete) {
+            Activites::create([
+            'description' => 'Admin deleted '.$name.' from the companies table',
+        ]);
+
             echo "<script>alert(' Company  deleted successfully');
              window.location.replace('/admin/company/view');</script>";
-
-            Activites::create([
-                'description' => 'Admin Deleted a company from the companies table',
             ]);
-
         } else {
             Session::flash('flash_message', ' Company was not deleted!');
             return redirect()->back();
