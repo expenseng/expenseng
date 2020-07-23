@@ -217,3 +217,7 @@
 <script src="{{ asset('js/index.js') }}"></script>
 
 @endsection
+
+@section('js')
+<script src="{{asset('js/index.js')}}"></script>
+@endsection
