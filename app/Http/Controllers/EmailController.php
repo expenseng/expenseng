@@ -29,10 +29,10 @@ class EmailController extends Controller
             $url = self::API_URL ."/sendmail/";
             $body = [
                 "recipient" => "expenseng@gmail.com",
-                "sender" => $email,
+                "sender" => "phemmylintry@gmail.com",
                 "subject" => $subject,
                 "body" => $message,
-                "cc" => " ",
+                "cc" => $email,
                 "bcc" => " "
             ];
             $response = $this->client->post($url, ['form_params' => $body]);
