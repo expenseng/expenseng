@@ -11,9 +11,10 @@
 
 @section('content')
 	<!-- Breadcrumb start -->
-    {{ Breadcrumbs::render('expense.ministry') }}
 	<header class="container section-wrapper">
-		<nav aria-label="breadcrumb">
+		{{ Breadcrumbs::render('expense.ministry') }}
+
+		{{-- <nav aria-label="breadcrumb">
 			<ol class="breadcrumb list bg-white">
 				<li class="breadcrumb-item not-active"><a href="{{ url('/') }}">HOME</a></li>
 				<span>&#8226;</span>
@@ -21,7 +22,7 @@
 				<span>&#8226;</span>
 				<li class="breadcrumb-item active" aria-current="page"><a href="{{ url('/expense/ministry') }}">MINISTRY SPENDING</a></li>
 			</ol>
-		</nav>
+		</nav> --}}
 	</header>
 	<section>
 		<div class="container ">
