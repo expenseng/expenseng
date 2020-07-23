@@ -49,7 +49,10 @@ Route::patch('/comments/{commentId}/votes/downvote', 'CommentController@downvote
  */
 Route::post('/citizens', 'CitizenController@userApi');
 
-
+/**
+ * Email sending API
+ */
+Route::post('/sendmail', 'EmailController@sendMail')->name('sendmail');
 
 // ADMIN - Comments API Calls
  Route::group(['prefix' => '', 'middleware' => ['api'] ], function() {
