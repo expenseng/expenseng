@@ -262,6 +262,9 @@ class Scrapping
 
     public function filterUrl(string $url)
     {
+        if(preg_match('/2018/',$url)){
+            return ['link'=>$url ,'type' => explode('/', $url)[4],'parsed'=>false];
+        }
         return ['link'=>$url ,'type' => explode('/', $url)[5],'parsed'=>false];
     }
 
