@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @push('css')
+<link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
 <link rel="stylesheet" href="{{ asset('css/contract_page.css') }}">
 <title>FG Expense - Contracts Page</title>
 @endpush
@@ -8,7 +9,7 @@
 @section('content')
 	<section>
       <div class="container">
-{{ Breadcrumbs::render('contractors') }}
+      {{ Breadcrumbs::render('contractors') }}
         <h1 class="ws-10 font-weight-bold">Contracted Companies and Organisations</h1>
         <br />
         <div class="row">

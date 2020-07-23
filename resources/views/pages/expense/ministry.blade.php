@@ -4,7 +4,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   	<link rel="stylesheet" href="{{ asset('css/ministry-report-table.css') }}">
-	  <link rel="stylesheet" href="{{ asset('css/filter.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/filter.css') }}">
+	<link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
 	<script src="https://kit.fontawesome.com/8f691340fb.js" crossorigin="anonymous"></script>
 @endpush
@@ -27,7 +28,7 @@
 	<section>
 		<div class="container ">
 			<div class="row">
-				<div class="col-md-8 section-heading">
+				<div class="col-md-12 section-heading">
 					<h1 class="section-heading-title">Ministry Spending</h1>
                     <p class="section-heading-paragraph">ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities across Nigeria.</p>
 

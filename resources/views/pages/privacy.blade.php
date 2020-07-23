@@ -7,8 +7,8 @@
 @endpush
 
 @section('content')
-{{ Breadcrumbs::render('privacy') }}
     <div class="container">
+        {{ Breadcrumbs::render('privacy') }}
         <h1>Privacy Policy</h1>
 
         <h3>Collection and disclosure of information</h3> 
@@ -49,4 +49,9 @@
         <p>As practices change, this policy may change, as well. Changes to the policy shall not apply retroactively.</p>
     </div>
   
+    @endsection
+    @section('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous"></script>
+    <script src="{{asset('/js/index.js')}}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @endsection
