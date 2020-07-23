@@ -17,9 +17,9 @@
                                 <div class="dropdown">
                                     <i class="fas fa-ellipsis-h grey-text dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="Edit">Edit</a>
-                                        <a class="dropdown-item" href="Delete">Delete</a>
-                                        <a class="dropdown-item" href="Flag">Flag</a>
+                                        <a class="dropdown-item" href="#" @click.prevent="edit(data.commentId)">Edit</a>
+                                        <a class="dropdown-item" href="#" v-if="data.ownerId == comment.email" @click.prevent="doDelete('parent', data.commentId)">Delete</a>
+                                        <a class="dropdown-item" href="#" @click.prevent="flag(data.commentId)">Flag</a>
                                     </div>
                                 </div>
                             </div>
@@ -40,7 +40,7 @@
             <h2 class="text-center">No comments found for this resource.</h2>
         </div>
         
-        <comment v-on:newComment="pushNewComment"></comment>
+        <comment v-on:newComment="pushNewComment" :editContent="editContent"></comment>
     </div>
 </template>
 
@@ -61,6 +61,7 @@ export default {
             text: '',
             busy: true,
             comments: [],
+            editContent: null,
             origin: document.location.pathname, //we are using this as the origin/resourcename
         }
     },
@@ -96,6 +97,18 @@ export default {
     methods: {
         pushNewComment(comment){
             this.comments.push(comment);
+        },
+
+        edit(){
+            this.editContent = "This is the comment we are editing";
+        },
+
+        flag(){
+
+        },
+
+        doDelete(){
+
         }
     },
 

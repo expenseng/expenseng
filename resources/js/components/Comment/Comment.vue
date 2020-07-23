@@ -65,6 +65,11 @@ export default {
             required: false,
             type: String,
             default: ""
+        },
+        editContent:{
+            required: false,
+            type: String,
+            default: null
         }
     },
 
@@ -136,6 +141,18 @@ export default {
             
             this.hideSmallComment = false; //show the small comment box     
         },
+    },
+
+    mounted() {
+        if(this.editContent){
+            this.comment = this.editContent;
+        }
+    },
+
+    watch: {
+        editContent(newValue, oldValue){
+            this.comment = newValue;
+        }
     },
 
 }
