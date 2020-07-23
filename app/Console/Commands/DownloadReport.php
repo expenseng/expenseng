@@ -41,13 +41,10 @@ class DownloadReport extends Command
     {
         try {
             $scrapping = new Scrapping();
-            $payment = $scrapping->openTreasury('2020')->latest()->initialLogToDatabase();
             $payment = $scrapping->openTreasury('2019')->latest()->initialLogToDatabase();
             $payment = $scrapping->openTreasury('2018')->latest()->initialLogToDatabase();
-            $budget_funcCat = $scrapping->openTreasury('2020', Scrapping::monthlyBudgetPattern)->initialLogToDatabase();
             $budget_funcCat = $scrapping->openTreasury('2019', Scrapping::monthlyBudgetPattern)->initialLogToDatabase();
             $budget_funcCat = $scrapping->openTreasury('2018', Scrapping::monthlyBudgetPattern)->initialLogToDatabase();
-            $budget_qfuncCat = $scrapping->openTreasury('2020', Scrapping::quarterlyBudgetPattern)->initialLogToDatabase();
             $budget_qfuncCat = $scrapping->openTreasury('2018', Scrapping::quarterlyBudgetPattern)->initialLogToDatabase();
             $budget_qfuncCat = $scrapping->openTreasury('2019', Scrapping::quarterlyBudgetPattern)->initialLogToDatabase();
             echo "loggedTodatabase \n";
