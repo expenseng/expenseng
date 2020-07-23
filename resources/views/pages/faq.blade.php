@@ -1,13 +1,15 @@
 @extends('layouts.master')
 
 @push('css')
+  <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
   <link rel="stylesheet" href="{{asset('css/faq.css') }}">
   <title>FG Expense - FAQ</title>
 @endpush
 
 
 @section('content')
-    <div class="container">
+{{ Breadcrumbs::render('FAQ') }}
+    <div class="container faq">
         <h1>FAQ</h1>
 
         <h4>What is ExpenseNG?</h4>
