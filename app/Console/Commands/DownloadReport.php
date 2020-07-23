@@ -13,7 +13,7 @@ class DownloadReport extends Command
      *
      * @var string
      */
-    protected $signature = 'DailyPaymentReport';
+    protected $signature = 'ReportLogging';
 
     /**
      * The console command description.
@@ -39,25 +39,12 @@ class DownloadReport extends Command
      */
     public function handle()
     {
-        $link = new Scrapping();
         try {
-            $result = $link->openTreasury('2020')->latest()->download();
-            if ($result) {
-                echo "downloaded to the resource folder \n";
-            } else {
-                echo "resource was not found \n";
-            }
-        } catch (\Exception $e) {
-            $this->error('error occurred');
-        }
-        $link = new Scrapping();
-        try {
-            $result = $link->openTreasury('2020',Scrapping::monthlyBudgetPattern)->filterClassification(Scrapping::FGN)->latest()->download();
-            if ($result) {
-                echo "downloaded to the resource folder \n";
-            } else {
-                echo "resource was not found \n";
-            }
+            $scrapping = new Scrapping();
+            $payment = $scrapping->openTreasury('2020')->latest()->logToDatabase();
+            $budget_funcCat = $scrapping->openTreasury('2020', Scrapping::monthlyBudgetPattern)->filterClassification()->latestAll()->logToDatabase();
+            $budget_qfuncCat = $scrapping->openTreasury('2020', Scrapping::quarterlyBudgetPattern)->filterClassification()->latestALL()->logToDatabase();
+            echo "loggedTodatabase \n";
         } catch (\Exception $e) {
             $this->error('error occurred');
         }
