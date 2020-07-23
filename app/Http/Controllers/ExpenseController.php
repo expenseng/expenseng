@@ -56,7 +56,8 @@ class ExpenseController extends Controller
 
     public function filterExpensesAll(Request $request)
     { 
-        $givenTime = date('Y-m-d');
+        // $givenTime = date('Y-m-d');
+        $givenTime = date('Y');
         $id = $request->query('id');
         echo 'query_id: '. $request->query('id');
         echo "<br />";
