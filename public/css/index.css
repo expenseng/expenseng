@@ -96,9 +96,9 @@ body{
     cursor: pointer;
 }
 .banner{
-    height: /* 90% */ 100vh;
+    height: 100vh;
     color: white;
-    margin: 0 0 5rem 3rem;
+    margin: -.5rem 0 5rem 3rem;
 }
 .scroll-down{
     width: 100%;
