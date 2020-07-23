@@ -9,7 +9,7 @@
 @section('content')
 	<section>
       <div class="container">
-        {{ Breadcrumbs::render('contractors') }}
+{{ Breadcrumbs::render('contractors') }}
         <h1 class="ws-10 font-weight-bold">Contracted Companies and Organisations</h1>
         <br />
         <div class="row">
@@ -20,19 +20,23 @@
         </div>
         <br>
         <br>
-        <div class="container contract-awarded">
-      <div class="container-fluid">
+        <br><div class="contract-awarded">
+      <div class="container">
         <div class="row">
           <div class="col-md-6 pt-2 paragraph">
             <p style="padding:0;">COMPANIES AND TOTAL AMOUNT AWARDED</p>
             <hr>
           </div>
           <div id="search-area" class="offset-md-1 col-md-5 mt-3 mt-md-0">
-            <input onkeyup="doFilter()" type="search" id="searchInput" class="form-control form-control-lg mb-2 se" placeholder="&#xf002; Search for companies and Organisations" />
+          <div class="input1">
+                <img class="img-search" src="{{ asset('/img/search-icon.png') }}" alt="icon">
+            <input onkeyup="doFilter()" type="search" id="searchInput" class="form-control form-control-lg mb-2 se" placeholder="Search for companies and Organisations" style="font-family:'Lato';"/>
           </div>
         </div>
       </div>
     </div>
+
+
     </section>
 
     <br />
