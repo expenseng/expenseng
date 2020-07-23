@@ -53,7 +53,7 @@
                                 <a href="{{ route('handles') }}">Government handles</a>
                             </li>
                             <li class="section-footer-links">
-                                <a href="{{ route('login') }}">Login</a>
+                                <a href="{{ route('login') }}">admin</a>
                             </li>
                         </ul>
                     </div>
