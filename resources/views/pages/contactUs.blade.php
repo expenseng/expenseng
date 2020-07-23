@@ -38,7 +38,7 @@
                     <input type="text"  name="name" class="form-control" id="name" placeholder="Full name">
                 </div>
                 <div class="form-group col-md-12">
-                    <input type="email" name="email" class="form-control" id="email" placeholder="Email Address e.g phemmylintry@gmail.com">
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Email Address">
                 </div>
                 <div class="form-group col-md-12">
                     <input type="text" name="subject" class="form-control" id="subject" placeholder="Subject">
