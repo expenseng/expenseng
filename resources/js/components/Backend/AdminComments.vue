@@ -23,12 +23,12 @@
                                                 <th scope="col" >Replies</th>
                                                 <th scope="col">Votes</th>
                                                 <th scope="col">Flags</th>
-                                                <th scope="col" class="text-center" style="width:12%">Actions</th>
+                                                <th scope="col" class="text-center" style="width:13%">Actions</th>
                                             </tr>
                                         </thead>   
                                         <tbody>
                                             <tr v-for ="(comment, index) in comments" >
-                                                <td>{{comment.createdAt | ago}}</td>
+                                                <td>{{comment.createdAt}}</td>
                                                 <td>{{cleanOrigin(comment.origin)}}</td>
                                                 <td>{{comment.ownerId}}</td>
                                                 <td>{{comment.refId}}</td>
@@ -38,7 +38,7 @@
                                                 <td>{{comment.numOfFlags}}</td>
                                                 <td class="td-lg">
                                                     <a href="#" class="smallbtn " title="edit" data-toggle="modal" data-target=".update-comment-modal" v-on:click="getSingleComment(comment.commentId)"><i class="text-dark fa fa-edit"></i></a>
-                                                    <a href="#" class="smallbtn " title="replies" data-toggle="modal" data-target=".replies-modal" v-on:click="viewReplies(comment.commentId)"><i class=" text-info fa fa-reply"></i></a>
+                                                    <a href="#" class="smallbtn " title="replies" data-toggle="modal" data-target=".replies-modal" v-on:click="viewReplies(comment.commentId, index)"><i class=" text-info fa fa-comment"></i></a>
                                                     <a href="" class="smallbtn " title="flag" v-on:click.prevent="flagComment(comment.commentId, comment.ownerId, index)"><i class="text-danger fa fa-flag"></i></a>
                                                     
                                                 </td>
@@ -46,6 +46,9 @@
                                         </tbody>
                                     </table>
                                 </div>
+                            </div>
+                            <div class="card-footer">
+                                
                             </div>
                         </div>
                     </div>
@@ -63,23 +66,32 @@
                                     <div class="card-body">
                                         <div class="container p-2" >
                                             <div class="container">
-                                                <div class="row container occupy">
+                                                <div class="row occupy">
                                                     <table id="replies" class="table table-striped table-bordered second" style="width:100%">
-                                                        <caption>Replies</caption>
+                                                        <caption v-if="replies[0]" class="small">Replies for Comment {{ replies[0].commentId}}</caption>
                                                         <thead class="thead-dark">
                                                             <tr>
-                                                                <th>avatar</th>
-                                                                <th>author</th>
-                                                                <th>created at</th>
-                                                                <th>content</th>
+                                                                <th>Author</th>
+                                                                <th>Created at</th>
+                                                                <th>Content</th>
+                                                                <th>Flags</th>
+                                                                <th>Votes</th>
+                                                                <th class="text-center" style="width:13%">Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr v-for="reply in replies" :key="reply.replyId">
-                                                                <td><user-image :isSmall="true" :ownerId="reply.ownerId"></user-image></td>
-                                                                <td><p>{{reply.ownerId}} </p></td>
+                                                            <tr v-for="(reply, index) in replies" :key="reply.replyId">
+                                                                <td><p class="small">{{reply.ownerId}} </p></td>
                                                                 <td><p class="ml-3 grey-text small mt-1">{{ reply.createdAt | ago }}</p></td>
-                                                                <td><p>{{ reply.content }}</p></td>
+                                                                <td><p class="small">{{ reply.content }}</p></td>
+                                                                <td><p class="small">{{ reply.numOfFlags }}</p></td>
+                                                                 <td><p class="small">{{ reply.numOfVotes }}</p></td>
+                                                                <td class="td-lg">
+                                                                    <a href="#" class="smallbtn " title="edit" v-on:click="getSingleComment(comment.commentId)"><i class="text-dark fa fa-edit"></i></a>
+                                                                    <a href="" class="smallbtn " title="delete" v-on:click.prevent="deleteReply(reply.commentId, reply.replyId, reply.ownerId, index)"><i class=" text-danger fa fa-trash"></i></a>
+                                                                    <a href="" class="smallbtn " title="flag" v-on:click.prevent="flagReply(reply.commentId, reply.replyId, reply.ownerId, index)"><i class="text-warning fa fa-flag"></i></a>
+                                                                    
+                                                                </td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -89,6 +101,9 @@
                                         </div>  
                                     </div>
                                 </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
                         </div>
                       </div>
                     </div>
@@ -99,7 +114,7 @@
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <div class="mx-auto"><user-image :isSmall="true" :ownerId="singleComment.ownerId"></user-image></div>
+                                <div class="mx-auto" v-if="singleComment[0]"><user-image :isSmall="true" :ownerId="singleComment.ownerId"></user-image></div>
                             </div>
                             <div class="modal-body">
                                 <div class="card">
@@ -150,7 +165,7 @@
 </template>
 
 <script>
-import Comment from '../../Service/CommentService';
+import Comment from '../../Service/AdminCommentService';
 import Replies from '../Comment/Replies'
 import UserImage from '../Comment/UserImage';
 import Username from '../Comment/Username';
@@ -185,11 +200,6 @@ import Username from '../Comment/Username';
                         this.busy = false;
                         this.comments = response.records;
                     });
-
-            window.eventBus.$on('alert', (message) => {
-                this.novinAlert(message);
-    });
-
         },
 
          computed: {
@@ -201,12 +211,12 @@ import Username from '../Comment/Username';
                 return unescape(value)
             },
 
-            viewReplies: function(commentId){
+            viewReplies: function(commentId, index){
                this.comment.fetchReplies( commentId ?? this.commentId )
                 .then(response => {
                     this.busy = false;
                     this.replies = response.records;
-                    console.log(commentId);
+                    this.index = index;
                 })
             },
 
@@ -215,7 +225,7 @@ import Username from '../Comment/Username';
                 .then(response => {
                     this.busy = false;
                     this.$swal('Success', response.message, 'OK');
-                    this.removeItem(this.index);
+                    this.removeComment(this.index);
                 });
 
             },
@@ -248,8 +258,37 @@ import Username from '../Comment/Username';
                 }
             },
 
-            removeItem: function(key) {
+            removeComment: function(key) {
                  Vue.delete(this.comments, key);
+            },
+
+            
+            deleteReply: function(commentId, replyId, ownerId, index) {
+                this.comment.deleteReply(commentId, replyId, ownerId)
+                .then(response => {
+                    this.busy = false;
+                    this.$swal('Success', response.message, 'OK');
+                    this.removeReply(index);
+                    this.comments[this.index].numOfReplies = this.comments[this.index].numOfReplies-1;
+                    
+                });
+
+            },
+
+            
+            flagReply: function(commentId, replyId, ownerId, index) {
+                this.comment.flagReply(commentId, replyId, ownerId)
+                .then(response => {
+                    this.busy = false;
+                    this.$swal('Success', response.message, 'OK');
+                    this.replies[index].numOfFlags = response.data.numOfFlags;
+                });
+
+            },
+
+
+            removeReply: function(key) {
+                 Vue.delete(this.replies, key);
             }
 
         },
