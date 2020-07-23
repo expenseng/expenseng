@@ -35,16 +35,16 @@
             <h2 align="center">Contact Form</h2>
             <form action="{{URL(route('sendmail'))}}" method="POST">
                 <div class="form-group col-md-12">
-                    <input type="text"  name="name" class="form-control" id="name" placeholder="Full name">
+                    <input type="text"  name="name" class="form-control" id="name" placeholder="Full name" required>
                 </div>
                 <div class="form-group col-md-12">
-                    <input type="email" name="email" class="form-control" id="email" placeholder="Email Address">
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Email Address" required>
                 </div>
                 <div class="form-group col-md-12">
-                    <input type="text" name="subject" class="form-control" id="subject" placeholder="Subject">
+                    <input type="text" name="subject" class="form-control" id="subject" placeholder="Subject" required>
                 </div>
                 <div class="form-group col-md-12">
-                    <textarea type="text" class="form-control" id="message" name="message" placeholder="Your message" rows="5"></textarea>
+                    <textarea type="text" class="form-control" id="message" name="message" placeholder="Your message" rows="5" required></textarea>
                 </div>
                 <div class="form-group col-md-12">
                     <button type="submit" class="btn btn-success" name="submitbut" id="submitbut">Submit</button>
