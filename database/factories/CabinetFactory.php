@@ -9,7 +9,7 @@ $factory->define(Cabinet::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'twitter_handle' => $faker->unique()->name,
-        'role' =>$faker->lastName,
-        'ministry_code' => $faker->randomNumber(5)
+        'role' => $faker->lastName,
+        'ministry_code' => $faker->randomNumber(5),
     ];
 });

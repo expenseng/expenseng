@@ -109,8 +109,11 @@ Route::get('/accessibility', 'PageController@accessibility');
  //    Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
 
 
- Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
-     Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
+ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function(){
+     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+      // Matches The "/admin/dashboard" URL
+     Route::delete('/activity/delete/{activity_id}', 'DashboardController@deleteActivity')->name('activity.delete');
+     Route::delete('/activity/delete_all/', 'DashboardController@deleteAllActivity')->name('allactivity.delete');
 
 
      // Expense CRUD

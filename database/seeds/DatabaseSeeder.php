@@ -12,12 +12,12 @@ include 'StatusSeeder.php';
 include 'RoleSeeder.php';
 include 'UserSeeder.php';
 include 'FeedbackSeeder.php';
+include 'ActivitySeeder.php';
 
 class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
-     *
      * @return void
      */
     public function run()
@@ -33,5 +33,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(FeedbackSeeder::class);
+        $this->call(ActivitySeeder::class);
     }
 }
