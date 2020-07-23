@@ -95,7 +95,7 @@ class SubscriptionController extends Controller
 
                     "body" => json_encode([
                         "recipient" => $request->email, //reciever
-                        "sender" => " femiadenuga@mazzacash.com", //sender
+                        "sender" => "subscribexpenseng@gmail.com", //sender
                         "subject" => "EXPENSENG SUBSCRIPTION",
                         "cc" => "",
                         "bcc" => "",
@@ -106,8 +106,9 @@ class SubscriptionController extends Controller
                             Regards.<br>
                         </div>
                         </div>",
-                ])
-                ]);
+                    ])
+                ]
+            );
 
                 $response = json_decode($response->getBody(), true);
 
