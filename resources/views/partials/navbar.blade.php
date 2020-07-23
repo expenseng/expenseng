@@ -2,7 +2,7 @@
 <header class="site-header" id="header">
     <nav class="navbar navbar-expand-lg transparent-bg bg-transparent darkcolor static-nav">
         <div class="container bg-white">
-            <a class="navbar-brand pl-2 section-navbar-logo" href="index.html">
+            <a class="navbar-brand pl-2 section-navbar-logo" href="{{ route('home') }}">
                 <img src="{{asset('images/Logo.svg')}}" alt="logo" class="logo-default">
                 <img src="{{asset('images/Logo.svg')}}" class="logo-scrolled">
             </a>
