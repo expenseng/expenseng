@@ -56,8 +56,18 @@ class ExpenseController extends Controller
 
     public function filterExpensesAll(Request $request)
     { 
-        $givenTime = date('Y-m-d');
-        $id = $request->get('id');
+        // $givenTime = date('Y-m-d');
+        $givenTime = date('Y');
+        $id = $request->query('id');
+        echo 'query_id: '. $request->query('id');
+        echo "<br />";
+        echo 'query_date: '. $request->query('date');
+        echo "<br />";
+        echo 'input: '. $request->input('id');
+        echo "<br />";
+        echo 'fullurl: '. $request->fullUrl();
+        echo "<br />";
+        var_dump($request->all());
         
         if($id === 'apply-filter'){
             $option = "!=";
@@ -66,7 +76,7 @@ class ExpenseController extends Controller
         }
         // echo $id;
         if ($request->has('date')){
-            $givenTime = $request->get('date');
+            $givenTime = $request->query('date');
         }
         
         $day_pattern = '/(\d{4})-(\d{2})-(\d{2})/';
@@ -88,7 +98,7 @@ class ExpenseController extends Controller
         };
 
         if ($request->has('sort')) {
-            $data = $data->orderby('amount', $request->get('sort'));
+            $data = $data->orderby('amount', $request->query('sort'));
         } else {
             $data = $data->orderby('payment_date', 'desc');
         }
