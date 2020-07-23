@@ -5,7 +5,7 @@
             <div class="row d-flex justify-content-between">
                 <div class="col-md-3 footer-brand pt-2 d-flex flex-column">
                     <a href="{{ url('/') }}">
-                        <img src=" {{asset('images/Logo.svg')}}" class="ft">
+                        <img src=" {{asset('images/Frame 390.svg')}}" class="ft" alt="Logo">
                     </a>
                     <a href="https://twitter.com/expenseng" class="pt-3 footer-twitter"><i class="fab fa-twitter" aria-hidden="true"></i> @expenseng</a>
                 </div>
@@ -65,6 +65,7 @@
                     <a href="/accessibility">Accessibility</a>
                     <a href=""> | Privacy Policy</a>
                     <a href="/FOIA"> | Freedom of Information Act</a>
+                    <a href="/faq"> | Faq</a>
                 </div>
                 <div class="col-md-3">
                     <a href=""><span>&#169</span>2020EXPENSENG.com</a>
