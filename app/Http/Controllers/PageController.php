@@ -14,6 +14,10 @@ class PageController extends Controller
         return view('pages.contactUs');
     }
 
+    public function search()
+    {
+        return view('pages.search');
+    }
     public function ministryGraph()
     {
         return view('pages.ministry-report-graph');
@@ -32,6 +36,10 @@ class PageController extends Controller
     public function about()
     {
         return view('pages.aboutus');
+    }
+
+    public function FOIA() {
+        return view('pages.freedomofact');
     }
 
     public function error404()
@@ -88,6 +96,11 @@ class PageController extends Controller
         return view('pages.companysearch');
     }
 
+    public function handles()
+    {
+        return view('pages.handles');
+    }
+
     public function companySearchShow()
     {
         request()->validate([
@@ -125,5 +138,10 @@ class PageController extends Controller
     public function showProfile()
     {
         return view('pages.ministry_profile');
+    }
+
+    public function accessibility()
+    {
+        return view('pages.terms.accessibility');
     }
 }

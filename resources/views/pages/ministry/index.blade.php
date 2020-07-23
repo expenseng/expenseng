@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @push('css')
-  <link rel="stylesheet" href="{{ asset('css/aboutus-header_footer.css') }}">
   <link rel="stylesheet" href="{{asset('css/ministry_list.css') }}">
   <title>FG Expense - Ministry List</title>
 @endpush
@@ -9,24 +8,6 @@
 
 @section('content')
 {{ Breadcrumbs::render('ministries') }}
-  <div class="wrapper">
-    <div class="content-1">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-6">
-            <ul class="d-flex">
-              <li class="items"><a href="#">HOME <span class="circle-1"></span></a></li>
-
-              <li class="items"><a href="#">PROFILES</a><span class="circle-1"></span></li>
-
-              <li class="items"><a href="#">MINISTRIES</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
     <div class="main-header">
       <div class="container-fluid">
         <div class="row">
@@ -74,6 +55,7 @@
 @endsection
 
 @section('js')
+<script src="{{ asset('js/index.js') }}"></script>
   <script src="{{ asset('js/ministry_list.js') }}" type="text/javascript"></script>
 @endsection
 

@@ -17,6 +17,8 @@ html{
     --fs-reg: 1.23rem;
     --fs-h5: 1rem;
     --fs-h6: 0.85rem;
+    --fs-nav: 1rem;
+    --fs-foot: 0.75rem;
 }
 /* Back to top */
 
@@ -516,6 +518,27 @@ p.profile{
     width: 10rem;
     padding: 0.4rem 3rem;
 }
+.accessibility-text{
+    font-family: 'Lato', sans-serif;
+}
+.accessibility-text h1{
+    font-weight: bold;
+    color: #353A45;
+}
+.accessibility-text p{
+    text-align: left;
+    line-height: 152%;
+    color: #353A45;
+}
+.accessibility-text li{
+    padding: .75rem 0;
+}
+.accessibility-text a{
+    color: #00945E;
+}
+.accessibility-text a:active{
+    color: #005938;
+}
 
 /* Responsiveness */
 
@@ -528,6 +551,8 @@ p.profile{
        --fs-reg: 1.23rem;
        --fs-h5: 1rem;
        --fs-h6: 0.85rem;
+       --fs-nav: 1.2rem;
+       --fs-foot: 1rem;
    }
 }
 
@@ -540,6 +565,8 @@ p.profile{
         --fs-reg: 1.03rem;
         --fs-h5: 0.8rem;
         --fs-h6: 0.65rem;
+        --fs-nav: 0.8rem;
+        --fs-foot: 0.75rem;
     }
     .twt-handle{
         padding: 0.5rem 1.3rem;
@@ -624,6 +651,8 @@ p.profile{
         --fs-reg: 0.73rem;
         --fs-h5: 0.7rem;
         --fs-h6: 0.55rem;
+        --fs-nav: 1rem;
+        --fs-foot: 0.75rem;
     }
 }
 
@@ -662,6 +691,8 @@ p.profile{
         --fs-reg: 0.63rem;
         --fs-h5: 0.6rem;
         --fs-h6: 0.45rem;
+        --fs-nav: 1rem;
+        --fs-foot: 0.75rem;
     }
     .twt-handle{
         padding: 0.3rem 0.8rem;
@@ -830,6 +861,8 @@ p.profile{
         --fs-reg: 0.63rem;
         --fs-h5: 0.9rem;
         --fs-h6: 0.45rem;
+        --fs-nav: 1rem;
+        --fs-foot: 0.75rem;
     }
     .twt-handle img {
         width: 20px;

@@ -31,7 +31,7 @@ class FeedbackController extends Controller
         Session::flash('flash_message', 'A new Cabinet member has been created!');
         Session::flash('alert-class', 'alert-info');
         // $request->session()->flash('status', 'Cabinet was Posted!');
-        return redirect('/')->with('success','Cabinet member  Posted Succesfully!');
+        return redirect('/')->with('success', 'Cabinet member  Posted Succesfully!');
     }
 
     public function approve(Request $request, $id)
@@ -50,7 +50,7 @@ class FeedbackController extends Controller
         Feedback::findOrFail($id)->update(['isApprove'=> '1']);
 
         if ($cabinet->save()) {
-            Session::flash('success','Cabinet Member has been approved Successfully!');
+            Session::flash('success', 'Cabinet Member has been approved Successfully!');
             
             return redirect('/admin/dashboard');
         }
@@ -61,7 +61,6 @@ class FeedbackController extends Controller
         $feedback = Feedback::find($id);
         $feedback->delete();
         
-        return redirect()->route('dashboard')->with('success','Cabinet Member Ignored');
+        return redirect()->route('dashboard')->with('success', 'Cabinet Member Ignored');
     }
-
 }

@@ -1,18 +1,17 @@
 @extends('layouts.master')
 @push('css')
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-{{-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/le-frog/jquery-ui.css"> --}}
-<link rel="stylesheet" href="{{asset('/css/aboutus-header_footer.css')}}">
+<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
+<link rel="stylesheet" href="{{asset('/css/ministry_list_table.css')}}">
+<link rel="stylesheet" href="/css/modal/style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 <title>FG Expense - Profile</title>
 @endpush
 
 @section('content')
 
 
-<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
-<link rel="stylesheet" href="{{asset('/css/ministry_list_table.css')}}">
-<link rel="stylesheet" href="/css/modal/style.css">
 
 <!-- Section-->
 <div class="container mt-4 pt-2">
@@ -329,5 +328,6 @@
 
 @section('js')
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="{{ asset('js/index.js') }}"></script>
 <script src="{{ asset('js/ministry_profile.js') }}" type="text/javascript"></script>
 @endsection
