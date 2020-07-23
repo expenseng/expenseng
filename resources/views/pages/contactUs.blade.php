@@ -4,8 +4,11 @@
   <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
   <link rel="stylesheet" href="{{ asset('css/contactUs.css') }}">
 @endpush
+
 @section('content')
+    <div class="container">
 {{ Breadcrumbs::render('contact') }}
+    </div>
     <!-- Banner Starts -->
     <section class="container">
       <div class="row" id="banner">
@@ -20,9 +23,12 @@
         </div>
       </div>
     </section>
+
     <!-- Banner Ends -->
 
+
     <!-- Form and side banner Starts -->
+
     <article class="container contact">
         <div class="row">
           <div class="col-md-6">

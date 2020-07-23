@@ -82,3 +82,7 @@ Breadcrumbs::for('privacy', function ($trail) {
     $trail->parent('home');
     $trail->push('Privacy', route('privacy'));
 });
+Breadcrumbs::for('handles', function ($trail){
+   $trail->parent('home');
+   $trail->push('handles',route('handles'));
+});

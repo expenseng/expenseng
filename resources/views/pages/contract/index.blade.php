@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @push('css')
 <link rel="stylesheet" href="{{ asset('css/contract_page.css') }}">
+<link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
 <title>FG Expense - Contracts Page</title>
 @endpush
 
@@ -33,10 +34,10 @@
           </div>
         </div>
       </div>
-
     </div>
 
-  </header>
+
+    </section>
 
     <br />
     <div id="company" class="container">

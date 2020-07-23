@@ -2,7 +2,7 @@
     background-color: #f2f2f2;
     font-weight: bold;
 }
-  
+
 .first li a{
     color: #6c757d;
 }
@@ -14,7 +14,7 @@
     text-decoration: none;
     color: #00945E !important;
 }
-  
+
 .first li.active{
     color: #00945E !important;
 }
