@@ -12,3 +12,7 @@ h1{
     color: #00945E;
     text-decoration: underline;
 }
+
+.back-top{
+    display: none;
+}
