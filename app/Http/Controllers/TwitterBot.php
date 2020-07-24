@@ -148,10 +148,16 @@ class TwitterBot extends Controller
                 $tweet = new Tweet($request->tweet);
                 $tweet_details = $tweet->send();
                 $response = 'tweet sent';
-            Activites::create([
-            'description' =>
-                'New tweet Made',
-            ]);
+                Activites::create([
+                    'description' =>
+                        'New tweet Made',
+                    'username' =>
+                        'AdminUser',
+                    'privilage' =>
+                        'admin',
+                    'status' =>
+                        'pending',
+                ]);
                 return Response($response);
             } catch (\Exception $exception) {
                 return Response::json(array("errors" => 'error occured'), 422);
