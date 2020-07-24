@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -15,34 +15,38 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-class ProfileController extends Controller
+class UserController extends Controller
 {
-    public function viewProfile()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function __construct()
     {
-        $recent_activites = Activites::where('status', 'pending')->orderBY('id', 'DESC')
+        $this->middleware('auth');
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        if (Gate::denies('manage-user')) {
+            return redirect(route('ministry.view'));
+        }
+           $recent_activites = Activites::where('status', 'pending')->orderBY('id', 'DESC')
             ->limit(7)
             ->get();
         $total_activity = count(Activites::all()->where('status', 'pending'));
-        $user = Auth::user();
-        return view('backend.profile.index')->with(
-            [
-            'user' => $user,
+
+        $users = User::all();
+        return view('backend.profile.index')->with([
+            'users' => $users,
             'recent_activites' => $recent_activites,
             'total_activity' => $total_activity,
-            ]
-        );
-    }
-    
-    //dashboard profile page
-    public function index()
-    {
-
-        if (Gate::denies('manage')) {
-            return redirect(route('profile'));
-        }
-
-        $user = Auth::user();
-        return view('backend.profile.index')->with(['user' => $user]);
+        ]);
     }
 
     /**
@@ -50,7 +54,20 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+    public function create()
+    {
+        if (Gate::denies('add')) {
+            return redirect(route('profile.view'));
+        }
+
+        $roles = Role::select('name', 'id')->get();
+        $status = Status::select('name', 'id')->get();
+        return view('backend.profile.create')->with([
+            'roles' => $roles,
+            'status' => $status,
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -59,7 +76,7 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->get(), [
+        $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
             'email' => [
                 'required',
@@ -69,10 +86,6 @@ class ProfileController extends Controller
                 'unique:users',
             ],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'phone' => 'required',
-            'gender' => ['required','string','max:20'],
-            'image' => 'required',
-            'dob' => 'required',
             'role_id' => '',
             'status_id' => '',
         ]);
@@ -81,7 +94,9 @@ class ProfileController extends Controller
 
         $user = User::create([
             'name' => $request->name,
-            
+            'email' => $request->email,
+            'status_id' => $request->status_id,
+            'password' => Hash::make($request->password),
         ]);
 
         $role_id = $request->role_id;
@@ -120,15 +135,16 @@ class ProfileController extends Controller
     public function edit($id)
     {
         if (Gate::denies('manage-user')) {
-            return redirect(route('profile'));
+            return redirect(route('users.view'));
         }
 
         $user = User::findOrFail($id);
-        
+        $roles = Role::all();
+        $status = Status::select('name', 'id')->get();
         return view('backend.profile.edit')->with([
             'user' => $user,
-            
-            
+            'roles' => $roles,
+            'status' => $status,
         ]);
     }
 
@@ -143,36 +159,31 @@ class ProfileController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
-            'phone_number' => '',
-            'gender' => ['','string','max:20'],
-            'image' => '',
-            'date_of_birth' => '',
-            
+            'email_address' => 'sometimes|required|email|unique:users',
+            'role_id' => '',
+            'status_id' => '',
         ]);
 
         $validator->validate();
 
         if (Gate::denies('add')) {
-            return redirect(route('profile'));
+            return redirect(route('profile.view'));
         }
 
         User::where('id', $id)->update([
             'name' => $request->name,
-            'phone_number' => $request->phone_number,
-            'gender' => $request->gender,
-            'image' => $request->image,
-            'date_of_birth' => $request->date_of_birth,
-            
+            'email' => $request->email,
+            'status_id' => $request->status_id,
         ]);
 
-        
+        DB::table('role_user')
+            ->where('id', $id)
+            ->update([
+                'role_id' => $request->role_id,
+            ]);
          User::where('id', $id)->update([
                 'name' => $request->name,
-                'phone_number' => $request->phone_number,
-                'gender' => $request->gender,
-                'image' => $request->image,
-                'date_of_birth' => $request->date_of_birth,
-              
+                'email' => $request->email,
             ]);
             $auth = Auth::user();
             Activites::select([
@@ -186,7 +197,7 @@ class ProfileController extends Controller
 
 
         Session::flash('flash_message', 'User updated successfully!');
-        return redirect(route('profile'));
+        return redirect(route('profile.view'));
     }
 
     /**
@@ -199,7 +210,7 @@ class ProfileController extends Controller
     {
         //checkcsd
         if (Gate::denies('delete')) {
-            return redirect(route('profile'));
+            return redirect(route('profile.view'));
         }
         $username = DB::table('users')
             ->where('id', $id)

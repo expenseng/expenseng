@@ -64,10 +64,6 @@ Route::get('/project-modal', 'PageController@projectModal')->name('project-modal
 Route::get('/ministry/getUrl', 'PageController@ministryGetUrl')->name('ministry_get_url');
 Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses')->name('ministry_filter_expenses');
 
-/**
- * Email sending API
- */
-Route::post('/sendmail', 'EmailController@sendMail')->name('sendmail');
 
 /*
     Terms Of Service Endpoints
@@ -171,7 +167,10 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
      //Profile Page
      Route::get('/profile', 'ProfileController@viewProfile')->name('profile');
      Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
-
+     Route::get('/profile/edit/{user_id}', 'ProfileController@edit')->name('users.edit');
+     Route::put('/profile/edit/{user_id}', 'ProfileController@update')->name('users.update');
+     Route::put('/profile/change_password/{user_id}', 'UserController@updatePassword')->name('users.change_password');
+     
      //Settings Page
      Route::get('/user/settings', 'SettingsController@index')->name('users.settings');
 

@@ -38,7 +38,7 @@
         </div>
         @endisset
                 <div class="col-2 col-lg-2 col-md-12 col-sm-12 px-0">
-                    <button class="button border rounded bg-danger text-white bth-block btn-danger shadow-lg p-4 m-1 tweetDelete" onclick='jQuery.fn.delete("{{$tweet->id}}")' value="{{$tweet->id}}">Delete</button>
+                    <button class="button border rounded bth-block btn-danger shadow-lg p-4 m-1 tweetDelete" onclick='jQuery.fn.delete("{{$tweet->id}}")' value="{{$tweet->id}}">Delete</button>
                 </div>
             </div>
         </div>
