@@ -30,6 +30,6 @@ class RecentActivities extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dashboard_activites');
+        Schema::dropIfExists('activites');
     }
 }
