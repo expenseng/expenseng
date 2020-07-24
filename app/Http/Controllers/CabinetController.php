@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Contains several functions for handling cabinets
@@ -44,12 +45,12 @@ class CabinetController extends Controller
         }
 
         $cabinets = Cabinet::all();
-        $recent_activites = Activites::orderBY('id', 'DESC')
-            ->limit(5)
+        $recent_activites = Activites::where('status', 'pending')->orderBY('id', 'DESC')
+            ->limit(7)
             ->get();
-        $total_activity = count(Activites::all());
-        return view('backend.cabinet.view')
-        ->with(
+        $total_activity = count(Activites::all()->where('status', 'pending'));
+        
+        return view('backend.cabinet.view')->with(
             [
             'cabinets' => $cabinets,
             'recent_activites' => $recent_activites,
@@ -85,13 +86,16 @@ class CabinetController extends Controller
             $new_cabinet->avatar = $request->image;
             $new_cabinet->ministry_code = $request->code;
             $save_new_cabinet = $new_cabinet->save();
-
+            $auth = Auth::user();
             if ($save_new_cabinet) {
-                Activites::create([
-                'description' =>
-                'Admin added '.$request->name.'as a new cabinet member',
 
-            ]);
+            Activites::create([
+            'description' => $auth->name.' added '.$request->name.' to the cabinet members table',
+            'username' => $auth->name,
+            'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+            'status' => 'pending'
+        ]);     
+
                 Session::flash('flash_message', $request->name. ' added to cabinet Successfully!');
                 return redirect(route('cabinet.view'));
 
@@ -121,14 +125,16 @@ class CabinetController extends Controller
             $new_cabinet->avatar = $base_url.'/uploads'. '/'.$imageName;
             $new_cabinet->ministry_code = $request->code;
             $save_new_cabinet = $new_cabinet->save();
-
+            $auth = Auth::user();
             if ($save_new_cabinet) {
-                 Activites::create([
-            'description' =>
-                'Admin added '.$request->name.' as a new cabinet member',
+            Activites::create([
+            'description' => $auth->name.' added '.$request->name.' to the cabinet members table',
+            'username' => $auth->name,
+            'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+            'status' => 'pending'
+        ]);     
 
-            ]);
-
+      
                 Session::flash('flash_message', $request->name. ' added to cabinet Successfully!');
                 return redirect(route('cabinet.view'));
 
@@ -177,10 +183,14 @@ class CabinetController extends Controller
                 ]
 
             );
-
+            $auth = Auth::user();
             if ($update) {
-             Activites::create(['description' =>'edited cabinet member '.$request->name.' details',]);
-
+            Activites::create([
+            'description' => $auth->name.' edited cabinet member '.$request->name.' details',
+            'username' => $auth->name,
+            'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+            'status' => 'pending'
+        ]);     
                 Session::flash('flash_message', ' Cabinet details edited successfully!');
                 return redirect(route('cabinet.view'));
             } else {
@@ -209,9 +219,16 @@ class CabinetController extends Controller
                 'ministry_code' => $request->code,
                 ]
             );
+            $auth = Auth::user();
 
             if ($update) {
-                Activites::create(['description' =>'edited cabinet member '.$request->name.' details',]);
+                
+            Activites::create([
+            'description' => $auth->name.' edited cabinet member '.$request->name.' details',
+            'username' => $auth->name,
+            'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+            'status' => 'pending'
+        ]);     
                  Session::flash('flash_message', ' Cabinet details edited successfully!');
                 return redirect(route('cabinet.view'));
             } else {
@@ -234,13 +251,21 @@ class CabinetController extends Controller
         if (Gate::denies('delete')) {
             return redirect(route('cabinet.view'));
         }
-         $username = DB::table('cabinets')->where('id', $id)->pluck('name')->toArray();
-        $name= implode(" ", $username);
-
+         $username = DB::table('cabinets')
+            ->where('id', $id)
+            ->pluck('name')
+            ->toArray();
+        $name = implode(' ', $username);
+        $auth = Auth::user();
         $delete = Cabinet::where('id', $id)->delete();
+
         if ($delete) {
-           
-            Activites::create(['description' =>'Admin deleted '.$name.' from the cabinet table']);
+            Activites::create([
+            'description' => $auth->name.' deleted '.$name.' from the cabinet table',
+            'username' => $auth->name,
+            'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+            'status' => 'pending'
+        ]);           
 
              Session::flash('flash_message', 'Cabinet member deleted successfully!');
              return redirect(route('cabinet.view'));
