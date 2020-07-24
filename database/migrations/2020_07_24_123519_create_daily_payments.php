@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RecentActivities extends Migration
+class CreateDailyPayments extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class RecentActivities extends Migration
      */
     public function up()
     {
-        Schema::create('activites', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('description');
-            $table->string('username');
-            $table->string('privilage');
-            $table->string('status');         
+        Schema::create('daily_payments', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class RecentActivities extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('activites');
+        Schema::dropIfExists('daily_payments');
     }
 }

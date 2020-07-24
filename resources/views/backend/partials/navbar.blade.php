@@ -1,6 +1,6 @@
 <div class="main-panel">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-transparent">
+    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
             <div class="navbar-wrapper">
                 <a class="navbar-brand" href="javascript:;">Dashboard</a>
@@ -69,7 +69,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                             <a class="dropdown-item" href="{{ route('users.profile') }}">Profile</a>
-                            <a class="dropdown-item" href="#">Settings</a>
+                            <a class="dropdown-item" href="{{ route('users.settings') }}">Settings</a>
                             <div class="dropdown-divider"></div>
 
                             <a class="dropdown-item" href="{{ url('/logout') }}"

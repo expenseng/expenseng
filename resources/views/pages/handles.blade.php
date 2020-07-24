@@ -1,8 +1,8 @@
 @extends('layouts.master')
 @push('css')
 <title>Government Twitter Handles</title>
-<link rel="stylesheet" href="{{ asset('css/handles.css') }}">
 <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
+<link rel="stylesheet" href="{{ asset('css/handles.css') }}">
 @endpush
 @section('content')
 <div class="pt-1 pb-5 body-bg" style="background-color: #F2FAF7;">
