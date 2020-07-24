@@ -42,7 +42,7 @@ class UserController extends Controller
         $total_activity = count(Activites::all()->where('status', 'pending'));
 
         $users = User::all();
-        return view('backend.users.index')->with([
+        return view('backend.profile.index')->with([
             'users' => $users,
             'recent_activites' => $recent_activites,
             'total_activity' => $total_activity,
@@ -57,12 +57,12 @@ class UserController extends Controller
     public function create()
     {
         if (Gate::denies('add')) {
-            return redirect(route('users.view'));
+            return redirect(route('profile.view'));
         }
 
         $roles = Role::select('name', 'id')->get();
         $status = Status::select('name', 'id')->get();
-        return view('backend.users.create')->with([
+        return view('backend.profile.create')->with([
             'roles' => $roles,
             'status' => $status,
         ]);
@@ -141,7 +141,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $roles = Role::all();
         $status = Status::select('name', 'id')->get();
-        return view('backend.users.edit')->with([
+        return view('backend.profile.edit')->with([
             'user' => $user,
             'roles' => $roles,
             'status' => $status,
@@ -167,7 +167,7 @@ class UserController extends Controller
         $validator->validate();
 
         if (Gate::denies('add')) {
-            return redirect(route('users.view'));
+            return redirect(route('profile.view'));
         }
 
         User::where('id', $id)->update([
@@ -186,7 +186,7 @@ class UserController extends Controller
                 'email' => $request->email,
             ]);
             $auth = Auth::user();
-            Activites::create([
+            Activites::select([
                 'description' =>$auth->name.' updated user '. $request->name .' details',
                 'username' => $auth->name,
                 'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
@@ -197,7 +197,7 @@ class UserController extends Controller
 
 
         Session::flash('flash_message', 'User updated successfully!');
-        return redirect(route('users.view'));
+        return redirect(route('profile.view'));
     }
 
     /**
@@ -210,7 +210,7 @@ class UserController extends Controller
     {
         //checkcsd
         if (Gate::denies('delete')) {
-            return redirect(route('users.view'));
+            return redirect(route('profile.view'));
         }
         $username = DB::table('users')
             ->where('id', $id)
@@ -235,7 +235,7 @@ class UserController extends Controller
     public function updatePassword(Request $request, $id)
     {
         if (Gate::denies('add')) {
-            return redirect(route('users.view'));
+            return redirect(route('profile.view'));
         }
 
         $validator = Validator::make($request->all(), [

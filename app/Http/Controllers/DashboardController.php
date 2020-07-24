@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Expense;
 use App\Company;
 use App\Ministry;
+use App\Payment;
 use App\Feedback;
 use App\Activites;
 use Illuminate\Support\Facades\DB;
@@ -38,30 +39,31 @@ class DashboardController extends Controller
         }
 
         $year = date('Y'); // get current year
-        $recent_activites = Activites::orderBY('id', 'DESC')
+        $recent_activites = Activites::where('status', 'pending')
+            ->orderBY('id', 'DESC')
             ->limit(7)
             ->get();
+
+        $recent_activities = Activites::orderBY('id', 'DESC')->get();
         $total_ministry = count(Ministry::all());
         $total_company = count(Company::all());
         $total_budgets = Budget::where('year', $year)->get('amount');
+
         $amount = 0; // initialize total budget amount
-        $recent_expenses = Expense::orderBY('id', 'DESC')
+        $recent_expenses = Payment::orderBY('id', 'DESC')
             ->limit(7)
             ->get();
 
-
-            
-            
         if (count($total_budgets) > 0) {
             for ($i = 0; $i < count($total_budgets); $i++) {
                 $amount += $total_budgets[$i]->amount;
             }
         } else {
         }
-
+        $user = Auth::user();
         $feedbacks = Feedback::where('isApprove', '0')->get();
         $counter_feedback = count($feedbacks);
-        $total_activity = count(Activites::all());
+        $total_activity = count(Activites::all()->where('status', 'pending'));
 
         return view('backend.dashboard')->with([
             'total_ministry' => $total_ministry,
@@ -70,6 +72,7 @@ class DashboardController extends Controller
             'year_budget' => $amount,
             'recent_expenses' => $recent_expenses,
             'recent_activites' => $recent_activites,
+            'recent_activities' => $recent_activities,
             'total_activity' => $total_activity,
             'count' => 0,
             'counter' => 0,
@@ -111,17 +114,26 @@ class DashboardController extends Controller
             'ceo' => 'required',
             'twitter' => '',
         ]);
-        DB::table('activites')->insert([
-            [
-                'description' => 'Added new company' . $request->name,
-                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            ],
-        ]);
 
         $input = $request->all();
         Company::create($input);
         Session::flash('flash_message', 'New Company successfully added!');
         return redirect()->back();
+    }
+
+
+    public function seenActivity($id)
+    {
+        if (Gate::denies('delete')) {
+            return redirect(route('dashboard'));
+        }
+
+         Activites::where('id', $id)->update([
+            'status' => 'seen',
+        ]);
+
+        return redirect(route('dashboard'));
+
     }
 
     public function deleteActivity($id)
@@ -139,18 +151,25 @@ class DashboardController extends Controller
             return redirect()->back();
         }
     }
-    public function deleteAllActivity()
+
+    public function seenAllNotifications()
     {
         if (Gate::denies('delete')) {
             return redirect(route('dashboard'));
         }
 
-        $delete = DB::delete('delete from activites');
-        if ($delete) {
-            Session::flash('flash_message', 'Activity deleted successfully!');
+        $update = Activites::where('status', 'pending')->update([
+            'status' => 'seen',
+        ]);
+
+        if ($update) {
+            Session::flash(
+                'flash_message',
+                'Marked all notifications as read!'
+            );
             return redirect(route('dashboard'));
         } else {
-            Session::flash('flash_message', ' Activity was not deleted!');
+            Session::flash('error_message', 'An error occured!');
             return redirect()->back();
         }
     }

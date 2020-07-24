@@ -2,16 +2,15 @@
 
 namespace App\Console\Commands;
 
-use App\DailyPayment;
+
 use App\MonthlyBudget;
 use App\Payment;
 use App\QuarterlyBudget;
 use App\Report;
 use Exception;
-use GuzzleHttp\Client;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
-use function GuzzleHttp\json_decode;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ParseSheet extends Command
 {
@@ -52,16 +51,6 @@ class ParseSheet extends Command
     public function __construct()
     {
         parent::__construct();
-        $this->baseUri = "https://excel.microapi.dev/";
-      
-        
-        $this->http = new Client([
-            'base_uri' => $this->baseUri,
-            'headers' => [
-                'debug' => true,
-                'Content-Type' => 'application/json',
-            ]
-        ]);
     }
 
     /**
@@ -225,14 +214,11 @@ class ParseSheet extends Command
                         $this->info($report->link .' Sheet not parsed');
                     }
                 }
-                
-            } else {
-                $this->info('Nothing to parse At the moment');
             }
-            
+            );
+            $this->info('Sheet parsed successfully');
         }catch (Exception $e) {
-            $this->error($e->getMessage());
-            $this->info(' Sheet cannot be run');
+            $this->info($e->getMessage() .' Sheet cannot be run');
         }
 
         //return 0;

@@ -8,6 +8,7 @@ use App\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 {
@@ -88,10 +89,10 @@ class CompanyController extends Controller
             return redirect(route('profile'));
         }
 
-        $recent_activites = Activites::orderBY('id', 'DESC')
-            ->limit(5)
+       $recent_activites = Activites::where('status', 'pending')->orderBY('id', 'DESC')
+            ->limit(7)
             ->get();
-        $total_activity = count(Activites::all());
+        $total_activity = count(Activites::all()->where('status', 'pending'));
 
         $companies = Company::all();
 
@@ -120,11 +121,13 @@ class CompanyController extends Controller
         $new_company->ceo = $request->company_ceo;
         $new_company->twitter = $request->ceo_handle;
         $save_new_company = $new_company->save();
-
+        $auth = Auth::user();
         if ($save_new_company) {
             Activites::create([
-                'description' =>
-                    'Added ' . $request->company_name . ' to companies',
+                'description' =>$auth->name.' Added '.$request->company_name.' to companies table',
+                'username' => $auth->name,
+                'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+                'status' => 'pending'
             ]);
 
              Session::flash('flash_message', 'New company created successfully!');
@@ -161,10 +164,13 @@ class CompanyController extends Controller
             'ceo' => $request->company_ceo,
             'twitter' => $request->ceo_handle,
         ]);
+        $auth = Auth::user();
         if ($update) {
             Activites::create([
-            'description' =>
-                'Updated ' . $request->company_name . ' company details',
+            'description' =>$auth->name.' Updated '.$request->company_name.' company details',
+                'username' => $auth->name,
+                'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+                'status' => 'pending'
         ]);
             Session::flash('flash_message', 'Company details edited successfully!');
             return redirect('/admin/company/view');
@@ -181,18 +187,21 @@ class CompanyController extends Controller
         }
         $username = DB::table('companies')
             ->where('id', $id)
-            ->pluck('company_name')
+            ->pluck('name')
             ->toArray();
         $name = implode(' ', $username);
-        
+        $auth = Auth::user();
         $delete = Company::where('id', $id)->delete();
 
         if ($delete) {
 
             Activites::create([
-            'description' => 'Admin deleted '.$name.' from the companies table',
+            'description' => $auth->name.' deleted '.$name.' from the companies table',
+            'username' => $auth->name,
+            'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+            'status' => 'pending'
         ]);
-             Session::flash('error_message', 'Company  deleted successfully!');
+             Session::flash('flash_message', 'Company  deleted successfully!');
              return redirect('/admin/company/view');
         } else {
             Session::flash('error_message', ' Company was not deleted!');

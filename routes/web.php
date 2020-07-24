@@ -114,7 +114,9 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
      Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
       // Matches The "/admin/dashboard" URL
      Route::delete('/activity/delete/{activity_id}', 'DashboardController@deleteActivity')->name('activity.delete');
-     Route::delete('/activity/delete_all/', 'DashboardController@deleteAllActivity')->name('allactivity.delete');
+    Route::put('/activity/all/', 'DashboardController@seenAllNotifications')->name('allactivity.edit');
+    Route::put('/activity/mark/{activity_id}', 'DashboardController@seenActivity')->name('activity.update');
+
 
 
      // Expense CRUD
@@ -165,7 +167,10 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
      //Profile Page
      Route::get('/profile', 'ProfileController@viewProfile')->name('profile');
      Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
-
+     Route::get('/profile/edit/{user_id}', 'ProfileController@edit')->name('users.edit');
+     Route::put('/profile/edit/{user_id}', 'ProfileController@update')->name('users.update');
+     Route::put('/profile/change_password/{user_id}', 'UserController@updatePassword')->name('users.change_password');
+     
      //Settings Page
      Route::get('/user/settings', 'SettingsController@index')->name('users.settings');
 
@@ -218,6 +223,22 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
 
      // COMMENTS ROUTES
     Route::get('/comments', 'Admin\CommentController@index')->name('comments');  //Displays the index page for all comments
+
+
+     // Payments CRUD
+      Route::get('/payments', 'Admin\PaymentController@index')->name('payments.view');
+
+      Route::get('/payments/create', 'Admin\PaymentController@create')->name('payments.create');
+      Route::post('/payments/create', 'Admin\PaymentController@store')->name('payments.store');
+
+      Route::get('/payments/edit/{payment_id}', 'Admin\PaymentController@edit')->name('payments.edit');
+      Route::put('/payments/edit/{payment_id}', 'Admin\PaymentController@update')->name('payments.update');
+
+
+      Route::delete('/payments/delete/{payment_id}', 'Admin\PaymentController@destroy')->name('payments.delete');
+
+
+
 
 
  });

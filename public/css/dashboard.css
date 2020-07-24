@@ -6926,3 +6926,239 @@ Media Query
 
 /* Custom, iPhone Retina */
 @media only screen and (max-width:320px) {} 
+
+/* Settings Styling */
+#settingsTab{
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+#settingsTab a{
+    color: #353a45 !important;
+}
+
+#settingsTab li{
+    color: #005d3b !important;
+    margin: 0 .5rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#settingsTab a.active.show{
+
+    border-bottom: 2px solid #005d3b !important;
+}
+
+#settingsTab a{
+    text-decoration: none;
+    padding: 0.75rem;
+}
+
+.security-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.save-btn{
+    border: 1px solid #00945e;
+    align-self: center;
+    padding:  .5rem 1.75rem;
+    background: transparent;
+    color: #005d3b;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.save-btn a:hover{
+    color: #fff;
+    text-decoration: none;
+}
+.save-btn:hover{
+    background-color: #00945e;
+    color: #fff;
+}
+.card > hr{
+    margin-top: 0rem;
+}
+.labels{
+    color: #353a45;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+ /* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 29px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 2px;
+  bottom: 2px;
+  background-color: rgb(240, 233, 233);
+  -webkit-transition: .4s;
+  transition: .4s;
+  align-self: center;
+  border: 1px solid #353a45;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: -3px;
+  bottom: 0;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border: 1px solid #353a45;
+}
+
+input:checked + .slider {
+  background-color: #005d38;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 2rem;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+} 
+
+.slider-box{
+    align-content: center;
+}
+
+
+.switch-box{
+    align-items: top;
+    padding: 1rem 0;
+}
+
+.slider-text{
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-left: 1.25rem !important;
+}
+.label-form{
+color: #353a45;
+font-weight: bold;
+font-size: 18px;
+}
+.appearance-box{
+    background: #f6f7f7;
+    align-items: center;
+    align-content: center;
+    padding: .75rem;
+    margin: 1rem 0;
+}
+.appearance-box p{
+    font-size: 1.25rem;
+    font-weight: normal;
+}
+
+.hide-button-card{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 0;
+}
+.hide-button-card:active{
+    color: #00945e;
+}
+.hide-button-card i{
+    margin-right: 0.5rem;
+    font-size: 1rem;
+}
+.fa-arrows-alt-v{
+    font-size: 1.25rem;
+}
+.file-input-cover{
+    background-color: #c4c4c4;
+    background-image: url('../img/carbon_add-alt.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 60%;
+    margin-bottom: 1rem;
+    width: 90%;
+}
+.file-input{
+    height: 60%;
+    width: 90%;
+    margin-bottom: 1rem;
+    opacity: 0;
+    position: absolute;
+
+}
+#output{
+    position: absolute;
+    z-index: 22;
+
+    height: fit-content;
+    width: auto;
+}
+
+.upload-btn{
+    color: #8f9298;
+    border: 1px solid #8f9298;
+    align-self: center;
+    padding:  .5rem 1.75rem;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.upload-btn:hover, .upload-btn:active{
+    color: #00945e;
+    border: 1px solid #00945e;
+}
+
+#sortable{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+@media only screen and (max-width : 700px){
+    #settingsTab a{
+        padding: 0.45rem;
+    }
+    #settingsTab li{
+        font-size: .9rem;
+    }
+    .file-input-cover{
+        height: 100%;
+    }
+    .push-top{
+        margin-top: 8rem;
+    }
+    .hide-button-card{
+        margin-left: -1.15rem;
+    }
+} 

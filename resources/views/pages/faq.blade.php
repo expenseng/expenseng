@@ -8,8 +8,8 @@
 
 
 @section('content')
-{{ Breadcrumbs::render('FAQ') }}
     <div class="container faq">
+      {{ Breadcrumbs::render('FAQ') }}
         <h1>FAQ</h1>
 
         <h4>What is ExpenseNG?</h4>
@@ -25,7 +25,7 @@
         <p>We offer curated data from government sources. For that reason, we do not accept crowd-sourced datasets. However, we’re always interested in learning about potential government data sources. Please email info@expenseng.com if you have data to recommend.</p>
 
         <h4>How is ExpenseNG funded?</h4>
-        <p>ExpenseNG is privately funded by HNG. Although we may accept contributions from external donors in form of donations, grants, etc.), we’re completely nonpartisan and don’t answer to a board. 
+        <p>ExpenseNG is privately funded by HNG. Although we may accept contributions from external donors in form of donations, grants, etc.), we’re completely nonpartisan and don’t answer to a board.
         We do not make grants and we do not advocate for any views of HNGr except for one: that facts matter and public data should be available and understandable.</p>
 
         <h4>How often is your data updated?</h4>
@@ -46,7 +46,11 @@
         <h4>Why do your financial figures sometimes differ from other government sources?</h4>
         <p>Multiple agencies collect and publish financial data for the Nigerian government, including the Department of the Treasury, Federal Reserve, and Office of Management and Budget. Figures can vary between agencies depending on how they collect data or classify certain financial assets. For instance, the Federal Reserve and the Treasury Department treat Social Security and pension obligations quite differently.</p>
     </div>
-  
-@endsection
 
+@endsection
+@section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous"></script>
+<script src="{{asset('/js/index.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+@endsection
 

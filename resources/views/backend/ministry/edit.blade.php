@@ -5,6 +5,7 @@
 <title>ExpenseNg - Create Ministry</title>
 @endpush
 
+
 @section('content')
 <div class="content">
         <div class="container-fluid">
