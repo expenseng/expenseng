@@ -20,7 +20,11 @@ class SubscriptionController extends Controller
         if($user){
             Activites::create([
             'description' => $request->name.' subscribed to recieve latest updates',
+            'username' => $request->name,
+            'privilage' => 'subscriber',
+            'status' => 'pending'
             ]);
+            
             toastr()->success('You have successfully subscribed for this Report!');
             return  back();
         } else {

@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @push('css')
 <link rel="stylesheet" href="{{ asset('css/contract_page.css') }}">
+<link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
 <title>FG Expense - Contracts Page</title>
 @endpush
 
@@ -8,7 +9,7 @@
 @section('content')
 	<section>
       <div class="container">
-{{ Breadcrumbs::render('contractors') }}
+      {{ Breadcrumbs::render('contractors') }}
         <h1 class="ws-10 font-weight-bold">Contracted Companies and Organisations</h1>
         <br />
         <div class="row">
@@ -19,21 +20,25 @@
         </div>
         <br>
         <br>
-        <div class="container contract-awarded">
-      <div class="container-fluid">
+        <br><div class="contract-awarded">
+      <div class="container">
         <div class="row">
           <div class="col-md-6 pt-2 paragraph">
             <p style="padding:0;">COMPANIES AND TOTAL AMOUNT AWARDED</p>
             <hr>
           </div>
           <div id="search-area" class="offset-md-1 col-md-5 mt-3 mt-md-0">
-            <input onkeyup="doFilter()" type="search" id="searchInput" class="form-control form-control-lg mb-2 se" placeholder="&#xf002; Search for companies and Organisations" />
+          <div class="input1">
+                <img class="img-search" src="{{ asset('/img/search-icon.png') }}" alt="icon">
+            <input onkeyup="doFilter()" type="search" id="searchInput" class="form-control form-control-lg mb-2 se" placeholder="Search for companies and Organisations" style="font-family:'Lato';"/>
           </div>
         </div>
       </div>
     </div>
-  </header>
-  
+
+
+    </section>
+
     <br />
     <div id="company" class="container">
     <div class="row" id="company-div">
@@ -42,8 +47,8 @@
         <div class="col-md-3 mb-3 card-col">
           <div class="card shadow">
             <div class="card-body">
-                <chart label="myVueChart" 
-                        v-bind:data="[{amount:32424, year:2020},{amount:12920923, year:2010}]" 
+                <chart label="myVueChart"
+                        v-bind:data="[{amount:32424, year:2020},{amount:12920923, year:2010}]"
                         element="{{ $company->shortname() }}"></chart>
                 <div class="company mb-2">
                     <img src="{{ asset('images/image 13.png') }}" height="30" class="mr-3" alt="">
@@ -59,7 +64,7 @@
             </div>
           </div>
         </div>
-      @endforeach        
+      @endforeach
     </div>
     <div class="table-footer">
       <div class="pagination">

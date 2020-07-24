@@ -18,9 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<!--===============================================================================================-->  
+<!--===============================================================================================-->
      <link rel="stylesheet" type="text/css" href="{{ asset('css/auth/animate.css') }}">
-<!--===============================================================================================-->  
+<!--===============================================================================================-->
      <link rel="stylesheet" type="text/css" href="{{ asset('css/auth/hamburgers.min.css') }}">
 <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/auth/main.css') }}">
@@ -35,7 +35,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ route('home') }}">
                     <!-- {{ config('app.name', 'ExpenseNg') }} -->
                     <img  class="" src="{{ asset('img/logo.png') }}">
                 </a>
