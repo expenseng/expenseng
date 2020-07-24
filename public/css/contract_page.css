@@ -219,7 +219,7 @@ header.container {
   margin-top: 5.5rem;
 }
 .text-green{
-    color: #00945E;
+    color: #00945E !important;
 }
 .company a{
     text-transform: none;
