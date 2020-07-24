@@ -86,10 +86,7 @@ class ParseSheet extends Command
                             $this->info('Parsing:   ' . $report->link);
 
                             $date = basename($report->link, '.xlsx');
-                            $payment_num = "Payment No";
-                            $payer_code = "Payer Code";
-                            $org_name = "Organization Name";
-                            $beneficiary = "Beneficiary Name";
+                          
                             $response = $this->http->post('api/', [
 
                                 "body" => json_encode([
@@ -106,15 +103,17 @@ class ParseSheet extends Command
                     
                             if ($status == 200) {
                                 foreach ($responses as $response) {
+                                    
+
                                     $payment = new Payment();
 
-                                    $payment->payment_no = $response->$payment_num;
-                                    $payment->payment_code = $response->$payer_code;
-                                    $payment->organization = $response->$org_name;
-                                    $payment->beneficiary = $response->$beneficiary;
-                                    $payment->amount = $response->Amount;
+                                    $payment->payment_no = $response["Payment No"];
+                                    $payment->payment_code = $response["Payer Code"];
+                                    $payment->organization = $response["ORGANIZATION NAME"];
+                                    $payment->beneficiary = $response["Beneficiary Name"];
+                                    $payment->amount = $response["Amount"];
                                     $payment->payment_date = $date;
-                                    $payment->description = $response->Description;
+                                    $payment->description = $response["Description"];
             
                                     $persist = $payment->save();
                                     if ($persist) {
@@ -130,6 +129,7 @@ class ParseSheet extends Command
                                 $this->info($report->link .' status not successful'); 
                             }
                         } else if ($report->type == 'MONTHLYBUDPERF') {
+                            $this->info('Parsing:   ' . $report->link);
                             //do monthly parsing
                             $month = basename($report->link, 'xlsx');
                             $response = $this->http->post('api/', [
@@ -142,24 +142,20 @@ class ParseSheet extends Command
                             ]);
                             $status = $response->getStatusCode();
                             $responses = json_decode($response->getBody(), true);
-
-                            $percent = "%";
-                            $budget = "BUDGET AMOUNT";
-                            $bal = "BUDGET BALANCE";
-                            $year = "YR PMTS TO DATE";
             
                     
                             if ($status == 200) {
                                 foreach ($responses as $response) {
+                                    return print_r ($response);
                                     $monthly = new MonthlyBudget();
-                                    $monthly->Name = $response->Name;
-                                    $monthly->code = $response->Name;
-                                    $monthly->year_payments_till_date = $response->$year;
+                                    $monthly->Name = $response["Name"];
+                                    $monthly->code = $response["Code"];
+                                    $monthly->year_payments_till_date = $response["PAYMENTS YTD"];
                                     $monthly->month = $month;
-                                    $monthly->month_budget = $response[3];
-                                    $monthly->budget_amount = $response->$budget;
-                                    $monthly->budget_balance = $response->$bal;
-                                    $monthly->percentage = $response->$percent;
+                                    $monthly->month_budget = $response["JAN" || "FEB" || "MAY"|| "APR" || "JUN" || "JUL" || "AUG" || "SEPT" || "OCT" || "NOV" || "DEC"];
+                                    $monthly->budget_amount = $response["BUDGET AMOUNT"];
+                                    $monthly->budget_balance = $response["BUDGET BALANCE"];
+                                    $monthly->percentage = $response["PERCENTAGE"];
             
                                     $persist = $monthly->save();
                                     if ($persist) {
@@ -178,6 +174,8 @@ class ParseSheet extends Command
                         } else {
                             //do quarterly parsing
 
+                            $this->info('Parsing:   ' . $report->link);
+
                             $quarter = basename($report->link, 'xslx');
 
                             $response = $this->http->post('api/', [
@@ -192,23 +190,21 @@ class ParseSheet extends Command
                             $responses = json_decode($response->getBody(), true);
                         
                     
-                            $percent = "%";
-                            $budget = "BUDGET AMOUNT";
-                            $bal = "BUDGET BALANCE";
-                            $year = "YR PMTS TO DATE";
+                    
             
                     
                             if ($status == 200) {
                                 foreach ($responses as $response) {
+                                    return print_r ($response);
                                     $quarterly = new QuarterlyBudget();
-                                    $quarterly->Name = $response->Name;
-                                    $quarterly->code = $response->Name;
-                                    $quarterly->year_payments_till_date = $response->$year;
+                                    $quarterly->Name = $response[1];
+                                    $quarterly->code = $response[0];
+                                    $quarterly->year_payments_till_date = $response[4];
                                     $quarterly->quarter = $quarter;
-                                    $quarterly->quarter_budget = $response[3];
-                                    $quarterly->budget_amount = $response->$budget;
-                                    $quarterly->budget_balance = $response->$bal;
-                                    $quarterly->percentage = $response->$percent;
+                                    $quarterly->quarter_budget = $response["1ST QUARTER" || "2ND QUARTER" || "3RD QUARTER" || "4TH QUARTER"];
+                                    $quarterly->budget_amount = $response[2];
+                                    $quarterly->budget_balance = $response[5];
+                                    $quarterly->percentage = $response[6];
             
                                     $persist = $quarterly->save();
                                     if ($persist) {
