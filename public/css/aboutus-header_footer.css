@@ -528,14 +528,6 @@ a.dropdown-toggle::after {
     color: #EBF1EF;
 }
 
-.footer a:active,
-.footer a:hover,
-.footer-2 a:active,
-.footer-2 a:hover{
-    color: #EBF1EF;
-    text-decoration: none;
-}
-
 .footer ul,
 .footer-2 ul{
     list-style-type: none;

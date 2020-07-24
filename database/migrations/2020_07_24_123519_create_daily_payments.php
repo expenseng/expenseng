@@ -1,11 +1,10 @@
-
 <?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReportsTable extends Migration
+class CreateDailyPayments extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +13,8 @@ class CreateReportsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reports', function (Blueprint $table) {
+        Schema::create('daily_payments', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
-            $table->string('link')->unique();
-            $table->boolean('parsed');
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class CreateReportsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reports');
+        Schema::dropIfExists('daily_payments');
     }
 }
