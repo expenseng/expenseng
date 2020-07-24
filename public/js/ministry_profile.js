@@ -9,6 +9,12 @@ $(document).ready(function() {
                 dateFormat: 'dd-mm-yy',
                 changeMonth: true,
                 changeYear: true,
+                beforeShow: function(input, inst) {
+                    $(document).off('focusin.bs.modal');
+                },
+                onClose:function(){
+                    $(document).on('focusin.bs.modal');
+                }
             }).focus(function(){
                 $('.ui-datepicker-calendar').show();
             });
@@ -19,7 +25,13 @@ $(document).ready(function() {
                     changeMonth: true,
                     changeYear: true,
                     showButtonPanel: true,
-                    dateFormat: 'MM yy'
+                    dateFormat: 'MM yy',
+                    beforeShow: function(input, inst) {
+                        $(document).off('focusin.bs.modal');
+                    },
+                    onClose:function(){
+                        $(document).on('focusin.bs.modal');
+                    }
                 }).focus(function() {
                     let thisCalendar = $(this);
                     $('.ui-datepicker-calendar').detach();
@@ -36,7 +48,13 @@ $(document).ready(function() {
                 changeMonth: false,
                 changeYear: true,
                 showButtonPanel: true,
-                dateFormat: 'yy'
+                dateFormat: 'yy',
+                beforeShow: function(input, inst) {
+                    $(document).off('focusin.bs.modal');
+                },
+                onClose:function(){
+                    $(document).on('focusin.bs.modal');
+                }
             }).focus(function() {
                 let thisCalendar = $(this);
                 $('.ui-datepicker-calendar').detach();
