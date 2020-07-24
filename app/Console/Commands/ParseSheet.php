@@ -8,9 +8,10 @@ use App\Payment;
 use App\QuarterlyBudget;
 use App\Report;
 use Exception;
+use GuzzleHttp\Client;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
-use Maatwebsite\Excel\Facades\Excel;
+
 
 class ParseSheet extends Command
 {
@@ -51,6 +52,17 @@ class ParseSheet extends Command
     public function __construct()
     {
         parent::__construct();
+        $this->baseUri = "https://excel.microapi.dev/";
+        
+        $this->http = new Client([
+            'base_uri' => $this->baseUri,
+            'headers' => [
+                'debug' => true,
+                'Content-Type' => 'application/json',
+            ]
+        ]);
+        
+
     }
 
     /**
@@ -135,7 +147,7 @@ class ParseSheet extends Command
                     
                             if ($status == 200) {
                                 foreach ($responses as $response) {
-                                    //return print_r ($response);
+                                    return print_r ($response);
                                     $monthly = new MonthlyBudget();
                                     $monthly->Name = $response["Name"];
                                     $monthly->code = $response["Code"];
@@ -186,14 +198,14 @@ class ParseSheet extends Command
                                 foreach ($responses as $response) {
                                     return print_r ($response);
                                     $quarterly = new QuarterlyBudget();
-                                    $quarterly->Name = $response[1];
-                                    $quarterly->code = $response[0];
-                                    $quarterly->year_payments_till_date = $response[4];
+                                    $quarterly->Name = $response["Name"];
+                                    $quarterly->code = $response["Code"];
+                                    $quarterly->year_payments_till_date = $response["PAYMENTS YTD"];
                                     $quarterly->quarter = $quarter;
                                     $quarterly->quarter_budget = $response["1ST QUARTER" || "2ND QUARTER" || "3RD QUARTER" || "4TH QUARTER"];
-                                    $quarterly->budget_amount = $response[2];
-                                    $quarterly->budget_balance = $response[5];
-                                    $quarterly->percentage = $response[6];
+                                    $quarterly->budget_amount = $response["BUDGET AMOUNT"];
+                                    $quarterly->budget_balance = $response["BUDGET BALANCE"];
+                                    $quarterly->percentage = $response["PERCENTAGE"];
             
                                     $persist = $quarterly->save();
                                     if ($persist) {
@@ -215,7 +227,7 @@ class ParseSheet extends Command
                     }
                 }
             }
-            );
+
             $this->info('Sheet parsed successfully');
         }catch (Exception $e) {
             $this->info($e->getMessage() .' Sheet cannot be run');
