@@ -1,17 +1,20 @@
 @extends('layouts.master')
 
 @push('css')
+  <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
   <link rel="stylesheet" href="{{asset('css/ministry_list.css') }}">
+<link rel="stylesheet" href="{{ asset('css/contract_page.css') }}">
+
   <title>FG Expense - Ministry List</title>
 @endpush
 
 
 @section('content')
-{{ Breadcrumbs::render('ministries') }}
     <div class="main-header">
-      <div class="container-fluid">
+      <div class="container">
+{{ Breadcrumbs::render('ministries') }}
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-12">
             <h1>Federal Ministries</h1>
             <p>ExpenseNG tracks federal spending to ensure taxpayers can see how their money
               is being used in communities across Nigeria.
@@ -23,7 +26,7 @@
     </div>
 
     <div class="money-spent">
-      <div class="container-fluid">
+      <div class="container">
         <div class="row">
           <div class="col-md-6 pt-2 paragraph">
             <p style="padding:0;">MINISTRIES AND AMOUNT SPENT</p>
@@ -41,7 +44,7 @@
 
 
     <div class="last-section">
-      <div class="container-fluid">
+      <div class="container">
         <div id="cards-container" class="row d-flex sec-card" style="min-height: 300px">
 
           @include('pages.ministry.cards')

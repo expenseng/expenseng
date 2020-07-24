@@ -11,7 +11,11 @@ button.toggle {
     border: none;
     border-radius: 0.3rem;
 }
-
+.btn-dark{
+    background-color: #00945E;
+    border: none;
+    margin-top: 10px;
+}
 div.register-modal button {
     background: var(--green);
     color: #fff;

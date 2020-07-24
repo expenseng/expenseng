@@ -57,6 +57,11 @@ class PageController extends Controller
         return view('pages.faq');
     }
 
+    public function privacy()
+    {
+        return view('pages.privacy');
+    }
+
     public function ministryReport()
     {
         return view('pages.ministry.ministry_report_table');

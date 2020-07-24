@@ -38,13 +38,13 @@ a:active{
 
 
 .section-wrapper{
-	margin-top: 5.5rem;
+	margin-top: .5rem;
 }
 
 
 /* breadcrumb */
 .breadcrumb{
-	padding-left: 0;
+	padding-left: 5px;
 	font-size: var(--fs-h6);
 }
 
@@ -60,7 +60,7 @@ a:active{
   
 .first li a:hover{
 	text-decoration: none;
-	color: #00945E;
+	color: #00945E !important;
 }
   
 .first li.active{
@@ -90,6 +90,7 @@ a:active{
 .section-heading-title{
 	font-size: var(--fs-h2);
 	font-weight: bolder;
+	margin-top: 20px;
 }
 
 .section-heading-paragraph{

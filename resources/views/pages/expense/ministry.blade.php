@@ -4,29 +4,32 @@
 	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   	<link rel="stylesheet" href="{{ asset('css/ministry-report-table.css') }}">
-	  <link rel="stylesheet" href="{{ asset('css/filter.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/filter.css') }}">
+	<link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
 	<script src="https://kit.fontawesome.com/8f691340fb.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
 @endpush
 
 @section('content')
 	<!-- Breadcrumb start -->
-    {{ Breadcrumbs::render('expense.ministry') }}
-	<header class="container section-wrapper">
-		<nav aria-label="breadcrumb">
-			<ol class="breadcrumb bg-white">
+	<header class="container ">
+		{{ Breadcrumbs::render('expense.ministry') }}
+
+		{{-- <nav aria-label="breadcrumb">
+			<ol class="breadcrumb list bg-white">
 				<li class="breadcrumb-item not-active"><a href="{{ url('/') }}">HOME</a></li>
 				<span>&#8226;</span>
 				<li class="breadcrumb-item not-active"><a href="#">EXPENSE</a></li>
 				<span>&#8226;</span>
 				<li class="breadcrumb-item active" aria-current="page"><a href="{{ url('/expense/ministry') }}">MINISTRY SPENDING</a></li>
 			</ol>
-		</nav>
+		</nav> --}}
 	</header>
 	<section>
 		<div class="container ">
 			<div class="row">
-				<div class="col-md-8 section-heading">
+				<div class="col-md-12 section-heading">
 					<h1 class="section-heading-title">Ministry Spending</h1>
                     <p class="section-heading-paragraph">ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities across Nigeria.</p>
 
@@ -53,7 +56,7 @@
 			</div>
 		</div>
 	</section>
-	
+
 	<!---TABLE BEGINS--->
 	<div class="tab-content">
 		<div class="section-2 tab-pane show fade active" id="table" role="tabpanel">
@@ -92,7 +95,7 @@
 													<button id="year" class="btn btn-block year btn-date">Year</button>
 													</div>
 												</div>
-											</section>                   
+											</section>
 											<br>
 											<section class="row">
 												<div class="col-12" >
@@ -124,7 +127,7 @@
 						<div id="main-table" data-id="apply-filter" class="table-data">
 							@include('pages.expense.tables.ministries')
 						</div>
-						
+
 					</div>
 				</div>
 			</section>
@@ -135,7 +138,7 @@
 							@include('pages.expense.tables.ministries_annual_totals_all')
 						</div>
 						<!---PAGINATION--->
-						
+
 					</div>
 				</div>
 			</section>
@@ -176,7 +179,7 @@
                                                 <button id="year" class="btn btn-block year btn-date">Year</button>
                                                 </div>
                                             </div>
-                                        </section>                   
+                                        </section>
                                         <br>
                                         <section class="row">
                                             <div class="col-12" >
@@ -238,4 +241,4 @@
 	<script src="{{ asset('js/index.js') }}"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 @endsection
-	 
+

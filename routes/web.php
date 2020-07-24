@@ -21,6 +21,7 @@ Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contactUs')->name('contact');
 Route::get('/report', 'PageController@error404')->name('error404');
 Route::get('/faq', 'PageController@faq')->name('faq');
+Route::get('/privacy', 'PageController@privacy')->name('privacy');
 Route::get('/search', 'PageController@search')->name('search');
 Route::get('/handles', 'PageController@handles')->name('handles');
 
@@ -69,7 +70,7 @@ Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses'
 */
 
 
-Route::get('/accessibility', 'PageController@accessibility');
+Route::get('/accessibility', 'PageController@accessibility')->name('accessibility');
 
 /*
 |--------------------------------------------------------------------------
@@ -138,12 +139,18 @@ Route::get('/accessibility', 'PageController@accessibility');
 
 
       // MiNISTY CRUD
-      Route::get('/ministry/create', 'MinistryController@viewCreateMinistry')->name('ministry.create');
-      Route::post('/ministry/create', 'MinistryController@createMinistry')->name('create.ministry');
-      Route::get('/ministry/view', 'MinistryController@viewMinistries')->name('ministry.view');
-      Route::get('/ministry/edit/{ministry_id}', 'MinistryController@showEditForm')->name('ministry.view.edit');
-      Route::put('/ministry/edit/{ministry_id}', 'MinistryController@editMinistry')->name('ministry.edit');
-      Route::delete('/ministry/delete/{ministry_id}', 'Admin\MinistryController@deleteMinistry')->name('ministry.delete');
+      Route::get('/ministry/create', 'MinistryController@viewCreateMinistry')
+      ->name('ministry.create');
+      Route::post('/ministry/create', 'MinistryController@createMinistry')
+      ->name('create.ministry');
+      Route::get('/ministry/view', 'MinistryController@viewMinistries')
+      ->name('ministry.view');
+      Route::get('/ministry/edit/{ministry_id}', 'MinistryController@showEditForm')
+      ->name('ministry.view.edit');
+      Route::put('/ministry/edit/{ministry_id}', 'MinistryController@editMinistry')
+      ->name('ministry.edit');
+      Route::delete('/ministry/delete/{ministry_id}', 'Admin\MinistryController@deleteMinistry')
+      ->name('ministry.delete');
 
       //People CRUD
       Route::get('/admin/{company}/{people}', 'CompanyController@showPeople');

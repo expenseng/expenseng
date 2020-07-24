@@ -1,16 +1,16 @@
 @extends('layouts.master')
 
 @push('css')
-  <link rel="stylesheet" href="{{asset('css/ministry_list.css') }}">
+  <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
   <link rel="stylesheet" href="{{asset('css/freedomofact.css') }}">
   <title>FG Expense - Freedom of Infromation Act</title>
 @endpush
 
 
 @section('content')
-{{ Breadcrumbs::render('FOIA') }}
   <div class="wrapper">
     <div class="container content">
+      {{ Breadcrumbs::render('FOIA') }}
         <h1>Freedom Of Information Act</h1>
 
         <div class="conditions">
