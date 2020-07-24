@@ -169,7 +169,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
      Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
      Route::get('/profile/edit/{user_id}', 'ProfileController@edit')->name('users.edit');
      Route::put('/profile/edit/{user_id}', 'ProfileController@update')->name('users.update');
-     Route::put('/profile/change_password/{user_id}', 'UserController@updatePassword')->name('users.change_password');
+     Route::put('/profile/change_password/{user_id}', 'ProfileController@updatePassword')->name('users.change_password');
      
      //Settings Page
      Route::get('/user/settings', 'SettingsController@index')->name('users.settings');
