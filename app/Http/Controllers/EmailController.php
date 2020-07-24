@@ -8,38 +8,40 @@ use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use function GuzzleHttp\json_decode;
-
+        
 class EmailController extends Controller
 {
     const API_URL = "https://email.microapi.dev/v1";
 
     public function __construct()
     {
-        $this->client = new Client();
+       $this->client = new Client(); 
     }
 
     public function sendMail(request $request)
     {
-        try {
+        try
+        {
             $email = $request->email;
-            $subject =$request->subject;
             $message = $request->message;
 
-            $url = self::API_URL ."/sendmail/";
+            $url = self::API_URL ."/awsmail/";
             $body = [
                 "recipient" => "expenseng@gmail.com",
-                "sender" => "phemmylintry@gmail.com",
-                "subject" => $subject,
+                "sender" => "expenseng@gmail.com",
+                "subject" => $email,
                 "body" => $message,
-                "cc" => $email,
+                "cc" => " ",
                 "bcc" => " "
             ];
             $response = $this->client->post($url, ['form_params' => $body]);
             $result = json_decode($response->getBody()->getContents());
-            Session()->flash('flash_message', 'Thanks for contacting us!');
+            Session::flash('flash_message', 'Thanks for contacting us!');
             return redirect()->back();
-        } catch (RequestException $e) {
-            Session()->flash('error_message', 'Unable to send ');
+        }
+        catch (RequestException $e)
+        {
+            Session()->flash('error_message', 'Unable to send');
             return redirect()->back();
         }
     }
