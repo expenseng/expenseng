@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Payment;
+use App\DailyPayment;
 use App\Report;
 use Exception;
 use GuzzleHttp\Client;
@@ -19,7 +19,7 @@ class ParseSheet extends Command
      */
     private $http;
     /**
-     * base url.
+     * uri for sending parse api.
      *
      * @var string
      */
@@ -97,9 +97,10 @@ class ParseSheet extends Command
                 
                         if ($status == 200) {
     
-                            $persist = Payment::insert($response);
+                            $persist = DailyPayment::insert($response);
                             if ($persist) {
-                                Report::where('id', $link->id)->update(['parsed' => true]);
+                                Report::where('id', $link->id)
+                                ->update(['parsed' => true]);
                             }
                             $this->info($link->link .' Sheet parsed successfully');
 
