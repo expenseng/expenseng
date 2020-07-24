@@ -6,10 +6,10 @@
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    {{-- <link rel="stylesheet"
-        href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2"> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('css/ministry-report-table.css') }}"> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('css/dash.css') }}" /> --}}
+     <link rel="stylesheet"
+        href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2">
+     <link rel="stylesheet" href="{{ asset('css/ministry-report-table.css') }}">
+     <link rel="stylesheet" href="{{ asset('css/dash.css') }}" />
     <link rel="stylesheet" href="{{ asset("css/dash-table.css")}}">
 @endpush
 <title>
@@ -17,7 +17,7 @@
 </title>
 @section('content')
 
-    <div class="content">
+    <div class="content" >
         <div class="container-fluid">
             <div id="alert">
                 @include('backend.partials.flash')
@@ -131,8 +131,8 @@
                         </div>
                     </div>
                 </div>
-            
-            
+
+
 
                 <div class="col-lg-12 col-md-12">
                     <div class="card">
@@ -238,7 +238,7 @@
                                                 </div>
 
                                                 <div class="modal-footer">
-                                                        
+
                                                         <form
                                                             action="{{ '/admin/activity/mark/' . $recent_activity->id }}"
                                                             method="post">
@@ -296,52 +296,52 @@
                                     @endif
 
                                 </tbody>
-                                
+
                             </table>
                         </div>
 
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12 col-md-12">
-            <div class="card">
-                <h2 class="pt-3 px-3 section-card-title">Visitors Suggestions</h2>
-                <div class="card-body bordered">
-                    <div class="table-section reponsive-div">
-                        <div class="main-table">
-                            <div class="table-data">
-                                <div style="overflow-x: auto;">
-                                    <table class="table table-striped table-responsive-smr">
-                                        <thead class="bg-light">
-                                            <tr class="border-0">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="card">
+                        <h2 class="pt-3 px-3 section-card-title">Visitors Suggestions</h2>
+                        <div class="card-body bordered">
+                            <div class="table-section reponsive-div">
+                                <div class="main-table">
+                                    <div class="table-data">
+                                        <div style="overflow-x: auto;">
+                                            <table class="table table-striped table-responsive-smr">
+                                                <thead class="bg-light">
+                                                <tr class="border-0">
 
-                                                <th class="border-0">Firstname</th>
-                                                <th class="border-0">Lastname</th>
-                                                <th class="border-0">Cabinet</th>
-                                                <th class="border-0">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
+                                                    <th class="border-0">Firstname</th>
+                                                    <th class="border-0">Lastname</th>
+                                                    <th class="border-0">Cabinet</th>
+                                                    <th class="border-0">Action</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
 
-                                            @if (count($feedbacks)> 0)
-                                                @foreach ($feedbacks as $feedback)
-                                                    <tr>
-                                                        <td>{{$feedback->firstName}} </td>
-                                                        <td>{{$feedback->lastName}}  </td>
-                                                        <td>{{$feedback->ministry_id}}</td>
-                                                        <td>
-                                                            <a href="{{route('feedback.approve', ['id' => $feedback->id])}}" class="btn btn-success btn-sm ">Approve</button>
-                                                                <a href="{{route('feedback.ignore', ['id' => $feedback->id])}}" class="btn btn-danger btn-sm">Ignore</button>
+                                                @if (count($feedbacks)> 0)
+                                                    @foreach ($feedbacks as $feedback)
+                                                        <tr>
+                                                            <td>{{$feedback->firstName}} </td>
+                                                            <td>{{$feedback->lastName}}  </td>
+                                                            <td>{{$feedback->ministry_id}}</td>
+                                                            <td>
+                                                                <a href="{{route('feedback.approve', ['id' => $feedback->id])}}" class="btn btn-success btn-sm ">Approve</button>
+                                                                    <a href="{{route('feedback.ignore', ['id' => $feedback->id])}}" class="btn btn-danger btn-sm">Ignore</button>
 
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            @endif
-                                        </tbody>
-                                    </table>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @endif
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -353,29 +353,18 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="mr-2">
-                <div class="tweet-plugin" id="tweetButton">
-                    <button type="button" class="btn bg-light p-3" id="B1" data-toggle="modal" data-target="#sendTweetModal">
+                <div class="fixed-plugin tweet-plugin" id="tweetButton">
+                    <button type="button" class="btn bg-light p-4 tweet-button text-primary" id="B1" data-toggle="modal" data-target="#sendTweetModal">
                         <i class="fa fa-twitter fa-10x"></i> tweet
                     </button>
                 </div>
             </div>
             <div class="ml-2">
-                <div class="tweet-list-plugin" id="tweetButton2">
-                    <button type="button" class="btn bg-light p-3" id="B2" data-toggle="modal" data-target="#listTweetModal">
+                <div class="fixed-plugin tweet-list-plugin" id="tweetButton2">
+                    <button type="button" class="btn bg-light p-4 tweet-list-button text-primary" id="B2" data-toggle="modal" data-target="#listTweetModal">
                         <i class="fa fa-twitter fa-10x"></i>Tweets
                     </button>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal" id="sendTweetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Type in tweet below</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
             </div>
         </div>
     </div>
@@ -558,34 +547,34 @@ $(document).ready( function () {
 
 
                 });
-                // if ($(window).width() < 960) {
-                //     $('#tweetButton').removeClass('fixed-plugin');
-                //     $('#tweetButton').removeClass('tweet-plugin');
-                //     $('#tweetButton2').removeClass('fixed-plugin');
-                //     $('#tweetButton2').removeClass('tweet-list-plugin');
-                //     $('#B1').removeClass('tweet-button');
-                //     $('#B2').removeClass('tweet-list-button');
-                // }
+                if ($(window).width() < 960) {
+                    $('#tweetButton').removeClass('fixed-plugin');
+                    $('#tweetButton').removeClass('tweet-plugin');
+                    $('#tweetButton2').removeClass('fixed-plugin');
+                    $('#tweetButton2').removeClass('tweet-list-plugin');
+                    $('#B1').removeClass('tweet-button');
+                    $('#B2').removeClass('tweet-list-button');
+                }
 
-                // $(window).on('resize', function() {
-                //     if ($(window).width() < 1000) {
-                //         $('#tweetButton').removeClass('fixed-plugin');
-                //         $('#tweetButton').removeClass('tweet-plugin');
-                //         $('#tweetButton2').removeClass('fixed-plugin');
-                //         $('#tweetButton2').removeClass('tweet-list-plugin');
-                //         $('#B1').removeClass('tweet-button');
-                //         $('#B2').removeClass('tweet-list-button');
-                //     } else {
-                //         $('#tweetButton').addClass('fixed-plugin');
-                //         $('#tweetButton2').addClass('fixed-plugin');
-                //         $('#tweetButton2').addClass('tweet-list-plugin');
-                //         $('#tweetButton').addClass('tweet-plugin');
-                //         $('#B1').addClass('tweet-button');
-                //         $('#B2').addClass('tweet-list-button');
+                $(window).on('resize', function() {
+                    if ($(window).width() < 1000) {
+                        $('#tweetButton').removeClass('fixed-plugin');
+                        $('#tweetButton').removeClass('tweet-plugin');
+                        $('#tweetButton2').removeClass('fixed-plugin');
+                        $('#tweetButton2').removeClass('tweet-list-plugin');
+                        $('#B1').removeClass('tweet-button');
+                        $('#B2').removeClass('tweet-list-button');
+                    } else {
+                        $('#tweetButton').addClass('fixed-plugin');
+                        $('#tweetButton2').addClass('fixed-plugin');
+                        $('#tweetButton2').addClass('tweet-list-plugin');
+                        $('#tweetButton').addClass('tweet-plugin');
+                        $('#B1').addClass('tweet-button');
+                        $('#B2').addClass('tweet-list-button');
 
 
-                //     }
-                // });
+                    }
+                });
                 jQuery('#B2').click(function() {
                     jQuery.ajax({
                         url: "{{ URL::to('tweets') }}",
