@@ -90,10 +90,11 @@
                             <table class="table table-hover">
                                 <thead class="text-primary">
                                     <th>S/N</th>
-                                    <th>Company</th>
-                                    <th>Project</th>
+                                    <th>Date</th>
                                     <th>Ministry</th>
                                     <th>Amount Spent</th>
+                                    <th>Description</th>
+                                    <th>Beneficary</th>
                                 </thead>
                                 <tbody>
                                     @if (count($recent_expenses)>0)
@@ -101,10 +102,12 @@
                                         @foreach ($recent_expenses as $recent_expense)
                                             <tr>
                                                 <td>{{ ++$counter }}</td>
-                                                <td>{{ $recent_expense->year }}</td>
-                                                <td>{{ $recent_expense->project }}</td>
-                                                <td>{{ $recent_expense->month }}</td>
+                                                <td>{{ $recent_expense->payment_date }}</td>
+                                                <td>{{ $recent_expense->organization() }}</td>
                                                 <td>₦{{ number_format($recent_expense->amount_spent) }}</td>
+                                                <td>{{ $recent_expense->description }}</td>
+                                                <td>{{ $recent_expense->beneficiary }}</td>
+                                                
                                             </tr>
                                         @endforeach
 

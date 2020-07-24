@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Expense;
 use App\Company;
 use App\Ministry;
+use App\Payment;
 use App\Feedback;
 use App\Activites;
 use Illuminate\Support\Facades\DB;
@@ -49,7 +50,7 @@ class DashboardController extends Controller
         $total_budgets = Budget::where('year', $year)->get('amount');
 
         $amount = 0; // initialize total budget amount
-        $recent_expenses = Expense::orderBY('id', 'DESC')
+        $recent_expenses = Payment::orderBY('id', 'DESC')
             ->limit(7)
             ->get();
 
