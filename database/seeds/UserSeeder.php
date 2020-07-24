@@ -28,24 +28,36 @@ class UserSeeder extends Seeder
             'email' => 'admin@admin.com',
             'password' => Hash::make('adminpassword'),
             'status_id' => '1',
+            'phone_number' => '0803671257',
+             'date_of_birth' => '07/24/2020',
+            'gender' => 'male'
         ]);
         $manager = User::create([
             'name' => 'Manager User',
             'email' => 'manager@manager.com',
             'password' => Hash::make('managerpassword'),
             'status_id' => '2',
+            'phone_number' => '0803671257',
+             'date_of_birth' => '07/24/2020',
+            'gender' => 'male'
         ]);
         $editor = User::create([
             'name' => 'Editor User',
             'email' => 'editor@editor.com',
             'password' => Hash::make('editorpassword'),
             'status_id' => '3',
+            'phone_number' => '0803671257',
+             'date_of_birth' => '07/24/2020',
+            'gender' => 'male'
         ]);
         $user = User::create([
             'name' => 'Generic User',
             'email' => 'user@user.com',
             'password' => Hash::make('userpassword'),
             'status_id' => '2',
+            'phone_number' => '0803671257',
+            'date_of_birth' => '07/24/2020',
+            'gender' => 'male'
         ]);
 
         $admin->roles()->attach($adminRole);
