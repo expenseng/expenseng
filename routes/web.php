@@ -24,6 +24,7 @@ Route::get('/faq', 'PageController@faq')->name('faq');
 Route::get('/privacy', 'PageController@privacy')->name('privacy');
 Route::get('/search', 'PageController@search')->name('search');
 Route::get('/handles', 'PageController@handles')->name('handles');
+Route::get('/changeMinistryCharts/{ministry}', 'HomeController@MinistryCharts')->name('ministry_expenses_charts');
 
 // Feedback
 Route::post('/feedback', 'FeedbackController@create')->name('feedback');
