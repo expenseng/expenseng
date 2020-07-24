@@ -115,8 +115,8 @@
                         </div>
                     </div>
                 </div>
-            
-            
+
+
 
                 <div class="col-lg-6 col-md-12">
                     <div class="card">
@@ -231,7 +231,7 @@
                                                 </div>
 
                                                 <div class="modal-footer">
-                                                        
+
                                                         <form
                                                             action="{{ '/admin/activity/mark/' . $recent_activity->id }}"
                                                             method="post">
@@ -429,7 +429,7 @@
             <nav class="float-left">
                 <ul>
                     <li>
-                        <a href="https://www.expenseng.com">
+                        <a href='{{url('/')}}'>
                             ExpenseNg
                         </a>
                     </li>

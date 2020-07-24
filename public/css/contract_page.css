@@ -218,7 +218,9 @@ header.container {
   padding-left: 0;
   margin-top: 5.5rem;
 }
-
+.text-green{
+    color: #00945E;
+}
 .company a{
     text-transform: none;
     text-decoration: none;
