@@ -12,7 +12,7 @@
         <div class="coat">
         <img src="{{ asset('images/image 7.png') }}" alt="">
         <div class="text-center ministry">
-            {{-- <h4>{{$ministry->name}}</h4> --}}
+            <h4><b> {{ $ministry->name }} </b></h4>
             <a title="Click to view profile" href="{{ route('ministries.single', $ministry->shortname) }}">{{$ministry->name}}</a>
         </div>
         </div>
