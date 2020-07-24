@@ -205,9 +205,6 @@ p.tag{
     transition: ease-in-out all 0.5s;
     padding: 0rem 1rem;
 }
-
-.slightly-bold{
-}
 .card1{
     background: url(../images/card2.jpg);
     background-size: cover;
@@ -276,7 +273,7 @@ p.tag{
     margin-left: -1rem;
     padding: 0.5rem 2rem;
     margin-top: auto;
-    margin-bottom: 2.9em;
+    margin-bottom: 2.9rem;
 }
 .project p{
     /* font-size: var(--fs-h5); */
