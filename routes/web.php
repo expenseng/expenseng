@@ -137,12 +137,18 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
 
 
       // MiNISTY CRUD
-      Route::get('/ministry/create', 'MinistryController@viewCreateMinistry')->name('ministry.create');
-      Route::post('/ministry/create', 'MinistryController@createMinistry')->name('create.ministry');
-      Route::get('/ministry/view', 'MinistryController@viewMinistries')->name('ministry.view');
-      Route::get('/ministry/edit/{ministry_id}', 'MinistryController@showEditForm')->name('ministry.view.edit');
-      Route::put('/ministry/edit/{ministry_id}', 'MinistryController@editMinistry')->name('ministry.edit');
-      Route::delete('/ministry/delete/{ministry_id}', 'Admin\MinistryController@deleteMinistry')->name('ministry.delete');
+      Route::get('/ministry/create', 'MinistryController@viewCreateMinistry')
+      ->name('ministry.create');
+      Route::post('/ministry/create', 'MinistryController@createMinistry')
+      ->name('create.ministry');
+      Route::get('/ministry/view', 'MinistryController@viewMinistries')
+      ->name('ministry.view');
+      Route::get('/ministry/edit/{ministry_id}', 'MinistryController@showEditForm')
+      ->name('ministry.view.edit');
+      Route::put('/ministry/edit/{ministry_id}', 'MinistryController@editMinistry')
+      ->name('ministry.edit');
+      Route::delete('/ministry/delete/{ministry_id}', 'Admin\MinistryController@deleteMinistry')
+      ->name('ministry.delete');
 
       //People CRUD
       Route::get('/admin/{company}/{people}', 'CompanyController@showPeople');
