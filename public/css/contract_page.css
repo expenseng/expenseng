@@ -1,15 +1,15 @@
 :root{
 	--ff-primary: 'Lato' sans-serif;
-  
+
 	--fw-reg: 400;
 	--fw-normal: 500;
 	--fw-bold: 700;
-  
+
 	--clr-light: #fff;
 	--clr-dark: #A1A3A8;
 	--clr-accent: #00945E;
 	--clr-white: #f2faf7;
-  
+
 	--fs-h2: 2.15rem;
 	--fs-h3: 1.5rem;
 	--fs-h4: 1.25rem;
@@ -24,6 +24,23 @@
   font-family: "Lato", sans-serif;
   overflow-x: hidden;
 }
+
+/* Placeholder Text */
+.form-control {
+    font-family: "Lato";
+    margin-left: rem;
+    padding-left: 50px;
+}
+.img-search {
+    display: inline;
+    position: absolute;
+    padding-left: 15px;
+    padding-right: 10px;
+    text-align: left;
+    margin-top: 15px;
+}
+
+
 /* Add a black background color to the top navigation */
 
   /* breadcrumb */
@@ -82,17 +99,28 @@ h1{
   .contract-awarded{
     /* margin:1rem 0; */
     margin-top: 0;
+    overflow: hidden;
   }
   .contract-awarded .paragraph{
     position:relative;
   }
+
+
+
+  hr{
+    width: 500vw;
+    margin-left: -50%;
+
+  }
+
   .contract-awarded .paragraph p{
     cursor:pointer;
     padding:0 2rem;
     color:#00945E;
     font-weight:bold;
+    top: .5rem;
   }
-  
+
   .contract-awarded .paragraph:before{
     content:'';
     position:absolute;
@@ -103,7 +131,7 @@ h1{
     background-color:#00945E;
     transition:.5s ease;
   }
-  
+
 .heading{
     display: inline;
 }
@@ -212,6 +240,14 @@ h5{
   font-weight: bolder;
 }
 
+
+@media only screen and (max-width: 991px){
+hr{
+    position:relative;
+    top: -1.5vh;
+  }
+}
+
 @media only screen and (max-width: 768px){
   .header{
     margin-top: -35px !important;
@@ -227,4 +263,16 @@ h1{
 .container-fluid{
   margin-top: -45px !important;
 }
+hr{
+    position:relative;
+    top: .2vh;
+  }
+
+}
+
+@media only screen and (max-width: 373px){
+    hr{
+        position:relative;
+        top: -1.2vh;
+      }
 }

@@ -2,15 +2,15 @@
 @push('css')
 
     <!--     Fonts and icons     -->
-    
+
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    <link rel="stylesheet"
-        href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2">
-
-    <link rel="stylesheet" href="{{ asset('css/dash.css') }}" />
-
+    {{-- <link rel="stylesheet"
+        href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('css/ministry-report-table.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('css/dash.css') }}" /> --}}
+    <link rel="stylesheet" href="{{ asset("css/dash-table.css")}}">
 @endpush
 <title>
     ExpenseNg - Admin Dashboard
@@ -22,104 +22,126 @@
             <div id="alert">
                 @include('backend.partials.flash')
             </div>
-            <div class="row ">
-                <div class="col-lg-3 col-md-6 col-sm-6 panel">
-                    <div class="card card-stats">
-                        <div class="card-header card-header-warning card-header-icon">
-                            <div class="card-icon">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="card p-3">
+                        <div class="d-flex justify-content-between">
+                            <div class="card-icon section-card-icon p-3">
                                 <i class="material-icons">mode_edit</i>
                             </div>
-                            <p class="card-category">Total Comments</p>
-                            <h3 class="card-title">0
+                            <div class="card-write-up">
+                                <p class="card-category">Total Comments</p>
+                            </div>
+                        </div>
+                        <div class="card-number">
+                            <h3 class="">0
 
                             </h3>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 panel">
-                    <div class="card card-stats">
-                        <div class="card-header card-header-success card-header-icon">
-                            <div class="card-icon">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="card p-3">
+                        <div class="d-flex justify-content-between">
+                            <div class="card-icon section-card-icon p-3">
                                 <i class="material-icons">account_balance_wallet</i>
                             </div>
-                            <p class="card-category">Total {{ date('Y') }} Budget</p>
-                            <h3 class="card-title">₦{{ number_format($year_budget) }}</h3>
-
+                            <div class="card-write-up">
+                                <p class="card-category">Total {{ date('Y') }} Budget</p>
+                            </div>
                         </div>
-                        <hr />
+                        <div class="card-number">
+                            <h3 class="">₦{{ number_format($year_budget) }}</h3>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 panel">
-                    <div class="card card-stats">
-                        <div class="card-header card-header-danger card-header-icon">
-                            <div class="card-icon">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="card p-3">
+                        <div class="d-flex justify-content-between">
+                            <div class="card-icon section-card-icon p-3">
                                 <i class="material-icons">account_balance</i>
                             </div>
-                            <p class="card-category">Total Ministries</p>
-                            <h3 class="card-title">{{ $total_ministry }}</h3>
+                            <div class="card-write-up">
+                                <p class="card-category">Total Ministries</p>
+                            </div>
+                        </div>
+                        <div class="card-number">
+                            <h3 class="">{{ $total_ministry }}</h3>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 panel">
-                    <div class="card card-stats">
-                        <div class="card-header card-header-info card-header-icon">
-                            <div class="card-icon">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="card p-3">
+                        <div class="d-flex justify-content-between">
+                            <div class="card-icon section-card-icon p-3">
                                 <i class="material-icons">dns</i>
                             </div>
-                            <p class="card-category">Total Companies</p>
-                            <h3 class="card-title">{{ $total_company }}</h3>
+                            <div class="card-write-up">
+                                <p class="card-category">Total Companies</p>
+                            </div>
+                        </div>
+                        <div class="card-number">
+                            <h3 class="">{{ $total_company }}</h3>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
 
-                <div class="col-lg-6 col-md-12">
+                <div class="col-lg-12 col-md-12">
                     <div class="card">
-                        <div class="card-header card-header-primary">
-                            <h4 class="card-title">Recent Expenses</h4>
-                            <p class="card-category">Last 7 expenses</p>
+                        <div class="card-bg-primary pt-3 px-3">
+                            <h4 class="section-card-title">Recent Expenses</h4>
+                            <p class="section-card-category">Last 7 expenses</p>
                         </div>
-                        <div class="card-body table-responsive">
-                            <table class="table table-hover">
-                                <thead class="text-primary">
-                                    <th>S/N</th>
-                                    <th>Company</th>
-                                    <th>Project</th>
-                                    <th>Ministry</th>
-                                    <th>Amount Spent</th>
-                                </thead>
-                                <tbody>
-                                    @if (count($recent_expenses)>0)
+                        <div class="card-body bordered">
+                            <div class="table-section reponsive-div">
+                                <div class="main-table">
+                                    <div class="table-data">
+                                        <div style="overflow-x: auto;">
+                                            <table class="table table-striped table-responsive-smr">
+                                                <thead class="text-primary">
+                                                    <th>S/N</th>
+                                                    <th>Company</th>
+                                                    <th>Project</th>
+                                                    <th>Ministry</th>
+                                                    <th>Amount Spent</th>
+                                                </thead>
+                                                <tbody>
+                                                    @if (count($recent_expenses)>0)
 
-                                        @foreach ($recent_expenses as $recent_expense)
-                                            <tr>
-                                                <td>{{ ++$counter }}</td>
-                                                <td>{{ $recent_expense->year }}</td>
-                                                <td>{{ $recent_expense->project }}</td>
-                                                <td>{{ $recent_expense->month }}</td>
-                                                <td>₦{{ number_format($recent_expense->amount_spent) }}</td>
-                                            </tr>
-                                        @endforeach
+                                                        @foreach ($recent_expenses as $recent_expense)
+                                                            <tr>
+                                                                <td>{{ ++$counter }}</td>
+                                                                <td>{{ $recent_expense->year }}</td>
+                                                                <td>{{ $recent_expense->project }}</td>
+                                                                <td>{{ $recent_expense->month }}</td>
+                                                                <td>₦{{ number_format($recent_expense->amount_spent) }}</td>
+                                                            </tr>
+                                                        @endforeach
 
-                                    @endif
+                                                    @endif
 
-                                </tbody>
-                            </table>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             
             
 
-                <div class="col-lg-6 col-md-12">
+                <div class="col-lg-12 col-md-12">
                     <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Recent Activities</h4>
+                        <div class="card-header d-md-flex justify-content-between">
+                            <h4 class="section-card-title">Recent Activities</h4>
 
                             @can('delete')
                                 <button class="btn btn-primary" style="float:right" data-toggle="modal"
-                                    data-target="#exampleModal1">Delete All notifications</button>
+                                    data-target="#exampleModal1">Mark all as read</button>
 
                             @endcan
 
@@ -130,22 +152,21 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Are you sure???</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Mark all as read</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        Deleting all activities
+                                        This action will Set all notifications status as read, including notifications you have not opened
                                     </div>
 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <form action="{{ '/admin/activity/delete_all/' }}" method="post">
-                                            @method('delete')
-
+                                        <form action="{{ '/admin/activity/mark_all/' }}" method="post">
+                                           @method('put')
                                             @csrf
-                                            <button type="" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger">Proceed</button>
                                         </form>
 
                                     </div>
@@ -157,11 +178,12 @@
 
 
                         <div class="card-body table-responsive-sm">
-                            <table id='example' class="table table-bordered">
+                            <table id='notification' class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>S/N</th>
                                         <th>Description</th>
+                                        <th>status</th>
                                         <th>Date</th>
                                         @can('manage')
                                             <th>Action</th>
@@ -169,75 +191,112 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if (count($recent_activites)>0)
+                                    @if (count($recent_activities)>0)
 
-                                        @foreach ($recent_activites as $recent_activity)
-                                            <tr>
-                                                <td>{{ ++$count }}</td>
-                                                <td>{{ $recent_activity->description }}</td>
-                                                <td>{{ $recent_activity->created_at }}</td>
-                                                @can('manage')
-                                                    <td>
-                                                        <!--modal begin-->
-                                                        <div class="col-md-6">
-                                                            @can('delete')
-                                                                <i class="fa fa-trash" data-toggle="modal"
-                                                                    data-target="{{ '#exampleModal' . $recent_activity->id }}"
-                                                                    style="color: red"></i>
-                                                            @endcan
+                                    @foreach ($recent_activities as $recent_activity)
+                                    <tr>
+                                    <td>{{ ++$count }}</td>
+                                    <td>{{ $recent_activity->description }}</td>
+                                    <td>{{ $recent_activity->status }}</td>
+                                    <td>{{ $recent_activity->created_at }}</td>
+                                    @can('manage')
+                                    <td>
+                                    <!--modal begin-->
+                                    @can('delete')
 
-                                                            <div class="modal fade" id="{{ 'exampleModal' . $recent_activity->id }}"
-                                                                tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                                                                aria-hidden="true">
-                                                                <div class="modal-dialog" role="document">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h5 class="modal-title" id="exampleModalLabel">Are you
-                                                                                sure???</h5>
-                                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                                aria-label="Close">
-                                                                                <span aria-hidden="true">&times;</span>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            Deleting from activities
-                                                                        </div>
+                                        <a class="fa fa-eye" data-toggle="modal" data-target="{{ '#Modal' . $recent_activity->id }}"
+                                            style="color: blue"></a>
+                                        @can('delete')
+                                            <a class="fa fa-trash" data-toggle="modal"
+                                                data-target="{{ '#exampleModal' . $recent_activity->id }}"
+                                                style="color: red;"></a>
+                                        @endcan
+                                    @endcan
 
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary"
-                                                                                data-dismiss="modal">Close</button>
-                                                                            <form
-                                                                                action="{{ '/admin/activity/delete/' . $recent_activity->id }}"
-                                                                                method="post">
-                                                                                @method('delete')
 
-                                                                                @csrf
-                                                                                <button type="" class="btn btn-danger">Delete</button>
-                                                                            </form>
+                                    <div class="modal fade" id="{{ 'Modal' . $recent_activity->id }}" tabindex="-1" role="dialog"
+                                        aria-labelledby="ModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="ModalLabel">Activity details
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p><b>This action was performed by:</b> {{ $recent_activity->username}}</p>
+                                                    <p><b>Privilage level:</b> {{ $recent_activity->privilage }}</p>
 
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                @endcan
-                                            </tr>
-                                        @endforeach
+                                                    <p><b>Description:</b></p><textarea style="width:100%" disabled> {{ $recent_activity->description }}
+                                                    </textarea>
+                                                    <br>
+                                                    <br>
+                                                    <p><b>Carried out: </b>{{ $recent_activity->created_at }}</p>
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                        
+                                                        <form
+                                                            action="{{ '/admin/activity/mark/' . $recent_activity->id }}"
+                                                            method="post">
+                                                            @method('put')
+
+                                                            @csrf
+                                                            <button type="" class="btn btn-danger">Seen</button>
+                                                        </form>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="modal fade" id="{{ 'exampleModal' . $recent_activity->id }}"
+                                            tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Are you
+                                                            sure???</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Deleting from activities
+                                                    </div>
+
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Close</button>
+                                                        <form
+                                                            action="{{ '/admin/activity/delete/' . $recent_activity->id }}"
+                                                            method="post">
+                                                            @method('delete')
+
+                                                            @csrf
+                                                            <button type="" class="btn btn-danger">Delete</button>
+                                                        </form>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </td>
+                                    @endcan
+                                    </tr>
+                                    @endforeach
 
                                     @endif
 
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>S/N</th>
-                                        <th>Description</th>
-                                        <th>Date</th>
-                                        @can('manage')
-                                            <th>Action</th>
-                                        @endcan
-                                    </tr>
-                                </tfoot>
+                                
                             </table>
                         </div>
 
@@ -247,61 +306,68 @@
         </div>
     </div>
     <div class="row">
-        <div class="col mx-4 ">
-        <div class="card px-5">
-            <h2 class="p-4 card-header">Visitors Suggestions</h2>
-            <div class="card-body p-0">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead class="bg-light">
-                        <tr class="border-0">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <h2 class="pt-3 px-3 section-card-title">Visitors Suggestions</h2>
+                <div class="card-body bordered">
+                    <div class="table-section reponsive-div">
+                        <div class="main-table">
+                            <div class="table-data">
+                                <div style="overflow-x: auto;">
+                                    <table class="table table-striped table-responsive-smr">
+                                        <thead class="bg-light">
+                                            <tr class="border-0">
 
-                            <th class="border-0">Firstname</th>
-                            <th class="border-0">Lastname</th>
-                            <th class="border-0">Cabinet</th>
-                            <th class="border-0">Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+                                                <th class="border-0">Firstname</th>
+                                                <th class="border-0">Lastname</th>
+                                                <th class="border-0">Cabinet</th>
+                                                <th class="border-0">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
 
-                        @if (count($feedbacks)> 0)
-                            @foreach ($feedbacks as $feedback)
-                                <tr>
-                                    <td>{{$feedback->firstName}} </td>
-                                    <td>{{$feedback->lastName}}  </td>
-                                    <td>{{$feedback->ministry_id}}</td>
-                                    <td>
-                                        <a href="{{route('feedback.approve', ['id' => $feedback->id])}}" class="btn btn-success btn-sm ">Approve</button>
-                                            <a href="{{route('feedback.ignore', ['id' => $feedback->id])}}" class="btn btn-danger btn-sm">Ignore</button>
+                                            @if (count($feedbacks)> 0)
+                                                @foreach ($feedbacks as $feedback)
+                                                    <tr>
+                                                        <td>{{$feedback->firstName}} </td>
+                                                        <td>{{$feedback->lastName}}  </td>
+                                                        <td>{{$feedback->ministry_id}}</td>
+                                                        <td>
+                                                            <a href="{{route('feedback.approve', ['id' => $feedback->id])}}" class="btn btn-success btn-sm ">Approve</button>
+                                                                <a href="{{route('feedback.ignore', ['id' => $feedback->id])}}" class="btn btn-danger btn-sm">Ignore</button>
 
-                                    </td>
-                                </tr>
-                                @endforeach
-                                @endif
-                                </tr>
-                        </tbody>
-                    </table>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            @endif
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-<div class="row justify-content-center">
-    <div class=" offset-1 col-3">
-        <div class="p-1 tweet-plugin fixed-plugin " id="tweetButton">
-                    <button type="button" class="btn  px-4 btn-white bg-white text-primary py-4 px-lg-2  tweet-button" id="B1" data-toggle="modal" data-target="#sendTweetModal">
-                        <i class="fa fa-twitter fa-10x text-primary"></i> tweet
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="mr-2">
+                <div class="tweet-plugin" id="tweetButton">
+                    <button type="button" class="btn bg-light p-3" id="B1" data-toggle="modal" data-target="#sendTweetModal">
+                        <i class="fa fa-twitter fa-10x"></i> tweet
                     </button>
+                </div>
+            </div>
+            <div class="ml-2">
+                <div class="tweet-list-plugin" id="tweetButton2">
+                    <button type="button" class="btn bg-light p-3" id="B2" data-toggle="modal" data-target="#listTweetModal">
+                        <i class="fa fa-twitter fa-10x"></i>Tweets
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
-    <div class=" offset-1 col-3 mr-auto ">
-        <div class="p-1 mr-0 tweet-list-plugin fixed-plugin " id="tweetButton2">
-            <button type="button" class="btn btn-white bg-light text-primary border  py-4 px-4 px-lg-2  tweet-list-button" id="B2" data-toggle="modal" data-target="#listTweetModal">
-                <i class="fa fa-twitter fa-10x text-primary"></i>Tweets
-            </button>
-        </div>
-    </div>
-</div>
     <div class="modal" id="sendTweetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -311,46 +377,60 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <div class="alert1 " >
-
+        </div>
+    </div>
+    <div class="modal" id="sendTweetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Type in tweet below</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </div>
-                <form class="user" action="">
-                    @csrf
-                    <div class="form-group">
-                        <textarea name="tweet"  maxlength="260" class="form-control tweet" id="" cols="50" rows="6"></textarea>
+                <div class="modal-body">
+                    <div class="alert1 ">
+
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary sendTweet" id="sendTweet">tweet</button>
+                    <form class="user" action="">
+                        @csrf
+                        <div class="form-group">
+                            <textarea name="tweet" maxlength="260" class="form-control tweet" id="" cols="50"
+                                rows="6"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary sendTweet" id="sendTweet">tweet</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-    <div class="modal" id="listTweetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal" id="listTweetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tweets</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="alert2">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tweets</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </div>
-                <div class="" id="tweets">
+                <div class="modal-body">
+                    <div class="alert2">
+                    </div>
+                    <div class="" id="tweets">
 
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 
 
@@ -403,7 +483,11 @@
         integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
         crossorigin="anonymous"></script>
 
-
+<script>
+$(document).ready( function () {
+    $('#notification').DataTable();
+} );
+</script>
     <script>
         jQuery(document).ready(function() {
             jQuery().ready(function() {
@@ -474,57 +558,59 @@
 
 
                 });
-                if ($(window).width() < 960) {
-                    $('#tweetButton').removeClass('fixed-plugin');
-                    $('#tweetButton').removeClass('tweet-plugin');
-                    $('#tweetButton2').removeClass('fixed-plugin');
-                    $('#tweetButton2').removeClass('tweet-list-plugin');
-                    $('#B1').removeClass('tweet-button');
-                    $('#B2').removeClass('tweet-list-button');
-                }
+                // if ($(window).width() < 960) {
+                //     $('#tweetButton').removeClass('fixed-plugin');
+                //     $('#tweetButton').removeClass('tweet-plugin');
+                //     $('#tweetButton2').removeClass('fixed-plugin');
+                //     $('#tweetButton2').removeClass('tweet-list-plugin');
+                //     $('#B1').removeClass('tweet-button');
+                //     $('#B2').removeClass('tweet-list-button');
+                // }
 
-                $(window).on('resize', function() {
-                        if ($(window).width() < 1000) {
-                            $('#tweetButton').removeClass('fixed-plugin');
-                            $('#tweetButton').removeClass('tweet-plugin');
-                            $('#tweetButton2').removeClass('fixed-plugin');
-                            $('#tweetButton2').removeClass('tweet-list-plugin');
-                            $('#B1').removeClass('tweet-button');
-                            $('#B2').removeClass('tweet-list-button');
-                        } else {
-                            $('#tweetButton').addClass('fixed-plugin');
-                            $('#tweetButton2').addClass('fixed-plugin');
-                            $('#tweetButton2').addClass('tweet-list-plugin');
-                            $('#tweetButton').addClass('tweet-plugin');
-                            $('#B1').addClass('tweet-button');
-                            $('#B2').addClass('tweet-list-button');
+                // $(window).on('resize', function() {
+                //     if ($(window).width() < 1000) {
+                //         $('#tweetButton').removeClass('fixed-plugin');
+                //         $('#tweetButton').removeClass('tweet-plugin');
+                //         $('#tweetButton2').removeClass('fixed-plugin');
+                //         $('#tweetButton2').removeClass('tweet-list-plugin');
+                //         $('#B1').removeClass('tweet-button');
+                //         $('#B2').removeClass('tweet-list-button');
+                //     } else {
+                //         $('#tweetButton').addClass('fixed-plugin');
+                //         $('#tweetButton2').addClass('fixed-plugin');
+                //         $('#tweetButton2').addClass('tweet-list-plugin');
+                //         $('#tweetButton').addClass('tweet-plugin');
+                //         $('#B1').addClass('tweet-button');
+                //         $('#B2').addClass('tweet-list-button');
 
 
-                        }
-                });
-                jQuery('#B2').click(function(){
-                    jQuery.ajax(
-                        {
-                            url: "{{URL::to('tweets')}}",
-                            type: "get",
-                            datatype: "html"
-                        }).done(function(data){
+                //     }
+                // });
+                jQuery('#B2').click(function() {
+                    jQuery.ajax({
+                        url: "{{ URL::to('tweets') }}",
+                        type: "get",
+                        datatype: "html"
+                    }).done(function(data) {
                         $("#tweets").empty().html(data);
-                    }).fail(function(jqXHR, ajaxOptions, thrownError){
-                        $("#tweets").empty().html('<div class="alert alert-danger"> failed to load tweets </div>')
+                    }).fail(function(jqXHR, ajaxOptions, thrownError) {
+                        $("#tweets").empty().html(
+                            '<div class="alert alert-danger"> failed to load tweets </div>'
+                        )
                     });
                 });
-                jQuery.fn.delete =  function(data){
+                jQuery.fn.delete = function(data) {
                     $id = data;
-                    $div = '#'+$id
+                    $div = '#' + $id
                     $confirm = confirm('Are you sure you want to delete this tweet');
-                    if($confirm){
-                        jQuery.ajax(
-                            {
-                                url: "{{URL::to('delete_tweet')}}",
-                                type:"delete",
-                                data:{'id': $id},
-                            }).done(function (data) {
+                    if ($confirm) {
+                        jQuery.ajax({
+                            url: "{{ URL::to('delete_tweet') }}",
+                            type: "delete",
+                            data: {
+                                'id': $id
+                            },
+                        }).done(function(data) {
                             jQuery($div).fadeOut(4000);
                             jQuery('.alert2').removeClass('alert-danger');
                             jQuery('.alert2').fadeIn(4000);
@@ -532,7 +618,7 @@
                             jQuery('.alert2').html('tweet deleted');
                             jQuery('.alert2').fadeOut(4000);
 
-                        }).fail( function(data){
+                        }).fail(function(data) {
                             jQuery('.alert2').removeClass('alert-success');
                             jQuery('.alert2').fadeIn(4000);
                             jQuery('.alert2').addClass('alert alert-danger text-white');

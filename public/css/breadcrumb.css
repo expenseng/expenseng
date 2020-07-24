@@ -1,20 +1,25 @@
-.first{
+.breadcrumb{
     background-color: #f2f2f2;
-    font-weight: bold;
+    font-weight: bold !important;
 }
-  
-.first li a{
+
+.breadcrumb li a{
     color: #6c757d;
 }
-  a:hover{
-    color: #00945E !important;
 
-  }
-.first li a:hover{
+.breadcrumb a:hover{
+    color: #00945E !important;
+}
+
+a:hover{
     text-decoration: none;
     color: #00945E !important;
 }
-  
-.first li.active{
+
+.breadcrumb li.active{
     color: #00945E !important;
+    font-weight: bold !important;
+}
+.breadcrumb-item+ .breadcrumb-item::before{
+    content: '.' !important;
 }

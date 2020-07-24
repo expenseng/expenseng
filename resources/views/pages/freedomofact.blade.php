@@ -8,9 +8,9 @@
 
 
 @section('content')
-{{ Breadcrumbs::render('FOIA') }}
   <div class="wrapper">
     <div class="container content">
+      {{ Breadcrumbs::render('FOIA') }}
         <h1>Freedom Of Information Act</h1>
 
         <div class="conditions">
