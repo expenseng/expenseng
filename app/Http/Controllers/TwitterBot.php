@@ -173,7 +173,6 @@ class TwitterBot extends Controller
                 return  Response('tweet destroy');
             } catch (\Exception $exception) {
                 return Response::json(array("errors" => 'error occured'), 422);
-
             }
         }
     }
