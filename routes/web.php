@@ -214,6 +214,22 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
     Route::get('/comments', 'Admin\CommentController@index')->name('comments');  //Displays the index page for all comments
 
 
+     // Payments CRUD
+      Route::get('/payments', 'Admin\PaymentController@index')->name('payments.view');
+
+      Route::get('/payments/create', 'Admin\PaymentController@create')->name('payments.create');
+      Route::post('/payments/create', 'Admin\PaymentController@store')->name('payments.store');
+
+      Route::get('/payments/edit/{payment_id}', 'Admin\PaymentController@edit')->name('payments.edit');
+      Route::put('/payments/edit/{payment_id}', 'Admin\PaymentController@update')->name('payments.update');
+
+
+      Route::delete('/payments/delete/{payment_id}', 'Admin\PaymentController@destroy')->name('payments.delete');
+
+
+
+
+
  });
 
 

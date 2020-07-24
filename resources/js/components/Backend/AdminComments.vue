@@ -38,7 +38,8 @@
                                             <td class="td-lg">
                                                 <a href="#" class="smallbtn " title="edit" data-toggle="modal" data-target=".update-comment-modal" v-on:click="getSingleComment(comment.commentId)"><i class="text-dark fa fa-edit"></i></a>
                                                 <a href="#" class="smallbtn " title="replies" data-toggle="modal" data-target=".replies-modal" v-on:click="viewReplies(comment.commentId, index)"><i class=" text-info fa fa-comment"></i></a>
-                                                <a href="" class="smallbtn " title="flag" v-on:click.prevent="flagComment(comment.commentId, comment.ownerId, index)"><i class="text-danger fa fa-flag"></i></a>
+                                                <a href="" class="smallbtn " title="flag" v-on:click.prevent="flagComment(comment.commentId, comment.ownerId, index)"><i class="text-warning fa fa-flag"></i></a>
+                                                <a href="" class="smallbtn " title="delete" v-on:click.prevent="deleteComment(comment.commentId, comment.ownerId, index)"><i class="text-danger fa fa-trash"></i></a>
                                                 
                                             </td>
                                         </tr>
@@ -70,7 +71,7 @@
                                                     <thead class="thead-dark">
                                                         <tr>
                                                             <th>Author</th>
-                                                            <th>Created at</th>
+                                                            <th>Created</th>
                                                             <th>Content</th>
                                                             <th>Flags</th>
                                                             <th>Votes</th>
@@ -149,8 +150,6 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-primary" v-on:click.prevent="updateComment(singleComment.commentId, singleComment.ownerId, singleComment.content)">Update</button>
-                                <button type="button" class="btn btn-danger" v-on:click.prevent="deleteComment(singleComment.commentId, singleComment.ownerId)">Delete</button>
-                                 <!-- <a href="#" class="smallbtn btn" title="delete" v-on:click="deleteComment(singleComment.commentId, singleComment.ownerId)"><i class="text-danger fa fa-trash"></i></a> -->
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                              </div>
                         </div>
@@ -177,7 +176,7 @@ import Username from '../Comment/Username';
                 comments: [],
                 singleComment: [],
                 replies: [],
-                index: '',
+                // index: '',
                 origin: document.location.pathname, //we are using this as the origin/resourcename
                 replies: [],
             }
@@ -213,16 +212,28 @@ import Username from '../Comment/Username';
                 .then(response => {
                     this.busy = false;
                     this.replies = response.records;
-                    this.index = index;
+                    // this.index = index;
                 })
             },
 
-            deleteComment: function(commentId, ownerId) {
-                this.comment.deleteComment(commentId, ownerId)
-                .then(response => {
-                    this.busy = false;
-                    this.$swal('Success', response.message, 'OK');
-                    this.removeComment(this.index);
+             deleteComment: function(commentId, ownerId, index) {
+                this.$swal({
+                    title: "Delete this comment?",
+                    text: "Are you sure? You won't be able to revert this!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    confirmButtonText: "Delete"
+                }).then((result) => { 
+                    if (result.value) {
+                        //this.removeComment(commentId, ownerId, index);
+                        this.comment.deleteComment(commentId, ownerId)
+                        .then(response => {
+                            this.busy = false;
+                            this.$swal('Success', response.message, 'OK');
+                            Vue.delete(this.comments, index);
+                        });
+                    }
                 });
 
             },
@@ -249,14 +260,9 @@ import Username from '../Comment/Username';
             getSingleComment: function(commentId){
                 for(let i in this.comments){
                     if(this.comments[i].commentId == commentId){
-                        this.index = i;
                         return this.singleComment = this.comments[i];
                     }
                 }
-            },
-
-            removeComment: function(key) {
-                 Vue.delete(this.comments, key);
             },
 
             
