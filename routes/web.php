@@ -114,7 +114,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
      Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
       // Matches The "/admin/dashboard" URL
      Route::delete('/activity/delete/{activity_id}', 'DashboardController@deleteActivity')->name('activity.delete');
-    Route::put('/activity/mark_all/', 'DashboardController@editAllActivity')->name('allactivity.edit');
+    Route::put('/activity/all/', 'DashboardController@seenAllNotifications')->name('allactivity.edit');
     Route::put('/activity/mark/{activity_id}', 'DashboardController@seenActivity')->name('activity.update');
 
 

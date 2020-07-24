@@ -47,6 +47,7 @@ class DashboardController extends Controller
         $total_ministry = count(Ministry::all());
         $total_company = count(Company::all());
         $total_budgets = Budget::where('year', $year)->get('amount');
+
         $amount = 0; // initialize total budget amount
         $recent_expenses = Expense::orderBY('id', 'DESC')
             ->limit(7)
@@ -129,7 +130,7 @@ class DashboardController extends Controller
          Activites::where('id', $id)->update([
             'status' => 'seen',
         ]);
-        
+
         return redirect(route('dashboard'));
 
     }
@@ -149,7 +150,8 @@ class DashboardController extends Controller
             return redirect()->back();
         }
     }
-    public function editAllActivity()
+
+    public function seenAllNotifications()
     {
         if (Gate::denies('delete')) {
             return redirect(route('dashboard'));
