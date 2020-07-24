@@ -5,10 +5,12 @@
 <link rel="stylesheet" href="{{ asset('css/handles.css') }}">
 @endpush
 @section('content')
-<div class="pt-3 pb-5 body-bg" style="background-color: #F2FAF7;">
-    <div class="container">
-        {{ Breadcrumbs::render('handles') }}
-    </div>
+<div class="pt-5 pb-5 body-bg" style="background-color: #F2FAF7;">
+
+<div class="container">
+	{{ Breadcrumbs::render('handles') }}
+</div>
+
 <div class="container bg-white pt-5 bg-inner">
     <div class="container">
         <div class="container heading">

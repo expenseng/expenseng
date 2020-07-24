@@ -5,8 +5,8 @@
   <link rel="stylesheet" href="{{asset('css/index.blade.css')}}">
   <link rel="stylesheet" href="{{ asset('css/ministry-report-table.css') }}">
   <link rel="stylesheet" href="{{ asset('css/filter.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
   <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
 
     @toastr_css
 
@@ -19,13 +19,13 @@
   <div class="container ">
 {{ Breadcrumbs::render('expense.reports') }}
     <div class="row">
-      <div class="col-md-8 col-lg-12 section-heading">
+      <div class="col-md-12 col-lg-12 section-heading">
         <h1 class="section-heading-title">Expense Report</h1>
         <p class="section-heading-paragraph">Expense report gives an insight to how much is being spent by the federal government on a daily basis and how much is spent in major sectors in Nigeria.</p>
         <h5>Subscribe to daily Expense Report</h5>
         <span>
             @include('partials.modals.subscription')
-
+     
       </span>
 
     </div>
@@ -93,7 +93,7 @@
                                                 <button id="year" class="btn btn-block btn-date">Year</button>
                                                 </div>
                                             </div>
-                                        </section>
+                                        </section>                   
                                         <br>
                                         <section class="row">
                                             <div class="col-12" >

@@ -9,7 +9,7 @@
 @section('content')
 	<section>
       <div class="container">
-{{ Breadcrumbs::render('contractors') }}
+      {{ Breadcrumbs::render('contractors') }}
         <h1 class="ws-10 font-weight-bold">Contracted Companies and Organisations</h1>
         <br />
         <div class="row">
