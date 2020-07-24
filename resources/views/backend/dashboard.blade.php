@@ -140,10 +140,19 @@
                             <h4 class="section-card-title">Recent Activities</h4>
 
                             @can('delete')
+                            @if (count($recent_activites)>0)
                                 <button class="btn btn-primary" style="float:right" data-toggle="modal"
                                     data-target="#exampleModal1">Mark all as read</button>
-
+                            @endif
                             @endcan
+
+                            @can('delete')
+                            @if (count($recent_activites)==0)
+                                <button class="btn btn-primary" style="float:right" data-toggle="modal"
+                                     disabled>No new notification</button>
+                            @endif
+                            @endcan
+
 
 
                         </div>
@@ -178,7 +187,7 @@
 
 
                         <div class="card-body table-responsive-sm">
-                            <table id='notification' class="table table-bordered">
+                            <table id='data' class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>S/N</th>
@@ -208,7 +217,7 @@
                                             style="color: blue"></a>
                                         @can('delete')
                                             <a class="fa fa-trash" data-toggle="modal"
-                                                data-target="{{ '#exampleModal' . $recent_activity->id }}"
+                                                data-target="{{ '#exampleModal'.$recent_activity->id }}"
                                                 style="color: red;"></a>
                                         @endcan
                                     @endcan
@@ -790,9 +799,29 @@ $(document).ready( function () {
 
     </script>
     <script>
-        jQuery(document).ready(function() {
-            $('#example').DataTable();
-        });
+        $(document).ready(function(){
+    $('#data').after('<div id="nav" style="float:right"></div>');
+    var rowsShown = 5;
+    var rowsTotal = $('#data tbody tr').length;
+    var numPages = rowsTotal/rowsShown;
+    for(i = 0;i < numPages;i++) {
+        var pageNum = i + 1;
+        $('#nav').append('<a  rel="'+i+'" class="btn btn-secondary" >'+pageNum+'</a> ');
+    }
+    $('#data tbody tr').hide();
+    $('#data tbody tr').slice(0, rowsShown).show();
+    $('#nav a:first').addClass('active');
+    $('#nav a').bind('click', function(){
+
+        $('#nav a').removeClass('active');
+        $(this).addClass('active');
+        var currPage = $(this).attr('rel');
+        var startItem = currPage * rowsShown;
+        var endItem = startItem + rowsShown;
+        $('#data tbody tr').css('opacity','0.0').hide().slice(startItem, endItem).
+        css('display','table-row').animate({opacity:1}, 300);
+    });
+});
 
     </script>
 @endsection

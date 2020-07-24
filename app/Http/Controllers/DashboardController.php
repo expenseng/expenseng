@@ -47,6 +47,7 @@ class DashboardController extends Controller
         $total_ministry = count(Ministry::all());
         $total_company = count(Company::all());
         $total_budgets = Budget::where('year', $year)->get('amount');
+
         $amount = 0; // initialize total budget amount
         $recent_expenses = Expense::orderBY('id', 'DESC')
             ->limit(7)
