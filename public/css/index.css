@@ -206,15 +206,15 @@ p.tag{
     padding: 0rem 1rem;
 }
 .card1{
-    background-image: url(../images/card2.jpg);
+    background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../images/card2.jpg);
     background-size: cover;
 }
 .card2{
-    background-image: url(../images/road.svg);
+    background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../images/road.svg);
     background-size: cover;
 }
 .card3{
-    background-image: url(../images/oil-rig.jpg);
+    background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../images/oil-rig.jpg);
     background-size: cover;
 }
 
@@ -764,8 +764,8 @@ p.profile{
     }
 
     .card1{
-        background-image: url(../images/card2.jpg);
         
+    background:linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(../images/card2.jpg); 
     }
     .vll{
         margin: 3rem auto;
