@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 class MinistryController extends Controller
 {
@@ -224,10 +225,10 @@ class MinistryController extends Controller
         }
 
         $ministries = Ministry::all();
-        $recent_activites = Activites::orderBY('id', 'DESC')
-            ->limit(5)
+        $recent_activites = Activites::where('status', 'pending')->orderBY('id', 'DESC')
+            ->limit(7)
             ->get();
-        $total_activity = count(Activites::all());
+        $total_activity = count(Activites::all()->where('status', 'pending'));
 
         return view('backend.ministry.view')->with([
             'ministries' => $ministries,
@@ -261,14 +262,16 @@ class MinistryController extends Controller
         $new_ministry->code = $request->code;
         $new_ministry->sector_id = $request->sector_id;
         $save_new_ministry = $new_ministry->save();
-
+        $auth = Auth::user();
         if ($save_new_ministry) {
+             
             Activites::create([
-                'description' =>
-                    'Admin added ' .
-                    $request->ministry_name .
-                    ' to the minstry table',
+                'description' =>$auth->name.' Added '. $request->ministry_name .' to the ministry table',
+                'username' => $auth->name,
+                'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+                'status' => 'pending'
             ]);
+        
          
              Session::flash('flash_message', 'New ministry created successfully!');
              return redirect('/admin/ministry/view');
@@ -314,10 +317,13 @@ class MinistryController extends Controller
             'website' => $request->website,
             'sector_id' => $request->sector_id,
         ]);
+        $auth = Auth::user();
         if ($update) {
             Activites::create([
-                'description' =>
-                    'updated ' . $request->ministry_name . ' details',
+                'description' =>$auth->name.'updated ' . $request->ministry_name . ' details',
+                'username' => $auth->name,
+                'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+                'status' => 'pending'
             ]);
              Session::flash('flash_message', 'Ministry details edited successfully!');
              return redirect('/admin/ministry/view');
@@ -332,16 +338,21 @@ class MinistryController extends Controller
         if (Gate::denies('delete')) {
             return redirect(route('ministry.view'));
         }
+        $auth =  Auth::user();
         $username = DB::table('ministries')
             ->where('id', $id)
-            ->pluck('ministry_name')
+            ->pluck('name')
             ->toArray();
+
         $name = implode(' ', $username);
         $delete = Ministry::where('id', $id)->delete();
         if ($delete) {
             Activites::create([
-                'description' =>
-                    'Admin deleted '.$name.' from the minstries table',
+                'description' => $auth->name.' deleted '.$name.' from the minstries table',
+                'username' => $auth->name,
+                'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+                'status' => 'pending'
+
             ]);
             Session::flash('error_message', 'Ministry deleted successfully!');
             return redirect('/admin/ministry/view');

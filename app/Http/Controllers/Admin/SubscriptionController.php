@@ -39,10 +39,10 @@ class SubscriptionController extends Controller
         if (Gate::denies('active', 'manage')) {
             return redirect(route('profile'));
         }
-        $recent_activites = Activites::orderBY('id', 'DESC')
-            ->limit(5)
+        $recent_activites = Activites::where('status', 'pending')->orderBY('id', 'DESC')
+            ->limit(7)
             ->get();
-        $total_activity = count(Activites::all());
+        $total_activity = count(Activites::all()->where('status', 'pending'));
         $count = 0;
         $subscribe = Subscription::paginate(10);
         return view('backend.subscription.index')->with([
@@ -100,8 +100,10 @@ class SubscriptionController extends Controller
         if ($save_new_subscription) {
             //send email
                 Activites::create([
-                'description' =>
-                    $request->name . ' subscribed to recieve latest updates',
+                'description' =>$request->name . ' subscribed to recieve latest updates',
+                'username' => $request->name,
+                'privilage' => 'subscriber',
+                'status' => 'pending'
                 ]);
                 $response = $this->http->post('sendmailwithtemplate/', [
 

@@ -23,10 +23,11 @@ class UploadController extends Controller
 {
     public function importFile()
     {
-        $recent_activites = Activites::orderBY('id', 'DESC')
-            ->limit(5)
+        $recent_activites = Activites::where('status', 'pending')->orderBY('id', 'DESC')
+            ->limit(7)
             ->get();
-        $total_activity = count(Activites::all());
+        $total_activity = count(Activites::all()->where('status', 'pending'));
+        
         return view('upload')->with([
             'recent_activites' => $recent_activites,
             'total_activity' => $total_activity,
