@@ -12,6 +12,8 @@
     <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
 
     <!-- <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script> -->
+    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
+  
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
     
     <style type="text/css">
@@ -38,89 +40,399 @@
          {{-- Flash message end--}}
 
         <div class="row">
-            <div class="col-xl-12">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="mb-0" style="float:left"><b>SETTINGS</b></h4>
-                        </div>
-                    </div>
-                    <div class="card" >
-                        <div class="card-header">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-12 col-lg-12">
-                                        <ul class="list-group">
-                                            <li class="list-group-item" style="background-color: #C0C0C0;"><h5><b>General</b></h5></li>
-                                            <div class="dropdown">
-                                                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-                                                    Apperance
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="#">Light</a>
-                                                    <a class="dropdown-item" href="#">Dark</a>
-                                                </div>
-                                            </div>
-                                            <form action="">
-                                                <div class="form-group">
-                                                    <label for="name" style="color: #000000;"><b>SENDER</b></label>
-                                                    <input type="name" class="form-control" placeholder="Enter name" id="name">
-                                                    <span style="color: #505050;"><i>Choose a FROM name for all the emails to be sent from this plugin</i></span>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="email" style="color: #000000;"><b>EMAIL ADDRESS</b></label>
-                                                    <input type="email" class="form-control" placeholder="Enter email" id="email">
-                                                    <span style="color: #505050;"><i>Choose a FROM email address for all the emails to be sent from this plugin</i></span>
-                                                </div>
-                                            </form>
-                                            <br/>
-                                            <li class="list-group-item" style="background-color: #C0C0C0;"><h5><b>Notification</b></h5></li>
-                                            <div class="dropdown">
-                                                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-                                                    Notification Sound
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="#">Enable</a>
-                                                    <a class="dropdown-item" href="#">Disable</a>
-                                                </div>
-                                            </div>
-                                            <div class="dropdown">
-                                                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-                                                    Pop-ups
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="#">Enable</a>
-                                                    <a class="dropdown-item" href="#">Disable</a>
-                                                </div>
-                                            </div>
-                                            <br/>
-                                            <br/>
-                                            <li class="list-group-item" style="background-color: #C0C0C0;"><h5><b>Security</b></h5></li>
-                                            <form action="">
-                                            <div class="form-group">
-                                                <label for="comment">Blocked IPs</label>
-                                                <textarea class="form-control" rows="5" id="comment"></textarea>
-                                            </div>
-                                            </form>
-                                            <button type="submit" class="btn" style="background-color: #C0C0C0;">Save</button>
-                                        </ul>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <h3>Settings</h3>
+            </div>
+        </div>
+        <div class="card" >
+                <!--Tabs Header-->
+                <ul class="nav nav-tabs py-3 " id = "settingsTab">
+                    <li class="active "><a data-toggle="tab" class="active show" href="#general">General</a></li>
+                    <li><a data-toggle="tab" href="#notification">Notifications</a></li>
+                    <li><a data-toggle="tab" href="#security">Security</a></li>
+                </ul>
+            </div>   
+                <!--Tab Body-->
+                <div class="tab-content">
+                    <!--1-->
+                    <div id="general" class="tab-pane fade show active">
+                        <div class = "card">
+                            <div class="card-header security-header">
+                                <h4>Profile</h4>
+                                <a class= "save-link" href="#"><button class= "save-btn">Save</button></a>
+                            </div>    
+                        <hr>
+                        <div class="card-body">
+                            <div>
+                                <form action="" method = "post" class = "row">
+                                
+                                <div class="col-12 col-md-3">
+                                    <h5>Profile Picture</h5> 
+                                    <div class="file-input-cover">             
+                                    <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)"  class = "file-input"></p>
+                                    <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+                                    <p><img id="output" width="200" /></p>
+
+
+                                    </div>
+                                    <a class= "save-link text-muted" href="#"><button class= "upload-btn">Change</button></a>   
+                                </div>
+
+                                <div class="col-12 col-md-9 push-top">
+                                    <div class="form-group">
+                                        <label class = "label-form" for="full-name">Full Name</label>
+                                        <input type="text" name="" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class = "label-form" for="full-name">Email</label>
+                                        <input type="email" name="" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class = "label-form" for="full-name">Role</label><br>
+                                        <select name="language" id="languageselect" class = "custom-select form-control p-2 mt-2">
+                                            <option value="user">User</option>
+                                            <option value="admin">Admin</option>
+                                        </select>
                                     </div>
                                 </div>
-                             </div>
+                                </form>
+                            </div>
                         </div>
-                    </div>      
+                        </div>
+                        <div class = "card">
+                            <div class="card-header security-header">
+                                <h4>Appearance</h4>
+                                <a class= "save-link" href="#"><button class= "save-btn">Save</button></a>
+                            </div>    
+                        <hr>
+                        <div class="card-body">
+                            <h4 class = "mb-4">Dashboard Menu Arrangement</h4>
+                            <ul id="sortable">
+                                <li class="group">
+                                <div class="col-md-10 col-12">
+                                <div class="row appearance-box">
+                                    <div class="col-1">
+                                    <i class="fas fa-arrows-alt-v"></i>
+                                    </div>
+                                    <div class="col-8">
+                                    <p>Users</p>
+                                    </div>
+                                    <div class="col-1 hide-button-card text-muted">
+                                    <i class="fas fa-eye-slash"></i> <p class = "font-weight-normal ">Hide</p>
+                                    </div>
+                                </div>
+                                </div>
+                                </li>
+                                
+                                <li class="group">
+                                    <div class="col-md-10 col-12">
+                                    <div class="row appearance-box">
+                                        <div class="col-1">
+                                        <i class="fas fa-arrows-alt-v"></i>
+                                        </div>
+                                        <div class="col-8">
+                                        <p>Company</p>
+                                        </div>
+                                        <div class="col-1 hide-button-card text-muted">
+                                        <i class="fas fa-eye-slash"></i> <p class = "font-weight-normal ">Hide</p>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </li>
+
+                                <li class="group">
+                                    <div class="col-md-10 col-12">
+                                    <div class="row appearance-box">
+                                        <div class="col-1">
+                                        <i class="fas fa-arrows-alt-v"></i>
+                                        </div>
+                                        <div class="col-8">
+                                        <p>Ministry</p>
+                                        </div>
+                                        <div class="col-1 hide-button-card text-muted">
+                                        <i class="fas fa-eye-slash"></i> <p class = "font-weight-normal ">Hide</p>
+                                        </div>
+                                    </div>
+                                    </div>
+                               </li>
+                               
+                               <li class="group">
+                                    <div class="col-md-10 col-12">
+                                        <div class="row appearance-box">
+                                                <div class="col-1">
+                                                    <i class="fas fa-arrows-alt-v"></i>
+                                                </div>
+                                                <div class="col-8">
+                                                    <p>Expense</p>
+                                                </div>
+                                                <div class="col-1 hide-button-card text-muted">
+                                                    <i class="fas fa-eye-slash"></i> <p class = "font-weight-normal ">Hide</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                               </li>
+
+                               <li class="group">
+                                    <div class="col-md-10 col-12">
+                                    <div class="row appearance-box">
+                                        <div class="col-1">
+                                        <i class="fas fa-arrows-alt-v"></i>
+                                        </div>
+                                        <div class="col-8">
+                                        <p>Cabinet</p>
+                                        </div>
+                                        <div class="col-1 hide-button-card text-muted">
+                                        <i class="fas fa-eye-slash"></i> <p class = "font-weight-normal ">Hide</p>
+                                        </div>
+                                    </div>
+                                    </div>
+                               </li>
+
+                               <li class="group">
+                                    <div class="col-md-10 col-12">
+                                    <div class="row appearance-box">
+                                        <div class="col-1">
+                                        <i class="fas fa-arrows-alt-v"></i>
+                                        </div>
+                                        <div class="col-8">
+                                        <p>Subscription</p>
+                                        </div>
+                                        <div class="col-1 hide-button-card text-muted">
+                                        <i class="fas fa-eye-slash"></i> <p class = "font-weight-normal ">Hide</p>
+                                        </div>
+                                    </div>
+                                    </div>
+                               </li>
+
+                               <li class="group">
+                                    <div class="col-md-10 col-12">
+                                    <div class="row appearance-box">
+                                        <div class="col-1">
+                                        <i class="fas fa-arrows-alt-v"></i>
+                                        </div>
+                                        <div class="col-8">
+                                        <p>People</p>
+                                        </div>
+                                        <div class="col-1 hide-button-card text-muted">
+                                        <i class="fas fa-eye-slash"></i> <p class = "font-weight-normal ">Hide</p>
+                                        </div>
+                                    </div>
+                                    </div>
+                               </li>
+
+                               <li class="group">
+                                    <div class="col-md-10 col-12">
+                                    <div class="row appearance-box">
+                                        <div class="col-1">
+                                        <i class="fas fa-arrows-alt-v"></i>
+                                        </div>
+                                        <div class="col-8">
+                                        <p>Upload Screenshot</p>
+                                        </div>
+                                        <div class="col-1 hide-button-card text-muted">
+                                        <i class="fas fa-eye-slash"></i> <p class = "font-weight-normal ">Hide</p>
+                                        </div>
+                                    </div>
+                                    </div>
+                               </li>
+
+                               <li class="group">
+                                    <div class="col-md-10 col-12">
+                                    <div class="row appearance-box">
+                                        <div class="col-1">
+                                        <i class="fas fa-arrows-alt-v"></i>
+                                        </div>
+                                        <div class="col-8">
+                                        <p>Comments</p>
+                                        </div>
+                                        <div class="col-1 hide-button-card text-muted">
+                                        <i class="fas fa-eye-slash"></i> <p class = "font-weight-normal ">Hide</p>
+                                        </div>
+                                    </div>
+                                    </div>
+                               </li>
+
+                            </ul>   
+                        </div>
+                        </div>
+
+
+                        <div class = "card">
+                            <div class="card-header security-header">
+                                <h4>Language</h4>
+                                <a class= "save-link" href="#"><button class= "save-btn">Save</button></a>
+                            </div>    
+                        <hr>
+                        <div class="card-body">
+                            <select name="language" id="languageselect" class = "custom-select p-2 col-9 mt-2">
+                                <option>English (United States)</option>
+                                <option>English (United Kingdom)</option>
+                                <option>French</option>
+                                <option>Hausa</option>
+                                <option>Igbo</option>
+                                <option value="yoruba">Yoruba</option>
+                            </select>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        </div>
+                    </div>
+
+                    
+                    <!--Notifications Section-->
+                    <div id="notification" class="tab-pane fade">
+                        <div class = "card">
+                            <div class="card-header security-header">
+                                <h4>Notification Type</h4>
+                                <a class= "save-link" href="#"><button class= "save-btn">Save</button></a>
+                            </div>
+                            <hr>
+                            <div class="card-body">
+                               <!-- Switch Slider -->
+                               <div class = "d-flex switch-box">
+                                    <div class="slider-box">
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                    <p class = "slider-text">Email</p>
+                                </div>
+                                <div class = "d-flex switch-box">
+                                    <div class="slider-box">
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                    <p class = "slider-text">Notification Feed</p>
+                                </div>
+                                <div class = "d-flex switch-box">
+                                    <div class="slider-box">
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                    <p class = "slider-text">Pop-ups</p>
+                                </div>
+                            </div>                
+                        </div>  
+                        
+                        <div class = "card">
+                            <div class="card-header security-header">
+                                <h4>Notify me when</h4>
+                                <a class= "save-link" href="#"><button class= "save-btn">Save</button></a>
+                            </div>
+                            <hr>
+                            <div class="card-body">
+                                <div class = "d-flex switch-box">
+                                    <div class="slider-box">
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                    <p class = "slider-text">Anyone posts a comment</p>
+                                </div>
+                                <div class = "d-flex switch-box">
+                                    <div class="slider-box">
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                    <p class = "slider-text">A comment is held for moderation </p>
+                                </div>
+                                <div class = "d-flex switch-box">
+                                    <div class="slider-box">
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                    <p class = "slider-text">Someone likes a post </p>
+                                </div>
+                                <div class = "d-flex switch-box">
+                                    <div class="slider-box">
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                    <p class = "slider-text">Someone subscribes to a page</p>
+                                </div>
+                                <div class = "d-flex switch-box">
+                                    <div class="slider-box">
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                    <p class = "slider-text">Someone visits the site</p>
+                                </div>
+                                <div class = "d-flex switch-box">
+                                    <div class="slider-box">
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                    <p class = "slider-text">Anyone sends a message</p>
+                                </div>
+                                <div class = "d-flex switch-box">
+                                    <div class="slider-box">
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                    <p class = "slider-text">An admin changes/adds anything</p>
+                                </div>
+                            </div>                
+                        </div>  
+                    </div>
+                           
+                    <!--Security Section-->
+                    <div id="security" class="tab-pane fade">
+                        <div class = "card">
+                            <div class="card-header security-header">
+                                <h4>Change Password</h4>
+                                <a class= "save-link" href="#"><button class= "save-btn">Save</button></a>
+                            </div>
+                            <hr>
+                            <div class="card-body">
+                                <label for="old password" class = "labels">Old Password</label><br>
+                                <input type="password"  class = "col-9 form-control"><br>
+
+                                <label for="new password" class = "labels">New Password</label><br>
+                                <input type="password" class = "col-9 form-control" id="">
+                            </div>                
+                        </div>  
+                    </div>​
                 </div>
-			</div>
+            </div>
         </div>
+    </div>
+</div>                                     
+
+
         <!-- ============================================================== -->
                 <!-- end data table  -->
         <!-- ============================================================== -->
-    </div>
-</div>
+    
 @endsection
 
 @section('js')
-
+    <script>
+    var loadFile = function(event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+    </script>
     
     <!-- main js -->
     <script src="{{ asset('js/main-js.js') }}" type="text/javascript"></script>
@@ -158,6 +470,17 @@
         }
     });
 </script>
+<script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    
+<script>
+    console.log("Hi");
+  $("document").ready(function() {
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
+  });
+  </script>
+  
     
  <script>
     $("document").ready(function(){
