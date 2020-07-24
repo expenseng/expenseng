@@ -11,22 +11,7 @@
 
 @section('content')
 <!-- Section-->
-<div class="container mt-4 pt-2">
-    <div class="container mt-4">
-
-        <div class="row">
-            <p id="header" class="font-weight-bold">
-                <span class="head-cont text-success"> HOME</span>
-                <span class="head-cont dot"> &#8226</span>
-                <span class="head-cont text-success"> PROFILES</span>
-                <span class="head-cont dot"> &#8226</span>
-                <span class="head-cont text-success"> MINISTRIES</span>
-                <span class="head-cont dot"> &#8226</span>
-                <span class="head-cont text-success"> MINISTRY PROFILE</span>
-            </p>
-        </div>
-    </div>
-</div>
+{{ Breadcrumbs::render('ministry', $ministry) }}
 
 <div class="container d-flex centerize py-4">
     <div class="ministry-logo d-flex ">
