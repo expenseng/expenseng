@@ -28,13 +28,13 @@
                                                 <div class="form-row">
                                                     <div class="form-group px-sm-3 col-md-6">
                                                         <label class="label-for-payment_code" >Payment Code</label>
-                                                        <input type="text" required = 'required' readonly name="payment_code"  id="payment_code" value="{{$payment->payment_code}}" class="form-control">
+                                                        <input type="text" required = 'required'  name="payment_code"  id="payment_code" value="{{$payment->payment_code}}" class="form-control">
                                                         <p id="payment_codeErr" class="text-danger"></p>
                                                     </div>
 
                                                     <div class="form-group px-sm-3 col-md-6">
                                                         <label class="label-for-payment_no" >Payment No</label>
-                                                        <input type="text" required = 'required' readonly ="disabled" name="payment_no" value="{{$payment->payment_no}}" id="payment_no" class="form-control">
+                                                        <input type="text" required = 'required'  name="payment_no" value="{{$payment->payment_no}}" id="payment_no" class="form-control">
                                                         <p id="payment_noErr" class="text-danger"></p>
                                                     </div>
                                                 </div>
@@ -42,7 +42,7 @@
                                                 <div class="form-row">
                                                     <div class="form-group px-sm-3 col-md-6">
                                                         <label class="label-for-date" >Date</label>
-                                                        <input type="text" required = 'required' name="payment_date" value="{{$payment->payment_date}}" id="payment_date" class="form-control">
+                                                        <input type="date" required = 'required' name="payment_date" value="{{$payment->payment_date}}" id="payment_date" class="form-control">
                                                         <p id="payment_dateErr" class="text-danger"></p>
                                                     </div>
 
@@ -55,7 +55,7 @@
 
                                                 <div class="form-group px-sm-3 col-md-12">
                                                     <label class="label-for-organization" >Organization(MDA)</label>
-                                                    <input type="text" required = 'required' readonly name="organization" value="{{$payment->ministry()['name']}}" id="organization" class="form-control">
+                                                    <input type="text" required = 'required' name="organization" value="{{$payment->organization()}}" id="organization" class="form-control">
                                                     <p id="organizationErr" class="text-danger"></p>
                                                 </div>
 

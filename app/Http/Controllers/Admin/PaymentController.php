@@ -11,14 +11,15 @@ use App\Company;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
 
-
     public function __construct()
     {
         $this->middleware('auth');
+
     }
 
 
@@ -109,9 +110,13 @@ class PaymentController extends Controller
             'description' => $request->description,
         ]);
 
+        $auth = Auth::user();
         Activites::create([
-            'description' =>
-                'Admin Added Payment:' . $request->payment_no . ' to the payments table',
+            'description' =>$auth->name.' Added ' . $request->payment_no . ' to the payments table',
+                'username' => $auth->name,
+                'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+                'status' => 'pending'
+
         ]);
 
         Session::flash('flash_message', 'New Payment successfully added!');
@@ -176,15 +181,21 @@ class PaymentController extends Controller
             'description' => $request->description,
         ]);
 
+        $auth = Auth::user();
+
         if ($update) {
+           
             Activites::create([
-                'description' =>
-                    'updated payment with' .
-                    $request->payment_code ,
+            'description' =>$auth->name.' Updated payment' . $request->payment_no . 'on payments table',
+                'username' => $auth->name,
+                'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+                'status' => 'pending'
+
             ]);
 
             Session::flash('flash_message', 'Payment  updated successfully!');
-            return redirect()->back();
+            // return redirect()->back();
+             return redirect(route('payments.view'));
         } else {
             return redirect()->back();
         }
@@ -202,17 +213,19 @@ class PaymentController extends Controller
         if (Gate::denies('delete')) {
             return redirect(route('payments.view'));
         }
-        $payment = Payment::all()
-            ->where('id', $id)
-            ->pluck('payment_code')
-            ->toArray();
-        $code = implode(' ', $payment);
-        Activites::create([
-            'description' => 'Admin removed payment: '.$code.' from the payments table',
-        ]);
-
+        
         $payment = Payment::findOrFail($id);
         $payment->delete();
+
+        $auth = Auth::user();
+        Activites::create([
+            'description' =>$auth->name.' Deleted ' . $payment->payment_no . ' from the payments table',
+                'username' => $auth->name,
+                'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+                'status' => 'pending'
+
+            ]);
+
         Session::flash('flash_message', 'Payment Deleted successfully');
         return redirect()->back();
     }
