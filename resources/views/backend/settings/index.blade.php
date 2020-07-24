@@ -26,7 +26,7 @@
         padding: 12px!important;
         }
     </style>
-    <title>ExpenseNg - Profile</title>
+    <title>ExpenseNg - Settings</title>
 @endpush
 
 @section('content')
