@@ -114,7 +114,9 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
      Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
       // Matches The "/admin/dashboard" URL
      Route::delete('/activity/delete/{activity_id}', 'DashboardController@deleteActivity')->name('activity.delete');
-     Route::delete('/activity/delete_all/', 'DashboardController@deleteAllActivity')->name('allactivity.delete');
+    Route::put('/activity/all/', 'DashboardController@seenAllNotifications')->name('allactivity.edit');
+    Route::put('/activity/mark/{activity_id}', 'DashboardController@seenActivity')->name('activity.update');
+
 
 
      // Expense CRUD
@@ -137,12 +139,18 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
 
 
       // MiNISTY CRUD
-      Route::get('/ministry/create', 'MinistryController@viewCreateMinistry')->name('ministry.create');
-      Route::post('/ministry/create', 'MinistryController@createMinistry')->name('create.ministry');
-      Route::get('/ministry/view', 'MinistryController@viewMinistries')->name('ministry.view');
-      Route::get('/ministry/edit/{ministry_id}', 'MinistryController@showEditForm')->name('ministry.view.edit');
-      Route::put('/ministry/edit/{ministry_id}', 'MinistryController@editMinistry')->name('ministry.edit');
-      Route::delete('/ministry/delete/{ministry_id}', 'Admin\MinistryController@deleteMinistry')->name('ministry.delete');
+      Route::get('/ministry/create', 'MinistryController@viewCreateMinistry')
+      ->name('ministry.create');
+      Route::post('/ministry/create', 'MinistryController@createMinistry')
+      ->name('create.ministry');
+      Route::get('/ministry/view', 'MinistryController@viewMinistries')
+      ->name('ministry.view');
+      Route::get('/ministry/edit/{ministry_id}', 'MinistryController@showEditForm')
+      ->name('ministry.view.edit');
+      Route::put('/ministry/edit/{ministry_id}', 'MinistryController@editMinistry')
+      ->name('ministry.edit');
+      Route::delete('/ministry/delete/{ministry_id}', 'Admin\MinistryController@deleteMinistry')
+      ->name('ministry.delete');
 
       //People CRUD
       Route::get('/admin/{company}/{people}', 'CompanyController@showPeople');
@@ -159,7 +167,10 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
      //Profile Page
      Route::get('/profile', 'ProfileController@viewProfile')->name('profile');
      Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
-
+     Route::get('/profile/edit/{user_id}', 'ProfileController@edit')->name('users.edit');
+     Route::put('/profile/edit/{user_id}', 'ProfileController@update')->name('users.update');
+     Route::put('/profile/change_password/{user_id}', 'UserController@updatePassword')->name('users.change_password');
+     
      //Settings Page
      Route::get('/user/settings', 'SettingsController@index')->name('users.settings');
 

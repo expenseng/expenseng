@@ -1,4 +1,4 @@
-@extends('layouts.profile')
+@extends('layouts.home') 
 @push('css')
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -36,23 +36,34 @@
          @include('backend.partials.flash')
         </div>
          {{-- Flash message end--}}
-
-        <div class="row">
+        <div class="container">
+            <div class="row">
             <div class="col-xl-12">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card">
                     <div class="card-header">
                         <h4 class="mb-0" style="float:left">PROFILE PAGE</h4>
-                        <p></p>
-                    </div>
-                    <div class="card-body">
+                        @can('edit')
+                        <a href="{{'/admin/profile/edit/' . $user->id}}" class="btn btn-primary" style="float:right">Edit Profile</a>
+                        @endcan
                         
-
-                        <div class="container">
-                            
-                            <!-- Modal -->
-                            <div class="" aria-labelledby="myModalLabel" aria-hidden="true">
-                                
+                        <p></p>
+                    </div>    
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                            <div class=" rounded-0 mt-3 border-primary">
+                                <div class=" border-primary">
+                                    
+                                </div>
+                                <!-- profile tab content -->
+                                <div class="card-body">
+                                    <div class="tab-content">
+                                            <div class="bg-primary text-light text-center lead">
+                                                User ID : {{$user->id}}
+                                            </div>
+                                    <!-- Modal -->
+                                    <div class="" aria-labelledby="myModalLabel" aria-hidden="true">
+                        
                                     
                                         <div class="modal-body">
                                             <center>
@@ -66,33 +77,39 @@
                                             </center>
                                             <hr>
                                             <div>
-                                            <p class="text-left"><strong>Account Details: </strong><br>
-                                                <ul>
-                                                    <li>
-                                                        Role:  <span>{{implode(', ', $user->roles->pluck('name')->toArray())}}</span>
-                                                    </li>
-                                                    <li>
-                                                        Status: 
-                                                        <span>
-                                                            @if($user->status)
-                                                                {{$user->status->name}}
-                                                            @endif
-                                                        </span>
-                                                    </li>
-                                                </ul>
-                                            <br>
-                                            @if($user->status_id != 1)
-                                            <p class="text-danger text-center">Your account is inactive, you won't be able to access Admin Dashboard. If its a new account, kindly wait for admin to manually activate your account</p>
-                                            @endif
+                                                <p class="card-text p-2 n-1 rounded" style="border:1px solid #0257d8;"><b>Name : </b>{{$user->name}}</p>
+
+                                                <p class="card-text p-2 n-1 rounded" style="border:1px solid #0257d8;"><b>Email : </b>{{$user->email}}</p>
+
+                                                <p class="card-text p-2 n-1 rounded" style="border:1px solid #0257d8;"><b>Gender : </b>{{$user->gender}}</p>
+
+                                                <p class="card-text p-2 n-1 rounded" style="border:1px solid #0257d8;"><b>date of birth : </b>{{$user->date_of_birth}}</p>
+
+                                                <p class="card-text p-2 n-1 rounded" style="border:1px solid #0257d8;"><b>Phone : </b>{{$user->phone_number}}</p>
+
+                                                <p class="card-text p-2 n-1 rounded" style="border:1px solid #0257d8;"><b>Registered On : </b>{{$user->created_at}}</p>
+
+                                                <p class="card-text p-2 n-1 rounded" style="border:1px solid #0257d8;"><b>Account Status : </b>{{$user->status->name}}</p>
+
+                                                <p class="card-text p-2 n-1 rounded" style="border:1px solid #0257d8;"><b>Role : </b>{{implode(', ', $user->roles->pluck('name')->toArray())}}</p>
+                                                
+                                                <br>
+                                                @if($user->status_id != 1)
+                                                <p class="text-danger text-center">Your account is inactive, you won't be able to access Admin Dashboard. If its a new account, kindly wait for admin to manually activate your account</p>
+                                                @endif
 
                                             </div>
+
+                                            
                                         </div>
-
-                                   
+                                    </div>
+                                </div>    
+                                <!-- profile tab content end -->
                                 
+                    
                             </div>
-                        </div>
-
+                        <div>               
+                       
 
                     </div>
                 </div>

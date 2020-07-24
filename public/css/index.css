@@ -536,6 +536,7 @@ p.profile{
     color: #005938;
 }
 
+
 /* Responsiveness */
 
 @media all and (max-width: 1440px){
@@ -566,7 +567,7 @@ p.profile{
     }
     .twt-handle{
         padding: 0.5rem 1.3rem;
-        margin: 0 0 2rem 3rem;
+        margin: auto;
         
     }
 }
@@ -687,7 +688,7 @@ p.profile{
     }
     .twt-handle{
         padding: 0.3rem 0.8rem;
-        margin: 0 0 2rem 3rem;
+        margin: auto;
     }
     .twt-handle a{
         font-size: var(--fs-h5);
@@ -876,7 +877,7 @@ p.profile{
     }
     .twt-handle{
         padding: 0.1rem 0.6rem;
-        margin: 1rem 0 0 0.3rem;
+        margin: auto;
     }
 }
 

@@ -1,17 +1,25 @@
-.first{
+.breadcrumb{
     background-color: #f2f2f2;
-    font-weight: bold;
+    font-weight: bold !important;
 }
-  
-.first li a{
+
+.breadcrumb li a{
     color: #6c757d;
 }
-  
-.first li a:hover{
-    text-decoration: none;
-    color: #00945E;
+
+.breadcrumb a:hover{
+    color: #00945E !important;
 }
-  
-.first li.active{
-    color: #00945E;
+
+a:hover{
+    text-decoration: none;
+    color: #00945E !important;
+}
+
+.breadcrumb li.active{
+    color: #00945E !important;
+    font-weight: bold !important;
+}
+.breadcrumb-item+ .breadcrumb-item::before{
+    content: '.' !important;
 }
