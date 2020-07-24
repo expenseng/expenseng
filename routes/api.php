@@ -48,3 +48,9 @@ Route::patch('/comments/{commentId}/votes/downvote', 'CommentController@downvote
  * Citizens
  */
 Route::post('/citizens', 'CitizenController@userApi');
+
+/**
+ * Delete Comments
+ */
+Route::post('/comments/{commentId}/delete', 'CommentController@deleteComment');
+Route::post('/comments/{commentId}/replies/{replyId}/delete', 'CommentController@deleteReply');

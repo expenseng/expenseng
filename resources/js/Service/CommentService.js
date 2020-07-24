@@ -143,6 +143,22 @@ class CommentService{
             return response.data;
         })
     }
+
+    deleteComment(commentId, ownerId){
+        return axios.post('/api/comments/'+commentId+'/delete', {
+            ownerId: ownerId
+        }).then(response => {
+            return response.data;
+        })
+    }
+
+    deleteReply(commentId, owner, replyId){
+        return axios.post('/api/comments/'+commentId+'/replies/'+replyId+'/delete', {
+            ownerId: owner
+        }).then(response => {
+            return response.data;
+        })
+    }
 }
 
 export default CommentService;

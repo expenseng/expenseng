@@ -18,7 +18,7 @@
                                     <i class="fas fa-ellipsis-h grey-text dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item" href="#" @click.prevent="edit(data.commentId)">Edit</a>
-                                        <a class="dropdown-item" href="#" v-if="data.ownerId == comment.email" @click.prevent="doDelete('parent', data.commentId)">Delete</a>
+                                        <a class="dropdown-item" href="#" v-if="data.ownerId == comment.email" @click.prevent="deleteComment(data.commentId, data.ownerId)">Delete</a>
                                         <a class="dropdown-item" href="#" @click.prevent="flag(data.commentId)">Flag</a>
                                     </div>
                                 </div>
@@ -106,9 +106,18 @@ export default {
         flag(){
 
         },
+        deleteComment(commentId, ownerId){
+            const comment = this.comments.filter(comment => {
+                return comment.commentId == commentId
+            })
 
-        doDelete(){
+            console.log(comment);
+            //hide the reply first
+            this.comments.splice(comment, 1);
+            this.comment.deleteComment(commentId, ownerId)
+                        .then(res => {
 
+                        })
         }
     },
 

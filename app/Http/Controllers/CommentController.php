@@ -175,6 +175,34 @@ class CommentController extends Controller
         }
     }
 
+    public function deleteComment(Request $request, $commentId){
+        $response = $this->http->delete('comments/' . $commentId, [
+            "body" => json_encode([
+                "ownerId" => $request->ownerId
+            ])
+        ]);
+
+        $data = json_decode($response->getBody(), true);
+
+        if($data['status'] == "success"){
+            return $data['data'];
+        }
+    }
+
+    public function deleteReply(Request $request, $commentId, $replyId){
+        $response = $this->http->delete('comments/' . $commentId . '/replies/' . $replyId, [
+            "body" => json_encode([
+                "ownerId" => $request->ownerId
+            ])
+        ]);
+
+        $data = json_decode($response->getBody(), true);
+
+        if($data['status'] == "success"){
+            return $data['data'];
+        }
+    }
+
     /**
      * Stores a new user in the citizens table
      * so we can retrieve their info next time
