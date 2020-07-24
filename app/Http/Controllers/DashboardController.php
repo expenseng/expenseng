@@ -129,7 +129,7 @@ class DashboardController extends Controller
          Activites::where('id', $id)->update([
             'status' => 'seen',
         ]);
-        
+
         return redirect(route('dashboard'));
 
     }
@@ -149,7 +149,8 @@ class DashboardController extends Controller
             return redirect()->back();
         }
     }
-    public function editAllActivity()
+
+    public function seenAllNotifications()
     {
         if (Gate::denies('delete')) {
             return redirect(route('dashboard'));

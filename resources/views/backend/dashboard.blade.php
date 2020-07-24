@@ -147,10 +147,10 @@
 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <form action="{{ '/admin/activity/mark_all/' }}" method="post">
+                                        <form action="{{ '/admin/activity/all/' }}" method="post">
                                            @method('put')
                                             @csrf
-                                            <button type="submit" class="btn btn-danger">Proceed</button>
+                                            <button type="" class="btn btn-danger">Proceed</button>
                                         </form>
 
                                     </div>
