@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Expense;
 use App\Activites;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class ExpenseController extends Controller
 {
@@ -17,10 +18,10 @@ class ExpenseController extends Controller
         if (Gate::denies('active', 'manage')) {
             return redirect(route('profile'));
         }
-        $recent_activites = Activites::orderBY('id', 'DESC')
-            ->limit(5)
+       $recent_activites = Activites::where('status', 'pending')->orderBY('id', 'DESC')
+            ->limit(7)
             ->get();
-        $total_activity = count(Activites::all());
+        $total_activity = count(Activites::all()->where('status', 'pending'));
         $expenses = Expense::all();
         return view('backend.expense.view')->with([
             'expenses' => $expenses,
@@ -51,9 +52,12 @@ class ExpenseController extends Controller
 
         $input = $request->all();
         Expense::create($input);
-
+        $auth = Auth::user();
         Activites::create([
-            'description' => 'Added new expense',
+            'description' => $auth->name.'Added new expense',
+            'username' => $auth->name,
+            'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+            'status' => 'pending'
         ]);
         Session::flash('flash_message', 'New Expense successfully added!');
         return redirect()->back();
@@ -85,13 +89,13 @@ class ExpenseController extends Controller
             'month' => $request->month,
             'project' => $request->project,
         ]);
-
+        $auth = Auth::user();
         if ($update) {
             Activites::create([
-                'description' =>
-                    'updated expense report on' .
-                    $request->project .
-                    ' project',
+                'description' =>$auth->name.' updated expense report on' .$request->project.' project',
+                'username' => $auth->name,
+                'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+                'status' => 'pending'
             ]);
 
             Session::flash('flash_message', 'Expense  updated successfully!');
@@ -106,13 +110,16 @@ class ExpenseController extends Controller
         if (Gate::denies('delete')) {
             return redirect(route('expenses.view'));
         }
-
+        $auth =  Auth::user();
         $delete = Expense::where('id', $id)->delete();
 
         if ($delete) {
             Activites::create([
                 'description' =>
-                    'Admin deleted '.$name.' from the expense table',
+                    $auth->name.' deleted an expense report from the expense table',
+                'username' => $auth->name,
+                'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+                'status' => 'pending'
             ]);
             Session::flash('flash_message', 'Expense  deleted successfully!');
             return redirect()->back();

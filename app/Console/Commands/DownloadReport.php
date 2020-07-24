@@ -13,7 +13,7 @@ class DownloadReport extends Command
      *
      * @var string
      */
-    protected $signature = 'DailyPaymentReport';
+    protected $signature = 'PastReportLogging';
 
     /**
      * The console command description.
@@ -39,27 +39,17 @@ class DownloadReport extends Command
      */
     public function handle()
     {
-        $link = new Scrapping();
         try {
-            $result = $link->openTreasury('2020')->latest()->download();
-            if ($result) {
-                echo "downloaded to the resource folder \n";
-            } else {
-                echo "resource was not found \n";
-            }
+            $scrapping = new Scrapping();
+            $payment = $scrapping->openTreasury('2019')->latest()->initialLogToDatabase();
+            $payment = $scrapping->openTreasury('2018')->latest()->initialLogToDatabase();
+            $budget_funcCat = $scrapping->openTreasury('2019', Scrapping::monthlyBudgetPattern)->initialLogToDatabase();
+            $budget_funcCat = $scrapping->openTreasury('2018', Scrapping::monthlyBudgetPattern)->initialLogToDatabase();
+            $budget_qfuncCat = $scrapping->openTreasury('2018', Scrapping::quarterlyBudgetPattern)->initialLogToDatabase();
+            $budget_qfuncCat = $scrapping->openTreasury('2019', Scrapping::quarterlyBudgetPattern)->initialLogToDatabase();
+            echo "loggedTodatabase \n";
         } catch (\Exception $e) {
-            $this->error('error occurred');
-        }
-        $link = new Scrapping();
-        try {
-            $result = $link->openTreasury('2020',Scrapping::monthlyBudgetPattern)->filterClassification(Scrapping::FGN)->latest()->download();
-            if ($result) {
-                echo "downloaded to the resource folder \n";
-            } else {
-                echo "resource was not found \n";
-            }
-        } catch (\Exception $e) {
-            $this->error('error occurred');
+            $this->error('error occurred'.$e->getMessage() );
         }
 
         return 0;
