@@ -25,11 +25,11 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="card p-3">
-                        <div class="d-flex justify-content-between">
+                        <div class="d-flex justify-content-between ">
                             <div class="card-icon section-card-icon p-3">
                                 <i class="material-icons">mode_edit</i>
                             </div>
-                            <div class="card-write-up">
+                            <div class="card-write-up ">
                                 <p class="card-category">Total Comments</p>
                             </div>
                         </div>
