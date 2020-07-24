@@ -3,6 +3,9 @@
 namespace App\Console\Commands;
 
 use App\DailyPayment;
+use App\MonthlyBudget;
+use App\Payment;
+use App\QuarterlyBudget;
 use App\Report;
 use Exception;
 use GuzzleHttp\Client;
@@ -13,7 +16,7 @@ use function GuzzleHttp\json_decode;
 class ParseSheet extends Command
 {
     /**
-     * http.
+     * declaring http.
      *
      * @var string
      */
@@ -70,47 +73,160 @@ class ParseSheet extends Command
     {
 
         Log::info('Sheet parsing Cron is running');
-        $this->info('Parsing Sheet');
+        $this->info('Parsing Sheets ');
         try{
-            $links = Report::where('type', '=', 'DAILYPAYMENT')->where('parsed', '!=', true)
+            $reports = Report::where('parsed', '!=', true)
                 ->get();
 
-            if ( count($links ) > 0 ) {
+            if (count ($reports ) > 0  ) {
                 //consume api
-                foreach ($links as $link){
+                foreach ($reports as $report) {
                     try{
-                        $response = $this->http->post('api/', [
+                        if ($report->type == 'DAILYPAYMENT' ) {
+                            $this->info('Parsing:   ' . $report->link);
 
-                            "body" => json_encode([
-                                "file_path" => 
-                                $link->link,
-                                "row_from"=> 15,
-                                "row_to" => 150,
-                                "col_from" => 0,
-                                "col_to"=> 6,
-                                "API_KEY" => "random25stringsisneeded"
-                            ])
-                        ]);
-                        $status = $response->getStatusCode();
-                        $response = json_decode($response->getBody(), true);
-        
-                
-                        if ($status == 200) {
-    
-                            $persist = DailyPayment::insert($response);
-                            if ($persist) {
-                                Report::where('id', $link->id)
-                                ->update(['parsed' => true]);
+                            $date = basename($report->link, '.xlsx');
+                            $payment_num = "Payment No";
+                            $payer_code = "Payer Code";
+                            $org_name = "Organization Name";
+                            $beneficiary = "Beneficiary Name";
+                            $response = $this->http->post('api/', [
+
+                                "body" => json_encode([
+                                    "file_path" => 
+                                    $report->link,
+                                    "row_from"=> 15,
+                                    "row_to" => 150,
+                                    "API_KEY" => "random25stringsisneeded"
+                                ])
+                            ]);
+                            $status = $response->getStatusCode();
+                            $responses = json_decode($response->getBody(), true);
+            
+                    
+                            if ($status == 200) {
+                                foreach ($responses as $response) {
+                                    $payment = new Payment();
+
+                                    $payment->payment_no = $response->$payment_num;
+                                    $payment->payment_code = $response->$payer_code;
+                                    $payment->organization = $response->$org_name;
+                                    $payment->beneficiary = $response->$beneficiary;
+                                    $payment->amount = $response->Amount;
+                                    $payment->payment_date = $date;
+                                    $payment->description = $response->Description;
+            
+                                    $persist = $payment->save();
+                                    if ($persist) {
+                                        Report::where('id', $report->id)
+                                        ->update(['parsed' => true]);
+                                        $this->info($report->link .' Sheet parsed successfully');
+                                    } else {
+                                        $this->info('Persist Error:   '. $report->link . ' was not persisted');
+                                    }
+                                }
+
+                            } else {
+                                $this->info($report->link .' status not successful'); 
                             }
-                            $this->info($link->link .' Sheet parsed successfully');
+                        } else if ($report->type == 'MONTHLYBUDPERF') {
+                            //do monthly parsing
+                            $month = basename($report->link, 'xlsx');
+                            $response = $this->http->post('api/', [
 
+                                "body" => json_encode ([
+                                    "file_path" => 
+                                    $report->link,
+                                    "API_KEY" => "random25stringsisneeded"
+                                ])
+                            ]);
+                            $status = $response->getStatusCode();
+                            $responses = json_decode($response->getBody(), true);
+
+                            $percent = "%";
+                            $budget = "BUDGET AMOUNT";
+                            $bal = "BUDGET BALANCE";
+                            $year = "YR PMTS TO DATE";
+            
+                    
+                            if ($status == 200) {
+                                foreach ($responses as $response) {
+                                    $monthly = new MonthlyBudget();
+                                    $monthly->Name = $response->Name;
+                                    $monthly->code = $response->Name;
+                                    $monthly->year_payments_till_date = $response->$year;
+                                    $monthly->month = $month;
+                                    $monthly->month_budget = $response[3];
+                                    $monthly->budget_amount = $response->$budget;
+                                    $monthly->budget_balance = $response->$bal;
+                                    $monthly->percentage = $response->$percent;
+            
+                                    $persist = $monthly->save();
+                                    if ($persist) {
+                                        Report::where('id', $report->id)
+                                        ->update(['parsed' => true]);
+                                        $this->info($report->link.' Monthly Sheet parsed successfully');
+                                    } else {
+                                        $this->info('Persist Error:   '. $report->link . ' was not persisted');
+                                    }
+                                }
+                                
+
+                            } else {
+                                $this->info($report->link .' status not successful'); 
+                            }
                         } else {
-                            $this->info($link->link .' status not successful'); 
+                            //do quarterly parsing
+
+                            $quarter = basename($report->link, 'xslx');
+
+                            $response = $this->http->post('api/', [
+
+                                "body" => json_encode([
+                                    "file_path" => 
+                                    $report->link,
+                                    "API_KEY" => "random25stringsisneeded"
+                                ])
+                            ]);
+                            $status = $response->getStatusCode();
+                            $responses = json_decode($response->getBody(), true);
+                        
+                    
+                            $percent = "%";
+                            $budget = "BUDGET AMOUNT";
+                            $bal = "BUDGET BALANCE";
+                            $year = "YR PMTS TO DATE";
+            
+                    
+                            if ($status == 200) {
+                                foreach ($responses as $response) {
+                                    $quarterly = new QuarterlyBudget();
+                                    $quarterly->Name = $response->Name;
+                                    $quarterly->code = $response->Name;
+                                    $quarterly->year_payments_till_date = $response->$year;
+                                    $quarterly->quarter = $quarter;
+                                    $quarterly->quarter_budget = $response[3];
+                                    $quarterly->budget_amount = $response->$budget;
+                                    $quarterly->budget_balance = $response->$bal;
+                                    $quarterly->percentage = $response->$percent;
+            
+                                    $persist = $quarterly->save();
+                                    if ($persist) {
+                                        Report::where('id', $report->id)
+                                        ->update(['parsed' => true]);
+                                        $this->info($report->link.' Quarterly Sheet parsed successfully');
+                                    } else {
+                                        $this->info('Persist Error:   '. $report->link . ' was not persisted');
+                                    }
+                                }
+                                
+                            } else {
+                                $this->info($report->link .' status not successful'); 
+                            }
                         }
-        
                     } catch (Exception $e) {
                         $this->error($e->getMessage());
-                        $this->info($link->link .' Sheet not parsed');
+                        $this->info($report->link .' Sheet not parsed');
                     }
                 }
                 

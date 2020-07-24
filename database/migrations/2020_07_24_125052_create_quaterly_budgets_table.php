@@ -15,6 +15,14 @@ class CreateQuaterlyBudgetsTable extends Migration
     {
         Schema::create('quaterly_budgets', function (Blueprint $table) {
             $table->id();
+            $table->string('Name');
+            $table->string('code')->index(); //the code here determine the ministry the organization is under
+            $table->bigInteger('year_payments_till_date'); 
+            $table->string('quarter', 191);
+            $table->bigInteger('quarter_budget');
+            $table->bigInteger('budget_amount');
+            $table->bigInteger('budget_balance');
+            $table->double('percentage');
             $table->timestamps();
         });
     }

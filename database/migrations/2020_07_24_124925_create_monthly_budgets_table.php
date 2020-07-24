@@ -15,6 +15,15 @@ class CreateMonthlyBudgetsTable extends Migration
     {
         Schema::create('monthly_budgets', function (Blueprint $table) {
             $table->id();
+            //an organization is classified under a ministry but may not necessarily be a ministry
+            $table->string('Name');
+            $table->string('code')->index(); //the code here determine the ministry the organization is under
+            $table->bigInteger('year_payments_till_date'); 
+            $table->string('month', 191);
+            $table->bigInteger('month_budget');
+            $table->bigInteger('budget_amount');
+            $table->bigInteger('budget_balance');
+            $table->double('percentage');
             $table->timestamps();
         });
     }
