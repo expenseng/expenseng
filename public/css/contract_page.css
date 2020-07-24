@@ -220,6 +220,7 @@ header.container {
 }
 .text-green{
     color: #00945E !important;
+    font-weight: bold !important;
 }
 .company a{
     text-transform: none;
