@@ -16,10 +16,6 @@ a:hover{
     color: #00945E !important;
 }
 
-.breadcrumb li.active{
+.first li.active{
     color: #00945E !important;
-    font-weight: bold !important;
-}
-.breadcrumb-item+ .breadcrumb-item::before{
-    content: '.' !important;
 }
