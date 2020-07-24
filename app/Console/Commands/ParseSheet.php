@@ -2,13 +2,31 @@
 
 namespace App\Console\Commands;
 
+use App\Payment;
+use App\Report;
 use Exception;
+use GuzzleHttp\Client;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
-use Maatwebsite\Excel\Facades\Excel;
+use function GuzzleHttp\json_decode;
 
 class ParseSheet extends Command
 {
+    /**
+     * http.
+     *
+     * @var string
+     */
+    private $http;
+    /**
+     * base url.
+     *
+     * @var string
+     */
+    private $baseUri = "https://excel.microapi.dev/";
+    
+   
+
     /**
      * The name and signature of the console command.
      *
@@ -31,6 +49,16 @@ class ParseSheet extends Command
     public function __construct()
     {
         parent::__construct();
+        $this->baseUri = "https://excel.microapi.dev/";
+      
+        
+        $this->http = new Client([
+            'base_uri' => $this->baseUri,
+            'headers' => [
+                'debug' => true,
+                'Content-Type' => 'application/json',
+            ]
+        ]);
     }
 
     /**
@@ -41,17 +69,57 @@ class ParseSheet extends Command
     public function handle()
     {
 
-        Log::info('Cron is working fine');
+        Log::info('Sheet parsing Cron is running');
+        $this->info('Parsing Sheet');
         try{
-            Excel::import ('../../../public/file/01-04-20.xlsx', function ($reader) {
-                foreach ($reader->toArray() as $row) {
-                    echo $row;
+            $links = Report::where('type', '=', 'DAILYPAYMENT')->where('parsed', '!=', true)
+                ->get();
+
+            if ( count($links ) > 0 ) {
+                //consume api
+                foreach ($links as $link){
+                    try{
+                        $response = $this->http->post('api/', [
+
+                            "body" => json_encode([
+                                "file_path" => 
+                                $link->link,
+                                "row_from"=> 15,
+                                "row_to" => 150,
+                                "col_from" => 0,
+                                "col_to"=> 6,
+                                "API_KEY" => "random25stringsisneeded"
+                            ])
+                        ]);
+                        $status = $response->getStatusCode();
+                        $response = json_decode($response->getBody(), true);
+        
+                
+                        if ($status == 200) {
+    
+                            $persist = Payment::insert($response);
+                            if ($persist) {
+                                Report::where('id', $link->id)->update(['parsed' => true]);
+                            }
+                            $this->info($link->link .' Sheet parsed successfully');
+
+                        } else {
+                            $this->info($link->link .' status not successful'); 
+                        }
+        
+                    } catch (Exception $e) {
+                        $this->error($e->getMessage());
+                        $this->info($link->link .' Sheet not parsed');
+                    }
                 }
+                
+            } else {
+                $this->info('Nothing to parse At the moment');
             }
-            );
-            $this->info('Sheet parsed successfully');
+            
         }catch (Exception $e) {
-            $this->info($e->getMessage() .' Sheet cannot be run');
+            $this->error($e->getMessage());
+            $this->info(' Sheet cannot be run');
         }
 
         //return 0;
