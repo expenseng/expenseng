@@ -147,7 +147,7 @@ class ParseSheet extends Command
                     
                             if ($status == 200) {
                                 foreach ($responses as $response) {
-                                    return print_r ($response);
+                                    //return print ($response["PAYMENTS YTD"]);
                                     $monthly = new MonthlyBudget();
                                     $monthly->Name = $response["Name"];
                                     $monthly->code = $response["Code"];
@@ -196,7 +196,7 @@ class ParseSheet extends Command
                     
                             if ($status == 200) {
                                 foreach ($responses as $response) {
-                                    return print_r ($response);
+                                    //return print_r ($response);
                                     $quarterly = new QuarterlyBudget();
                                     $quarterly->Name = $response["Name"];
                                     $quarterly->code = $response["Code"];
