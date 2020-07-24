@@ -33,7 +33,7 @@
       </div>
       <div class="gallery p-3"  data-flickity='{ "freeScroll": true }'>
         <div class="card1 carousel-cell card">
-            {{-- <p class="tag">New</p> --}}
+             <p class="tag">New</p> 
           <div class="project">
             <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
             <p>  Ministry of Power, Works and Housing</p>
@@ -44,6 +44,7 @@
           </div>
         </div>
         <div class="card2 card carousel-cell">
+        <p class="tag">New</p> 
           <div class="project">
             <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
             <p>  Ministry of Power, Works and Housing</p>
@@ -54,6 +55,7 @@
           </div>
         </div>
         <div class="card3 carousel-cell card">
+        <p class="tag">New</p> 
           <div class="project">
             <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
             <p>  Ministry of Power, Works and Housing</p>
