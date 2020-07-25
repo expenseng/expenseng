@@ -232,11 +232,14 @@ class SubscriptionController extends Controller
                                     <div class='div3'><img src='/img/logo.png' alt=''></div>
                                     <div class='div4'><img src='{{ asset('/img/Emoji.png') }}'
                                     alt=''></div>
-                                    <h1 class='hh1 text'>Unsubscribed!</h1>
-                                    <p class='hh2 text'>Dear $request->name, Your email has been changed for  <span class='hh3 text'>$request->sub_type</span> subscription.
-                                        Your subscription has been deleted. You will no longer be receiving emails from us 
-                                        regarding updates on the report.
-                                    <
+                                    <h1 class='hh1 text'>Congratulations!</h1>
+                                    <p class='hh2 text'>Dear $request->name, Your subscription has been changed to <span class='hh3 text'>$request->sub_type</span>
+                                    You will hereby be receiving emails from us anytime there’s an update on the report.
+                                    </p>
+                                    <p class='hh4 text'>
+                                        If you didn’t request for this subscription or you want to opt-out, 
+                                        you can <a href='#' class='link1'>Unsubscribe here</a>
+                                    </p>
                                     <div class='div5'>
                                         <div class='div7'>
                                             <a href='twitter.com/expenseng'><button class='div6'><img src='/img/twitter.png' 
@@ -248,7 +251,6 @@ class SubscriptionController extends Controller
                             </div>
                         </body>
                         </html>
-
                         ",
                     ])
                 ]
@@ -276,13 +278,38 @@ class SubscriptionController extends Controller
                         "cc" => "",
                         "bcc" => "",
                         "htmlBody" => "
-                        <div class='container'>
-                        <div>
-                            Hi , You have been unsubscribed from recieving
-                            updates on ExpenseNG.<br />
-                            Regards.<br>
-                        </div>
-                        </div>",
+                        <head>
+                        <meta charset='UTF-8'>
+                        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+                        <title>Email Confirmation</title>
+                        <link href='https://fonts.googleapis.com/css2?family=Lato&display=swap' rel='stylesheet' />
+                        <link href='/css/email.css' rel='stylesheet' />
+                        </head>
+
+                        <body>
+                            <div class='div1'>
+                                <div class='div2'>
+                                    <div class='div3'><img src='/img/logo.png' alt=''></div>
+                                    <div class='div4'><img src='{{ asset('/img/Emoji.png') }}'
+                                    alt=''></div>
+                                    <h1 class='hh1 text'>Unsubscribed!</h1>
+                                    <p class='hh2 text'>Dear $request->name, Your email has been changed for  <span class='hh3 text'>$request->sub_type</span> subscription.
+                                        Your subscription has been deleted. You will no longer be receiving emails from us 
+                                        regarding updates on the report.
+                                    <
+                                    <div class='div5'>
+                                        <div class='div7'>
+                                            <a href='twitter.com/expenseng'><button class='div6'><img src='/img/twitter.png' 
+                                            alt=''>&nbsp; @expenseng</button></a>
+                                        </div> 
+                                        <h2 class='hh5 text'><a href='twitter.com/expenseng' class='link2'>Join the conversation on Twitter</a></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </body>
+                        </html>
+
+                        ",
                     ])
                 ]
             );
