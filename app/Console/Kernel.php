@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
          $schedule->command('SendTweet')->monthly();
          $schedule->command('budgetTweet')->weekly()->mondays()->at('13:00');
          $schedule->command('ReportLogging')->daily();
-         $schedule->command('perse:daily')->everyMinute();
+         $schedule->command('parse:daily')->everyMinute();
          $schedule->command('parse:sheet')->everyMinute();
     }
 
