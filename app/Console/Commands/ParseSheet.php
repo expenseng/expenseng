@@ -111,7 +111,7 @@ class ParseSheet extends Command
                       
                  }
 
-                 function getQuarterBudget (){
+                 function getQuarterBudget () {
 
                     if ( isset($response["1ST QUARTER"])){
                         return $response["1ST QUARTER"];
@@ -241,8 +241,6 @@ class ParseSheet extends Command
                                     $report->link,
                                     "row_from"=> 15,
                                     "row_to" => 15000,
-                                    "col_from"=> 0,
-                                    "col_to" => 8,
                                     "API_KEY" => "random25stringsisneeded"
                                 ])
                             ]);
