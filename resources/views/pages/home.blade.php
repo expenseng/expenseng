@@ -25,7 +25,7 @@
     <div class="target">
       <div class="summary col-md-7 col-sm-9">
           <h4 class="slightly-bold"> In 2019,<br> the government spent </h4>
-          <h4 class="bolding"> $4.45 trillion.</h4>
+          <h4 class="bolding"> &#8358;8.92 trillion.</h4>
           <div class="para">
             <p>ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities across Nigeria. 
               Learn more on how this money was spent with tools to help you navigate spending from top to bottom.</p>
@@ -33,7 +33,7 @@
       </div>
       <div class="gallery p-3"  data-flickity='{ "freeScroll": true }'>
         <div class="card1 carousel-cell card">
-            {{-- <p class="tag">New</p> --}}
+             <p class="tag">New</p> 
           <div class="project">
             <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
             <p>  Ministry of Power, Works and Housing</p>
@@ -44,6 +44,7 @@
           </div>
         </div>
         <div class="card2 card carousel-cell">
+        <p class="tag">New</p> 
           <div class="project">
             <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
             <p>  Ministry of Power, Works and Housing</p>
@@ -54,6 +55,7 @@
           </div>
         </div>
         <div class="card3 carousel-cell card">
+        <p class="tag">New</p> 
           <div class="project">
             <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
             <p>  Ministry of Power, Works and Housing</p>
