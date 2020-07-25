@@ -63,7 +63,21 @@ a:active{
 }
 
 .section-card-title{
-    font-size: var(--fs-h2);
+    font-size: var(--fs-h3);
+}
+
+.section-main-table{
+	margin: 0 !important;
+}
+
+.section-btn-margin{
+	margin: auto 0 !important;
+}
+
+button,
+.btn-approve,
+.btn-ignore{
+	font-size: var(--fs-h5) !important;
 }
 
 .reponsive-div {

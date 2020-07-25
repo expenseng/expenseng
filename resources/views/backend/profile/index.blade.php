@@ -49,8 +49,7 @@
                         @can('edit')
                         <a href="{{'/admin/profile/edit/' . $user->id}}" class="btn btn-primary" style="float:right">Edit Profile</a>
                         @endcan
-                        
-                        <p></p>
+                    
                     </div>    
                     <div class="row justify-content-center">
                         <div class="col-lg-10">
