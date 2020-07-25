@@ -417,7 +417,6 @@ class SubscriptionController extends Controller
                     </body>
                     </html>
 
-                    "
                     ",
                 ])
             ]
