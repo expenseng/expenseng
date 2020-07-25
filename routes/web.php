@@ -24,6 +24,7 @@ Route::get('/faq', 'PageController@faq')->name('faq');
 Route::get('/privacy', 'PageController@privacy')->name('privacy');
 Route::get('/search', 'PageController@search')->name('search');
 Route::get('/handles', 'PageController@handles')->name('handles');
+Route::get('/changeMinistryCharts/{ministry}', 'HomeController@MinistryCharts')->name('ministry_expenses_charts');
 
 // Feedback
 Route::post('/feedback', 'FeedbackController@create')->name('feedback');
@@ -48,8 +49,7 @@ Route::post('/ministries', 'MinistryController@store')->name('ministry_store');
 Route::patch('/ministries/{ministry}', 'MinistryController@update')->name('ministry_update');
 Route::delete('/ministries/{ministry}', 'MinistryController@destroy')->name('ministry_destroy');
 Route::post('/ministries/autocomplete', 'MinistryController@autocomplete')->name('ministry_autocomplete');
-Route::get('/expense/filterExpensesAll', 'ExpenseController@filterExpensesAll')->name('all_ministries_filter_expenses');
-
+Route::get('/expense/filterExpensesAll/{id}/{date}/{sort}', 'ExpenseController@filterExpensesAll')->name('all_ministries_filter_expenses');
 
 /**
  * Contractor Endpoints
@@ -64,6 +64,10 @@ Route::get('/project-modal', 'PageController@projectModal')->name('project-modal
 Route::get('/ministry/getUrl', 'PageController@ministryGetUrl')->name('ministry_get_url');
 Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses')->name('ministry_filter_expenses');
 
+/**
+ * Email sending API
+ */
+Route::post('/sendmail', 'EmailController@sendMail')->name('sendmail');
 
 /*
     Terms Of Service Endpoints
@@ -169,7 +173,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
      Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
      Route::get('/profile/edit/{user_id}', 'ProfileController@edit')->name('users.edit');
      Route::put('/profile/edit/{user_id}', 'ProfileController@update')->name('users.update');
-     Route::put('/profile/change_password/{user_id}', 'UserController@updatePassword')->name('users.change_password');
+     Route::put('/profile/change_password/{user_id}', 'ProfileController@updatePassword')->name('users.change_password');
      
      //Settings Page
      Route::get('/user/settings', 'SettingsController@index')->name('users.settings');
