@@ -180,7 +180,7 @@
                 <div class="div7">
                     <a href="#"><button class="div6"><img src="{{ asset('/img/twitter.png') }}" alt="">&nbsp; @expenseng</button></a>
                 </div> 
-                <h2 class="hh5 text"><a href="#" class="link2">Join the conversation on Twitter</a></h2>
+                <h2 class="hh5 text"><a href="twitter.com/expenseng" class="link2">Join the conversation on Twitter</a></h2>
             </div>
         </div>
     </div>
