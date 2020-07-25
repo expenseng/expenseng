@@ -1,5 +1,5 @@
 body {
-	font-family: "Lato", sans-serif;
+    font-family: "Lato", sans-serif;
 }
 
 #banner {
@@ -87,11 +87,14 @@ h4 {
 	font-size: 14px;
 }
 .greenify {
+    position: relative;
 	margin-top: 35px;
 	margin-bottom: 35px;
 	padding: 30px 30px;
 	width: 100%;
-	background: linear-gradient(0deg,rgba(50, 62, 72, 0.33),rgba(50, 62, 72, 0.33)),rgba(0, 148, 94, 0.67);
+    background: linear-gradient(0deg,rgba(50, 62, 72, 0.33),rgba(50, 62, 72, 0.33)),rgba(0, 148, 94, 0.67);
+    z-index: 999;
+    overflow: hidden;
 }
 .greenify .fa-twitter{
 	color: #55acee;
@@ -110,7 +113,7 @@ h4 {
 .twitter-back {
 	opacity: 0.2;
 	width: 230px;
-	z-index: -1;
+    z-index: -999;
 }
 
 .button {
@@ -125,9 +128,6 @@ h4 {
 	border-radius: 5px;
 }
 
-.back-top{
-    display: none;
-}
 
 @media only screen and (min-width: 200px){
 	span{
@@ -139,6 +139,10 @@ h4 {
         position: relative;
         margin-left: 40vw;
         bottom: -10px;
+    }
+
+    form{
+        margin-left: -3.6vw;
     }
 }
 
@@ -156,7 +160,7 @@ h4 {
 	}
 	.col-sm-8{
 		margin-left: 180px;
-	}
+    }
 }
 @media only screen and (min-width: 576px){
 	.contact{
@@ -168,21 +172,48 @@ h4 {
 	}
 	.col-sm-8{
 		margin-left: 150px;
-	}
+    }
+
+    form{
+        margin-left: -2vw;
+    }
 }
 @media only screen and (min-width: 777px){
 	span{
 		margin-left: 5px;
-	}
+    }
+
+    .contact-green{
+        position: relative;
+        top: -20vh;
+    }
+
 	.col-sm-8{
 		margin-left: 90px;
-	}
+    }
+
+    .twitter-back{
+        margin-left: 8vw;
+    }
+
+    .button-tw {
+        margin-left: 8vw;
+    }
+
+    form{
+        margin-left: -1.3vw;
+    }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1023px) {
     .col-sm-8{
 		margin-left: 130px;
-	}
+    }
+    form{
+        margin-left: -1.3vw;
+    }
+
+
 }
 
 @media only screen and (min-width: 1024px){
@@ -223,12 +254,19 @@ input{
 
 .contact{
 	/* margin-left: 145px; */
-	margin-top: 180px;
+    margin-top: 180px;
+    margin-bottom: 35vh;
 }
+
+.contact-green{
+    top: -0vh;
+}
+
 aside {
 	color: white;
 	margin-top: -90px;
 }
+
 .banner-hr{
 	width: 75%;
 	background-color: #fff;
@@ -258,6 +296,10 @@ hr {
 	text-align: center;
 }
 
+form{
+    margin-left: -1.3vw;
+}
+
 h4 {
 	font-size: 24px;
 	line-height: 135.5%;
@@ -284,20 +326,21 @@ span {
 	margin-top: -3px;
 }
 .greenify {
-	margin-left: 210px;
+	/* margin-left: 210px; */
 	margin-top: 30px;
 	margin-bottom: 40px;
 	padding: 60px;
-	width: 120%;
+	width: 100vw;
 	height: 400px;
-	background: linear-gradient(0deg,rgba(50, 62, 72, 0.33),rgba(50, 62, 72, 0.33)),rgba(0, 148, 94, 0.67);
+    background: linear-gradient(0deg,rgba(50, 62, 72, 0.33),rgba(50, 62, 72, 0.33)),rgba(0, 148, 94, 0.67);
+    z-index: 999;
 }
 .greenify .fa-twitter{
-	color: #55acee;
+    color: #55acee;
 }
 .greenify h2{
 	margin-left: -40px;
-	margin-top: 60px;
+	margin-top: 20vh;
 	font-size: 34px;
 }
 .greenify p{
