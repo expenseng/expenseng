@@ -4,7 +4,7 @@
 }
 
 .breadcrumb li a{
-    color: #6c757d;
+    color: #00945E;
 }
 
 .breadcrumb a:hover{
@@ -17,9 +17,9 @@ a:hover{
 }
 
 .breadcrumb li.active{
-    color: #00945E !important;
+    color: #6c757d  !important;
     font-weight: bold !important;
 }
 .breadcrumb-item+ .breadcrumb-item::before{
-    content: '.' !important;
+    content: '/' !important;
 }

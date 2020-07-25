@@ -9,12 +9,12 @@
     <!-- Banner Starts -->
     <section class="container">
     {{ Breadcrumbs::render('contact') }}
-      <div class="row" id="banner">
         {{-- Flash message --}}
             <div id="alert">
             @include('backend.partials.flash')
             </div>
         {{-- Flash message end --}}
+      <div class="row" id="banner">
         <div class="col-md-6">
           <h1>Connect with us today</h1>
           <p>You can contact us via mail, calls or any of our social media accounts. We’d be happy to respond!</p>
@@ -32,14 +32,12 @@
           <div class="col-md-6">
             <h2 align="center">Contact Form</h2>
             <form action="{{URL(route('sendmail'))}}" method="POST">
+                {{ csrf_field() }}
                 <div class="form-group col-md-12">
                     <input type="text"  name="name" class="form-control" id="name" placeholder="Full name" required>
                 </div>
                 <div class="form-group col-md-12">
                     <input type="email" name="email" class="form-control" id="email" placeholder="Email Address" required>
-                </div>
-                <div class="form-group col-md-12">
-                    <input type="text" name="subject" class="form-control" id="subject" placeholder="Subject" required>
                 </div>
                 <div class="form-group col-md-12">
                     <textarea type="text" class="form-control" id="message" name="message" placeholder="Your message" rows="5" required></textarea>
