@@ -185,15 +185,10 @@ $(document).ready(function() {
             
             if(invalid) return;
             date = reverseDateFormat(date);
-            const data = {id, date};
-            if(sort !== undefined){
-                data.sort = sort;
-            }
-            console.log('data gets here', data)
+            
             $.ajax({
-                    url: "/expense/filterExpensesAll",
+                    url: `/expense/filterExpensesAll/${id}/${date}/${sort}`,
                     method: "GET",
-                    data: data,
                     success: function(data){
                         // console.log(data)
                         const table = e.target.closest('#modal').nextElementSibling;
@@ -218,11 +213,9 @@ $(document).ready(function() {
         })
 
         function fetch_data(e, id, table, page, date, sort){
-            const data = {id, date, sort};
             $.ajax({
-                url: "/expense/filterExpensesAll?page="+page,
+                url: `/expense/filterExpensesAll/${id}/${date}/${sort}?page=${page}`,
                 method: "GET",
-                data: data,
                 success: function(data){
                     // console.log(data)
                     table.innerHTML = data;          
@@ -233,3 +226,5 @@ $(document).ready(function() {
             })
         }
     });
+
+    //"/expense/filterExpensesAll?page="+page
