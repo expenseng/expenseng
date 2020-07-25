@@ -95,6 +95,10 @@ export default {
     },
 
     methods: {
+        myComment(data){
+            return data.ownerId == comment.email
+        },
+
         pushNewComment(comment){
             this.comments.push(comment);
         },
