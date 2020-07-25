@@ -1,18 +1,19 @@
 @if (count($ministries) >0)
 @foreach($ministries as $ministry)
-    <div data-id="{{$ministry->shortname}}" 
+    <div data-id="{{$ministry->shortname}}"
     class="col-lg-3 col-md-6 col-sm-12 ministry-cards d-flex">
     <div class="cont-1 d-flex flex-column justify-content-center py-0">
-        <chart label="5-Year Trend" 
-                v-bind:data="{{json_encode($ministry->chartData)}}" 
+        <chart label="5-Year Trend"
+                v-bind:data="{{json_encode($ministry->chartData)}}"
                 element="{{ $ministry->shortname }}"></chart>
         <div class="img">
         <span class="circle"></span>
         </div>
         <div class="coat">
         <img src="{{ asset('images/image 7.png') }}" alt="">
-        <div class="text-center ministry">
-            <a title="Click to view profile" href="{{ route('ministries.single', $ministry->shortname) }}"><h4 style="color:#33A973"><b>{{$ministry->name}}</b></h4></a>
+        <div class="text-center   ministry">
+            {{-- <h4>{{$ministry->name}}</h4> --}}
+            <a title="Click to view profile" class="text-green" href="{{ route('ministries.single', $ministry->shortname) }}">{{$ministry->name}}</a>
         </div>
         </div>
         <div class="texts d-flex flex-column text-center">

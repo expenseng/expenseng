@@ -42,11 +42,8 @@
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="mb-0" style="float:left">PROFILE PAGE</h4>
-                        @can('edit')
-                        <a href="{{'/admin/profile/edit/' . $user->id}}" class="btn btn-primary" style="float:right">Edit Profile</a>
-                        @endcan
-                        
+                        <h4 class="mb-0" style="float:left"> EDIT PROFILE PAGE</h4>
+                        <a href="{{'/admin/user/profile/'}}" class="btn btn-primary" style="float:right">Back</a>
                         <p></p>
                     </div>    
                     <div class="row justify-content-center">
@@ -55,16 +52,9 @@
                                 <div class=" border-primary">
                                     
                                 </div>
-                                <!-- profile tab content -->
-                                <div class="card-body">
-                                    <div class="tab-content">
-                                            <div class="bg-primary text-light text-center lead">
-                                                User ID : {{$user->id}}
-                                            </div>
-                                    <!-- Modal -->
-                                    <div class="" aria-labelledby="myModalLabel" aria-hidden="true">
-                        
-                                    
+                                <!-- edit profile tab content -->
+                                <!-- Modal -->
+                                    <div class="" aria-labelledby="myModalLabel" aria-hidden="true">                                    
                                         <div class="modal-body">
                                             <center>
                                             <img src="https://cdn0.iconfinder.com/data/icons/social-media-network-4/48/male_avatar-512.png" name="aboutme" width="auto" height="140" border="0" class="img-circle"></a>
@@ -76,36 +66,71 @@
                                                 <span class="label label-success">Windows XP, Vista, 7</span>
                                             </center>
                                             <hr>
-                                            <div>
-                                                <p class="card-text p-2 n-1 rounded" style="border:1px solid #0257d8;"><b>Name : </b>{{$user->name}}</p>
+                                            </div>
+                                            <form method="POST" action="{{'/admin/profile/edit/' . $user->id}}"  class="px-3 mt-2" enctype="multipart/form-data" id="update_user">
+                                                @method('put')
+                                                @csrf
 
-                                                <p class="card-text p-2 n-1 rounded" style="border:1px solid #0257d8;"><b>Email : </b>{{$user->email}}</p>
-
-                                                <p class="card-text p-2 n-1 rounded" style="border:1px solid #0257d8;"><b>Gender : </b>{{$user->gender}}</p>
-
-                                                <p class="card-text p-2 n-1 rounded" style="border:1px solid #0257d8;"><b>date of birth : </b>{{$user->date_of_birth}}</p>
-
-                                                <p class="card-text p-2 n-1 rounded" style="border:1px solid #0257d8;"><b>Phone : </b>{{$user->phone_number}}</p>
-
-                                                <p class="card-text p-2 n-1 rounded" style="border:1px solid #0257d8;"><b>Registered On : </b>{{$user->created_at}}</p>
-
-                                                <p class="card-text p-2 n-1 rounded" style="border:1px solid #0257d8;"><b>Account Status : </b>{{$user->status->name}}</p>
-
-                                                <p class="card-text p-2 n-1 rounded" style="border:1px solid #0257d8;"><b>Role : </b>{{implode(', ', $user->roles->pluck('name')->toArray())}}</p>
+                                                <input type="hidden" name="oldimage" value="image">
+                                                <div class="form-group n-0">
+                                                    <label for="profilePhoto" class="m-1">Upload Profile Photo</label>
+                                                    <input type="file" name="image" id="profilePhoto">
+                                                </div>
+                                                <div class="form-group n-0">
+                                                    <label for="name" class="m-1">Name</label>
+                                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$user->name}}" required autocomplete="name" autofocus>
+                                                    @error('name')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
                                                 
-                                                <br>
-                                                @if($user->status_id != 1)
-                                                <p class="text-danger text-center">Your account is inactive, you won't be able to access Admin Dashboard. If its a new account, kindly wait for admin to manually activate your account</p>
-                                                @endif
+                                                <div class="form-group n-0">
+                                                    <label for="gender" class="m-1">Gender</label>
+                                                    <select name="gender" id="gender" class="form-control">
+                                                        <option value="" disabled <?php if($user->gender ==null){echo 'selected';} ?>>Select
+                                                        
+                                                        </option>
+                                                        <option value="Male"  <?php if($user->gender =='Male'){echo 'selected';} ?>>Male
+                                                        </option>
+                                                        <option value="Female"  <?php if($user->gender == 'Female'){echo 'selected';} ?>>Female
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group n-0">
+                                                    <label for="date_of_birth" class="m-1">Date of birth</label>
+                                                    <input id="date_of_birth" type="date" class="form-control @error('date_of_birth') is-invalid @enderror" name="date_of_birth" value="{{$user->date_of_birth}}" required autocomplete="date_of_birth" autofocus>
+                                                    @error('date_of_birth')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                
+                                                <div class="form-group n-0">
+                                                    <label for="phone_number" class="m-1">phone_number</label>
+                                                    <input id="phone_number" type="tel" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{$user->phone_number}}" required autocomplete="phone_number" autofocus>
+                                                    @error('phone_number')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                
+
+                                                <div class="form-group mt-2">
+                                                   <input type="submit" name="profile_update" value="{{ __('Update') }}" form="update_user" class="btn btn-danger btn-block" id="ProfileUpdateBtn"> 
+                                                </div>
+                                            </form>
+
+
 
                                             </div>
-
-                                            
                                         </div>
                                     </div>
-                                </div>    
-                                <!-- profile tab content end -->
-                                
+                                </div>
+                                 <!-- edit profile tab content ends -->
                     
                             </div>
                         <div>               
@@ -173,3 +198,5 @@
 </script>
 
 @endsection
+
+

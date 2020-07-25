@@ -90,10 +90,11 @@
                             <table class="table table-hover">
                                 <thead class="text-primary">
                                     <th>S/N</th>
-                                    <th>Company</th>
-                                    <th>Project</th>
+                                    <th>Date</th>
                                     <th>Ministry</th>
                                     <th>Amount Spent</th>
+                                    <th>Description</th>
+                                    <th>Beneficary</th>
                                 </thead>
                                 <tbody>
                                     @if (count($recent_expenses)>0)
@@ -101,10 +102,12 @@
                                         @foreach ($recent_expenses as $recent_expense)
                                             <tr>
                                                 <td>{{ ++$counter }}</td>
-                                                <td>{{ $recent_expense->year }}</td>
-                                                <td>{{ $recent_expense->project }}</td>
-                                                <td>{{ $recent_expense->month }}</td>
+                                                <td>{{ $recent_expense->payment_date }}</td>
+                                                <td>{{ $recent_expense->organization() }}</td>
                                                 <td>₦{{ number_format($recent_expense->amount_spent) }}</td>
+                                                <td>{{ $recent_expense->description }}</td>
+                                                <td>{{ $recent_expense->beneficiary }}</td>
+                                                
                                             </tr>
                                         @endforeach
 
@@ -115,8 +118,8 @@
                         </div>
                     </div>
                 </div>
-            
-            
+
+
 
                 <div class="col-lg-6 col-md-12">
                     <div class="card">
@@ -124,10 +127,19 @@
                             <h4 class="card-title">Recent Activities</h4>
 
                             @can('delete')
+                            @if (count($recent_activites)>0)
                                 <button class="btn btn-primary" style="float:right" data-toggle="modal"
                                     data-target="#exampleModal1">Mark all as read</button>
-
+                            @endif
                             @endcan
+
+                            @can('delete')
+                            @if (count($recent_activites)==0)
+                                <button class="btn btn-primary" style="float:right" data-toggle="modal"
+                                     disabled>No new notification</button>
+                            @endif
+                            @endcan
+
 
 
                         </div>
@@ -147,10 +159,10 @@
 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <form action="{{ '/admin/activity/mark_all/' }}" method="post">
+                                        <form action="{{ '/admin/activity/all/' }}" method="post">
                                            @method('put')
                                             @csrf
-                                            <button type="submit" class="btn btn-danger">Proceed</button>
+                                            <button type="" class="btn btn-danger">Proceed</button>
                                         </form>
 
                                     </div>
@@ -162,7 +174,7 @@
 
 
                         <div class="card-body table-responsive-sm">
-                            <table id='notification' class="table table-bordered">
+                            <table id='data' class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>S/N</th>
@@ -192,7 +204,7 @@
                                             style="color: blue"></a>
                                         @can('delete')
                                             <a class="fa fa-trash" data-toggle="modal"
-                                                data-target="{{ '#exampleModal' . $recent_activity->id }}"
+                                                data-target="{{ '#exampleModal'.$recent_activity->id }}"
                                                 style="color: red;"></a>
                                         @endcan
                                     @endcan
@@ -222,7 +234,7 @@
                                                 </div>
 
                                                 <div class="modal-footer">
-                                                        
+
                                                         <form
                                                             action="{{ '/admin/activity/mark/' . $recent_activity->id }}"
                                                             method="post">
@@ -420,7 +432,7 @@
             <nav class="float-left">
                 <ul>
                     <li>
-                        <a href="https://www.expenseng.com">
+                        <a href='{{url('/')}}'>
                             ExpenseNg
                         </a>
                     </li>
@@ -782,9 +794,29 @@ $(document).ready( function () {
 
     </script>
     <script>
-        jQuery(document).ready(function() {
-            $('#example').DataTable();
-        });
+        $(document).ready(function(){
+    $('#data').after('<div id="nav" style="float:right"></div>');
+    var rowsShown = 5;
+    var rowsTotal = $('#data tbody tr').length;
+    var numPages = rowsTotal/rowsShown;
+    for(i = 0;i < numPages;i++) {
+        var pageNum = i + 1;
+        $('#nav').append('<a  rel="'+i+'" class="btn btn-secondary" >'+pageNum+'</a> ');
+    }
+    $('#data tbody tr').hide();
+    $('#data tbody tr').slice(0, rowsShown).show();
+    $('#nav a:first').addClass('active');
+    $('#nav a').bind('click', function(){
+
+        $('#nav a').removeClass('active');
+        $(this).addClass('active');
+        var currPage = $(this).attr('rel');
+        var startItem = currPage * rowsShown;
+        var endItem = startItem + rowsShown;
+        $('#data tbody tr').css('opacity','0.0').hide().slice(startItem, endItem).
+        css('display','table-row').animate({opacity:1}, 300);
+    });
+});
 
     </script>
 @endsection
