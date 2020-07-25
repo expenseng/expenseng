@@ -19,8 +19,8 @@ class CreatePaymentsTable extends Migration
             $table->string('payment_code')->index(); //the first 4 digits here determine the ministry the organization is under
             $table->string('organization');  //an organization is classified under a ministry but may not necessarily be a ministry
             $table->string('beneficiary', 191);
-            $table->bigInteger('amount');
-            $table->date('payment_date');
+            $table->double('amount');
+            $table->date('payment_date')->nullable();
             $table->string('description');
             $table->timestamps();
         });
