@@ -80,7 +80,7 @@
             </div>
             <div class="row">
 
-                <div class="col-lg-6 col-md-12">
+                <div class="col-lg-12 col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
                             <h4 class="card-title">Recent Expenses</h4>
@@ -104,7 +104,7 @@
                                                 <td>{{ ++$counter }}</td>
                                                 <td>{{ $recent_expense->payment_date }}</td>
                                                 <td>{{ $recent_expense->organization() }}</td>
-                                                <td>₦{{ number_format($recent_expense->amount_spent) }}</td>
+                                                <td>₦{{number_format($recent_expense->amount,2)}}</td>
                                                 <td>{{ $recent_expense->description }}</td>
                                                 <td>{{ $recent_expense->beneficiary }}</td>
                                                 
@@ -121,7 +121,7 @@
 
 
 
-                <div class="col-lg-6 col-md-12">
+                <div class="col-lg-12 col-md-12">
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Recent Activities</h4>
