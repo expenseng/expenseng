@@ -159,6 +159,10 @@ class CommentService{
             return response.data;
         })
     }
+
+    isMyComment(comment){
+        return this.email == comment.ownerId;
+    }
 }
 
 export default CommentService;

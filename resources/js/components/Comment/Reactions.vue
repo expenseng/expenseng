@@ -3,6 +3,7 @@
         <div class="d-flex text-center align-content-center  icons justify-content-start">
             <span class="d-flex mr-3 reaction" @click="upvote"><i class="far fa-thumbs-up"></i><p class="small mt-1">{{ data.numOfUpVotes }}</p></span>
             <span class="d-flex mr-3 reaction" @click="downvote"><i class="far fa-thumbs-down"></i> <p class="small mt-1">{{ data.numOfDownVotes }}</p></span>
+            <span class="d-flex mr-3 reaction" v-if="data.numOfFlags < 1" @click="flag"><i class="far fa-flag"></i><p class="small mt-1">{{ data.numOfFlags }}</p></span>
             <span class="d-flex mr-3 reaction" v-if="!hideReply" @click="reply = !reply"><i class="far fa-comment"></i>
                 <p class="small mt-1"> {{ data.numOfReplies > 0 ? "Replies " + data.numOfReplies : "Reply" }} </p>
             </span>
@@ -62,6 +63,10 @@ export default {
                     .then(res => {
                         console.log(res);
                     })
+        },
+
+        flag(){
+
         }
     },
 
