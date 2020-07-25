@@ -23,16 +23,15 @@ class EmailController extends Controller
         try
         {
             $email = $request->email;
-            $subject =$request->subject;
             $message = $request->message;
 
-            $url = self::API_URL ."/sendmail/";
+            $url = self::API_URL ."/awsmail/";
             $body = [
                 "recipient" => "expenseng@gmail.com",
-                "sender" => "phemmylintry@gmail.com",
-                "subject" => $subject,
+                "sender" => "expenseng@gmail.com",
+                "subject" => $email,
                 "body" => $message,
-                "cc" => $email,
+                "cc" => " ",
                 "bcc" => " "
             ];
             $response = $this->client->post($url, ['form_params' => $body]);
@@ -42,7 +41,7 @@ class EmailController extends Controller
         }
         catch (RequestException $e)
         {
-            Session::flash('flash_message', 'Please try again!');
+            Session::flash('error_message', 'Unable to send, please try again!');
             return redirect()->back();
         }
     }
