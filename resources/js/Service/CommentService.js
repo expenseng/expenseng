@@ -163,6 +163,22 @@ class CommentService{
     isMyComment(comment){
         return this.email == comment.ownerId;
     }
+
+    flagComment(commentId, ownerId){
+        return axios.patch('/api/comments/'+commentId+'/flag', {
+            ownerId: ownerId
+        }).then(response => {
+            return response.data;
+        })
+    }
+
+    flagReply(commentId, replyId, ownerId){
+        return axios.patch('/api/comments/'+commentId+'/replies/'+replyId+'/flag', {
+            ownerId: ownerId
+        }).then(response => {
+            return response.data;
+        })
+    }
 }
 
 export default CommentService;

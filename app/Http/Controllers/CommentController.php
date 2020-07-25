@@ -245,4 +245,32 @@ class CommentController extends Controller
         $email = $user->email;
         return md5(strtolower(trim($email)));
     }
+
+    public function flagComment(Request $request, $commentId){
+        $response = $this->http->patch('/comments/' . $commentId . '/flag', [
+            "body" => json_encode([
+                "ownerId" => $request->ownerId
+            ])
+        ]);
+
+        $data = json_decode($response);
+
+        if($data['status'] == "success"){
+            return $data['data'];
+        }
+    }
+
+    public function flagReply(Request $request, $commentId, $replyId){
+        $response = $this->http->patch('/comments/' . $commentId . '/replies' . $replyId . '/flag', [
+            "body" => json_encode([
+                "ownerId" => $request->ownerId
+            ])
+        ]);
+
+        $data = json_decode($response);
+
+        if($data['status'] == "success"){
+            return $data['data'];
+        }
+    }
 }

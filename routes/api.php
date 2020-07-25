@@ -50,10 +50,12 @@ Route::patch('/comments/{commentId}/votes/downvote', 'CommentController@downvote
 Route::post('/citizens', 'CitizenController@userApi');
 
 /**
- * Delete Comments
+ * Delete & Flag Endpoints
  */
 Route::post('/comments/{commentId}/delete', 'CommentController@deleteComment');
 Route::post('/comments/{commentId}/replies/{replyId}/delete', 'CommentController@deleteReply');
+Route::patch('/comments/{commentId}/replies/{replyId}/flag', 'CommentController@flagReply');
+Route::patch('/comments/{commentId}/flag', 'CommentController@flagComment');
 
 /*
  * Email sending API

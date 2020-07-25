@@ -1,10 +1,10 @@
 <template>
     <div>
         <div class="d-flex text-center align-content-center  icons justify-content-start">
-            <span class="d-flex mr-3 reaction" @click="upvote"><i class="far fa-thumbs-up"></i><p class="small mt-1">{{ data.numOfUpVotes }}</p></span>
-            <span class="d-flex mr-3 reaction" @click="downvote"><i class="far fa-thumbs-down"></i> <p class="small mt-1">{{ data.numOfDownVotes }}</p></span>
-            <span class="d-flex mr-3 reaction" v-if="data.numOfFlags < 1" @click="flag"><i class="far fa-flag"></i><p class="small mt-1">{{ data.numOfFlags }}</p></span>
-            <span class="d-flex mr-3 reaction" v-if="!hideReply" @click="reply = !reply"><i class="far fa-comment"></i>
+            <span class="d-flex mr-3 reaction" title="Upvote this comment" @click="upvote"><i class="far fa-thumbs-up"></i><p class="small mt-1">{{ data.numOfUpVotes }}</p></span>
+            <span class="d-flex mr-3 reaction" title="Downvote this comment" @click="downvote"><i class="far fa-thumbs-down"></i> <p class="small mt-1">{{ data.numOfDownVotes }}</p></span>
+            <span class="d-flex mr-3 reaction" title="Flag this comment" v-if="data.numOfFlags < 1" @click="flag"><i class="far fa-flag"></i><p class="small mt-1">{{ data.numOfFlags }}</p></span>
+            <span class="d-flex mr-3 reaction" title="Reply to this comment" v-if="!hideReply" @click="reply = !reply"><i class="far fa-comment"></i>
                 <p class="small mt-1"> {{ data.numOfReplies > 0 ? "Replies " + data.numOfReplies : "Reply" }} </p>
             </span>
         </div>
@@ -66,7 +66,19 @@ export default {
         },
 
         flag(){
-
+            this.$swal({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value) {
+                    
+                }
+            })
         }
     },
 
