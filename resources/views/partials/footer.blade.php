@@ -33,10 +33,10 @@
                         <h6>Profile</h6>
                         <ul>
                             <li class="section-footer-links">
-                                <a  href="#">Ministry Search</a>
+                                <a  href="#">Ministry Profile</a>
                             </li>
                             <li class="section-footer-links">
-                                <a href="/company/search">Company Search</a>
+                                <a href="/company/search">Company Profile</a>
                             </li>
                         </ul>
                     </div>

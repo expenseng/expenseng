@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @push('css')
-	<title>FG Expense - Login</title>
-	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<title>FG Expense - Login</title>
 @endpush
 @section('content')
 <div class="limiter">
