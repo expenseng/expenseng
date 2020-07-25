@@ -36,7 +36,23 @@ main{
   flex-direction: column;
 }
 
+.first{
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
 
+.first li a{
+  color: #6c757d;
+}
+
+.first li a:hover{
+  text-decoration: none;
+  color: #00945E;
+}
+
+.first li.active{
+  color: #00945E;
+}
 
 /* Typography */
 
@@ -392,3 +408,54 @@ main .green_right{
     margin: 6rem 0 2rem;
   }
 }
+
+
+/* Back to top */
+
+.back-top {
+  right: 20px;
+  font-size: 26px;
+  position: fixed;
+  z-index: 1600;
+  opacity: 0;
+  visibility: hidden;
+  bottom: 30px;
+  -webkit-background-size: 200% auto;
+  background-size: 200% auto;
+  background-image: -webkit-gradient(linear, left top, right top, from(#51e188), color-stop(51%, #22553d), to(#51e19e));
+  background-image: -webkit-linear-gradient(left, #51e188 0%, #22553d 51%, #51e19e 100%);
+  background-image: -moz-linear-gradient(left, #51e188 0%, #22553d 51%, #51e19e 100%);
+  background-image: -o-linear-gradient(left,#51e188 0%, #22553d 51%, #51e19e 100%);
+  background-image: linear-gradient(to right, #51e188 0%, #22553d 51%, #51e19e 100%);
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  line-height: 40px;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.back-top-visible {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-top,
+.back-top:hover,
+.back-top:focus {
+  color: #fff;
+}
+
+.back-top:hover {
+  background-position: right center;
+}
+

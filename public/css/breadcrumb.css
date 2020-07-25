@@ -1,0 +1,25 @@
+.breadcrumb{
+    background-color: #f2f2f2;
+    font-weight: bold !important;
+}
+
+.breadcrumb li a{
+    color: #6c757d;
+}
+
+.breadcrumb a:hover{
+    color: #00945E !important;
+}
+
+a:hover{
+    text-decoration: none;
+    color: #00945E !important;
+}
+
+.breadcrumb li.active{
+    color: #00945E !important;
+    font-weight: bold !important;
+}
+.breadcrumb-item+ .breadcrumb-item::before{
+    content: '.' !important;
+}

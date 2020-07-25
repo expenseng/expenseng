@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Activites;
 use Illuminate\Support\Facades\Gate;
 use App\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 {
@@ -83,17 +85,23 @@ class CompanyController extends Controller
      */
     public function viewCompanies()
     {
-         if (Gate::denies('active', 'manage')) {
+        if (Gate::denies('active', 'manage')) {
             return redirect(route('profile'));
         }
-        
+
+       $recent_activites = Activites::where('status', 'pending')->orderBY('id', 'DESC')
+            ->limit(7)
+            ->get();
+        $total_activity = count(Activites::all()->where('status', 'pending'));
+
         $companies = Company::all();
 
-        return view('backend.company.view')
-        ->with([
+        return view('backend.company.view')->with([
             'companies' => $companies,
-            'count' => 0
-            ]);
+            'recent_activites' => $recent_activites,
+            'total_activity' => $total_activity,
+            'count' => 0,
+        ]);
     }
 
     public function createCompany(Request $request)
@@ -113,15 +121,22 @@ class CompanyController extends Controller
         $new_company->ceo = $request->company_ceo;
         $new_company->twitter = $request->ceo_handle;
         $save_new_company = $new_company->save();
-
+        $auth = Auth::user();
         if ($save_new_company) {
-            echo ("<script>alert('New company created successfully');
-             window.location.replace('/admin/company/view');</script>");
+            Activites::create([
+                'description' =>$auth->name.' Added '.$request->company_name.' to companies table',
+                'username' => $auth->name,
+                'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+                'status' => 'pending'
+            ]);
+
+             Session::flash('flash_message', 'New company created successfully!');
+             return redirect('/admin/company/view');
         } else {
-            echo ("<script>alert('Cannot create New company'); 
-            window.location.replace('/admin/company/create');</script>");
+            Session::flash('error_message', ' Cabinet was not deleted!');
+            return redirect()->back();
         }
-    }   
+    }
 
     public function showEditForm($id)
     {
@@ -149,11 +164,18 @@ class CompanyController extends Controller
             'ceo' => $request->company_ceo,
             'twitter' => $request->ceo_handle,
         ]);
+        $auth = Auth::user();
         if ($update) {
-            echo "<script>alert(' Company details edited successfully');
-            window.location.replace('/admin/company/view');</script>";
+            Activites::create([
+            'description' =>$auth->name.' Updated '.$request->company_name.' company details',
+                'username' => $auth->name,
+                'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+                'status' => 'pending'
+        ]);
+            Session::flash('flash_message', 'Company details edited successfully!');
+            return redirect('/admin/company/view');
         } else {
-            Session::flash('flash_message', ' Company was not edited!');
+            Session::flash('error_message', ' Company was not edited!');
             return redirect()->back();
         }
     }
@@ -163,12 +185,26 @@ class CompanyController extends Controller
         if (Gate::denies('delete')) {
             return redirect(route('company.view'));
         }
+        $username = DB::table('companies')
+            ->where('id', $id)
+            ->pluck('name')
+            ->toArray();
+        $name = implode(' ', $username);
+        $auth = Auth::user();
         $delete = Company::where('id', $id)->delete();
+
         if ($delete) {
-            echo "<script>alert(' Company  deleted successfully');
-             window.location.replace('/admin/company/view');</script>";
+
+            Activites::create([
+            'description' => $auth->name.' deleted '.$name.' from the companies table',
+            'username' => $auth->name,
+            'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+            'status' => 'pending'
+        ]);
+             Session::flash('flash_message', 'Company  deleted successfully!');
+             return redirect('/admin/company/view');
         } else {
-            Session::flash('flash_message', ' Company was not deleted!');
+            Session::flash('error_message', ' Company was not deleted!');
             return redirect()->back();
         }
     }

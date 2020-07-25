@@ -41,7 +41,7 @@ aside {
 	color: white;
 }
 .banner-hr{
-	width: 75%;	
+	width: 75%;
 	background-color: #fff;
 }
 
@@ -76,7 +76,7 @@ h4 {
 	color: #00945E;
 }
 
-span {
+.banner-hr span {
 	margin-bottom: 20px;
 	margin-left: -220px;
 }
@@ -124,20 +124,35 @@ span {
 	box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.06);
 	border-radius: 5px;
 }
-@media only screen and (min-width: 430px){
+
+
+@media only screen and (min-width: 200px){
 	span{
-		margin-left: -260px;
+        position: relative;
+        margin-left: -60vw;
+        bottom: 2vh;
 	}
 	.col-sm-8{
-		margin-left: 140px;
+        position: relative;
+        margin-left: 40vw;
+        bottom: -10px;
+    }
+}
+
+@media only screen and (min-width: 430px){
+	span{
+		margin-left: -300px;
+	}
+	.col-sm-8{
+		margin-left: 150px;
 	}
 }
 @media only screen and (min-width: 530px){
 	span{
-		margin-left: -320px;
+		margin-left: -350px;
 	}
 	.col-sm-8{
-		margin-left: 160px;
+		margin-left: 180px;
 	}
 }
 @media only screen and (min-width: 576px){
@@ -149,7 +164,7 @@ span {
 		margin-left: 5px;
 	}
 	.col-sm-8{
-		margin-left: 130px;
+		margin-left: 150px;
 	}
 }
 @media only screen and (min-width: 777px){
@@ -160,6 +175,13 @@ span {
 		margin-left: 90px;
 	}
 }
+
+@media only screen and (min-width: 992px) and (max-width: 1023px) {
+    .col-sm-8{
+		margin-left: 130px;
+	}
+}
+
 @media only screen and (min-width: 1024px){
 	body{
 		overflow-x: hidden;
@@ -205,7 +227,7 @@ aside {
 	margin-top: -90px;
 }
 .banner-hr{
-	width: 75%;	
+	width: 75%;
 	background-color: #fff;
 }
 
@@ -249,10 +271,12 @@ h4 {
 }
 
 span {
-	margin-bottom: 20px;
+    position: relative;
+    margin-bottom: 20px;
+    bottom: -1vh;
 }
 .col-sm-8{
-	margin-left: -45px;
+	margin-left: -40px;
 	font-size: 16px;
 	margin-top: -3px;
 }

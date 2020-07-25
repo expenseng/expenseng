@@ -9,7 +9,7 @@
 <div class="content">
         <div class="container-fluid">
         {{-- Flash message --}}
-        <div id="alert alert-danger">
+        <div id="alert">
          @include('backend.partials.flash')
         </div>
          {{-- Flash message end--}}
@@ -43,13 +43,29 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputText4" class="col-form-label">Subscription Type</label>
-                                                <input id="inputText4" name="sub_type" type="text" 
-                                                value="{{$details->subscription_type}}"
-                                                class="form-control" placeholder="e.g Expenses" required>
+                                            
+                                                <select class="form-control" name="sub_type" required>
+                                                    <option value="{{$details->subscription_type}}">{{$details->subscription_type}}</option>
+                                                    @if ($details->subscription_type !== "expenses")  
+                                                      <option value="expenses">Expenses</option>
+                                                    @endif
+                                                    
+                                                    @if($details->subscription_type !== 'daily report')
+                                                      <option value="daily report"> Daily Reports</option>
+                                                    @endif
+
+                                                    @if($details->subscription_type !== 'ministry report')
+                                                      <option value="ministry report">Ministry Reports</option>
+                                                    @endif
+
+                                                    @if ($details->subscription_type !== 'company report')
+                                                      <option value="company report">Company Reports</option>
+                                                    @endif
+                                                </select>
                                             </div>
                                             
                                             <div class="form-group text-right">
-                                                <input type="submit" value="Create Subscription"
+                                                <input type="submit" value="Edit Subscription"
                                                 class="form-control" 
                                                 style="background-color: #00945E; color:honeydew; border: none; border-radius: 12px; width: 12rem"/>
                                             </div>

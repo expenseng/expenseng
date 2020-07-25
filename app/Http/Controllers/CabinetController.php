@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Cabinet;
 use App\Ministry;
+use App\Activites;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Contains several functions for handling cabinets
@@ -40,13 +43,18 @@ class CabinetController extends Controller
         if (Gate::denies('active', 'manage')) {
             return redirect(route('profile'));
         }
-        
-        $cabinets = Cabinet::all();
 
-        return view('backend.cabinet.view')
-        ->with(
+        $cabinets = Cabinet::all();
+        $recent_activites = Activites::where('status', 'pending')->orderBY('id', 'DESC')
+            ->limit(7)
+            ->get();
+        $total_activity = count(Activites::all()->where('status', 'pending'));
+        
+        return view('backend.cabinet.view')->with(
             [
             'cabinets' => $cabinets,
+            'recent_activites' => $recent_activites,
+            'total_activity' => $total_activity,
             'count' => 0
             ]
         );
@@ -68,7 +76,7 @@ class CabinetController extends Controller
             'code' => 'required',
             ]
         );
-        
+
         //if no image was uploaded
         if ($request->image == '' || $request->twitter == '') {
             $new_cabinet = new Cabinet();
@@ -78,14 +86,21 @@ class CabinetController extends Controller
             $new_cabinet->avatar = $request->image;
             $new_cabinet->ministry_code = $request->code;
             $save_new_cabinet = $new_cabinet->save();
-
+            $auth = Auth::user();
             if ($save_new_cabinet) {
-                
+
+            Activites::create([
+            'description' => $auth->name.' added '.$request->name.' to the cabinet members table',
+            'username' => $auth->name,
+            'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+            'status' => 'pending'
+        ]);     
+
                 Session::flash('flash_message', $request->name. ' added to cabinet Successfully!');
                 return redirect(route('cabinet.view'));
-                
+
             } else {
-                Session::flash('flash_message', 'Cannot create new Cabinet!!');
+                Session::flash('error_message', 'Cannot create new Cabinet!!');
                 return redirect()->back();
             }
         }
@@ -93,13 +108,13 @@ class CabinetController extends Controller
 
         $base_url = \URL::to('/');
         //replace spaces with dash in shortname
-        $name = preg_replace('/[[:space:]]+/', '-', $request->name); 
+        $name = preg_replace('/[[:space:]]+/', '-', $request->name);
 
         //upload picture
-        
+
         $imageName = $name .time().'.'
         .$request->image->getClientOriginalExtension();
-        
+
         $upload = $request->image->move('uploads', $imageName);
 
         if ($upload) {
@@ -110,18 +125,25 @@ class CabinetController extends Controller
             $new_cabinet->avatar = $base_url.'/uploads'. '/'.$imageName;
             $new_cabinet->ministry_code = $request->code;
             $save_new_cabinet = $new_cabinet->save();
-
+            $auth = Auth::user();
             if ($save_new_cabinet) {
-                
+            Activites::create([
+            'description' => $auth->name.' added '.$request->name.' to the cabinet members table',
+            'username' => $auth->name,
+            'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+            'status' => 'pending'
+        ]);     
+
+      
                 Session::flash('flash_message', $request->name. ' added to cabinet Successfully!');
                 return redirect(route('cabinet.view'));
-                
+
             } else {
-                Session::flash('flash_message', 'Cannot create new Cabinet!!');
+                Session::flash('error_message', 'Cannot create new Cabinet!!');
                 return redirect()->back();
             }
         } else {
-            Session::flash('flash_message', 'Cannot upload image!!');
+            Session::flash('error_message', 'Cannot upload image!!');
             return redirect()->back();
         }
     }
@@ -149,7 +171,7 @@ class CabinetController extends Controller
         );
         $img_url = Cabinet::findOrFail($id)->avatar;
         //if image isn't changed
-        
+
         if ($request->image == '' ) {
             $update = Cabinet::where('id', $id)->update(
                 [
@@ -159,29 +181,35 @@ class CabinetController extends Controller
                 //'avatar' => $request->image,
                 'ministry_code' => $request->code,
                 ]
-            );
 
+            );
+            $auth = Auth::user();
             if ($update) {
+            Activites::create([
+            'description' => $auth->name.' edited cabinet member '.$request->name.' details',
+            'username' => $auth->name,
+            'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+            'status' => 'pending'
+        ]);     
                 Session::flash('flash_message', ' Cabinet details edited successfully!');
                 return redirect(route('cabinet.view'));
             } else {
-                Session::flash('flash_message', ' Cabinet was not edited!');
+                Session::flash('error_message', ' Cabinet was not edited!');
                 return redirect()->back();
             }
         }
         $base_url = \URL::to('/');
         //replace spaces with dash in shortname
-        $name = preg_replace('/[[:space:]]+/', '-', $request->name); 
+        $name = preg_replace('/[[:space:]]+/', '-', $request->name);
 
         //upload picture
-        
+
         $imageName = $name .time().'.'
         .$request->image->getClientOriginalExtension();
-        
+
         $upload = $request->image->move('uploads', $imageName);
 
         if ($upload) {
-
             $update = Cabinet::where('id', $id)->update(
                 [
                 'name' => $request->name,
@@ -191,23 +219,30 @@ class CabinetController extends Controller
                 'ministry_code' => $request->code,
                 ]
             );
+            $auth = Auth::user();
 
             if ($update) {
-
-                Session::flash('flash_message', ' Cabinet details edited successfully!');
+                
+            Activites::create([
+            'description' => $auth->name.' edited cabinet member '.$request->name.' details',
+            'username' => $auth->name,
+            'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+            'status' => 'pending'
+        ]);     
+                 Session::flash('flash_message', ' Cabinet details edited successfully!');
                 return redirect(route('cabinet.view'));
             } else {
-                Session::flash('flash_message', ' Cabinet was not edited!');
+                Session::flash('error_message', ' Cabinet was not edited!');
                 return redirect()->back();
             }
         } else {
-            Session::flash('flash_message', ' Image was not uploaded!');
+            Session::flash('error_message', ' Image was not uploaded!');
             return redirect()->back();
         }
     }
     /**
      * Deletes a member from cabinet
-     * 
+     *
      * @params $id
      * @return  message
      */
@@ -216,16 +251,27 @@ class CabinetController extends Controller
         if (Gate::denies('delete')) {
             return redirect(route('cabinet.view'));
         }
+         $username = DB::table('cabinets')
+            ->where('id', $id)
+            ->pluck('name')
+            ->toArray();
+        $name = implode(' ', $username);
+        $auth = Auth::user();
         $delete = Cabinet::where('id', $id)->delete();
+
         if ($delete) {
-             
+            Activites::create([
+            'description' => $auth->name.' deleted '.$name.' from the cabinet table',
+            'username' => $auth->name,
+            'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+            'status' => 'pending'
+        ]);           
+
              Session::flash('flash_message', 'Cabinet member deleted successfully!');
              return redirect(route('cabinet.view'));
         } else {
-            Session::flash('flash_message', ' Cabinet was not deleted!');
+            Session::flash('error_message', ' Cabinet was not deleted!');
             return redirect()->back();
-    
         }
     }
-
 }

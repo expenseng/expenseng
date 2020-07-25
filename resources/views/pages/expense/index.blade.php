@@ -2,13 +2,10 @@
 
 @push('css')
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-  <!-- <link rel="stylesheet" href="{{asset('/css/expense_report.css')}}"> -->
-  <link rel="stylesheet" href="{{asset('/css/header_footer.css')}}">
   <link rel="stylesheet" href="{{asset('css/index.blade.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/header_footer.css') }}">
   <link rel="stylesheet" href="{{ asset('css/ministry-report-table.css') }}">
   <link rel="stylesheet" href="{{ asset('css/filter.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/aboutus-header_footer.css') }}">
+  <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
 
     @toastr_css
@@ -18,11 +15,11 @@
 
 @section('content')
 
-{{ Breadcrumbs::render('expense.reports') }}
 <section>
   <div class="container ">
+{{ Breadcrumbs::render('expense.reports') }}
     <div class="row">
-      <div class="col-md-8 col-lg-12 section-heading">
+      <div class="col-md-12 col-lg-12 section-heading">
         <h1 class="section-heading-title">Expense Report</h1>
         <p class="section-heading-paragraph">Expense report gives an insight to how much is being spent by the federal government on a daily basis and how much is spent in major sectors in Nigeria.</p>
         <h5>Subscribe to daily Expense Report</h5>
@@ -159,6 +156,7 @@
 <script type="text/javascript" src="/js/expenditure_report.js"></script>
 <script type="text/javascript" src="/js/filter.js"></script>
 <script type="text/javascript" src="/js/index_blade.js"></script>
+<script src="{{ asset('js/index.js') }}"></script>
 @jquery
 @toastr_js
 @toastr_render

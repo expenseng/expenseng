@@ -38,14 +38,33 @@ a:active{
 
 
 .section-wrapper{
-	margin-top: 5.5rem;
+	margin-top: .5rem;
 }
 
 
 /* breadcrumb */
 .breadcrumb{
-	padding-left: 0;
+	padding-left: 5px;
 	font-size: var(--fs-h6);
+}
+
+.first{
+	background-color: #f2f2f2;
+	font-weight: bold;
+	padding-left: 2%;
+}
+  
+.first li a{
+	color: #6c757d;
+}
+  
+.first li a:hover{
+	text-decoration: none;
+	color: #00945E !important;
+}
+  
+.first li.active{
+	color: #00945E;
 }
 
 .breadcrumb span{
@@ -71,6 +90,7 @@ a:active{
 .section-heading-title{
 	font-size: var(--fs-h2);
 	font-weight: bolder;
+	margin-top: 20px;
 }
 
 .section-heading-paragraph{
@@ -186,6 +206,9 @@ tr > :nth-child(1) {
 	margin-left: 2rem;
 }
 
+.main-table tr :nth-child(5) {
+	width: 130px;
+}
 .tbody1 tr td{
 	padding-bottom: 1.45rem;
 	color: var(--clr-accent);
@@ -244,6 +267,10 @@ button.nav-chart{
 	border-bottom: 1px solid var(--clr-accent);
 }
 
+.table-overflow{
+	text-align: center;
+}
+
 /* Pagination */
 .table-footer{
 	margin: 3rem .5rem;
@@ -275,7 +302,7 @@ button.nav-chart{
 }
 
 .pagination1{
-	margin: 2rem .5rem 4rem;
+	margin: 2rem .5rem;
 }
 
 .pagination2{
@@ -361,7 +388,9 @@ button.nav-chart{
 	color: inherit;
 }
 
-
+.btn-date{
+	padding: 6px;
+}
 
 /* scrollbar */
 
@@ -510,6 +539,21 @@ button.nav-chart{
 		color: var(--clr-accent);
 		margin-right: 2rem;
 	}
+	
+	.pagination a{
+
+        display: none;
+    }
+
+    .pagination a:first-child,
+    .pagination a:nth-child( 2 ),
+    .pagination a:nth-last-child( 2 ),
+    .pagination a:last-child,
+    .pagination a.active,
+    .pagination a.disabled {
+
+        display: block;
+    }
 } 
 
 

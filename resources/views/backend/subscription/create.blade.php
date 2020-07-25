@@ -9,7 +9,7 @@
 <div class="content">
         <div class="container-fluid">
         {{-- Flash message --}}
-        <div id="alert alert-danger">
+        <div id="alert">
          @include('backend.partials.flash')
         </div>
          {{-- Flash message end--}}
@@ -31,7 +31,7 @@
                                             <div class="form-group">
                                                 <label for="inputText3" class="col-form-label"> Name</label>
                                                 <input id="inputText3" name="name" type="text" 
-                                                class="form-control"  placeholder="e.g example Cabinet" required>
+                                                class="form-control"  placeholder="e.g Name" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">Email</label>
@@ -41,8 +41,14 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputText4" class="col-form-label">Subscription Type</label>
-                                                <input id="inputText4" name="sub_type" type="text"
-                                                class="form-control" placeholder="e.g Expenses" required>
+
+                                                <select class="form-control" name="sub_type" required>
+                                                    <option value="">Select Subscription Type</option>
+                                                    <option value="expenses">Expenses</option>
+                                                    <option value="daily report">Daily Reports</option>
+                                                    <option value="ministry report">Ministry Reports</option>
+                                                    <option value="company report">Company Reports</option>
+                                                </select>
                                             </div>
                                             
                                             <div class="form-group text-right">

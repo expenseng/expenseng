@@ -54,3 +54,25 @@ Route::post('/citizens', 'CitizenController@userApi');
  */
 Route::post('/comments/{commentId}/delete', 'CommentController@deleteComment');
 Route::post('/comments/{commentId}/replies/{replyId}/delete', 'CommentController@deleteReply');
+
+/*
+ * Email sending API
+ */
+Route::post('/sendmail', 'EmailController@sendMail')->name('sendmail');
+
+// ADMIN - Comments API Calls
+ Route::group(['prefix' => '', 'middleware' => ['api'] ], function() {
+    Route::get('/comments', 'Admin\CommentController@getAllComments'); //gets all application comments
+
+    Route::post('/comments/{commentId}', 'Admin\CommentController@DeleteComment'); //delete a comment
+
+     Route::post('/comments/{commentId}/replies/{replyId}', 'Admin\CommentController@DeleteReply'); //delete a reply
+
+    Route::patch('/comments/{commentId}/flag', 'Admin\CommentController@FlagComment'); //flag a comment
+
+    Route::patch('/comments/{commentId}', 'Admin\CommentController@updateComment'); //update a comment
+
+    Route::patch('/comments/{commentId}/replies/{replyId}/flag', 'Admin\CommentController@FlagReply'); //flag a reply
+
+
+ });

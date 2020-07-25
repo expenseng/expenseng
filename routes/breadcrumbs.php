@@ -17,6 +17,12 @@ Breadcrumbs::for('contact', function ($trail) {
     $trail->push('Contact Us', route('contact'));
 });
 
+// Home > Search
+Breadcrumbs::for('search', function ($trail) {
+    $trail->parent('home');
+    $trail->push('search', route('search'));
+});
+
 // Home > Expense_Report
 Breadcrumbs::for('expense.reports', function ($trail) {
     $trail->parent('home');
@@ -51,4 +57,34 @@ Breadcrumbs::for('contractors', function ($trail) {
 Breadcrumbs::for('contractor', function ($trail, $company) {
     $trail->parent('contractors');
     $trail->push($company->name, route('contractors.single', $company->id));
+});
+
+//Home > FOIA
+Breadcrumbs::for('FOIA', function ($trail) {
+    $trail->parent('home');
+    $trail->push('FOIA', route('FOIA'));
+});
+
+//Home > Accessibility
+Breadcrumbs::for('accessibility', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Accessibility', route('accessibility'));
+});
+
+//Home > FAQ
+Breadcrumbs::for('FAQ', function ($trail) {
+    $trail->parent('home');
+    $trail->push('FAQ', route('faq'));
+});
+
+//Home > Privacy_Policy
+Breadcrumbs::for('privacy', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Privacy', route('privacy'));
+});
+
+//Home > Gov. Handles
+Breadcrumbs::for('handles', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Handles', route('handles'));
 });

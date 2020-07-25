@@ -10,11 +10,14 @@ use App\Payment;
 use App\ProcessId;
 use App\Sector;
 use App\Tweet;
+use App\Activites;
+use App\Tweets;
 use Carbon\Carbon;
 use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
+use Twitter;
 
 class TwitterBot extends Controller
 {
@@ -143,13 +146,40 @@ class TwitterBot extends Controller
         if ($request->ajax()) {
             try {
                 $tweet = new Tweet($request->tweet);
-                $tweet->send();
+                $tweet_details = $tweet->send();
                 $response = 'tweet sent';
+            Activites::create([
+            'description' =>
+                'New tweet Made',
+            ]);
                 return Response($response);
-            }catch (\Exception $exception){
+            } catch (\Exception $exception) {
                 return Response::json(array("errors" => 'error occured'), 422);
             }
+        }
+    }
 
+    public function delete(Request $request)
+    {
+        if ($request->ajax()) {
+            try {
+                $destroy = Twitter::destroyTweet(''.($request->id));
+                return  Response('tweet destroy');
+            } catch (\Exception $exception) {
+                return Response::json(array("errors" => 'error occured'), 422);
+            }
+        }
+    }
+
+    public function getTweet(Request $request)
+    {
+        if ($request ->ajax()) {
+            try {
+                $tweets=  Twitter::getUserTimeline();
+                return view('backend.tweets', compact('tweets'));
+            } catch (\Exception $exception) {
+                return Response::json(array("errors" => 'error occured'), 422);
+            }
         }
     }
 }

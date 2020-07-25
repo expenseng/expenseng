@@ -35,20 +35,21 @@ class CommentController extends Controller
                 'debug' => true,
                 'Content-Type' => 'application/json',
             ]
-        ]);      
+        ]);
     }
 
     /**
      * Creats org => POST: /organizations
      */
-    public function createOrg(){
-        
+    public function createOrg()
+    {
     }
 
     /**
      * Send POST to /applications
     */
-    public function createToken(){
+    public function createToken()
+    {
         $response = $this->http->post('/applications', [
             "organizationEmail" => env("COMMENT_ORG_EMAIL", $this->org->email),
             "password" => env("COMMENT_PASSWORD", $this->org->password),
@@ -61,7 +62,8 @@ class CommentController extends Controller
     }
 
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         
         $response = $this->http->post('comments', [
             "body" => json_encode([
@@ -74,19 +76,19 @@ class CommentController extends Controller
 
         $response = json_decode($response->getBody(), true);
 
-        if($response['status'] == "success"){
+        if ($response['status'] == "success") {
             //broadcast the new comment to everyone else except the current user
             broadcast(new NewCommentOnResource($response))->toOthers();
 
             return $response['data'];
-        }else{
+        } else {
             Log::error("Error from creating a comment" . $response);
             return false;
         }
-
     }
 
-    public function show(Request $request){
+    public function show(Request $request)
+    {
         $origin = urlencode($request->origin);
         $response = $this->http->get('comments', [
             'query' => [
@@ -96,28 +98,30 @@ class CommentController extends Controller
 
         $data = json_decode($response->getBody(), true);
 
-        if($data['status'] == "success"){
+        if ($data['status'] == "success") {
             return $data['data'];
-        }else{
+        } else {
             Log::error("Error from fetching comments" . $data);
             return false;
         }
     }
 
-    public function replies($commentId){
+    public function replies($commentId)
+    {
         $response = $this->http->get('comments/' . $commentId . '/replies');
 
         $data = json_decode($response->getBody(), true);
 
-        if($data['status'] == "success"){
+        if ($data['status'] == "success") {
             return $data['data'];
-        }else{
+        } else {
             Log::error('Error while fetching replies to '.$commentId);
             return false;
         }
     }
 
-    public function reply(Request $request){
+    public function reply(Request $request)
+    {
         $response = $this->http->post('comments/' . $request->commentId . '/replies', [
             "body" => json_encode([
                 "ownerId" => $request->email,
@@ -127,17 +131,18 @@ class CommentController extends Controller
 
         $data = json_decode($response->getBody(), true);
 
-        if($data['status'] == "success"){
+        if ($data['status'] == "success") {
             //broadcast the new reply
             event(new NewReplyOnComment($data));
             return $data['data'];
-        }else{
+        } else {
             Log::error('Error while posting replies to '.$request->commentId);
             return false;
         }
     }
 
-    public function upvote(Request $request, $commentId){
+    public function upvote(Request $request, $commentId)
+    {
         $response = $this->http->patch('comments/' . $commentId . '/votes/upvote', [
             "body" => json_encode([
                 "ownerId" => $request->ownerId
@@ -146,17 +151,18 @@ class CommentController extends Controller
 
         $data = json_decode($response->getBody(), true);
 
-        if($data['status'] == "success"){
+        if ($data['status'] == "success") {
             // broadcast the new thumbs up
             event(new NewReactionOnComment($data));
             return $data['data'];
-        }else{
+        } else {
             Log::error('Error while posting upvote to '.$commentId);
             return false;
         }
     }
 
-    public function downvote(Request $request, $commentId){
+    public function downvote(Request $request, $commentId)
+    {
         $response = $this->http->patch('comments/' . $commentId . '/votes/downvote', [
             "body" => json_encode([
                 "ownerId" => $request->ownerId
@@ -165,11 +171,11 @@ class CommentController extends Controller
 
         $data = json_decode($response->getBody(), true);
 
-        if($data['status'] == "success"){
+        if ($data['status'] == "success") {
             // broadcast the new thumbs down
             event(new NewReactionOnComment($data));
             return $data['data'];
-        }else{
+        } else {
             Log::error('Error while posting downvote to '.$commentId);
             return false;
         }
@@ -207,7 +213,8 @@ class CommentController extends Controller
      * Stores a new user in the citizens table
      * so we can retrieve their info next time
      */
-    public function onboardUser(Request $request){
+    public function onboardUser(Request $request)
+    {
         Cookie::queue("commentator", "true");
 
         $user = Citizen::firstOrcreate([
@@ -220,15 +227,17 @@ class CommentController extends Controller
         return $user;
     }
 
-    public function fetchUser($email){
+    public function fetchUser($email)
+    {
         $user = Citizen::where('email', $email)->first('name');
         return $user;
     }
 
-    public function avatar(Request $request){
+    public function avatar(Request $request)
+    {
         /**
-         * Since a first time user must have been 
-         * stored in the DB, we will check if the user 
+         * Since a first time user must have been
+         * stored in the DB, we will check if the user
          * exists and fetch their email
          */
         $user = Citizen::firstOrNew([ "email" => $request->email ]);
