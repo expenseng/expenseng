@@ -93,7 +93,7 @@ class CommentController extends Controller
         $response = $this->http->get('comments', [
             'query' => [
                 'origin' => $origin,
-                'isFlagged' => false,
+                'isFlagged' => 'false',
             ]
         ]);
 
