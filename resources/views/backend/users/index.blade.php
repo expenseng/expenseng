@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/extras/datatables/css/fixedHeader.bootstrap4.css">
     <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/dash-table.css') }}" />
 
     <!-- causes toggle error in navbar -->
     <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
@@ -41,12 +42,11 @@
             <div class="col-xl-12">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header d-md-flex justify-content-between">
                         <h3 class="mb-0" style="float:left">All Users </h3>
                         @can('add')
-                        <a href="{{'/admin/users/create/'}}" class="btn btn-primary" style="float:right">ADD NEW</a>
+                        <a href="{{'/admin/users/create/'}}" class="btn btn-primary mt-3 section-btn-margin" style="float:right">ADD NEW</a>
                         @endcan
-                        <p></p>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

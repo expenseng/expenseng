@@ -1,6 +1,6 @@
 @extends('layouts.home')
 @push('css')
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dash-table.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="/extras/datatables/css/buttons.bootstrap4.css">
@@ -23,7 +23,6 @@
             padding: 12px!important;
         }
     </style>
-    <title>ExpenseNg - Users</title>
 <title>ExpenseNg - Expenses</title>
 @endpush
 
@@ -36,7 +35,6 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="mb-0">All Expenses </h3>
-                                <p></p>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">

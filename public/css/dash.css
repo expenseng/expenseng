@@ -8,11 +8,11 @@
     top:250px !important;
 }
 .tweet-button:hover {
-    right: 20px !important;
+    right: 60px !important;
 }
 .tweet-list-button:hover{
-    right: 30px;
+    right: 60px;
 }
 .tweet-list-plugin{
-    top: 350px;
+    top: 350px !important;
 }
