@@ -26,7 +26,7 @@
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item" href="#" v-if="comment.isMyComment(data)" @click.prevent="edit(data.commentId)">Edit</a>
                                         <a class="dropdown-item" href="#" v-if="comment.isMyComment(data)" @click.prevent="doDelete('parent', data.commentId)">Delete</a>
-                                        <a class="dropdown-item" href="#" @click.prevent="flag(data.commentId)">Flag</a>
+                                        <a class="dropdown-item" href="#" v-if="data.numOfFlags < 1" @click.prevent="flag(data.commentId)">Flag</a>
                                     </div>
                                 </div>
                             </div>
