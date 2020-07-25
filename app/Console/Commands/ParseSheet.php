@@ -27,8 +27,8 @@ class ParseSheet extends Command
      * @var string
      */
     private $baseUri = "https://excel.microapi.dev/";
-    
-   
+
+
 
     /**
      * The name and signature of the console command.
@@ -53,7 +53,7 @@ class ParseSheet extends Command
     {
         parent::__construct();
         $this->baseUri = "https://excel.microapi.dev/";
-        
+
         $this->http = new Client([
             'base_uri' => $this->baseUri,
             'headers' => [
@@ -61,7 +61,7 @@ class ParseSheet extends Command
                 'Content-Type' => 'application/json',
             ]
         ]);
-        
+
 
     }
 
@@ -87,11 +87,11 @@ class ParseSheet extends Command
                             $this->info('Parsing:   ' . $report->link);
 
                             $date = basename($report->link, '.xlsx');
-                          
+
                             $response = $this->http->post('api/', [
 
                                 "body" => json_encode([
-                                    "file_path" => 
+                                    "file_path" =>
                                     $report->link,
                                     "row_from"=> 15,
                                     "row_to" => 150,
@@ -100,11 +100,11 @@ class ParseSheet extends Command
                             ]);
                             $status = $response->getStatusCode();
                             $responses = json_decode($response->getBody(), true);
-            
-                    
+
+
                             if ($status == 200) {
                                 foreach ($responses as $response) {
-                                    
+
 
                                     $payment = new Payment();
 
@@ -115,7 +115,7 @@ class ParseSheet extends Command
                                     $payment->amount = $response["Amount"];
                                     $payment->payment_date = $date;
                                     $payment->description = $response["Description"];
-            
+
                                     $persist = $payment->save();
                                     if ($persist) {
                                         Report::where('id', $report->id)
@@ -127,7 +127,7 @@ class ParseSheet extends Command
                                 }
 
                             } else {
-                                $this->info($report->link .' status not successful'); 
+                                $this->info($report->link .' status not successful');
                             }
                         } else if ($report->type == 'MONTHLYBUDPERF') {
                             $this->info('Parsing:   ' . $report->link);
@@ -136,15 +136,15 @@ class ParseSheet extends Command
                             $response = $this->http->post('api/', [
 
                                 "body" => json_encode ([
-                                    "file_path" => 
+                                    "file_path" =>
                                     $report->link,
                                     "API_KEY" => "random25stringsisneeded"
                                 ])
                             ]);
                             $status = $response->getStatusCode();
                             $responses = json_decode($response->getBody(), true);
-            
-                    
+
+
                             if ($status == 200) {
                                 foreach ($responses as $response) {
                                     return print_r ($response);
@@ -157,7 +157,7 @@ class ParseSheet extends Command
                                     $monthly->budget_amount = $response["BUDGET AMOUNT"];
                                     $monthly->budget_balance = $response["BUDGET BALANCE"];
                                     $monthly->percentage = $response["PERCENTAGE"];
-            
+
                                     $persist = $monthly->save();
                                     if ($persist) {
                                         Report::where('id', $report->id)
@@ -167,10 +167,10 @@ class ParseSheet extends Command
                                         $this->info('Persist Error:   '. $report->link . ' was not persisted');
                                     }
                                 }
-                                
+
 
                             } else {
-                                $this->info($report->link .' status not successful'); 
+                                $this->info($report->link .' status not successful');
                             }
                         } else {
                             //do quarterly parsing
@@ -182,18 +182,18 @@ class ParseSheet extends Command
                             $response = $this->http->post('api/', [
 
                                 "body" => json_encode([
-                                    "file_path" => 
+                                    "file_path" =>
                                     $report->link,
                                     "API_KEY" => "random25stringsisneeded"
                                 ])
                             ]);
                             $status = $response->getStatusCode();
                             $responses = json_decode($response->getBody(), true);
-                        
-                    
-                    
-            
-                    
+
+
+
+
+
                             if ($status == 200) {
                                 foreach ($responses as $response) {
                                     return print_r ($response);
@@ -206,7 +206,7 @@ class ParseSheet extends Command
                                     $quarterly->budget_amount = $response["BUDGET AMOUNT"];
                                     $quarterly->budget_balance = $response["BUDGET BALANCE"];
                                     $quarterly->percentage = $response["PERCENTAGE"];
-            
+
                                     $persist = $quarterly->save();
                                     if ($persist) {
                                         Report::where('id', $report->id)
@@ -216,9 +216,9 @@ class ParseSheet extends Command
                                         $this->info('Persist Error:   '. $report->link . ' was not persisted');
                                     }
                                 }
-                                
+
                             } else {
-                                $this->info($report->link .' status not successful'); 
+                                $this->info($report->link .' status not successful');
                             }
                         }
                     } catch (Exception $e) {
