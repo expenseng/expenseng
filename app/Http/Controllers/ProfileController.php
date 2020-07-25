@@ -189,42 +189,12 @@ class ProfileController extends Controller
         return redirect(route('profile'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //checkcsd
-        if (Gate::denies('delete')) {
-            return redirect(route('profile'));
-        }
-        $username = DB::table('users')
-            ->where('id', $id)
-            ->pluck('name')
-            ->toArray();
-        $name = implode(' ', $username);
-        $auth = Auth::user();
-        Activites::create([
-            'description' => $auth->name.' removed '.$name.' from the users table',
-            'username' => $auth->name,
-            'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
-            'status' => 'pending'
-        ]);
 
-        $user = User::findOrFail($id);
-        $user->roles()->detach();
-        $user->delete();
-        Session::flash('flash_message', 'User Deleted successfully');
-        return redirect()->back();
-    }
 
     public function updatePassword(Request $request, $id)
     {
         if (Gate::denies('add')) {
-            return redirect(route('profile.view'));
+            return redirect(route('profile'));
         }
 
         $validator = Validator::make($request->all(), [
@@ -234,7 +204,7 @@ class ProfileController extends Controller
         $update = User::where('id', $id)->update([
             'password' => Hash::make($request->password),
         ]);
-        Session::flash('flash_message', 'User password changed successfully!');
+        Session::flash('flash_message', 'User has Successfully changed password!');
         return redirect()->back();
     }
 }

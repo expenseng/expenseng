@@ -58,12 +58,8 @@
                                         <div class="modal-body">
                                             <center>
                                             <img src="https://cdn0.iconfinder.com/data/icons/social-media-network-4/48/male_avatar-512.png" name="aboutme" width="auto" height="140" border="0" class="img-circle"></a>
-                                            <h3 class="media-heading">{{$user->name}}</h3>
-                                            <span><strong>Skills: </strong></span>
-                                                <span class="label bg-warning">HTML5/CSS</span>
-                                                <span class="label bg-danger">Adobe CS 5.5</span>
-                                                <span class="label bg-info">Microsoft Office</span>
-                                                <span class="label label-success">Windows XP, Vista, 7</span>
+                                            <h3 class="media-heading bg-primary">{{$user->name}}</h3>
+                                            
                                             </center>
                                             <hr>
                                             </div>

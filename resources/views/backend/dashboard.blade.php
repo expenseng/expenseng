@@ -6,16 +6,16 @@
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    {{-- <link rel="stylesheet"
+    <link rel="stylesheet"
         href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2">
 <script src="https://cdn.datatables.net/responsive/2.2.5/js/dataTables.responsive.min.js"></script>
-<link href="https://cdn.datatables.net/responsive/2.2.5/css/responsive.dataTables.min.css"> --}}
+<link href="https://cdn.datatables.net/responsive/2.2.5/css/responsive.dataTables.min.css">
     <link rel="stylesheet" href="{{ asset('css/dash-table.css') }}" />
-{{-- 
+
       <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css" />
-<script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script> --}}
+<script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
 
 @endpush
 <title>
@@ -29,7 +29,7 @@
                 @include('backend.partials.flash')
             </div>
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="col-lg-6 col-md-6 col-sm-6 mb-3">
                     <div class="card p-3">
                         <div class="d-flex justify-content-between ">
                             <div class="card-icon section-card-icon p-3">
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="col-lg-6 col-md-6 col-sm-6 mb-3">
                     <div class="card p-3">
                         <div class="d-flex justify-content-between">
                             <div class="card-icon section-card-icon p-3">
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="col-lg-6 col-md-6 col-sm-6 mb-3">
                     <div class="card p-3">
                         <div class="d-flex justify-content-between">
                             <div class="card-icon section-card-icon p-3">
@@ -76,7 +76,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="col-lg-6 col-md-6 col-sm-6 mb-3">
                     <div class="card p-3">
                         <div class="d-flex justify-content-between">
                             <div class="card-icon section-card-icon p-3">
@@ -96,13 +96,13 @@
 
                 <div class="col-lg-12 col-md-12">
                     <div class="card">
-                        <div class="card-bg-primary pt-3 px-3">
+                        <div class="card-header">
                             <h4 class="section-card-title">Recent Expenses</h4>
                             <p class="section-card-category">Last 7 expenses</p>
                         </div>
                         <div class="card-body bordered">
                             <div class="table-section reponsive-div">
-                                <div class="main-table">
+                                <div class="main-table section-main-table">
                                     <div class="table-data">
                                         <div style="overflow-x: auto;">
                                             <table class="table table-striped table-responsive">
@@ -122,7 +122,7 @@
                                                                 <td>{{ ++$counter }}</td>
                                                                 <td>{{ $recent_expense->payment_date }}</td>
                                                                 <td>{{ $recent_expense->organization() }}</td>
-                                                                <td>₦{{ number_format($recent_expense->amount_spent) }}</td>
+                                                                <td>₦{{number_format($recent_expense->amount,2)}}</td>
                                                                 <td>{{ $recent_expense->description }}</td>
                                                                 <td>{{ $recent_expense->beneficiary }}</td>
                                                                 
@@ -333,45 +333,49 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-12 col-md-12">
-            <div class="card">
-                <h2 class="pt-3 px-3 section-card-title">Visitors Suggestions</h2>
-                <div class="card-body bordered">
-                    <div class="table-section reponsive-div">
-                        <div class="main-table">
-                            <div class="table-data">
-                                <div style="overflow-x: auto;">
-                                    <table class="table table-striped table-responsive-smr">
-                                        <thead class="bg-light">
-                                            <tr class="border-0">
-                                                <th class="border-0">Firstname</th>
-                                                <th class="border-0">Lastname</th>
-                                                <th class="border-0">Cabinet</th>
-                                                <th class="border-0">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-
-                                            @if (count($feedbacks)> 0)
-                                                @foreach ($feedbacks as $feedback)
-                                                    <tr>
-                                                        <td>{{ $feedback->firstName }} </td>
-                                                        <td>{{ $feedback->lastName }} </td>
-                                                        <td>{{ $feedback->ministry_id }}</td>
-                                                        <td>
-                                                            <a href="{{ route('feedback.approve', ['id' => $feedback->id]) }}"
-                                                                class="btn btn-success btn-sm ">Approve</button>
-                                                                <a href="{{ route('feedback.ignore', ['id' => $feedback->id]) }}"
-                                                                    class="btn btn-danger btn-sm">Ignore</button>
-
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            @endif
-                                            </tr>
-                                        </tbody>
-                                    </table>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="section-card-title">Visitors Suggestions</h2>
+                    </div>
+                    <div class="card-body bordered">
+                        <div class="table-section reponsive-div">
+                            <div class="main-table section-main-table">
+                                <div class="table-data">
+                                    <div style="overflow-x: auto;">
+                                        <table class="table table-striped table-responsive-smr">
+                                            <thead class="bg-light">
+                                                <tr class="border-0">
+                                                    <th class="border-0">Firstname</th>
+                                                    <th class="border-0">Lastname</th>
+                                                    <th class="border-0">Cabinet</th>
+                                                    <th class="border-0">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+    
+                                                @if (count($feedbacks)> 0)
+                                                    @foreach ($feedbacks as $feedback)
+                                                        <tr>
+                                                            <td>{{ $feedback->firstName }} </td>
+                                                            <td>{{ $feedback->lastName }} </td>
+                                                            <td>{{ $feedback->ministry_id }}</td>
+                                                            <td>
+                                                                <a href="{{ route('feedback.approve', ['id' => $feedback->id]) }}"
+                                                                    class="btn btn-success btn-sm mr-2 btn-approve">Approve</button>
+                                                                    <a href="{{ route('feedback.ignore', ['id' => $feedback->id]) }}"
+                                                                        class="btn btn-danger btn-sm btn-ignore px-4">Ignore</button>
+    
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @endif
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -489,7 +493,7 @@
 @endsection
 @section('js')
 
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
@@ -501,7 +505,7 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
         integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
-        crossorigin="anonymous"></script> --}}
+        crossorigin="anonymous"></script>
 
 <script>
 $(document).ready( function () {

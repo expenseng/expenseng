@@ -43,6 +43,9 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="mb-0" style="float:left">PROFILE PAGE</h4>
+                        
+                        <a class="btn btn-success" style="float:right" data-toggle="modal" data-target="#exampleModal">{{ __('Change Password') }}
+         
                         @can('edit')
                         <a href="{{'/admin/profile/edit/' . $user->id}}" class="btn btn-primary" style="float:right">Edit Profile</a>
                         @endcan
@@ -58,7 +61,7 @@
                                 <!-- profile tab content -->
                                 <div class="card-body">
                                     <div class="tab-content">
-                                            <div class="bg-primary text-light text-center lead">
+                                            <div class="  text-center lead">
                                                 User ID : {{$user->id}}
                                             </div>
                                     <!-- Modal -->
@@ -68,12 +71,8 @@
                                         <div class="modal-body">
                                             <center>
                                             <img src="https://cdn0.iconfinder.com/data/icons/social-media-network-4/48/male_avatar-512.png" name="aboutme" width="auto" height="140" border="0" class="img-circle"></a>
-                                            <h3 class="media-heading">{{$user->name}}</h3>
-                                            <span><strong>Skills: </strong></span>
-                                                <span class="label bg-warning">HTML5/CSS</span>
-                                                <span class="label bg-danger">Adobe CS 5.5</span>
-                                                <span class="label bg-info">Microsoft Office</span>
-                                                <span class="label label-success">Windows XP, Vista, 7</span>
+                                            <h3 class="media-heading bg-primary">{{$user->name}}</h3>
+                                           
                                             </center>
                                             <hr>
                                             <div>
@@ -105,10 +104,50 @@
                                     </div>
                                 </div>    
                                 <!-- profile tab content end -->
-                                
-                    
-                            </div>
-                        <div>               
+                                <!--modal begin-->
+                                <div class="col-md-6">
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-success text-white text-center lead">
+                                                    <h5 class="modal-title text-center" id="exampleModalLabel">Change Password</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="{{'/admin/profile/change_password/' . $user->id}}" method="post" id="change_password" >
+
+                                                    <div class="form-group">
+                                                        <label for="curpass">Enter New Password</label>
+                                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="new-password">
+
+                                                            @error('password')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                    <label for="curpass">Repeat New Password</label>
+                                                        <input id="password-confirm" type="password" class="form-control" placeholder="Repeat your password" name="password_confirmation" required autocomplete="new-password">
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    @method('put')
+                                                    @csrf
+                                                    <input type="submit" class="btn btn-danger changePass" value="Change" id="changePass">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            
+                                    </div>
+                                <div>               
                        
 
                     </div>

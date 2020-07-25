@@ -24,6 +24,7 @@ Route::get('/faq', 'PageController@faq')->name('faq');
 Route::get('/privacy', 'PageController@privacy')->name('privacy');
 Route::get('/search', 'PageController@search')->name('search');
 Route::get('/handles', 'PageController@handles')->name('handles');
+Route::get('/changeMinistryCharts/{ministry}', 'HomeController@MinistryCharts')->name('ministry_expenses_charts');
 
 // Feedback
 Route::post('/feedback', 'FeedbackController@create')->name('feedback');
@@ -169,7 +170,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
      Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
      Route::get('/profile/edit/{user_id}', 'ProfileController@edit')->name('users.edit');
      Route::put('/profile/edit/{user_id}', 'ProfileController@update')->name('users.update');
-     Route::put('/profile/change_password/{user_id}', 'UserController@updatePassword')->name('users.change_password');
+     Route::put('/profile/change_password/{user_id}', 'ProfileController@updatePassword')->name('users.change_password');
      
      //Settings Page
      Route::get('/user/settings', 'SettingsController@index')->name('users.settings');
