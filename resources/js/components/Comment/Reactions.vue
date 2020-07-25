@@ -67,17 +67,35 @@ export default {
 
         flag(){
             this.$swal({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: 'Disturbing content? Flag this comment to report disturbing content.',
+                text: "Flagging this comment will remove it from the comments displayed to you.",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
-                if (result.value) {
-                    
+                if(result.value){
+                    if(!this.reply){
+                        //hide comment first
+                        this.$emit('hideComment', this.data.commentId);
+
+                        //make request
+                        this.comment.flagComment(this.data.commentId, this.data.ownerId)
+                                    .then(res => {
+                                        if(res.numOfFlags > 0){
+
+                                        }
+                                    })
+                    }else{
+                        //hide comment first
+                        this.$emit('hideComment', this.data.replyId);
+
+                        this.comment.flagReply(this.data.commentId, this.data.replyId, this.data.ownerId)
+                                    .then(res => {
+                                        console.log(res.data);
+                                    })
+                    }
                 }
+
+                console.log("Got here");
             })
         }
     },
