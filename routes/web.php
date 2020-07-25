@@ -65,6 +65,10 @@ Route::get('/project-modal', 'PageController@projectModal')->name('project-modal
 Route::get('/ministry/getUrl', 'PageController@ministryGetUrl')->name('ministry_get_url');
 Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses')->name('ministry_filter_expenses');
 
+/**
+ * Email sending API
+ */
+Route::post('/sendmail', 'EmailController@sendMail')->name('sendmail');
 
 /*
     Terms Of Service Endpoints
