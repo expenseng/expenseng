@@ -6,23 +6,23 @@
 
 :root{
 	--ff-primary: 'Lato' sans-serif;
-  
+
 	--fw-reg: 400;
 	--fw-normal: 500;
 	--fw-bold: 700;
-  
+
 	--clr-light: #fff;
 	--clr-dark: #A1A3A8;
 	--clr-accent: #00945E;
 	--clr-white: #f2faf7;
-  
+
 	--fs-h2: 2.15rem;
 	--fs-h3: 1.5rem;
 	--fs-h4: 1.25rem;
 	--fs-h5: 1.1rem;
 	--fs-h6: .9rem;
     --fs-reg: .9rem;
-    
+
     --bs: 0.25em 0.25em 0.75em rgba(0,0,0,.14),
           0.125em 0.125em 0.25em rgba(76,175,80,.4);
 }
@@ -116,12 +116,12 @@ table.border{
 
 .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
 	background-color: var(--clr-white) !important;
-	   
+
 }
 
 .table-striped > tbody > tr:nth-child(2n+2) > td, .table-striped > tbody > tr:nth-child(2n+2) > th {
 	background-color: var(--clr-light) !important;
-	
+
 }
 
 .table-bordered{
@@ -200,7 +200,7 @@ button.nav-chart{
 	padding: 5px 10px;
 	margin: 10px 5px;
 }
-  
+
 .table-footer > span {
 	margin: 0;
 	color: grey;
@@ -349,7 +349,7 @@ button.nav-chart{
 
         display: block;
     }
-} 
+}
 
 
 @media all and (max-width: 425px){
@@ -375,7 +375,7 @@ button.nav-chart{
 	.btn-marg{
 		margin-left: .5rem;
 	}
-	
+
 	.table-top button {
 		padding: .5rem 1rem;
 	}
@@ -383,3 +383,4 @@ button.nav-chart{
 .section-wrapper{
 	margin-top: 5.5rem;
 }
+
