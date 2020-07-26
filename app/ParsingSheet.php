@@ -32,6 +32,7 @@ class ParsingSheet
             'headers' => [
                 'debug' => true,
                 'Content-Type' => 'application/json',
+                'Connection' => 'keep-alive'
             ],
         ]);
     }
