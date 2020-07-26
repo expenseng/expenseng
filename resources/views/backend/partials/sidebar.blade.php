@@ -101,6 +101,14 @@
             </a>
           </li>
 
+
+          <li class="{{Route::is('sheets')? 'active nav-item' : 'nav-item' }}">
+          <a class="nav-link" href="{{route('sheets')}}">
+          <i class="material-icons">attachment</i>
+              <p>Sheets</p>
+          </a>
+          </li>
+
         </ul>
       </div>
     </div>
