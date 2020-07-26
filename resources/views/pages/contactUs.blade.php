@@ -36,11 +36,13 @@
                 <div class="form-group col-md-12">
                     <input type="text"  name="name" class="form-control" id="name" placeholder="Full name" required>
                 </div>
-                <div class="form-group col-md-12">
-                    <input type="email" name="email" class="form-control" id="email" placeholder="Email Address" required>
-                </div>
-                <div class="form-group col-md-12">
-                    <input type="text" name="subject" class="form-control" id="subject" placeholder="Subject" required>
+                <div class="form-group col-md-12 row p-e">
+                    <div class="col-sm-12 col-md-6 p-e">
+                    <input type="email" name="email" class="form-control fc-e" id="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="col-sm-12 col-md-6 p-e">
+                    <input type="tel" name="tel" class="form-control fc-p" id="email" placeholder="Phone Number" required>
+                    </div>
                 </div>
                 <div class="form-group col-md-12">
                     <textarea type="text" class="form-control" id="message" name="message" placeholder="Your message" rows="5" required></textarea>
