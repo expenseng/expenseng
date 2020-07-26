@@ -22,15 +22,19 @@ class EmailController extends Controller
     {
         try
         {
+            $name = $request->name;
             $email = $request->email;
             $message = $request->message;
+            $phone = $request->phone;
+
+            $final_message = Concat($name, $email, $phone, $message);
 
             $url = self::API_URL ."/awsmail/";
             $body = [
-                "recipient" => "expenseng@gmail.com",
-                "sender" => "expenseng@gmail.com",
-                "subject" => $email,
-                "body" => $message,
+                "recipient" => "davidalenoghena@gmail.com",
+                "sender" => "davidalenoghena@gmail.com",
+                "subject" => "FG Expense",
+                "body" => $final_message,
                 "cc" => " ",
                 "bcc" => " "
             ];
@@ -45,4 +49,13 @@ class EmailController extends Controller
             return redirect()->back();
         }
     }
+}
+
+function Concat($string1, $string2, $string3, $string4){
+    $string1 = "Fullname: ".$string1."\n";
+    $string1 .= "Email: ".$string2."\n";
+    $string1 .= "Phone number: ".$string3."\n";
+    $string1 .= "Message: ".$string4."\n";
+
+    return $string1;
 }
