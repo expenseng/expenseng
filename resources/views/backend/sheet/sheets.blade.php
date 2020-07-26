@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
     <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-<title>ExpenseNg - Subscribers</title>
+<title>ExpenseNg - Sheets</title>
 @endpush
 
 @section('content')
@@ -32,10 +32,7 @@
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <div class="card-header d-md-flex justify-content-between">
-                                <h3 class="mb-0">Subscribed Users </h3>
-                                @can('add')
-                                <a href="{{route('subscribe.create')}}" class="btn btn-primary mt-3 section-btn-margin" style="float:right">CREATE NEW SUBSCRIPTION</a>
-                                @endcan
+                                <h3 class="mb-0">Sheets </h3>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -43,9 +40,9 @@
                                         <thead>
                                             <tr>
                                                 <th>S/N</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Report Type</th>
+                                                <th>Type</th>
+                                                <th>Link</th>
+                                                <th>Status</th>
                                                 @can('manage')
                                                 <th>Actions</th>
                                                 @endcan
@@ -56,32 +53,33 @@
                                         </thead>
 
                                         <tbody>
-                                        @if (count($subscribe) > 0)
+                                        
+                                        @if (count($sheets) > 0)
 
                                             <tr>
-                                            @foreach ($subscribe as $sub)
+                                            @foreach ($sheets as $sheet)
                                                 <td>
                                                     {{++$count}}
                                                 </td>
-                                                <td>{{$sub->name}}</td>
-                                                <td>{{$sub->email}}</td>
-                                                <td>{{$sub->subscription_type }}</td>
+                                                <td>{{$sheet->type}}</td>
+                                                <td>{{$sheet->link}}</td>
+                                                <td>{{$sheet->parsed ? 'Parsed' : 'New' }}</td>
                                                 @can('manage')
                                                 <td>
                                                     <div class="row">
                                                         <div class="col-md-6">
-                                                            @can('edit')
-                                                            <a href="{{'/admin/subscribe/edit/' . $sub->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
-                                                            @endcan
+                                                            
+                                                            <a target="_blank" href="{{$sheet->link}}"><i class="fa fa-download" style="color: #00945E"></i></a>
+                                                            
                                                         </div>
                                                         <!--modal begin-->
                                                         
-                                                            <div class="col-md-6">
+                                                            <!-- <div class="col-md-6">
                                                             @can('delete')
-                                                            <i class="fa fa-trash" data-toggle="modal" data-target="{{'#exampleModal'. $sub->id}}" style="color: red"></i>
+                                                            <i class="fa fa-trash" data-toggle="modal" data-target="{{'#exampleModal'. $sheet->id}}" style="color: red"></i>
                                                             @endcan
 
-                                                            <div class="modal fade" id="{{'exampleModal' . $sub->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal fade" id="{{'exampleModal' . $sheet->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
                                                                 <div class="modal-header">
@@ -91,11 +89,12 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                Deleting <strong>{{$sub->name}}</strong> from Subscriptions
+                                                                Deleting <strong>{{$sheet->name}}</strong> from Sheets?
                                                                 </div>
+                                                                {{'/admin/sheet/delete/'. $sheet->id}}
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                    <form action="{{'/admin/subscribe/delete/'. $sub->id}}" method="post" >
+                                                                    <form action="#" method="post" >
                                                                 @method('delete')
                                                                 @csrf
                                                                 <button type="" class="btn btn-danger">Delete</button>
@@ -104,24 +103,23 @@
                                                                 </div>
                                                                 </div>
                                                                 </div>
-                                                    </div>
+                                                    </div>-->
                                                     </div>
 
                                                     
                                                 </td>
                                                 @endcan
                                             </tr>
-
                                         @endforeach
                                         @endif
-                                        {{ $subscribe->links() }}
+                                        
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                                 <th>S/N</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Report Type</th>
+                                                <th>Type</th>
+                                                <th>Link</th>
+                                                <th>Status</th>
                                                 @can('manage')
                                                 <th>Actions</th>
                                                 @endcan
@@ -149,21 +147,13 @@
     <!-- bootstap bundle js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    
     <!-- slimscroll js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/slimscroll/jquery.slim.min.js"></script>
-    <script src="/vendor/slimscroll/jquery.slimscroll.js"></script>
+    
     <!-- datatable  js -->
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-    <!-- sparkline js -->
-    <script src="/vendor/charts/sparkline/jquery.sparkline.js"></script>
-    <!-- morris js -->
-    <script src="/vendor/charts/morris-bundle/raphael.min.js"></script>
-    <script src="/vendor/charts/morris-bundle/morris.js"></script>
-    <!-- chart c3 js -->
-    <script src="/vendor/charts/c3charts/c3.min.js"></script>
-    <script src="/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
-    <script src="/vendor/charts/c3charts/C3chartjs.js"></script>
+    
     <script>
         jQuery(document).ready(function() {
     $('#example').DataTable();

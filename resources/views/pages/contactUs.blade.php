@@ -9,12 +9,12 @@
     <!-- Banner Starts -->
     <section class="container">
     {{ Breadcrumbs::render('contact') }}
+    {{-- Flash message --}}
+        <div id="alert">
+        @include('backend.partials.flash')
+        </div>
+    {{-- Flash message end --}}
       <div class="row" id="banner">
-        {{-- Flash message --}}
-            <div id="alert">
-            @include('backend.partials.flash')
-            </div>
-        {{-- Flash message end --}}
         <div class="col-md-6">
           <h1>Connect with us today</h1>
           <p>You can contact us via mail, calls or any of our social media accounts. We’d be happy to respond!</p>
@@ -33,9 +33,11 @@
             <h2 align="left">Contact Form</h2>
             <p>Fill the Form below and we will get back to you.</p>
             <form action="{{URL(route('sendmail'))}}" method="POST">
+                {{ csrf_field() }}
                 <div class="form-group col-md-12">
                     <input type="text"  name="name" class="form-control" id="name" placeholder="Full name" required>
                 </div>
+<<<<<<< HEAD
                 <div class="form-group col-md-12 row p-e">
                     <div class="col-sm-12 col-md-6 p-e">
                     <input type="email" name="email" class="form-control fc-e" id="email" placeholder="Email Address" required>
@@ -43,6 +45,12 @@
                     <div class="col-sm-12 col-md-6 p-e">
                     <input type="tel" name="tel" class="form-control fc-p" id="email" placeholder="Phone Number" required>
                     </div>
+=======
+                <div class="form-group col-md-12 second">
+                    <input type="email" name="email" class="form-control col-md-5" id="email" placeholder="Email Address" required>
+
+                    <input type="tel" name="phone" class="form-control col-md-5" id="phone" placeholder="Phone number" required>
+>>>>>>> 3c6d0b5bbc6381d1187339f5de2fe02311667df9
                 </div>
                 <div class="form-group col-md-12">
                     <textarea type="text" class="form-control" id="message" name="message" placeholder="Your message" rows="5" required></textarea>

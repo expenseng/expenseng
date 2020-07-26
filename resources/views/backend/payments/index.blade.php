@@ -1,6 +1,6 @@
 @extends('layouts.home')
 @push('css')
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dash-table.css') }}">
     
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="/extras/datatables/css/buttons.bootstrap4.css">
@@ -12,7 +12,7 @@
 
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-    <style type="text/css">
+    {{-- <style type="text/css">
         .dataTable>tbody>tr>td, 
         .dataTable>tbody>tr>th, 
         .dataTable>tfoot>tr>td, 
@@ -21,9 +21,8 @@
         .dataTable>thead>tr>th {
             padding: 12px!important;
         }
-    </style>
+    </style> --}}
     <title>ExpenseNg - Payments</title>
-<title>ExpenseNg - payments</title>
 @endpush
 
 @section('content')
@@ -36,10 +35,10 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header d-md-flex justify-content-between">
                             <h5 class="mb-0" style="float:left">PAYMENTS BY MDAs </h5>
                             @can('add')
-                                <a href="{{'/admin/payments/create/'}}" class="btn btn-primary" style="float:right">ADD NEW</a>
+                                <a href="{{'/admin/payments/create/'}}" class="btn btn-primary mt-3 section-btn-margin" style="float:right">ADD NEW</a>
                             @endcan
                         </div>
                         <div class="card-body">

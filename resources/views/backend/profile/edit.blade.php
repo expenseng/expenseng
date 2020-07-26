@@ -67,11 +67,7 @@
                                                 @method('put')
                                                 @csrf
 
-                                                <input type="hidden" name="oldimage" value="image">
-                                                <div class="form-group n-0">
-                                                    <label for="profilePhoto" class="m-1">Upload Profile Photo</label>
-                                                    <input type="file" name="image" id="profilePhoto">
-                                                </div>
+                                                
                                                 <div class="form-group n-0">
                                                     <label for="name" class="m-1">Name</label>
                                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$user->name}}" required autocomplete="name" autofocus>
