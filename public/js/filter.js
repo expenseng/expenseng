@@ -104,7 +104,6 @@ $(document).ready(function() {
      });
 
         $('.modals').on('click', '.btn', function(e) {
-            console.log(e.target.id)
             if(e.target.classList.contains('btn-amount')){
                 $('.btn-amount.active').removeClass("active");
                 $(this).addClass("active");
@@ -139,15 +138,11 @@ $(document).ready(function() {
             $('.btn-amount.active').removeClass("active");
             $('#day').click()
             if(id === 'apply-filter' && tableOneIsModified == false){
-                console.log('table One is already in default state')
                 return
             }
             else if(id === 'apply-filter2' && tableTwoIsModified == false){
-                console.log('table two is already in default state')
                 return
             }
-            console.log('table one: ', tableOneIsModified)
-            console.log('table two: ', tableTwoIsModified)
             $.ajax({
                 url: `/expense/filterExpensesAll/${id}/${date}/${sort}`,
                 method: "GET",
@@ -167,13 +162,11 @@ $(document).ready(function() {
 
         $('.apply-filter').on('click', function(e){
             const id = $(this).attr("data-id");
-            console.log(id)
             let invalid = false;
            
             if($('.btn-date.active').hasClass('day')){
                 date = $(this).closest('.modal-content').find('.byDatePicker').val();
                 active = 'day';
-                console.log(date)
             }
             else if($('.btn-date.active').hasClass('month')){    
                 date = $(this).closest('.modal-content').find('.monthYearPicker').val()
@@ -189,9 +182,6 @@ $(document).ready(function() {
                 sort = 'desc'
             }
             
-            if (sort === undefined){
-                console.log('sort option not chosen')
-            }
             if(sort === undefined && date === ''){
                 invalid = true;
                 $('#date-format-err').hide().html('Select a filter/sort option or click <b style="color:black; font-size:12px">&times;</b> to exit')
