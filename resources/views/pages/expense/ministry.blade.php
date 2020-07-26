@@ -116,6 +116,7 @@
 										</div>
 										<!-- Footer -->
 										<div class="modal-footer">
+										<button type="button" data-id="apply-filter" id="reset" class="btn btn-block active mx-5 reset btn-danger">Reset</button>
 										<button type="button" data-id="apply-filter" id="apply-filter" class="btn btn-block active mx-5 apply-filter" data-dismiss="modal">Apply Filter</button>
 										</div>
 									</div>
@@ -200,6 +201,7 @@
                                     </div>
                                     <!-- Footer -->
                                     <div class="modal-footer">
+									<button type="button" data-id="apply-filter2" id="reset2" class="btn btn-block active mx-5 reset btn-danger">Reset</button>
                                     <button type="button" data-id="apply-filter2" id="apply-filter2" class="btn btn-block active mx-5 apply-filter" data-dismiss="modal">Apply Filter</button>
                                     </div>
                                 </div>

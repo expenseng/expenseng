@@ -16,6 +16,7 @@
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css" />
 <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+    <link rel="stylesheet" href="{{asset('css/dash.css')}}">
 
 @endpush
 <title>
@@ -125,7 +126,7 @@
                                                                 <td>₦{{number_format($recent_expense->amount,2)}}</td>
                                                                 <td>{{ $recent_expense->description }}</td>
                                                                 <td>{{ $recent_expense->beneficiary }}</td>
-                                                                
+
                                                             </tr>
                                                         @endforeach
 
@@ -355,7 +356,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-    
+
                                                 @if (count($feedbacks)> 0)
                                                     @foreach ($feedbacks as $feedback)
                                                         <tr>
@@ -367,7 +368,7 @@
                                                                     class="btn btn-success btn-sm mr-2 btn-approve">Approve</button>
                                                                     <a href="{{ route('feedback.ignore', ['id' => $feedback->id]) }}"
                                                                         class="btn btn-danger btn-sm btn-ignore px-4">Ignore</button>
-    
+
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -386,8 +387,8 @@
     </div>
     <div class="row justify-content-center">
         <div class=" offset-1 col-3">
-            <div class="p-1 tweet-plugin fixed-plugin " id="tweetButton">
-                <button type="button" class="btn  px-4 btn-white bg-white text-primary py-4 px-lg-2  tweet-button" id="B1"
+            <div class="p-1 fixed-plugin tweet-plugin  " id="tweetButton">
+                <button type="button" class="btn  p-3 btn-white bg-white text-primary  tweet-button" id="B1"
                     data-toggle="modal" data-target="#sendTweetModal">
                     <i class="fa fa-twitter fa-10x text-primary"></i> tweet
                 </button>
@@ -396,7 +397,7 @@
         <div class=" offset-1 col-3 mr-auto ">
             <div class="p-1 mr-0 tweet-list-plugin fixed-plugin " id="tweetButton2">
                 <button type="button"
-                    class="btn btn-white bg-light text-primary border  py-4 px-4 px-lg-2  tweet-list-button" id="B2"
+                    class="btn btn-white bg-light text-primary border  p-3 tweet-list-button" id="B2"
                     data-toggle="modal" data-target="#listTweetModal">
                     <i class="fa fa-twitter fa-10x text-primary"></i>Tweets
                 </button>
