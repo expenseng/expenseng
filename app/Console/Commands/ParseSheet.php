@@ -248,7 +248,8 @@ class ParseSheet extends Command
                             $status = $response->getStatusCode();
                             $responses = json_decode($response->getBody(), true);
 
-
+                                if ($status == 200) {
+                                    foreach ($responses as $response) {
                                    
                                     //return print_r ($response);
                                     $quarterly = new QuarterlyBudget();
