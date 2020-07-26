@@ -171,12 +171,13 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
      //Profile Page
      Route::get('/profile', 'ProfileController@viewProfile')->name('profile');
      Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
-     Route::get('/profile/edit/{user_id}', 'ProfileController@edit')->name('users.edit');
-     Route::put('/profile/edit/{user_id}', 'ProfileController@update')->name('users.update');
-     Route::put('/profile/change_password/{user_id}', 'ProfileController@updatePassword')->name('users.change_password');
+     Route::get('/profile/edit/{user_id}', 'ProfileController@edit')->name('profile.edit');
+     Route::put('/profile/edit/{user_id}', 'ProfileController@update')->name('profile.update');
+     Route::put('/profile/change_password/{user_id}', 'ProfileController@updatePassword')->name('profile.change_password');
      
      //Settings Page
      Route::get('/user/settings', 'SettingsController@index')->name('users.settings');
+     Route::put('/settings/change_password/{user_id}', 'SettingsController@ChangePassword')->name('settings.change_password');
 
      // Cabinet CRUD
      Route::get('/cabinet/create', 'CabinetController@create')
