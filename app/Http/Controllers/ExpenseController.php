@@ -103,7 +103,7 @@ class ExpenseController extends Controller
             $data = $data->orderby('payment_date', 'desc');
         }
         
-        $data = $data->paginate(20);
+        $data = $data->paginate(20)->onEachSide(1);
         
         if($id === 'apply-filter'){
             $collection['summary'] = $data;
