@@ -88,7 +88,7 @@
     <div class="container p-3  p-lg-5">
          <div class="expenses">
              <govt-expense></govt-expense>
-             <a href="{{route('expense.reports')}}" class="mt-4 mb-5 font-weight-bold" style="font-size: 1.2rem">View Expenditure Report</a>
+             <a href="{{route('expense.reports')}}" class="mt-4 mb-5">View Expenditure Report</a>
          </div>
     </div>
    </div>
@@ -107,7 +107,7 @@
              @endif
            </select> 
           </div>
-           <a href="{{ route('ministries') }}" class="profile font-weight-bold" style="font-size: 1.2rem">View all profiles</a>
+           <a href="{{ route('ministries') }}" class="profile">View all profiles</a>
          </div>
          <div class="ministry-stat">
           <div id="ministry-chart" class="stat-a p-4">
@@ -310,7 +310,7 @@
      </div>
       </div>
       <div class="vll m-md-auto mx-sm-auto mt-sm-4">
-        <a href="{{ route('contractors') }}" class="profile font-weight-bold" style="font-size: 1.2rem">View all Contracts</a>
+        <a href="{{ route('contractors') }}" class="profile">View all Contracts</a>
        </div>
  </div>
  
