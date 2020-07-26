@@ -18,8 +18,15 @@ class ExpenseController extends Controller
 
     public function ministry()
     {
-        $collection['nondescriptive'] = Payment::where('description', '')->paginate(20)->onEachSide(1);
-        $collection['summary'] = Payment::where('description', '!=', '')->paginate(20)->onEachSide(1);
+        $year = date('Y');
+        $collection['nondescriptive'] = Payment::where('description', '')
+                                        ->whereYear('payment_date', '=', $year)
+                                        ->orderby('payment_date', 'desc')
+                                        ->paginate(20)->onEachSide(1);
+        $collection['summary'] = Payment::where('description', '!=', '')
+                                ->whereYear('payment_date', '=', $year)
+                                ->orderby('payment_date', 'desc')
+                                ->paginate(20)->onEachSide(1);
         $miniTableData['all'] = $this->ministriesFiveYear();
         $miniTableData['nondescriptive'] = $this->ministriesFiveYearNoDescription();
         return view('pages.expense.ministry')->with(['collection' => $collection,
@@ -56,9 +63,10 @@ class ExpenseController extends Controller
 
     public function filterExpensesAll($id, $date, $sort)
     { 
-        echo "id: {$id} <br>";
-        echo "date: {$date} <br/>";
-        echo "sort: {$sort} <br/>";
+        // echo "id: {$id} <br>";
+        // echo "date: {$date} <br/>";
+        // echo "sort: {$sort} <br/>";
+       
         $givenTime = date('Y');
         
         if($id === 'apply-filter'){
@@ -86,7 +94,7 @@ class ExpenseController extends Controller
         } elseif (preg_match($yr_pattern, $givenTime, $match)) {
             $data = $data->whereYear('payment_date', '=', "$givenTime");     
         } else {
-            $data = $data->where('payment_date', '=', "$givenTime");
+            $data = $data->where('payment_date', '=', "$givenTime"); 
         };
 
         if ($sort != "undefined") {
@@ -95,7 +103,7 @@ class ExpenseController extends Controller
             $data = $data->orderby('payment_date', 'desc');
         }
         
-        $data = $data->paginate(20)->onEachSide(1);
+        $data = $data->paginate(20);
         
         if($id === 'apply-filter'){
             $collection['summary'] = $data;
