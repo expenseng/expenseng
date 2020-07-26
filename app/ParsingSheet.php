@@ -34,13 +34,12 @@ class ParsingSheet
                 'debug' => true,
                 'Content-Type' => 'application/json',
             ],
-            'timeout' => 15
         ]);
     }
 
     public function dailyReport()
     {
-        $reports = Report::where('parsed', '=', false)->where('type', "LIKE", "%daily%")->get();
+        $reports = Report::where('parsed', '=', false)->where('type', "LIKE", "daily%")->get();
         if (!empty($reports)) {
             foreach ($reports as $report) {
                 try {
@@ -55,9 +54,7 @@ class ParsingSheet
 
                         "body" => json_encode([
                             "file_path" =>
-                                $report->link,
-                            "row_from"=> 15,
-                            "row_to" => 150,
+                                trim($report->link),
                             "API_KEY" => "random25stringsisneeded"
                         ])
 
@@ -102,8 +99,12 @@ class ParsingSheet
                             echo 'not logged in '.$report->link."\n";
                         };
                     }
+                    if ($status == 500) {
+                        echo "internal server error";
+                    }
                 } catch (\Exception $exception) {
-                    echo "server timeout ".$report->link ." \n";
+                    echo "service timeout ".$report->link ." \n";
+
                     continue;
                 }
             }
