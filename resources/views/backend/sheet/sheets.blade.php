@@ -110,7 +110,6 @@
                                                 </td>
                                                 @endcan
                                             </tr>
-
                                         @endforeach
                                         @endif
                                         

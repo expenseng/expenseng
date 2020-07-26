@@ -1,4 +1,8 @@
 $(document).ready(function() {
+
+    const defaultTableDate = $('.said-date').text();
+    let tableOneIsModified = false;
+    let tableTwoIsModified = false;
         
     ///////////////////////////////////////////////////////////////////////
     //                  Date-Picker                               //
@@ -100,7 +104,6 @@ $(document).ready(function() {
      });
 
         $('.modals').on('click', '.btn', function(e) {
-            console.log(e.target.id)
             if(e.target.classList.contains('btn-amount')){
                 $('.btn-amount.active').removeClass("active");
                 $(this).addClass("active");
@@ -125,16 +128,45 @@ $(document).ready(function() {
 
         let date, sort, active;
 
+        $('.reset').on('click', function(e){
+            const id = $(this).attr("data-id");
+            sort = undefined;
+            date = undefined;
+            $(this).closest('.modal-content').find('.byDatePicker').val('')
+            $(this).closest('.modal-content').find('.monthYearPicker').val('')
+            $(this).closest('.modal-content').find('.yearPicker').val('')
+            $('.btn-amount.active').removeClass("active");
+            $('#day').click()
+            if(id === 'apply-filter' && tableOneIsModified == false){
+                return
+            }
+            else if(id === 'apply-filter2' && tableTwoIsModified == false){
+                return
+            }
+            $.ajax({
+                url: `/expense/filterExpensesAll/${id}/${date}/${sort}`,
+                method: "GET",
+                success: function(data){
+                    // console.log(data)
+                    const table = e.target.closest('#modal').nextElementSibling;
+                    const tableDate = table.closest('.main-table').querySelector('.said-date');
+                    table.innerHTML = data;
+                    tableDate.innerHTML = defaultTableDate;
+                     id === 'apply-filter' ? tableOneIsModified = false  : tableTwoIsModified = false;           
+                },
+                error: function(error){
+                    console.log(error)
+                }
+            })
+        })
+
         $('.apply-filter').on('click', function(e){
             const id = $(this).attr("data-id");
-            console.log(id)
             let invalid = false;
-            console.log($(this).closest('.modal-content').find('.byDatePicker').val())
            
             if($('.btn-date.active').hasClass('day')){
                 date = $(this).closest('.modal-content').find('.byDatePicker').val();
                 active = 'day';
-                console.log(date)
             }
             else if($('.btn-date.active').hasClass('month')){    
                 date = $(this).closest('.modal-content').find('.monthYearPicker').val()
@@ -149,12 +181,16 @@ $(document).ready(function() {
             }else if($('.btn-amount.active').attr('id') === 'desc'){
                 sort = 'desc'
             }
-           
-            if(date === ''){
+            
+            if(sort === undefined && date === ''){
                 invalid = true;
-                $('#date-format-err').hide().html('Please select a date or click <b style="color:black; font-size:12px">&times;</b> to exit')
-                .fadeIn().delay(3000).fadeOut('slow')
-            }else{
+                $('#date-format-err').hide().html('Select a filter/sort option or click <b style="color:black; font-size:12px">&times;</b> to exit')
+                .fadeIn().delay(3000).fadeOut('slow');
+            }
+            else if(sort !== undefined && date === ''){
+                date = undefined;
+            }
+            else if(date !== ''){
                 if(active === 'day'){
                     if(!/^(\d{2})-(\d{2})-(\d{4})$/.test(date)){
                         invalid = true;
@@ -175,7 +211,7 @@ $(document).ready(function() {
                     }       
                 }
             }
-            
+                
             $('.modal').on('hide.bs.modal', function(e) {        
                  if(invalid) {           
                     e.preventDefault();
@@ -184,7 +220,9 @@ $(document).ready(function() {
              });
             
             if(invalid) return;
-            date = reverseDateFormat(date);
+            if(date !== undefined){
+                date = reverseDateFormat(date);
+            }
             
             $.ajax({
                     url: `/expense/filterExpensesAll/${id}/${date}/${sort}`,
@@ -193,9 +231,12 @@ $(document).ready(function() {
                         // console.log(data)
                         const table = e.target.closest('#modal').nextElementSibling;
                         const tableDate = table.closest('.main-table').querySelector('.said-date');
-                        table.innerHTML = data;
-                        let reportDate = /\d{4}-\d{2}-\d{2}/.test(date)? formatDate(date) : date;
-                        tableDate.innerHTML = `<span style="color:#1e7e34">${reportDate}</span>`;           
+                        table.innerHTML = data;         
+                        if(date !== undefined){
+                            let reportDate = /\d{4}-\d{2}-\d{2}/.test(date)? formatDate(date) : date;
+                            tableDate.innerHTML = `<span style="color:#1e7e34">${reportDate}</span>`;
+                        }
+                        id === 'apply-filter' ? tableOneIsModified = true  : tableTwoIsModified = true;                             
                     },
                     error: function(error){
                         console.log(error)
