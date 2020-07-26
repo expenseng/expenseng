@@ -6940,7 +6940,7 @@ Media Query
 #settingsTab li{
     color: #005d3b !important;
     margin: 0 .5rem;
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
 }
@@ -6983,7 +6983,7 @@ Media Query
 }
 .labels{
     color: #353a45;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: bold;
 }
 
@@ -7065,7 +7065,7 @@ input:checked + .slider:before {
 
 .slider-text{
     font-weight: 600;
-    font-size: 1.25rem;
+    font-size: 1rem;
     margin-left: 1.25rem !important;
 }
 .label-form{
@@ -7081,7 +7081,7 @@ font-size: 18px;
     margin: 1rem 0;
 }
 .appearance-box p{
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: normal;
 }
 
@@ -7126,6 +7126,10 @@ font-size: 18px;
     width: auto;
 }
 
+.font-size-reduce{
+    font-size: 19px;
+}
+
 .upload-btn{
     color: #8f9298;
     border: 1px solid #8f9298;
@@ -7145,7 +7149,12 @@ font-size: 18px;
     padding-left: 0;
 }
 
+
 @media only screen and (max-width : 700px){
+    h4{
+        font-size: 1.25rem !important;
+    }
+    
     #settingsTab a{
         padding: 0.45rem;
     }

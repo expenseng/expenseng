@@ -59,43 +59,26 @@
                         <div class = "card">
                             <div class="card-header security-header">
                                 <h4>Profile</h4>
-                                <a class= "save-link" href="#"><button class= "save-btn">Save</button></a>
+                                <a class= "save-link" href="/admin/profile/edit/1"><button class= "save-btn">Edit Profile</button></a>
                             </div>    
                         <hr>
                         <div class="card-body">
                             <div>
-                                <form action="" method = "post" class = "row">
-                                
-                                <div class="col-12 col-md-3">
-                                    <h5>Profile Picture</h5> 
-                                    <div class="file-input-cover">             
-                                    <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)"  class = "file-input"></p>
-                                    <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
-                                    <p><img id="output" width="200" /></p>
 
-
+                                <div class = "row">
+                                <div class="col-12 col-md-9">
+                                    <div class="form-group">
+                                        <p><label class = "label-form" for="full-name">Full Name:</label><br> {{$user->name}}</p>
                                     </div>
-                                    <a class= "save-link text-muted" href="#"><button class= "upload-btn">Change</button></a>   
+                                    <div class="form-group">
+                                        <label class = "label-form" for="full-name">Email:</label>
+                                        <p>{{$user->email}}</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class = "label-form" for="full-name">Role:</label><br>{{implode(', ', $user->roles->pluck('name')->toArray())}}</p>
+                                    </div> 
                                 </div>
-
-                                <div class="col-12 col-md-9 push-top">
-                                    <div class="form-group">
-                                        <label class = "label-form" for="full-name">Full Name</label>
-                                        <input type="text" name="" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class = "label-form" for="full-name">Email</label>
-                                        <input type="email" name="" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class = "label-form" for="full-name">Role</label><br>
-                                        <select name="language" id="languageselect" class = "custom-select form-control p-2 mt-2">
-                                            <option value="user">User</option>
-                                            <option value="admin">Admin</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                </form>
+                            </div>
                             </div>
                         </div>
                         </div>
@@ -106,7 +89,7 @@
                             </div>    
                         <hr>
                         <div class="card-body">
-                            <h4 class = "mb-4">Dashboard Menu Arrangement</h4>
+                            <h4 class = "mb-4 font-size-reduce">Dashboard Menu Arrangement</h4>
                             <ul id="sortable">
                                 <li class="group">
                                 <div class="col-md-10 col-12">
@@ -408,7 +391,7 @@
                                 <form action="{{'/admin/settings/change_password/' . $user->id}}" method="post" id="change_password" >
 
                                     <div class="form-group">
-                                        <label for="curpass"><h4>Enter New Password</h4></label>
+                                        <label class = "label-form" for="curpass">Enter New Password</label>
                                         <input id="password" type="password" class="col-9 form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="new-password">
 
                                             @error('password')
@@ -420,14 +403,14 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="curpass"><h4>Confirm New Password</h4></label>
+                                        <label for="curpass" class = "label-form">Confirm New Password</label>
                                         <input id="password-confirm" type="password" class="col-9 form-control" placeholder="Repeat your password" name="password_confirmation" required autocomplete="new-password">
                                     </div>
                                     
-                                    <div class="card-footer">
+                                    <div class="card-footer- mt-3">
                                         @method('put')
                                         @csrf
-                                        <input type="submit"  class="btn btn-light changePass" value="Change" id="changePass">
+                                        <input type="submit"  class="save-btn m-0 changePass" value="Change" id="changePass">
                                     </div>
                                 </form>                    
                         </div>  
