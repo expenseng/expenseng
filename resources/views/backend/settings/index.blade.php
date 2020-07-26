@@ -397,20 +397,39 @@
                     </div>
                            
                     <!--Security Section-->
+                    
                     <div id="security" class="tab-pane fade">
                         <div class = "card">
                             <div class="card-header security-header">
                                 <h4>Change Password</h4>
-                                <a class= "save-link" href="#"><button class= "save-btn">Save</button></a>
                             </div>
                             <hr>
                             <div class="card-body">
-                                <label for="old password" class = "labels">Old Password</label><br>
-                                <input type="password"  class = "col-9 form-control"><br>
+                                <form action="{{'/admin/settings/change_password/' . $user->id}}" method="post" id="change_password" >
 
-                                <label for="new password" class = "labels">New Password</label><br>
-                                <input type="password" class = "col-9 form-control" id="">
-                            </div>                
+                                    <div class="form-group">
+                                        <label for="curpass"><h4>Enter New Password</h4></label>
+                                        <input id="password" type="password" class="col-9 form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="new-password">
+
+                                            @error('password')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="curpass"><h4>Confirm New Password</h4></label>
+                                        <input id="password-confirm" type="password" class="col-9 form-control" placeholder="Repeat your password" name="password_confirmation" required autocomplete="new-password">
+                                    </div>
+                                    
+                                    <div class="card-footer">
+                                        @method('put')
+                                        @csrf
+                                        <input type="submit"  class="btn btn-light changePass" value="Change" id="changePass">
+                                    </div>
+                                </form>                    
                         </div>  
                     </div>​
                 </div>
