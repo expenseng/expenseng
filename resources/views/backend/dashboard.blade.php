@@ -6,11 +6,18 @@
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    {{-- <link rel="stylesheet"
-        href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2"> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('css/ministry-report-table.css') }}"> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('css/dash.css') }}" /> --}}
-    <link rel="stylesheet" href="{{ asset("css/dash-table.css")}}">
+    <link rel="stylesheet"
+        href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2">
+<script src="https://cdn.datatables.net/responsive/2.2.5/js/dataTables.responsive.min.js"></script>
+<link href="https://cdn.datatables.net/responsive/2.2.5/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="{{ asset('css/dash-table.css') }}" />
+
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css" />
+<script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+    <link rel="stylesheet" href="{{asset('css/dash.css')}}">
+
 @endpush
 <title>
     ExpenseNg - Admin Dashboard
@@ -23,13 +30,13 @@
                 @include('backend.partials.flash')
             </div>
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="col-lg-6 col-md-6 col-sm-6 mb-3">
                     <div class="card p-3">
-                        <div class="d-flex justify-content-between">
+                        <div class="d-flex justify-content-between ">
                             <div class="card-icon section-card-icon p-3">
                                 <i class="material-icons">mode_edit</i>
                             </div>
-                            <div class="card-write-up">
+                            <div class="card-write-up ">
                                 <p class="card-category">Total Comments</p>
                             </div>
                         </div>
@@ -40,7 +47,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="col-lg-6 col-md-6 col-sm-6 mb-3">
                     <div class="card p-3">
                         <div class="d-flex justify-content-between">
                             <div class="card-icon section-card-icon p-3">
@@ -55,7 +62,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="col-lg-6 col-md-6 col-sm-6 mb-3">
                     <div class="card p-3">
                         <div class="d-flex justify-content-between">
                             <div class="card-icon section-card-icon p-3">
@@ -70,7 +77,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="col-lg-6 col-md-6 col-sm-6 mb-3">
                     <div class="card p-3">
                         <div class="d-flex justify-content-between">
                             <div class="card-icon section-card-icon p-3">
@@ -90,22 +97,23 @@
 
                 <div class="col-lg-12 col-md-12">
                     <div class="card">
-                        <div class="card-bg-primary pt-3 px-3">
+                        <div class="card-header">
                             <h4 class="section-card-title">Recent Expenses</h4>
                             <p class="section-card-category">Last 7 expenses</p>
                         </div>
                         <div class="card-body bordered">
                             <div class="table-section reponsive-div">
-                                <div class="main-table">
+                                <div class="main-table section-main-table">
                                     <div class="table-data">
                                         <div style="overflow-x: auto;">
-                                            <table class="table table-striped table-responsive-smr">
+                                            <table class="table table-striped table-responsive">
                                                 <thead class="text-primary">
                                                     <th>S/N</th>
-                                                    <th>Company</th>
-                                                    <th>Project</th>
+                                                    <th>Date</th>
                                                     <th>Ministry</th>
                                                     <th>Amount Spent</th>
+                                                    <th>Description</th>
+                                                    <th>Beneficary</th>
                                                 </thead>
                                                 <tbody>
                                                     @if (count($recent_expenses)>0)
@@ -113,10 +121,12 @@
                                                         @foreach ($recent_expenses as $recent_expense)
                                                             <tr>
                                                                 <td>{{ ++$counter }}</td>
-                                                                <td>{{ $recent_expense->year }}</td>
-                                                                <td>{{ $recent_expense->project }}</td>
-                                                                <td>{{ $recent_expense->month }}</td>
-                                                                <td>₦{{ number_format($recent_expense->amount_spent) }}</td>
+                                                                <td>{{ $recent_expense->payment_date }}</td>
+                                                                <td>{{ $recent_expense->organization() }}</td>
+                                                                <td>₦{{number_format($recent_expense->amount,2)}}</td>
+                                                                <td>{{ $recent_expense->description }}</td>
+                                                                <td>{{ $recent_expense->beneficiary }}</td>
+
                                                             </tr>
                                                         @endforeach
 
@@ -131,8 +141,8 @@
                         </div>
                     </div>
                 </div>
-            
-            
+
+
 
                 <div class="col-lg-12 col-md-12">
                     <div class="card">
@@ -140,10 +150,19 @@
                             <h4 class="section-card-title">Recent Activities</h4>
 
                             @can('delete')
+                            @if (count($recent_activites)>0)
                                 <button class="btn btn-primary" style="float:right" data-toggle="modal"
                                     data-target="#exampleModal1">Mark all as read</button>
-
+                            @endif
                             @endcan
+
+                            @can('delete')
+                            @if (count($recent_activites)==0)
+                                <button class="btn btn-primary" style="float:right" data-toggle="modal"
+                                     disabled>No new notification</button>
+                            @endif
+                            @endcan
+
 
 
                         </div>
@@ -163,10 +182,10 @@
 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <form action="{{ '/admin/activity/mark_all/' }}" method="post">
+                                        <form action="{{ '/admin/activity/all/' }}" method="post">
                                            @method('put')
                                             @csrf
-                                            <button type="submit" class="btn btn-danger">Proceed</button>
+                                            <button type="" class="btn btn-danger">Proceed</button>
                                         </form>
 
                                     </div>
@@ -178,7 +197,7 @@
 
 
                         <div class="card-body table-responsive-sm">
-                            <table id='notification' class="table table-bordered">
+                            <table id='data' class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>S/N</th>
@@ -208,7 +227,7 @@
                                             style="color: blue"></a>
                                         @can('delete')
                                             <a class="fa fa-trash" data-toggle="modal"
-                                                data-target="{{ '#exampleModal' . $recent_activity->id }}"
+                                                data-target="{{ '#exampleModal'.$recent_activity->id }}"
                                                 style="color: red;"></a>
                                         @endcan
                                     @endcan
@@ -238,7 +257,7 @@
                                                 </div>
 
                                                 <div class="modal-footer">
-                                                        
+
                                                         <form
                                                             action="{{ '/admin/activity/mark/' . $recent_activity->id }}"
                                                             method="post">
@@ -296,7 +315,17 @@
                                     @endif
 
                                 </tbody>
-                                
+                                <tfoot>
+                                    <tr>
+                                        <th>S/N</th>
+                                        <th>Description</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                        @can('manage')
+                                            <th>Action</th>
+                                        @endcan
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
 
@@ -305,43 +334,49 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-12 col-md-12">
-            <div class="card">
-                <h2 class="pt-3 px-3 section-card-title">Visitors Suggestions</h2>
-                <div class="card-body bordered">
-                    <div class="table-section reponsive-div">
-                        <div class="main-table">
-                            <div class="table-data">
-                                <div style="overflow-x: auto;">
-                                    <table class="table table-striped table-responsive-smr">
-                                        <thead class="bg-light">
-                                            <tr class="border-0">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="section-card-title">Visitors Suggestions</h2>
+                    </div>
+                    <div class="card-body bordered">
+                        <div class="table-section reponsive-div">
+                            <div class="main-table section-main-table">
+                                <div class="table-data">
+                                    <div style="overflow-x: auto;">
+                                        <table class="table table-striped table-responsive-smr">
+                                            <thead class="bg-light">
+                                                <tr class="border-0">
+                                                    <th class="border-0">Firstname</th>
+                                                    <th class="border-0">Lastname</th>
+                                                    <th class="border-0">Cabinet</th>
+                                                    <th class="border-0">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
 
-                                                <th class="border-0">Firstname</th>
-                                                <th class="border-0">Lastname</th>
-                                                <th class="border-0">Cabinet</th>
-                                                <th class="border-0">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
+                                                @if (count($feedbacks)> 0)
+                                                    @foreach ($feedbacks as $feedback)
+                                                        <tr>
+                                                            <td>{{ $feedback->firstName }} </td>
+                                                            <td>{{ $feedback->lastName }} </td>
+                                                            <td>{{ $feedback->ministry_id }}</td>
+                                                            <td>
+                                                                <a href="{{ route('feedback.approve', ['id' => $feedback->id]) }}"
+                                                                    class="btn btn-success btn-sm mr-2 btn-approve">Approve</button>
+                                                                    <a href="{{ route('feedback.ignore', ['id' => $feedback->id]) }}"
+                                                                        class="btn btn-danger btn-sm btn-ignore px-4">Ignore</button>
 
-                                            @if (count($feedbacks)> 0)
-                                                @foreach ($feedbacks as $feedback)
-                                                    <tr>
-                                                        <td>{{$feedback->firstName}} </td>
-                                                        <td>{{$feedback->lastName}}  </td>
-                                                        <td>{{$feedback->ministry_id}}</td>
-                                                        <td>
-                                                            <a href="{{route('feedback.approve', ['id' => $feedback->id])}}" class="btn btn-success btn-sm ">Approve</button>
-                                                                <a href="{{route('feedback.ignore', ['id' => $feedback->id])}}" class="btn btn-danger btn-sm">Ignore</button>
-
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            @endif
-                                        </tbody>
-                                    </table>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @endif
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -350,31 +385,21 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="mr-2">
-                <div class="tweet-plugin" id="tweetButton">
-                    <button type="button" class="btn bg-light p-3" id="B1" data-toggle="modal" data-target="#sendTweetModal">
-                        <i class="fa fa-twitter fa-10x"></i> tweet
-                    </button>
-                </div>
-            </div>
-            <div class="ml-2">
-                <div class="tweet-list-plugin" id="tweetButton2">
-                    <button type="button" class="btn bg-light p-3" id="B2" data-toggle="modal" data-target="#listTweetModal">
-                        <i class="fa fa-twitter fa-10x"></i>Tweets
-                    </button>
-                </div>
+    <div class="row justify-content-center">
+        <div class=" offset-1 col-3">
+            <div class="p-1 fixed-plugin tweet-plugin  " id="tweetButton">
+                <button type="button" class="btn  p-3 btn-white bg-white text-primary  tweet-button" id="B1"
+                    data-toggle="modal" data-target="#sendTweetModal">
+                    <i class="fa fa-twitter fa-10x text-primary"></i> tweet
+                </button>
             </div>
         </div>
-    </div>
-    <div class="modal" id="sendTweetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Type in tweet below</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
+        <div class=" offset-1 col-3 mr-auto ">
+            <div class="p-1 mr-0 tweet-list-plugin fixed-plugin " id="tweetButton2">
+                <button type="button"
+                    class="btn btn-white bg-light text-primary border  p-3 tweet-list-button" id="B2"
+                    data-toggle="modal" data-target="#listTweetModal">
+                    <i class="fa fa-twitter fa-10x text-primary"></i>Tweets
                 </button>
             </div>
         </div>
@@ -439,12 +464,12 @@
             <nav class="float-left">
                 <ul>
                     <li>
-                        <a href="https://www.expenseng.com">
+                        <a href='{{url('/')}}'>
                             ExpenseNg
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{ route('about') }}">
                             About Us
                         </a>
                     </li>
@@ -558,34 +583,34 @@ $(document).ready( function () {
 
 
                 });
-                // if ($(window).width() < 960) {
-                //     $('#tweetButton').removeClass('fixed-plugin');
-                //     $('#tweetButton').removeClass('tweet-plugin');
-                //     $('#tweetButton2').removeClass('fixed-plugin');
-                //     $('#tweetButton2').removeClass('tweet-list-plugin');
-                //     $('#B1').removeClass('tweet-button');
-                //     $('#B2').removeClass('tweet-list-button');
-                // }
+                if ($(window).width() < 960) {
+                    $('#tweetButton').removeClass('fixed-plugin');
+                    $('#tweetButton').removeClass('tweet-plugin');
+                    $('#tweetButton2').removeClass('fixed-plugin');
+                    $('#tweetButton2').removeClass('tweet-list-plugin');
+                    $('#B1').removeClass('tweet-button');
+                    $('#B2').removeClass('tweet-list-button');
+                }
 
-                // $(window).on('resize', function() {
-                //     if ($(window).width() < 1000) {
-                //         $('#tweetButton').removeClass('fixed-plugin');
-                //         $('#tweetButton').removeClass('tweet-plugin');
-                //         $('#tweetButton2').removeClass('fixed-plugin');
-                //         $('#tweetButton2').removeClass('tweet-list-plugin');
-                //         $('#B1').removeClass('tweet-button');
-                //         $('#B2').removeClass('tweet-list-button');
-                //     } else {
-                //         $('#tweetButton').addClass('fixed-plugin');
-                //         $('#tweetButton2').addClass('fixed-plugin');
-                //         $('#tweetButton2').addClass('tweet-list-plugin');
-                //         $('#tweetButton').addClass('tweet-plugin');
-                //         $('#B1').addClass('tweet-button');
-                //         $('#B2').addClass('tweet-list-button');
+                $(window).on('resize', function() {
+                    if ($(window).width() < 1000) {
+                        $('#tweetButton').removeClass('fixed-plugin');
+                        $('#tweetButton').removeClass('tweet-plugin');
+                        $('#tweetButton2').removeClass('fixed-plugin');
+                        $('#tweetButton2').removeClass('tweet-list-plugin');
+                        $('#B1').removeClass('tweet-button');
+                        $('#B2').removeClass('tweet-list-button');
+                    } else {
+                        $('#tweetButton').addClass('fixed-plugin');
+                        $('#tweetButton2').addClass('fixed-plugin');
+                        $('#tweetButton2').addClass('tweet-list-plugin');
+                        $('#tweetButton').addClass('tweet-plugin');
+                        $('#B1').addClass('tweet-button');
+                        $('#B2').addClass('tweet-list-button');
 
 
-                //     }
-                // });
+                    }
+                });
                 jQuery('#B2').click(function() {
                     jQuery.ajax({
                         url: "{{ URL::to('tweets') }}",
@@ -801,9 +826,29 @@ $(document).ready( function () {
 
     </script>
     <script>
-        jQuery(document).ready(function() {
-            $('#example').DataTable();
-        });
+        $(document).ready(function(){
+    $('#data').after('<div id="nav" style="float:right"></div>');
+    var rowsShown = 5;
+    var rowsTotal = $('#data tbody tr').length;
+    var numPages = rowsTotal/rowsShown;
+    for(i = 0;i < numPages;i++) {
+        var pageNum = i + 1;
+        $('#nav').append('<a  rel="'+i+'" class="btn btn-secondary" >'+pageNum+'</a> ');
+    }
+    $('#data tbody tr').hide();
+    $('#data tbody tr').slice(0, rowsShown).show();
+    $('#nav a:first').addClass('active');
+    $('#nav a').bind('click', function(){
+
+        $('#nav a').removeClass('active');
+        $(this).addClass('active');
+        var currPage = $(this).attr('rel');
+        var startItem = currPage * rowsShown;
+        var endItem = startItem + rowsShown;
+        $('#data tbody tr').css('opacity','0.0').hide().slice(startItem, endItem).
+        css('display','table-row').animate({opacity:1}, 300);
+    });
+});
 
     </script>
 @endsection

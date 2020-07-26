@@ -49,6 +49,7 @@ Route::patch('/comments/{commentId}/votes/downvote', 'CommentController@downvote
  */
 Route::post('/citizens', 'CitizenController@userApi');
 
+
 /**
  * Delete & Flag Endpoints
  */

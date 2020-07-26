@@ -1,6 +1,6 @@
 <div class="main-panel">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-transparent">
+    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
             <div class="navbar-wrapper">
                 <a class="navbar-brand" href="javascript:;">Dashboard</a>
@@ -24,7 +24,7 @@
                 </form>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="javascript:;">
+                        <a class="nav-link" href={{ route('dashboard') }}>
                             <i class="material-icons">dashboard</i>
                             <p class="d-lg-none d-md-block">
                                 Stats
@@ -69,7 +69,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                             <a class="dropdown-item" href="{{ route('users.profile') }}">Profile</a>
-                            <a class="dropdown-item" href="#">Settings</a>
+                            <a class="dropdown-item" href="{{ route('users.settings') }}">Settings</a>
                             <div class="dropdown-divider"></div>
 
                             <a class="dropdown-item" href="{{ url('/logout') }}"

@@ -25,7 +25,7 @@
     <div class="target">
       <div class="summary col-md-7 col-sm-9">
           <h4 class="slightly-bold"> In 2019,<br> the government spent </h4>
-          <h4 class="bolding"> $4.45 trillion.</h4>
+          <h4 class="bolding"> &#8358;8.92 trillion.</h4>
           <div class="para">
             <p>ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities across Nigeria. 
               Learn more on how this money was spent with tools to help you navigate spending from top to bottom.</p>
@@ -33,7 +33,7 @@
       </div>
       <div class="gallery p-3"  data-flickity='{ "freeScroll": true }'>
         <div class="card1 carousel-cell card">
-            {{-- <p class="tag">New</p> --}}
+             <p class="tag">New</p> 
           <div class="project">
             <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
             <p>  Ministry of Power, Works and Housing</p>
@@ -44,6 +44,7 @@
           </div>
         </div>
         <div class="card2 card carousel-cell">
+        <p class="tag">New</p> 
           <div class="project">
             <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
             <p>  Ministry of Power, Works and Housing</p>
@@ -54,6 +55,7 @@
           </div>
         </div>
         <div class="card3 carousel-cell card">
+        <p class="tag">New</p> 
           <div class="project">
             <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
             <p>  Ministry of Power, Works and Housing</p>
@@ -83,7 +85,7 @@
    <!-- Expenses section -->
    <div id="expenses">
     <p class="label">Latest Government Expenses</p>
-    <div class="p-3  p-lg-5">
+    <div class="container p-3  p-lg-5">
          <div class="expenses">
              <govt-expense></govt-expense>
              <a href="{{route('expense.reports')}}" class="mt-4 mb-5">View Expenditure Report</a>
@@ -97,18 +99,61 @@
     <div class="ministry container mt-4">
         <div class="ministry-top">
           <div class="ministry-heading">
-            <select class="ministry-head">
-              <option value="agric">Ministry of Agriculture</option>
-              <option value="grei">Ministry of Agriculture</option>
-              <option>Ministry of Agriculture</option>
-              <option>Ministry of Agriculture</option>
-              <option>Ketchup</option>
-              <option>Barbecue</option>
-            </select>
-           </div>
+            <select id="ministry_list" class="ministry-head form-control">
+              @if(count($ministries)>0)
+               @foreach ($ministries as $ministry)
+                 <option class="mb-3" value="{{$ministry->shortname}}">{{$ministry->shortname}}</option>
+               @endforeach
+             @endif
+           </select> 
+          </div>
            <a href="{{ route('ministries') }}" class="profile">View all profiles</a>
          </div>
-        <div class="ministry-stat">
+         <div class="ministry-stat">
+          <div id="ministry-chart" class="stat-a p-4">
+            <div class="graph-cont">
+                <div id="chartOne"></div>
+            </div>
+            <div class="pt-5">
+              <p class="exp-card1">Total amount spent (YTD)</p>
+              <p class="exp-card2">&#8358;<span id="annual-sum"></span></p>
+              <p class="exp-card3 year-in-focus"></p>
+            </div>
+          </div>
+              <div class="stat-b">
+                <div class="d-flex p-2 justify-content-between">
+                  <div class="graph-cont">
+                    <div id="chartTwo"></div>
+                  </div>
+                  <div class="ml-5 pt-5 w-50">
+                    <p class="exp-card1">Average amount spent</p>
+                    <p class="exp-card2">&#8358;<span id="average"></span></p>
+                    <p id="years-in-focus" class="exp-card3"></p>
+                  </div>
+                </div>
+                <div class="d-flex p-2 justify-content-between">
+                  <div class="graph-cont">
+                    <div id="chartThree"></div>
+                  </div>
+                  <div class="ml-5 pt-5 w-50">
+                    <p class="exp-card1">Top Beneficiary</p>
+                    <p class="exp-card2"><span id="top-company"></span></p>
+                    <p class="exp-card3 year-in-focus"></p>
+                  </div>
+                </div>
+                {{-- <div class="d-flex p-2 justify-content-between">
+                  <div class="graph-cont">
+                    <div id="chart3"></div>
+                  </div>
+                  <div class="ml-5 w-50">
+                    <p class="exp-card1">Total amount spent on others</p>
+                    <p class="exp-card2">&#8358;123,446,332</p>
+                    <p class="exp-card3">2020</p>
+                  </div>
+                </div> --}}
+              </div>
+        </div>
+        {{-- <div class="ministry-stat">
               <div class="stat-a p-4">
                 <div class="graph-cont">
                 <div id="chart"></div>
@@ -151,7 +196,7 @@
                 </div>
                 </div>
               </div>
-        </div>
+        </div> --}}
     </div>
    </div>
    <!-- Explore section -->
@@ -159,7 +204,7 @@
      <div class="container">
       <p>A big-picture view of the daily spending <br> of the federal government</p>
       <p>Use our explorer to view how government spends our money daily</p>
-      <button>Explore</button>
+      <a href="{{route('expense.reports')}}"><button>Explore</button></a>
      </div>
    </div>
    <!-- Company section -->

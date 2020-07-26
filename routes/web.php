@@ -24,6 +24,7 @@ Route::get('/faq', 'PageController@faq')->name('faq');
 Route::get('/privacy', 'PageController@privacy')->name('privacy');
 Route::get('/search', 'PageController@search')->name('search');
 Route::get('/handles', 'PageController@handles')->name('handles');
+Route::get('/changeMinistryCharts/{ministry}', 'HomeController@MinistryCharts')->name('ministry_expenses_charts');
 
 // Feedback
 Route::post('/feedback', 'FeedbackController@create')->name('feedback');
@@ -48,8 +49,7 @@ Route::post('/ministries', 'MinistryController@store')->name('ministry_store');
 Route::patch('/ministries/{ministry}', 'MinistryController@update')->name('ministry_update');
 Route::delete('/ministries/{ministry}', 'MinistryController@destroy')->name('ministry_destroy');
 Route::post('/ministries/autocomplete', 'MinistryController@autocomplete')->name('ministry_autocomplete');
-Route::get('/expense/filterExpensesAll', 'ExpenseController@filterExpensesAll')->name('all_ministries_filter_expenses');
-
+Route::get('/expense/filterExpensesAll/{id}/{date}/{sort}', 'ExpenseController@filterExpensesAll')->name('all_ministries_filter_expenses');
 
 /**
  * Contractor Endpoints
@@ -64,6 +64,10 @@ Route::get('/project-modal', 'PageController@projectModal')->name('project-modal
 Route::get('/ministry/getUrl', 'PageController@ministryGetUrl')->name('ministry_get_url');
 Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses')->name('ministry_filter_expenses');
 
+/**
+ * Email sending API
+ */
+Route::post('/sendmail', 'EmailController@sendMail')->name('sendmail');
 
 /*
     Terms Of Service Endpoints
@@ -114,7 +118,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
      Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
       // Matches The "/admin/dashboard" URL
      Route::delete('/activity/delete/{activity_id}', 'DashboardController@deleteActivity')->name('activity.delete');
-    Route::put('/activity/mark_all/', 'DashboardController@editAllActivity')->name('allactivity.edit');
+    Route::put('/activity/all/', 'DashboardController@seenAllNotifications')->name('allactivity.edit');
     Route::put('/activity/mark/{activity_id}', 'DashboardController@seenActivity')->name('activity.update');
 
 
@@ -167,9 +171,13 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
      //Profile Page
      Route::get('/profile', 'ProfileController@viewProfile')->name('profile');
      Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
-
+     Route::get('/profile/edit/{user_id}', 'ProfileController@edit')->name('profile.edit');
+     Route::put('/profile/edit/{user_id}', 'ProfileController@update')->name('profile.update');
+     Route::put('/profile/change_password/{user_id}', 'ProfileController@updatePassword')->name('profile.change_password');
+     
      //Settings Page
      Route::get('/user/settings', 'SettingsController@index')->name('users.settings');
+     Route::put('/settings/change_password/{user_id}', 'SettingsController@ChangePassword')->name('settings.change_password');
 
      // Cabinet CRUD
      Route::get('/cabinet/create', 'CabinetController@create')
@@ -194,7 +202,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
       Route::get('/import', 'UploadController@importFile');
       Route::post('/import', 'UploadController@importExcel')->name('importExcel');
 
-      /**SUBSCRIPTION */
+      //SUBSCRIPTION 
       Route::get('/subcribe', 'Admin\SubscriptionController@index')
       ->name('subscribe.view');
       // Cabinet CRUD
@@ -220,6 +228,25 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
 
      // COMMENTS ROUTES
     Route::get('/comments', 'Admin\CommentController@index')->name('comments');  //Displays the index page for all comments
+
+
+     // Payments CRUD
+      Route::get('/payments', 'Admin\PaymentController@index')->name('payments.view');
+
+      Route::get('/payments/create', 'Admin\PaymentController@create')->name('payments.create');
+      Route::post('/payments/create', 'Admin\PaymentController@store')->name('payments.store');
+
+      Route::get('/payments/edit/{payment_id}', 'Admin\PaymentController@edit')->name('payments.edit');
+      Route::put('/payments/edit/{payment_id}', 'Admin\PaymentController@update')->name('payments.update');
+
+
+      Route::delete('/payments/delete/{payment_id}', 'Admin\PaymentController@destroy')->name('payments.delete');
+
+      //Sheets
+      Route::get('/sheets', 'Admin\SheetController@viewSheets')->name('sheets');
+
+
+
 
 
  });

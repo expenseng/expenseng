@@ -203,18 +203,18 @@ p.tag{
     height: 100%;
     border: white 0.7px solid;
     transition: ease-in-out all 0.5s;
-    padding: 0rem 1rem;
+    padding: 0rem;
 }
 .card1{
-    background-image: url(../images/card2.jpg);
+    background: url(../images/card2.jpg);
     background-size: cover;
 }
 .card2{
-    background-image: url(../images/road.svg);
+    background: url(../images/road.svg);
     background-size: cover;
 }
 .card3{
-    background-image: url(../images/oil-rig.jpg);
+    background: url(../images/oil-rig.jpg);
     background-size: cover;
 }
 
@@ -248,7 +248,7 @@ p.tag{
 
   .flickity-prev-next-button{
     top: 0% !important;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     opacity: 1;
     width: 30px !important;
     height: 30px !important;
@@ -267,8 +267,12 @@ p.tag{
   }
 
 .project{
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.513433) 5.03%, rgba(0, 0, 0, 0.8) 92.69%);
+    backdrop-filter: blur(12px);
+    width: 100%;
+    padding: 0.5rem ;
     margin-top: auto;
-    margin-bottom: 3.5rem;
+    margin-bottom: 2.9rem;
 }
 .project p{
     /* font-size: var(--fs-h5); */
@@ -318,6 +322,8 @@ div.expenses{
 }
 .expenses a{
     color: #33A97E;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 .exp-card{
     width: 100%;
@@ -387,7 +393,6 @@ p.profile{
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 .stat-b{
     width: 100%;
@@ -400,18 +405,19 @@ p.profile{
     background: linear-gradient(0deg, rgba(50, 62, 72, 0.33), rgba(50, 62, 72, 0.33)), url('../images/Group 1394.png');
     background-size: cover;
     background-repeat: no-repeat;
-    padding: 1rem;
+    padding: 1rem ;
     color: white;
     margin: 4rem 0rem;
+    height: 400px;
 }
 .explore p:nth-child(1){
-    margin-bottom: 5rem;
     font-size: var(--fs-h2);
     line-height: 150%;
-    font-weight: 300;
+    font-weight: bold;
+    margin-top: 50px;
 }
 .explore p:nth-child(2){
-    margin-bottom: 5rem;
+    margin-bottom: 1.5rem;
     font-size: var(--fs-h5);
     font-weight: 300;
 }
@@ -510,7 +516,7 @@ p.profile{
 
 }
 #open{ 
-    margin: 1rem auto;
+    /* margin: 1rem auto; */
     width: 10rem;
     padding: 0.4rem 3rem;
 }
@@ -565,9 +571,12 @@ p.profile{
         --fs-nav: 0.8rem;
         --fs-foot: 0.75rem;
     }
+    .carousel-cell{
+        width: 65%;
+    }
     .twt-handle{
         padding: 0.5rem 1.3rem;
-        margin: 0 0 2rem 3rem;
+        margin: auto;
         
     }
 }
@@ -657,6 +666,7 @@ p.profile{
     }
     .banner{
         height: /* 90% */ 100vh;
+        margin-top: .5rem;
     }
     .scroll-down img{
         height: 80px;
@@ -665,12 +675,15 @@ p.profile{
     #main{
         margin-top: 10rem;
     }
+    .explore{
+        height: 300px;
+    }
     .explore p:nth-child(1){
         line-height: 150%;
-        font-weight: 200;
+        font-weight: bold;
     }
     .explore p:nth-child(2){
-        margin-bottom: 3rem;
+        margin-bottom: 1rem;
         font-weight: 200;
     }
 }
@@ -688,7 +701,10 @@ p.profile{
     }
     .twt-handle{
         padding: 0.3rem 0.8rem;
-        margin: 0 0 2rem 3rem;
+        margin: auto;
+    }
+    .project{
+        width: 100%;
     }
     .twt-handle a{
         font-size: var(--fs-h5);
@@ -764,8 +780,8 @@ p.profile{
     }
 
     .card1{
-        background-image: url(../images/card2.jpg);
         
+    background:linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(../images/card2.jpg); 
     }
     .vll{
         margin: 3rem auto;
@@ -812,14 +828,20 @@ p.profile{
     #main{
         margin-top: 10rem;
     }
+    .explore{
+        height: 300px;
+    }
     .explore p:nth-child(1){
-        margin-bottom: 3rem;
+        margin-bottom: 1rem;
         line-height: 150%;
-        font-weight: 200;
+        font-weight: bold;
+        text-align: left;
     }
     .explore p:nth-child(2){
-        margin-bottom: 3rem;
+        margin-bottom: 1rem;
+        font: 1em;
         font-weight: 200;
+        text-align: left;
     }
     #compu{
         font-size: 15px;
@@ -877,7 +899,7 @@ p.profile{
     }
     .twt-handle{
         padding: 0.1rem 0.6rem;
-        margin: 1rem 0 0 0.3rem;
+        margin: auto;
     }
 }
 

@@ -6,7 +6,7 @@
 
         Tip 2: you can also add an image using data-image tag
     -->
-      <div class="logo"><a href="{{Route::is('dashboard')? '#' :route('dashboard')}}" class="simple-text logo-normal">
+      <div class="logo"><a href="{{url('/')}}" class="simple-text logo-normal">
         ExpenseNG
         </a></div>
       <div class="sidebar-wrapper">
@@ -50,6 +50,14 @@
             </a>
           </li>
 
+          <li class="{{Route::is('payments.view') || Route::is('payments.create') || Route::is('payments.edit')
+          ? 'nav-item active' : 'nav-item'}} ">
+            <a class="nav-link" href="{{route('payments.view')}}">
+              <i class="material-icons">money</i>
+              <p>Payments</p>
+            </a>
+          </li>
+
           <li class="{{Route::is('cabinet.view') || Route::is('cabinet.create') || Route::is('cabinet.edit')
            ? 'nav-item active' : 'nav-item'}}  ">
             <a class="nav-link" href="{{route('cabinet.view')}}">
@@ -87,10 +95,18 @@
 
           <li class="{{Route::is('comments')
           ? 'nav-item active' : 'nav-item'}} ">
-            <a class="nav-link" href="{{Route::is('comments') ? '#' : route('comments')}}">
+            <a class="nav-link" href="{{route('comments')}}">
               <i class="material-icons">comment</i>
               <p>Comments</p>
             </a>
+          </li>
+
+
+          <li class="{{Route::is('sheets')? 'active nav-item' : 'nav-item' }}">
+          <a class="nav-link" href="{{route('sheets')}}">
+          <i class="material-icons">attachment</i>
+              <p>Sheets</p>
+          </a>
           </li>
 
         </ul>
