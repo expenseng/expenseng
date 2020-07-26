@@ -33,7 +33,7 @@
                         <h6>Profile</h6>
                         <ul>
                             <li class="section-footer-links">
-                                <a  href="#">Ministry Profile</a>
+                                <a  href="">Ministry Profile</a>
                             </li>
                             <li class="section-footer-links">
                                 <a href="/company/search">Company Profile</a>
@@ -53,7 +53,7 @@
                                 <a href="{{ route('handles') }}">Government handles</a>
                             </li>
                             <li class="section-footer-links">
-                                <a href="{{ route('login') }}">admin</a>
+                                <a href="{{ route('login') }}">Admin</a>
                             </li>
                         </ul>
                     </div>

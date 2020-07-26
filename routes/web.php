@@ -201,7 +201,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
       Route::get('/import', 'UploadController@importFile');
       Route::post('/import', 'UploadController@importExcel')->name('importExcel');
 
-      /**SUBSCRIPTION */
+      //SUBSCRIPTION 
       Route::get('/subcribe', 'Admin\SubscriptionController@index')
       ->name('subscribe.view');
       // Cabinet CRUD
@@ -240,6 +240,9 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
 
 
       Route::delete('/payments/delete/{payment_id}', 'Admin\PaymentController@destroy')->name('payments.delete');
+
+      //Sheets
+      Route::get('/sheets', 'Admin\SheetController@viewSheets')->name('sheets');
 
 
 
