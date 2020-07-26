@@ -247,8 +247,7 @@ class ParseSheet extends Command
                             ]);
                             $status = $response->getStatusCode();
                             $responses = json_decode($response->getBody(), true);
-
-
+                            if ($status == 200){
                                    
                                     //return print_r ($response);
                                     $quarterly = new QuarterlyBudget();
@@ -270,7 +269,7 @@ class ParseSheet extends Command
                                     }
                                 }
 
-                            } else {
+                             else {
                                 $this->info($report->link .' status not successful');
                             }
                         }

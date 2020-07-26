@@ -203,7 +203,7 @@ p.tag{
     height: 100%;
     border: white 0.7px solid;
     transition: ease-in-out all 0.5s;
-    padding: 0rem 1rem;
+    padding: 0rem;
 }
 .card1{
     background: url(../images/card2.jpg);
@@ -269,9 +269,8 @@ p.tag{
 .project{
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.513433) 5.03%, rgba(0, 0, 0, 0.8) 92.69%);
     backdrop-filter: blur(12px);
-    width: 111%;
-    margin-left: -1rem;
-    padding: 0.5rem 2rem;
+    width: 100%;
+    padding: 0.5rem ;
     margin-top: auto;
     margin-bottom: 2.9rem;
 }
@@ -572,6 +571,9 @@ p.profile{
         --fs-nav: 0.8rem;
         --fs-foot: 0.75rem;
     }
+    .carousel-cell{
+        width: 65%;
+    }
     .twt-handle{
         padding: 0.5rem 1.3rem;
         margin: auto;
@@ -702,7 +704,7 @@ p.profile{
         margin: auto;
     }
     .project{
-        width: 116.5%;
+        width: 100%;
     }
     .twt-handle a{
         font-size: var(--fs-h5);
