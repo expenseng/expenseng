@@ -53,7 +53,7 @@ a:hover{
     border-radius: 50%;
     cursor: pointer;
   }
-  
+
   .back-top-visible {
     -webkit-transform: scale(1);
     -ms-transform: scale(1);
@@ -62,7 +62,7 @@ a:hover{
     opacity: 1;
     visibility: visible;
   }
-  
+
   .back-top,
   .back-top:hover,
   .back-top:focus,
@@ -70,7 +70,7 @@ a:hover{
   .fa:focus {
     color: #fff !important;
   }
-  
+
   .back-top:hover {
     background-position: right center;
   }

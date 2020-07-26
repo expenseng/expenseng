@@ -85,7 +85,7 @@
    <!-- Expenses section -->
    <div id="expenses">
     <p class="label">Latest Government Expenses</p>
-    <div class="p-3  p-lg-5">
+    <div class="container p-3  p-lg-5">
          <div class="expenses">
              <govt-expense></govt-expense>
              <a href="{{route('expense.reports')}}" class="mt-4 mb-5">View Expenditure Report</a>
@@ -204,7 +204,7 @@
      <div class="container">
       <p>A big-picture view of the daily spending <br> of the federal government</p>
       <p>Use our explorer to view how government spends our money daily</p>
-      <button>Explore</button>
+      <a href="{{route('expense.reports')}}"><button>Explore</button></a>
      </div>
    </div>
    <!-- Company section -->
