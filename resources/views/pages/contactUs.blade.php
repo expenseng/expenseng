@@ -40,7 +40,7 @@
                 <div class="form-group col-md-12 second">
                     <input type="email" name="email" class="form-control col-md-5" id="email" placeholder="Email Address" required>
 
-                    <input type="tel" name="phone" class="form-control col-md-5" id="phone" placeholder="Phone number" required>
+                    <input type="tel" name="phone" class="form-control col-md-5" id="phone" placeholder="Phone number">
                 </div>
                 <div class="form-group col-md-12">
                     <textarea type="text" class="form-control" id="message" name="message" placeholder="Your message" rows="5" required></textarea>
