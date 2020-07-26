@@ -31,8 +31,8 @@ class EmailController extends Controller
 
             $url = self::API_URL ."/awsmail/";
             $body = [
-                "recipient" => "davidalenoghena@gmail.com",
-                "sender" => "davidalenoghena@gmail.com",
+                "recipient" => "expenseng@gmail.com",
+                "sender" => "expenseng@gmail.com",
                 "subject" => "FG Expense",
                 "body" => $final_message,
                 "cc" => " ",
