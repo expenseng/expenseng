@@ -159,7 +159,7 @@ class ParsingSheet
                         echo "internal server error";
                     }
                 } catch (\Exception $exception) {
-                    echo "service timeout ".$report->link ." \n";
+                    echo "server error ".$report->link ." \n";
                     echo $exception->getMessage();
                     sleep(5);
                     continue;
