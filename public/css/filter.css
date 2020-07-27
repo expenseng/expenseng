@@ -57,7 +57,7 @@ background-color: rgba(4, 124, 80)
 }
 
 #sort-options{
-margin-bottom: 30px;
+margin-bottom: 25px;
 margin-top: 30px;
 }
 
@@ -66,7 +66,7 @@ margin-top: 16px;
 }
 
 .modal-footer{
-    padding-bottom: 35px;
+    padding-bottom: 25px;
     border-top: none !important;
 }
 

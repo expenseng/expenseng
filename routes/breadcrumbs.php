@@ -26,13 +26,13 @@ Breadcrumbs::for('search', function ($trail) {
 // Home > Expense_Report
 Breadcrumbs::for('expense.reports', function ($trail) {
     $trail->parent('home');
-    $trail->push('Expense_Report', route('expense.reports'));
+    $trail->push('Reports', route('expense.reports'));
 });
 
 // Home > Expense_Ministry
 Breadcrumbs::for('expense.ministry', function ($trail) {
     $trail->parent('home');
-    $trail->push('Expense_Ministry', route('expense.ministry'));
+    $trail->push('Ministry Expenses', route('expense.ministry'));
 });
 
 // Home > Ministries

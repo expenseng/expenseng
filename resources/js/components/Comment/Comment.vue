@@ -20,11 +20,11 @@
                 @keyup.enter.exact.native="send"
             />
             <button class="btn btn-primary" type="submit" v-if="showName">Comment</button>
+            <small class="text-muted" v-if="!busy">Press enter to send</small>
+            <div class="spinner-border spinner-border-sm float-right" v-if="busy" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
         </form>
-        <small class="text-muted">Press enter to send</small>
-        <div class="spinner-border spinner-border-sm float-right" v-if="busy" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
     </div>
 </template>
 
@@ -65,6 +65,11 @@ export default {
             required: false,
             type: String,
             default: ""
+        },
+        editContent:{
+            required: false,
+            type: String,
+            default: null
         }
     },
 
@@ -136,6 +141,18 @@ export default {
             
             this.hideSmallComment = false; //show the small comment box     
         },
+    },
+
+    mounted() {
+        if(this.editContent){
+            this.comment = this.editContent;
+        }
+    },
+
+    watch: {
+        editContent(newValue, oldValue){
+            this.comment = newValue;
+        }
     },
 
 }

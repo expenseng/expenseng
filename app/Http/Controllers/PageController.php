@@ -106,6 +106,11 @@ class PageController extends Controller
         return view('pages.handles');
     }
 
+    public function contactEmail()
+    {
+        return view('pages.contactEmail');
+    }
+
     public function companySearchShow()
     {
         request()->validate([

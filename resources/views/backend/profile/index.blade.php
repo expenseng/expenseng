@@ -69,7 +69,10 @@
                                     
                                         <div class="modal-body">
                                             <center>
-                                            <img src="https://cdn0.iconfinder.com/data/icons/social-media-network-4/48/male_avatar-512.png" name="aboutme" width="auto" height="140" border="0" class="img-circle"></a>
+                                            <img src="{{$user->image}}" alt="{{$user->name . '\'s image'}}" style="height:300px; width:300px; border-radius: 100%" ><br>
+                                            <br>
+                                            <br>
+                                            
                                             <h3 class="media-heading bg-primary">{{$user->name}}</h3>
                                            
                                             </center>

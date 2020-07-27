@@ -17,7 +17,7 @@ class CreateReportsTable extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
             $table->string('type');
-            $table->string('link')->unique();
+            $table->string('link', 191)->unique();
             $table->boolean('parsed');
             $table->timestamps();
         });

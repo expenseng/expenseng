@@ -95,7 +95,7 @@
 
 <!-- Ministry section -->
    <div>
-    <p class="label mb-5 specific">Ministry Expenditures</p>
+    <p class="label mb-3 specific">Ministry Expenditures</p>
     <div class="ministry container mt-4">
         <div class="ministry-top">
           <div class="ministry-heading">
@@ -204,11 +204,11 @@
      <div class="container">
       <p>A big-picture view of the daily spending <br> of the federal government</p>
       <p>Use our explorer to view how government spends our money daily</p>
-      <button>Explore</button>
+      <a href="{{route('expense.reports')}}"><button>Explore</button></a>
      </div>
    </div>
    <!-- Company section -->
-   <p class="label mt-5 mb-5 " id="compu">Companies that received money</p>
+   <p class="label mt-3 mb-3 " id="compu">Companies that received money</p>
    <div class="companies container d-flex justify-content-between">
     <div class="comp-card comp-card-1">
         <div class="awarded">

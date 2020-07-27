@@ -32,6 +32,9 @@ Route::post('/feedback', 'FeedbackController@create')->name('feedback');
 // freedom of acts
 Route::get('/FOIA', 'PageController@FOIA')->name('FOIA');
 
+//
+Route::get('/contactEmail', 'PageController@contactEmail')->name('contactEmail');
+
 /**
  * Reports Endpoints
  */
@@ -39,6 +42,8 @@ Route::get('/expense/report', 'ExpenseController@report')->name('expense.reports
 Route::post('/subscribe', 'SubscriptionController@store');
 
 Route::get('/expense/ministry', 'ExpenseController@ministry')->name('expense.ministry');
+
+
 
 /***
  * Ministry Endpoints
@@ -174,9 +179,10 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
      Route::get('/profile/edit/{user_id}', 'ProfileController@edit')->name('users.edit');
      Route::put('/profile/edit/{user_id}', 'ProfileController@update')->name('users.update');
      Route::put('/profile/change_password/{user_id}', 'ProfileController@updatePassword')->name('users.change_password');
-     
+
      //Settings Page
      Route::get('/user/settings', 'SettingsController@index')->name('users.settings');
+     Route::put('/settings/change_password/{user_id}', 'SettingsController@ChangePassword')->name('settings.change_password');
 
      // Cabinet CRUD
      Route::get('/cabinet/create', 'CabinetController@create')
@@ -201,7 +207,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
       Route::get('/import', 'UploadController@importFile');
       Route::post('/import', 'UploadController@importExcel')->name('importExcel');
 
-      /**SUBSCRIPTION */
+      //SUBSCRIPTION
       Route::get('/subcribe', 'Admin\SubscriptionController@index')
       ->name('subscribe.view');
       // Cabinet CRUD
@@ -240,6 +246,9 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
 
 
       Route::delete('/payments/delete/{payment_id}', 'Admin\PaymentController@destroy')->name('payments.delete');
+
+      //Sheets
+      Route::get('/sheets', 'Admin\SheetController@viewSheets')->name('sheets');
 
 
 
