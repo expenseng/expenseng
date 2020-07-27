@@ -7106,24 +7106,28 @@ font-size: 18px;
     background-image: url('../img/carbon_add-alt.png');
     background-position: center;
     background-repeat: no-repeat;
-    height: 60%;
+    height: 200px;
     margin-bottom: 1rem;
-    width: 90%;
+    width: 200px;
+}
+.file-one{
+    height: 200px;
 }
 .file-input{
-    height: 60%;
-    width: 90%;
+    height: 200px;
+    width: 200px;
     margin-bottom: 1rem;
     opacity: 0;
     position: absolute;
+    z-index: 23;
 
 }
 #output{
     position: absolute;
     z-index: 22;
-
-    height: fit-content;
-    width: auto;
+    height: 200px;
+    width: 200px;
+   top: 2rem;
 }
 
 .font-size-reduce{
@@ -7148,7 +7152,9 @@ font-size: 18px;
     list-style-type: none;
     padding-left: 0;
 }
-
+.push-top{
+    margin-top: 1rem;
+}
 
 @media only screen and (max-width : 700px){
     h4{
@@ -7160,12 +7166,6 @@ font-size: 18px;
     }
     #settingsTab li{
         font-size: .9rem;
-    }
-    .file-input-cover{
-        height: 100%;
-    }
-    .push-top{
-        margin-top: 8rem;
     }
     .hide-button-card{
         margin-left: -1.15rem;

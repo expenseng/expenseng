@@ -64,9 +64,21 @@
                         <hr>
                         <div class="card-body">
                             <div>
-
-                                <div class = "row">
+                                <form action="" method = "post" class = "row">
+                                
                                 <div class="col-12 col-md-9">
+                                    <h5>Profile Picture</h5> 
+                                    <div class="file-input-cover">             
+                                    <p class = "file-one"><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)"  class = "file-input"></p>
+                                    <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+                                    <p><img id="output" width="200px" /></p>
+
+
+                                    </div>
+                                </div>
+
+                                
+                                <div class="col-12 col-md-9 push-top">
                                     <div class="form-group">
                                         <p><label class = "label-form" for="full-name">Full Name:</label><br> {{$user->name}}</p>
                                     </div>
