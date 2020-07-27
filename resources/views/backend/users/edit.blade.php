@@ -20,7 +20,7 @@
                     <div class="row justify-content-center">
                         <div class="col-md-8">
                             <div class="card">
-                                <div class="card-header text-center">{{ __('Update User') }}</div>
+                                <div class="card-header text-center"><h3>{{ __('Update User') }}</h3></div>
                                 <div class="card-body">
                                     <form method="POST" action="{{'/admin/users/edit/' . $user->id}}" id="update_user">
                                         @method('put')
@@ -50,6 +50,43 @@
                                                 @enderror
                                             </div>
                                         </div>
+
+                                        <div class="form-group row">
+                                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Phone Number') }}</label>
+                                            <div class="col-md-6">
+                                                <input id="phone" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{$user->phone_number}}"  autocomplete="email" autofocus>
+
+                                                @error('phone_number')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group row">
+                                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
+                                            <div class="col-md-6">
+                                                <select name="gender" class="form-control">
+                                                    @isset($user->gender)
+                                                        <option value="{{$user->gender}}"  style="display:none">{{$user->gender}}</option>
+                                                    @endisset
+                                                    @empty($user->gender)
+                                                        <option value=""  style="display:none">Select Gender</option>
+                                                    @endempty
+                                                        <option value="{{'male'}}">{{'Male'}}</option>
+                                                         <option value="{{'female'}}">{{'Female'}}</option>
+                                                </select>
+                                                @error('gender')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+
 
                                         @can('add')
                                         <div class="form-group row">
