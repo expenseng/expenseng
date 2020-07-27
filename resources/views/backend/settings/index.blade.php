@@ -44,14 +44,14 @@
                 <h3>Settings</h3>
             </div>
         </div>
-        <div class="card" >
-                <!--Tabs Header-->
-                <ul class="nav nav-tabs py-3 " id = "settingsTab">
-                    <li class="active "><a data-toggle="tab" class="active show" href="#general">General</a></li>
-                    <li><a data-toggle="tab" href="#notification">Notifications</a></li>
-                    <li><a data-toggle="tab" href="#security">Security</a></li>
-                </ul>
-            </div>   
+                <div class="card" >
+                        <!--Tabs Header-->
+                        <ul class="nav nav-tabs py-3 " id = "settingsTab">
+                            <li class="active "><a data-toggle="tab" class="active show" href="#general">General</a></li>
+                            <li><a data-toggle="tab" href="#notification">Notifications</a></li>
+                            <li><a data-toggle="tab" href="#security">Security</a></li>
+                        </ul>
+                </div>   
                 <!--Tab Body-->
                 <div class="tab-content">
                     <!--1-->
@@ -65,15 +65,12 @@
                         <div class="card-body">
                             <div>
                                 <form action="" method = "post" class = "row">
-                                
                                 <div class="col-12 col-md-9">
                                     <h5>Profile Picture</h5> 
                                     <div class="file-input-cover">             
                                     <p class = "file-one"><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)"  class = "file-input"></p>
                                     <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
                                     <p><img id="output" width="200px" /></p>
-
-
                                     </div>
                                 </div>
 
@@ -90,10 +87,11 @@
                                         <label class = "label-form" for="full-name">Role:</label><br>{{implode(', ', $user->roles->pluck('name')->toArray())}}</p>
                                     </div> 
                                 </div>
-                            </div>
+                                </form>
                             </div>
                         </div>
-                        </div>
+                    </div>
+                        
                         <div class = "card">
                             <div class="card-header security-header">
                                 <h4>Appearance</h4>
