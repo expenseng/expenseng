@@ -88,6 +88,8 @@ class UserController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'role_id' => '',
             'status_id' => '',
+            'phone_number' => ['integer'],
+            'gender' => ['string'],
         ]);
 
         $validator->validate();
@@ -96,6 +98,8 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'status_id' => $request->status_id,
+            'phone_number' => $request->phone_number,
+            'gender' => $request->gender,
             'password' => Hash::make($request->password),
         ]);
 
@@ -112,7 +116,7 @@ class UserController extends Controller
         ]);
 
         Session::flash('flash_message', 'New User successfully added!');
-        return redirect()->back();
+        return redirect(route('users.view'));
     }
 
     /**
@@ -162,6 +166,8 @@ class UserController extends Controller
             'email_address' => 'sometimes|required|email|unique:users',
             'role_id' => '',
             'status_id' => '',
+            'phone_number' => [],
+            'gender' => [],
         ]);
 
         $validator->validate();
@@ -184,6 +190,8 @@ class UserController extends Controller
          User::where('id', $id)->update([
                 'name' => $request->name,
                 'email' => $request->email,
+                'phone_number' => $request->phone_number,
+                'gender' => $request->gender,
             ]);
             $auth = Auth::user();
             Activites::create([
