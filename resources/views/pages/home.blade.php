@@ -208,7 +208,7 @@
      </div>
    </div>
    <!-- Company section -->
-   <p class="label mt-5 mb-5 " id="compu">Companies that received money</p>
+   <p class="label mt-3 mb-3 " id="compu">Companies that received money</p>
    <div class="companies container d-flex justify-content-between">
     <div class="comp-card comp-card-1">
         <div class="awarded">

@@ -314,6 +314,10 @@ p.label{
     /* margin-top: -3rem; */
     text-align: end;
 }
+p#compu{
+    font-size: var(--fs-h3);
+    padding: 0.8rem;
+}
 div.expenses{
     display: flex;
     flex-wrap: wrap;
