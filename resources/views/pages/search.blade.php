@@ -1,11 +1,16 @@
 @extends('layouts.master')
 @push('css')
   <title>FG Expense - Search</title>
+  <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
   <link rel="stylesheet" href="{{ asset('css/search.css') }}">
 @endpush
 
 @section('content')
-{{ Breadcrumbs::render('search') }}
+    <div class="container">
+        {{ Breadcrumbs::render('search') }}
+    </div>
+
+    <div class="divpadd">
 
     <div class="div1">
         <h1 class="hh1">Search</h1>
@@ -84,9 +89,16 @@
 
     </div>
 
+    </div>
+
 @endsection
 
+@section('js')
 
+    <script src="{{ asset('js/index.js') }}"></script>
+
+
+@endsection
 
 
 

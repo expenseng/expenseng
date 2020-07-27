@@ -9,7 +9,6 @@ use Illuminate\Console\Concerns\InteractsWithIO;
 
 class ParsingSheet
 {
-    use InteractsWithIO;
     /**
      * declaring http.
      *
@@ -33,14 +32,14 @@ class ParsingSheet
             'headers' => [
                 'debug' => true,
                 'Content-Type' => 'application/json',
+                'Connection' => 'keep-alive'
             ],
-            'timeout' => 15
         ]);
     }
 
     public function dailyReport()
     {
-        $reports = Report::where('parsed', '=', false)->where('type', "LIKE", "%daily%")->get();
+        $reports = Report::where('parsed', '=', false)->where('type', "LIKE", "daily%")->orderBy('id', 'DESC')->get();
         if (!empty($reports)) {
             foreach ($reports as $report) {
                 try {
@@ -55,9 +54,9 @@ class ParsingSheet
 
                         "body" => json_encode([
                             "file_path" =>
-                                $report->link,
-                            "row_from"=> 15,
-                            "row_to" => 150,
+                                trim($report->link),
+                            "row_from" => 0,
+                            "row_to" => 1000,
                             "API_KEY" => "random25stringsisneeded"
                         ])
 
@@ -73,8 +72,10 @@ class ParsingSheet
                         $keys = array_keys($test);
                         $check1 = preg_match('/\d+-\d+\w*/i', $keys[0]);
                         $check2 = preg_match('/\d+/i', $keys[1]);
+                        $check5 = preg_match('/\d+/i', $keys[2]);
                         $check3 = preg_match('/\d+/i', $keys[4]);
-                        if (($check1 && $check2 && $check3)) {
+                        $check4 = isset($keys[5]) ? preg_match('/\d+/i', $keys[5]) : false;
+                        if (($check1 && $check2 && $check3 )) {
                             $check = Payment::where('payment_no', '=', $keys[0])->first();
                             if (empty($check)) {
                                 Payment::create([
@@ -84,26 +85,50 @@ class ParsingSheet
                                 'beneficiary' => $keys[3],
                                 'amount' =>$keys[4],
                                 'payment_date'=> $date,
-                                'description' => substr($keys[5], 0, 225)
+                                'description' => substr(isset($keys[5]) ? $keys[5] : "null", 0, 225)
                                 ]);
                             }
                         }
-                        if (array_key_exists('payment no', $test) || ($check1 && $check2 && $check3)) {
+                        if (($check1 && $check4 && $check5)) {
+                            $check = Payment::where('payment_no', '=', $keys[0])->first();
+                            if (empty($check)) {
+                                Payment::create([
+                                    'payment_no' =>  $keys[0],
+                                    'payment_code' => $keys[2],
+                                    'organization' => $keys[3],
+                                    'beneficiary' => $keys[4],
+                                    'amount' =>$keys[5],
+                                    'payment_date'=> $date,
+                                    'description' => substr(isset($keys[6]) ? $keys[6] : "null", 0, 225)
+                                ]);
+                            }
+                        }
+                        if (array_key_exists('payment no', $test) || array_key_exists('payer code', $test)|| ($check1 && $check2 && $check3) || ($check1 && $check4 && $check5)) {
                             foreach ($responses as $data) {
                                 try {
-                                    $this->savePayment($data, $date);
+                                    if ($check1 && $check4 && $check5) {
+                                        $this->savePayment2($data, $date);
+                                    } else {
+                                        $this->savePayment($data, $date);
+                                    }
                                 } catch (\Exception $e) {
                                     echo $e->getMessage();
                                 }
                             }
                             Report::whereId($report->id)->update(['parsed' => true]);
                             echo "parsed and logged ".$report->link."\n";
+                            sleep(7);
                         } else {
                             echo 'not logged in '.$report->link."\n";
                         };
                     }
+                    if ($status == 500) {
+                        echo "internal server error";
+                    }
                 } catch (\Exception $exception) {
-                    echo "server timeout ".$report->link ." \n";
+                    echo "service timeout ".$report->link ." \n";
+                    echo $exception->getMessage();
+                    sleep(5);
                     continue;
                 }
             }
@@ -119,14 +144,38 @@ class ParsingSheet
         if (!empty($check)) {
             return false;
         }
-        $create = Payment::create([
+        $create = Payment::create(array(
             'payment_no' => isset($response2["payment no"])?$response2["payment no"] : $response3[0],
             'payment_code' => isset($response2["payer code"])?$response2["payer code"] :$response3[1],
             'organization' => isset($response2["organisation name"])? $response2["organisation name"] : $response3[2],
             'beneficiary' => isset($response2["beneficiary name"])? $response2["beneficiary name"] :$response3[3],
             'amount' => isset($response2["amount"])? $response2["amount"] :$response3[4],
             'payment_date'=> $date,
-            'description' => substr(isset($response2["description"])?$response2["description"] :$response3[5], 0, 225)
+            'description' => substr(isset($response2["description"])? $response2["description"] : (isset($response3[5]) ? $response3[5]   : "not stated"), 0, 225)
+        ));
+        if ($create) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    private function savePayment2($response, $date)
+    {
+
+        $response2 = array_change_key_case($response, CASE_LOWER);
+        $response3 = array_values($response2);
+        $check = Payment::where('payment_no', '=', $response3[0])->first();
+        if (!empty($check)) {
+            return false;
+        }
+        $create = Payment::create([
+            'payment_no' => isset($response2["payment no"])?$response2["payment no"] : $response3[0],
+            'payment_code' => isset($response2["payer code"])?$response2["payer code"] :$response3[2],
+            'organization' => isset($response2["organisation name"])? $response2["organisation name"] : $response3[3],
+            'beneficiary' => isset($response2["beneficiary name"])? $response2["beneficiary name"] :$response3[4],
+            'amount' => isset($response2["amount"])? $response2["amount"] :$response3[5],
+            'payment_date'=> $date,
+            'description' => substr(isset($response2["description"])?$response2["description"] :(isset($response3[6]) ? $response3[6]   : "not stated"), 0, 225)
         ]);
         if ($create) {
             return true;
