@@ -93,6 +93,7 @@ class CommentController extends Controller
         $response = $this->http->get('comments', [
             'query' => [
                 'origin' => $origin,
+                'isFlagged' => 'false',
             ]
         ]);
 
@@ -181,6 +182,34 @@ class CommentController extends Controller
         }
     }
 
+    public function deleteComment(Request $request, $commentId){
+        $response = $this->http->delete('comments/' . $commentId, [
+            "body" => json_encode([
+                "ownerId" => $request->ownerId
+            ])
+        ]);
+
+        $data = json_decode($response->getBody(), true);
+
+        if($data['status'] == "success"){
+            return $data['data'];
+        }
+    }
+
+    public function deleteReply(Request $request, $commentId, $replyId){
+        $response = $this->http->delete('comments/' . $commentId . '/replies/' . $replyId, [
+            "body" => json_encode([
+                "ownerId" => $request->ownerId
+            ])
+        ]);
+
+        $data = json_decode($response->getBody(), true);
+
+        if($data['status'] == "success"){
+            return $data['data'];
+        }
+    }
+
     /**
      * Stores a new user in the citizens table
      * so we can retrieve their info next time
@@ -215,5 +244,33 @@ class CommentController extends Controller
         $user = Citizen::firstOrNew([ "email" => $request->email ]);
         $email = $user->email;
         return md5(strtolower(trim($email)));
+    }
+
+    public function flagComment(Request $request, $commentId){
+        $response = $this->http->patch('/comments/' . $commentId . '/flag', [
+            "body" => json_encode([
+                "ownerId" => $request->ownerId
+            ])
+        ]);
+
+        $data = json_decode($response);
+
+        if($data['status'] == "success"){
+            return $data['data'];
+        }
+    }
+
+    public function flagReply(Request $request, $commentId, $replyId){
+        $response = $this->http->patch('/comments/' . $commentId . '/replies' . $replyId . '/flag', [
+            "body" => json_encode([
+                "ownerId" => $request->ownerId
+            ])
+        ]);
+
+        $data = json_decode($response);
+
+        if($data['status'] == "success"){
+            return $data['data'];
+        }
     }
 }
