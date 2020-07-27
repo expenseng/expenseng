@@ -176,17 +176,10 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
      //Profile Page
      Route::get('/profile', 'ProfileController@viewProfile')->name('profile');
      Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
-<<<<<<< HEAD
      Route::get('/profile/edit/{user_id}', 'ProfileController@edit')->name('users.edit');
      Route::put('/profile/edit/{user_id}', 'ProfileController@update')->name('users.update');
      Route::put('/profile/change_password/{user_id}', 'ProfileController@updatePassword')->name('users.change_password');
 
-=======
-     Route::get('/profile/edit/{user_id}', 'ProfileController@edit')->name('profile.edit');
-     Route::put('/profile/edit/{user_id}', 'ProfileController@update')->name('profile.update');
-     Route::put('/profile/change_password/{user_id}', 'ProfileController@updatePassword')->name('profile.change_password');
-     
->>>>>>> 3c6d0b5bbc6381d1187339f5de2fe02311667df9
      //Settings Page
      Route::get('/user/settings', 'SettingsController@index')->name('users.settings');
      Route::put('/settings/change_password/{user_id}', 'SettingsController@ChangePassword')->name('settings.change_password');
@@ -214,7 +207,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
       Route::get('/import', 'UploadController@importFile');
       Route::post('/import', 'UploadController@importExcel')->name('importExcel');
 
-      //SUBSCRIPTION 
+      //SUBSCRIPTION
       Route::get('/subcribe', 'Admin\SubscriptionController@index')
       ->name('subscribe.view');
       // Cabinet CRUD
