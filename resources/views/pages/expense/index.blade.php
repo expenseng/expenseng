@@ -17,7 +17,7 @@
 
 <section>
   <div class="container ">
-{{-- {{ Breadcrumbs::render('expense.reports') }} --}}
+{{ Breadcrumbs::render('expense.reports') }}
     <div class="row">
       <div class="col-md-12 col-lg-12 section-heading">
         <h1 class="section-heading-title">Expense Report</h1>

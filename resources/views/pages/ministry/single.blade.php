@@ -13,7 +13,7 @@
 @section('content')
 <!-- Section-->
 <div class="container">
-    {{-- {{ Breadcrumbs::render('ministry', $ministry) }} --}}
+    {{ Breadcrumbs::render('ministry', $ministry) }}
 </div>
 <div class="container d-flex centerize py-4">
     <div class="ministry-logo d-flex ">
