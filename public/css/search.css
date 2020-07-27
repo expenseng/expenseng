@@ -7,6 +7,9 @@
 body {
     font-family: "Lato", sans-serif;
 }
+.divpadd{
+    padding-left: 2.1%;
+}
 .hh1{
     font-style: normal;
     font-weight: bold;
