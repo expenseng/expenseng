@@ -307,16 +307,12 @@ p.label{
     background: #353A45;
     width: 65%;
     left: 0;
-    padding:1rem;
+    padding: 0.8rem;
     color: white;
-    font-size: var(--fs-h2);
+    font-size: var(--fs-h3);
     line-height: 190%;
     /* margin-top: -3rem; */
     text-align: end;
-}
-p#compu{
-    font-size: var(--fs-h3);
-    padding: 0.8rem;
 }
 div.expenses{
     display: flex;

@@ -95,7 +95,7 @@
 
 <!-- Ministry section -->
    <div>
-    <p class="label mb-5 specific">Ministry Expenditures</p>
+    <p class="label mb-3 specific">Ministry Expenditures</p>
     <div class="ministry container mt-4">
         <div class="ministry-top">
           <div class="ministry-heading">
