@@ -235,7 +235,7 @@ body{
 
 .ministry-cards:hover{
   cursor: pointer;
-  box-shadow: 0 .7rem 1.3rem rgba(0,0,0,.15)!important;;
+  box-shadow: 0 .7rem 1.3rem rgba(0,0,0,.15) !important;
 }
 
 .ministry-cards a {
