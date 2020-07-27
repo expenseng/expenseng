@@ -37,17 +37,50 @@ class ParsingSheet
         ]);
     }
 
+    /**
+     * @param $url
+     * @return bool
+     */
+    private function url_exists($url): bool
+    {
+        try {
+            $ch = curl_init($url);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_exec($ch);
+            $returnedStatusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            if ($returnedStatusCode == 404) {
+                curl_close($ch);
+                return false;
+            } else {
+                curl_close($ch);
+                return true;
+            }
+        } catch (\Exception $exception) {
+            return false;
+        }
+    }
+
     public function dailyReport()
     {
         $reports = Report::where('parsed', '=', false)->where('type', "LIKE", "daily%")->orderBy('id', 'DESC')->get();
         if (!empty($reports)) {
             foreach ($reports as $report) {
+                if (!$this->url_exists($report->link)) {
+                    echo "file not found ".$report->link."\n";
+                    continue;
+                }
                 try {
                     $basename = basename($report->link, '.xlsx');
                     $array = explode('-', $basename);
                     $date_pattern = 'd-m-Y';
                     if (strlen(end($array)) < 4) {
                         $date_pattern = 'd-m-y';
+                    } elseif (strlen(end($array)) > 4) {
+                        $basename = substr($basename, 0, strlen($basename) - 1);
                     }
                     $date = Carbon::createFromFormat($date_pattern, $basename)->format('Y-m-d');
                     $response = $this->http->post('api/', [
@@ -103,7 +136,7 @@ class ParsingSheet
                                 ]);
                             }
                         }
-                        if (array_key_exists('payment no', $test) || array_key_exists('payer code', $test)|| ($check1 && $check2 && $check3) || ($check1 && $check4 && $check5)) {
+                        if (array_key_exists('payment no', $test) || array_key_exists('payment no', $test)  || array_key_exists('payer code', $test)|| array_key_exists('code', $test)|| ($check1 && $check2 && $check3) || ($check1 && $check4 && $check5)) {
                             foreach ($responses as $data) {
                                 try {
                                     if ($check1 && $check4 && $check5) {
