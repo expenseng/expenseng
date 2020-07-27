@@ -10,7 +10,7 @@
         </div>
         <div v-if="showReply">
             <div class="container p-2" v-for="reply in replies" :key="reply.replyId">
-                <div class="container">
+                <div class="container" v-if="reply.numOfFlags < 1">
                     <div class="row container occupy">
                         <div class="col-sm-1 mt-1 row d-flex container">
                             <user-image :isSmall="true" :ownerId="reply.ownerId"></user-image>

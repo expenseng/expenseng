@@ -2,8 +2,9 @@
     <div class="pb-5">
         <!-- insert page loader here -->
         <div class="container mb-4 mt-4" v-if="comments.length > 0" v-for="data in comments">
-            <div class="card p-3">
+            <div class="card p-3" v-if="data.numOfFlags < 1">
                 <div class="container">
+                    <!-- <span v-if="data.numOfFlags > 0">Flagged</span> -->
                     <div class="row occupy">
                         <div class="col-sm-1 mt-1 row d-flex container">
                             <user-image :ownerId="data.ownerId"></user-image>

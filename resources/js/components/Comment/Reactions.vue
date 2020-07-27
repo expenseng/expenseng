@@ -73,9 +73,11 @@ export default {
                 showCancelButton: true,
             }).then((result) => {
                 if(result.value){
+                    this.data.numOfFlags += 1;
+
                     if(!this.reply){
                         //hide comment first
-                        this.$emit('hideComment', this.data.commentId);
+                        // this.$emit('hideComment', this.data.commentId);
 
                         //make request
                         this.comment.flagComment(this.data.commentId, this.data.ownerId)
@@ -113,6 +115,8 @@ export default {
                         }
                     });
     },
+
+    
 }
 </script>
 
