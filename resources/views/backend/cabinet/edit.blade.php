@@ -49,7 +49,7 @@
                                                 <input id="inputText4" name="position" type="text" value="{{$details->role}}"
                                                 class="form-control" placeholder="e.g position">
                                             </div>
-                                            <div class="form-group">
+                                            <div class="">
                                                 <label for="inputPassword">Image</label>
                                                 <input id="inputPassword" name="image" type="file" value="{{$details->avatar}}"
                                                 class="form-control">

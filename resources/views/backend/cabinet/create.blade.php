@@ -46,7 +46,7 @@
                                                 <input id="inputText4" name="position" type="text"
                                                 class="form-control" placeholder="e.g position" required>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="">
                                                 <label for="inputPassword">Image</label>
                                                 <input id="inputPassword" name="image" type="file" 
                                                 class="form-control">
