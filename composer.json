@@ -11,6 +11,7 @@
         "php": "^7.2.5",
         "cyber-duck/laravel-excel": "^2.1",
         "davejamesmiller/laravel-breadcrumbs": "5.3.2",
+        "doctrine/dbal": "^2.10",
         "fabpot/goutte": "^4.0",
         "fennb/phirehose": "dev-master",
         "fideloper/proxy": "^4.2",
