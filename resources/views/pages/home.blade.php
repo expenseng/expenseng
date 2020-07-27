@@ -110,6 +110,7 @@
            <a href="{{ route('ministries') }}" class="profile">View all profiles</a>
         </div>
         <div class="ministry-stat">
+          <a href="#" id="link"></a>
           <div id="ministry-chart" class="stat-a p-4">
             <div class="graph-cont">
                 <div id="chartOne"></div>

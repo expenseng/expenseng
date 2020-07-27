@@ -392,6 +392,10 @@ p.profile{
     min-height: 450px;
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04)
 }
+.ministry-stat:hover{
+    cursor: pointer;
+    box-shadow: 0 .7rem 1.4rem rgba(0,0,0,.15) !important;
+}
 .ministry-stat .exp-card{
     height: auto;
 }
