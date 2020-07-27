@@ -6,6 +6,7 @@ namespace App;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Console\Concerns\InteractsWithIO;
+use function GuzzleHttp\Psr7\str;
 
 class ParsingSheet
 {
@@ -80,7 +81,7 @@ class ParsingSheet
                     if (strlen(end($array)) < 4) {
                         $date_pattern = 'd-m-y';
                     } elseif (strlen(end($array)) > 4) {
-                        $basename = substr($basename, 0, strlen($basename) - 1);
+                        $basename = substr($basename, 0, strlen($basename) - (strlen(end($array))-4));
                     }
                     $date = Carbon::createFromFormat($date_pattern, $basename)->format('Y-m-d');
                     $response = $this->http->post('api/', [
