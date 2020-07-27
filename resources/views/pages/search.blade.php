@@ -28,7 +28,7 @@
         </form>
     </div>
 
-    <div class="container">
+    <div class="">
         <div class="div3">
             <p class="hh3">Popular tags:</p>
             <p class="hh4">infromation and technology</p>
