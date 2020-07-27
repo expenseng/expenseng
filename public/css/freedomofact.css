@@ -30,6 +30,8 @@ a.link:hover{
     margin-top: 3%;
 }
 
+
+
 @media screen and (max-width: 568px) {
     .long-link{
         word-break: break-all;

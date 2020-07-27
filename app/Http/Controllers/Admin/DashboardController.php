@@ -9,6 +9,7 @@ use App\Budget;
 use App\Expense;
 use App\Company;
 use App\Ministry;
+use App\Payment;
 
 class DashboardController extends Controller
 {
@@ -35,7 +36,7 @@ class DashboardController extends Controller
         $total_company = count(Company::all());
         $total_budgets = Budget::where('year', $year)->get('amount');
         $amount = 0; // initialize total budget amount
-        $recent_expenses = Expense::orderBY('id', 'DESC')
+        $recent_expenses = Payment::orderBY('payment_date', 'DESC')
             ->limit(7)
             ->get();
 

@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/extras/datatables/css/fixedHeader.bootstrap4.css">
     <script src="/extras/jquery/jquery-3.3.1.min.js"></script>
     <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-
+    <link rel="stylesheet" href="{{ asset('css/dash-table.css') }}" />
     <!-- causes toggle error in navbar -->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 
@@ -31,12 +31,11 @@
                     <div class="col-xl-12">
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header d-md-flex justify-content-between">
                                 <h3 class="mb-0">All Cabinet Members </h3>
                                 @can('add')
-                                <a href="{{route('cabinet.create')}}" class="btn btn-primary" style="float:right">CREATE A CABINET MEMBER</a>
+                                <a href="{{route('cabinet.create')}}" class="btn btn-primary mt-3 section-btn-margin" style="float:right">CREATE A CABINET MEMBER</a>
                                 @endcan
-                                <p></p>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">

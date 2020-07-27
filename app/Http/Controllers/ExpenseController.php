@@ -18,8 +18,15 @@ class ExpenseController extends Controller
 
     public function ministry()
     {
-        $collection['nondescriptive'] = Payment::where('description', '')->paginate(20)->onEachSide(1);
-        $collection['summary'] = Payment::where('description', '!=', '')->paginate(20)->onEachSide(1);
+        $year = date('Y');
+        $collection['nondescriptive'] = Payment::where('description', '')
+                                        ->whereYear('payment_date', '=', $year)
+                                        ->orderby('payment_date', 'desc')
+                                        ->paginate(20)->onEachSide(1);
+        $collection['summary'] = Payment::where('description', '!=', '')
+                                ->whereYear('payment_date', '=', $year)
+                                ->orderby('payment_date', 'desc')
+                                ->paginate(20)->onEachSide(1);
         $miniTableData['all'] = $this->ministriesFiveYear();
         $miniTableData['nondescriptive'] = $this->ministriesFiveYearNoDescription();
         return view('pages.expense.ministry')->with(['collection' => $collection,
@@ -54,20 +61,13 @@ class ExpenseController extends Controller
         return $payments;
     }
 
-    public function filterExpensesAll(Request $request)
+    public function filterExpensesAll($id, $date, $sort)
     { 
-        // $givenTime = date('Y-m-d');
+        // echo "id: {$id} <br>";
+        // echo "date: {$date} <br/>";
+        // echo "sort: {$sort} <br/>";
+       
         $givenTime = date('Y');
-        $id = $request->query('id');
-        echo 'query_id: '. $request->query('id');
-        echo "<br />";
-        echo 'query_date: '. $request->query('date');
-        echo "<br />";
-        echo 'input: '. $request->input('id');
-        echo "<br />";
-        echo 'fullurl: '. $request->fullUrl();
-        echo "<br />";
-        var_dump($request->all());
         
         if($id === 'apply-filter'){
             $option = "!=";
@@ -75,8 +75,8 @@ class ExpenseController extends Controller
             $option = "=";
         }
         // echo $id;
-        if ($request->has('date')){
-            $givenTime = $request->query('date');
+        if ($date != 'undefined'){
+            $givenTime = $date;
         }
         
         $day_pattern = '/(\d{4})-(\d{2})-(\d{2})/';
@@ -94,11 +94,11 @@ class ExpenseController extends Controller
         } elseif (preg_match($yr_pattern, $givenTime, $match)) {
             $data = $data->whereYear('payment_date', '=', "$givenTime");     
         } else {
-            $data = $data->where('payment_date', '=', "$givenTime");
+            $data = $data->where('payment_date', '=', "$givenTime"); 
         };
 
-        if ($request->has('sort')) {
-            $data = $data->orderby('amount', $request->query('sort'));
+        if ($sort != "undefined") {
+            $data = $data->orderby('amount', $sort);
         } else {
             $data = $data->orderby('payment_date', 'desc');
         }
@@ -107,11 +107,9 @@ class ExpenseController extends Controller
         
         if($id === 'apply-filter'){
             $collection['summary'] = $data;
-            // echo "I came to summary";
             return view('pages.expense.tables.ministries')->with('collection', $collection);
         }else if($id === 'apply-filter2'){
             $collection['nondescriptive'] = $data;
-            // echo "I came to nodesc";
             return view('pages.expense.tables.ministries_nodesc')->with('collection', $collection);
         }
     }

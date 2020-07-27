@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @push('css')
-	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
 @endpush
 @section('title')
-    <title>Loljkllk</title>
+	<title>FG Expense - Login</title>
 @endsection
 @section('content')
 <div class="limiter">

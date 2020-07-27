@@ -186,7 +186,7 @@ class UserController extends Controller
                 'email' => $request->email,
             ]);
             $auth = Auth::user();
-            Activites::select([
+            Activites::create([
                 'description' =>$auth->name.' updated user '. $request->name .' details',
                 'username' => $auth->name,
                 'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
