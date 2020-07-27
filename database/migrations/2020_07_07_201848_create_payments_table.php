@@ -21,7 +21,7 @@ class CreatePaymentsTable extends Migration
             $table->string('beneficiary', 191);
             $table->double('amount');
             $table->date('payment_date')->nullable();
-            $table->string('description');
+            $table->text('description');
             $table->timestamps();
         });
     }

@@ -10,6 +10,7 @@
         {{ Breadcrumbs::render('search') }}
     </div>
 
+    <div class="divpadd">
 
     <div class="div1">
         <h1 class="hh1">Search</h1>
@@ -88,8 +89,17 @@
 
     </div>
 
+    </div>
 
 @endsection
+
+@section('js')
+
+    <script src="{{ asset('js/index.js') }}"></script>
+
+
+@endsection
+
 
 
 

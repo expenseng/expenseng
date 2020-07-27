@@ -21,7 +21,14 @@
                                     <username :ownerId="reply.ownerId"></username>
                                     <p class="ml-3 grey-text small mt-1">{{ reply.createdAt | ago }}</p>
                                 </div>
-                                <i class="fas fa-ellipsis-h grey-text no-show"></i>
+                                <div class="dropdown">
+                                    <i class="fas fa-ellipsis-h grey-text dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#" v-if="comment.isMyComment(reply)" @click.prevent="edit(reply.commentId)">Edit</a>
+                                        <a class="dropdown-item" href="#" v-if="comment.isMyComment(reply)" @click.prevent="doDelete('parent', reply.commentId)">Delete</a>
+                                        <a class="dropdown-item" href="#" v-if="reply.numOfFlags < 1" @click.prevent="flag(reply.commentId)">Flag</a>
+                                    </div>
+                                </div>
                             </div>
                             <div>
                                 <p>{{ reply.content }}</p>
