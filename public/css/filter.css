@@ -8,6 +8,11 @@
     border: 1px solid#00945E;;
 }
 
+.btn{
+    background-color: #00945E;
+    color: #FFFFFF;
+}
+
 .btn.active {
     background-color: #00945E;
     color: #FFFFFF;
@@ -42,7 +47,6 @@ padding-right: 20px !important;
 
 .modal-content{
     width: 90%;
-    max-width: 360px;
 }
 #modal section{
 padding-left: 20px !important;
