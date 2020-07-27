@@ -68,7 +68,7 @@
                     <a href="/accessibility">Accessibility</a>
                     <a href="/privacy"> | Privacy Policy</a>
                     <a href="/FOIA"> | Freedom of Information Act</a>
-                    <a href="/faq"> | Faq</a>
+                    <a href="/faq"> | FAQ</a>
                 </div>
                 <div class="col-md-3">
                     <a href=""><span>&#169</span>2020EXPENSENG.com</a>
