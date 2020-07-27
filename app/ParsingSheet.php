@@ -55,6 +55,7 @@ class ParsingSheet
             $returnedStatusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             if ($returnedStatusCode == 404 || $returnedStatusCode == 0) {
                 curl_close($ch);
+                Report::whereLink($url)->delete();
                 return false;
             } else {
                 curl_close($ch);
