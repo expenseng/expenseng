@@ -42,7 +42,7 @@ class ParsingSheet
      * @param $url
      * @return bool
      */
-    private function url_exists($url): bool
+    private function urlExists($url): bool
     {
         try {
             $ch = curl_init($url);
@@ -53,7 +53,7 @@ class ParsingSheet
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_exec($ch);
             $returnedStatusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            if ($returnedStatusCode == 404) {
+            if ($returnedStatusCode == 404 || $returnedStatusCode == 0) {
                 curl_close($ch);
                 return false;
             } else {
@@ -70,7 +70,7 @@ class ParsingSheet
         $reports = Report::where('parsed', '=', false)->where('type', "LIKE", "daily%")->orderBy('id', 'DESC')->get();
         if (!empty($reports)) {
             foreach ($reports as $report) {
-                if (!$this->url_exists($report->link)) {
+                if (!$this->urlExists($report->link)) {
                     echo "file not found ".$report->link."\n";
                     continue;
                 }
