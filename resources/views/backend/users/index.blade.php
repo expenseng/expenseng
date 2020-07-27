@@ -56,6 +56,8 @@
                                     <th>SN</th>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Phone</th>
+                                    <td>Gender</td>
                                     <th>Role</th>
                                     <th>Status</th>
                                     @can('manage')
@@ -72,6 +74,8 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
+                                        <td>{{$user->phone_number}}</td>
+                                        <td>{{$user->gender}}</td>
                                         <td>{{implode(', ', $user->roles->pluck('name')->toArray())}}</td>
                                         <td>
                                             @if($user->status)

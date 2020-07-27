@@ -428,10 +428,10 @@ class SubscriptionController extends Controller
                                 <div class='div4'><img src='{{ asset('/img/Emoji.png') }}'
                                 alt=''></div>
                                 <h1 class='hh1 text'>Unsubscribed!</h1>
-                                <p class='hh2 text'>Dear $name, Your email has been changed for  <span class='hh3 text'>$sub_type</span> subscription.
+                                <p class='hh2 text'>Dear $name, Your email has been removed from  <span class='hh3 text'>$sub_type</span> subscription.
                                     Your subscription has been deleted. You will no longer be receiving emails from us 
                                     regarding updates on the report.
-                                <
+
                                 <div class='div5'>
                                     <div class='div7'>
                                         <a href='twitter.com/expenseng'><button class='div6'><img src='/img/twitter.png' 

@@ -85,17 +85,17 @@
    <!-- Expenses section -->
    <div id="expenses">
     <p class="label">Latest Government Expenses</p>
-    <div class="container p-3  p-lg-5">
+    <div class="container">
          <div class="expenses">
              <govt-expense></govt-expense>
-             <a href="{{route('expense.reports')}}" class="mt-4 mb-5">View Expenditure Report</a>
+             <a href="{{route('expense.reports')}}" class="mt-4 mb-5 mx-auto">View Expenditure Report</a>
          </div>
     </div>
    </div>
 
 <!-- Ministry section -->
    <div>
-    <p class="label mb-5 specific">Ministry Expenditures</p>
+    <p class="label mb-3 specific">Ministry Expenditures</p>
     <div class="ministry container mt-4">
         <div class="ministry-top">
           <div class="ministry-heading">
@@ -108,8 +108,8 @@
            </select> 
           </div>
            <a href="{{ route('ministries') }}" class="profile">View all profiles</a>
-         </div>
-         <div class="ministry-stat">
+        </div>
+        <div class="ministry-stat">
           <div id="ministry-chart" class="stat-a p-4">
             <div class="graph-cont">
                 <div id="chartOne"></div>
@@ -208,7 +208,7 @@
      </div>
    </div>
    <!-- Company section -->
-   <p class="label mt-5 mb-5 " id="compu">Companies that received money</p>
+   <p class="label mt-3 mb-3 " id="compu">Companies that received money</p>
    <div class="companies container d-flex justify-content-between">
     <div class="comp-card comp-card-1">
         <div class="awarded">
@@ -320,7 +320,7 @@
 <div class="convo container d-flex  justify-content-between mb-3">
             <div class="tweet col-md-5 col-lg-5 d-flex align-items-center justify-content-start">
                <div class="twt-handle">
-                <a href="#">@expenseNG</a>
+                <a href="https://twitter.com/expenseng">@expenseNG</a>
                </div>
             </div>
            <div class="query col-md-7 col-xl-5 col-sm-12">
@@ -329,7 +329,7 @@
                 Drop by our community page to ask questions,
                 propose new features, sign up for testing, and join the conversation about federal spending data.</p>
                 <p>Want to receive update in your inbox?</p>
-                <button id="open" class="toggle">Register</button>
+                @include('partials.modals.home-subscribe')
           </div>
    </div>
   </div>

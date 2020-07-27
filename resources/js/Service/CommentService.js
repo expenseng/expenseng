@@ -144,6 +144,41 @@ class CommentService{
         })
     }
 
+    deleteComment(commentId, ownerId){
+        return axios.post('/api/comments/'+commentId+'/delete', {
+            ownerId: ownerId
+        }).then(response => {
+            return response.data;
+        })
+    }
+
+    deleteReply(commentId, owner, replyId){
+        return axios.post('/api/comments/'+commentId+'/replies/'+replyId+'/delete', {
+            ownerId: owner
+        }).then(response => {
+            return response.data;
+        })
+    }
+
+    isMyComment(comment){
+        return this.email == comment.ownerId;
+    }
+
+    flagComment(commentId, ownerId){
+        return axios.patch('/api/comments/'+commentId+'/flag', {
+            ownerId: ownerId
+        }).then(response => {
+            return response.data;
+        })
+    }
+
+    flagReply(commentId, replyId, ownerId){
+        return axios.patch('/api/comments/'+commentId+'/replies/'+replyId+'/flag', {
+            ownerId: ownerId
+        }).then(response => {
+            return response.data;
+        })
+    }
 }
 
 export default CommentService;

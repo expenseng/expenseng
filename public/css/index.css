@@ -307,9 +307,9 @@ p.label{
     background: #353A45;
     width: 65%;
     left: 0;
-    padding:1rem;
+    padding: 0.5rem 1rem;
     color: white;
-    font-size: var(--fs-h2);
+    font-size: var(--fs-h3);
     line-height: 190%;
     /* margin-top: -3rem; */
     text-align: end;
@@ -318,7 +318,7 @@ div.expenses{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 .expenses a{
     color: #33A97E;
@@ -327,10 +327,13 @@ div.expenses{
 }
 .exp-card{
     width: 100%;
-    margin: 2%;
-    padding: 1.1rem;
+    /* margin: 2%; */
+    /* padding: 1.1rem; */
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04);
     box-sizing: border-box;
+    /* -ms-flex: 0 0 25%; */
+    flex: 0 0 23%;
+    max-width: 23%;
 }
  div.graph-cont{
    position: relative;
@@ -516,7 +519,7 @@ p.profile{
 
 }
 #open{ 
-    /* margin: 1rem auto; */
+    margin: 1rem 0;
     width: 10rem;
     padding: 0.4rem 3rem;
 }
@@ -540,6 +543,12 @@ p.profile{
 }
 .accessibility-text a:active{
     color: #005938;
+}
+.subscribe-button{
+    background-color: #33A97E;
+}
+.subscribe-form{
+    color: #353A45;
 }
 
 
