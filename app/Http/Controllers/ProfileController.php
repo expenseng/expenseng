@@ -141,52 +141,91 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), [
+        validator(
+            [
             'name' => ['required', 'string', 'max:255'],
-            'phone_number' => '',
-            'gender' => ['','string','max:20'],
-            'image' => '',
-            'date_of_birth' => '',
+            'phone_number' => 'required',
+            'gender' => ['rewuired','string','max:20'],
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'date_of_birth' => 'required',
             
         ]);
+        $img_url = User::findOrFail($id)->image;
 
-        $validator->validate();
+        //if image isn't changed
 
-        if (Gate::denies('add')) {
-            return redirect(route('profile'));
-        }
-
-        User::where('id', $id)->update([
-            'name' => $request->name,
-            'phone_number' => $request->phone_number,
-            'gender' => $request->gender,
-            'image' => $request->image,
-            'date_of_birth' => $request->date_of_birth,
-            
-        ]);
-
-        
-         User::where('id', $id)->update([
+        if ($request->image == '' ) {
+            $update = User::where('id', $id)->update(
+                [
                 'name' => $request->name,
                 'phone_number' => $request->phone_number,
                 'gender' => $request->gender,
-                'image' => $request->image,
+                //'image' => $base_url. '/uploads'. '/'. $imageName,
                 'date_of_birth' => $request->date_of_birth,
-              
-            ]);
+                ]
+
+            );
+
             $auth = Auth::user();
-            Activites::select([
-                'description' =>$auth->name.' updated user '. $request->name .' details',
-                'username' => $auth->name,
-                'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
-                'status' => 'pending'
+            if ($update) {
+            Activites::create([
+            'description' => $auth->name.' edited user profile '.$request->name.' details',
+            'username' => $auth->name,
+            'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+            'status' => 'pending'
+        ]);     
+                Session::flash('flash_message', ' user profile details edited successfully!');
+                return redirect(route('profile'));
+            } else {
+                Session::flash('error_message', 'User profile was not edited!');
+                return redirect()->back();
+            }
+        }
+        $base_url = \URL::to('/');
+        //replace spaces with dash in shortname
+        $name = preg_replace('/[[:space:]]+/', '-', $request->name);
 
+        //upload picture
+
+        $imageName = $name .time().'.'
+        .$request->image->getClientOriginalExtension();
+
+        $upload = $request->image->move('uploads', $imageName);
+
+        if ($upload) {
+            $update= User::where('id', $id)->update(
+                [
+                'name' => $request->name,
+                'phone_number' => $request->phone_number,
+                'gender' => $request->gender,
+                'image' => $base_url. '/uploads'. '/'. $imageName,
+                'date_of_birth' => $request->date_of_birth,
+    
                 
-            ]);
+                ]
+            );
+            $auth = Auth::user();
 
+            if ($update) {
+                
+            Activites::create([
+            'description' => $auth->name.' edited user profile with '.$request->name.' details',
+            'username' => $auth->name,
+            'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+            'status' => 'pending'
+        ]);     
+                 Session::flash('flash_message', ' user profile details edited successfully!');
+                return redirect(route('profile'));
+            } else {
+                Session::flash('error_message', ' user profile was not edited!');
+                return redirect()->back();
+            }
+        } else {
+            Session::flash('error_message', ' Image was not uploaded!');
+            return redirect()->back();
+        }
 
-        Session::flash('flash_message', 'User updated successfully!');
-        return redirect(route('profile'));
+        
     }
 
 
