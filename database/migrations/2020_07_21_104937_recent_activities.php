@@ -16,9 +16,9 @@ class RecentActivities extends Migration
         Schema::create('activites', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('description');
-            $table->string('username')->nullable();
-            $table->string('privilage')->nullable();
-            $table->string('status')->nullable();         
+            $table->string('username');
+            $table->string('privilage');
+            $table->string('status');         
             $table->timestamps();
         });
     }

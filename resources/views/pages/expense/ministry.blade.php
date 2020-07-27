@@ -5,7 +5,6 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   	<link rel="stylesheet" href="{{ asset('css/ministry-report-table.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/filter.css') }}">
-	<link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
 	<script src="https://kit.fontawesome.com/8f691340fb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
@@ -13,7 +12,7 @@
 
 @section('content')
 	<!-- Breadcrumb start -->
-	<header class="container ">
+	<header class="container">
 		{{ Breadcrumbs::render('expense.ministry') }}
 
 		{{-- <nav aria-label="breadcrumb">

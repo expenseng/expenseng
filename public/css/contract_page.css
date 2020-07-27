@@ -46,7 +46,8 @@
   /* breadcrumb */
 .breadcrumb{
 	padding-left: 20px;
-	font-size: var(--fs-h6);
+  font-size: var(--fs-h6);
+  font-weight: bold;
 }
 .header{
   margin-top: 5px !important;
@@ -212,6 +213,11 @@ input.se {
   line-height: 29px;
   font-size: 15px !important;
   /* width: auto; */
+}
+
+.shadow:hover{
+  cursor: pointer;
+  box-shadow: 0 .7rem 1.3rem rgba(0,0,0,.15)!important;;
 }
 
 header.container {

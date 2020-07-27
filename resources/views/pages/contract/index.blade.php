@@ -77,4 +77,10 @@
 @section('js')
 <script src="{{ asset('js/contract_page.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/index.js') }}"></script>
+<script>
+  $(".card-col").click(function() {
+    window.location = $(this).find("a").attr("href"); 
+    return false;
+});
+</script>
 @endsection
