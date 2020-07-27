@@ -88,8 +88,8 @@ class UserController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'role_id' => '',
             'status_id' => '',
-            'phone_number' => ['integer'],
-            'gender' => ['string'],
+            'phone_number' => '',
+            'gender' => '',
         ]);
 
         $validator->validate();
@@ -97,9 +97,9 @@ class UserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'status_id' => $request->status_id,
             'phone_number' => $request->phone_number,
             'gender' => $request->gender,
+            'status_id' => $request->status_id,
             'password' => Hash::make($request->password),
         ]);
 
@@ -117,7 +117,7 @@ class UserController extends Controller
 
         Session::flash('flash_message', 'New User successfully added!');
         return redirect(route('users.view'));
-    }
+      }
 
     /**
      * Display the specified resource.

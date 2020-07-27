@@ -61,7 +61,7 @@
                                             <div class="col-md-6">
                                                 <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" autocomplete="phone">
 
-                                                @error('email')
+                                                @error('phone_number')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -75,8 +75,8 @@
                                             <div class="col-md-6">
                                                 <select name="gender" class="form-control">
                                                     <option value=""  style="display:none">Select Gender</option>
-                                                        <option value="male">Male</option>
-                                                        <option value="female">Female</option>
+                                                        <option value="{{'male'}}">Male</option>
+                                                        <option value="{{'female'}}">Female</option>
                                                    
                                                 </select>
                                                 @error('gender')
