@@ -12,7 +12,7 @@
 @section('content')
     <div class="main-header">
       <div class="container">
-{{ Breadcrumbs::render('ministries') }}
+{{-- {{ Breadcrumbs::render('ministries') }} --}}
         <div class="row">
           <div class="col-md-12">
             <h1>Federal Ministries</h1>
