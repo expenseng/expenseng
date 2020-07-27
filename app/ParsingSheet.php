@@ -55,7 +55,7 @@ class ParsingSheet
                         "body" => json_encode([
                             "file_path" =>
                                 trim($report->link),
-                            "row_from" => 16,
+                            "row_from" => 0,
                             "row_to" => 1000,
                             "API_KEY" => "random25stringsisneeded"
                         ])
