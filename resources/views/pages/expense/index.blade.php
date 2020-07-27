@@ -141,11 +141,10 @@
         @include('partials.expense-table')
         </div>
       </div>
+      <div class="container tab-pane fade" id="comments" role="tabpanel">
+        @include('partials.comments')
+      </div>
     </div>
-    <div class="container tab-pane fade" id="comments" role="tabpanel">
-      @include('partials.comments')
-    </div>
-  </div>
 </div>
 
 

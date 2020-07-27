@@ -41,9 +41,6 @@ aside {
 	color: white;
 }
 
-.p-e {
-    width: vw;
-}
 
 .banner-hr{
 	width: 75%;
@@ -163,7 +160,7 @@ h4 {
 		flex-direction: row;
 		justify-content: space-between;
 	}
-	
+
 	.second input.col-md-5{
 		margin-top: 0;
 		width: 48%;
@@ -177,9 +174,6 @@ h4 {
         bottom: 2vh;
     }
 
-    .p-e {
-        width: vw;
-    }
 	.col-sm-8{
         position: relative;
         margin-left: 40vw;
