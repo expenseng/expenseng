@@ -90,6 +90,27 @@ td {
 
 }
 
+.row-m {
+text-indent: 2vw;
+  text-align: left;
+}
+
+.row-ministry{
+    text-align: left;
+
+}
+
+table, tr, td, tbody {
+    border: none !important;
+}
+
+th{
+    border-top: none !important;
+}
+
+.table-overflow {
+    text-indent: 10vw;
+}
 .clear {
     clear: both;
 }
