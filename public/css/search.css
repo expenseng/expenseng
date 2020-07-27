@@ -104,6 +104,12 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    margin-left: -49px;
+}
+@media only screen and (max-width: 839px) {
+    .div3{
+        margin-left: auto;
+    }
 }
 /* 18px */
 .hh3{
