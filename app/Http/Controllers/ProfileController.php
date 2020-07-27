@@ -161,7 +161,7 @@ class ProfileController extends Controller
                 'phone_number' => $request->phone_number,
                 'gender' => $request->gender,
                 //'image' => $base_url. '/uploads'. '/'. $imageName,
-                'date_of_birth' => $request->phone_number,
+                'date_of_birth' => $request->date_of_birth,
                 ]
 
             );
@@ -199,7 +199,7 @@ class ProfileController extends Controller
                 'phone_number' => $request->phone_number,
                 'gender' => $request->gender,
                 'image' => $base_url. '/uploads'. '/'. $imageName,
-                'date_of_birth' => $request->phone_number,
+                'date_of_birth' => $request->date_of_birth,
     
                 
                 ]
