@@ -11,8 +11,6 @@ include 'CabinetSeeder.php';
 include 'StatusSeeder.php';
 include 'RoleSeeder.php';
 include 'UserSeeder.php';
-include 'FeedbackSeeder.php';
-include 'ActivitySeeder.php';
 
 class DatabaseSeeder extends Seeder
 {
