@@ -110,6 +110,7 @@
            <a href="{{ route('ministries') }}" class="profile">View all profiles</a>
         </div>
         <div class="ministry-stat">
+          <a href="#" id="link"></a>
           <div id="ministry-chart" class="stat-a p-4">
             <div class="graph-cont">
                 <div id="chartOne"></div>
@@ -224,7 +225,7 @@
       <div class="ml-3">
        <div class="d-flex align-items-center mb-3">
          <img src="{{asset('/images/berger.jpg')}}" alt="">
-         <p class="mt-3">Julius Berger</p>
+         <p class="mt-3"><a href="/contractors/dangote">Dangote Group</a></p>
        </div>
        <div class="profile">
          <p>Total number of contracts awarded</p>
@@ -257,7 +258,7 @@
        <div class="ml-3">
         <div class="d-flex align-items-center mb-3">
           <img src="{{asset('/images/berger.jpg')}}" alt="">
-          <p class="mt-3">Julius Berger</p>
+          <p class="mt-3"><a href="/contractors/waterbase">WaterBase Engineering LTD.</a></p>
         </div>
         <div class="profile">
           <p>Total number of contracts awarded</p>
@@ -290,7 +291,7 @@
      <div class="ml-3">
         <div class="d-flex align-items-center mb-3">
           <img src="{{asset('/images/berger.jpg')}}" alt="">
-          <p class="mt-3">Julius Berger</p>
+          <p class="mt-3"><a href="/contractors/akinsoye">AKINYOSOYE OLADOTUN</a></p>
         </div>
         <div class="profile">
           <p>Total number of contracts awarded</p>

@@ -314,6 +314,9 @@ p.label{
     /* margin-top: -3rem; */
     text-align: end;
 }
+p a{
+    color: #33A97E;
+}
 div.expenses{
     display: flex;
     flex-wrap: wrap;
@@ -389,6 +392,10 @@ p.profile{
     min-height: 450px;
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04)
 }
+.ministry-stat:hover{
+    cursor: pointer;
+    box-shadow: 0 .7rem 1.4rem rgba(0,0,0,.15) !important;
+}
 .ministry-stat .exp-card{
     height: auto;
 }
@@ -442,6 +449,10 @@ p.profile{
     flex-direction: column;
     padding: 2rem;
     box-shadow: 0px 0px 1.01639px rgba(0, 0, 0, 0.04), 0px 4.06557px 8.13115px rgba(0, 0, 0, 0.04), 0px 16.2623px 24.3934px rgba(0, 0, 0, 0.04), 0px 24.3934px 32.5246px rgba(0, 0, 0, 0.04);
+}
+.comp-card:hover{
+    cursor: pointer;
+    box-shadow: 0 .7rem 1.4rem rgba(0,0,0,.15) !important;
 }
 .companies .comp-card:nth-child(even){
     margin: 2rem 0rem;
