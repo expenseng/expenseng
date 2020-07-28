@@ -29,7 +29,7 @@ class CabinetController extends Controller
         if (Gate::denies('add')) {
             return redirect(route('cabinet.view'));
         }
-        $ministry_codes = Ministry::all('code');
+        $ministry_codes = Ministry::all();
         return view('backend.cabinet.create')
         ->with(['ministry_codes' => $ministry_codes]);
     }
@@ -153,9 +153,17 @@ class CabinetController extends Controller
         if (Gate::denies('edit')) {
             return redirect(route('cabinet.view'));
         }
-
-        $details = Cabinet::findOrFail($id);
-        return view('backend.cabinet.edit')->with(['details' => $details]);
+        //get the particular cabinet details
+        $details = Cabinet::findOrFail($id); 
+        //get all ministry details
+        $ministry_codes = Ministry::orderBY('code', 'ASC')
+        ->where('code', '!=', $details->ministry_code)->get();
+    
+        //ministry name
+        $ministry_name = Ministry::where('code', '=', $details->ministry_code)->first()->name;
+        return view('backend.cabinet.edit')->with(['details' => $details,
+        'ministry_codes' => $ministry_codes, 'ministry_name' => $ministry_name
+        ]);
     }
 
     public function editCabinet(Request $request, $id)
