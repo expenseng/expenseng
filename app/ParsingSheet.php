@@ -53,9 +53,8 @@ class ParsingSheet
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_exec($ch);
             $returnedStatusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            if ($returnedStatusCode == 404 || $returnedStatusCode == 0) {
+            if ($returnedStatusCode == 404) {
                 curl_close($ch);
-                Report::whereLink($url)->delete();
                 return false;
             } else {
                 curl_close($ch);
@@ -68,7 +67,7 @@ class ParsingSheet
 
     public function dailyReport()
     {
-        $reports = Report::where('parsed', '=', false)->where('type', "LIKE", "daily%")->orderBy('id', 'DESC')->get();
+        $reports = Report::where('parsed', '=', false)->where('type', "LIKE", "daily%")->orderBy('id', 'ASC')->get();
         if (!empty($reports)) {
             foreach ($reports as $report) {
                 if (!$this->urlExists($report->link)) {

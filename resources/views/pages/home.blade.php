@@ -32,39 +32,18 @@
           </div>
       </div>
       <div class="gallery p-3"  data-flickity='{ "freeScroll": true }'>
+      @foreach ($expenses as $expense)
         <div class="card1 carousel-cell card">
              <p class="tag">New</p> 
           <div class="project">
-            <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
-            <p>  Ministry of Power, Works and Housing</p>
+            <p class="slightly-bold">{{ $expense->project }}</p>
               <div class="d-flex justify-content-between mt-2 align-items-center">
                   <p>Cost of Project: </p>
-                  <p id="cost">&#8358;20bn</p>
+                  <p id="cost">&#8358;{{ $expense->amount_spent }}</p>
               </div>
           </div>
         </div>
-        <div class="card2 card carousel-cell">
-        <p class="tag">New</p> 
-          <div class="project">
-            <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
-            <p>  Ministry of Power, Works and Housing</p>
-            <div class="d-flex justify-content-between mt-2">
-                <p>Cost of Project: </p>
-                <p id="cost">&#8358;20bn</p>
-            </div>
-          </div>
-        </div>
-        <div class="card3 carousel-cell card">
-        <p class="tag">New</p> 
-          <div class="project">
-            <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
-            <p>  Ministry of Power, Works and Housing</p>
-              <div class="d-flex justify-content-between mt-2 align-items-center">
-                  <p>Cost of Project: </p>
-                  <p id="cost">&#8358;20bn</p>
-              </div>
-          </div>
-        </div>
+      @endforeach
       </div>
     </div>
 
@@ -223,11 +202,11 @@
           </div>
       </div>
       <div class="ml-3">
-       <div class="d-flex align-items-center mb-3 company-data">
+       <div class="d-flex align-items-center mb-3">
          <img src="{{asset('/images/berger.jpg')}}" alt="">
          <p class="mt-3"><a href="/contractors/dangote">Dangote Group</a></p>
        </div>
-       <div class="profile my-3">
+       <div class="profile">
          <p>Total number of contracts awarded</p>
          <p>37</p>
          <p>2019</p>
@@ -237,7 +216,7 @@
          <p>Dr. Lars Ritchter</p>
          <p>2020</p>
        </div>
-       <div class="profile my-3">
+       <div class="profile">
          <p>Company twitter handle</p>
          <p id="handle">@juliusBerger0</p>
          <p>2019</p>
