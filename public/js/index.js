@@ -166,3 +166,21 @@ jQuery($=> {
       })
   }
 });
+
+//make cards clickable
+$(".comp-card").click(function() {
+    window.location = $(this).find("a").attr("href"); 
+    return false;
+});
+
+$(".ministry-stat").click(function() {
+    let ministry_list = document.getElementById('ministry_list');
+    let ministry = ministry_list.value;
+
+    let ministry_card = document.getElementsByClassName('ministry-stat');
+    let link = document.getElementById('link');
+    link.href = `/ministries/${ministry}`;
+    window.location = $(this).find("a").attr("href"); 
+    return false;
+});
+

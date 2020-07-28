@@ -74,6 +74,10 @@
   color: #00945E;
 }
 
+.card-body{
+  min-height: 23rem;
+}
+
 .first li.active{
   color: #00945E;
 }

@@ -85,10 +85,10 @@
    <!-- Expenses section -->
    <div id="expenses">
     <p class="label">Latest Government Expenses</p>
-    <div class="container p-3  p-lg-5">
+    <div class="container">
          <div class="expenses">
              <govt-expense></govt-expense>
-             <a href="{{route('expense.reports')}}" class="mt-4 mb-5">View Expenditure Report</a>
+             <a href="{{route('expense.reports')}}" class="mt-4 mb-5 mx-auto">View Expenditure Report</a>
          </div>
     </div>
    </div>
@@ -108,8 +108,9 @@
            </select> 
           </div>
            <a href="{{ route('ministries') }}" class="profile">View all profiles</a>
-         </div>
-         <div class="ministry-stat">
+        </div>
+        <div class="ministry-stat">
+          <a href="#" id="link"></a>
           <div id="ministry-chart" class="stat-a p-4">
             <div class="graph-cont">
                 <div id="chartOne"></div>
@@ -224,7 +225,7 @@
       <div class="ml-3">
        <div class="d-flex align-items-center mb-3">
          <img src="{{asset('/images/berger.jpg')}}" alt="">
-         <p class="mt-3">Julius Berger</p>
+         <p class="mt-3"><a href="/contractors/dangote">Dangote Group</a></p>
        </div>
        <div class="profile">
          <p>Total number of contracts awarded</p>
@@ -257,7 +258,7 @@
        <div class="ml-3">
         <div class="d-flex align-items-center mb-3">
           <img src="{{asset('/images/berger.jpg')}}" alt="">
-          <p class="mt-3">Julius Berger</p>
+          <p class="mt-3"><a href="/contractors/waterbase">WaterBase Engineering LTD.</a></p>
         </div>
         <div class="profile">
           <p>Total number of contracts awarded</p>
@@ -290,7 +291,7 @@
      <div class="ml-3">
         <div class="d-flex align-items-center mb-3">
           <img src="{{asset('/images/berger.jpg')}}" alt="">
-          <p class="mt-3">Julius Berger</p>
+          <p class="mt-3"><a href="/contractors/akinsoye">AKINYOSOYE OLADOTUN</a></p>
         </div>
         <div class="profile">
           <p>Total number of contracts awarded</p>
@@ -320,7 +321,7 @@
 <div class="convo container d-flex  justify-content-between mb-3">
             <div class="tweet col-md-5 col-lg-5 d-flex align-items-center justify-content-start">
                <div class="twt-handle">
-                <a href="#">@expenseNG</a>
+                <a href="https://twitter.com/expenseng">@expenseNG</a>
                </div>
             </div>
            <div class="query col-md-7 col-xl-5 col-sm-12">
@@ -329,7 +330,7 @@
                 Drop by our community page to ask questions,
                 propose new features, sign up for testing, and join the conversation about federal spending data.</p>
                 <p>Want to receive update in your inbox?</p>
-                <button id="open" class="toggle">Register</button>
+                @include('partials.modals.home-subscribe')
           </div>
    </div>
   </div>
