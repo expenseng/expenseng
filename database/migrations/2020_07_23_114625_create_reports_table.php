@@ -19,6 +19,7 @@ class CreateReportsTable extends Migration
             $table->string('type');
             $table->string('link', 191)->unique();
             $table->boolean('parsed');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -30,6 +31,8 @@ class CreateReportsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reports');
+        Schema::table('reports', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }
