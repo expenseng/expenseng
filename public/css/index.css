@@ -863,6 +863,11 @@ p.profile{
         font-weight: 200;
         text-align: left;
     }
+    .exp-card{
+        flex: 0 0 45%;
+        max-width: 45%;
+        margin-left: 0.8rem;
+    }
     #compu{
         font-size: 15px;
     }
