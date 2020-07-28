@@ -10,7 +10,7 @@
 
 
 .heading {
-    margin-top: 80px;
+    margin-top: 30px;
     margin-bottom: 20vh;
 }
 
@@ -92,6 +92,27 @@ td {
 
 }
 
+.row-m {
+text-indent: 2vw;
+  text-align: left;
+}
+
+.row-ministry{
+    text-align: left;
+
+}
+
+table, tr, td, tbody {
+    border: none !important;
+}
+
+th{
+    border-top: none !important;
+}
+
+.table-overflow {
+    text-indent: 3vw;
+}
 .clear {
     clear: both;
 }
@@ -148,6 +169,29 @@ select {
 }
 
 
+@media screen and (max-width: 1440px) {
+.table-overflow {
+    text-indent: 8vw;
+}
+}
+
+@media screen and (max-width: 1085px) {
+    .table-overflow {
+        text-indent: 13vw;
+    }
+    }
+
+@media screen and (max-width: 1024px) {
+    .table-overflow {
+        text-indent: 13vw;
+    }
+    }
+    @media screen and (max-width: 991px) {
+    .table-overflow {
+        text-indent: 8vw;
+    }
+}
+
 
 @media screen and (max-width: 850px) {
 .pagination{
@@ -167,7 +211,17 @@ select {
 
 
     }
+
+.table-overflow {
+    text-indent: 8vw;
 }
+}
+
+@media screen and (max-width: 768px) {
+    .table-overflow {
+        text-indent: 10vw;
+    }
+    }
 
 @media screen and (max-width: 461px) {
 .bd-1 h2, .bd-2 h2 {

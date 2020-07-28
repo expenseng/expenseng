@@ -10,7 +10,7 @@
         </div>
         <div v-if="showReply">
             <div class="container p-2" v-for="reply in replies" :key="reply.replyId">
-                <div class="container">
+                <div class="container" v-if="reply.numOfFlags < 1">
                     <div class="row container occupy">
                         <div class="col-sm-1 mt-1 row d-flex container">
                             <user-image :isSmall="true" :ownerId="reply.ownerId"></user-image>
@@ -21,7 +21,14 @@
                                     <username :ownerId="reply.ownerId"></username>
                                     <p class="ml-3 grey-text small mt-1">{{ reply.createdAt | ago }}</p>
                                 </div>
-                                <i class="fas fa-ellipsis-h grey-text no-show"></i>
+                                <div class="dropdown">
+                                    <i class="fas fa-ellipsis-h grey-text dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#" v-if="comment.isMyComment(reply)" @click.prevent="edit(reply.commentId)">Edit</a>
+                                        <a class="dropdown-item" href="#" v-if="comment.isMyComment(reply)" @click.prevent="doDelete('parent', reply.commentId)">Delete</a>
+                                        <a class="dropdown-item" href="#" v-if="reply.numOfFlags < 1" @click.prevent="flag(reply.commentId)">Flag</a>
+                                    </div>
+                                </div>
                             </div>
                             <div>
                                 <p>{{ reply.content }}</p>

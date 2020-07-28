@@ -1,9 +1,10 @@
 <template>
     <div>
         <div class="d-flex text-center align-content-center  icons justify-content-start">
-            <span class="d-flex mr-3 reaction" @click="upvote"><i class="far fa-thumbs-up"></i><p class="small mt-1">{{ data.numOfUpVotes }}</p></span>
-            <span class="d-flex mr-3 reaction" @click="downvote"><i class="far fa-thumbs-down"></i> <p class="small mt-1">{{ data.numOfDownVotes }}</p></span>
-            <span class="d-flex mr-3 reaction" v-if="!hideReply" @click="reply = !reply"><i class="far fa-comment"></i>
+            <span class="d-flex mr-3 reaction" title="Upvote this comment" @click="upvote"><i class="far fa-thumbs-up"></i><p class="small mt-1">{{ data.numOfUpVotes }}</p></span>
+            <span class="d-flex mr-3 reaction" title="Downvote this comment" @click="downvote"><i class="far fa-thumbs-down"></i> <p class="small mt-1">{{ data.numOfDownVotes }}</p></span>
+            <span class="d-flex mr-3 reaction" title="Flag this comment" v-if="data.numOfFlags < 1" @click="flag"><i class="far fa-flag"></i><p class="small mt-1">{{ data.numOfFlags }}</p></span>
+            <span class="d-flex mr-3 reaction" title="Reply to this comment" v-if="!hideReply" @click="reply = !reply"><i class="far fa-comment"></i>
                 <p class="small mt-1"> {{ data.numOfReplies > 0 ? "Replies " + data.numOfReplies : "Reply" }} </p>
             </span>
         </div>
@@ -62,6 +63,42 @@ export default {
                     .then(res => {
                         console.log(res);
                     })
+        },
+
+        flag(){
+            this.$swal({
+                title: 'Disturbing content? Flag this comment to report disturbing content.',
+                text: "Flagging this comment will remove it from the comments displayed to you.",
+                icon: 'warning',
+                showCancelButton: true,
+            }).then((result) => {
+                if(result.value){
+                    this.data.numOfFlags += 1;
+
+                    if(!this.reply){
+                        //hide comment first
+                        // this.$emit('hideComment', this.data.commentId);
+
+                        //make request
+                        this.comment.flagComment(this.data.commentId, this.data.ownerId)
+                                    .then(res => {
+                                        if(res.numOfFlags > 0){
+
+                                        }
+                                    })
+                    }else{
+                        //hide comment first
+                        this.$emit('hideComment', this.data.replyId);
+
+                        this.comment.flagReply(this.data.commentId, this.data.replyId, this.data.ownerId)
+                                    .then(res => {
+                                        console.log(res.data);
+                                    })
+                    }
+                }
+
+                console.log("Got here");
+            })
         }
     },
 
@@ -78,6 +115,8 @@ export default {
                         }
                     });
     },
+
+    
 }
 </script>
 

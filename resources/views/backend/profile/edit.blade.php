@@ -57,7 +57,9 @@
                                     <div class="" aria-labelledby="myModalLabel" aria-hidden="true">                                    
                                         <div class="modal-body">
                                             <center>
-                                            <img src="https://cdn0.iconfinder.com/data/icons/social-media-network-4/48/male_avatar-512.png" name="aboutme" width="auto" height="140" border="0" class="img-circle"></a>
+                                            <img src="{{$user->image}}" alt="{{$user->name . '\'s image'}}" style="height:300px; width:300px; border-radius: 100%" ><br>
+                                            <br>
+                                            <br>
                                             <h3 class="media-heading bg-primary">{{$user->name}}</h3>
                                             
                                             </center>
@@ -66,12 +68,12 @@
                                             <form method="POST" action="{{'/admin/profile/edit/' . $user->id}}"  class="px-3 mt-2" enctype="multipart/form-data" id="update_user">
                                                 @method('put')
                                                 @csrf
+                                                
+                                                <label for="image">upload picture</label>
+                                                <input id="image" name="image" type="file" value="{{$user->image}}">
+                                            
 
-                                                <input type="hidden" name="oldimage" value="image">
-                                                <div class="form-group n-0">
-                                                    <label for="profilePhoto" class="m-1">Upload Profile Photo</label>
-                                                    <input type="file" name="image" id="profilePhoto">
-                                                </div>
+                                                
                                                 <div class="form-group n-0">
                                                     <label for="name" class="m-1">Name</label>
                                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$user->name}}" required autocomplete="name" autofocus>

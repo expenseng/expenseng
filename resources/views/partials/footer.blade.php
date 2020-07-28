@@ -18,13 +18,10 @@
                                 <a  href="/">Home</a>
                             </li>
                             <li class="section-footer-links">
-                                <a  href="#">Daily Report</a>
+                                <a  href="{{ route('ministries') }}">Ministries</a>
                             </li>
                             <li class="section-footer-links">
-                                <a href="#">Ministry Report</a>
-                            </li>
-                            <li class="section-footer-links">
-                                <a href="#">Company Report</a>
+                                <a href="{{ route('contractors') }}">Contractors</a>
                             </li>
                         </ul>
 
@@ -33,10 +30,10 @@
                         <h6>Profile</h6>
                         <ul>
                             <li class="section-footer-links">
-                                <a  href="">Ministry Profile</a>
+                                <a  href="{{ route('expense.reports') }}">Expenditure Report</a>
                             </li>
                             <li class="section-footer-links">
-                                <a href="/company/search">Company Profile</a>
+                                <a href="{{ route('expense.ministry') }}">Ministry Spending</a>
                             </li>
                         </ul>
                     </div>
@@ -50,7 +47,7 @@
                                 <a href="{{ route('contact') }}">Contact us</a>
                             </li>
                             <li class="section-footer-links">
-                                <a href="{{ route('handles') }}">Government handles</a>
+                                <a href="{{ route('handles') }}">Government Twitter handles</a>
                             </li>
                             <li class="section-footer-links">
                                 <a href="{{ route('login') }}">Admin</a>
@@ -68,7 +65,7 @@
                     <a href="/accessibility">Accessibility</a>
                     <a href="/privacy"> | Privacy Policy</a>
                     <a href="/FOIA"> | Freedom of Information Act</a>
-                    <a href="/faq"> | Faq</a>
+                    <a href="/faq"> | FAQ</a>
                 </div>
                 <div class="col-md-3">
                     <a href=""><span>&#169</span>2020EXPENSENG.com</a>

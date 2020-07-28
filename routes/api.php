@@ -49,6 +49,20 @@ Route::patch('/comments/{commentId}/votes/downvote', 'CommentController@downvote
  */
 Route::post('/citizens', 'CitizenController@userApi');
 
+
+/**
+ * Delete & Flag Endpoints
+ */
+Route::post('/comments/{commentId}/delete', 'CommentController@deleteComment');
+Route::post('/comments/{commentId}/replies/{replyId}/delete', 'CommentController@deleteReply');
+Route::patch('/comments/{commentId}/replies/{replyId}/flag', 'CommentController@flagReply');
+Route::patch('/comments/{commentId}/flag', 'CommentController@flagComment');
+
+/*
+ * Email sending API
+ */
+Route::post('/sendmail', 'EmailController@sendMail')->name('sendmail');
+
 // ADMIN - Comments API Calls
  Route::group(['prefix' => '', 'middleware' => ['api'] ], function() {
     Route::get('/comments', 'Admin\CommentController@getAllComments'); //gets all application comments

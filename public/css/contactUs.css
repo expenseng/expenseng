@@ -40,6 +40,8 @@ input{
 aside {
 	color: white;
 }
+
+
 .banner-hr{
 	width: 75%;
 	background-color: #fff;
@@ -128,13 +130,50 @@ h4 {
 	border-radius: 5px;
 }
 
+.second{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.second input.col-md-5{
+	margin-top: 0;
+	width: 48%;
+}
+
+@media (min-width: 767px) and (max-width: 992px){
+	.second{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.second input.col-md-5{
+		margin-top: 0;
+		width: 100%;
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+	.second{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.second input.col-md-5{
+		margin-top: 0;
+		width: 48%;
+	}
+}
 
 @media only screen and (min-width: 200px){
 	span{
         position: relative;
         margin-left: -60vw;
         bottom: 2vh;
-	}
+    }
+
 	.col-sm-8{
         position: relative;
         margin-left: 40vw;
@@ -178,6 +217,13 @@ h4 {
         margin-left: -2vw;
     }
 }
+@media only screen and (min-width: 576px){
+	.second input.col-md-5{
+		flex: 0 0 48%;
+		max-width: 100%;
+    }
+}
+
 @media only screen and (min-width: 777px){
 	span{
 		margin-left: 5px;
@@ -362,4 +408,12 @@ span {
 	left: 70px;
 	padding: 8px 25px;
 }
+.fc-e{
+    width: 19vw;
+}
+
+.fc-p{
+    width: 19vw;
+}
+
 }

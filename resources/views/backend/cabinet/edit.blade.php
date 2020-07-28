@@ -49,15 +49,26 @@
                                                 <input id="inputText4" name="position" type="text" value="{{$details->role}}"
                                                 class="form-control" placeholder="e.g position">
                                             </div>
-                                            <div class="form-group">
+                                            <div class="">
                                                 <label for="inputPassword">Image</label>
                                                 <input id="inputPassword" name="image" type="file" value="{{$details->avatar}}"
                                                 class="form-control">
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword">Ministry Code</label>
-                                                <input id="inputPassword" name="code" type="text" value="{{$details->ministry_code}}" 
-                                                placeholder="e.g  0216" class="form-control">
+                                                <select name="code" class="form-control" >
+                                                
+                                                <option value="{{$details->code}}">{{$ministry_name}}</option>
+                                                @foreach($ministry_codes as $ministry_code)
+                                                @if ($ministry_code !== $details->code)
+                                                <option name="code" class="form-control" 
+                                                value="{{$ministry_code->code}}" >
+                                                    {{$ministry_code->name}}
+                                                </option>
+                                                @endif
+                                                @endforeach
+                                                </select>
+ 
                                             </div>
                                             <div class="form-group text-right">
                                                 <input type="submit" value="Edit Cabinet"
