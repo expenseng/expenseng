@@ -4,7 +4,6 @@
   <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
   <link rel="stylesheet" href="{{asset('css/ministry_list.css') }}">
   <link rel="stylesheet" href="{{ asset('css/contract_page.css') }}">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>FG Expense - Ministry List</title>
 @endpush
 
@@ -33,7 +32,7 @@
             <hr>
           </div>
           <div id="search-area" class="offset-md-1 col-md-5 mt-3 mt-md-0">
-            <input type="search" id="ministry_search" class="form-control form-control-lg mb-2 pl-3 fa"  placeholder="&#xf002; Search for a ministry">
+            <input type="search" id="ministry_search" class="form-control form-control-lg mb-2" style="font-family:Arial, FontAwesome" placeholder="&#xf002; Search for a ministry">
             <div id="ministryList"></div>
 
             @csrf
