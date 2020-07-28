@@ -6,6 +6,7 @@ namespace App;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Console\Concerns\InteractsWithIO;
+use function GuzzleHttp\Psr7\str;
 
 class ParsingSheet
 {
@@ -37,17 +38,51 @@ class ParsingSheet
         ]);
     }
 
+    /**
+     * @param $url
+     * @return bool
+     */
+    private function urlExists($url): bool
+    {
+        try {
+            $ch = curl_init($url);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_exec($ch);
+            $returnedStatusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            if ($returnedStatusCode == 404 || $returnedStatusCode == 0) {
+                curl_close($ch);
+                Report::whereLink($url)->delete();
+                return false;
+            } else {
+                curl_close($ch);
+                return true;
+            }
+        } catch (\Exception $exception) {
+            return false;
+        }
+    }
+
     public function dailyReport()
     {
         $reports = Report::where('parsed', '=', false)->where('type', "LIKE", "daily%")->orderBy('id', 'DESC')->get();
         if (!empty($reports)) {
             foreach ($reports as $report) {
+                if (!$this->urlExists($report->link)) {
+                    echo "file not found ".$report->link."\n";
+                    continue;
+                }
                 try {
                     $basename = basename($report->link, '.xlsx');
                     $array = explode('-', $basename);
                     $date_pattern = 'd-m-Y';
                     if (strlen(end($array)) < 4) {
                         $date_pattern = 'd-m-y';
+                    } elseif (strlen(end($array)) > 4) {
+                        $basename = substr($basename, 0, strlen($basename) - (strlen(end($array))-4));
                     }
                     $date = Carbon::createFromFormat($date_pattern, $basename)->format('Y-m-d');
                     $response = $this->http->post('api/', [
@@ -55,8 +90,6 @@ class ParsingSheet
                         "body" => json_encode([
                             "file_path" =>
                                 trim($report->link),
-                            "row_from" => 0,
-                            "row_to" => 1000,
                             "API_KEY" => "random25stringsisneeded"
                         ])
 
@@ -103,7 +136,7 @@ class ParsingSheet
                                 ]);
                             }
                         }
-                        if (array_key_exists('payment no', $test) || array_key_exists('payer code', $test)|| ($check1 && $check2 && $check3) || ($check1 && $check4 && $check5)) {
+                        if (array_key_exists('payment no', $test) || array_key_exists('payment no', $test)  || array_key_exists('payer code', $test)|| array_key_exists('code', $test)|| ($check1 && $check2 && $check3) || ($check1 && $check4 && $check5)) {
                             foreach ($responses as $data) {
                                 try {
                                     if ($check1 && $check4 && $check5) {
@@ -126,7 +159,7 @@ class ParsingSheet
                         echo "internal server error";
                     }
                 } catch (\Exception $exception) {
-                    echo "service timeout ".$report->link ." \n";
+                    echo "server error ".$report->link ." \n";
                     echo $exception->getMessage();
                     sleep(5);
                     continue;
