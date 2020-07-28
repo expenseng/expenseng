@@ -187,24 +187,27 @@
       <a href="{{route('expense.reports')}}"><button>Explore</button></a>
      </div>
    </div>
+
+
    <!-- Company section -->
    <p class="label mt-3 mb-3 " id="compu">Companies that received money</p>
    <div class="companies container d-flex justify-content-between">
+     @foreach ($companies as $company)
     <div class="comp-card comp-card-1">
-        <div class="awarded">
-          <div class="graph-cont">
-          <div id="chart4"></div>
-           </div>
+         <div class="awarded">
+            <div class="graph-cont">
+              <div id="chart{{$company -> id + 3}}"></div>
+            </div>
           <div class="ml-1 mr-2">
              <p class="exp-card1">Total amount Awarded</p>
              <p class="exp-card2">&#8358;123,446,332</p>
              <p class="exp-card3">2019</p>
           </div>
       </div>
-      <div class="ml-3">
+      <div class="ml-3 ">
        <div class="d-flex align-items-center mb-3">
          <img src="{{asset('/images/berger.jpg')}}" alt="">
-         <p class="mt-3"><a href="/contractors/dangote">Dangote Group</a></p>
+         <p class="mt-3"><a href="/contractors/{{$company-> shortname}}">{{$company -> name}}</a></p>
        </div>
        <div class="profile">
          <p>Total number of contracts awarded</p>
@@ -213,86 +216,21 @@
        </div>
        <div class="profile my-3">
          <p>Name of CEO</p>
-         <p>Dr. Lars Ritchter</p>
+         <p>{{$company -> ceo}}</p>
          <p>2020</p>
        </div>
        <div class="profile">
          <p>Company twitter handle</p>
-         <p id="handle">@juliusBerger0</p>
+         <p id="handle">{{$company -> twitter}}</p>
          <p>2019</p>
        </div>
     </div>
      </div>
-        <div class="comp-card">
-         <div class="awarded">
-           <div class="graph-cont">
-           <div id="chart5"></div>
-            </div>
-           <div class="ml-1 mr-2">
-              <p class="exp-card1">Total amount Awarded</p>
-              <p class="exp-card2">&#8358;123,446,332</p>
-              <p class="exp-card3">2019</p>
-           </div>
-       </div>
-       <div class="ml-3">
-        <div class="d-flex align-items-center mb-3">
-          <img src="{{asset('/images/berger.jpg')}}" alt="">
-          <p class="mt-3"><a href="/contractors/waterbase">WaterBase Engineering LTD.</a></p>
-        </div>
-        <div class="profile">
-          <p>Total number of contracts awarded</p>
-          <p>37</p>
-          <p>2019</p>
-        </div>
-        <div class="profile my-3">
-          <p>Name of CEO</p>
-          <p>Dr. Lars Ritchter</p>
-          <p>2020</p>
-        </div>
-        <div class="profile">
-          <p>Company twitter handle</p>
-          <p id="handle">@juliusBerger0</p>
-          <p>2019</p>
-        </div>
-     </div>
-      </div>
-      <div class="comp-card">
-       <div class="awarded">
-         <div class="graph-cont">
-         <div id="chart6"></div>
-          </div>
-         <div class="ml-1 mr-2">
-            <p class="exp-card1">Total amount Awarded</p>
-            <p class="exp-card2">&#8358;123,446,332</p>
-            <p class="exp-card3">2019</p>
-         </div>
-     </div>
-     <div class="ml-3">
-        <div class="d-flex align-items-center mb-3">
-          <img src="{{asset('/images/berger.jpg')}}" alt="">
-          <p class="mt-3"><a href="/contractors/akinsoye">AKINYOSOYE OLADOTUN</a></p>
-        </div>
-        <div class="profile">
-          <p>Total number of contracts awarded</p>
-          <p>37</p>
-          <p>2019</p>
-        </div>
-        <div class="profile my-3">
-          <p>Name of CEO</p>
-          <p>Dr. Lars Ritchter</p>
-          <p>2020</p>
-        </div>
-        <div class="profile">
-          <p>Company twitter handle</p>
-          <p id="handle">@juliusBerger0</p>
-          <p>2019</p>
-        </div>
-     </div>
-      </div>
+      @endforeach
       <div class="vll m-md-auto mx-sm-auto mt-sm-4">
         <a href="{{ route('contractors') }}" class="profile">View all Contracts</a>
        </div>
- </div>
+  </div>
  
 </div>
    <!-- conversation section -->
