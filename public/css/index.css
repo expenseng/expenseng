@@ -448,6 +448,7 @@ p.profile{
     display: flex;
     flex-direction: column;
     padding: 2rem;
+    align-items: center;
     box-shadow: 0px 0px 1.01639px rgba(0, 0, 0, 0.04), 0px 4.06557px 8.13115px rgba(0, 0, 0, 0.04), 0px 16.2623px 24.3934px rgba(0, 0, 0, 0.04), 0px 24.3934px 32.5246px rgba(0, 0, 0, 0.04);
 }
 .comp-card:hover{
@@ -463,7 +464,7 @@ p.profile{
 .awarded{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 2rem;
+    align-items: center;
 }
 .profile p:nth-child(1){
     font-size: var(--fs-h5);
@@ -487,8 +488,7 @@ p.profile{
 }
 .vll{
     align-items: center;
-    /* margin-left: 10rem;
-    margin: 50px; */
+    
 }
 .convo-background{
     background-image: linear-gradient(to bottom, rgba(49, 139, 108, 0.89), rgba(49, 139, 108, 0.89), rgba(49, 139, 108, 0.89)),url(../images/twitter1.png);
@@ -561,7 +561,10 @@ p.profile{
 .subscribe-form{
     color: #353A45;
 }
-
+.company-data{
+    align-items: center;
+    margin-top: 4.3rem;
+}
 
 /* Responsiveness */
 

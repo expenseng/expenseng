@@ -22,13 +22,15 @@ class HomeController extends Controller
         $collection['defence'] = Budget::where('project_name', 'Defence')->get();
         $collection['housing'] = Budget::where('project_name', 'Housing and Community Amenities')->get();
         $expenses = DB::select('select * from expenses');
+        $companies = DB::select('select * from companies limit 3');
         $ministries = Ministry::select('*')
                     ->orderby('shortname', 'asc')
                     ->get();
         return view('pages.home')->with([
             'charts'=> $collection,
             'ministries' => $ministries,
-            'expenses' => $expenses
+            'expenses' => $expenses,
+            'companies' => $companies
             ]);
     }
 
