@@ -328,6 +328,12 @@ div.expenses{
     font-size: 1.2rem;
     font-weight: bold;
 }
+.justify-content-lg-center .flex-wrap{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
 .exp-card{
     width: 100%;
     /* margin: 2%; */

@@ -8,6 +8,10 @@
     --fs-foot: 0.85rem;
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 .opacity-0 {
     opacity: 0 !important;
 }

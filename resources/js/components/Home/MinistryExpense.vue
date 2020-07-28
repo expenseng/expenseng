@@ -1,7 +1,7 @@
 <template>
     <div class="d-flex justify-content-lg-center w-100">
         <img :src="this.loaderGif" v-if="this.loading" alt="Loading..." srcset="">
-        <div class="d-flex flex-wrap w-100" v-else>
+        <div class="d-flex flex-wrap w-100 exp-card-container" v-else>
             <div class="exp-card" v-for="card in cards" :key="card">
                 <div class="graph-cont">
                     <chart :element="card.toLowerCase()" :label="card" 
