@@ -30,7 +30,7 @@ class EmailController extends Controller
 
             $url = self::API_URL ."/sendmailwithtemplate/";
             $body = [
-                "recipient" => "davidalenoghena@gmail.com",
+                "recipient" => "expenseng@gmail.com",
                 "sender" => "phemmylintry@gmail.com",
                 "subject" => "MESSAGE FROM EXPENSENG",
                 "cc" => " ",
