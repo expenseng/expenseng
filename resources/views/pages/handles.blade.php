@@ -30,7 +30,7 @@
 								<tr>
 									<th class="section-shadow row-ministry row-m port-row">Portfolio</th>
 									<th class="row-project text-center text-center" style="background-color: #00945E; color: #fff; height: 10vh; width: 20vw;">Incumbent</th>
-									<th class="row-company text-center">Twitter Handles</th>
+									<th class="row-company text-left table-overflow">Twitter Handles</th>
                                 </tr>
                             </thead>
 							<tbody class="t-body text-left">
