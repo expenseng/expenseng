@@ -4,9 +4,11 @@
 
 .breadcrumb{
     margin-top: 3%;
-    background-color: #f2f2f2;
+    background-color: #ffffff;
     font-weight: bold !important;
-    font-size: 1rem !important;
+    font-size: 1.1rem !important;
+    text-transform: uppercase;
+    padding-left: 0 !important;
 }
 
 .breadcrumb li a{
@@ -28,8 +30,10 @@ a:hover{
     font-weight: bold !important;
 }
 .breadcrumb-item+ .breadcrumb-item::before{
-    content: '/' !important;
-    font-weight: bold;
+    content: '.' !important;
+    font-size: 1.5rem !important;
+    font-weight: bolder !important;
+    margin-top: -0.6rem !important;
     color: #00945E;
 }
 
