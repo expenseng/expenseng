@@ -22,14 +22,17 @@ class EmailController extends Controller
     {
         try
         {
+            $name = $request->name;
             $email = $request->email;
             $message = $request->message;
+            $subject = $request->subject;
+            $phone = $request->phone;
 
-            $url = self::API_URL ."/awsmail/";
+            $url = self::API_URL ."/sendmailwithtemplate/";
             $body = [
                 "recipient" => "expenseng@gmail.com",
-                "sender" => "expenseng@gmail.com",
-                "subject" => $email,
+                "sender" => "phemmylintry@gmail.com",
+                "subject" => "MESSAGE FROM EXPENSENG",
                 "cc" => " ",
                 "bcc" => " ",
                 "htmlBody" => "
@@ -41,32 +44,22 @@ class EmailController extends Controller
                                 background-color: #F1F1F1;
                                              height: 100%;'>
                    <tr>
-                        <table style='background-color: #237D77; height: 279px; width:909px' align='center'>
-                            <tr>
-                                <td>
-                            <h></h>
-                                </td>
-                            </tr>
-                        </table>
-                    </tr>
-
-                <tr>
-                    <table border='0' cellpadding='0' cellspacing='0' style='max-width: 616px; width: 100%; margin-top: 30px; position: relative; top: -280px;' align='center' >
-                    <tr>
-                        <td style='background-color: #fff; background-color: #FFF; height: 100px; margin-top: 30px; padding-top: 0px; z-index: 999' align='center'>
-                            <img src='image/logo1.svg' style='background-color: #fff; position: relative; top: -18px;'>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style='background-color: #; position: relative; height: 258px; background-color: #F9F9F9; width: 110%; margin-left: -15px;' align='center'>
-                            <img src='image/emojione_open-mailbox-with-raised-flag.png' style='margin-top: -45px; position: relative; right: 2.5%;'>
-                            <h1 style=' font-weight: bold; position: relative; right: 2.5%; font-family: Lato;'>New Message</h1>
-                            <h2 style='font-size: 1.3rem; position: relative; right: 2.5%; font-family: Lato;'>You have a new inquiry from ExpenseNG</h2>
-                        </td>
-                    </tr>
+                        <table style='background-color: #00945E; height: 279px; width:930px' align='center'>
+                        <table border='0' cellpadding='0' cellspacing='0' style='max-width: 616px; width: 100%; margin-top: 30px; position: relative; top: -280px;' align='center' >
                     <tr style='background-color: #fff;'>
                         <td>
                             <table border='0' cellpadding='0' style='width: 100%; padding:  0px 40px '>
+                            <tr>
+                        <td style='background-color: #fff; background-color: #FFF; height: 100px; margin-top: 30px; padding-top: 0px; z-index: 999' align='center'>
+                            <h1 style='color: #00945E; background-color: #fff; position: relative; top: -18px;'><b>ExpenseNG.com</b></h1>
+                        </td>
+                    </tr>
+                            <tr>
+                        <td style='color:#000000; background-color: #00945E; position: relative; height: 200px; width: 110%;' align='center'>
+                            <h1 style='font-size: 30px;line-height: 124.8%; font-weight: bold; position: relative; right: 2.5%; font-family: Lato;'>New Message</h1>
+                            <h2 style='font-size: 22px;line-height: 124.8%; position: relative; right: 2.5%; font-family: Lato;'>You have a new inquiry from ExpenseNG</h2>
+                        </td>
+                    </tr>
                                 <tr>
                                     <td style='background-color: #fff;'>
                                         <h3 style='background-color: #fff;   font-family: Lato;
@@ -80,7 +73,7 @@ class EmailController extends Controller
                                             font-weight: normal;
                                             font-size: 20px;
                                             line-height: 152%;
-                                            color: #353A45;'>John Doe</p>
+                                            color: #353A45;'>$name</p>
                                         <hr>
                                     </td>
                                 </tr>
@@ -103,7 +96,7 @@ class EmailController extends Controller
                                             font-weight: normal;
                                             font-size: 20px;
                                             line-height: 152%;
-                                            color: #00945E;'>johndoe@gmail.com</p>
+                                            color: #00945E;'>$email</p>
                                         <hr style='margin-right: 30px'>
                                     </td>
                                     <td style='background-color: #fff; max-width: 270px; width: 50%;'>
@@ -118,7 +111,7 @@ class EmailController extends Controller
                                             font-weight: normal;
                                             font-size: 20px;
                                             line-height: 152%;
-                                            color: #00945E;'>+2347035276354</p>
+                                            color: #00945E;'>$phone</p>
                                         <hr style=''>
                                     </td>
                                 </tr>
@@ -141,7 +134,7 @@ class EmailController extends Controller
                                             font-weight: normal;
                                             font-size: 20px;
                                             line-height: 152%;
-                                            color: #353A45;'>Hello</p>
+                                            color: #353A45;'>$subject</p>
                                         <hr>
                                     </td>
                                 </tr>
@@ -164,11 +157,11 @@ class EmailController extends Controller
                                             font-weight: normal;
                                             font-size: 20px;
                                             line-height: 152%;
-                                            color: #353A45; margin-bottom: 132px;'>Ullamcorper velit, eleifend at neque dictumst massa arcu lectus mi. Porttitor id morbi fusce augue. In in erat pharetra, lorem vitae. Id eget adipiscing phasellus elementum eu.</p>
+                                            color: #353A45; margin-bottom: 132px;'>$message</p>
 
                                     </td>
                                 </tr>
-                        <td align='center'>
+                        <td align='center'><a href='https://expenseng.com/login'>
                             <button style='background-color: #fff; padding: 20px 40px;
                                 width:  15rem;
                                 height: 4.4rem;
@@ -177,14 +170,15 @@ class EmailController extends Controller
                                 box-sizing: border-box;
                                 box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 4px 8px rgba(0, 0, 0, 0.04);
                                 border-radius: 8px;
-                                margin-bottom: 20px;
+                                margin-bottom: 10px;
                                 font-family: Lato !important;
                                 font-style: normal !important;
                                 font-weight: bold !important;
                                 font-size: 1rem;
                                 line-height: 152%;
+                                padding: 20px 40px
                                 color: #FFFFFF !important;' onMouseOver='this.style.color='#b2beb5''
-                   onMouseOut='this.style.color='#FFF''>Go to admin site</button>
+                   onMouseOut='this.style.color='#FFF''>Go to admin site</button></a>
                         </td>
                             </table>
                         </td>
@@ -193,9 +187,18 @@ class EmailController extends Controller
                     </tr>
                 </table>
                 </table>
-                    <div align='center' style='margin-top: -230px'>
-                                <img src='footer.png'>
-                        </div>
+                            <tr>
+                                <td>
+                            <h></h>
+                                </td>
+                            </tr>
+                        </table>
+                    </tr>
+
+                <tr>
+                    <div background-color: #1F2430;'>
+                        <p style='color: #000000'>Copyright 2020 ExpenseNG.com All rights reserved</p>
+                    </div>
                 </center>
                 </body>"
             ];
