@@ -14,7 +14,16 @@ class ExpenseController extends Controller
 
     public function report()
     {
-        return view('pages.expense.index');
+        $today = date('Y-m-d');
+        $collection['daily'] = Payment::where('description', '!=', '')
+                                ->whereDate('payment_date', '=', $today)
+                                ->orderby('payment_date', 'desc')
+                                ->paginate(20)->onEachSide(1);
+        $miniTableData['all'] = $this->ministriesFiveYear();
+        return view('pages.expense.index')
+        ->with(['collection' => $collection,
+                'miniTableData' => $miniTableData
+                ]);
     }
 
     public function ministry()
