@@ -155,11 +155,10 @@ class ParsingSheet
                         };
                     }
                     if ($status == 500) {
-                        echo "internal server error";
+                        echo "internal server error \n";
                     }
                 } catch (\Exception $exception) {
                     echo "server error ".$report->link ." \n";
-                    echo $exception->getMessage();
                     sleep(5);
                     continue;
                 }
