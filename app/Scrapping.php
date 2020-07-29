@@ -262,7 +262,7 @@ class Scrapping
 
     public function filterUrl(string $url)
     {
-        if(preg_match('/2018/',$url)){
+        if (preg_match('/2018/', $url)) {
             return ['link'=>$url ,'type' => explode('/', $url)[4],'parsed'=>false];
         }
         return ['link'=>$url ,'type' => explode('/', $url)[5],'parsed'=>false];
@@ -322,5 +322,61 @@ class Scrapping
         array_push($array, end($this->admin_cat));
         $this->allLatest = $array;
         return $this;
+    }
+
+    /**
+     * @param $string
+     * @return array|bool
+     */
+    public static function checkCompany($string)
+    {
+        try {
+            $string = explode('LIMITED', $string)[0];
+            $string = explode('LTD', $string)[0];
+            $GLOBALS['array'] = array();
+            $header = ['user-agent' => "Googlebot"];
+            $test = HttpClient::create(['headers' => $header]);
+            $client = new Client($test);
+            $crawler = $client->request('GET', 'https://ng-check.com/');
+            $form = $crawler->filter('form')->form();
+            $test = $crawler->selectLink('Search');
+            $crawler = $client->submit($form, ['query'=>$string]);
+            $crawler->filter('a')->each(function ($node) use ($string, $client) {
+                $name = $node->html();
+                if ($name  == $string) {
+                    $page2  = $client->click($node->link());
+                    $page2->filter('table')->eq(2)->each(function ($node) {
+                        $node->filter('td')->each(function ($node) {
+                            array_push($GLOBALS['array'], $node->html());
+                        });
+                    });
+                } else {
+                    $string1 = explode(" ", implode('\.', explode('.', $string)));
+                    $string = implode('\.', explode('.', $string));
+                    if (preg_match('/'.$string.'/i', $name)) {
+                        $page2  = $client->click($node->link());
+                        $page2->filter('table')->eq(2)->each(function ($node) {
+                            $node->filter('td')->each(function ($node) {
+                                array_push($GLOBALS['array'], $node->html());
+                            });
+                        });
+                    } elseif (preg_match('/'.$string1[0].'/i', $name)) {
+                        $page2  = $client->click($node->link());
+                        $page2->filter('table')->eq(2)->each(function ($node) {
+                            $node->filter('td')->each(function ($node) {
+                                array_push($GLOBALS['array'], $node->html());
+                            });
+                        });
+                    }
+                }
+            });
+            $array = array();
+            for ($i = 0; $i < count($GLOBALS['array']); $i+=2) {
+                array_push($array, ['name'=> $GLOBALS['array'][$i],'role' => $GLOBALS['array'][$i+1]]);
+            }
+            return $array;
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 }

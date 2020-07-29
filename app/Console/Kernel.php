@@ -31,6 +31,7 @@ class Kernel extends ConsoleKernel
          $schedule->command('ReportLogging')->daily();
          $schedule->command('parse:daily')->everyMinute();
          $schedule->command('parse:sheet')->everyMinute();
+         $schedule->command('queue:work --once')->everyFifteenMinutes();
     }
 
     /**
