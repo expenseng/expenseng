@@ -22,7 +22,6 @@
                                 </a>
                             @endempty
                         </td>
-                        <td>{{$expense->description}}</td>
                         <td>{{$expense->beneficiary}}</td>
                         <td>&#8358;{{ number_format($expense->amount) }}</td>
                         <td>{{ date('d-m-Y', strtotime($expense->payment_date))}}</td>
