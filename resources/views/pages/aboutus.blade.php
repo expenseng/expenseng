@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @push('css')
-<title>FG Expense - Home</title>
+<title>FG Expense - About</title>
 <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
 <link rel="stylesheet" href="{{ asset('css/aboutus.style.css')}}">
 @endpush

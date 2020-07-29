@@ -32,39 +32,18 @@
           </div>
       </div>
       <div class="gallery p-3"  data-flickity='{ "freeScroll": true }'>
+      @foreach ($expenses as $expense)
         <div class="card1 carousel-cell card">
              <p class="tag">New</p> 
           <div class="project">
-            <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
-            <p>  Ministry of Power, Works and Housing</p>
+            <p class="slightly-bold">{{ $expense->project }}</p>
               <div class="d-flex justify-content-between mt-2 align-items-center">
                   <p>Cost of Project: </p>
-                  <p id="cost">&#8358;20bn</p>
+                  <p id="cost">&#8358;{{ $expense->amount_spent }}</p>
               </div>
           </div>
         </div>
-        <div class="card2 card carousel-cell">
-        <p class="tag">New</p> 
-          <div class="project">
-            <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
-            <p>  Ministry of Power, Works and Housing</p>
-            <div class="d-flex justify-content-between mt-2">
-                <p>Cost of Project: </p>
-                <p id="cost">&#8358;20bn</p>
-            </div>
-          </div>
-        </div>
-        <div class="card3 carousel-cell card">
-        <p class="tag">New</p> 
-          <div class="project">
-            <p class="slightly-bold">Contruction of Lagos-Ibadan Express road </p>
-            <p>  Ministry of Power, Works and Housing</p>
-              <div class="d-flex justify-content-between mt-2 align-items-center">
-                  <p>Cost of Project: </p>
-                  <p id="cost">&#8358;20bn</p>
-              </div>
-          </div>
-        </div>
+      @endforeach
       </div>
     </div>
 
@@ -85,17 +64,17 @@
    <!-- Expenses section -->
    <div id="expenses">
     <p class="label">Latest Government Expenses</p>
-    <div class="container p-3  p-lg-5">
+    <div class="container">
          <div class="expenses">
              <govt-expense></govt-expense>
-             <a href="{{route('expense.reports')}}" class="mt-4 mb-5">View Expenditure Report</a>
+             <a href="{{route('expense.reports')}}" class="mt-4 mb-5 mx-auto">View Expenditure Report</a>
          </div>
     </div>
    </div>
 
 <!-- Ministry section -->
    <div>
-    <p class="label mb-5 specific">Ministry Expenditures</p>
+    <p class="label mb-3 specific">Ministry Expenditures</p>
     <div class="ministry container mt-4">
         <div class="ministry-top">
           <div class="ministry-heading">
@@ -108,8 +87,9 @@
            </select> 
           </div>
            <a href="{{ route('ministries') }}" class="profile">View all profiles</a>
-         </div>
-         <div class="ministry-stat">
+        </div>
+        <div class="ministry-stat">
+          <a href="#" id="link"></a>
           <div id="ministry-chart" class="stat-a p-4">
             <div class="graph-cont">
                 <div id="chartOne"></div>
@@ -207,24 +187,27 @@
       <a href="{{route('expense.reports')}}"><button>Explore</button></a>
      </div>
    </div>
+
+
    <!-- Company section -->
-   <p class="label mt-5 mb-5 " id="compu">Companies that received money</p>
+   <p class="label mt-3 mb-3 " id="compu">Companies that received money</p>
    <div class="companies container d-flex justify-content-between">
+     @foreach ($companies as $company)
     <div class="comp-card comp-card-1">
-        <div class="awarded">
-          <div class="graph-cont">
-          <div id="chart4"></div>
-           </div>
+         <div class="awarded">
+            <div class="graph-cont">
+              <div id="chart{{$company -> id + 3}}"></div>
+            </div>
           <div class="ml-1 mr-2">
              <p class="exp-card1">Total amount Awarded</p>
              <p class="exp-card2">&#8358;123,446,332</p>
              <p class="exp-card3">2019</p>
           </div>
       </div>
-      <div class="ml-3">
+      <div class="ml-3 ">
        <div class="d-flex align-items-center mb-3">
          <img src="{{asset('/images/berger.jpg')}}" alt="">
-         <p class="mt-3">Julius Berger</p>
+         <p class="mt-3"><a href="/contractors/{{$company-> shortname}}">{{$company -> name}}</a></p>
        </div>
        <div class="profile">
          <p>Total number of contracts awarded</p>
@@ -233,86 +216,21 @@
        </div>
        <div class="profile my-3">
          <p>Name of CEO</p>
-         <p>Dr. Lars Ritchter</p>
+         <p>{{$company -> ceo}}</p>
          <p>2020</p>
        </div>
        <div class="profile">
          <p>Company twitter handle</p>
-         <p id="handle">@juliusBerger0</p>
+         <p id="handle">{{$company -> twitter}}</p>
          <p>2019</p>
        </div>
     </div>
      </div>
-        <div class="comp-card">
-         <div class="awarded">
-           <div class="graph-cont">
-           <div id="chart5"></div>
-            </div>
-           <div class="ml-1 mr-2">
-              <p class="exp-card1">Total amount Awarded</p>
-              <p class="exp-card2">&#8358;123,446,332</p>
-              <p class="exp-card3">2019</p>
-           </div>
-       </div>
-       <div class="ml-3">
-        <div class="d-flex align-items-center mb-3">
-          <img src="{{asset('/images/berger.jpg')}}" alt="">
-          <p class="mt-3">Julius Berger</p>
-        </div>
-        <div class="profile">
-          <p>Total number of contracts awarded</p>
-          <p>37</p>
-          <p>2019</p>
-        </div>
-        <div class="profile my-3">
-          <p>Name of CEO</p>
-          <p>Dr. Lars Ritchter</p>
-          <p>2020</p>
-        </div>
-        <div class="profile">
-          <p>Company twitter handle</p>
-          <p id="handle">@juliusBerger0</p>
-          <p>2019</p>
-        </div>
-     </div>
-      </div>
-      <div class="comp-card">
-       <div class="awarded">
-         <div class="graph-cont">
-         <div id="chart6"></div>
-          </div>
-         <div class="ml-1 mr-2">
-            <p class="exp-card1">Total amount Awarded</p>
-            <p class="exp-card2">&#8358;123,446,332</p>
-            <p class="exp-card3">2019</p>
-         </div>
-     </div>
-     <div class="ml-3">
-        <div class="d-flex align-items-center mb-3">
-          <img src="{{asset('/images/berger.jpg')}}" alt="">
-          <p class="mt-3">Julius Berger</p>
-        </div>
-        <div class="profile">
-          <p>Total number of contracts awarded</p>
-          <p>37</p>
-          <p>2019</p>
-        </div>
-        <div class="profile my-3">
-          <p>Name of CEO</p>
-          <p>Dr. Lars Ritchter</p>
-          <p>2020</p>
-        </div>
-        <div class="profile">
-          <p>Company twitter handle</p>
-          <p id="handle">@juliusBerger0</p>
-          <p>2019</p>
-        </div>
-     </div>
-      </div>
+      @endforeach
       <div class="vll m-md-auto mx-sm-auto mt-sm-4">
         <a href="{{ route('contractors') }}" class="profile">View all Contracts</a>
        </div>
- </div>
+  </div>
  
 </div>
    <!-- conversation section -->
@@ -320,7 +238,7 @@
 <div class="convo container d-flex  justify-content-between mb-3">
             <div class="tweet col-md-5 col-lg-5 d-flex align-items-center justify-content-start">
                <div class="twt-handle">
-                <a href="#">@expenseNG</a>
+                <a href="https://twitter.com/expenseng">@expenseNG</a>
                </div>
             </div>
            <div class="query col-md-7 col-xl-5 col-sm-12">
@@ -329,7 +247,7 @@
                 Drop by our community page to ask questions,
                 propose new features, sign up for testing, and join the conversation about federal spending data.</p>
                 <p>Want to receive update in your inbox?</p>
-                <button id="open" class="toggle">Register</button>
+                @include('partials.modals.home-subscribe')
           </div>
    </div>
   </div>

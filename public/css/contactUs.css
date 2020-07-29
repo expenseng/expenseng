@@ -40,6 +40,8 @@ input{
 aside {
 	color: white;
 }
+
+
 .banner-hr{
 	width: 75%;
 	background-color: #fff;
@@ -158,7 +160,7 @@ h4 {
 		flex-direction: row;
 		justify-content: space-between;
 	}
-	
+
 	.second input.col-md-5{
 		margin-top: 0;
 		width: 48%;
@@ -170,7 +172,8 @@ h4 {
         position: relative;
         margin-left: -60vw;
         bottom: 2vh;
-	}
+    }
+
 	.col-sm-8{
         position: relative;
         margin-left: 40vw;
@@ -405,4 +408,12 @@ span {
 	left: 70px;
 	padding: 8px 25px;
 }
+.fc-e{
+    width: 19vw;
+}
+
+.fc-p{
+    width: 19vw;
+}
+
 }

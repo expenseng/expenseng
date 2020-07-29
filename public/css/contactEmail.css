@@ -1,0 +1,324 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+
+*, body {
+    padding: 0;
+    margin: 0;
+    font-weight: normal;
+     background-color: #F9F9F9;
+    }
+
+.inner-con{
+    position: relative;
+    top: 3vh;
+    width: 70vw;
+    margin-bottom: 5vw;
+    padding-bottom: 0px;
+    overflow: hidden;
+    margin-left: auto;
+}
+
+.low-bd {
+        height: 20vh !important
+    }
+
+.logo-sec {
+    background-color: #FFF;
+    height: 100px;
+    margin-top: 30px;
+    padding-top: 0px;
+}
+
+.logo-img{
+    position: relative;
+    top: -18px;
+}
+
+.mail-img {
+    margin-top: 21px;
+}
+
+.heading-area {
+    position: relative;
+    height: 258px;
+    background-color: #F9F9F9;
+    width: 110%;
+    margin-left: -15px;
+
+}
+
+.head-text{
+    text-align: center;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2.3vw;
+    line-height: 124.8%;
+    color: #353A45;
+    margin-top: 22px;
+    margin-bottom: 49px;
+}
+
+.head-text h1{
+     font-weight: bold;
+
+}
+
+.head-text h2 {
+    font-size: 2rem;
+
+}
+
+.head-text, .head-text h2, .head-text h1, .mail-img {
+    position: relative;
+    right: 2.5%
+}
+
+.message-area {
+    background-color: #FFFFFF;
+    padding-top: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.message-area h3 {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 21px;
+    line-height: 152%;
+    color: #353A45;
+}
+
+.message-area p {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 152%;
+    color: #353A45;
+}
+
+.em-ph p{
+    color: #00945E;
+}
+
+.main-mess {
+
+    margin-bottom: 132px;
+}
+
+button {
+    padding: 20px 40px;
+    width:  18.92vw;
+    height: 11.8vh;
+    background-color: #00945E !important;
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 4px 8px rgba(0, 0, 0, 0.04);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 152%;
+    color: #FFFFFF;
+}
+
+footer{
+    background-color: #1F2430;
+    height: 50px;
+    text-align: center;
+    padding: 15px;
+    margin-top: 50px
+}
+
+footer span {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: #FFFFFF;
+}
+
+.copy {
+    position: relative;
+    font-size: 20px;
+    top: 2px;
+}
+
+
+
+@media screen and (max-width: 1054px) {
+    .btn {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.2rem;
+    line-height: 152%;
+    color: #FFFFFF;
+}
+
+.head-text, .head-text h2, .head-text h1, .mail-img {
+    position: relative;
+    right: 1%
+}
+
+}
+
+@media screen and (max-width: 877px) {
+    .btn {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.1rem;
+    line-height: 152%;
+    color: #FFFFFF;
+}
+
+
+button {
+       width: 30vw;
+    }
+
+.head-text, .head-text h2, .head-text h1, .mail-img {
+    position: relative;
+    right: 1%;
+    font-size: 1.8rem
+}
+
+}
+
+@media screen and (max-width: 767px) {
+    .low-bd {
+        height: 150vh !important
+    }
+
+.head-text h1 {
+    font-size: 1.6rem;
+
+}
+
+.head-text h2 {
+    font-size: 1.4rem;
+
+}
+
+.message-area h3, .message-area p{
+    font-size: 1rem
+    }
+.message-area p{
+
+    }
+
+button {
+    width: 50vw;
+    }
+}
+
+@media screen and (max-width: 464px) {
+    .low-bd {
+        height: 120px !important
+    }
+
+
+
+    .heading-area{
+    height: 33vh;
+    padding-bottom: 50px;
+    padding-left: 0px;
+    padding-right: 0px;
+
+    }
+
+        .head-text h1{
+        font-size: 1.6rem;
+        font-weight: 800
+    }
+    .head-text h2{
+        font-size: 1.3rem
+    }
+
+.head-text, .head-text h2, .head-text h1, .mail-img {
+    position: relative;
+    right: 1%;
+    font-size: 1.8rem
+}
+
+}
+
+@media screen and (max-width: 450px) {
+.heading-area {
+    position: relative;
+    height: 258px;
+    background-color: #F9F9F9;
+    width: 115%;
+    margin-left: -15px;
+    text-align: center;
+
+}
+
+.head-text h2{
+        font-size: 1.2rem
+    }
+}
+@media screen and (max-width: 370px) {
+    .heading-area{
+    height: 35vh;
+    padding: 2px;
+    padding-right: 0px;
+    width: 117%;
+    margin-left: -15px;
+    text-align: center;
+    }
+
+    .head-text h1{
+        font-size: 1.6rem;
+        font-weight: 800;
+    }
+    .head-text h2{
+        position: relative;
+        font-size: 1.2rem;
+        padding: 2px;
+        margin-left: auto;
+        left: -8px
+    }
+
+.head-text, .head-text h2, .head-text h1, .mail-img {
+    position: relative;
+    left: -2px;
+
+}
+
+
+
+button {
+    width: 100vw;
+    }
+.btn {
+     font-size: 1rem
+    }
+
+}
+
+@media screen and (max-width: 320px){
+
+    footer {
+        height: 70px
+    }
+
+
+.head-text, .head-text h2, .head-text h1, .mail-img {
+    position: relative;
+
+}
+
+}
+
+

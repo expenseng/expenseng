@@ -15,9 +15,14 @@
                 @foreach ($collection['summary'] as $expense)
                     <tr>
                         <td class="section-shadow">
+                            @empty($expense->ministry())
+                                {{ "null" }}
+                            @else
                             <a href="{{ route('ministries.single', ['ministry' => strtolower($expense->ministry()['shortname']) ]) }}" class="text-success">
-                                {{ucfirst($expense->ministry()['name'])}} 
+                                {{ ucfirst($expense->ministry()['name']) }}
+
                             </a>
+                            @endempty
                         </td>
                         <td>{{$expense->description}}</td>
                         <td>{{$expense->beneficiary}}</td>

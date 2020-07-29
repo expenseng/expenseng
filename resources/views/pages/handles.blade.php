@@ -28,18 +28,20 @@
 						<table id="Table" cell-spacing="0" data-pagination="true" data-page-size="10" class="table table-striped table-responsive-sm">
 							<thead class="text-left">
 								<tr>
-									<th class="section-shadow row-ministry port-row">Portfolio</th>
+									<th class="section-shadow row-ministry row-m port-row">Portfolio</th>
 									<th class="row-project text-center text-center" style="background-color: #00945E; color: #fff; height: 10vh; width: 20vw;">Incumbent</th>
-									<th class="row-company">Twitter Handles</th>
-								</tr>
-							</thead>
+									<th class="row-company text-left table-overflow">Twitter Handles</th>
+                                </tr>
+                            </thead>
 							<tbody class="t-body text-left">
 
 
 								<tr class="" style="background-color: white;">
 									<td class="section-shadow">Presidnet of Nigeria</td>
 									<td>Muhammadu Buhari</td>
-									<td class="table-overflow" >@MBuhari</td>
+
+									<td col-span="1" class="table-overflow " >@MBuhari</td>
+
 								</tr>
 								<tr style="background-color: #F2FAF7;">
 									<td class="section-shadow">Vice President</td>

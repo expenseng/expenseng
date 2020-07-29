@@ -44,14 +44,14 @@
                 <h3>Settings</h3>
             </div>
         </div>
-        <div class="card" >
-                <!--Tabs Header-->
-                <ul class="nav nav-tabs py-3 " id = "settingsTab">
-                    <li class="active "><a data-toggle="tab" class="active show" href="#general">General</a></li>
-                    <li><a data-toggle="tab" href="#notification">Notifications</a></li>
-                    <li><a data-toggle="tab" href="#security">Security</a></li>
-                </ul>
-            </div>   
+                <div class="card" >
+                        <!--Tabs Header-->
+                        <ul class="nav nav-tabs py-3 " id = "settingsTab">
+                            <li class="active "><a data-toggle="tab" class="active show" href="#general">General</a></li>
+                            <li><a data-toggle="tab" href="#notification">Notifications</a></li>
+                            <li><a data-toggle="tab" href="#security">Security</a></li>
+                        </ul>
+                </div>   
                 <!--Tab Body-->
                 <div class="tab-content">
                     <!--1-->
@@ -59,46 +59,39 @@
                         <div class = "card">
                             <div class="card-header security-header">
                                 <h4>Profile</h4>
-                                <a class= "save-link" href="#"><button class= "save-btn">Save</button></a>
+                                <a class= "save-link" href="/admin/profile/edit/1"><button class= "save-btn">Edit Profile</button></a>
                             </div>    
                         <hr>
                         <div class="card-body">
                             <div>
                                 <form action="" method = "post" class = "row">
-                                
-                                <div class="col-12 col-md-3">
+                                <div class="col-12 col-md-9">
                                     <h5>Profile Picture</h5> 
                                     <div class="file-input-cover">             
-                                    <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)"  class = "file-input"></p>
+                                    <p class = "file-one"><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)"  class = "file-input"></p>
                                     <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
-                                    <p><img id="output" width="200" /></p>
-
-
+                                    <p><img id="output" width="200px" /></p>
                                     </div>
-                                    <a class= "save-link text-muted" href="#"><button class= "upload-btn">Change</button></a>   
                                 </div>
 
+                                
                                 <div class="col-12 col-md-9 push-top">
                                     <div class="form-group">
-                                        <label class = "label-form" for="full-name">Full Name</label>
-                                        <input type="text" name="" class="form-control">
+                                        <p><label class = "label-form" for="full-name">Full Name:</label><br> {{$user->name}}</p>
                                     </div>
                                     <div class="form-group">
-                                        <label class = "label-form" for="full-name">Email</label>
-                                        <input type="email" name="" class="form-control">
+                                        <label class = "label-form" for="full-name">Email:</label>
+                                        <p>{{$user->email}}</p>
                                     </div>
                                     <div class="form-group">
-                                        <label class = "label-form" for="full-name">Role</label><br>
-                                        <select name="language" id="languageselect" class = "custom-select form-control p-2 mt-2">
-                                            <option value="user">User</option>
-                                            <option value="admin">Admin</option>
-                                        </select>
-                                    </div>
+                                        <label class = "label-form" for="full-name">Role:</label><br>{{implode(', ', $user->roles->pluck('name')->toArray())}}</p>
+                                    </div> 
                                 </div>
                                 </form>
                             </div>
                         </div>
-                        </div>
+                    </div>
+                        
                         <div class = "card">
                             <div class="card-header security-header">
                                 <h4>Appearance</h4>
@@ -106,7 +99,7 @@
                             </div>    
                         <hr>
                         <div class="card-body">
-                            <h4 class = "mb-4">Dashboard Menu Arrangement</h4>
+                            <h4 class = "mb-4 font-size-reduce">Dashboard Menu Arrangement</h4>
                             <ul id="sortable">
                                 <li class="group">
                                 <div class="col-md-10 col-12">
@@ -397,20 +390,39 @@
                     </div>
                            
                     <!--Security Section-->
+                    
                     <div id="security" class="tab-pane fade">
                         <div class = "card">
                             <div class="card-header security-header">
                                 <h4>Change Password</h4>
-                                <a class= "save-link" href="#"><button class= "save-btn">Save</button></a>
                             </div>
                             <hr>
                             <div class="card-body">
-                                <label for="old password" class = "labels">Old Password</label><br>
-                                <input type="password"  class = "col-9 form-control"><br>
+                                <form action="{{'/admin/settings/change_password/' . $user->id}}" method="post" id="change_password" >
 
-                                <label for="new password" class = "labels">New Password</label><br>
-                                <input type="password" class = "col-9 form-control" id="">
-                            </div>                
+                                    <div class="form-group">
+                                        <label class = "label-form" for="curpass">Enter New Password</label>
+                                        <input id="password" type="password" class="col-9 form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="new-password">
+
+                                            @error('password')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="curpass" class = "label-form">Confirm New Password</label>
+                                        <input id="password-confirm" type="password" class="col-9 form-control" placeholder="Repeat your password" name="password_confirmation" required autocomplete="new-password">
+                                    </div>
+                                    
+                                    <div class="card-footer- mt-3">
+                                        @method('put')
+                                        @csrf
+                                        <input type="submit"  class="save-btn m-0 changePass" value="Change" id="changePass">
+                                    </div>
+                                </form>                    
                         </div>  
                     </div>​
                 </div>

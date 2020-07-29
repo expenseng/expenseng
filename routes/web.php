@@ -16,6 +16,8 @@ use App\User;
  */
 
 
+
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contactUs')->name('contact');
@@ -32,6 +34,9 @@ Route::post('/feedback', 'FeedbackController@create')->name('feedback');
 // freedom of acts
 Route::get('/FOIA', 'PageController@FOIA')->name('FOIA');
 
+//
+Route::get('/contactEmail', 'PageController@contactEmail')->name('contactEmail');
+
 /**
  * Reports Endpoints
  */
@@ -39,6 +44,8 @@ Route::get('/expense/report', 'ExpenseController@report')->name('expense.reports
 Route::post('/subscribe', 'SubscriptionController@store');
 
 Route::get('/expense/ministry', 'ExpenseController@ministry')->name('expense.ministry');
+
+
 
 /***
  * Ministry Endpoints
@@ -50,6 +57,7 @@ Route::patch('/ministries/{ministry}', 'MinistryController@update')->name('minis
 Route::delete('/ministries/{ministry}', 'MinistryController@destroy')->name('ministry_destroy');
 Route::post('/ministries/autocomplete', 'MinistryController@autocomplete')->name('ministry_autocomplete');
 Route::get('/expense/filterExpensesAll/{id}/{date}/{sort}', 'ExpenseController@filterExpensesAll')->name('all_ministries_filter_expenses');
+Route::get('/expense/filterExpensesChart/{id}/{date}/{sort}', 'ExpenseController@chartReport')->name('all_ministries_filter_chart');
 
 /**
  * Contractor Endpoints
@@ -174,9 +182,10 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
      Route::get('/profile/edit/{user_id}', 'ProfileController@edit')->name('users.edit');
      Route::put('/profile/edit/{user_id}', 'ProfileController@update')->name('users.update');
      Route::put('/profile/change_password/{user_id}', 'ProfileController@updatePassword')->name('users.change_password');
-     
+
      //Settings Page
      Route::get('/user/settings', 'SettingsController@index')->name('users.settings');
+     Route::put('/settings/change_password/{user_id}', 'SettingsController@ChangePassword')->name('settings.change_password');
 
      // Cabinet CRUD
      Route::get('/cabinet/create', 'CabinetController@create')
@@ -201,7 +210,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
       Route::get('/import', 'UploadController@importFile');
       Route::post('/import', 'UploadController@importExcel')->name('importExcel');
 
-      //SUBSCRIPTION 
+      //SUBSCRIPTION
       Route::get('/subcribe', 'Admin\SubscriptionController@index')
       ->name('subscribe.view');
       // Cabinet CRUD

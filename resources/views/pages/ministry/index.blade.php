@@ -3,8 +3,7 @@
 @push('css')
   <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
   <link rel="stylesheet" href="{{asset('css/ministry_list.css') }}">
-<link rel="stylesheet" href="{{ asset('css/contract_page.css') }}">
-
+  <link rel="stylesheet" href="{{ asset('css/contract_page.css') }}">
   <title>FG Expense - Ministry List</title>
 @endpush
 
@@ -59,6 +58,12 @@
 
 @section('js')
 <script src="{{ asset('js/index.js') }}"></script>
-  <script src="{{ asset('js/ministry_list.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/ministry_list.js') }}" type="text/javascript"></script>
+<script>
+  $(".ministry-cards").click(function() {
+    window.location = $(this).find("a").attr("href"); 
+    return false;
+});
+</script>
 @endsection
 
