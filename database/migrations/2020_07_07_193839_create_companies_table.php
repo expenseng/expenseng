@@ -17,9 +17,9 @@ class CreateCompaniesTable extends Migration
             $table->id();
             $table->string('name', 191)->unique();
             $table->string('shortname', 191)->unique();
-            $table->string('industry');
-            $table->string('ceo');
-            $table->string('twitter');
+            $table->string('industry')->nullable();
+            $table->string('ceo')->nullable();
+            $table->string('twitter')->nullable();
             $table->timestamps();
         });
     }
