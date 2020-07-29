@@ -101,7 +101,6 @@ class ParsingSheet
                             continue;
                         }
                         $test = array_change_key_case($responses[0], CASE_LOWER);
-                        var_dump($test);
                         $keys = array_keys($test);
                         $check1 = preg_match('/\d+-\d+\w*/i', $keys[0]);
                         $check2 = preg_match('/\d+/i', $keys[1]);
@@ -145,7 +144,7 @@ class ParsingSheet
                                         $this->savePayment($data, $date);
                                     }
                                 } catch (\Exception $e) {
-                                    echo $e->getMessage();
+                                    echo "database logging error \n";
                                 }
                             }
                             Report::whereId($report->id)->update(['parsed' => true]);
