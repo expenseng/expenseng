@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Expense;
 use App\Payment;
+use App\Ministry;
 use App\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -63,9 +64,6 @@ class ExpenseController extends Controller
 
     public function filterExpensesAll($id, $date, $sort)
     { 
-        // echo "id: {$id} <br>";
-        // echo "date: {$date} <br/>";
-        // echo "sort: {$sort} <br/>";
        
         $givenTime = date('Y');
         
@@ -74,7 +72,7 @@ class ExpenseController extends Controller
         }else if(($id === 'apply-filter2')){
             $option = "=";
         }
-        // echo $id;
+        
         if ($date != 'undefined'){
             $givenTime = $date;
         }
@@ -113,4 +111,79 @@ class ExpenseController extends Controller
             return view('pages.expense.tables.ministries_nodesc')->with('collection', $collection);
         }
     }
+
+    public function getChartData($ministries, $yr, $mth, $day, $sort)
+    {
+        $amounts = array();
+        $mdas = array();
+        $store = array();
+        
+        foreach ($ministries as $ministry) {
+            $code = $ministry->code;
+            $payments = DB::table('payments')
+                ->where('payment_code', 'LIKE', "$code%")
+                ->whereYear('payment_date', $yr);
+            if($mth != null){
+                $payments = $payments->whereMonth('payment_date', $mth);
+            }
+            if($day != null){
+                $payments = $payments->whereDay('payment_date', $day);
+            }
+            $payments = $payments->get();                 
+            $total = $payments->sum('amount');
+            $store[$ministry->shortname] = $total;
+            
+        }
+        if ($sort == "asc"){
+            asort($store);
+        }else if ($sort == 'desc'){
+            arsort($store);
+        }
+        foreach($store as $key => $value){
+            array_push($mdas, $key);
+            array_push($amounts, $value);
+        }
+       
+        return ['ministries' => $mdas, 'amounts' => $amounts];
+    }
+
+    public function chartReport($id, $date, $sort)
+    {
+        $givenTime = date('Y-m-d');
+        if ($date != 'undefined'){
+            $givenTime = $date;
+            $userdate = true;
+        }
+        
+        $day_pattern = '/(\d{4})-(\d{2})-(\d{2})/';
+        $mth_pattern = '/([A-Za-z]+)\s(\d{4})/';
+        $yr_pattern = '/(\d{4})/';
+        if (preg_match($day_pattern, $givenTime, $match)) {
+            $day = $match[3];
+            $mth = $match[2];
+            $yr = $match[1]; 
+            $type = 'Daily';
+        } else if (preg_match($mth_pattern, $givenTime, $match)) {
+            $m = date_parse($match[1]);
+            $day = null;
+            $mth = $m['month'];
+            $yr = $match[2]; 
+            $type = 'Monthly';    
+        } elseif (preg_match($yr_pattern, $givenTime, $match)) {
+            $day = null;
+            $mth = null;
+            $yr = $match[1]; 
+            $type = $userdate == true ?  'Yearly': 'Daily';
+        } 
+        
+        $ministries = Ministry::select('*')
+                    ->orderby('shortname', 'asc')
+                    ->get();
+        $result = $this->getChartData($ministries, $yr, $mth, $day, $sort);
+        $result['type'] = $type;
+        $result['date'] = $givenTime;
+        return $result;
+        
+    }
+    
 }
