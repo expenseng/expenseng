@@ -57,17 +57,20 @@ class SaveCompanyName implements ShouldQueue
     }
     public function shortName($name)
     {
-        return strlen($name) > 10 ?
-            strtolower(explode(" ", $name)[0]) : strtolower(str_replace(" ", "", $name));
+        $check_exist = Company::whereShortname(strtolower(explode(" ", $name)[0]))->first();
+        if (empty($check_exist)) {
+            return strlen($name) > 10 ?
+                strtolower(explode(" ", $name)[0]) : strtolower(str_replace(" ", "", $name));
+        } else {
+            return strlen($name) > 10 ?
+                strtolower(explode(" ", $name)[0]."-".explode(" ", $name)[1]) : strtolower(str_replace(" ", "", $name));
+        }
     }
     public function logToDb($beneficiary)
     {
         Company::create([
             'name' => $beneficiary,
             'shortname' => $this->shortName($beneficiary),
-            'industry' => "null",
-            'ceo' => "null",
-            'twitter' => "null",
         ]);
     }
 

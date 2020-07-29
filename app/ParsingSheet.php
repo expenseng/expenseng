@@ -3,6 +3,7 @@
 
 namespace App;
 
+use App\Jobs\SaveCompanyName;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Console\Concerns\InteractsWithIO;
@@ -131,11 +132,13 @@ class ParsingSheet
                                     'beneficiary' => $keys[4],
                                     'amount' =>$keys[5],
                                     'payment_date'=> $date,
-                                    'description' => substr(isset($keys[6]) ? $keys[6] : "null", 0, 225)
+                                    'description' => isset($keys[6]) ? $keys[6] : "null"
                                 ]);
                             }
                         }
-                        if (array_key_exists('payment no', $test) || array_key_exists('payment no', $test)  || array_key_exists('payer code', $test)|| array_key_exists('code', $test)|| ($check1 && $check2 && $check3) || ($check1 && $check4 && $check5)) {
+                        if (array_key_exists('payment no', $test) || array_key_exists('payment no', $test)
+                            || array_key_exists('payer code', $test)|| array_key_exists('code', $test)
+                            || ($check1 && $check2 && $check3) || ($check1 && $check4 && $check5)) {
                             foreach ($responses as $data) {
                                 try {
                                     if ($check1 && $check4 && $check5) {
@@ -175,6 +178,8 @@ class ParsingSheet
         if (!empty($check)) {
             return false;
         }
+        $check_company = Payment::whereBeneficiary(isset($response2["beneficiary name"])? $response2["beneficiary name"]
+            :$response3[3])->first();
         $create = Payment::create(array(
             'payment_no' => isset($response2["payment no"])?$response2["payment no"] : $response3[0],
             'payment_code' => isset($response2["payer code"])?$response2["payer code"] :$response3[1],
@@ -182,8 +187,12 @@ class ParsingSheet
             'beneficiary' => isset($response2["beneficiary name"])? $response2["beneficiary name"] :$response3[3],
             'amount' => isset($response2["amount"])? $response2["amount"] :$response3[4],
             'payment_date'=> $date,
-            'description' => substr(isset($response2["description"])? $response2["description"] : (isset($response3[5]) ? $response3[5]   : "not stated"), 0, 225)
+            'description' => isset($response2["description"])? $response2["description"]
+                : (isset($response3[5]) ? $response3[5]   : "not stated")
         ));
+        if (empty($check_company)) {
+            SaveCompanyName::dispatch($create->id);
+        }
         if ($create) {
             return true;
         } else {
@@ -199,6 +208,8 @@ class ParsingSheet
         if (!empty($check)) {
             return false;
         }
+        $check_company = Payment::whereBeneficiary(isset($response2["beneficiary name"])? $response2["beneficiary name"]
+            :$response3[4])->first();
         $create = Payment::create([
             'payment_no' => isset($response2["payment no"])?$response2["payment no"] : $response3[0],
             'payment_code' => isset($response2["payer code"])?$response2["payer code"] :$response3[2],
@@ -206,8 +217,12 @@ class ParsingSheet
             'beneficiary' => isset($response2["beneficiary name"])? $response2["beneficiary name"] :$response3[4],
             'amount' => isset($response2["amount"])? $response2["amount"] :$response3[5],
             'payment_date'=> $date,
-            'description' => substr(isset($response2["description"])?$response2["description"] :(isset($response3[6]) ? $response3[6]   : "not stated"), 0, 225)
+            'description' => isset($response2["description"])?$response2["description"]
+                :(isset($response3[6]) ? $response3[6]   : "not stated")
         ]);
+        if (empty($check_company)) {
+            SaveCompanyName::dispatch($create->id);
+        }
         if ($create) {
             return true;
         } else {
