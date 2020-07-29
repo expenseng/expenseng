@@ -15,7 +15,7 @@ use App\User;
 |
  */
 
-Route::get('/view', 'ExpenseController@chartReport')->name('view');
+
 
 
 Route::get('/', 'HomeController@index')->name('home');
