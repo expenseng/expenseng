@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Activites;
 use Illuminate\Support\Facades\Gate;
 use App\Company;
+use App\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -12,10 +13,13 @@ use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 {
+
     public function index()
     {
-        $companies = Company::paginate(20);
-        return view('pages.contract.index')->with('companies', $companies);
+        $contractors = $this->getYearlyTotal();
+        $companies = Company::paginate(20)->toArray();
+        return view('pages.contract.index')->with(['companies' => $companies, 'contractors' => $contractors]);
+        //dump($contractors);
     }
 
     public function show(Company $company)
@@ -37,14 +41,15 @@ class CompanyController extends Controller
 
     public function getYearlyTotal()
     {
-        $yearlyTotals = DB::table('expenses')
+        $yearlyTotals = DB::table('payments')
             ->select(
                 DB::raw(
-                    'company, SUM(amount) as total_amount, YEAR(payment_date) as year'
+                    'beneficiary, SUM(amount) as total_amount, YEAR(payment_date) as year'
                 )
             )
-            ->groupBy(DB::raw('(company) ASC, YEAR(payment_date) ASC'))
-            ->get();
+            ->groupBy(DB::raw('(beneficiary) ASC, YEAR(payment_date) ASC'))
+            ->paginate(12);
+            
         return $yearlyTotals;
     }
 
