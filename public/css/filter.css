@@ -8,11 +8,6 @@
     border: 1px solid#00945E;;
 }
 
-.btn{
-    background-color: #00945E;
-    color: #FFFFFF;
-}
-
 .btn.active {
     background-color: #00945E;
     color: #FFFFFF;
