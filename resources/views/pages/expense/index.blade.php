@@ -141,6 +141,15 @@
             <a class="dropdown-item" data-toggle="tab" role="tab" href="#table">Table</a>
           </div>
         @include('partials.expense-table')
+        <section class="container">
+          <div class="row">
+            <div class="col-md-12 px-5 pb-5">
+              <div id="mini-table" class="table-data">
+                @include('pages.expense.tables.ministries_annual_totals_all')
+              </div>
+            </div>
+          </div>
+        </section>
         </div>
       </div>
       <div class="container tab-pane fade" id="comments" role="tabpanel">
