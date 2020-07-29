@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ asset('css/modal/style.css')}}">
 @endpush
 
-<button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#exampleModalCenter">
+<button type="button" class="btn btn-outline-light" style="background-color:#00945E" data-toggle="modal" data-target="#exampleModalCenter">
 Subscribe
 </button>
 
