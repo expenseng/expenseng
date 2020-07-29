@@ -12,7 +12,7 @@
 <div class="container">
        
        {{ Breadcrumbs::render('contractors')}}
-       {{$company}}
+      
 </div>
 <section id="main">
 
@@ -21,7 +21,7 @@
   <div class="section-1 container">
     <div class="user-profile">
       <h3 class="name brand-name">
-         NO DATA FOUND FOR THIS CONTRACTOR
+         {{'NO DATA FOUND FOR THIS CONTRACTOR'}}
       </h3>
 
     </div>

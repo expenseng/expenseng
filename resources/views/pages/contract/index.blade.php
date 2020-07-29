@@ -10,11 +10,11 @@
 	<section>
       <div class="container">
       {{ Breadcrumbs::render('contractors') }}
-        <h1 class="ws-10 font-weight-bold">Contracted contractors and Organisations</h1>
+        <h1 class="ws-10 font-weight-bold">Companies and Organizations Contracted</h1>
         <br />
         <div class="row">
             <div class="col-md-5">
-                <p class="para">ExpenseNG gives an insight to how much is being dispensed to contracted contractors.</p>
+                <p class="para">ExpenseNG gives an insight to how much is being dispensed to contracted companies.</p>
             </div>
         </div>
         </div>
@@ -30,7 +30,7 @@
           <div id="search-area" class="offset-md-1 col-md-5 mt-3 mt-md-0">
           <div class="input1">
                 <img class="img-search" src="{{ asset('/img/search-icon.png') }}" alt="icon">
-            <input onkeyup="doFilter()" type="search" id="searchInput" class="form-control form-control-lg mb-2 se" placeholder="Search for contractors and Organisations" style="font-family:'Lato';"/>
+            <input onkeyup="doFilter()" type="search" id="searchInput" class="form-control form-control-lg mb-2 se" placeholder="Search for Contractors and Organisations" style="font-family:'Lato';"/>
           </div>
         </div>
       </div>
