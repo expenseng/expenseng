@@ -8,6 +8,10 @@
     --fs-foot: 0.85rem;
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 .opacity-0 {
     opacity: 0 !important;
 }
@@ -158,6 +162,10 @@ ul.links li a::before{
 .sideNavPages .nav-link {
     font-size: 1.335rem !important;
     margin-left: 30px !important;
+}
+
+li.dropdown:hover div{
+    display: block;
 }
 
 .static.dropdown {

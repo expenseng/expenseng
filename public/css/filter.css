@@ -5,9 +5,12 @@
 }
 
 .form-control{
-    border: 1px solid#00945E;;
+    border: 1px solid#00945E;
 }
-
+.btn-subscribe{
+    background-color: #00945E;
+    color: #FFFFFF;
+}
 .btn.active {
     background-color: #00945E;
     color: #FFFFFF;

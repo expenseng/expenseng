@@ -3,8 +3,7 @@
 @push('css')
   <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
   <link rel="stylesheet" href="{{asset('css/ministry_list.css') }}">
-<link rel="stylesheet" href="{{ asset('css/contract_page.css') }}">
-
+  <link rel="stylesheet" href="{{ asset('css/contract_page.css') }}">
   <title>FG Expense - Ministry List</title>
 @endpush
 
