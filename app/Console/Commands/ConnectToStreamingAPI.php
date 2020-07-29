@@ -48,5 +48,6 @@ class ConnectToStreamingAPI extends Command
         $this->twitterStream->consumerSecret = $twitter_consumer_secret;
         $this->twitterStream->setTrack(array('expenseng ', '@expenseng','#expenseg'));
         $this->twitterStream->consume();
+
     }
 }
