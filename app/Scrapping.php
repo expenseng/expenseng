@@ -334,7 +334,7 @@ class Scrapping
             $string = explode('LIMITED', $string)[0];
             $string = explode('LTD', $string)[0];
             $GLOBALS['array'] = array();
-            $header = ['user-agent' => "Googlebot"];
+            $header = ['user-agent' => "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/W.X.Y.Z Safari/537.36"];
             $test = HttpClient::create(['headers' => $header]);
             $client = new Client($test);
             $crawler = $client->request('GET', 'https://ng-check.com/');
