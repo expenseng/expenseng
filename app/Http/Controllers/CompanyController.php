@@ -19,12 +19,18 @@ class CompanyController extends Controller
         $contractors = $this->getYearlyTotal();
         $companies = Company::paginate(20)->toArray();
         return view('pages.contract.index')->with(['companies' => $companies, 'contractors' => $contractors]);
-        //dump($contractors);
     }
 
-    public function show(Company $company)
-    {
-        return view('pages.contract.single')->with('company', $company);
+    public function show($com)
+    {   
+        $company = Company::where('shortname', $com)->orWhere('name', 'LIKE', "$com%")->first();
+        if(isset($company)){
+                return view('pages.contract.single')->with('company', $company);
+            }else{
+                $company = $com;
+                return view('pages.contract.notfound')->with('company', $company);
+                //dump($company);
+            }
     }
 
     public function getReport()

@@ -43,7 +43,7 @@
     <div id="contractor" class="container">
     <div class="row" id="contractor-div">
         @foreach ($contractors as $contractor)  
-          <a href="#">
+          <a href="{{ route('contractors.single', ['company' => \Str::slug($contractor->beneficiary, '-') ]) }}">
             <div class="col-md-4 col-lg-3 mb-3 card-col">
               <div class="card shadow">
                 <div class="card-body">
@@ -52,7 +52,7 @@
                             element="{{ \Str::slug($contractor->beneficiary, '-') }}"></chart>
                     <div class="contractor mb-2">
                         <!-- <img src="{{ asset('images/image 13.png') }}" height="30" class="mr-3" alt=""> -->
-                        <a href="#">
+                        <a href="{{ route('contractors.single', ['company' => \Str::slug($contractor->beneficiary, '-') ]) }}">
                           <h5 class="card-title mb-0" class="contractor-beneficiary">
                             {{ $contractor->beneficiary }}
                           </h5>
