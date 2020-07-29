@@ -10,7 +10,7 @@
         </thead>
         <tbody>
             @if (count($collection['nondescriptive']) >0)
-                @foreach ($collection['summary'] as $expense)
+                @foreach ($collection['nondescriptive'] as $expense)
                     <tr>
                         <td class="section-shadow">
                             @empty($expense->ministry())
