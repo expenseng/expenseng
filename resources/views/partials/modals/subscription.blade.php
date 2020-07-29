@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ asset('css/modal/style.css')}}">
 @endpush
 
-<button type="button" class="btn btn-outline-light" style="background-color:#00945E" data-toggle="modal" data-target="#exampleModalCenter">
+<button type="button" class="btn btn-outline-light btn-subscribe" data-toggle="modal" data-target="#exampleModalCenter">
 Subscribe
 </button>
 
@@ -19,26 +19,26 @@ Subscribe
         </button>
       </div>
       <div class="modal-body">
-          <div class="container">
-              <div class="container-grid">
-                  <form method="post" action="{{ action('SubscriptionController@store')}}">
-                      {{csrf_field()}}
-                      <input type="text" class="form-control" name="name" placeholder="Enter Your Name  "  required><br>
-                      <input type="email" class="form-control" name="email" placeholder="Enter Your Email"  required>
+        <div class="container">
+          <div class="container-grid">
+            <form method="post" action="{{ action('SubscriptionController@store')}}">
+              {{csrf_field()}}
+              <input type="text" class="form-control" name="name" placeholder="Enter Your Name  "  required><br>
+              <input type="email" class="form-control" name="email" placeholder="Enter Your Email"  required>
 
-                      <br>
-                      <select name="subscription_type" id="" class="form-control" required>
-                          <option value="">Select The Report type</option>
-                          <option value="ministry">Ministry</option>
-                          <option value="contract">Contract</option>
-                          <option value="daily&expense">Daily Expense</option>
-                          <option value="payment">Payments Without description</option>
-                      </select>
-                      <br>
-                      <button type="submit" style="float: right" class="btn btn-dark">Subscribe</button>
-                  </form>
-
+              <br>
+              <select name="subscription_type" id="" class="form-control" required>
+                  <option value="">Select The Report type</option>
+                  <option value="ministry">Ministry</option>
+                  <option value="contract">Contract</option>
+                  <option value="daily&expense">Daily Expense</option>
+                  <option value="payment">Payments Without description</option>
+              </select>
+              <br>
+              <button type="submit" style="float: right" class="btn btn-dark">Subscribe</button>
+            </form> 
           </div>
+        </div>
       </div>
     </div>
   </div>
