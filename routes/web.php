@@ -163,6 +163,20 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
       ->name('ministry.edit');
       Route::delete('/ministry/delete/{ministry_id}', 'Admin\MinistryController@deleteMinistry')
       ->name('ministry.delete');
+      
+      // SECTOR CRUD
+      Route::get('/sector/create', 'SectorController@viewCreateSector')
+      ->name('sector.create');
+      Route::post('/sector/create', 'SectorController@createSector')
+      ->name('create.sector');
+      Route::get('/sector/view', 'SectorController@viewSectors')
+      ->name('sector.view');
+      Route::get('/sector/edit/{sector_id}', 'SectorController@showEditForm')
+      ->name('sector.view.edit');
+      Route::put('/sector/edit/{sector_id}', 'SectorController@editSector')
+      ->name('sector.edit');
+      Route::delete('/sector/delete/{sector_id}', 'Admin\SectorController@deleteSector')
+      ->name('sector.delete');
 
       //People CRUD
       Route::get('/admin/{company}/{people}', 'CompanyController@showPeople');
