@@ -43,6 +43,5 @@ class ParseMonthlyReport extends Command
         $daily->monthlyBudget();
         $this->info('Parsing done');
         return 0;
-
     }
 }
