@@ -77,7 +77,8 @@ class DashboardController extends Controller
             $data = json_decode($response->getBody(), true);
     
             if($data['status'] == "success"){
-                $comments = count($data['data']['records']);
+                $comments = isset($data['data']['records']) ?
+                count($data['data']['records']) : 0;
             } else {
 
                 Log::error("Error from fetching details from comments" . $data);
