@@ -1,7 +1,6 @@
 @if (count($ministries) >0)
-@foreach($ministries as $ministry)
-    <a class="text-green" href="{{ route('ministries.single', $ministry->shortname) }}">
-        <div data-id="{{$ministry->shortname}}"
+@foreach($ministries as $ministry) 
+    <div data-id="{{$ministry->shortname}}"
         class="col-lg-3 col-md-6 col-sm-12 ministry-cards d-flex">
         <div class="cont-1 d-flex flex-column justify-content-center py-0">
             <chart label="5-Year Trend"
@@ -13,7 +12,6 @@
             <div class="coat">
             <img src="{{ asset('images/image 7.png') }}" alt="">
             <div class="text-center   ministry">
-                {{-- <h4>{{$ministry->name}}</h4> --}}
                 <a title="Click to view profile" class="text-green" href="{{ route('ministries.single', $ministry->shortname) }}">{{$ministry->name}}</a>
             </div>
             </div>
@@ -23,9 +21,7 @@
             <p class="year">{{date('Y')}}</p>
             </div>
         </div>
-        {{-- <a title="Click to view profile" href="{{ route('ministries.single', $ministry->shortname) }}"></a> --}}
-        </div>
-    </a>
+    </div>
 @endforeach
 @else
     <p style="color:red; font-size:24px"> Oops! No Ministry matches your search </p>

@@ -59,11 +59,6 @@
 @section('js')
 <script src="{{ asset('js/index.js') }}"></script>
 <script src="{{ asset('js/ministry_list.js') }}" type="text/javascript"></script>
-<script>
-  $(".ministry-cards").click(function() {
-    window.location = $(this).find("a").attr("href"); 
-    return false;
-});
-</script>
+
 @endsection
 

@@ -36,10 +36,10 @@
         <div class="card1 carousel-cell card">
              <p class="tag">New</p> 
           <div class="project">
-            <p class="slightly-bold">{{ $expense->project }}</p>
+            <p class="slightly-bold">{{ $expense->description }}</p>
               <div class="d-flex justify-content-between mt-2 align-items-center">
-                  <p>Cost of Project: </p>
-                  <p id="cost">&#8358;{{ $expense->amount_spent }}</p>
+                  <p class="slightly-bold">AMOUNT: </p>
+                  <p id="cost">₦{{ number_format($expense->amount, 2) }}</p>
               </div>
           </div>
         </div>
@@ -121,62 +121,8 @@
                     <p class="exp-card3 year-in-focus"></p>
                   </div>
                 </div>
-                {{-- <div class="d-flex p-2 justify-content-between">
-                  <div class="graph-cont">
-                    <div id="chart3"></div>
-                  </div>
-                  <div class="ml-5 w-50">
-                    <p class="exp-card1">Total amount spent on others</p>
-                    <p class="exp-card2">&#8358;123,446,332</p>
-                    <p class="exp-card3">2020</p>
-                  </div>
-                </div> --}}
               </div>
         </div>
-        {{-- <div class="ministry-stat">
-              <div class="stat-a p-4">
-                <div class="graph-cont">
-                <div id="chart"></div>
-                 </div>
-                <div>
-                  <p class="exp-card1">Total amount spent</p>
-                  <p class="exp-card2">&#8358;123,446,332</p>
-                  <p class="exp-card3">2020</p>
-                </div>
-              </div>
-              <div class="stat-b">
-                <div class="d-flex p-2 justify-content-between">
-                  <div class="graph-cont">
-                  <div id="chart1"></div>
-                   </div>
-                <div class="ml-5 w-50">
-                  <p class="exp-card1">Total amount spent on projects</p>
-                  <p class="exp-card2">&#8358;123,446,332</p>
-                  <p class="exp-card3">2020</p>
-                </div>
-                </div>
-                <div class="d-flex p-2 justify-content-between">
-                  <div class="graph-cont">
-                  <div id="chart2"></div>
-                   </div>
-                <div class="ml-5 w-50">
-                  <p class="exp-card1">Total amount spent on salary payments</p>
-                  <p class="exp-card2">&#8358;123,446,332</p>
-                  <p class="exp-card3">2020</p>
-                </div>
-                </div>
-                <div class="d-flex p-2 justify-content-between">
-                  <div class="graph-cont">
-                  <div id="chart3"></div>
-                   </div>
-                <div class="ml-5 w-50">
-                  <p class="exp-card1">Total amount spent on others</p>
-                  <p class="exp-card2">&#8358;123,446,332</p>
-                  <p class="exp-card3">2020</p>
-                </div>
-                </div>
-              </div>
-        </div> --}}
     </div>
    </div>
    <!-- Explore section -->
@@ -194,48 +140,48 @@
    <div class="companies container d-flex justify-content-between">
      @foreach ($companies as $company)
     <div class="comp-card comp-card-1">
-         <div class="awarded">
-            <div class="graph-cont">
+        <div class="awarded">
+          <div class="graph-cont">
               <div id="chart{{$company -> id + 3}}"></div>
-            </div>
+          </div>
           <div class="ml-1 mr-2">
              <p class="exp-card1">Total amount Awarded</p>
              <p class="exp-card2">&#8358;123,446,332</p>
              <p class="exp-card3">2019</p>
           </div>
-      </div>
+        </div>
       <div class="ml-3 ">
-       <div class="d-flex align-items-center mb-3">
-         <img src="{{asset('/images/berger.jpg')}}" alt="">
-         <p class="mt-3"><a href="/contractors/{{$company-> shortname}}">{{$company -> name}}</a></p>
-       </div>
-       <div class="profile">
-         <p>Total number of contracts awarded</p>
-         <p>37</p>
-         <p>2019</p>
-       </div>
-       <div class="profile my-3">
-         <p>Name of CEO</p>
-         <p>{{$company -> ceo}}</p>
-         <p>2020</p>
-       </div>
-       <div class="profile">
-         <p>Company twitter handle</p>
-         <p id="handle">{{$company -> twitter}}</p>
-         <p>2019</p>
-       </div>
+        <div class="d-flex align-items-center mb-3">
+          <img src="{{asset('/images/berger.jpg')}}" alt="">
+          <p class="mt-3"><a href="/contractors/{{$company-> shortname}}">{{$company -> name}}</a></p>
+        </div>
+        <div class="profile">
+          <p>Total number of contracts awarded</p>
+          <p>37</p>
+          <p>2019</p>
+        </div>
+        <div class="profile my-3">
+          <p>Name of CEO</p>
+          <p>{{$company -> ceo}}</p>
+          <p>2020</p>
+        </div>
+        <div class="profile">
+          <p>Company twitter handle</p>
+          <p id="handle">{{$company -> twitter}}</p>
+          <p>2019</p>
+        </div>
+      </div>
     </div>
-     </div>
       @endforeach
       <div class="vll m-md-auto mx-sm-auto mt-sm-4">
         <a href="{{ route('contractors') }}" class="profile">View all Contracts</a>
        </div>
   </div>
  
-</div>
+
    <!-- conversation section -->
    <div class="convo-background">
-<div class="convo container d-flex  justify-content-between mb-3">
+      <div class="convo container d-flex  justify-content-between mb-3">
             <div class="tweet col-md-5 col-lg-5 d-flex align-items-center justify-content-start">
                <div class="twt-handle">
                 <a href="https://twitter.com/expenseng">@expenseNG</a>
@@ -249,7 +195,7 @@
                 <p>Want to receive update in your inbox?</p>
                 @include('partials.modals.home-subscribe')
           </div>
-   </div>
+      </div>
   </div>
 </section>
 
