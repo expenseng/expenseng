@@ -34,7 +34,7 @@
                                                 <th>Twitter Handle</th>
                                                 <th>Position Held</th>
                                                 <th>Image</th>
-                                                <th>Ministry Code</th>
+                                                <th>Ministry</th>
                                                 @can('manage')
                                                 <th>Actions</th>
                                                 @endcan
@@ -53,7 +53,7 @@
                                                 <td>{{$cabinet->twitter_handle}}</td>
                                                 <td>{{$cabinet->role}}</td>
                                                 <td><img src="{{$cabinet->avatar}}" alt="{{$cabinet->name . '\'s image'}}" style="height: 50px; width:50px; border-radius: 50%"></td>
-                                                <td>{{$cabinet->ministry_code}}</td>
+                                                <td>{{$cabinet->shortname}}</td>
                                                 @can('manage')
                                                 <td>
                                                     <div class="row">
@@ -112,7 +112,7 @@
                                                 <th>Twitter Handle</th>
                                                 <th>Position Held</th>
                                                 <th>Image</th>
-                                                <th>Ministry Code</th>
+                                                <th>Ministry</th>
                                                 @can('manage')
                                                 <th>Actions</th>
                                                 @endcan

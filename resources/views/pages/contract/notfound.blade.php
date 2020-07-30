@@ -5,13 +5,20 @@
 <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
 
 <title>FG Expense - Contracts</title>
+<style type="text/css">
+  .content-navigator {
+   
+    max-width: 250px;
+  
+}
+</style>
 @endpush
 
 @section('content')
 <!-- Main body start -->
 <div class="container">
-       
        {{ Breadcrumbs::render('contractor', $company) }}
+       
       
 </div>
 <section id="main">
@@ -34,7 +41,7 @@
           <div class="col-sm-4">
             <p class="font-weight-bold">Total amount rewarded</p>
             <p class="amount-rewarded">
-              &#8358;{{ number_format($total_sum, 2) }}
+              &#8358;{{ number_format($total_amount, 2) }}
             </p>
            
           </div>
@@ -51,19 +58,17 @@
 
     <div class="nav content-navigator nav-tabs">
       <a href="#contract" class="active" data-toggle="tab" role="tab">Contract awards</a>
-      <!-- <a href="#board" data-toggle="tab" role="tab">Board of Directors</a> -->
       <a href="#comments" data-toggle="tab" role="tab">Comments</a>
     </div>
   </div>
 
-  <!-- Section 2 -->
+  <!-- Section 2 Projects -->
   <div class="tab-content">
   <div class="section-2 container table tab-pane fade show active" id="contract" role="tabpanel">
     <div class="card">
       <div class="card-body">
-
         <div class="table-responsive">
-          <table class="table table-borderless">
+          <table id="example" class="table table-borderless">
             <thead>
               <tr>
                 <td>SN</td>
@@ -76,10 +81,10 @@
             <tbody>
             @foreach($contracts as $contract)
               <tr>
-                <td>{{$loop->index}}</td>
+                <td>{{$loop->iteration }}</td>
                 <td>{{$contract->description}}</td>
-                <td>{{$contract->organization}}</td>
-                <td>{{$contract->total_amount}}</td>
+                <td>{{$contract->organization()}}</td>
+                <td>&#8358;{{ number_format($contract->amount, 2) }}</td>
                 <td>{{$contract->payment_date}}</td>
               </tr>
             @endforeach
@@ -90,39 +95,12 @@
         <!-- Pagination -->
         <div class="">
             <div class="pagination">
-                @include('partials.pagination', ['data' => $contracts])
+               <!-- -->
             </div>
         </div>
 
       </div>
-    </div>
-
-  <!-- Section 3 -->
-  <div class="section-3 container mt-4">
-    <div class="summary">
-      <div class="table-responsive">
-
-      </div>
-      <!-- Pagination -->
-      
-    </div>
-  </div>
-</div>
-
-  <!--Board of Directors-->
-  <div class="container tab-pane fade" id="board" role="tabpanel">
-    <div class="container-fluid padding"  >
-      <!-- cards -->
-
-    <!-- card 2 -->
-
-    <!-- card 3 -->
-
-
-    <!-- card 4 -->
-
-</div>
-</div>
+    </div></div>
 
 <!---Comments section-->
   <div class="container tab-pane fade" id="comments" role="tabpanel">
@@ -136,5 +114,5 @@
 @endsection
 
 @section('js')
-<script src="{{ asset('js/index.js') }}"></script>
+
 @endsection

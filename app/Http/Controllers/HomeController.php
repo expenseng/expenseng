@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Budget;
-use App\Expense;
+use App\Payment;
 use App\Ministry;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -21,7 +21,7 @@ class HomeController extends Controller
         $collection['education'] = Budget::where('project_name', 'Education')->get();
         $collection['defence'] = Budget::where('project_name', 'Defence')->get();
         $collection['housing'] = Budget::where('project_name', 'Housing and Community Amenities')->get();
-        $expenses = DB::select('select * from expenses');
+        $expenses = $this->latestExpenditure();
         $companies = DB::select('select * from companies limit 3');
         $ministries = Ministry::select('*')
                     ->orderby('shortname', 'asc')
@@ -34,7 +34,7 @@ class HomeController extends Controller
             ]);
     }
 
-    public function fiveYearTrend($code="0234")
+    public function fiveYearTrend($code="0215")
     {
         
         $payments = DB::table('payments')
@@ -170,6 +170,15 @@ class HomeController extends Controller
         $chartThree['year'] = $currentYr;
         return $chartThree;
     }
+
+    public function latestExpenditure(){
+        $latestExpenses = Payment::select('*')
+                        ->orderby('payment_date', 'desc')
+                        ->take(3)
+                        ->get();
+        return $latestExpenses;
+    }
+
     /**
      * Show the form for creating a new resource.
      *

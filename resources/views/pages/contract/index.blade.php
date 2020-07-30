@@ -2,6 +2,16 @@
 @push('css')
 <link rel="stylesheet" href="{{ asset('css/contract_page.css') }}">
 <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174035666-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-174035666-1');
+</script>
+
 <title>FG Expense - Contracts Page</title>
 @endpush
 
@@ -42,8 +52,12 @@
     <br />
     <div id="contractor" class="container">
     <div class="row" id="contractor-div">
+
         @foreach ($contractors as $contractor)  
           <a href="{{ route('contractors.single', ['company' => str_replace(' ', '-', $contractor->beneficiary) ]) }}">
+          
+          <!-- <a href="{{ route('contractors.single', ['company' => \Str::slug($contractor->beneficiary, '-') ]) }}"> -->
+
             <div class="col-md-4 col-lg-3 mb-3 card-col">
               <div class="card shadow">
                 <div class="card-body">
@@ -80,7 +94,7 @@
 <script src="{{ asset('js/index.js') }}"></script>
 <script>
   $(".card-col").click(function() {
-    window.location = $(this).find("a").attr("href"); 
+    window.location = $(this).find("a").attr("href");
     return false;
 });
 </script>
