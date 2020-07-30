@@ -3,6 +3,16 @@
 @push('css')
   <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
   <link rel="stylesheet" href="{{asset('css/freedomofact.css') }}">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174035666-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-174035666-1');
+</script>
+
   <title>FG Expense - Freedom of Infromation Act</title>
 @endpush
 
@@ -19,17 +29,17 @@
             </p>
             <p>
                 If your FOIA request is related to information concerning the Department of the Treasury, Bureau of the Fiscal Service,
-                please visit the <a href="#" class="link">CBN FOIA site</a> or <a href="#" class="link">download the PDF</a> 
+                please visit the <a href="#" class="link">CBN FOIA site</a> or <a href="#" class="link">download the PDF</a>
             </p>
 
             <p class="pdf-link">
-               or Copy link: <a href="https://www.cbn.gov.ng/FOI/Freedom%20Of%20Information%20Act.pdf" class="link long-link">https://www.cbn.gov.ng/FOI/Freedom%20Of%20Information%20Act.pdf</a>  
+               or Copy link: <a href="https://www.cbn.gov.ng/FOI/Freedom%20Of%20Information%20Act.pdf" class="link long-link">https://www.cbn.gov.ng/FOI/Freedom%20Of%20Information%20Act.pdf</a>
             </p>
         </div>
     </div>
   </div>
 
-  
+
 @endsection
 
 @section('js')

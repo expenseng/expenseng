@@ -2,7 +2,7 @@
 @push('css')
 < <link rel="stylesheet" href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2">
   
-<title>ExpenseNg - Create Ministry</title>
+<title>ExpenseNg - Create Sector</title>
 @endpush
 
 @section('content')
@@ -16,7 +16,7 @@
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="section-block" id="basicform">
-                                    <h3 class="section-title">Create New Ministry</h3>
+                                    <h3 class="section-title">Create New sector</h3>
                                     <p></p>
                                 </div>
                                 @if (Session::has('flash_message'))
@@ -27,54 +27,18 @@
                                 <div class="card">
                                     
                                     <div class="card-body">
-                                        <form method="post" action="{{route('create.ministry')}}">
+                                        <form method="post" action="{{route('create.sector')}}">
                                             @csrf
                                             <div class="form-group">
-                                                <label for="inputText3" class="col-form-label">Ministry Name</label>
-                                                <input id="inputText3" name="ministry_name" 
+                                                <label for="inputText3" class="col-form-label">Sector Name</label>
+                                                <input id="inputText3" name="sector_name" 
                                                 type="text" class="form-control" 
                                                 placeholder="e.g Agriculture" required>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="ministryCode">Ministry Code</label>
-                                                <input type="number" name="code" class="form-control"
-                                                placeholder="e.g 01234" required />
-                                                
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputEmail">Short Name</label>
-                                                <input id="inputEmail" name="ministry_shortname" type="text" 
-                                                placeholder="e.g Agric" class="form-control" required />
-                                                
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="sector_id">Sector</label>
-                                                
-                                                <select name="sector_id" class="form-control">
-
-                                                <option value="">Select Sector</option>
-                                                @foreach($sectors as $sector)
-                                                
-                                                <option name="sector_id" class="form-control" 
-                                                value="{{$sector->id}}" required>
-                                                    {{$sector->name}}
-                                                </option>
-                                                @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputText4" class="col-form-label">Ministry Twitter Handle</label>
-                                                <input id="inputText4" name="ministry_twitter" type="text" 
-                                                class="form-control" placeholder="e.g @example" required />
-                                            </div>
-                                             <div class="form-group">
-                                                <label for="inputPassword">Ministry's Website</label>
-                                                <input id="inputPassword" name="website" type="url"
-                                                 placeholder="e.g  https://example.gov.ng" class="form-control" required>
-                                            </div>
+                                            
                                            
                                             <div class="form-group text-right">
-                                                <input type="submit" value="Create New Ministry"
+                                                <input type="submit" value="Create New Sector"
                                                 class="form-control" 
                                                 style="background-color: #00945E; color:honeydew; border: none; border-radius: 12px; width: 12rem"/>
                                             </div>
