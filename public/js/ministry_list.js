@@ -6,28 +6,12 @@ $(document).ready(function(){
       return parts.join(".");
   }
 
-
-    $('#cards-container').on('click', '.ministry-cards', function(e){
-      console.log($(this))
-      const id = $(this).attr("data-id")
-      const idjs = e.target.dataset.id;
-      console.log('id: ', id )
-      console.log('idjs: ', idjs)
-      console.log(e)
-      // $.ajax({
-      //         url: "/ministry/getUrl",
-      //         method: "GET",
-      //         data: {id},
-      //         success: function(data){
-      //           window.location=data.url;
-      //         },
-      //         error: function(error){
-      //           console.log(error)
-      //         }
-      //     })
-    })
-
-    const returnDefaults = e =>{
+  $('#cards-container').on('click', ".ministry-cards", function() {
+    window.location = $(this).find("a").attr("href"); 
+    return false;
+});
+  
+  const returnDefaults = e =>{
       $.ajax({
           url: "/ministries",
           method: "GET",

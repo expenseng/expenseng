@@ -16,6 +16,8 @@ use App\User;
  */
 
 
+
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contactUs')->name('contact');
@@ -55,6 +57,7 @@ Route::patch('/ministries/{ministry}', 'MinistryController@update')->name('minis
 Route::delete('/ministries/{ministry}', 'MinistryController@destroy')->name('ministry_destroy');
 Route::post('/ministries/autocomplete', 'MinistryController@autocomplete')->name('ministry_autocomplete');
 Route::get('/expense/filterExpensesAll/{id}/{date}/{sort}', 'ExpenseController@filterExpensesAll')->name('all_ministries_filter_expenses');
+Route::get('/expense/filterExpensesChart/{id}/{date}/{sort}', 'ExpenseController@chartReport')->name('all_ministries_filter_chart');
 
 /**
  * Contractor Endpoints
@@ -160,6 +163,20 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
       ->name('ministry.edit');
       Route::delete('/ministry/delete/{ministry_id}', 'Admin\MinistryController@deleteMinistry')
       ->name('ministry.delete');
+      
+      // SECTOR CRUD
+      Route::get('/sector/create', 'SectorController@viewCreateSector')
+      ->name('sector.create');
+      Route::post('/sector/create', 'SectorController@createSector')
+      ->name('create.sector');
+      Route::get('/sector/view', 'SectorController@viewSectors')
+      ->name('sector.view');
+      Route::get('/sector/edit/{sector_id}', 'SectorController@showEditForm')
+      ->name('sector.view.edit');
+      Route::put('/sector/edit/{sector_id}', 'SectorController@editSector')
+      ->name('sector.edit');
+      Route::delete('/sector/delete/{sector_id}', 'Admin\SectorController@deleteSector')
+      ->name('sector.delete');
 
       //People CRUD
       Route::get('/admin/{company}/{people}', 'CompanyController@showPeople');
@@ -176,9 +193,9 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
      //Profile Page
      Route::get('/profile', 'ProfileController@viewProfile')->name('profile');
      Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
-     Route::get('/profile/edit/{user_id}', 'ProfileController@edit')->name('users.edit');
-     Route::put('/profile/edit/{user_id}', 'ProfileController@update')->name('users.update');
-     Route::put('/profile/change_password/{user_id}', 'ProfileController@updatePassword')->name('users.change_password');
+     Route::get('/profile/edit/{user_id}', 'ProfileController@edit')->name('profile.edit');
+     Route::put('/profile/edit/{user_id}', 'ProfileController@update')->name('profile.update');
+     Route::put('/profile/change_password/{user_id}', 'ProfileController@updatePassword')->name('profile.change_password');
 
      //Settings Page
      Route::get('/user/settings', 'SettingsController@index')->name('users.settings');
@@ -231,6 +248,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
      Route::get('/feedback/ignore/{id}', 'FeedbackController@ignore')
      ->name('feedback.ignore');
 
+
      // COMMENTS ROUTES
     Route::get('/comments', 'Admin\CommentController@index')->name('comments');  //Displays the index page for all comments
 
@@ -249,6 +267,8 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
 
       //Sheets
       Route::get('/sheets', 'Admin\SheetController@viewSheets')->name('sheets');
+      Route::get('/sheet/parse/{sheet_id}', 'Admin\SheetController@parseSheet')
+      ->name('sheet.parse');
 
 
 
