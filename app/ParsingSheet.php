@@ -6,6 +6,8 @@ namespace App;
 use App\Jobs\SaveCompanyName;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
+use http\Env\Response;
+use Illuminate\Http\Request;
 use Illuminate\Console\Concerns\InteractsWithIO;
 use function GuzzleHttp\Psr7\str;
 
@@ -305,6 +307,166 @@ class ParsingSheet
             return true;
         } else {
             return false;
+        }
+    }
+
+    public function parseMonthly($report)
+    {
+        if (!$this->urlExists($report->link)) {
+            return Response::json(array("errors" => 'file not fount'), 422);
+        }
+//                getting the category
+        switch ($report->link) {
+            case (preg_match('/ADMIN/i', $report->link) != false):
+                $cat = "ADMIN";
+                break;
+            case (preg_match('/ECONOMIC/i', $report->link) != false):
+                $cat = "ECONOMIC";
+                break;
+            case (preg_match('/FUNCTION/i', $report->link) != false):
+                $cat = "FUNCTION";
+                break;
+            default:
+                $cat = " ";
+        }
+        try {
+            $month = basename($report->link, '.xlsx');
+            $response = $this->http->post('api/', [
+
+                "body" => json_encode([
+                    "file_path" =>
+                        trim($report->link),
+                    "API_KEY" => "random25stringsisneeded"
+                ])
+            ]);
+            $status = $response->getStatusCode(); // c
+            if ($status == 200) {
+                // get the body
+                $responses = json_decode($response->getBody(), true);
+                if (empty($responses)) {
+                    return Response::json(array("errors" => 'empty sheet'), 422);
+                }
+//                        iterating through the jason recieved from the database
+                foreach ($responses as $data) {
+                    $data2 = array_values($data);
+//                            save to database
+                    $create = MonthlyBudget::create([
+                        "Name" => $data2[1],
+                        "code"=>$data2[0],
+                        "year_payments_till_date"=>$data2[4],
+                        "month"=>$month,
+                        "month_budget"=>$data2[3],
+                        "budget_amount"=>$data2[2],
+                        "budget_balance"=>$data2[5],
+                        "percentage"=>$data2[6],
+                        "categories"=>$cat
+
+                    ]);
+                }
+//                        update report to parsed
+                Report::whereId($report->id)->update(['parsed' => true]);
+                return  Response('parse successfully');
+            } else {
+                return Response::json(array("errors" => 'server error'), 422);
+            }
+        } catch (\Exception $e) {
+            return Response::json(array("errors" => 'server error'), 422);
+        }
+    }
+
+    public function parseDaily($report)
+    {
+//        check if file exist
+        if (!$this->urlExists($report->link)) {
+            return Response::json(array("errors" => 'file not fount'), 422);
+        }
+        try {
+//                    get base name
+            $basename = basename($report->link, '.xlsx');
+            $array = explode('-', $basename);
+//                    get date
+            $date_pattern = 'd-m-Y';
+            if (strlen(end($array)) < 4) {
+                $date_pattern = 'd-m-y';
+            } elseif (strlen(end($array)) > 4) {
+                $basename = substr($basename, 0, strlen($basename) - (strlen(end($array))-4));
+            }
+            $date = Carbon::createFromFormat($date_pattern, $basename)->format('Y-m-d');
+//                    send http request
+            $response = $this->http->post('api/', [
+
+                "body" => json_encode([
+                    "file_path" =>
+                        trim($report->link),
+                    "API_KEY" => "random25stringsisneeded"
+                ])
+
+            ]);
+//                    get return statua
+            $status = $response->getStatusCode();
+            if ($status == 200) {
+                $responses = json_decode($response->getBody(), true);
+                if (empty($responses)) {
+                    return Response::json(array("errors" => 'empty sheet'), 422);
+                }
+                $test = array_change_key_case($responses[0], CASE_LOWER);
+                $keys = array_keys($test);
+                $check1 = preg_match('/\d+-\d+\w*/i', $keys[0]);
+                $check2 = preg_match('/\d+/i', $keys[1]);
+                $check5 = preg_match('/\d+/i', $keys[2]);
+                $check3 = preg_match('/\d+/i', $keys[4]);
+                $check4 = isset($keys[5]) ? preg_match('/\d+/i', $keys[5]) : false;
+                if (($check1 && $check2 && $check3 )) {
+                    $check = Payment::where('payment_no', '=', $keys[0])->first();
+                    if (empty($check)) {
+                        Payment::create([
+                            'payment_no' =>  $keys[0],
+                            'payment_code' => $keys[1],
+                            'organization' => $keys[2],
+                            'beneficiary' => $keys[3],
+                            'amount' =>$keys[4],
+                            'payment_date'=> $date,
+                            'description' => substr(isset($keys[5]) ? $keys[5] : "null", 0, 225)
+                        ]);
+                    }
+                }
+                if (($check1 && $check4 && $check5)) {
+                    $check = Payment::where('payment_no', '=', $keys[0])->first();
+                    if (empty($check)) {
+                        Payment::create([
+                            'payment_no' =>  $keys[0],
+                            'payment_code' => $keys[2],
+                            'organization' => $keys[3],
+                            'beneficiary' => $keys[4],
+                            'amount' =>$keys[5],
+                            'payment_date'=> $date,
+                            'description' => isset($keys[6]) ? $keys[6] : "null"
+                        ]);
+                    }
+                }
+                if (array_key_exists('payment no', $test) || array_key_exists('payment no', $test)
+                    || array_key_exists('payer code', $test)|| array_key_exists('code', $test)
+                    || ($check1 && $check2 && $check3) || ($check1 && $check4 && $check5)) {
+                    foreach ($responses as $data) {
+                        try {
+                            if ($check1 && $check4 && $check5) {
+                                $this->savePayment2($data, $date);
+                            } else {
+                                $this->savePayment($data, $date);
+                            }
+                        } catch (\Exception $e) {
+                            echo "database logging error \n";
+                        }
+                    }
+                    Report::whereId($report->id)->update(['parsed' => true]);
+                    return  Response('parse successfully');
+                } else {
+                    return Response::json(array("errors" => 'sheet format is wrong'), 422);
+                };
+            }
+            return Response::json(array("errors" => 'server error'), 422);
+        } catch (\Exception $exception) {
+            return Response::json(array("errors" => 'server error'), 422);
         }
     }
 }
