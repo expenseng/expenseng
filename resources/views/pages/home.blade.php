@@ -10,6 +10,15 @@
 
 <!-- Flickity JavaScript -->
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174035666-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-174035666-1');
+</script>
 
 
 @endpush
@@ -27,14 +36,14 @@
           <h4 class="slightly-bold"> In 2019,<br> the government spent </h4>
           <h4 class="bolding"> &#8358;8.92 trillion.</h4>
           <div class="para">
-            <p>ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities across Nigeria. 
+            <p>ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities across Nigeria.
               Learn more on how this money was spent with tools to help you navigate spending from top to bottom.</p>
           </div>
       </div>
       <div class="gallery p-3"  data-flickity='{ "freeScroll": true }'>
       @foreach ($expenses as $expense)
         <div class="card1 carousel-cell card">
-             <p class="tag">New</p> 
+             <p class="tag">New</p>
           <div class="project">
             <p class="slightly-bold">{{ $expense->project }}</p>
               <div class="d-flex justify-content-between mt-2 align-items-center">
@@ -47,7 +56,7 @@
       </div>
     </div>
 
-    
+
     <button class="btn scroll-down" >
       <a href="#expenses"></a>
     </button>
@@ -84,7 +93,7 @@
                  <option class="mb-3" value="{{$ministry->shortname}}">{{$ministry->shortname}}</option>
                @endforeach
              @endif
-           </select> 
+           </select>
           </div>
            <a href="{{ route('ministries') }}" class="profile">View all profiles</a>
         </div>
@@ -231,7 +240,7 @@
         <a href="{{ route('contractors') }}" class="profile">View all Contracts</a>
        </div>
   </div>
- 
+
 </div>
    <!-- conversation section -->
    <div class="convo-background">
