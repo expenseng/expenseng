@@ -27,7 +27,7 @@
                         <td>{{$expense->description}}</td>
                         <td>{{$expense->beneficiary}}</td>
                         <td>&#8358;{{ number_format($expense->amount) }}</td>
-                        <td>{{ date('d-m-Y', strtotime($expense->payment_date))}}</td>
+                        <td>{{ date('jS M, Y', strtotime($expense->payment_date))}}</td>
                     </tr>
                 @endforeach
                 @else
