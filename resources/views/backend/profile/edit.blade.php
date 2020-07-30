@@ -57,7 +57,7 @@
                                     <div class="" aria-labelledby="myModalLabel" aria-hidden="true">                                    
                                         <div class="modal-body">
                                             <center>
-                                            <img src="{{$user->image}}" alt="{{$user->name . '\'s image'}}" style="height:300px; width:300px; border-radius: 100%" ><br>
+                                            <img src="{{$user->image}}" alt="{{$user->name . '\'s image'}}" style="height:250px; width:250px; border-radius: 100%" class="img-fluid img-circle" ><br>
                                             <br>
                                             <br>
                                             <h3 class="media-heading bg-primary">{{$user->name}}</h3>
