@@ -34,7 +34,8 @@ class CeoNameSearch implements ShouldQueue
     public function handle()
     {
         $company = Company::whereId($this->id)->first();
-        $updated = Company::whereId($this->id)->update(['ceo' => $this->getCeo($company->name)]);
+        $updated = Company::whereId($this->id)->update(['ceo' => $this->getCeo($company->name) ?
+            $this->getCeo($company->name) : null]);
         if ($updated) {
             return ;
         } else {
