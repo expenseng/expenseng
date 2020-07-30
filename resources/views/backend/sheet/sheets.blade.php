@@ -73,7 +73,7 @@
                                                             
                                                         </div>
                                                         <div class="col-md-6">
-                                                         <a href="{{'admin/sheet/parse/'. $sheet->id}}"><i class="fa fa-database"></i></a>
+                                                         <a href="{{ $sheet->parsed ? '#' : 'admin/sheet/parse/'. $sheet->id}}"><i class="fa fa-database"></i></a>
                                                         </div>
                                                     </div>
 
