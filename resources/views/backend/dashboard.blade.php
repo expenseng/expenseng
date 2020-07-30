@@ -41,7 +41,7 @@
                             </div>
                         </div>
                         <div class="card-number">
-                            <h3 class="">0
+                            <h3 class=""> {{$comments}}
 
                             </h3>
                         </div>
