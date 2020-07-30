@@ -17,19 +17,29 @@ class CompanyController extends Controller
     public function index()
     {
         $contractors = $this->getYearlyTotal();
-        $companies = Company::paginate(20)->toArray();
-        return view('pages.contract.index')->with(['companies' => $companies, 'contractors' => $contractors]);
+        return view('pages.contract.index')->with(['contractors' => $contractors]);
+        //dump($contractors);
     }
 
     public function show($com)
-    {   
-        $company = Company::where('shortname', $com)->orWhere('name', 'LIKE', "$com%")->first();
+    {  
+        $beneficiary =   ucwords(str_replace('-', ' ', $com)); 
+        $company = Company::where('shortname', $beneficiary)->orWhere('name', 'LIKE', "$beneficiary%")->first();
         if(isset($company)){
                 return view('pages.contract.single')->with('company', $company);
             }else{
-                $company = $com;
-                return view('pages.contract.notfound')->with('company', $company);
-                //dump($company);
+                $contracts = $this->getContractorTotal($beneficiary);
+                $company = $contracts[0];
+
+                $total_sum = 0;
+                foreach($contracts as $contract){
+                     $total_sum = $total_sum + $contract->total_amount;
+                } 
+
+                 //$contracts->push(json_encode(['sum' => $sum]));
+                return view('pages.contract.notfound')->with(['company' => $company, 'contracts' => $contracts,  'total_sum' => $total_sum ]);
+                //dump($contracts);
+
             }
     }
 
@@ -75,6 +85,22 @@ class CompanyController extends Controller
             ->get();
         return $monthlyTotals;
     }
+
+
+    public function getContractorTotal($beneficiary){
+         $contractorTotal = DB::table('payments')
+                    ->select(DB::raw('beneficiary as name, id,  SUM(amount) as total_amount,
+                    (payment_date) as year,
+                 Month(payment_date) as month, description, payment_date, organization')
+                )
+                ->where('beneficiary', 'like', '%' . ( strtolower($beneficiary) ) . '%')
+                ->groupBy(DB::raw(
+                    '(beneficiary) ASC, YEAR(payment_date) ASC, Month(payment_date) ASC, description ASC, id ASC, payment_date ASC, organization ASC'
+                )
+            )
+            ->get();
+        return $contractorTotal;
+}
 
     /**
      * Display a form for creating companies.

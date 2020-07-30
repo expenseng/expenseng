@@ -11,7 +11,7 @@
 <!-- Main body start -->
 <div class="container">
        
-       {{ Breadcrumbs::render('contractors')}}
+       {{ Breadcrumbs::render('contractor', $company) }}
       
 </div>
 <section id="main">
@@ -19,16 +19,39 @@
   <!-- Start here -->
   <!-- Section 1 -->
   <div class="section-1 container">
+
     <div class="user-profile">
       <h3 class="name brand-name">
-         {{'NO DATA FOUND FOR THIS CONTRACTOR'}}
+        {{ $company->name }}
+        <!-- <img src="{{ asset('images/image 13.png') }}" alt="Berger logo"> -->
       </h3>
-
+      <div class="profile-overview mt-3">
+        <div class="row">
+          <div class="col-sm-4">
+            <p class="font-weight-bold">twitter handle</p>
+            <p>{{ 'not available' }}<p>
+          </div>
+          <div class="col-sm-4">
+            <p class="font-weight-bold">Total amount rewarded</p>
+            <p class="amount-rewarded">
+              &#8358;{{ number_format($total_sum, 2) }}
+            </p>
+           
+          </div>
+          <div class="col-sm-4">
+            <p class="font-weight-bold">Total number contracts awarded</p>
+            <p class="contract-number">
+             {{ count($contracts)}}
+            </p>
+           
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="nav content-navigator nav-tabs">
       <a href="#contract" class="active" data-toggle="tab" role="tab">Contract awards</a>
-      <a href="#board" data-toggle="tab" role="tab">Board of Directors</a>
+      <!-- <a href="#board" data-toggle="tab" role="tab">Board of Directors</a> -->
       <a href="#comments" data-toggle="tab" role="tab">Comments</a>
     </div>
   </div>
@@ -40,10 +63,36 @@
       <div class="card-body">
 
         <div class="table-responsive">
-
+          <table class="table table-borderless">
+            <thead>
+              <tr>
+                <td>SN</td>
+                <th scope="col">Project</th>
+                <th scope="col">Ministry</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+            @foreach($contracts as $contract)
+              <tr>
+                <td>{{$loop->index}}</td>
+                <td>{{$contract->description}}</td>
+                <td>{{$contract->organization}}</td>
+                <td>{{$contract->total_amount}}</td>
+                <td>{{$contract->payment_date}}</td>
+              </tr>
+            @endforeach
+            </tbody>
+          </table>
         </div>
 
         <!-- Pagination -->
+        <div class="">
+            <div class="pagination">
+                @include('partials.pagination', ['data' => $contracts])
+            </div>
+        </div>
 
       </div>
     </div>
