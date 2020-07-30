@@ -170,7 +170,7 @@
                                             <p id="view" class="font-weight-bold">View by</p>
                                             <div id="date-btn" class="row">
                                                 <div class="col-4">
-                                                <button id="day" class="btn btn-block btn-date day active">Day</button>
+                                                <button id="day2" class="btn btn-block btn-date day active">Day</button>
                                                 </div>
                                                 <div class="col-4">
                                                 <button id="month" class="btn btn-block month btn-date">Month</button>

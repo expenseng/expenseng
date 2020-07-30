@@ -74,12 +74,11 @@ class ExpenseController extends Controller
     public function filterExpensesAll($id, $date, $sort)
     { 
        
-        $givenTime = date('Y');
-        
-        if($id === 'apply-filter'){
-            $option = "!=";
-        }else if(($id === 'apply-filter2')){
+        $givenTime = ($id === 'apply-filter-exp')? date('Y-m-d'): date('Y');
+        if($id === 'apply-filter2'){
             $option = "=";
+        }else{
+            $option = "!=";
         }
         
         if ($date != 'undefined'){
@@ -97,7 +96,7 @@ class ExpenseController extends Controller
             $data = $data->whereMonth('payment_date', '=', $month)
                     ->whereYear('payment_date', '=', $year);
         } elseif (preg_match($day_pattern, $givenTime, $match)) {
-            $data = $data->where('payment_date', '=', "$givenTime");                  
+            $data = $data->where('payment_date', '=', "$givenTime");
         } elseif (preg_match($yr_pattern, $givenTime, $match)) {
             $data = $data->whereYear('payment_date', '=', "$givenTime");     
         } else {
@@ -118,6 +117,9 @@ class ExpenseController extends Controller
         }else if($id === 'apply-filter2'){
             $collection['nondescriptive'] = $data;
             return view('pages.expense.tables.ministries_nodesc')->with('collection', $collection);
+        }else if($id === 'apply-filter-exp'){
+            $collection['daily'] = $data;
+            return view('pages.expense.tables.dailyExpenditure')->with('collection', $collection);
         }
     }
 

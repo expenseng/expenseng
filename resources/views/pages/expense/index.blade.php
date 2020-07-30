@@ -64,12 +64,12 @@
         <div class="container col-sm-12 col-md-7">
           <div class="table-top d-flex justify-content-between align-items-center">
             <h4>Graph<span id="report-type">(Daily):</span> <span id="report-date"></span></h4>
-            <button class="nav-button" data-toggle="modal" data-target="#filterModal">Filter<i class="fas fa-filter px-1" style="font-size: var(--fs-reg);"></i></button>
+            <button class="nav-button" data-toggle="modal" data-target="#filterModalChart">Filter<i class="fas fa-filter px-1" style="font-size: var(--fs-reg);"></i></button>
 						</div>
 						<!-- Filter Modal -->
                 <div id="modal" class="row justify-content-center modals">
                   <div class="col-md-8">
-                    <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="filterModalChart" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <!-- Header -->
