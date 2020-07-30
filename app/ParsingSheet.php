@@ -66,19 +66,94 @@ class ParsingSheet
             return false;
         }
     }
-
-    public function dailyReport()
+    public function monthlyBudget()
     {
-        $reports = Report::where('parsed', '=', false)->where('type', "LIKE", "daily%")->orderBy('id', 'DESC')->get();
+//        getting links
+        $reports = Report::where('parsed', '=', false)->where('type', "LIKE", "monthly%")->orderBy('id', 'DESC')->get();
         if (!empty($reports)) {
+//            iterating through all the links
             foreach ($reports as $report) {
                 if (!$this->urlExists($report->link)) {
                     echo "file not found ".$report->link."\n";
                     continue;
                 }
+//                getting the category
+                switch ($report->link) {
+                    case (preg_match('/ADMIN/i', $report->link) != false):
+                        $cat = "ADMIN";
+                        break;
+                    case (preg_match('/ECONOMIC/i', $report->link) != false):
+                        $cat = "ECONOMIC";
+                        break;
+                    case (preg_match('/FUNCTION/i', $report->link) != false):
+                        $cat = "FUNCTION";
+                        break;
+                    default:
+                        $cat = " ";
+                }
                 try {
+                    $month = basename($report->link, '.xlsx');
+                    $response = $this->http->post('api/', [
+
+                        "body" => json_encode([
+                            "file_path" =>
+                                trim($report->link),
+                            "API_KEY" => "random25stringsisneeded"
+                        ])
+                    ]);
+                    $status = $response->getStatusCode(); // c
+                    if ($status == 200) {
+                        // get the body
+                        $responses = json_decode($response->getBody(), true);
+                        if (empty($responses)) {
+                            continue;
+                        }
+//                        iterating through the jason recieved from the database
+                        foreach ($responses as $data) {
+                            $data2 = array_values($data);
+//                            save to database
+                            $create = MonthlyBudget::create([
+                               "Name" => $data2[1],
+                                "code"=>$data2[0],
+                                "year_payments_till_date"=>$data2[4],
+                                "month"=>$month,
+                                "month_budget"=>$data2[3],
+                                "budget_amount"=>$data2[2],
+                                "budget_balance"=>$data2[5],
+                                "percentage"=>$data2[6],
+                                "categories"=>$cat
+
+                            ]);
+                        }
+//                        update report to parsed
+                        Report::whereId($report->id)->update(['parsed' => true]);
+                        echo "parsed and logged ".$report->link."\n";
+                        sleep(7);
+                    } else {
+                        echo 'error 505';
+                    }
+                } catch (\Exception $e) {
+                    echo 'server error ',$report->link ."\n";
+                }
+            }
+        }
+    }
+    public function dailyReport()
+    {
+//        getting reports
+        $reports = Report::where('parsed', '=', false)->where('type', "LIKE", "daily%")->orderBy('id', 'DESC')->get();
+        if (!empty($reports)) {
+            foreach ($reports as $report) {
+//                check if file exist
+                if (!$this->urlExists($report->link)) {
+                    echo "file not found ".$report->link."\n";
+                    continue;
+                }
+                try {
+//                    get base name
                     $basename = basename($report->link, '.xlsx');
                     $array = explode('-', $basename);
+//                    get date
                     $date_pattern = 'd-m-Y';
                     if (strlen(end($array)) < 4) {
                         $date_pattern = 'd-m-y';
@@ -86,6 +161,7 @@ class ParsingSheet
                         $basename = substr($basename, 0, strlen($basename) - (strlen(end($array))-4));
                     }
                     $date = Carbon::createFromFormat($date_pattern, $basename)->format('Y-m-d');
+//                    send http request
                     $response = $this->http->post('api/', [
 
                         "body" => json_encode([
@@ -95,6 +171,7 @@ class ParsingSheet
                         ])
 
                     ]);
+//                    get return statua
                     $status = $response->getStatusCode();
                     if ($status == 200) {
                         $responses = json_decode($response->getBody(), true);
@@ -191,6 +268,7 @@ class ParsingSheet
                 : (isset($response3[5]) ? $response3[5]   : "not stated")
         ));
         if (empty($check_company)) {
+//            queue a job to save comanpn name
             SaveCompanyName::dispatch($create->id);
         }
         if ($create) {
