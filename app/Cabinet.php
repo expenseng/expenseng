@@ -16,6 +16,6 @@ class Cabinet extends Model
     
     public function ministries()
     {
-        return $this->belongsTo(Ministry::class, 'code', 'ministry_code');
+        return $this->belongsTo(Ministry::class, 'id', 'ministry_id');
     }
 }
