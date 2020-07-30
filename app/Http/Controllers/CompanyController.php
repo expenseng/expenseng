@@ -25,13 +25,8 @@ class CompanyController extends Controller
     {   
         $company = Company::where('shortname', $company->shortname)
                             ->orWhere('name', 'LIKE', "$company->shortname%")->first();
-        if(isset($company)){
-                return view('pages.contract.single')->with('company', $company);
-            }else{
-                $company = $com;
-                return view('pages.contract.notfound')->with('company', $company);
-                //dump($company);
-            }
+        
+        return view('pages.contract.single')->with('company', $company);
     }
 
     public function getReport()
