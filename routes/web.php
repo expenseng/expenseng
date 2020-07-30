@@ -234,6 +234,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
      Route::get('/feedback/ignore/{id}', 'FeedbackController@ignore')
      ->name('feedback.ignore');
 
+
      // COMMENTS ROUTES
     Route::get('/comments', 'Admin\CommentController@index')->name('comments');  //Displays the index page for all comments
 
@@ -252,6 +253,8 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
 
       //Sheets
       Route::get('/sheets', 'Admin\SheetController@viewSheets')->name('sheets');
+      Route::get('/sheet/parse/{sheet_id}', 'Admin\SheetController@parseSheet')
+      ->name('sheet.parse');
 
 
 

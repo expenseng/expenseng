@@ -52,10 +52,10 @@
                                                 class="form-control">
                                             </div>
                                             <div class="form-group">
-                                                <label for="inputPassword">Ministry Code</label>
+                                                <label for="inputPassword">Ministry</label>
                                                 <select name="code" class="form-control" >
 
-                                                <option value="">Select Ministry Code</option>
+                                                <option value="">Select Ministry </option>
                                                 @foreach($ministry_codes as $ministry_code)
                                                 <option name="code" class="form-control" 
                                                 value="{{$ministry_code->code}}" required>
