@@ -70,11 +70,11 @@ class SaveCompanyName implements ShouldQueue
     public function logToDb($beneficiary)
     {
 
-        Company::create([
-            'name' => $beneficiary,
-            'shortname' => $this->shortName($beneficiary),
-            'ceo' => $this->getCeo($beneficiary)
-        ]);
+        $create = Company::create([
+                'name' => $beneficiary,
+                'shortname' => $this->shortName($beneficiary),
+            ]);
+        CeoNameSearch::dispatch($create->id)->onQueue('ceoSearch');
     }
 
     public function check($name)
@@ -82,18 +82,6 @@ class SaveCompanyName implements ShouldQueue
         $check = Company::whereName($name)->first();
         if (empty($check)) {
             return true;
-        }
-        return false;
-    }
-    public function getCeo($name)
-    {
-        $result = Scrapping::checkCompany($name);
-        if (($result != false)) {
-            foreach ($result as $person) {
-                if (strtolower($person['role']) == 'director') {
-                    return $person['name'];
-                }
-            }
         }
         return false;
     }
