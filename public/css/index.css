@@ -283,8 +283,8 @@ p.tag{
     font-weight: 500;
 }
 .project p#cost{
-    font-size: var(--fs-h3);
-    font-weight: 700;
+    font-size: var(--fs-reg);
+    font-weight: 600;
 }
 .warning{
     font-size: 1rem;
