@@ -66,6 +66,15 @@
             </a>
           </li>
 
+          <li class="{{Route::is('sector.view') || Route::is('sector.create') || Route::is('sector.edit')
+           ? 'nav-item active' : 'nav-item'}} ">
+            <a class="nav-link" href="{{Route::is('sector.view') || Route::is('sector.create') || Route::is('sector.edit')
+             ? '#' : route('sector.view')}}">
+              <i class="material-icons">work</i>
+              <p>Sector</p>
+            </a>
+          </li>
+
           <li class="{{Route::is('subscribe.view') || Route::is('subscribe.create') || Route::is('subscribe.edit')
            ? 'nav-item active' : 'nav-item'}} ">
             <a class="nav-link" href="{{Route::is('subscribe.view')? '#' :route('subscribe.view')}}">
