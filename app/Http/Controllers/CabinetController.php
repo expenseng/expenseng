@@ -44,7 +44,11 @@ class CabinetController extends Controller
             return redirect(route('profile'));
         }
 
-        $cabinets = Cabinet::all();
+        $cabinets = DB::table('ministries')
+        ->leftJoin('cabinets', 'cabinets.ministry_code', '=', 'ministries.code')
+        ->get();
+        
+        
         $recent_activites = Activites::where('status', 'pending')->orderBY('id', 'DESC')
             ->limit(7)
             ->get();
