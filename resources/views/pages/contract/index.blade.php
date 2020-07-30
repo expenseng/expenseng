@@ -43,7 +43,7 @@
     <div id="company" class="container">
     <div class="row" id="company-div">
         @foreach ($companies as $company)  
-          <a href="{{ route('contractors.single', ['company' => $company->shortname()]) }}">
+          <a href="{{ route('contractors.single', ['company' => $company->shortname()]) }}" target="_blank">
             <div class="col-md-4 col-lg-3 mb-3 card-col">
               <div class="card shadow">
                 <div class="card-body">
@@ -52,7 +52,7 @@
                             element="{{ $company->shortname() }}"></chart>
                     <div class="company mb-2">
                         <img src="{{ asset('images/image 13.png') }}" height="30" class="mr-3" alt="">
-                        <a href="{{ route('contractors.single', ['company' => $company->shortname()]) }}">
+                        <a href="{{ route('contractors.single', ['company' => $company->shortname()]) }}" target="_blank">
                           <h5 class="card-title mb-0" class="company-name">
                             {{ $company->name }}
                           </h5>

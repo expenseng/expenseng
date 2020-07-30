@@ -7,10 +7,11 @@
 <link rel="stylesheet" href="/css/modal/style.css">
 <!-- Flickity CSS -->
 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-
 <!-- Flickity JavaScript -->
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 
 @endpush
 @section('banner')
@@ -31,7 +32,7 @@
               Learn more on how this money was spent with tools to help you navigate spending from top to bottom.</p>
           </div>
       </div>
-      <div class="gallery p-3"  data-flickity='{ "freeScroll": true }'>
+      <div class="gallery p-3 slick"  data-flickity='{ "freeScroll": true }'>
       @foreach ($expenses as $expense)
         <div class="card1 carousel-cell card">
              <p class="tag">New</p> 
@@ -67,7 +68,7 @@
     <div class="container">
          <div class="expenses">
              <govt-expense></govt-expense>
-             <a href="{{route('expense.reports')}}" class="mt-4 mb-5 mx-auto">View Expenditure Report</a>
+             <a href="{{route('expense.reports')}}" class="mt-4 mb-5 mx-auto" target="_blank">View Expenditure Report</a>
          </div>
     </div>
    </div>
@@ -86,7 +87,7 @@
              @endif
            </select> 
           </div>
-           <a href="{{ route('ministries') }}" class="profile">View all profiles</a>
+           <a href="{{ route('ministries') }}" class="profile" target="_blank">View all profiles</a>
         </div>
         <div class="ministry-stat">
           <a href="#" id="link"></a>
@@ -184,7 +185,7 @@
      <div class="container">
       <p>A big-picture view of the daily spending <br> of the federal government</p>
       <p>Use our explorer to view how government spends our money daily</p>
-      <a href="{{route('expense.reports')}}"><button>Explore</button></a>
+      <a href="{{route('expense.reports')}}" target="_blank"><button>Explore</button></a>
      </div>
    </div>
 
@@ -228,7 +229,7 @@
      </div>
       @endforeach
       <div class="vll m-md-auto mx-sm-auto mt-sm-4">
-        <a href="{{ route('contractors') }}" class="profile">View all Contracts</a>
+        <a href="{{ route('contractors') }}" class="profile" target="_blank">View all Contracts</a>
        </div>
   </div>
  
@@ -238,7 +239,7 @@
 <div class="convo container d-flex  justify-content-between mb-3">
             <div class="tweet col-md-5 col-lg-5 d-flex align-items-center justify-content-start">
                <div class="twt-handle">
-                <a href="https://twitter.com/expenseng">@expenseNG</a>
+                <a href="https://twitter.com/expenseng" target="_blank">@expenseNG</a>
                </div>
             </div>
            <div class="query col-md-7 col-xl-5 col-sm-12">
@@ -255,6 +256,9 @@
 
 @endsection
 @section('js')
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 <script src="{{asset('js/index.js')}}"></script>
 <script src="{{asset('js/chart.js')}}"></script>
 <script src="{{asset('/js/subscription.js')}}"></script>

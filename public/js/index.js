@@ -167,6 +167,15 @@ jQuery($=> {
   }
 });
 
+// slider
+// $(document).ready(() =>{
+//     $('.slick').slick({
+//         autoplay: true,
+//         speed: 2000,
+//     })
+// })
+
+
 //make cards clickable
 $(".comp-card").click(function() {
     window.location = $(this).find("a").attr("href"); 

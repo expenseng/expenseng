@@ -202,16 +202,16 @@
 
                     <div class="social-handle text-center">
                         @if($ministerFacebookHandle)
-                        <a href="#" class="link"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#" class="link"><i class="fab fa-facebook" aria-hidden="true" target="_blank"></i></a>
                         @endif
                         @if($ministerTwitterHandle)
-                        <a href="{!! url("https://twitter.com/$ministerTwitterHandle") !!}" class="link ml-2"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="{!! url("https://twitter.com/$ministerTwitterHandle") !!}" class="link ml-2" target="_blank"><i class="fab fa-twitter" aria-hidden="true"></i></a>
                         @endif
                         @if($ministerLinkedInHandle)
-                        <a href="#" class="link ml-2"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="#" class="link ml-2"><i class="fab fa-linkedin" aria-hidden="true" target="_blank"></i></a>
                         @endif
                         @if($ministerInstagramHandle)
-                        <a href="#" class="link ml-2"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" class="link ml-2"><i class="fab fa-instagram" aria-hidden="true" target="_blank"></i></a>
                         @endif
                     </div>
                 </div>

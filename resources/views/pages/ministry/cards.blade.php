@@ -1,6 +1,6 @@
 @if (count($ministries) >0)
 @foreach($ministries as $ministry)
-    <a class="text-green" href="{{ route('ministries.single', $ministry->shortname) }}">
+    <a class="text-green" href="{{ route('ministries.single', $ministry->shortname) }}" target="_blank">
         <div data-id="{{$ministry->shortname}}"
         class="col-lg-3 col-md-6 col-sm-12 ministry-cards d-flex">
         <div class="cont-1 d-flex flex-column justify-content-center py-0">

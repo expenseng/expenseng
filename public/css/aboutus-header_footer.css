@@ -105,7 +105,7 @@ ul.links li a::before{
 
 .navbar-nav .nav-link {
     padding: 8px 0 !important;
-    font-weight: 500;
+    /* font-weight: normal;\\ */
     text-transform: capitalize;
     font-size: var(--fs-nav);
     color: #26313c;
