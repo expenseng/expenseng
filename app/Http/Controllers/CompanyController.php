@@ -21,9 +21,10 @@ class CompanyController extends Controller
         return view('pages.contract.index')->with(['companies' => $companies, 'contractors' => $contractors]);
     }
 
-    public function show($com)
+    public function show(Company $company)
     {   
-        $company = Company::where('shortname', $com)->orWhere('name', 'LIKE', "$com%")->first();
+        $company = Company::where('shortname', $company->shortname)
+                            ->orWhere('name', 'LIKE', "$company->shortname%")->first();
         if(isset($company)){
                 return view('pages.contract.single')->with('company', $company);
             }else{
