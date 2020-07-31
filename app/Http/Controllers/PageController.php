@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Budget;
 use App\Ministry;
+use App\Cabinet;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -102,8 +103,9 @@ class PageController extends Controller
     }
 
     public function handles()
-    {
-        return view('pages.handles');
+    {   $ministries = Ministry::all();
+        $cabinet = Cabinet::all();
+        return view('pages.handles',compact('ministries','cabinet'));
     }
 
     public function contactEmail()
