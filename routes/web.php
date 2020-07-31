@@ -41,7 +41,7 @@ Route::get('/contactEmail', 'PageController@contactEmail')->name('contactEmail')
  * Reports Endpoints
  */
 Route::get('/expense/report', 'ExpenseController@report')->name('expense.reports');
-Route::post('/subscribe', 'SubscriptionController@store');
+Route::post('/subscribe', 'SubscriptionController@store')->name('subscribe');
 
 Route::get('/expense/ministry', 'ExpenseController@ministry')->name('expense.ministry');
 
@@ -122,7 +122,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
  //    Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
 
 
- Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function(){
+ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
      Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
       // Matches The "/admin/dashboard" URL
      Route::delete('/activity/delete/{activity_id}', 'DashboardController@deleteActivity')->name('activity.delete');
@@ -163,7 +163,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
       ->name('ministry.edit');
       Route::delete('/ministry/delete/{ministry_id}', 'Admin\MinistryController@deleteMinistry')
       ->name('ministry.delete');
-      
+
       // SECTOR CRUD
       Route::get('/sector/create', 'SectorController@viewCreateSector')
       ->name('sector.create');
@@ -270,10 +270,8 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
       Route::get('/sheet/parse/{sheet_id}', 'Admin\SheetController@parseSheet')
       ->name('sheet.parse');
 
-
-
-
-
+    Route::get('/website_stats', 'Website_Statistics_Controller@index')->name('website_stats');
+    
  });
 
 
@@ -294,3 +292,4 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
  Route::post('/post_tweet', 'TwitterBot@sendTweet');
  Route::get('/tweets', 'TwitterBot@getTweet');
  Route::delete('delete_tweet', 'TwitterBot@delete');
+ Route::post('parse_sheet', 'SheetParsing@parse');

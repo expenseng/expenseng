@@ -4,13 +4,13 @@
 <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
 <link rel="stylesheet" href="{{ asset('css/handles.css') }}">
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174035666-1"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174166304-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-174035666-1');
+  gtag('config', 'UA-174166304-1');
 </script>
 
 @endpush
@@ -43,120 +43,17 @@
                                 </tr>
                             </thead>
 							<tbody class="t-body text-left">
-
-
-								<tr class="" style="background-color: white;">
-									<td class="section-shadow">Presidnet of Nigeria</td>
-									<td>Muhammadu Buhari</td>
-
-									<td col-span="1" class="table-overflow"> @MBuhari</td>
-
-								</tr>
-								<tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Vice President</td>
-									<td>Yemi Osinbajo</td>
-									<td class="table-overflow" >@ProfOsinbajo</td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Minister of Justice Attorney General</td>
-									<td>Abubakar Malami</td>
-									<td class="table-overflow">@MalamiSan</td>
-								</tr>
-								<tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Minster of Foreign Affair</td>
-									<td>Geoffrey Onyeama</td>
-									<td class="table-overflow" >@GeoffreyOnyeama</td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Minister of Finance,Budget and National Planning</td>
-									<td>Zainab Ahmed</td>
-									<td class="table-overflow" >@ZShamsuma</td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Vice President</td>
-									<td>Yemi Osinbajo</td>
-									<td class="table-overflow" >@ProfOsinbajo</td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Minister of Defence</td>
-									<td>Bashir Salihi Magashi</td>
-									<td class="table-overflow" >@GenMagashi</td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Minister of Education</td>
-									<td>Adamu Adamu</td>
-									<td class="table-overflow" >@adamu02adamu</td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Minister of Inndustry, Trade and Investment</td>
-									<td>Richard Adeniyi Adebayo</td>
-									<td class="table-overflow" >@NiyiAdebayo_</td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Minister of Labour and Employment</td>
-									<td>Chris Ngige</td>
-									<td class="table-overflow" >@SenChrisNgige</td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Minister of Federal Capital Territory</td>
-									<td>Mohammed Musa Bello</td>
-									<td class="table-overflow" >@FCT_Minister</td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Minister of Science and Technology</td>
-									<td>Ogbonnaya Onu</td>
-									<td class="table-overflow" >@Dr_OgbonnayaOnu</td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Minister of Mines and steel Developement</td>
-									<td>Olamilekan Adegbite</td>
-									<td class="table-overflow" >@_LekanAdegbite</td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Minister of Interior</td>
-									<td>Rauf Aregbesola</td>
-									<td class="table-overflow">@raufaregbesola</td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Minister of State Budget and Nation Planning</td>
-									<td>Clement Agba</td>
-									<td class="table-overflow" >@ClemAgba</td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Minister of Work and Housing</td>
-									<td>Babatunde Fashola</td>
-									<td class="table-overflow" >@tundefashola</td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Minister of Agriculture and Rural Development</td>
-									<td>Sabo Nanono</td>
-									<td class="table-overflow" >@Nanonosabo</td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Minister of Transportation</td>
-									<td>Rotimi Amaechi</td>
-									<td class="table-overflow" >@ChibuikeAmeachi</td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Minister of Power</td>
-									<td>Saleh Mamman</td>
-									<td class="table-overflow" >@EngrSMamman</td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Minister of Health</td>
-									<td>Osagie Ehanire</td>
-									<td class="table-overflow">@DrEOEhanire</td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Minister of Women Affairs</td>
-									<td>Paulen Tallen</td>
-									<td class="table-overflow">@PaulineKTallen</td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Minister of Niger Delta</td>
-									<td>Godswill Akpabio</td>
-									<td class="table-overflow">@Senatore_Akpabio</td>
-								</tr>
+								
+									
+										@foreach ($cabinet as $cabinet)
+											<tr>
+												<td>{{$cabinet->role}}</td>
+												<td>{{$cabinet->name}}</td>
+												<td class="table-overflow"> <a href="" target="_blank">{{$cabinet->twitter_handle}}</a></td>
+											<tr>
+										@endforeach
+									
+								
 
 							</tbody>
 						</table>
@@ -214,111 +111,13 @@
 							<tbody class="t-body text-left">
 
 
-								<tr class="" style="background-color: white;">
-									<td class="section-shadow">Agriculture</td>
-									<td>@FmardNg</td>
-									<td class="table-overflow" ></td>
-								</tr>
-								<tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Aviation</td>
-									<td>@fmaviationng</td>
+							@foreach ($ministries as $ministry)
+								<tr>
+									<td>{{$ministry->name}}</td>
+									<td><a href="" target="_blank">{{$ministry->twitter}}</a></td>
 									<td class="table-overflow"></td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Defence</td>
-									<td>@DefenceInfoNG</td>
-									<td class="table-overflow" ></td>
-								</tr>
-								<tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Education</td>
-									<td>@NigEducation</td>
-									<td class="table-overflow" ></td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Energy</td>
-									<td>@MinistryofPower</td>
-									<td class="table-overflow"></td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Environment</td>
-									<td>@FMEnvbg</td>
-									<td class="table-overflow" ></td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Federal Capital Territory</td>
-									<td>@officialFCTA</td>
-									<td class="table-overflow" ></td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Finance</td>
-									<td>@FinMinNigeria</td>
-									<td class="table-overflow"></td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Foreign Affairs</td>
-									<td>@NigeriaMFA</td>
-									<td class="table-overflow"></td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">VHealth</td>
-									<td>@Fmohnigeria</td>
-									<td class="table-overflow"></td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Information and Culture</td>
-									<td>@FMICNigeria</td>
-									<td class="table-overflow" ></td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Interior</td>
-									<td>@MinOfInteriorNG</td>
-									<td class="table-overflow" ></td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Justice</td>
-									<td>@FedMinOfJustice</td>
-									<td class="table-overflow" ></td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Labour and Productivity</td>
-									<td>@LabourMinNg</td>
-									<td class="table-overflow" ></td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Lands & Urban Development</td>
-									<td>@ministry_lands</td>
-									<td class="table-overflow" ></td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Mines and Steel Development</td>
-									<td>@fmmsdngr</td>
-									<td class="table-overflow" ></td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Niger Delta</td>
-									<td>@MNDA_Ng</td>
-									<td class="table-overflow"></td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Petroleum Resources</td>
-									<td>@FMPRng</td>
-									<td class="table-overflow" ></td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Power, Works and Housing</td>
-									<td>@PowerMinNigeria</td>
-									<td class="table-overflow" ></td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Science and Technology</td>
-									<td>@FmstNgtd>
-									<td class="table-overflow"></td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Trade and Investment</td>
-									<td>@TradeInvestNG</td>
-									<td class="table-overflow" ></td>
-								</tr>
+								<tr>
+							@endforeach
 
 							</tbody>
 						</table>

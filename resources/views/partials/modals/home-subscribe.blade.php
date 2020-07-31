@@ -14,20 +14,23 @@
           </button>
         </div>
         <div class="modal-body">
-            <form class="subscribe-form">
+            <form id="subscribe-form" class="subscribe-form" method="POST" action="{{route('subscribe')}}">
+                @csrf
                 <div class="form-group">
                   <label for="full-name" class="col-form-label">Full Name:</label>
-                  <input type="text" class="form-control" id="full-name">
+                  <input type="text" class="form-control" name='name' id="full-name" required />
                 </div>
                 <div class="form-group">
                   <label for="email-text" class="col-form-label">Email:</label>
-                  <input type="email" class="form-control" id="email-text">
+                  <input type="email" name='email' class="form-control" id="email-text" required />
                 </div>
+                <input type="hidden" name="subscription_type" value="latest updates" required />
               </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-outline-light subscribe-button">Subscribe</button>
+          <button type="button" class="btn btn-outline-light subscribe-button" 
+          onclick="event.preventDefault(); document.getElementById('subscribe-form').submit();">Subscribe</button>
         </div>
       </div>
     </div>
