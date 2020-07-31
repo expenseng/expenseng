@@ -13,7 +13,7 @@
          @include('backend.partials.flash')
         </div>
          {{-- Flash message end--}}
-      
+
         <div class="row">
                     <div class="col-xl-12">
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -43,7 +43,7 @@
 
                                         <tbody>
                                         @if (count($cabinets ) > 0)
-                                        
+
                                             <tr>
                                             @foreach ($cabinets as $cabinet)
                                                 <td>
@@ -63,7 +63,7 @@
                                                             @endcan
                                                         </div>
                                                         <!--modal begin-->
-                                                        
+
                                                             <div class="col-md-6">
                                                             @can('delete')
                                                             <i class="fa fa-trash" data-toggle="modal" data-target="{{'#exampleModal'. $cabinet->id}}" style="color: red"></i>
@@ -85,7 +85,7 @@
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                                     <form action="{{'/admin/cabinet/delete/'. $cabinet->id}}" method="post" >
                                                                 @method('delete')
-                                                                
+
                                                                 @csrf
                                                                 <button type="" class="btn btn-danger">Delete</button>
                                                                 </form>
@@ -96,14 +96,14 @@
                                                     </div>
                                                     </div>
 
-                                                    
+
                                                 </td>
                                                 @endcan
                                             </tr>
-                                            
+
                                         @endforeach
                                         @endif
-                                            
+
                                         </tbody>
                                         <tfoot>
                                             <tr>
@@ -117,7 +117,7 @@
                                                 <th>Actions</th>
                                                 @endcan
 
-                                                
+
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -135,7 +135,7 @@
 
     <!-- slimscroll js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/slimscroll/jquery.slim.min.js"></script>
-   
+
     <script>
         jQuery(document).ready(function() {
     $('#example').DataTable();
