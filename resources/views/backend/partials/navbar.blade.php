@@ -24,7 +24,7 @@
                 </form>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href={{ route('dashboard') }}>
+                        <a class="nav-link" href="{{ route('dashboard') }}">
                             <i class="material-icons">dashboard</i>
                             <p class="d-lg-none d-md-block">
                                 Stats

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\MonthlyBudget;
 use App\Payment;
+use App\QuarterlyBudget;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Session;
@@ -230,7 +231,72 @@ class SheetController extends Controller
 
 
                 } else {
+
+
                     //do quarterly
+                    switch ($sheet->link) {
+                        case (preg_match('/ADMIN/i', $sheet->link) != false):
+                            $cat = "ADMIN";
+                            break;
+                        case (preg_match('/ECONOMIC/i', $sheet->link) != false):
+                            $cat = "ECONOMIC";
+                            break;
+                        case (preg_match('/FUNCTION/i', $sheet->link) != false):
+                            $cat = "FUNCTION";
+                            break;
+                        default:
+                            $cat = " ";
+                    }
+                    try {
+                        $quarter = basename($sheet->link, '.xlsx');
+                        $response = $this->http->post('api/', [
+    
+                            "body" => json_encode([
+                                "file_path" =>
+                                    trim($sheet->link),
+                                "API_KEY" => "random25stringsisneeded"
+                            ])
+                        ]);
+                        $status = $response->getStatusCode(); // c
+                        if ($status == 200) {
+                            // get the body
+                            $data = json_decode($response->getBody(), true);
+                            if (empty($data)) {
+                                Session::flash('flash_message', 'No data found for sheet');
+                                return redirect()->back();
+                            }
+                                $data2 = array_values($data);
+                               //save to database
+                                $create = QuarterlyBudget::create([
+                                   "Name" => $data2[1],
+                                    "code"=>$data2[0],
+                                    "year_payments_till_date"=>$data2[4],
+                                    "quarter"=>$quarter,
+                                    "quarter_budget"=>$data2[3],
+                                    "budget_amount"=>$data2[2],
+                                    "budget_balance"=>$data2[5],
+                                    "percentage"=>$data2[6],
+                                    "categories"=>$cat
+    
+                                ]);
+                            
+                            //update report to parsed
+                            Report::whereId($sheet->id)->update(['parsed' => true]);
+                            Session::flash( "parsed and logged ".$sheet->link). "to database successfully!";
+                            return redirect()->back();
+                            
+                        } else {
+                            Session::error( 'error 505');
+                            return redirect()->back();
+                        }
+                    } catch (\Exception $e) {
+                         Session::flash('eror_message','server error, '.$sheet->link. ' was not parsed' );
+                         return redirect()->back();
+                    }
+
+
+
+
                 }
             } else {
 

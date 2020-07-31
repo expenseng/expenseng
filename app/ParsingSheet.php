@@ -71,7 +71,7 @@ class ParsingSheet
     public function monthlyBudget()
     {
 //        getting links
-        $reports = Report::where('parsed', '=', false)->where('type', "LIKE", "monthly%")->orderBy('id', 'DESC')->get();
+        $reports = Report::where('parsed', '=', false)->where('type', "LIKE", "monthly%")->orderBy('id', 'ASC')->get();
         if (!empty($reports)) {
 //            iterating through all the links
             foreach ($reports as $report) {
@@ -140,10 +140,82 @@ class ParsingSheet
             }
         }
     }
+    public function quarterlyBudget()
+    {
+        $reports = Report::where('parsed', '=', false)->where('type', "LIKE", "quarter%")->orderBy('id', 'ASC')->get();
+        if (!empty($reports)) {
+//            iterating through all the links
+            foreach ($reports as $report) {
+                if (!$this->urlExists($report->link)) {
+                    echo "file not found ".$report->link."\n";
+                    continue;
+                }
+//                getting the category
+                switch ($report->link) {
+                    case (preg_match('/ADMIN/i', $report->link) != false):
+                        $cat = "ADMIN";
+                        break;
+                    case (preg_match('/ECONOMIC/i', $report->link) != false):
+                        $cat = "ECONOMIC";
+                        break;
+                    case (preg_match('/FUNCTION/i', $report->link) != false):
+                        $cat = "FUNCTION";
+                        break;
+                    default:
+                        $cat = " ";
+                }
+                try {
+                    $quarter = basename($report->link, '.xlsx');
+                    $response = $this->http->post('api/', [
+
+                        "body" => json_encode([
+                            "file_path" =>
+                                trim($report->link),
+                            "API_KEY" => "random25stringsisneeded"
+                        ])
+                    ]);
+                    $status = $response->getStatusCode(); // c
+                    if ($status == 200) {
+                        // get the body
+                        $responses = json_decode($response->getBody(), true);
+                        if (empty($responses)) {
+                            continue;
+                        }
+//                        iterating through the jason recieved from the database
+                        foreach ($responses as $data) {
+                            $data2 = array_values($data);
+//                            save to database
+                            $create = QuarterlyBudget::create([
+                                "Name" => $data2[1],
+                                "code"=>$data2[0],
+                                "year_payments_till_date"=>$data2[4],
+                                "quarter"=>$quarter,
+                                "quarter_budget"=>$data2[3],
+                                "budget_amount"=>$data2[2],
+                                "budget_balance"=>$data2[5],
+                                "percentage"=>$data2[6],
+                                "categories"=>$cat
+
+                            ]);
+                        }
+//                        update report to parsed
+                        Report::whereId($report->id)->update(['parsed' => true]);
+                        echo "parsed and logged ".$report->link."\n";
+                        sleep(7);
+                    } else {
+                        echo 'error 505';
+                    }
+                } catch (\Exception $e) {
+                    dd($e->getMessage());
+                    echo 'server error ',$report->link ."\n";
+                }
+            }
+        }
+    }
     public function dailyReport()
     {
 //        getting reports
-        $reports = Report::where('parsed', '=', false)->where('type', "LIKE", "daily%")->orderBy('id', 'DESC')->get();
+        $reports = Report::where('parsed', '=', false)->where('type', "LIKE", "daily%")->orderBy('id', 'ASC')->get();
         if (!empty($reports)) {
             foreach ($reports as $report) {
 //                check if file exist
@@ -466,6 +538,70 @@ class ParsingSheet
             }
             return Response::json(array("errors" => 'server error'), 422);
         } catch (\Exception $exception) {
+            return Response::json(array("errors" => 'server error'), 422);
+        }
+    }
+
+    public function parseQuarterly($report)
+    {
+        if (!$this->urlExists($report->link)) {
+            return Response::json(array("errors" => 'file not fount'), 422);
+        }
+//                getting the category
+        switch ($report->link) {
+            case (preg_match('/ADMIN/i', $report->link) != false):
+                $cat = "ADMIN";
+                break;
+            case (preg_match('/ECONOMIC/i', $report->link) != false):
+                $cat = "ECONOMIC";
+                break;
+            case (preg_match('/FUNCTION/i', $report->link) != false):
+                $cat = "FUNCTION";
+                break;
+            default:
+                $cat = " ";
+        }
+        try {
+            $quarter = basename($report->link, '.xlsx');
+            $response = $this->http->post('api/', [
+
+                "body" => json_encode([
+                    "file_path" =>
+                        trim($report->link),
+                    "API_KEY" => "random25stringsisneeded"
+                ])
+            ]);
+            $status = $response->getStatusCode(); // c
+            if ($status == 200) {
+                // get the body
+                $responses = json_decode($response->getBody(), true);
+                if (empty($responses)) {
+                    return Response::json(array("errors" => 'empty sheet'), 422);
+                }
+//                        iterating through the jason recieved from the database
+                foreach ($responses as $data) {
+                    $data2 = array_values($data);
+//                            save to database
+                    $create = QuarterlyBudget::create([
+                        "Name" => $data2[1],
+                        "code"=>$data2[0],
+                        "year_payments_till_date"=>$data2[4],
+                        "quarter"=>$quarter,
+                        "quarter_budget"=>$data2[3],
+                        "budget_amount"=>$data2[2],
+                        "budget_balance"=>$data2[5],
+                        "percentage"=>$data2[6],
+                        "categories"=>$cat
+
+                    ]);
+                }
+//                        update report to parsed
+                Report::whereId($report->id)->update(['parsed' => true]);
+                return  Response('parse successfully');
+            } else {
+                return Response::json(array("errors" => 'server error'), 422);
+            }
+        } catch (\Exception $e) {
             return Response::json(array("errors" => 'server error'), 422);
         }
     }
