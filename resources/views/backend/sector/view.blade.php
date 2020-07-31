@@ -1,6 +1,6 @@
 @extends('layouts.home')
 @push('css')
-    
+
     <link rel="stylesheet" href="{{ asset('css/dash-table.css') }}">
     
 <title>ExpenseNg - Ministries</title>
@@ -30,24 +30,24 @@
                                             <tr>
                                                 <th>S/N</th>
                                                 <th>Name</th>
-                                                
+
                                                 @can('manage')
                                                 <th>Action</th>
                                                 @endcan
                                             </tr>
                                         </thead>
-                                        
-                                        
+
+
                                         <tbody>
                                         @if (count($sectors ) > 0)
                                             <tr>
-                                                
+
                                                 @foreach ($sectors as $sector)
                                                     <td>
                                                         {{++$count}}
                                                     </td>
                                                     <td>{{$sector->name}}</td>
-                                                    
+
                                                     @can('manage')
                                                     <td>
                                                         <div class="row">
@@ -56,7 +56,7 @@
                                                                 <a href="{{'/admin/sector/edit/' . $sector->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
                                                                 @endcan
                                                             </div>
-                                                            
+
                                                             <div class="col-md-6">
                                                                 @can('delete')
                                                                 <i class="fa fa-trash" data-toggle="modal" data-target="{{'#exampleModal'.$sector->id}}" style="color: red"></i>
@@ -92,17 +92,17 @@
                                                         </div>
                                                     </td>
                                                     @endcan
-                                                    
+
                                                 </tr>
                                             @endforeach
                                         @endif
                                         </tbody>
-                                       
+
                                         <tfoot>
                                             <tr>
                                             <th>S/N</th>
                                                 <th>Name</th>
-                                                
+
                                                 @can('manage')
                                                 <th>Actions</th>
                                                 @endcan
@@ -121,17 +121,17 @@
 
 @section('js')
 
-    
+
     <!-- main js -->
     <script src="{{ asset('js/main-js.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/dashboard-ecommerce.js') }}" type="text/javascript"></script>
-    
+
     <script>
         jQuery(document).ready(function() {
     $('#example').DataTable();
     } );
     </script>
-    
+
 
 
 @endsection
