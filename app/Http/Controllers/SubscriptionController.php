@@ -90,3 +90,4 @@ class SubscriptionController extends Controller
         return back();
     }
 }
+}
