@@ -5,12 +5,28 @@ namespace App\Http\Controllers;
 use App\Subscription;
 use App\Activites;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 
 class SubscriptionController extends Controller
 {
     //
 
+    private $http;
+    private $baseUri = "https://email.microapi.dev/v1/";
     
+    public function __construct()
+    {
+
+        $this->baseUri = "https://email.microapi.dev/v1/";
+        
+        $this->http = new Client([
+            'base_uri' => $this->baseUri,
+            'headers' => [
+                'debug' => true,
+                'Content-Type' => 'application/json',
+            ]
+        ]);
+    }
 
     public function store(Request $request)
     {
