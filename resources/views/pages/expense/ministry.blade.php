@@ -73,7 +73,7 @@
 				<div class="table-section reponsive-div">
 					<div class="main-table">
 						<div class="table-top p-3 d-flex justify-content-between align-items-center">
-							<h3 class="align-self-center">Date: <span class="said-date">{{ date("dS, M Y") }}</span></h3>
+							<h3 class="said-date-caption" class="align-self-center">Date: <span class="said-date">{{ date("dS, M Y") }}</span></h3>
 							<button class="nav-button" data-toggle="modal" data-target="#filterModal">Filter<i class="fas fa-filter px-1" style="font-size: var(--fs-reg);"></i></button>
 						</div>
 						<!-- Filter Modal -->
@@ -158,7 +158,7 @@
 				<div class="table-section reponsive-div">
 					<div class="main-table">
 						<div class="table-top p-3 d-flex justify-content-between align-items-center">
-							<h3 class="align-self-center">Payments without description: <span class="said-date"></span></h3>
+							<h3 class="said-date-caption" class="align-self-center">Payments without description: <span class="said-date"></span></h3>
 							<button type="button"  data-toggle="modal" data-target="#filterModal2">Filter <i class="fas fa-filter px-1"></i></button>
 						</div>
 						<!-- Filter Modal -->
