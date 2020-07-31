@@ -22,8 +22,7 @@
 </div>
 
 <div class="container bg-white pt-5 bg-inner">
-    <div class="container">
-        <div class="container heading">
+        <div class="heading">
             <h1>Government Twitter Handles.</h1>
             <p>Get the Twitter handles of Federal Mininstries in Nigeria and the twitter handles of incumbent ministers of Federal Republic of Nigeria.</p>
         </div>

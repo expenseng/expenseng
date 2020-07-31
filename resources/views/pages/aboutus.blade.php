@@ -48,7 +48,7 @@
 					</p>
 
 					<div class="twitter">
-						<a href="https://twitter.com/expenseng">
+						<a href="https://twitter.com/expenseng" target="_blank">
 							<img src="{{ asset('images/aboutus/twitter.jpg') }}" alt="">
 						</a>
 					</div>
