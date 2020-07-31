@@ -27,5 +27,8 @@ class NewQuarterTable extends Migration
     public function down()
     {
         //
+        Schema::table('quaterly_budgets', function (Blueprint $table) {
+            $table->dropColumn('categories');
+        });
     }
 }
