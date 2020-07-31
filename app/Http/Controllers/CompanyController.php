@@ -17,17 +17,44 @@ class CompanyController extends Controller
     public function index()
     {
         $contractors = $this->getYearlyTotal();
-        $companies = Company::paginate(20)->toArray();
-        return view('pages.contract.index')->with(['companies' => $companies, 'contractors' => $contractors]);
+        return view('pages.contract.index')->with(['contractors' => $contractors]);
+
     }
 
-    public function show(Company $company)
-    {   
-        $company = Company::where('shortname', $company->shortname)
-                            ->orWhere('name', 'LIKE', "$company->shortname%")->first();
-        
-        return view('pages.contract.single')->with('company', $company);
+
+    public function show($com)
+    {  
+        $beneficiary =   ucwords(str_replace('-', ' ', $com)); 
+        $company = Company::where('shortname', $beneficiary)->orWhere('name', 'LIKE', "$beneficiary%")->first();
+        if(isset($company)){
+                return view('pages.contract.single')->with('company', $company);
+            }elseif(count($this->getContractorTotal($beneficiary)) > 0 ){
+                $contracts = $this->getContractorTotal($beneficiary);
+                $company = $contracts[0];
+
+                $total_amount = 0;
+                foreach($contracts as $contract){
+                     $total_amount = $total_amount + $contract->amount;
+                } 
+                return view('pages.contract.notfound')->with(['company' => $company, 'contracts' => $contracts,  'total_amount' => $total_amount ]);
+
+        }else{
+            return redirect('errors.404_error');
+        }
     }
+
+
+
+    // public function show(Company $company)
+    // {   
+    //     $company = Company::where('shortname', $company->shortname)
+    //                         ->orWhere('name', 'LIKE', "$company->shortname%")->first();
+        
+    //     return view('pages.contract.single')->with('company', $company);
+
+    // }
+
+
 
     public function getReport()
     {
@@ -71,6 +98,25 @@ class CompanyController extends Controller
             ->get();
         return $monthlyTotals;
     }
+
+
+    public function getContractorTotal($beneficiary){
+        //  $contractorTotal = DB::table('payments')
+        //             ->select(DB::raw('beneficiary as name, id,  SUM(amount) as total_amount,
+        //             (payment_date) as year,
+        //          Month(payment_date) as month, description, payment_date, organization')
+        //         )
+        //         ->where('beneficiary', 'like', '%' . ( strtolower($beneficiary) ) . '%')
+        //         ->groupBy(DB::raw(
+        //             '(beneficiary) ASC, YEAR(payment_date) ASC, Month(payment_date) ASC, description ASC, id ASC, payment_date ASC, organization ASC'
+        //         )
+        //     )
+        //     ->get();
+        // return $contractorTotal;
+
+        $cont = Payment::where('beneficiary', 'like', '%' . ( strtolower($beneficiary) ) . '%')->get(['id','beneficiary as name', 'amount', 'payment_date', 'description', 'organization']);
+        return $cont;
+}
 
     /**
      * Display a form for creating companies.
