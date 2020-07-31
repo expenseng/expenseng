@@ -23,7 +23,7 @@ class SheetParsing extends Controller
                     return $parse->parseMonthly($report);
                 } elseif (preg_match('/quarter/i', $report->type)) {
                     $parse = new ParsingSheet();
-                    return $parse->parseMonthly($report);
+                    return $parse->parseQuarterly($report);
                 }
                 return Response::json(array("errors" => 'errror'), 422);
             } catch (\Exception $e) {
