@@ -60,7 +60,7 @@
 
                     <div class="text-center p-t-90 utility">
                         @if (Route::has('password.request'))
-                            <a class="txt1" href="{{ route('password.request') }}"  target="_blank">
+                            <a class="txt1" href="{{ route('password.request') }}">
                                 {{ __('Forgot Your Password?') }}
                             </a>
                         @endif
