@@ -21,7 +21,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => '@raufaregbesola',
                 "ministry_id" => 1,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/ySpwYfQ/Interior-Rauf-Aregbesola.png"
+                "avatar" => "https://i.ibb.co/ySpwYfQ/Interior-Rauf-Aregbesola.png",
+                "ministry_code" => "0124"
             ],
             [
                 "name" => "Muhammadu Buhari",
@@ -31,7 +32,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 2,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/QFnP4ZT/Petroleum-Buhari.png"
+                "avatar" => "https://i.ibb.co/QFnP4ZT/Petroleum-Buhari.png",
+                "ministry_code" => "0232"
             ],
             [
                 "name" => "Timipre Sylva",
@@ -41,7 +43,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 2,
                 "role" => "Minister of State",
-                "avatar" => "https://i.ibb.co/TWS56Yd/Petroleum-State-Timipre-Sylva.png"
+                "avatar" => "https://i.ibb.co/TWS56Yd/Petroleum-State-Timipre-Sylva.png",
+                "ministry_code" => "0232"
             ],
             [
                 "name" => "Saleh Mamman",
@@ -51,7 +54,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 3,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/QHsNMC7/Power-Saleh-Mamman.png"
+                "avatar" => "https://i.ibb.co/QHsNMC7/Power-Saleh-Mamman.png",
+                "ministry_code" => "0231"
             ],
             [
                 "name" => "Goddy Agba",
@@ -61,7 +65,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 3,
                 "role" => "Minister of State",
-                "avatar" => "https://i.ibb.co/xSqXzJs/Power-State-Goddy-Jedi-Agba.png"
+                "avatar" => "https://i.ibb.co/xSqXzJs/Power-State-Goddy-Jedi-Agba.png",
+                "ministry_code" => "0231"
             ],
             [
                 "name" => "Babatunde Fashola",
@@ -71,7 +76,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 4,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/gws0B4j/Works-Babatunde-Raji-Fashola.png"
+                "avatar" => "https://i.ibb.co/gws0B4j/Works-Babatunde-Raji-Fashola.png",
+                "ministry_code" => "0234"
             ],
             [
                 "name" => "Abubakar Aliyu",
@@ -81,7 +87,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 4,
                 "role" => "Minister of State",
-                "avatar" => "https://i.ibb.co/6b90rgV/Works-State-Abubakar-B-Aliyu.png"
+                "avatar" => "https://i.ibb.co/6b90rgV/Works-State-Abubakar-B-Aliyu.png",
+                "ministry_code" => "0234"
             ],
             [
                 "name" => "Zainab Ahmed",
@@ -91,7 +98,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 5,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/H2qcwbL/Finance-Zainab-Shamsuna-Ahmed.png"
+                "avatar" => "https://i.ibb.co/H2qcwbL/Finance-Zainab-Shamsuna-Ahmed.png",
+                "ministry_code" => "0220"
             ],
             [
                 "name" => "Clement Agba",
@@ -101,7 +109,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => "5",
                 "role" => "Minister of State",
-                "avatar" => "https://i.ibb.co/2knTtB4/Finance-State-Clement-Anade-Agba.png"
+                "avatar" => "https://i.ibb.co/2knTtB4/Finance-State-Clement-Anade-Agba.png",
+                "ministry_code" => "0220"
             ],
             [
                 "name" => "Osagie Ehanire",
@@ -111,7 +120,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 6,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/0C7P6Vn/Health-Osagie-Ehanire.png"
+                "avatar" => "https://i.ibb.co/0C7P6Vn/Health-Osagie-Ehanire.png",
+                "ministry_code" => "0521"
             ],
             [
                 "name" => "Olorunnimbe Mamora",
@@ -121,7 +131,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 6,
                 "role" => "Minister of State",
-                "avatar" => "https://i.ibb.co/3SRYfVw/Health-State-Adeleke-Mamora.png"
+                "avatar" => "https://i.ibb.co/3SRYfVw/Health-State-Adeleke-Mamora.png",
+                "ministry_code" => "0521"
             ],
             [
                 "name" => "Adeniyi Adebayo",
@@ -131,7 +142,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 7,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/w7SkjLZ/Trade-Richard-Adeniyi-Adebayo.png"
+                "avatar" => "https://i.ibb.co/w7SkjLZ/Trade-Richard-Adeniyi-Adebayo.png",
+                "ministry_code" => "0222"
             ],
             [
                 "name" => "Mariam Katagum",
@@ -141,7 +153,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 7,
                 "role" => "Minister of State",
-                "avatar" => "https://i.ibb.co/THH65jg/Trade-State-Mariam-Katagum.png"
+                "avatar" => "https://i.ibb.co/THH65jg/Trade-State-Mariam-Katagum.png",
+                "ministry_code" => "0222"
             ],
             [
                 "name" => "Mohammed Bello",
@@ -151,7 +164,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 8,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/SVVrr40/FCT-muhammad-musa.png"
+                "avatar" => "https://i.ibb.co/SVVrr40/FCT-muhammad-musa.png",
+                "ministry_code" => "0437",
             ],
             [
                 "name" => "Ramatu Tijani",
@@ -161,7 +175,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 8,
                 "role" => "Minister of State",
-                "avatar" => "https://i.ibb.co/Wy6hjKc/FCT-State-Ramatu-Tijan.png"
+                "avatar" => "https://i.ibb.co/Wy6hjKc/FCT-State-Ramatu-Tijan.png",
+                "ministry_code" => "0437",
             ],
             [
                 "name" => "Chris Ngige",
@@ -171,7 +186,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 9,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/KXTcm08/Labour-Chris-Ngige.png"
+                "avatar" => "https://i.ibb.co/KXTcm08/Labour-Chris-Ngige.png",
+                "ministry_code" => "0227"
             ],
             [
                 "name" => "Festus Keyamo",
@@ -181,7 +197,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 9,
                 "role" => "Minister of State",
-                "avatar" => "https://i.ibb.co/Wgw4YWZ/Niger-Delta-State-Festus-Keyamo.png"
+                "avatar" => "https://i.ibb.co/Wgw4YWZ/Niger-Delta-State-Festus-Keyamo.png",
+                "ministry_code" => "0227"
             ],
             [
                 "name" => "Olamilekan Adegbite",
@@ -191,7 +208,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 10,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/c687b46/Mines-Steel-Olamilekan-Adegbiti.png"
+                "avatar" => "https://i.ibb.co/c687b46/Mines-Steel-Olamilekan-Adegbiti.png",
+                "ministry_code" => "0233",
             ],
             [
                 "name" => "Uchechukwu Ogah",
@@ -201,7 +219,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 10,
                 "role" => "Minister of State",
-                "avatar" => "https://i.ibb.co/BTQVZ4f/Mines-Steel-State-Uche-Ogah.png"
+                "avatar" => "https://i.ibb.co/BTQVZ4f/Mines-Steel-State-Uche-Ogah.png",
+                "ministry_code" => "0233",
             ],
             [
                 "name" => "Godswill Akpabio",
@@ -211,7 +230,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 11,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/nL0DQMd/Niger-Delta-Godswill-Akpabio.png"
+                "avatar" => "https://i.ibb.co/nL0DQMd/Niger-Delta-Godswill-Akpabio.png",
+                "ministry_code" => "0451",
             ],
             [
                 "name" => "Tayo Alasoadura",
@@ -221,7 +241,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 11,
                 "role" => "Minister of State",
-                "avatar" => "https://i.ibb.co/jGDjmKH/Labour-state-Tayo-Alasoadura.png"
+                "avatar" => "https://i.ibb.co/jGDjmKH/Labour-state-Tayo-Alasoadura.png",
+                "ministry_code" => "0451",
             ],
             [
                 "name" => "Mohammed Mahmood",
@@ -231,7 +252,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 12,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/Fsv5yyL/Envirionment-Mohammed-Mahmoud.png"
+                "avatar" => "https://i.ibb.co/Fsv5yyL/Envirionment-Mohammed-Mahmoud.png",
+                "ministry_code" => "0535"
             ],
             [
                 "name" => "Sharon Ikeazor",
@@ -241,7 +263,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 12,
                 "role" => "Minister of State",
-                "avatar" => "https://i.ibb.co/d2D0tkq/Environment-State-Sharon-Ikeazor.png"
+                "avatar" => "https://i.ibb.co/d2D0tkq/Environment-State-Sharon-Ikeazor.png",
+                "ministry_code" => "0535"
             ],
             [
                 "name" => "George Akume",
@@ -251,7 +274,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 13,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/747yvxR/Special-Duties-George-Akume.png"
+                "avatar" => "https://i.ibb.co/747yvxR/Special-Duties-George-Akume.png",
+                "ministry_code" => "0164"
             ],
             [
                 "name" => "Geofrey Onyeama",
@@ -261,8 +285,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 14,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/0J1G0C4/Foreign-Geofery-Onyeama.png"
-
+                "avatar" => "https://i.ibb.co/0J1G0C4/Foreign-Geofery-Onyeama.png",
+                "ministry_code" => "0119"
             ],
             [
                 "name" => "Zubairu Dada",
@@ -272,8 +296,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 14,
                 "role" => "Minister of State",
-                "avatar" => "https://i.ibb.co/5Gxv8k7/Foreign-State-Zubairu.png"
-
+                "avatar" => "https://i.ibb.co/5Gxv8k7/Foreign-State-Zubairu.png",
+                "ministry_code" => "0119"
             ],
             [
                 "name" => "Ogbonnaya Onu",
@@ -283,7 +307,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 15,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/fNsvLY8/Sci-Tech-Ogbonnaya-onu.png"
+                "avatar" => "https://i.ibb.co/fNsvLY8/Sci-Tech-Ogbonnaya-onu.png",
+                "ministry_code" => "0228"
             ],
             [
                 "name" => "Muhammed Abdullahi",
@@ -293,7 +318,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 15,
                 "role" => "Minister of State",
-                "avatar" => "https://i.ibb.co/Cv2rDQ4/Sci-Tech-State-Mohammed-H-Abdullahi.png"
+                "avatar" => "https://i.ibb.co/Cv2rDQ4/Sci-Tech-State-Mohammed-H-Abdullahi.png",
+                "ministry_code" => "0228"
             ],
             [
                 "name" => "Suleiman Adamu",
@@ -303,7 +329,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 16,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/vBf38pg/Water-Suleiman-Adamu.png"
+                "avatar" => "https://i.ibb.co/vBf38pg/Water-Suleiman-Adamu.png",
+                "ministry_code" => "0252",
             ],
             [
                 "name" => "Ali Pantami",
@@ -313,7 +340,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 17,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/pn46CHT/Communication-Ali-Isa-Ibrahim.png"
+                "avatar" => "https://i.ibb.co/pn46CHT/Communication-Ali-Isa-Ibrahim.png",
+                "ministry_code" => "0156"
             ],
             [
                 "name" => "Hadi Sirika",
@@ -323,7 +351,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 18,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/41r0bR0/Aviation-Hadi-Sikira.png"
+                "avatar" => "https://i.ibb.co/41r0bR0/Aviation-Hadi-Sikira.png",
+                "ministry_code" => "0230"
             ],
             [
                 "name" => "Bashir Salihi Magashi",
@@ -333,7 +362,8 @@ class CabinetSeeder extends Seeder
                 "instagram_handle" => null,
                 "linkedIn_handle" => null,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/vhvmR9F/Defence-Bashir-Magashi.png"
+                "avatar" => "https://i.ibb.co/vhvmR9F/Defence-Bashir-Magashi.png",
+                "ministry_code" => "0116"
             ],
             [
                 "name" => "Lai Mohammed",
@@ -343,7 +373,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 20,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/ts0jKCH/Information-Lai-Mohammed.png"
+                "avatar" => "https://i.ibb.co/ts0jKCH/Information-Lai-Mohammed.png",
+                "ministry_code" => "0123"
             ],
             [
                 "name" => "Rotimi Amaechi",
@@ -353,7 +384,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 21,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/0fmNNVv/Transport-Rotimi-Amaechi.png"
+                "avatar" => "https://i.ibb.co/0fmNNVv/Transport-Rotimi-Amaechi.png",
+                "ministry_code" => "0229"
             ],
             [
                 "name" => "Gbemisola Saraki",
@@ -363,7 +395,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 21,
                 "role" => "Minister of State",
-                "avatar" => "https://i.ibb.co/xJS1nKB/Transport-State-Gbemisola-Saraki.png"
+                "avatar" => "https://i.ibb.co/xJS1nKB/Transport-State-Gbemisola-Saraki.png",
+                "ministry_code" => "0229"
             ],
             [
                 "name" => "Sunday Dare",
@@ -373,7 +406,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 22,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/3zr7jqF/Sports-Sunday-Dare.png"
+                "avatar" => "https://i.ibb.co/3zr7jqF/Sports-Sunday-Dare.png",
+                "ministry_code" => "0513"
             ],
             [
                 "name" => "Muhammadu Dingyadi",
@@ -383,7 +417,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 23,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/kJHZXPL/Police-Mohammed-Maigari-Dangadi.png"
+                "avatar" => "https://i.ibb.co/kJHZXPL/Police-Mohammed-Maigari-Dangadi.png",
+                "ministry_code" => "0155",
             ],
             [
                 "name" => "Sadiya Umar Farouk",
@@ -393,7 +428,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 24,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/82CnDWg/Human-Sadiya-Umar-Faruk.png"
+                "avatar" => "https://i.ibb.co/82CnDWg/Human-Sadiya-Umar-Faruk.png",
+                "ministry_code" => "0544",
             ],
             [
                 "name" => "Adamu Adamu",
@@ -403,7 +439,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 25,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/jDBjgtB/Education-Adamu-Adamu.png"
+                "avatar" => "https://i.ibb.co/jDBjgtB/Education-Adamu-Adamu.png",
+                "ministry_code" => "0517"
             ],
             [
                 "name" => "Emeka Nwajuba",
@@ -413,7 +450,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 25,
                 "role" => "Minister of State",
-                "avatar" => "https://i.ibb.co/dbQQMcL/Education-State-Emeka-Nwajiuba.png"
+                "avatar" => "https://i.ibb.co/dbQQMcL/Education-State-Emeka-Nwajiuba.png",
+                "ministry_code" => "0517"
             ],
             [
                 "name" => "Abubakar Malami",
@@ -423,7 +461,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 26,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/bHd6mdX/Justice-Abubakar-Malami.png"
+                "avatar" => "https://i.ibb.co/bHd6mdX/Justice-Abubakar-Malami.png",
+                "ministry_code" => "0326"
             ],
             [
                 "name" => "Sabo Nanono",
@@ -433,7 +472,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 27,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/zVtXhzL/Agriculture-Sabo-Nanono.png"
+                "avatar" => "https://i.ibb.co/zVtXhzL/Agriculture-Sabo-Nanono.png",
+                "ministry_code" => "0215"
             ],
             [
                 "name" => "Mustapha Baba Shehuri",
@@ -443,7 +483,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 27,
                 "role" => "Minister of State",
-                "avatar" => "https://i.ibb.co/hCqBC2w/Agriculture-State-Mustapha-Baba-Shehuri.png"
+                "avatar" => "https://i.ibb.co/hCqBC2w/Agriculture-State-Mustapha-Baba-Shehuri.png",
+                "ministry_code" => "0215"
             ],
             [
                 "name" => "Pauline Tallen",
@@ -453,7 +494,8 @@ class CabinetSeeder extends Seeder
                 "linkedIn_handle" => null,
                 "ministry_id" => 28,
                 "role" => "Minister",
-                "avatar" => "https://i.ibb.co/qDvDPKq/Women-Pauline-Tallen.png"
+                "avatar" => "https://i.ibb.co/qDvDPKq/Women-Pauline-Tallen.png",
+                "ministry_code" => "0514"
             ]
         ]);
     }
