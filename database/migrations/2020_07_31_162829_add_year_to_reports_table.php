@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeProjectNameColumnOnBudgets extends Migration
+class AddYearToReportsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class ChangeProjectNameColumnOnBudgets extends Migration
      */
     public function up()
     {
-        Schema::create('budgets', function (Blueprint $table) {
-            $table->renameColumn('project_name', 'org_name');
+        Schema::table('reports', function (Blueprint $table) {
+            $table->string('year')->change();
         });
     }
 
@@ -25,8 +25,8 @@ class ChangeProjectNameColumnOnBudgets extends Migration
      */
     public function down()
     {
-        Schema::create('budgets', function (Blueprint $table) {
-            $table->renameColumn('org_name', 'project_name');
+        Schema::table('reports', function (Blueprint $table) {
+            //
         });
     }
 }
