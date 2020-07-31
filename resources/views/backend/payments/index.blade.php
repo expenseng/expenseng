@@ -12,7 +12,9 @@
 
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-    {{-- <style type="text/css">
+
+    <style type="text/css">
+
         .dataTable>tbody>tr>td, 
         .dataTable>tbody>tr>th, 
         .dataTable>tfoot>tr>td, 
@@ -21,7 +23,20 @@
         .dataTable>thead>tr>th {
             padding: 12px!important;
         }
-    </style> --}}
+
+        div.dataTables_wrapper div.dataTables_info {
+            display: none;
+        }
+
+        .pagination a.active {
+            background-color: #9c27b0 !important;
+        }
+
+        .pagination1 {
+            margin: .5rem .5rem;
+        }
+
+    </style> 
     <title>ExpenseNg - Payments</title>
 @endpush
 
@@ -99,6 +114,11 @@
                                         </tr>
                                     </tfoot>
                                 </table>
+                                <div class="">
+                                    <div class="pagination">
+                                        @include('partials.pagination', ['data' => $payments])
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -107,6 +127,7 @@
                 <!-- end data table  -->
                 <!-- ============================================================== -->
             </div>
+            
         </div>
     </div>
 @endsection
@@ -123,7 +144,8 @@
     <script>
         jQuery(document).ready(function() {
     $('#example').DataTable({
-        "order": [[ 2, "desc" ]]
+        "order": [[ 2, "desc" ]],
+        "paging": false
     });
     } );
     </script>

@@ -35,7 +35,7 @@ class PaymentController extends Controller
         }
        
 
-        $payments = Payment::all();
+        $payments = Payment::paginate(20);
         return view('backend.payments.index')->with([
             'payments' => $payments,
         ]);

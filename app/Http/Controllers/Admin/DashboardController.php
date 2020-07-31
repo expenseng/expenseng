@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\ParsingSheet;
+use App\Report;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Budget;
@@ -54,5 +57,24 @@ class DashboardController extends Controller
             'amount' => $amount,
             'recent_expenses' => $recent_expenses,
         ]);
+    }
+    public function parse(Request $request)
+    {
+        if ($request->ajax()) {
+            try {
+                $report = Report::whereId($request->id)->first();
+                if (preg_match('/daily/i', $report->type)) {
+                    $parse = new ParsingSheet();
+                    return $parse->parseDaily($report);
+                } elseif (preg_match('/monthly/i', $report->type)) {
+                    $parse = new ParsingSheet();
+                    return $parse->parseMonthly($report);
+                }
+                return Response::json(array("errors" => 'file not fount'), 422);
+            } catch (\Exception $e) {
+                return Response::json(array("errors" => 'file not fount'), 422);
+            }
+        }
+        return Response::json(array("errors" => 'file not fount'), 422);
     }
 }

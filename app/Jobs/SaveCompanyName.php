@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Company;
 use App\Payment;
+use App\Scrapping;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -35,18 +36,21 @@ class SaveCompanyName implements ShouldQueue
     public function handle()
     {
         //
+//        get company name from the payment table
         $payment = Payment::whereId($this->id)->first();
         $beneficiary = $payment->beneficiary;
+//        check if the name already exist if not log to database
         if ($this->check($beneficiary)) {
             /** @var TYPE_NAME $beneficiary */
             switch ($beneficiary) {
+//                check for specific type of company name
                 case preg_match("/LIMITED/i", $beneficiary)  != false:
                 case preg_match("/LTD/i", $beneficiary)  != false:
                 case (preg_match("/SERVICES/i", $beneficiary)  != false) &&
                 (preg_match("/FEDERAL/i", $beneficiary) == false):
                 case preg_match("/AGENCY/i", $beneficiary)  != false:
                 case preg_match("/CONSULT/i", $beneficiary)  != false:
-                    $this->logToDb($beneficiary);
+                    $this->logToDb($beneficiary); // log to database
                     return 0;
                     break;
                 default:
@@ -68,10 +72,13 @@ class SaveCompanyName implements ShouldQueue
     }
     public function logToDb($beneficiary)
     {
-        Company::create([
-            'name' => $beneficiary,
-            'shortname' => $this->shortName($beneficiary),
-        ]);
+
+        $create = Company::create([
+                'name' => $beneficiary,
+                'shortname' => $this->shortName($beneficiary),
+         ]);
+        // send a job to the queue Ceo search to get name of ceo for the company
+        CeoNameSearch::dispatch($create->id)->onQueue('ceoSearch');
     }
 
     public function check($name)

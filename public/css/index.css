@@ -202,20 +202,23 @@ p.tag{
     width: 70%;
     height: 100%;
     border: white 0.7px solid;
-    transition: ease-in-out all 0.5s;
+    /* transition: ease-in-out all 0.5s; */
     padding: 0rem;
 }
 .card1{
     background: url(../images/card2.jpg);
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 .card2{
     background: url(../images/road.svg);
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 .card3{
     background: url(../images/oil-rig.jpg);
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 /* Carousel Styling */
@@ -283,8 +286,8 @@ p.tag{
     font-weight: 500;
 }
 .project p#cost{
-    font-size: var(--fs-h3);
-    font-weight: 700;
+    font-size: var(--fs-reg);
+    font-weight: 600;
 }
 .warning{
     font-size: 1rem;
