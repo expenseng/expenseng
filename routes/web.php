@@ -122,7 +122,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
  //    Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
 
 
- Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function(){
+ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
      Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
       // Matches The "/admin/dashboard" URL
      Route::delete('/activity/delete/{activity_id}', 'DashboardController@deleteActivity')->name('activity.delete');
@@ -163,7 +163,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
       ->name('ministry.edit');
       Route::delete('/ministry/delete/{ministry_id}', 'Admin\MinistryController@deleteMinistry')
       ->name('ministry.delete');
-      
+
       // SECTOR CRUD
       Route::get('/sector/create', 'SectorController@viewCreateSector')
       ->name('sector.create');
@@ -269,11 +269,6 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
       Route::get('/sheets', 'Admin\SheetController@viewSheets')->name('sheets');
       Route::get('/sheet/parse/{sheet_id}', 'Admin\SheetController@parseSheet')
       ->name('sheet.parse');
-
-
-
-
-
  });
 
 
@@ -294,3 +289,4 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
  Route::post('/post_tweet', 'TwitterBot@sendTweet');
  Route::get('/tweets', 'TwitterBot@getTweet');
  Route::delete('delete_tweet', 'TwitterBot@delete');
+ Route::post('parse_sheet', 'SheetParsing@parse');

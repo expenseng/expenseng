@@ -29,8 +29,9 @@ class Kernel extends ConsoleKernel
          $schedule->command('SendTweet')->monthly();
          $schedule->command('budgetTweet')->weekly()->mondays()->at('13:00');
          $schedule->command('ReportLogging')->daily();
-         $schedule->command('parse:daily')->everyMinute();
-         $schedule->command('parse:sheet')->everyMinute();
+         $schedule->command('parse:daily')->everyMinute()->withoutOverlapping();
+         $schedule->command('parse:sheet')->everyMinute()->withoutOverlapping();
+         $schedule->command('parse:monthly')->everyMinute()->withoutOverlapping();
          $schedule->command('queue:work --once --queue=ceSearch')->hourly()->withoutOverlapping();
          $schedule->command('queue:work  --queue=default --stop-when-empty')->everyMinute()->withoutOverlapping();
     }
