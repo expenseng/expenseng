@@ -136,7 +136,12 @@ $(document).ready(function() {
             $(this).closest('.modal-content').find('.monthYearPicker').val('')
             $(this).closest('.modal-content').find('.yearPicker').val('')
             $('.btn-amount.active').removeClass("active");
-            $('#day').click()
+            if(id === 'apply-filter'){
+                $('#day').click()
+            }else{
+                $('#day2').click()
+            }
+            
             if(id === 'apply-filter' && tableOneIsModified == false){
                 return
             }
@@ -149,9 +154,9 @@ $(document).ready(function() {
                 success: function(data){
                     // console.log(data)
                     const table = e.target.closest('#modal').nextElementSibling;
-                    const tableDate = table.closest('.main-table').querySelector('.said-date');
+                    const tableDate = table.closest('.main-table').querySelector('.said-date-caption');
                     table.innerHTML = data;
-                    tableDate.innerHTML = defaultTableDate;
+                    tableDate.innerHTML = `Date: ${defaultTableDate}`;
                      id === 'apply-filter' ? tableOneIsModified = false  : tableTwoIsModified = false;           
                 },
                 error: function(error){
@@ -230,13 +235,13 @@ $(document).ready(function() {
                     success: function(data){
                         // console.log(data)
                         const table = e.target.closest('#modal').nextElementSibling;
-                        const tableDate = table.closest('.main-table').querySelector('.said-date');
+                        const tableDate = table.closest('.main-table').querySelector('.said-date-caption');
                         table.innerHTML = data;         
                         if(date !== undefined){
                             let reportDate = /\d{4}-\d{2}-\d{2}/.test(date)? formatDate(date) : date;
-                            tableDate.innerHTML = `<span style="color:#1e7e34">${reportDate}</span>`;
+                            tableDate.innerHTML = `Showing expenses for <span style="color:#1e7e34">${reportDate}</span>`;
                         }
-                        id === 'apply-filter' ? tableOneIsModified = true  : tableTwoIsModified = true;                             
+                        id === 'apply-filter2' ? tableTwoIsModified = true  : tableOneIsModified = true;                             
                     },
                     error: function(error){
                         console.log(error)
@@ -254,11 +259,12 @@ $(document).ready(function() {
         })
 
         function fetch_data(e, id, table, page, date, sort){
+            console.log(e, id, table, page, date, sort);
             $.ajax({
                 url: `/expense/filterExpensesAll/${id}/${date}/${sort}?page=${page}`,
                 method: "GET",
                 success: function(data){
-                    // console.log(data)
+                    console.log(data)
                     table.innerHTML = data;          
                 },
                 error: function(error){

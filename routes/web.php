@@ -122,7 +122,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
  //    Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
 
 
- Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function(){
+ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
      Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
       // Matches The "/admin/dashboard" URL
      Route::delete('/activity/delete/{activity_id}', 'DashboardController@deleteActivity')->name('activity.delete');
@@ -164,6 +164,20 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
       Route::delete('/ministry/delete/{ministry_id}', 'Admin\MinistryController@deleteMinistry')
       ->name('ministry.delete');
 
+      // SECTOR CRUD
+      Route::get('/sector/create', 'SectorController@viewCreateSector')
+      ->name('sector.create');
+      Route::post('/sector/create', 'SectorController@createSector')
+      ->name('create.sector');
+      Route::get('/sector/view', 'SectorController@viewSectors')
+      ->name('sector.view');
+      Route::get('/sector/edit/{sector_id}', 'SectorController@showEditForm')
+      ->name('sector.view.edit');
+      Route::put('/sector/edit/{sector_id}', 'SectorController@editSector')
+      ->name('sector.edit');
+      Route::delete('/sector/delete/{sector_id}', 'Admin\SectorController@deleteSector')
+      ->name('sector.delete');
+
       //People CRUD
       Route::get('/admin/{company}/{people}', 'CompanyController@showPeople');
 
@@ -179,9 +193,9 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
      //Profile Page
      Route::get('/profile', 'ProfileController@viewProfile')->name('profile');
      Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
-     Route::get('/profile/edit/{user_id}', 'ProfileController@edit')->name('users.edit');
-     Route::put('/profile/edit/{user_id}', 'ProfileController@update')->name('users.update');
-     Route::put('/profile/change_password/{user_id}', 'ProfileController@updatePassword')->name('users.change_password');
+     Route::get('/profile/edit/{user_id}', 'ProfileController@edit')->name('profile.edit');
+     Route::put('/profile/edit/{user_id}', 'ProfileController@update')->name('profile.update');
+     Route::put('/profile/change_password/{user_id}', 'ProfileController@updatePassword')->name('profile.change_password');
 
      //Settings Page
      Route::get('/user/settings', 'SettingsController@index')->name('users.settings');
@@ -256,10 +270,8 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
       Route::get('/sheet/parse/{sheet_id}', 'Admin\SheetController@parseSheet')
       ->name('sheet.parse');
 
-
-
-
-
+    Route::get('/website_stats', 'Website_Statistics_Controller@index')->name('website_stats');
+    
  });
 
 
@@ -280,3 +292,4 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
  Route::post('/post_tweet', 'TwitterBot@sendTweet');
  Route::get('/tweets', 'TwitterBot@getTweet');
  Route::delete('delete_tweet', 'TwitterBot@delete');
+ Route::post('parse_sheet', 'SheetParsing@parse');

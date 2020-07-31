@@ -1,6 +1,15 @@
 @extends('layouts.app')
 @push('css')
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174166304-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-174166304-1');
+</script>
 @endpush
 @section('title')
 	<title>FG Expense - Login</title>
@@ -51,7 +60,7 @@
 
                     <div class="text-center p-t-90 utility">
                         @if (Route::has('password.request'))
-                            <a class="txt1" href="{{ route('password.request') }}">
+                            <a class="txt1" href="{{ route('password.request') }}"  target="_blank">
                                 {{ __('Forgot Your Password?') }}
                             </a>
                         @endif

@@ -3,6 +3,16 @@
   <title>FG Expense - Search</title>
   <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
   <link rel="stylesheet" href="{{ asset('css/search.css') }}">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174166304-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-174166304-1');
+</script>
+
 @endpush
 
 @section('content')
@@ -14,7 +24,7 @@
 
     <div class="div1">
         <h1 class="hh1">Search</h1>
-        <h6 class="hh2">Use this tool to search through our site for 
+        <h6 class="hh2">Use this tool to search through our site for
             information concerning government expenditures and contractors.</h6>
     </div>
 

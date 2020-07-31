@@ -67,11 +67,7 @@
                                 <form action="" method = "post" class = "row">
                                 <div class="col-12 col-md-9">
                                     <h5>Profile Picture</h5> 
-                                    <div class="file-input-cover">             
-                                    <p class = "file-one"><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)"  class = "file-input"></p>
-                                    <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
-                                    <p><img id="output" width="200px" /></p>
-                                    </div>
+                                    <img src="{{$user->image}}" alt="{{$user->name . '\'s image'}}" style="height:250px; width:250px;" class="img-fluid img-thumbnail" ><br>
                                 </div>
 
                                 

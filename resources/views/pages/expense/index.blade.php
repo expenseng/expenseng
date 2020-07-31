@@ -7,7 +7,17 @@
   <link rel="stylesheet" href="{{ asset('css/ministry-report-table.css') }}">
   <link rel="stylesheet" href="{{ asset('css/filter.css') }}">
   <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174166304-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-174166304-1');
+</script>
+
 
     @toastr_css
 
@@ -26,7 +36,7 @@
         <h5>Subscribe to daily Expense Report</h5>
         <span>
             @include('partials.modals.subscription')
-     
+
       </span>
 
     </div>
@@ -64,12 +74,12 @@
         <div class="container col-sm-12 col-md-7">
           <div class="table-top d-flex justify-content-between align-items-center">
             <h4>Graph<span id="report-type">(Daily):</span> <span id="report-date"></span></h4>
-            <button class="nav-button" data-toggle="modal" data-target="#filterModal">Filter<i class="fas fa-filter px-1" style="font-size: var(--fs-reg);"></i></button>
+            <button class="nav-button" data-toggle="modal" data-target="#filterModalChart">Filter<i class="fas fa-filter px-1" style="font-size: var(--fs-reg);"></i></button>
 						</div>
 						<!-- Filter Modal -->
                 <div id="modal" class="row justify-content-center modals">
                   <div class="col-md-8">
-                    <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="filterModalChart" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <!-- Header -->

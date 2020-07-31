@@ -3,6 +3,16 @@
 <title>Government Twitter Handles</title>
 <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
 <link rel="stylesheet" href="{{ asset('css/handles.css') }}">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174166304-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-174166304-1');
+</script>
+
 @endpush
 @section('content')
 <div class="pt-1 pb-5 body-bg" style="background-color: #FFF;">
@@ -12,8 +22,7 @@
 </div>
 
 <div class="container bg-white pt-5 bg-inner">
-    <div class="container">
-        <div class="container heading">
+        <div class="heading">
             <h1>Government Twitter Handles.</h1>
             <p>Get the Twitter handles of Federal Mininstries in Nigeria and the twitter handles of incumbent ministers of Federal Republic of Nigeria.</p>
         </div>

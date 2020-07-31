@@ -5,9 +5,19 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" />
-<link rel="stylesheet" href="/css/modal/style.css"> 
+<link rel="stylesheet" href="/css/modal/style.css">
 <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
 <link rel="stylesheet" href="{{ asset('css/index.css')}}">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174166304-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-174166304-1');
+</script>
+
 <title>FG Expense - Accessibility</title>
 @endpush
 
@@ -16,7 +26,7 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
 <div class="container">
     {{ Breadcrumbs::render('accessibility') }}
 </div>
-    
+
 <section class = "container py-5   accessibility-text">
     <div class="container py-3">
         <h1>Accessibility</h1>
@@ -28,10 +38,10 @@ integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="ano
             that it meets or exceeds the requirements of the Rehabilitation Act.
         </p>
         <p class = "py-2">
-            To help users who are visually impaired users more easily distinguish content, we regularly test contrast and color schemes using a tool called Web Accessibility in Mind. 
-            To ensure the site is accessible, we evaluate the site regularly using screen readers to check the accuracy and quality of the content and navigation. We use a variety of 
+            To help users who are visually impaired users more easily distinguish content, we regularly test contrast and color schemes using a tool called Web Accessibility in Mind.
+            To ensure the site is accessible, we evaluate the site regularly using screen readers to check the accuracy and quality of the content and navigation. We use a variety of
             other techniques to ensure that all users can easily access the site; some of these include providing methods for skipping repetitive navigation and alternate text.
-        </p> 
+        </p>
         <p class = "py-2">In addition, we've incorporated the following throughout the site:</p>
 
         <ul>
