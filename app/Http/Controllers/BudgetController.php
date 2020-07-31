@@ -83,28 +83,9 @@ class BudgetController extends Controller
         //
     }
 
-    public function health()
+    public function yearly()
     {
-        $response = [
-            [
-                'label' => 'Health',
-                'data' => Budget::where('project_name', 'Health')->get()
-            ],
-            [
-                'label' => 'Defence',
-                'data' => Budget::where('project_name', 'Defence')->get(),
-            ],
-            [
-                'label' => 'Housing',
-                'data' => Budget::where('project_name', 'Housing and Community Amenities')
-                                ->get(),
-            ],
-            [
-                'label' => 'Education',
-                'data' => Budget::where('project_name', 'Education')
-                                ->get(),
-            ]
-        ];
+        $budget = Budget::all()->groupBy('year');
         
         return $response;
     }
