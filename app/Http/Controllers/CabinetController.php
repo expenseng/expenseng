@@ -17,7 +17,26 @@ use Illuminate\Support\Facades\Auth;
  * @return function for corressponding operations
  */
 class CabinetController extends Controller
-{
+{   
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        if (Gate::denies('manage-user')) {
+            return redirect(route('ministry.view'));
+        }
+       
+
+        $cabinet = Cabinet::paginate(20);
+        return view('backend.cabinet.view')->with([
+            'cabinet' => $cabinet,
+        ]);
+    }
+    
     //
     /**
      * Create a new cabinet view.

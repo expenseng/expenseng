@@ -3,6 +3,29 @@
 <title>Government Twitter Handles</title>
 <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
 <link rel="stylesheet" href="{{ asset('css/handles.css') }}">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="/extras/datatables/css/buttons.bootstrap4.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/extras/datatables/css/fixedHeader.bootstrap4.css">
+    <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+
+    <!-- causes toggle error in navbar -->
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <style type="text/css">
+        .dataTable>tbody>tr>td, 
+        .dataTable>tbody>tr>th, 
+        .dataTable>tfoot>tr>td, 
+        .dataTable>tfoot>tr>th, 
+        .dataTable>thead>tr>td, 
+        .dataTable>thead>tr>th {
+            padding: 12px!important;
+        }
+    </style>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174166304-1"></script>
 <script>
@@ -58,36 +81,15 @@
 							</tbody>
 						</table>
                     <div class="row float-right results pagination">
-                    <label for="year" class="year">Fiscal Year</label>
-                    <select name="year" id="year">
-                          <option value="2019">2019</option>
-                          <option value="2019">2020</option>
-                    </select>
-                    <span class="page">1-20 of 320,573 results</span>
+                    
+                    
                     </div>
 
                 <div class="clear"></div>
 
                 <div class="float-right mt-5">
 
-                    <nav aria-label="Page navigation example">
-                      <ul class="pagination pg-blue">
-                        <li class="page-item ">
-                          <a class="page-link" tabindex="-1"><i class="fa fa- fa-angle-left"></i></a>
-                        </li>
-                        <li class="page-item"><a class="page-link">1</a></li>
-                        <li class="page-item active">
-                          <a class="page-link">2 <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="page-item"><a class="page-link">3</a></li>
-                        <li class="page-item"><a class="page-link">4</a></li>
-                        <li class="page-item"><a class="page-link">...</a></li>
-                        <li class="page-item"><a class="page-link">3000</a></li>
-                        <li class="page-item ">
-                          <a class="page-link"><i class="fa fa- fa-angle-right"></i></a>
-                        </li>
-                      </ul>
-                    </nav>
+                    
                 </div>
             </div>
         </div>
@@ -100,7 +102,7 @@
         </div>
             <div class="table-data collapse in" id="collapseExample">
 					<div style="overflow-x: auto;">
-						<table id="Table" cell-spacing="0" data-pagination="true" data-page-size="10" class="table table-striped table-responsive-sm">
+						<table id="Tables" cell-spacing="0" data-pagination="true" data-page-size="10" class="table table-striped table-responsive-sm">
 							<thead class="text-left">
 								<tr>
 									<th class="section-shadow row-ministry w-50">Ministry</th>
@@ -122,36 +124,15 @@
 							</tbody>
 						</table>
                     <div class="row float-right results">
-                    <label for="year" class="year">Fiscal Year</label>
-                    <select name="year" id="year">
-                          <option value="2019">2019</option>
-                          <option value="2019">2020</option>
-                    </select>
-                    <span class="page">1-20 of 320,573 results</span>
+                    
+                    
                     </div>
 
                 <div class="clear"></div>
 
                 <div class="float-right mt-5">
 
-                    <nav aria-label="Page navigation example">
-                      <ul class="pagination pg-blue">
-                        <li class="page-item ">
-                          <a class="page-link" tabindex="-1"><i class="fa fa- fa-angle-left"></i></a>
-                        </li>
-                        <li class="page-item"><a class="page-link">1</a></li>
-                        <li class="page-item active">
-                          <a class="page-link">2 <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="page-item"><a class="page-link">3</a></li>
-                        <li class="page-item"><a class="page-link">4</a></li>
-                        <li class="page-item"><a class="page-link">...</a></li>
-                        <li class="page-item"><a class="page-link">3000</a></li>
-                        <li class="page-item ">
-                          <a class="page-link"><i class="fa fa- fa-angle-right"></i></a>
-                        </li>
-                      </ul>
-                    </nav>
+                   
                 </div>
 
     </div>
@@ -159,4 +140,61 @@
 </div>
     </div>
     </div>
+@endsection
+@section('js')
+<script>
+        $(document).ready(function(){
+    $('#Tables').after('<div id="nav" style="float:right"></div>');
+    var rowsShown = 20;
+    var rowsTotal = $('#Tables tbody tr').length;
+    var numPages = rowsTotal/rowsShown;
+    for(i = 0;i < numPages;i++) {
+        var pageNum = i + 1;
+        $('#nav').append('<a  rel="'+i+'" class="btn btn-light" >'+pageNum+'</a> ');
+    }
+    $('#Tables tbody tr').hide();
+    $('#Tables tbody tr').slice(0, rowsShown).show();
+    $('#nav a:first').addClass('active');
+    $('#nav a').bind('click', function(){
+
+        $('#nav a').removeClass('active');
+        $(this).addClass('active');
+        var currPage = $(this).attr('rel');
+        var startItem = currPage * rowsShown;
+        var endItem = startItem + rowsShown;
+        $('#Tables tbody tr').css('opacity','0.0').hide().slice(startItem, endItem).
+        css('display','table-row').animate({opacity:1}, 300);
+    });
+});
+
+    </script>
+    
+<script>
+        $(document).ready(function(){
+    $('#Table').after('<div id="nav" style="float:right"></div>');
+    var rowsShown = 20;
+    var rowsTotal = $('#Table tbody tr').length;
+    var numPages = rowsTotal/rowsShown;
+    for(i = 0;i < numPages;i++) {
+        var pageNum = i + 1;
+        $('#nav').append('<a  rel="'+i+'" class="btn btn-light" >'+pageNum+'</a> ');
+    }
+    $('#Table tbody tr').hide();
+    $('#Table tbody tr').slice(0, rowsShown).show();
+    $('#nav a:first').addClass('active');
+    $('#nav a').bind('click', function(){
+
+        $('#nav a').removeClass('active');
+        $(this).addClass('active');
+        var currPage = $(this).attr('rel');
+        var startItem = currPage * rowsShown;
+        var endItem = startItem + rowsShown;
+        $('#Table tbody tr').css('opacity','0.0').hide().slice(startItem, endItem).
+        css('display','table-row').animate({opacity:1}, 300);
+    });
+});
+
+    </script>
+
+
 @endsection
