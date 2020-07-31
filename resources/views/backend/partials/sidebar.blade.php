@@ -118,6 +118,13 @@
           </a>
           </li>
 
+            <li class="{{Route::is('website_stats')? 'active nav-item' : 'nav-item' }}">
+          <a class="nav-link" href="{{route('website_stats')}}">
+          <i class="material-icons">assessment</i>
+              <p>Website Statistics</p>
+          </a>
+          </li>
+
         </ul>
       </div>
     </div>

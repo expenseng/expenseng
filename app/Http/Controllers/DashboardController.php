@@ -10,10 +10,12 @@ use App\Ministry;
 use App\Payment;
 use App\Feedback;
 use App\Activites;
+use GuzzleHttp\Client;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class DashboardController extends Controller
 {
@@ -22,9 +24,27 @@ class DashboardController extends Controller
      *
      * @return void
      */
+
     public function __construct()
     {
         $this->middleware('auth');
+     
+        $this->token = \env("COMMENTS_TOKEN");
+        $this->baseUri = "https://comment.microapi.dev/v1/";
+
+        if (!$this->token) {
+            $this->token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBsaWNhdGlvbklkIjoiNWYxMmI4NDI2MzVmM2UwMDE0MmJjOWE2IiwiYWRtaW5JZCI6IjVmMTJiN2UyNjM1ZjNlMDAxNDJiYzlhNSIsImlhdCI6MTU5NTA2MjMzOSwiZXhwIjoxNTk3NjU0MzM5fQ.B6o9MmBZ8GMUFsSnrlrOlq4NlDu7gTrtT17MXGKXS7c";
+        }
+
+        $this->http = new Client([
+            'base_uri' => $this->baseUri,
+            'headers' => [
+                'Authorization' => 'Bearer ' .$this->token,
+                'debug' => true,
+                'Content-Type' => 'application/json',
+            ]
+        ]);      
+
     }
 
     /**
@@ -38,11 +58,33 @@ class DashboardController extends Controller
             return redirect(route('profile'));
         }
 
+        $comments = 0;
+
         $year = date('Y'); // get current year
         $recent_activites = Activites::where('status', 'pending')
             ->orderBY('id', 'DESC')
             ->limit(7)
             ->get();
+
+            $response = $this->http->get('comments', [
+                'query' => [
+                    // 'limit'  => 2,
+                    // 'page' => 2
+                    //'sort' => 'ascending',
+                ]
+            ]);
+    
+            $data = json_decode($response->getBody(), true);
+    
+            if($data['status'] == "success"){
+                $comments = isset($data['data']['records']) ?
+                count($data['data']['records']) : 0;
+            } else {
+
+                Log::error("Error from fetching details from comments" . $data);
+
+            }
+    
 
         $recent_activities = Activites::orderBY('id', 'DESC')->get();
         $total_ministry = count(Ministry::all());
@@ -78,6 +120,7 @@ class DashboardController extends Controller
             'counter' => 0,
             'feedbacks' => $feedbacks,
             'counter_feedback' => $counter_feedback,
+            'comments' => $comments,
         ]);
     }
 

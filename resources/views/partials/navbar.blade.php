@@ -9,37 +9,37 @@
             <div class="collapse navbar-collapse section-nav-items">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link section-nav-link" href="{{ route('home') }}">Home</a>
+                        <a class="nav-link section-nav-link" href="{{ route('home') }}" target="_blank">Home</a>
                     </li>
                     <li class="nav-item dropdown position-relative">
 
                             <a  class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Expense</a>
                             <div class="dropdown-menu">
 
-                                    <a href="{{ route('expense.reports') }}" class="dropdown-item">Expenditure Reports</a>
+                                    <a href="{{ route('expense.reports') }}" class="dropdown-item" target="_blank">Expenditure Reports</a>
 
 
-                                    <a href="{{ route('expense.ministry') }}" class="dropdown-item">Ministry Expense</a>
+                                    <a href="{{ route('expense.ministry') }}" class="dropdown-item" target="_blank">Ministry Expense</a>
 
                             </div>
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link section-nav-link" href="{{ route('ministries') }}">Ministries</a>
+                        <a class="nav-link section-nav-link" href="{{ route('ministries') }}" target="_blank">Ministries</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link section-nav-link" href="{{ route('contractors') }}">Contractors</a>
+                        <a class="nav-link section-nav-link" href="{{ route('contractors') }}" target="_blank">Contractors</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link section-nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Reference</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item section-reference-dropdown" href="{{ route('about') }}">About Us</a>
-                            <a class="dropdown-item section-reference-dropdown" href="{{ route('contact') }}">Contact Us</a>
-                            <a class="dropdown-item section-reference-dropdown" href="{{ route('handles') }}">Government Twitter Handle</a>
+                            <a class="dropdown-item section-reference-dropdown" href="{{ route('about') }}" target="_blank">About Us</a>
+                            <a class="dropdown-item section-reference-dropdown" href="{{ route('contact') }}" target="_blank">Contact Us</a>
+                            <a class="dropdown-item section-reference-dropdown" href="{{ route('handles') }}" target="_blank">Government Twitter Handle</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link section-nav-link" href="{{ route('search') }}"><i class="fa fa-search inp"></i></a>
+                        <a class="nav-link section-nav-link" href="{{ route('search') }}" target="_blank"><i class="fa fa-search inp"></i></a>
                     </li>
                 </ul>
             </div>
@@ -58,7 +58,7 @@
             <nav class="side-nav w-100">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link section-nav-link" href="{{ route('home') }}">Home</a>
+                        <a class="nav-link section-nav-link" href="{{ route('home') }}" target="_blank">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages1">
@@ -67,34 +67,34 @@
                         <div id="sideNavPages1" class="collapse sideNavPages">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a href="{{ route('expense.reports') }}" class="nav-link">Expenditure Reports</a>
+                                    <a href="{{ route('expense.reports') }}" class="nav-link"  target="_blank">Expenditure Reports</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('expense.ministry') }}" class="nav-link">Ministry Expense</a>
+                                    <a href="{{ route('expense.ministry') }}" class="nav-link" target="_blank">Ministry Expense</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link section-nav-link" href="{{ route('ministries') }}">Ministries</a>
+                        <a class="nav-link section-nav-link" href="{{ route('ministries') }}" target="_blank">Ministries</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link section-nav-link" href="{{ route('contractors') }}">Contractors</a>
+                        <a class="nav-link section-nav-link" href="{{ route('contractors') }}" target="_blank">Contractors</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages2">
-                            Reference <i class="fas fa-chevron-down"></i>
+                            Reference <i class="fas fa-chevron-down" target="_blank"></i>
                         </a>
                         <div id="sideNavPages2" class="collapse sideNavPages">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a href="{{ route('about') }}" class="nav-link">About Us</a>
+                                    <a href="{{ route('about') }}" class="nav-link" target="_blank">About Us</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('contact') }}" class="nav-link">Contact Us</a>
+                                    <a href="{{ route('contact') }}" class="nav-link" target="_blank">Contact Us</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Government Twitter Handle</a>
+                                    <a href="#" class="nav-link" target="_blank">Government Twitter Handle</a>
                                 </li>
                             </ul>
                         </div>

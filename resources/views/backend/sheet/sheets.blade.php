@@ -75,7 +75,11 @@
                                                         </div>
                                                         @if(!$sheet->parsed)
                                                         <div class="col-md-6">
-                                                         <a href="{{'admin/sheet/parse/'. $sheet->id}}" onclick='event.preventDefault(); jQuery.fn.parse({{$sheet->id}})' ><i class="fa fa-database"></i></a>
+
+                                                         
+
+                                                         <a href="{{$sheet->parsed ? '#' : 'admin/sheet/parse/'. $sheet->id}}" onclick='event.preventDefault(); jQuery.fn.parse({{$sheet->id}})' ><i class="fa fa-database"></i></a>
+
                                                         </div>
                                                         @endif
                                                     </div>

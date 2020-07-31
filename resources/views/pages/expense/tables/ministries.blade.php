@@ -12,24 +12,32 @@
             </thead>
             <tbody>
                 @if (count($collection['summary']) >0)
-                @foreach ($collection['summary'] as $expense)
-                    <tr>
-                        <td class="section-shadow">
-                            @empty($expense->ministry())
-                                {{ "null" }}
-                            @else
-                            <a href="{{ route('ministries.single', ['ministry' => strtolower($expense->ministry()['shortname']) ]) }}" class="text-success">
-                                {{ ucfirst($expense->ministry()['name']) }}
+                    @foreach ($collection['summary'] as $expense)
+                        @if($expense->ministry())
+                            <tr>
+                                <td class="section-shadow">
+                                    {{-- @empty($expense->ministry())
+                                        {{ "null" }}
+                                    @else
+                                    <a href="{{ route('ministries.single', ['ministry' => strtolower($expense->ministry()['shortname']) ]) }}" class="text-success">
+                                        {{ ucfirst($expense->ministry()['name']) }}
 
-                            </a>
-                            @endempty
-                        </td>
-                        <td>{{$expense->description}}</td>
-                        <td>{{$expense->beneficiary}}</td>
-                        <td>&#8358;{{ number_format($expense->amount) }}</td>
-                        <td>{{ date('jS M, Y', strtotime($expense->payment_date))}}</td>
-                    </tr>
-                @endforeach
+                                    </a>
+                                    @endempty --}}
+                                
+                                    <a href="{{ route('ministries.single', ['ministry' => strtolower($expense->ministry()['shortname']) ]) }}" class="text-success">
+                                        {{ ucfirst($expense->ministry()['name']) }}
+
+                                    </a>
+                                
+                                </td>
+                                <td>{{$expense->description}}</td>
+                                <td>{{$expense->beneficiary}}</td>
+                                <td>&#8358;{{ number_format($expense->amount) }}</td>
+                                <td>{{ date('jS M, Y', strtotime($expense->payment_date))}}</td>
+                            </tr>
+                        @endif
+                    @endforeach
                 @else
                 <tr><td></td><td style="color:red">No data available for this period<td><td></td></tr>
                 @endif
