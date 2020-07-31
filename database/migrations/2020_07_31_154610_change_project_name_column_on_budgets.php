@@ -13,7 +13,7 @@ class ChangeProjectNameColumnOnBudgets extends Migration
      */
     public function up()
     {
-        Schema::create('budgets', function (Blueprint $table) {
+        Schema::table('budgets', function (Blueprint $table) {
             $table->renameColumn('project_name', 'org_name');
         });
     }
@@ -25,7 +25,7 @@ class ChangeProjectNameColumnOnBudgets extends Migration
      */
     public function down()
     {
-        Schema::create('budgets', function (Blueprint $table) {
+        Schema::table('budgets', function (Blueprint $table) {
             $table->renameColumn('org_name', 'project_name');
         });
     }

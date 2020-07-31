@@ -14,7 +14,7 @@ class AddYearToReportsTable extends Migration
     public function up()
     {
         Schema::table('reports', function (Blueprint $table) {
-            $table->string('year')->change();
+            $table->string('year');
         });
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Reports;
 use GuzzleHttp\Client;
 use Illuminate\Console\Command;
 
@@ -12,7 +13,7 @@ class BudgetCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'persist:budget';
+    protected $signature = "persist:budget {year=date('Y') : The year to parse the sheet for. Defaults to current year}";
 
     /**
      * The console command description.
@@ -46,6 +47,13 @@ class BudgetCommand extends Command
     public function handle()
     {
 
+        $this->year = $this->arguments('year');
+
+        $reports = Reports::whereType('MONTHLYBUDPERF')
+                    ->where('year', $this->year)->first();
+
+        $this->info("Parsing budget sheets for $this->year");
+        $this->info("Report link found for year $this->year is " . $reports->link);
         return 0;
     }
 }
