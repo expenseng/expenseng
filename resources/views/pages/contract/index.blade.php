@@ -52,17 +52,21 @@
     <br />
     <div id="contractor" class="container">
     <div class="row" id="contractor-div">
-        @foreach ($contractors as $contractor)
-          <a href="{{ route('contractors.single', ['company' => \Str::slug($contractor->beneficiary, '-') ]) }}">
+
+        @foreach ($contractors as $contractor)  
+          <a href="{{ route('contractors.single', ['company' => str_replace(' ', '-', $contractor->beneficiary) ]) }}">
+          
+          <!-- <a href="{{ route('contractors.single', ['company' => \Str::slug($contractor->beneficiary, '-') ]) }}"> -->
+
             <div class="col-md-4 col-lg-3 mb-3 card-col">
               <div class="card shadow">
                 <div class="card-body">
                     <chart label="myVueChart"
                             v-bind:data="[{amount: {{round($contractor->total_amount / 12)}}, year: {{$contractor->year}} }, {amount:{{$contractor->total_amount}}, year:{{$contractor->year}} }]"
-                            element="{{ \Str::slug($contractor->beneficiary, '-') }}"></chart>
+                            element="{{ \Str::slug($contractor->beneficiary, '-') . $loop->index }}"></chart>
                     <div class="contractor mb-2">
                         <!-- <img src="{{ asset('images/image 13.png') }}" height="30" class="mr-3" alt=""> -->
-                        <a href="{{ route('contractors.single', ['company' => \Str::slug($contractor->beneficiary, '-') ]) }}">
+                        <a href="{{ route('contractors.single', ['company' => str_replace(' ', '-', $contractor->beneficiary) ]) }}">
                           <h5 class="card-title mb-0" class="contractor-beneficiary">
                             {{ $contractor->beneficiary }}
                           </h5>
