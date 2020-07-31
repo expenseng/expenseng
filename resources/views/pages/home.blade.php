@@ -184,7 +184,7 @@
     </div>
       @endforeach
       <div class="vll m-md-auto mx-sm-auto mt-sm-4">
-        <a href="{{ route('contractors') }}" class="profile" target="_blank">View all Contracts</a>
+        <a href="{{ route('contractors') }}" class="profile">View all Contracts</a>
        </div>
   </div>
 

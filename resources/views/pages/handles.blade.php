@@ -49,7 +49,7 @@
 											<tr>
 												<td>{{$cabinet->role}}</td>
 												<td>{{$cabinet->name}}</td>
-												<td class="table-overflow">{{$cabinet->twitter_handle}}</td>
+												<td class="table-overflow"> <a href="" target="_blank">{{$cabinet->twitter_handle}}</a></td>
 											<tr>
 										@endforeach
 									
@@ -114,7 +114,7 @@
 							@foreach ($ministries as $ministry)
 								<tr>
 									<td>{{$ministry->name}}</td>
-									<td>{{$ministry->twitter}}</td>
+									<td><a href="" target="_blank">{{$ministry->twitter}}</a></td>
 									<td class="table-overflow"></td>
 								<tr>
 							@endforeach
