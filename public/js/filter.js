@@ -154,9 +154,9 @@ $(document).ready(function() {
                 success: function(data){
                     // console.log(data)
                     const table = e.target.closest('#modal').nextElementSibling;
-                    const tableDate = table.closest('.main-table').querySelector('.said-date');
+                    const tableDate = table.closest('.main-table').querySelector('.said-date-caption');
                     table.innerHTML = data;
-                    tableDate.innerHTML = defaultTableDate;
+                    tableDate.innerHTML = `Date: ${defaultTableDate}`;
                      id === 'apply-filter' ? tableOneIsModified = false  : tableTwoIsModified = false;           
                 },
                 error: function(error){
@@ -235,11 +235,11 @@ $(document).ready(function() {
                     success: function(data){
                         // console.log(data)
                         const table = e.target.closest('#modal').nextElementSibling;
-                        const tableDate = table.closest('.main-table').querySelector('.said-date');
+                        const tableDate = table.closest('.main-table').querySelector('.said-date-caption');
                         table.innerHTML = data;         
                         if(date !== undefined){
                             let reportDate = /\d{4}-\d{2}-\d{2}/.test(date)? formatDate(date) : date;
-                            tableDate.innerHTML = `<span style="color:#1e7e34">${reportDate}</span>`;
+                            tableDate.innerHTML = `Showing expenses for <span style="color:#1e7e34">${reportDate}</span>`;
                         }
                         id === 'apply-filter2' ? tableTwoIsModified = true  : tableOneIsModified = true;                             
                     },
