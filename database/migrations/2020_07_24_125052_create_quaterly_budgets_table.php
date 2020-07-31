@@ -23,7 +23,6 @@ class CreateQuaterlyBudgetsTable extends Migration
             $table->bigInteger('budget_amount');
             $table->bigInteger('budget_balance');
             $table->double('percentage');
-            $table->string('categories');
             $table->timestamps();
         });
     }
