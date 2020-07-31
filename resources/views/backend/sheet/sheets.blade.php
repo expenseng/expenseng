@@ -74,9 +74,9 @@
 
                                                         </div>
                                                         @if(!$sheet->parsed)
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-6" id={{"button-".$sheet->id}}>
 
-                                                         
+
 
                                                          <a href="{{$sheet->parsed ? '#' : 'admin/sheet/parse/'. $sheet->id}}" onclick='event.preventDefault(); jQuery.fn.parse({{$sheet->id}})' ><i class="fa fa-database"></i></a>
 
@@ -166,6 +166,7 @@
                             icon: 'success',
                         });
                         jQuery("#"+$id).empty().html("parsed");
+                        jQuery("#button-"+$id).hide();
                     }).fail(function(data) {
                         toast.update({
                             heading: 'Error',
