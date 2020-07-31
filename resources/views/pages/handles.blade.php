@@ -49,7 +49,7 @@
 									<td class="section-shadow">Presidnet of Nigeria</td>
 									<td>Muhammadu Buhari</td>
 
-									<td col-span="1" class="table-overflow " >@MBuhari</td>
+									<td col-span="1" class="table-overflow">@MBuhari</td>
 
 								</tr>
 								<tr style="background-color: #F2FAF7;">

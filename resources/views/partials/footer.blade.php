@@ -18,10 +18,10 @@
                                 <a  href="/">Home</a>
                             </li>
                             <li class="section-footer-links">
-                                <a  href="{{ route('ministries') }}" target="_blank">Ministries</a>
+                                <a  href="{{ route('ministries') }}">Ministries</a>
                             </li>
                             <li class="section-footer-links">
-                                <a href="{{ route('contractors') }}" target="_blank">Contractors</a>
+                                <a href="{{ route('contractors') }}">Contractors</a>
                             </li>
                         </ul>
 
@@ -30,10 +30,10 @@
                         <h6>Profile</h6>
                         <ul>
                             <li class="section-footer-links">
-                                <a  href="{{ route('expense.reports') }}" target="_blank">Expenditure Report</a>
+                                <a  href="{{ route('expense.reports') }}">Expenditure Report</a>
                             </li>
                             <li class="section-footer-links">
-                                <a href="{{ route('expense.ministry') }}" target="_blank">Ministry Spending</a>
+                                <a href="{{ route('expense.ministry') }}">Ministry Spending</a>
                             </li>
                         </ul>
                     </div>
@@ -41,16 +41,16 @@
                         <h6>Reference</h6>
                         <ul >
                             <li class="section-footer-links">
-                                <a href="{{ route('about') }}" target="_blank">About us</a>
+                                <a href="{{ route('about') }}">About us</a>
                             </li>
                             <li class="section-footer-links">
-                                <a href="{{ route('contact') }}" target="_blank">Contact us</a>
+                                <a href="{{ route('contact') }}">Contact us</a>
                             </li>
                             <li class="section-footer-links">
-                                <a href="{{ route('handles') }}" target="_blank">Government Twitter handles</a>
+                                <a href="{{ route('handles') }}">Government Twitter handles</a>
                             </li>
                             <li class="section-footer-links">
-                                <a href="{{ route('login') }}" target="_blank">Admin</a>
+                                <a href="{{ route('login') }}">Admin</a>
                             </li>
                         </ul>
                     </div>
@@ -62,13 +62,13 @@
         <div class="container">
             <div class="row footer-last p-2">
                 <div class="col-md-9">
-                    <a href="/accessibility" target="_blank">Accessibility</a>
-                    <a href="/privacy" target="_blank"> | Privacy Policy</a>
-                    <a href="/FOIA" target="_blank"> | Freedom of Information Act</a>
-                    <a href="/faq" target="_blank"> | FAQ</a>
+                    <a href="/accessibility">Accessibility</a>
+                    <a href="/privacy"> | Privacy Policy</a>
+                    <a href="/FOIA"> | Freedom of Information Act</a>
+                    <a href="/faq"> | FAQ</a>
                 </div>
                 <div class="col-md-3">
-                    <a href="" target="_blank"><span>&#169</span>2020EXPENSENG.com</a>
+                    <a href=""><span>&#169</span>2020EXPENSENG.com</a>
                 </div>
             </div>
         </div>
