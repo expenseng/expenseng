@@ -28,7 +28,7 @@
     <div class="user-profile">
       <h3 class="name brand-name">
         {{ $company->name }}
-        <img src="{{ asset('images/image 13.png') }}" alt="Berger logo">
+        <!-- <img src="{{ asset('images/image 13.png') }}" alt="Berger logo"> -->
       </h3>
       <div class="profile-overview mt-3">
         <div class="row">
@@ -37,18 +37,18 @@
             <p><a href="{{ $company->twitterUrl() }}" class="twitter-handle">{{ $company->twitter }}</a></p>
           </div>
           <div class="col-sm-4">
-            <p class="font-weight-bold">Total amount rewarded</p>
+            <p class="font-weight-bold">Total amount received</p>
             <p class="amount-rewarded">
-              {{ $company->contract(date("Y"))->amount }}
+               &#8358;{{ number_format($total_amount, 2) }}
             </p>
-            <p class="year">{{ date("Y") }}</p>
+           <!--  <p class="year">{{ date("Y") }}</p> -->
           </div>
           <div class="col-sm-4">
             <p class="font-weight-bold">Total number contracts awarded</p>
             <p class="contract-number">
-              {{ 20 }}
+              {{ count($contracts)}}
             </p>
-            <p class="year">{{ date("Y") }}</p>
+            <!-- <p class="year">{{ date("Y") }}</p> -->
           </div>
         </div>
       </div>
@@ -74,9 +74,10 @@
           </button>
         </div>
         <div class="table-responsive">
-          <table class="table table-borderless">
+          <table id="example" class="table table-borderless">
             <thead>
               <tr>
+                <td>SN</td>
                 <th scope="col">Project</th>
                 <th scope="col">Ministry</th>
                 <th scope="col">Amount</th>
@@ -84,54 +85,15 @@
               </tr>
             </thead>
             <tbody>
+            @foreach($contracts as $contract)
               <tr>
-                <td>Building of class bricks</td>
-                <td>Transport</td>
-                <td>N76,000,000</td>
-                <td>20th May, 2020</td>
+                <td>{{$loop->iteration }}</td>
+                <td>{{$contract->description}}</td>
+                <td>{{$contract->organization()}}</td>
+                <td>&#8358;{{ number_format($contract->amount, 2) }}</td>
+                <td>{{$contract->payment_date}}</td>
               </tr>
-              <tr>
-                <td>Building of class bricks</td>
-                <td>Transport</td>
-                <td>N76,000,000</td>
-                <td>20th May, 2020</td>
-              </tr>
-              <tr>
-                <td>Building of class bricks</td>
-                <td>Transport</td>
-                <td>N76,000,000</td>
-                <td>20th May, 2020</td>
-              </tr>
-              <tr>
-                <td>Building of class bricks</td>
-                <td>Transport</td>
-                <td>N76,000,000</td>
-                <td>20th May, 2020</td>
-              </tr>
-              <tr>
-                <td>Building of class bricks</td>
-                <td>Transport</td>
-                <td>N76,000,000</td>
-                <td>20th May, 2020</td>
-              </tr>
-              <tr>
-                <td>Building of class bricks</td>
-                <td>Transport</td>
-                <td>N76,000,000</td>
-                <td>20th May, 2020</td>
-              </tr>
-              <tr>
-                <td>Building of class bricks</td>
-                <td>Transport</td>
-                <td>N76,000,000</td>
-                <td>20th May, 2020</td>
-              </tr>
-              <tr>
-                <td>Building of class bricks</td>
-                <td>Transport</td>
-                <td>N76,000,000</td>
-                <td>20th May, 2020</td>
-              </tr>
+            @endforeach
             </tbody>
           </table>
         </div>
@@ -167,45 +129,25 @@
           <thead>
             <tr>
               <th scope="col">YEAR</th>
-              <td class="td-year" scope="col">2016</td>
-              <td class="td-year" scope="col">2017</td>
-              <td class="td-year" scope="col">2018</td>
-              <td class="td-year" scope="col">2019</td>
-              <td class="td-year" scope="col">2020</td>
+              @foreach($yearlyTotals as $yearlyTotal)
+                  <td class="td-year">&#8358;{{ $yearlyTotal->year }}</td>
+              @endforeach
             </tr>
           </thead>
           <tbody>
             <tr>
               <th scope="row">TOTAL AMOUNT</th>
-              <td class="amount">N72,000,000</td>
-              <td class="amount">N65,000,000</td>
-              <td class="amount">N96,000,000</td>
-              <td class="amount">N96,000,000</td>
-              <td class="amount">N96,000,000</td>
+              @foreach($yearlyTotals as $yearlyTotal)
+                  <td class="amount">&#8358;{{ number_format($yearlyTotal->total_amount, 2) }}</td>
+              @endforeach
+              
             </tr>
           </tbody>
         </table>
       </div>
       <!-- Pagination -->
       <div class="table-pagination .card-text mt-4">
-        <p>1 - 10 of 100 results</p>
-        <nav class="d-flex justify-content-center">
-          <ul class="pagination">
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
+        
       </div>
     </div>
   </div>
@@ -216,7 +158,7 @@
     <div class="container-fluid padding"  >
       <!-- cards -->
       <div class="row padding">
-        @foreach($company->people as $people)
+        @foreach($company->people() as $people)
         <div class="col-md-3">
             <div class="card">
               <img src="{{ asset('images/row1-1.png') }}" alt="{{ $people->name }}" class="img-fluid">
@@ -232,178 +174,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card">
-              <img src="{{ asset('images/row1-2.png') }}" alt="Engr. Dr.Lars Richter" class="img-fluid">
-                <div class="card-body">
-                    <h1 class="card-title director-name mt-2">Engr. Dr.Lars Richter</h1>
-                    <p class="director-title">Managing Director</p>
-                    <div class="socials d-flex justify-content-center align-items-center mt-2">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-              <img src="{{ asset('images/row1-3.png') }}" alt="Martin Brack" class="img-fluid">
-                <div class="card-body">
-                    <h1 class="card-title director-name mt-2">Martin Brack</h1>
-                    <p class="director-title">Financial Director</p>
-                    <div class="socials d-flex justify-content-center align-items-center mt-2">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-              <img src="{{ asset('images/row1-4.png') }}" alt="George Marks" class="img-fluid">
-                <div class="card-body">
-                    <h1 class="card-title director-name mt-2">George Marks</h1>
-                    <p class="director-title">Vice Chairman</p>
-                    <div class="socials d-flex justify-content-center align-items-center mt-2">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- card 2 -->
-    <div class="row padding">
-        <div class="col-md-3">
-            <div class="card">
-              <img src="{{ asset('images/row2-1.png') }}" alt="Ernest Chukwudi Ebi" class="img-fluid">
-                <div class="card-body">
-                    <h1 class="card-title director-name mt-2">Ernest Chukwudi Ebi</h1>
-                    <p class="director-title">Independent Director</p>
-                    <div class="socials d-flex justify-content-center align-items-center mt-2">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-              <img src="{{ asset('images/row2-2.png') }}" alt="Belinda Ajoke Disu" class="img-fluid">
-                <div class="card-body">
-                    <h1 class="card-title director-name mt-2">Belinda Ajoke Disu</h1>
-                    <p class="director-title">Non-executive Director</p>
-                    <div class="socials d-flex justify-content-center align-items-center mt-2">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-              <img src="{{ asset('images/row2-3.png') }}" alt="Dr. Ernest N. Azudialu" class="img-fluid">
-                <div class="card-body">
-                    <h1 class="card-title director-name mt-2">Dr. Ernest N. Azudialu</h1>
-                    <p class="director-title">Non-executive Director</p>
-                    <div class="socials d-flex justify-content-center align-items-center mt-2">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-              <img src="{{ asset('images/row2-4.png') }}" alt="Tobias Meletschus" class="img-fluid">
-                <div class="card-body">
-                    <h1 class="card-title director-name mt-2">Tobias Meletschus</h1>
-                    <p class="director-title">Director Corporate Dev</p>
-                    <div class="socials d-flex justify-content-center align-items-center mt-2">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @endforeach
-    </div>
-    <!-- card 3 -->
-    <div class="row padding">
-        <div class="col-md-3">
-            <div class="card">
-              <img src="{{ asset('images/row3-1.png') }}" alt="Alhaji Zubairu I. Bayi" class="img-fluid">
-                <div class="card-body">
-                    <h1 class="card-title director-name mt-2">Alhaji Zubairu I. Bayi</h1>
-                    <p class="director-title">Director Administration</p>
-                    <div class="socials d-flex justify-content-center align-items-center mt-2">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-              <img src="{{ asset('images/row3-2.png') }}" alt="Karsten Hensel" class="img-fluid">
-                <div class="card-body">
-                    <h1 class="card-title director-name mt-2">Karsten Hensel</h1>
-                    <p class="director-title">Non-executive Director</p>
-                    <div class="socials d-flex justify-content-center align-items-center mt-2">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-              <img src="{{ asset('images/row3-3.png') }}" alt="Gladys O.Talabi" class="img-fluid">
-                <div class="card-body">
-                    <h1 class="card-title director-name mt-2">Gladys O.Talabi</h1>
-                    <p class="director-title">Non-executive Director</p>
-                    <div class="socials d-flex justify-content-center align-items-center mt-2">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-              <img src="{{ asset('images/row3-4.png') }}" alt="Engr. Gomi M.Sheikh" class="img-fluid">
-                <div class="card-body">
-                    <h1 class="card-title director-name mt-2">Engr. Gomi M.Sheikh</h1>
-                    <p class="director-title">Non-executive Director</p>
-                    <div class="socials d-flex justify-content-center align-items-center mt-2">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endforeach  
     </div>
 
     <!-- card 4 -->
