@@ -88,17 +88,19 @@
     <div class="ministry container mt-4">
         <div class="ministry-top">
           <div class="ministry-heading">
-            <select id="ministry_list" class="ministry-head form-control">
+            <span class="select-holder">
+            <select id="ministry_list"  onmousedown="if(this.options.length>6){this.size=6;}"  onchange='this.size=0;' onblur="this.size=0;"  class="ministry-head form-control">
               @if(count($ministries)>0)
                @foreach ($ministries as $ministry)
-                 <option class="mb-3" value="{{$ministry->shortname}}">{{$ministry->shortname}}</option>
+                 <option class="mb-1" value="{{$ministry->shortname}}">{{$ministry->shortname}}</option>
                @endforeach
              @endif
            </select>
+           </span>
           </div>
            <a href="{{ route('ministries') }}" class="profile" target="_blank">View all profiles</a>
         </div>
-        <div class="ministry-stat">
+        <div class="ministry-stat ">
           <a href="#" id="link"></a>
           <div id="ministry-chart" class="stat-a p-4">
             <div class="graph-cont">
@@ -177,7 +179,7 @@
         </div>
         <div class="profile">
           <p>Company twitter handle</p>
-          <p id="handle">{{$company -> twitter}}</p>
+          <a target="_blank" href = "https://twitter.com/{{$company -> twitter}}" id="handle">{{$company -> twitter}}</p>
           <p>2019</p>
         </div>
       </div>

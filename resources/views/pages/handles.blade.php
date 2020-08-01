@@ -45,7 +45,7 @@
 </div>
 
 <div class="container bg-white pt-5 bg-inner">
-        <div class="heading">
+        <div class="heading pt-5">
             <h1>Government Twitter Handles.</h1>
             <p>Get the Twitter handles of Federal Mininstries in Nigeria and the twitter handles of incumbent ministers of Federal Republic of Nigeria.</p>
         </div>
@@ -72,7 +72,7 @@
 											<tr>
 												<td>{{$cabinet->role}}</td>
 												<td>{{$cabinet->name}}</td>
-												<td class="table-overflow"> <a href="" target="_blank">{{$cabinet->twitter_handle}}</a></td>
+												<td class="table-overflow"> <a href="https://twitter.com/{{$cabinet->twitter_handle}}" target="_blank">{{$cabinet->twitter_handle}}</a></td>
 											<tr>
 										@endforeach
 									
@@ -116,7 +116,7 @@
 							@foreach ($ministries as $ministry)
 								<tr>
 									<td>{{$ministry->name}}</td>
-									<td><a href="" target="_blank">{{$ministry->twitter}}</a></td>
+									<td><a href="https://twitter.com/{{$ministry->twitter}}" target="_blank">{{$ministry->twitter}}</a></td>
 									<td class="table-overflow"></td>
 								<tr>
 							@endforeach
