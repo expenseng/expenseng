@@ -38,6 +38,9 @@ class Scrapping
                 $this->pathPrefix = '/daily/';
                 break;
             case Scrapping::monthlyBudgetPattern:
+                if($year == "2018"){
+                    // TODO a   `   
+                }
                 $this->pathPrefix = '/monthly/';
                 break;
             case Scrapping::quarterlyBudgetPattern:
@@ -263,9 +266,9 @@ class Scrapping
     public function filterUrl(string $url)
     {
         if (preg_match('/2018/', $url)) {
-            return ['link'=>$url ,'type' => explode('/', $url)[4],'parsed'=>false];
+            return ['link'=>$url ,'type' => explode('/', $url)[4],'parsed'=>false, 'year' => explode('/', $url)[5] ];
         }
-        return ['link'=>$url ,'type' => explode('/', $url)[5],'parsed'=>false];
+        return ['link'=>$url ,'type' => explode('/', $url)[5],'parsed'=>false, 'year' => explode('/', $url)[4] ];
     }
 
     /**

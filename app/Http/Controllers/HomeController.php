@@ -17,11 +17,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $collection['health'] = Budget::where('project_name', 'Health')->get();
-        $collection['education'] = Budget::where('project_name', 'Education')->get();
-        $collection['defence'] = Budget::where('project_name', 'Defence')->get();
-        $collection['housing'] = Budget::where('project_name', 'Housing and Community Amenities')->get();
-        $expenses = $this->latestExpenditure();
+        $collection['health'] = Budget::where('org_name', 'Health')->get();
+        $collection['education'] = Budget::where('org_name', 'Education')->get();
+        $collection['defence'] = Budget::where('org_name', 'Defence')->get();
+        $collection['housing'] = Budget::where('org_name', 'Housing and Community Amenities')->get();
+        $expenses = DB::select('select * from expenses');
         $companies = DB::select('select * from companies limit 3');
         $ministries = Ministry::select('*')
                     ->orderby('shortname', 'asc')
@@ -164,7 +164,7 @@ class HomeController extends Controller
         }
 
         $chartThree['amounts'] = $amounts;
-        $chartThree['companies'] = $companies;
+        $chartThree['companies'] = $companies; 
         $chartThree['topCompany'] = $companies[0];
         $chartThree['topAmount'] = $amounts[0];
         $chartThree['year'] = $currentYr;
