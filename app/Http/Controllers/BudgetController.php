@@ -86,8 +86,31 @@ class BudgetController extends Controller
     public function yearlyBudgets()
     {
         //we are fetching only columns where {org_name} matches ministry
+        // $budget = Budget::all()->groupBy('year');
         $budget = Budget::where('org_name', 'LIKE', '%Ministry%')->get();
+
+        $ministries = [];
+
+        foreach($budget as $chart){
+
+                // $trend[] = [
+                //     'label' => $chart->org_name,
+                //     'data' => array(
+                //         ["year" => $chart->year, "amount" => $chart->amount]
+                //     )
+                // ];
+
+                // $trend[] = $chart->org_name;
+                // $trend['label'][] = $chart->org_name;
+                // $trend[] = ['label' => [], 'data' => [] ];
+
+                // $trend[$chart->org_name][] = ['data' => []]; 
+                
+                // $data[] = ["year" => $chart->year, "amount" => $chart->amount];
+
+                $trend[$chart->org_name]['data'][] = ["year" => $chart->year, "amount" => $chart->amount];
+        }
         
-        return $budget;
+        return $trend;
     }
 }

@@ -1,28 +1,32 @@
 <template>
     <div class="d-flex justify-content-between w-100">
         <img :src="this.loaderGif" v-if="this.loading" alt="Loading..." srcset="">
-        <div class="d-flex flex-wrap justify-content-md-between col-sm-12 w-100" v-else>
-            <div class="exp-card" v-for="card in this.series" :key="card.label">
-                <div class="graph-cont">
-                    <chart :element="card.label.substring(0, 15).replace(/ /g, '').toLowerCase()" 
-                            :label="card.label" 
-                            :data="card.data"></chart>
-                </div>
-                <p class="exp-card1 pl-2">{{ card.label }}</p>
-                <p class="exp-card2 pl-2">
-                    {{ 
-                        "₦" + Number(card.total).toLocaleString()
-                    }}
-                </p>
-                <p class="exp-card3 pl-2">{{ card.data.year }}</p>
+            <div class="d-flex flex-wrap justify-content-md-between col-sm-12 w-100" v-else>
+                <carousel>
+                        <div class="exp-card" v-for="card in this.series" :key="card.label">
+                            <slide>
+                                <div class="graph-cont">
+                                    <chart :element="card.label.substring(0, 25).replace(/ /g, '').toLowerCase()" 
+                                            :label="card.label" 
+                                            :data="card.data"></chart>
+                                </div>
+                                <p class="exp-card1 pl-2">{{ card.label }}</p>
+                                <p class="exp-card2 pl-2">
+                                    {{ 
+                                        "₦" + Number(card.total).toLocaleString()
+                                    }}
+                                </p>
+                                <p class="exp-card3 pl-2">{{ card.data.year }}</p>
+                            </slide>
+                        </div>
+                </carousel>
             </div>
-        </div>
     </div>
 </template>
 
 <script>
 import Chart from '../Payments/Chart';
-
+import { Carousel, Slide } from 'vue-carousel';
 export default {
     data() {
         return {
@@ -35,7 +39,9 @@ export default {
     },    
 
     components:{
-        Chart
+        Chart,
+        Carousel,
+        Slide
     },
 
     mounted() {
@@ -44,15 +50,21 @@ export default {
             .then(response => {
                 this.loading = false;
                 this.cards = response.data;
-                response.data.forEach(element => {
-                    this.series.push(
-                        { 
-                            label: element.org_name,    
-                            data: [{amount: element.amount, year: element.year}], 
-                            total: ''
-                        }
-                    )
-                });
+                // console.log(response.data);
+                // response.data.forEach(element => {
+                for (const key in this.cards) {
+                    if (this.cards.hasOwnProperty(key)) {
+                        const element = this.cards[key];
+                        this.series.push(
+                            { 
+                                label: key,    
+                                data: element.data, 
+                                total: element.data.find(data => data.year == 2020).amount
+                            }
+                        )
+                    }
+                }
+                // });
             }).catch(err => {
                 console.log(err);
             })
