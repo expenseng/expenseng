@@ -14,7 +14,7 @@
                             "₦" + Number(card.total).toLocaleString()
                         }}
                     </p>
-                    <p class="exp-card3 pl-2">{{ card.data.find(i => i.year == 2020).year }}</p>
+                    <p class="exp-card3 pl-2">{{ card.data.find(i => i.year == currentYear ? i.year : '0').year }}</p>
             </div>
         </flickity>
     </div>
@@ -61,13 +61,26 @@ export default {
                 for (const key in this.cards) {
                     if (this.cards.hasOwnProperty(key)) {
                         const element = this.cards[key];
+                        
+                        const total = element.data.find( el => {
+                            return el.year == this.currentYear
+                        });
+
+                        var totalAmount = "";
+
+                        if(total){
+                            totalAmount = total.amount;
+                        }
+
                         this.series.push(
                             { 
                                 label: key,    
                                 data: element.data, 
-                                total: element.data.find(data => data.year == 2020).amount
+                                total: totalAmount,  
                             }
                         )
+
+                        console.log( this.currentYear + " " + totalAmount);
                     }
                 }
             }).catch(err => {
