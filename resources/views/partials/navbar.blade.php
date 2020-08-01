@@ -58,7 +58,7 @@
             <nav class="side-nav w-100">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link section-nav-link" href="{{ route('home') }}">Home</a>
+                        <a class="nav-link section-nav-link" href="{{ route('home') }}" target="_blank">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages1">
@@ -83,7 +83,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages2">
-                            Reference <i class="fas fa-chevron-down"></i>
+                            Reference <i class="fas fa-chevron-down" target="_blank"></i>
                         </a>
                         <div id="sideNavPages2" class="collapse sideNavPages">
                             <ul class="navbar-nav">

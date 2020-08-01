@@ -16,35 +16,71 @@ class CompanyController extends Controller
 
     public function index()
     {
-        $contractors = $this->getYearlyTotal();
-        $companies = Company::paginate(20)->toArray();
-        return view('pages.contract.index')->with(['companies' => $companies, 'contractors' => $contractors]);
+        $contractors = $this->getAllYearlyTotal($query = null);
+        return view('pages.contract.index')->with(['contractors' => $contractors]);
+
     }
 
-    public function show(Company $company)
-    {   
-        $company = Company::where('shortname', $company->shortname)
-                            ->orWhere('name', 'LIKE', "$company->shortname%")->first();
+    public function searchContractors(Request $request){
+        $query = $request->q;
+        $contractors = $this->getAllYearlyTotal($query);
         
-        return view('pages.contract.single')->with('company', $company);
+        //$contractor = Payment::where('beneficiary','LIKE','%'.$request->q.'%')->get();
+        if(count($contractors) > 0)
+            //dump($contractor);
+           return view('pages.contract.search')->with(['contractors' => $contractors, 'query' => $query]);
+        else{
+            return view('pages.contract.search')->with(['contractors' => $contractors, 'query' => $query]);
+        } 
+         //dump($request->q);
     }
 
-    public function getReport()
-    {
-        $yearlyTotals = $this->getYearlyTotal();
-        $monthlyTotals = $this->getMonthlyTotal();
-        return [
-            'status' => 'success',
-            'message' =>
-                'Total amounts received by various Contractors and Organsations',
-            'data' => $yearlyTotals,
-        ];
+
+    // show a detials of given contractor, beneficiary or organization
+    public function show($com)
+    {  
+        $contractor =   ucwords(str_replace('-', ' ', $com)); 
+        $total_amount = 0;
+        $company = Company::where('shortname', $contractor)->orWhere('name', 'LIKE', "$contractor%")->first();
+        if(isset($company)){
+                $contracts = $this->getContractorContracts($contractor);
+                $yearlyTotals = $this->getContractorYearlyTotal($contractor);
+                 foreach($contracts as $contract){
+                     $total_amount = $total_amount + $contract->amount;
+                } 
+                return view('pages.contract.single')->with(['company' => $company, 'contracts' => $contracts, 'total_amount' => $total_amount, 'yearlyTotals' => $yearlyTotals]);
+
+                // dump($yearlyTotals);
+
+            }elseif(count($this->getContractorContracts($contractor)) > 0 ){
+
+                $contracts = $this->getContractorContracts($contractor);
+                $company = $contracts[0];
+                foreach($contracts as $contract){
+                     $total_amount = $total_amount + $contract->amount;
+                } 
+                return view('pages.contract.notfound')->with(['company' => $company, 'contracts' => $contracts,  'total_amount' => $total_amount ]);
+
+        }else{
+            return redirect('errors.404_error');
+        }
     }
 
-    public function getYearlyTotal()
+    // get all contracts sum and details grouped by year
+    public function getAllYearlyTotal($query)
     {
-        $yearlyTotals = DB::table('payments')
-            ->select(
+        if(isset($query)){
+            $yearlyTotals = Payment::select(
+                DB::raw(
+                    'beneficiary, SUM(amount) as total_amount, YEAR(payment_date) as year'
+                )
+            )->where('beneficiary','LIKE','%'.$query.'%')
+            ->groupBy(DB::raw('(beneficiary) ASC, YEAR(payment_date) ASC'))
+            ->paginate(12);
+            
+        return $yearlyTotals;
+        }
+        $yearlyTotals = Payment::select(
                 DB::raw(
                     'beneficiary, SUM(amount) as total_amount, YEAR(payment_date) as year'
                 )
@@ -55,22 +91,45 @@ class CompanyController extends Controller
         return $yearlyTotals;
     }
 
-    public function getMonthlyTotal()
+        // get all contract sum and details grouped by month
+     public function getAllMonthlyTotal()
     {
-        $monthlyTotals = DB::table('expenses')
-            ->select(
-                DB::raw('company, SUM(amount) as total_amount,
+        $monthlyTotals = Payment::select(
+                DB::raw('beneficiary, SUM(amount) as total_amount,
                 YEAR(payment_date) as year,
                 Month(payment_date) as month')
             )
             ->groupBy(
                 DB::raw(
-                    '(company) ASC, YEAR(payment_date) ASC, Month(payment_date) ASC'
+                    '(beneficiary) ASC, YEAR(payment_date) ASC, Month(payment_date) ASC'
                 )
             )
             ->get();
         return $monthlyTotals;
     }
+
+
+    //  get yearly contract sum 
+    public function getContractorYearlyTotal($contractor)
+    {
+        $yearlyTotals = Payment::where('beneficiary', 'like', '%' . ( strtolower($contractor) ) . '%')
+        ->selectRaw('sum(amount) as total_amount, YEAR(payment_date) as year')
+        ->groupBy(DB::raw(
+                    'YEAR(payment_date) ASC'
+                ))
+        ->get();
+
+        return $yearlyTotals;
+    }
+
+
+   // Get all contracts  awarded to a given contractor
+    public function getContractorContracts($contractor){
+        $contracts = Payment::where('beneficiary', 'like', '%' . ( strtolower($contractor) ) . '%')->select(['id','beneficiary as name', 'amount', 'payment_date', 'description', 'organization', 'payment_code', 'payment_no'])->get();
+        return $contracts;
+    }
+
+
 
     /**
      * Display a form for creating companies.

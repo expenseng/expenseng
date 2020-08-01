@@ -8,14 +8,14 @@
   <link rel="stylesheet" href="{{ asset('css/filter.css') }}">
   <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
     <link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174035666-1"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174166304-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-174035666-1');
+  gtag('config', 'UA-174166304-1');
 </script>
 
 
@@ -45,14 +45,15 @@
   <div class="section-button">
     <div class="container">
       <div class="row px-1">
-        <div class="btn-group col-lg-12 col-md-12 d-flex justify-content-between responsive-button nav nav-tabs" style="overflow-x: scroll;">
-          <a class="btn-marg text-left active button" data-toggle="tab" role="tab" href="#navchart">Daily Expenditure</a>
-          <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Power</a>
+        <div class="btn-group col-lg-12 col-md-12 d-flex responsive-button nav nav-tabs" >
+          <a class="ml-3 text-left active button" data-toggle="tab" role="tab" href="#navchart">Daily Expenditure</a>
+          <!-- Ministry Sector Tabs -->
+          <!-- <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Power</a>
           <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Education</a>
           <a class="btn-marg text-left button" data-toggle="tab" role="tab"href="">Security</a>
           <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Agriculture</a>
-          <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Infastructure</a>
-          <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="#comments">Comments</a>
+          <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Infastructure</a> -->
+          <a class="btn-marg ml-5 text-left button" data-toggle="tab" role="tab" href="#comments">Comments</a>
         </div>
       </div>
     </div>

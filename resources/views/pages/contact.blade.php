@@ -36,6 +36,6 @@
           </form>
       </div>
   </section>
-   <a href="#" class="ministry" >Looking for a Ministry you know? <span style="margin-left: 0; color: #00945E;">Check our Ministry Directory</span> </a>
+   <a href="#" class="ministry">Looking for a Ministry you know? <span style="margin-left: 0; color: #00945E;">Check our Ministry Directory</span> </a>
 
 @endsection

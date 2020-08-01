@@ -6,13 +6,13 @@
 <link rel="stylesheet" href="/css/modal/style.css">
 <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174035666-1"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174166304-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-174035666-1');
+  gtag('config', 'UA-174166304-1');
 </script>
 
 
@@ -42,7 +42,7 @@
             @php
                 $ministryHandle = substr($ministry->twitter, 1)
             @endphp
-            <div class="sub"><h4 id="minwrks" class="twitter-link"> <a href="{!! url("https://twitter.com/$ministryHandle") !!}">{{$ministry->twitter}}</a></h4>
+            <div class="sub"><h4 id="minwrks" class="twitter-link"> <a target = "_blank" href="{!! url("https://twitter.com/$ministryHandle") !!}">{{$ministry->twitter}}</a></h4>
                  <small>{{date('Y')}}</small></div>
         </div>
         <div class="col">
@@ -79,7 +79,8 @@
                     <div class="container pb-3 pt-1 py-4">
                         <div class="row centerize">
                             <div class="col">
-                                <h3 id="said-date" class="index">Date: {{date("jS F, Y")}}</h1>
+                            <!-- Test -->
+                                <h3 id="said-date" class="index">Showing Expenses For {{date("jS F, Y")}}</h3>
                             </div>
 
                             <div class="col">
@@ -212,16 +213,16 @@
 
                     <div class="social-handle text-center">
                         @if($ministerFacebookHandle)
-                        <a href="#" class="link"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#" class="link"><i class="fab fa-facebook" aria-hidden="true" target="_blank"></i></a>
                         @endif
                         @if($ministerTwitterHandle)
-                        <a href="{!! url("https://twitter.com/$ministerTwitterHandle") !!}" class="link ml-2"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="{!! url("https://twitter.com/$ministerTwitterHandle") !!}" class="link ml-2" target="_blank"><i class="fab fa-twitter" aria-hidden="true"></i></a>
                         @endif
                         @if($ministerLinkedInHandle)
-                        <a href="#" class="link ml-2"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="#" class="link ml-2"><i class="fab fa-linkedin" aria-hidden="true" target="_blank"></i></a>
                         @endif
                         @if($ministerInstagramHandle)
-                        <a href="#" class="link ml-2"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" class="link ml-2"><i class="fab fa-instagram" aria-hidden="true" target="_blank"></i></a>
                         @endif
                     </div>
                 </div>

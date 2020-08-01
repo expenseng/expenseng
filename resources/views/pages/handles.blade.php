@@ -3,14 +3,37 @@
 <title>Government Twitter Handles</title>
 <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
 <link rel="stylesheet" href="{{ asset('css/handles.css') }}">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="/extras/datatables/css/buttons.bootstrap4.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/extras/datatables/css/fixedHeader.bootstrap4.css">
+    <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+
+    <!-- causes toggle error in navbar -->
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <style type="text/css">
+        .dataTable>tbody>tr>td, 
+        .dataTable>tbody>tr>th, 
+        .dataTable>tfoot>tr>td, 
+        .dataTable>tfoot>tr>th, 
+        .dataTable>thead>tr>td, 
+        .dataTable>thead>tr>th {
+            padding: 12px!important;
+        }
+    </style>
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174035666-1"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174166304-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-174035666-1');
+  gtag('config', 'UA-174166304-1');
 </script>
 
 @endpush
@@ -22,8 +45,7 @@
 </div>
 
 <div class="container bg-white pt-5 bg-inner">
-    <div class="container">
-        <div class="container heading">
+        <div class="heading pt-5">
             <h1>Government Twitter Handles.</h1>
             <p>Get the Twitter handles of Federal Mininstries in Nigeria and the twitter handles of incumbent ministers of Federal Republic of Nigeria.</p>
         </div>
@@ -44,154 +66,30 @@
                                 </tr>
                             </thead>
 							<tbody class="t-body text-left">
-
-
-								<tr class="" style="background-color: white;">
-									<td class="section-shadow">Presidnet of Nigeria</td>
-									<td>Muhammadu Buhari</td>
-
-									<td col-span="1" class="table-overflow " >@MBuhari</td>
-
-								</tr>
-								<tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Vice President</td>
-									<td>Yemi Osinbajo</td>
-									<td class="table-overflow" >@ProfOsinbajo</td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Minister of Justice Attorney General</td>
-									<td>Abubakar Malami</td>
-									<td class="table-overflow">@MalamiSan</td>
-								</tr>
-								<tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Minster of Foreign Affair</td>
-									<td>Geoffrey Onyeama</td>
-									<td class="table-overflow" >@GeoffreyOnyeama</td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Minister of Finance,Budget and National Planning</td>
-									<td>Zainab Ahmed</td>
-									<td class="table-overflow" >@ZShamsuma</td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Vice President</td>
-									<td>Yemi Osinbajo</td>
-									<td class="table-overflow" >@ProfOsinbajo</td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Minister of Defence</td>
-									<td>Bashir Salihi Magashi</td>
-									<td class="table-overflow" >@GenMagashi</td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Minister of Education</td>
-									<td>Adamu Adamu</td>
-									<td class="table-overflow" >@adamu02adamu</td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Minister of Inndustry, Trade and Investment</td>
-									<td>Richard Adeniyi Adebayo</td>
-									<td class="table-overflow" >@NiyiAdebayo_</td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Minister of Labour and Employment</td>
-									<td>Chris Ngige</td>
-									<td class="table-overflow" >@SenChrisNgige</td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Minister of Federal Capital Territory</td>
-									<td>Mohammed Musa Bello</td>
-									<td class="table-overflow" >@FCT_Minister</td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Minister of Science and Technology</td>
-									<td>Ogbonnaya Onu</td>
-									<td class="table-overflow" >@Dr_OgbonnayaOnu</td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Minister of Mines and steel Developement</td>
-									<td>Olamilekan Adegbite</td>
-									<td class="table-overflow" >@_LekanAdegbite</td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Minister of Interior</td>
-									<td>Rauf Aregbesola</td>
-									<td class="table-overflow">@raufaregbesola</td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Minister of State Budget and Nation Planning</td>
-									<td>Clement Agba</td>
-									<td class="table-overflow" >@ClemAgba</td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Minister of Work and Housing</td>
-									<td>Babatunde Fashola</td>
-									<td class="table-overflow" >@tundefashola</td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Minister of Agriculture and Rural Development</td>
-									<td>Sabo Nanono</td>
-									<td class="table-overflow" >@Nanonosabo</td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Minister of Transportation</td>
-									<td>Rotimi Amaechi</td>
-									<td class="table-overflow" >@ChibuikeAmeachi</td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Minister of Power</td>
-									<td>Saleh Mamman</td>
-									<td class="table-overflow" >@EngrSMamman</td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Minister of Health</td>
-									<td>Osagie Ehanire</td>
-									<td class="table-overflow">@DrEOEhanire</td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Minister of Women Affairs</td>
-									<td>Paulen Tallen</td>
-									<td class="table-overflow">@PaulineKTallen</td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Minister of Niger Delta</td>
-									<td>Godswill Akpabio</td>
-									<td class="table-overflow">@Senatore_Akpabio</td>
-								</tr>
+								
+									
+										@foreach ($cabinet as $cabinet)
+											<tr>
+												<td>{{$cabinet->role}}</td>
+												<td>{{$cabinet->name}}</td>
+												<td class="table-overflow"> <a href="https://twitter.com/{{$cabinet->twitter_handle}}" target="_blank">{{$cabinet->twitter_handle}}</a></td>
+											<tr>
+										@endforeach
+									
+								
 
 							</tbody>
 						</table>
                     <div class="row float-right results pagination">
-                    <label for="year" class="year">Fiscal Year</label>
-                    <select name="year" id="year">
-                          <option value="2019">2019</option>
-                          <option value="2019">2020</option>
-                    </select>
-                    <span class="page">1-20 of 320,573 results</span>
+                    
+                    
                     </div>
 
                 <div class="clear"></div>
 
                 <div class="float-right mt-5">
 
-                    <nav aria-label="Page navigation example">
-                      <ul class="pagination pg-blue">
-                        <li class="page-item ">
-                          <a class="page-link" tabindex="-1"><i class="fa fa- fa-angle-left"></i></a>
-                        </li>
-                        <li class="page-item"><a class="page-link">1</a></li>
-                        <li class="page-item active">
-                          <a class="page-link">2 <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="page-item"><a class="page-link">3</a></li>
-                        <li class="page-item"><a class="page-link">4</a></li>
-                        <li class="page-item"><a class="page-link">...</a></li>
-                        <li class="page-item"><a class="page-link">3000</a></li>
-                        <li class="page-item ">
-                          <a class="page-link"><i class="fa fa- fa-angle-right"></i></a>
-                        </li>
-                      </ul>
-                    </nav>
+                    
                 </div>
             </div>
         </div>
@@ -204,7 +102,7 @@
         </div>
             <div class="table-data collapse in" id="collapseExample">
 					<div style="overflow-x: auto;">
-						<table id="Table" cell-spacing="0" data-pagination="true" data-page-size="10" class="table table-striped table-responsive-sm">
+						<table id="Tables" cell-spacing="0" data-pagination="true" data-page-size="10" class="table table-striped table-responsive-sm">
 							<thead class="text-left">
 								<tr>
 									<th class="section-shadow row-ministry w-50">Ministry</th>
@@ -215,145 +113,26 @@
 							<tbody class="t-body text-left">
 
 
-								<tr class="" style="background-color: white;">
-									<td class="section-shadow">Agriculture</td>
-									<td>@FmardNg</td>
-									<td class="table-overflow" ></td>
-								</tr>
-								<tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Aviation</td>
-									<td>@fmaviationng</td>
+							@foreach ($ministries as $ministry)
+								<tr>
+									<td>{{$ministry->name}}</td>
+									<td><a href="https://twitter.com/{{$ministry->twitter}}" target="_blank">{{$ministry->twitter}}</a></td>
 									<td class="table-overflow"></td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Defence</td>
-									<td>@DefenceInfoNG</td>
-									<td class="table-overflow" ></td>
-								</tr>
-								<tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Education</td>
-									<td>@NigEducation</td>
-									<td class="table-overflow" ></td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Energy</td>
-									<td>@MinistryofPower</td>
-									<td class="table-overflow"></td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Environment</td>
-									<td>@FMEnvbg</td>
-									<td class="table-overflow" ></td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Federal Capital Territory</td>
-									<td>@officialFCTA</td>
-									<td class="table-overflow" ></td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Finance</td>
-									<td>@FinMinNigeria</td>
-									<td class="table-overflow"></td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Foreign Affairs</td>
-									<td>@NigeriaMFA</td>
-									<td class="table-overflow"></td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">VHealth</td>
-									<td>@Fmohnigeria</td>
-									<td class="table-overflow"></td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Information and Culture</td>
-									<td>@FMICNigeria</td>
-									<td class="table-overflow" ></td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Interior</td>
-									<td>@MinOfInteriorNG</td>
-									<td class="table-overflow" ></td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Justice</td>
-									<td>@FedMinOfJustice</td>
-									<td class="table-overflow" ></td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Labour and Productivity</td>
-									<td>@LabourMinNg</td>
-									<td class="table-overflow" ></td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Lands & Urban Development</td>
-									<td>@ministry_lands</td>
-									<td class="table-overflow" ></td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Mines and Steel Development</td>
-									<td>@fmmsdngr</td>
-									<td class="table-overflow" ></td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Niger Delta</td>
-									<td>@MNDA_Ng</td>
-									<td class="table-overflow"></td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Petroleum Resources</td>
-									<td>@FMPRng</td>
-									<td class="table-overflow" ></td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Power, Works and Housing</td>
-									<td>@PowerMinNigeria</td>
-									<td class="table-overflow" ></td>
-								</tr>
-                                <tr style="background-color: #FFF;">
-									<td class="section-shadow">Science and Technology</td>
-									<td>@FmstNgtd>
-									<td class="table-overflow"></td>
-								</tr>
-                                <tr style="background-color: #F2FAF7;">
-									<td class="section-shadow">Trade and Investment</td>
-									<td>@TradeInvestNG</td>
-									<td class="table-overflow" ></td>
-								</tr>
+								<tr>
+							@endforeach
 
 							</tbody>
 						</table>
                     <div class="row float-right results">
-                    <label for="year" class="year">Fiscal Year</label>
-                    <select name="year" id="year">
-                          <option value="2019">2019</option>
-                          <option value="2019">2020</option>
-                    </select>
-                    <span class="page">1-20 of 320,573 results</span>
+                    
+                    
                     </div>
 
                 <div class="clear"></div>
 
                 <div class="float-right mt-5">
 
-                    <nav aria-label="Page navigation example">
-                      <ul class="pagination pg-blue">
-                        <li class="page-item ">
-                          <a class="page-link" tabindex="-1"><i class="fa fa- fa-angle-left"></i></a>
-                        </li>
-                        <li class="page-item"><a class="page-link">1</a></li>
-                        <li class="page-item active">
-                          <a class="page-link">2 <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="page-item"><a class="page-link">3</a></li>
-                        <li class="page-item"><a class="page-link">4</a></li>
-                        <li class="page-item"><a class="page-link">...</a></li>
-                        <li class="page-item"><a class="page-link">3000</a></li>
-                        <li class="page-item ">
-                          <a class="page-link"><i class="fa fa- fa-angle-right"></i></a>
-                        </li>
-                      </ul>
-                    </nav>
+                   
                 </div>
 
     </div>
@@ -361,4 +140,61 @@
 </div>
     </div>
     </div>
+@endsection
+@section('js')
+<script>
+        $(document).ready(function(){
+    $('#Tables').after('<div id="nav" style="float:right"></div>');
+    var rowsShown = 20;
+    var rowsTotal = $('#Tables tbody tr').length;
+    var numPages = rowsTotal/rowsShown;
+    for(i = 0;i < numPages;i++) {
+        var pageNum = i + 1;
+        $('#nav').append('<a  rel="'+i+'" class="btn btn-light" >'+pageNum+'</a> ');
+    }
+    $('#Tables tbody tr').hide();
+    $('#Tables tbody tr').slice(0, rowsShown).show();
+    $('#nav a:first').addClass('active');
+    $('#nav a').bind('click', function(){
+
+        $('#nav a').removeClass('active');
+        $(this).addClass('active');
+        var currPage = $(this).attr('rel');
+        var startItem = currPage * rowsShown;
+        var endItem = startItem + rowsShown;
+        $('#Tables tbody tr').css('opacity','0.0').hide().slice(startItem, endItem).
+        css('display','table-row').animate({opacity:1}, 300);
+    });
+});
+
+    </script>
+    
+<script>
+        $(document).ready(function(){
+    $('#Table').after('<div id="nav" style="float:right"></div>');
+    var rowsShown = 20;
+    var rowsTotal = $('#Table tbody tr').length;
+    var numPages = rowsTotal/rowsShown;
+    for(i = 0;i < numPages;i++) {
+        var pageNum = i + 1;
+        $('#nav').append('<a  rel="'+i+'" class="btn btn-light" >'+pageNum+'</a> ');
+    }
+    $('#Table tbody tr').hide();
+    $('#Table tbody tr').slice(0, rowsShown).show();
+    $('#nav a:first').addClass('active');
+    $('#nav a').bind('click', function(){
+
+        $('#nav a').removeClass('active');
+        $(this).addClass('active');
+        var currPage = $(this).attr('rel');
+        var startItem = currPage * rowsShown;
+        var endItem = startItem + rowsShown;
+        $('#Table tbody tr').css('opacity','0.0').hide().slice(startItem, endItem).
+        css('display','table-row').animate({opacity:1}, 300);
+    });
+});
+
+    </script>
+
+
 @endsection

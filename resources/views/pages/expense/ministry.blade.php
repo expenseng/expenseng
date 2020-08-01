@@ -8,14 +8,14 @@
 	<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
 	<script src="https://kit.fontawesome.com/8f691340fb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174035666-1"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174166304-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-174035666-1');
+  gtag('config', 'UA-174166304-1');
 </script>
 
 @endpush
@@ -73,7 +73,7 @@
 				<div class="table-section reponsive-div">
 					<div class="main-table">
 						<div class="table-top p-3 d-flex justify-content-between align-items-center">
-							<h3 class="align-self-center">Date: <span class="said-date">{{ date("dS, M Y") }}</span></h3>
+							<h3 class="said-date-caption" class="align-self-center">Date: <span class="said-date">{{ date("dS, M Y") }}</span></h3>
 							<button class="nav-button" data-toggle="modal" data-target="#filterModal">Filter<i class="fas fa-filter px-1" style="font-size: var(--fs-reg);"></i></button>
 						</div>
 						<!-- Filter Modal -->
@@ -158,7 +158,7 @@
 				<div class="table-section reponsive-div">
 					<div class="main-table">
 						<div class="table-top p-3 d-flex justify-content-between align-items-center">
-							<h3 class="align-self-center">Payments without description: <span class="said-date"></span></h3>
+							<h3 class="said-date-caption" class="align-self-center">Payments without description: <span class="said-date"></span></h3>
 							<button type="button"  data-toggle="modal" data-target="#filterModal2">Filter <i class="fas fa-filter px-1"></i></button>
 						</div>
 						<!-- Filter Modal -->
