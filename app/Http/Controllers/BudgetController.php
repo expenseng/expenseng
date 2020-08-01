@@ -88,6 +88,8 @@ class BudgetController extends Controller
         //we are fetching only columns where {org_name} matches ministry
         $budget = Budget::where('org_name', 'LIKE', '%Ministry%')->get();
 
+        $trend = [];
+        
         foreach($budget as $chart){
             $trend[$chart->org_name]['data'][] = ["year" => $chart->year, "amount" => $chart->amount];
         }
