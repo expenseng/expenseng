@@ -9,7 +9,24 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        if (Gate::denies('manage-user')) {
+            return redirect(route('ministry.view'));
+        }
+       
 
+        $cabinet = Cabinet::paginate(20);
+        dump($cabinet);
+        //return view('backend.cabinet.view')->with([
+            //'cabinet' => $cabinet,
+        
+    }
     public function contactUs()
     {
         return view('pages.contactUs');
