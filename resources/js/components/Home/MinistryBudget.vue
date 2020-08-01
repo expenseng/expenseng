@@ -1,32 +1,30 @@
 <template>
     <div class="d-flex justify-content-between w-100">
         <img :src="this.loaderGif" v-if="this.loading" alt="Loading..." srcset="">
-            <div class="d-flex flex-wrap justify-content-md-between col-sm-12 w-100" v-else>
-                <carousel>
-                        <div class="exp-card" v-for="card in this.series" :key="card.label">
-                            <slide>
-                                <div class="graph-cont">
-                                    <chart :element="card.label.substring(0, 25).replace(/ /g, '').toLowerCase()" 
-                                            :label="card.label" 
-                                            :data="card.data"></chart>
-                                </div>
-                                <p class="exp-card1 pl-2">{{ card.label }}</p>
-                                <p class="exp-card2 pl-2">
-                                    {{ 
-                                        "₦" + Number(card.total).toLocaleString()
-                                    }}
-                                </p>
-                                <p class="exp-card3 pl-2">{{ card.data.year }}</p>
-                            </slide>
-                        </div>
-                </carousel>
+        <flickity ref="flickity" :options="flickityOptions" class="d-flex flex-wrap justify-content-md-between col-sm-12 w-100 main-carousel" v-else>
+            <div class="exp-card carousel-cell" v-for="card in this.series" :key="card.label">
+                    <div class="graph-cont">
+                        <chart :element="card.label.substring(0, 25).replace(/ /g, '').toLowerCase()" 
+                                label="Amount budgeted" 
+                                :data="card.data"></chart>
+                    </div>
+                    <p class="exp-card1 pl-2">{{ card.label }}</p>
+                    <p class="exp-card2 pl-2">
+                        {{ 
+                            "₦" + Number(card.total).toLocaleString()
+                        }}
+                    </p>
+                    <p class="exp-card3 pl-2">{{ card.data[0].year }}</p>
             </div>
+        </flickity>
     </div>
 </template>
 
 <script>
+
 import Chart from '../Payments/Chart';
-import { Carousel, Slide } from 'vue-carousel';
+import Flickity from 'vue-flickity';
+
 export default {
     data() {
         return {
@@ -35,23 +33,31 @@ export default {
             loaderGif: require('../../../img/EXPENSE LOADER.gif'),
             loading : false,
             series: [],
+            flickityOptions: {
+                initialIndex: 0,
+                prevNextButtons: true,
+                pageDots: true,
+                cellAlign: 'left',
+                contain: true,
+                autoPlay: true,
+                // wrapAround: true
+            }
         }
     },    
 
     components:{
         Chart,
-        Carousel,
-        Slide
+        Flickity
     },
 
     mounted() {
+
         this.loading = true;
         axios.get('/api/expense/budget')
             .then(response => {
+
                 this.loading = false;
                 this.cards = response.data;
-                // console.log(response.data);
-                // response.data.forEach(element => {
                 for (const key in this.cards) {
                     if (this.cards.hasOwnProperty(key)) {
                         const element = this.cards[key];
@@ -64,14 +70,31 @@ export default {
                         )
                     }
                 }
-                // });
             }).catch(err => {
                 console.log(err);
             })
     },
-
-    computed: {
-        
-    },
 }
 </script>
+
+<style lang="css">
+    .main-carousel{
+        overflow: hidden;
+        min-height: 380px;
+    }
+
+    .flickity-button {
+        position: absolute;
+        background: #00945ea6;
+        border: none;
+        color: #fff;
+    }
+
+    p.exp-card1.pl-2 {
+        margin-bottom: 0.5px;
+    }
+
+    .exp-card{
+        min-height: 330px;
+    }
+</style>

@@ -348,11 +348,11 @@ div.graph-cont img:nth-child(1){
     position: absolute;
 }
 p.exp-card1{
-     font-size: var(--fs-reg);
+     font-size: calc( var(--fs-reg) - 0.5) ;
      font-weight: 700;
 }
 p.exp-card2{
-     font-size: var(--fs-reg);
+     font-size: calc(var(--fs-reg) - 0.6);
      color: #33A97E;
      font-weight: 700;
 }

@@ -38,6 +38,9 @@ class Scrapping
                 $this->pathPrefix = '/daily/';
                 break;
             case Scrapping::monthlyBudgetPattern:
+                if($year == "2018"){
+                    // TODO a   `   
+                }
                 $this->pathPrefix = '/monthly/';
                 break;
             case Scrapping::quarterlyBudgetPattern:
