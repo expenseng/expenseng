@@ -75,7 +75,8 @@
     <p class="label">Latest Government Expenses</p>
     <div class="container">
          <div class="expenses">
-             <govt-expense></govt-expense>
+             {{-- <govt-expense></govt-expense> --}}
+             <ministry-budgets></ministry-budgets>
              <a href="{{route('expense.reports')}}" class="mt-4 mb-5 mx-auto">View Expenditure Report</a>
          </div>
     </div>

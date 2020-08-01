@@ -50,22 +50,20 @@ class BudgetCommand extends Command
 
         $this->year = $this->argument('year') ?? date("Y");
 
-        $reports = Reports::whereType('MONTHLYBUDPERF')
+        $reports = Reports::where('type', 'LIKE', '%MONTHLY%')
                     ->where('year', $this->year)->first();
 
         if($reports != null){
             $this->info("Report link found for year $this->year is " . $reports->link);
 
             //progress bar
-            $bar = $this->output->createProgressBar(100);
+            $this->bar = $this->output->createProgressBar(100);
 
-            $bar->start();
+            $this->bar->start();
     
-            $bar->advance();
-
             $budgets = $this->parse($reports->link);
 
-            $bar->finish();
+            $this->bar->finish();
 
             $this->info(" \n All done ✨✨✨");
 
@@ -91,6 +89,7 @@ class BudgetCommand extends Command
 
             try {
                 foreach($responses as $response){
+
                     $budget = Budget::create([
                         'amount' => $response["BUDGET AMOUNT"] ?? 0.00,
                         'org_name' => $response["Name"],
@@ -100,7 +99,8 @@ class BudgetCommand extends Command
                     ]);
 
                     if($budget instanceof Budget){
-                        $this->info("\n Parsed and save budget for ". $response["Name"] . " in the database");
+                        //show progress on progress bar
+                        $this->bar->advance();
                     }else{
                         $this->info("Failed to parse or save budget for ". $response["Name"] . " in the database");
                     }

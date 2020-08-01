@@ -30,6 +30,7 @@ Vue.component('chart', require('./components/Payments/Chart.vue').default);
 Vue.component('govt-expense', require('./components/Home/GovtExpenses.vue').default);
 Vue.component('admin-comments', require('./components/Backend/AdminComments.vue').default);
 Vue.component('ministry-expense', require('./components/Home/MinistryExpense.vue').default);
+Vue.component('ministry-budgets', require('./components/Home/MinistryBudget.vue').default);
 
 
 /**

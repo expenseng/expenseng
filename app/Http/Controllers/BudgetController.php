@@ -83,10 +83,11 @@ class BudgetController extends Controller
         //
     }
 
-    public function yearly()
+    public function yearlyBudgets()
     {
-        $budget = Budget::all()->groupBy('year');
+        //we are fetching only columns where {org_name} matches ministry
+        $budget = Budget::where('org_name', 'LIKE', '%Ministry%')->get();
         
-        return $response;
+        return $budget;
     }
 }

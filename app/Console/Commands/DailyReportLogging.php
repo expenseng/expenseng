@@ -41,7 +41,8 @@ class DailyReportLogging extends Command
     {
         try {
             $scrapping = new Scrapping();
-            $year = ''.Carbon::now()->year;
+            $year = '2018';
+            // $year = ''.Carbon::now()->year;
             $payment = $scrapping->openTreasury($year)->latest()->initialLogToDatabase();
             $budget_funcCat = $scrapping->openTreasury($year, Scrapping::monthlyBudgetPattern)->initialLogToDatabase();
             $budget_qfuncCat = $scrapping->openTreasury($year, Scrapping::quarterlyBudgetPattern)->initialLogToDatabase();
