@@ -393,6 +393,7 @@ p.profile{
     flex-direction: column;
     padding: 1.5rem;
     min-height: 450px;
+    margin-top: 3rem;
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04)
 }
 .ministry-stat:hover{
@@ -440,6 +441,18 @@ p.profile{
    background: #FFFFFF;
    border: none;
    border-radius: 0.3rem;
+}
+#ministry_list{
+	position:absolute;
+    margin-bottom: 2rem;
+    z-index: 1;
+}
+.select-holder {
+	display:inline-block;
+	position:relative;
+	width:200px;
+	height:1.5em;
+	background:#f9f9f9;
 }
 .companies{
    display: flex;
