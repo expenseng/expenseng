@@ -4,7 +4,11 @@ namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 
-class CommentTest extends TestCase
+/**
+ * @doc this class test we can get a single
+ * contractor's data
+ */
+class GetContractors extends TestCase
 {
     /**
      * A basic unit test example.
@@ -14,12 +18,5 @@ class CommentTest extends TestCase
     public function testExample()
     {
         $this->assertTrue(true);
-    }
-
-    /**
-     * A test of creating a comment.
-     */
-    public function testCreateComment(){
-        $response = $this->post('/api/comments/');
     }
 }
