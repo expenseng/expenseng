@@ -8,4 +8,5 @@ class QuarterlyBudget extends Model
 {
     //
     protected $table = "quaterly_budgets";
+    protected $guarded = ['id'];
 }

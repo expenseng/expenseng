@@ -32,6 +32,7 @@ class Kernel extends ConsoleKernel
          $schedule->command('parse:daily')->everyMinute()->withoutOverlapping();
          $schedule->command('parse:sheet')->everyMinute()->withoutOverlapping();
          $schedule->command('parse:monthly')->everyMinute()->withoutOverlapping();
+         $schedule->command('parse:quarterly')->everyMinute()->withoutOverlapping();
          $schedule->command('queue:work --once --queue=ceSearch')->hourly()->withoutOverlapping();
          $schedule->command('queue:work  --queue=default --stop-when-empty')->everyMinute()->withoutOverlapping();
     }

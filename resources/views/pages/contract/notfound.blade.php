@@ -39,7 +39,7 @@
             <p>{{ 'not available' }}<p>
           </div>
           <div class="col-sm-4">
-            <p class="font-weight-bold">Total amount rewarded</p>
+            <p class="font-weight-bold">Total money received</p>
             <p class="amount-rewarded">
               &#8358;{{ number_format($total_amount, 2) }}
             </p>
