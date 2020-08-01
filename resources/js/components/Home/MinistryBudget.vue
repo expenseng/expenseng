@@ -14,7 +14,7 @@
                             "₦" + Number(card.total).toLocaleString()
                         }}
                     </p>
-                    <p class="exp-card3 pl-2">{{ card.data[0].year }}</p>
+                    <p class="exp-card3 pl-2">{{ card.data.find(i => i.year == 2020).year }}</p>
             </div>
         </flickity>
     </div>
