@@ -164,7 +164,7 @@ class HomeController extends Controller
         }
 
         $chartThree['amounts'] = $amounts;
-        $chartThree['companies'] = $companies;
+        $chartThree['companies'] = $companies; 
         $chartThree['topCompany'] = $companies[0];
         $chartThree['topAmount'] = $amounts[0];
         $chartThree['year'] = $currentYr;

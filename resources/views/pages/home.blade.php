@@ -72,7 +72,7 @@
 <section id="main" class="">
    <!-- Expenses section -->
    <div id="expenses">
-    <p class="label">Latest Government Expenses</p>
+    <p class="label">Ministry Budgets</p>
     <div class="container">
          <div class="expenses">
              {{-- <govt-expense></govt-expense> --}}
