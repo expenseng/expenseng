@@ -13,7 +13,7 @@ class Scrapping
 
     public const dailyPaymentPattern = '/-daily-payment/i';
     public const monthlyBudgetPattern = '/-fgn-monthly/i';
-    public const quarterlyBudgetPattern = '/-fgn-quarterly/';
+    public const quarterlyBudgetPattern = '/-fgn-quarterly/i';
     public const uri = 'https://opentreasury.gov.ng';
     public const ADMIN = "ADMIN";
     public const ECONOMIC = "ECONOMIC";
@@ -25,6 +25,8 @@ class Scrapping
     private $economic_cat = array();
     private $function_cat = array();
     private $allLatest = array();
+    private $_2020 = false;
+
     /**
      * @param string $year
      * @param string $searchPattern
@@ -33,13 +35,23 @@ class Scrapping
 
     public function openTreasury(string $year, string $searchPattern = Scrapping::dailyPaymentPattern)
     {
+        if (($year == '2018') && ($searchPattern  == '/-fgn-monthly/i')) {
+            $searchPattern =  '/monthly-budget-performance-fgn-total/i';
+            $this->_2020 = true;
+        }
+        if (($year == '2018') && ($searchPattern  == '/-fgn-quarterly/i')) {
+            $searchPattern = '/523-quarterly-budget-performance-fgn/i';
+            $this->_2020 = true;
+        };
         switch ($searchPattern) {
             case Scrapping::dailyPaymentPattern:
                 $this->pathPrefix = '/daily/';
                 break;
+            case '/monthly-budget-performance-fgn-total/i':
             case Scrapping::monthlyBudgetPattern:
                 $this->pathPrefix = '/monthly/';
                 break;
+            case '/523-quarterly-budget-performance-fgn/i':
             case Scrapping::quarterlyBudgetPattern:
                 $this->pathPrefix = '/quarterly/';
                 break;
@@ -50,13 +62,13 @@ class Scrapping
         $test =  HttpClient::create(['verify_peer' => false,
             'verify_host' => false,]);
         $client = new Client($test);
-        $crawler = $client->request('GET', 'https://opentreasury.gov.ng');
+        $crawler = $client->request('GET', 'https://opentreasury.gov.ng', ['timeout'=> 20]);
         $crawler->selectLink($year)->each(function ($node) use ($searchPattern, $client) {
             $array = $node->extract(array('href'));
             if ($array[0] != "#") {
                 if (preg_match($searchPattern, $array[0])) {
                     $client->click($node->link())->selectLink('download')->each(function ($node) {
-                        if (preg_match('/\.xlsx/i', $node->extract(array('href'))[0])) {
+                        if (preg_match('/\.xls/i', $node->extract(array('href'))[0])) {
                             array_push($GLOBALS['return'], Scrapping::uri.$node->extract(array('href'))[0]);
                         };
                     });
@@ -262,6 +274,13 @@ class Scrapping
 
     public function filterUrl(string $url)
     {
+        if ($this->_2020 == true) {
+            if (preg_match('/quart/i', $url)) {
+                return ['link'=>$url ,'type' => 'quarterlyBudget2018','parsed'=>false];
+            } else {
+                return ['link'=>$url ,'type' => 'monthlyBudget2018','parsed'=>false];
+            }
+        }
         if (preg_match('/2018/', $url)) {
             return ['link'=>$url ,'type' => explode('/', $url)[4],'parsed'=>false];
         }
