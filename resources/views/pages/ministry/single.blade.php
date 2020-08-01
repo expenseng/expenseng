@@ -42,7 +42,7 @@
             @php
                 $ministryHandle = substr($ministry->twitter, 1)
             @endphp
-            <div class="sub"><h4 id="minwrks" class="twitter-link"> <a href="{!! url("https://twitter.com/$ministryHandle") !!}">{{$ministry->twitter}}</a></h4>
+            <div class="sub"><h4 id="minwrks" class="twitter-link"> <a target = "_blank" href="{!! url("https://twitter.com/$ministryHandle") !!}">{{$ministry->twitter}}</a></h4>
                  <small>{{date('Y')}}</small></div>
         </div>
         <div class="col">
@@ -79,7 +79,8 @@
                     <div class="container pb-3 pt-1 py-4">
                         <div class="row centerize">
                             <div class="col">
-                                <h3 id="said-date" class="index">Date: {{date("jS F, Y")}}</h1>
+                            <!-- Test -->
+                                <h3 id="said-date" class="index">Showing Expenses For {{date("jS F, Y")}}</h3>
                             </div>
 
                             <div class="col">
