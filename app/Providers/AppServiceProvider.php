@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
             $twitter_access_token_secret = env('TWITTER_ACCESS_TOKEN_SECRET', null);
             return new TwitterStream($twitter_access_token, $twitter_access_token_secret, Phirehose::METHOD_FILTER);
         });
-        if ($this->app->isLocal()) {
+        if (app()->environment(['local', 'testing'])) {
             $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
             $this->app->register(TelescopeServiceProvider::class);
         }

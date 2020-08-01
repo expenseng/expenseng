@@ -20,7 +20,7 @@
 <div class="container">
     {{ Breadcrumbs::render('contractor', $company) }}
 </div>
-<section id="main">
+<section id="main" class="">
 
   <!-- Start here -->
   <!-- Section 1 -->
@@ -67,11 +67,11 @@
     <div class="card">
       <div class="card-body">
         <div class="card-title">
-          <h5>Date: {{ date("dS M, Y") }}</h5>
+          <!-- <h5>Date: {{ date("dS M, Y") }}</h5>
           <button class="btn date-btn">
             Select Date
             <i class="fa fa-filter" aria-hidden="true"></i>
-          </button>
+          </button> -->
         </div>
         <div class="table-responsive">
           <table id="example" class="table table-borderless">
@@ -99,26 +99,13 @@
         </div>
 
         <!-- Pagination -->
-        <div class="table-pagination .card-text">
-          <p>1 - 10 of 100 results</p>
-          <nav class="d-flex justify-content-center">
-            <ul class="pagination">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li class="page-item activ"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link active" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+        <div class="">
+            <div class="pagination">
+             
+            </div>
         </div>
+
+
       </div>
     </div>
   <!-- Section 3 -->
@@ -211,4 +198,6 @@
 
 @section('js')
 <script src="{{ asset('js/index.js') }}"></script>
+<script src="{{ asset('js/contract_page.js') }}" type="text/javascript"></script>
+
 @endsection

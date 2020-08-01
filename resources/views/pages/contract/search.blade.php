@@ -37,19 +37,17 @@
             <p style="padding:0;">CONTRACTORS AND TOTAL AMOUNT AWARDED</p>
             <hr>
           </div>
-          <div id="search-area" class="offset-md-1 col-md-5 mt-3 mt-md-0">
-          <div class="input1">
-
-            <form action="/contractors/search" method="POST" role="search">
-              {{ csrf_field() }}
-              
-              <img class="img-search" src="{{ asset('/img/search-icon.png') }}" alt="icon">
-                <input name="q" onkeyup="doFilter()" type="search" id="searchInput" class="form-control form-control-lg mb-2 se" placeholder="Search for Contractors and Organisations" value="{{old('q')}}" style="font-family:'Lato';"/>
-
-            </form>
-
-          </div>
+          <div id="search-area" class="offset-md-0 col-md-5 mt-3 mt-md-0">
+            <div class="input1">
+              <form action="/contractors/search" method="POST" role="search">
+                {{ csrf_field() }}
+                
+                <img class="img-search" src="{{ asset('/img/search-icon.png') }}" alt="icon">
+                <input name="q" onkeyup="doFilter()" type="search" id="searchInput" class="form-control form-control-lg mb-2 se" placeholder="Search for Contractors and Organisations" value="{{$query ?? ''}}" style="font-family:'Lato';"/>
+              </form>
+            </div>
         </div>
+        <a class="btn" href="{{route('contractors')}}" type=""><i class="fa fa-times"> </i></a>
       </div>
     </div>
 
@@ -59,7 +57,7 @@
     <br />
     <div id="contractor" class="container">
     <div class="row" id="contractor-div">
-
+      @if(count($contractors) > 0)
         @foreach ($contractors as $contractor)
           <a href="{{ route('contractors.single', ['company' => str_replace(' ', '-', $contractor->beneficiary) ]) }}">
 
@@ -87,6 +85,12 @@
             </div>
           </a>
         @endforeach
+      @else
+        <div class="col-md-9"> 
+            <h3 class="text-center">{{'No result found for ' . $query}}</h3>
+        </div>
+        
+      @endif
     </div>
     <div class="table-footer">
       <div class="pagination">
