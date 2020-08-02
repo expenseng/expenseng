@@ -41,7 +41,7 @@ class Deploy extends Command
         /** 
          * Run a fresh migration plus seeding 
          * */
-        // $this->call('migrate:fresh', ['--seed' => true]);
+        $this->call('migrate:fresh', ['--seed' => true]);
 
         /** 
          * Crawl https://opentreasury.com.ng and retrieve needed CSV links 
