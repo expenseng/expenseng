@@ -173,4 +173,17 @@ class PageController extends Controller
     {
         return view('pages.terms.accessibility');
     }
+
+    public function SearchHandles( Request $request){
+       
+        $handles = Cabinet::where('name', 'LIKE', '%' . $request -> get('searchQuest'). '%')->get();
+      
+        return json_encode( $handles);
+    }
+    public function SearchHandle( Request $request){
+        
+         
+        $handle = Ministry::where('name', 'LIKE', '%' . $request -> get('searchQuests'). '%')->get();
+        return json_encode( $handle);
+    }
 }
