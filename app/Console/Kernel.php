@@ -30,12 +30,11 @@ class Kernel extends ConsoleKernel
          $schedule->command('budgetTweet')->weekly()->mondays()->at('13:00');
          $schedule->command('ReportLogging')->daily();
          $schedule->command('parse:sheet daily')
-             ->everyMinute()->withoutOverlapping();
+             ->everyMinute();
          $schedule->command('parse:sheet monthly')->monthly()
-             ->lastDayOfMonth()->withoutOverlapping();
-
+             ->lastDayOfMonth();
          $schedule->command('queue:work --once --queue=ceSearch')->hourly();
-         $schedule->command('queue:work  --queue=default --stop-when-empty')->everyMinute()->withoutOverlapping();
+         $schedule->command('queue:work  --queue=default --stop-when-empty')->everyMinute();
     }
 
     /**
