@@ -1,3 +1,4 @@
+
 {
     "name": "laravel/laravel",
     "type": "project",
@@ -23,6 +24,7 @@
         "laravel/ui": "^2.1",
         "maatwebsite/excel": "^3.1",
         "pusher/pusher-php-server": "~4.0",
+        "spatie/laravel-analytics": "^3.10",
         "squizlabs/php_codesniffer": "*",
         "thujohn/twitter": "^2.2",
         "yoeunes/toastr": "^1.2"
