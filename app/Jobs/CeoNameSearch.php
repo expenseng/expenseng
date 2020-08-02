@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Company;
+use App\People;
 use App\Scrapping;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -46,6 +47,9 @@ class CeoNameSearch implements ShouldQueue
     {
         $result = Scrapping::checkCompany($name);
         if (($result != false)) {
+            foreach ($result as $person) {
+                People::create(['name'=>$person['name'],'position'=>$person['role'],'company_id'=>$this->id]);
+            }
             foreach ($result as $person) {
                 if (strtolower($person['role']) == 'director') {
                     return $person['name'];

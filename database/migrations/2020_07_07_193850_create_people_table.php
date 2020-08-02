@@ -18,10 +18,10 @@ class CreatePeopleTable extends Migration
             $table->unsignedBigInteger('company_id');
             $table->string('name');
             $table->string('position');
-            $table->string('twitter');
-            $table->string('facebook');
-            $table->string('linkedin');
-            $table->string('avatar');
+            $table->string('twitter')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('avatar')->nullable();
             $table->string('email', 191)->unique();
             $table->timestamps();
 
