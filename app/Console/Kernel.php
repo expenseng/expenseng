@@ -29,14 +29,14 @@ class Kernel extends ConsoleKernel
          $schedule->command('SendTweet')->monthly();
          $schedule->command('budgetTweet')->weekly()->mondays()->at('13:00');
          $schedule->command('ReportLogging')->daily();
-         $schedule->command('parse:daily')->everyMinute()->sendOutputTo(asset('/public/file/daily.txt'))
-             ->withoutOverlapping();
-         $schedule->command('parse:monthly')->monthly()->lastDayOfMonth()
-             ->sendOutputTo(asset('/public/file/monthlytxt'))
-             ->withoutOverlapping();
-         $schedule->command('parse:quarterly')->everyMinute()
-             ->sendOutputTo(asset('/public/file/quarter.txt'))
-             ->withoutOverlapping();
+         $schedule->command('parse:sheet', ['type'=>'daily'])->everyMinute()
+             ->sendOutputTo(asset('/public/file/daily.txt'));
+         $schedule->command('parse:sheet', ['type'=>'monthly'])->monthly()
+             ->lastDayOfMonth()
+             ->sendOutputTo(asset('/public/file/monthly.txt'));
+         $schedule->command('parse:sheet', ['type'=>'daily'])
+             ->everyMinute()
+             ->sendOutputTo(asset('/public/file/daily.txt'));
          $schedule->command('queue:work --once --queue=ceSearch')->hourly();
          $schedule->command('queue:work  --queue=default --stop-when-empty')->everyMinute()->withoutOverlapping();
     }

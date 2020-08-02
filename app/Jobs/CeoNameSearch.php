@@ -46,11 +46,15 @@ class CeoNameSearch implements ShouldQueue
     {
         $result = Scrapping::checkCompany($name);
         if (($result != false)) {
+            foreach ($result as $person){
+
+            }
             foreach ($result as $person) {
                 if (strtolower($person['role']) == 'director') {
                     return $person['name'];
                 }
             }
+
         }
         return false;
     }

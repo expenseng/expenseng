@@ -49,9 +49,6 @@ class Scrapping
                 break;
             case '/monthly-budget-performance-fgn-total/i':
             case Scrapping::monthlyBudgetPattern:
-                if($year == "2018"){
-                    // TODO a   `   
-                }
                 $this->pathPrefix = '/monthly/';
                 break;
             case '/523-quarterly-budget-performance-fgn/i':
