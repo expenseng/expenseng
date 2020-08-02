@@ -27,6 +27,9 @@ Route::get('/privacy', 'PageController@privacy')->name('privacy');
 Route::get('/search', 'PageController@search')->name('search');
 Route::get('/handles', 'PageController@handles')->name('handles');
 Route::get('/changeMinistryCharts/{ministry}', 'HomeController@MinistryCharts')->name('ministry_expenses_charts');
+Route::post('/handles', 'PageController@SearchHandles')->name('search-handles');
+Route::post('/handles/search', 'PageController@SearchHandle')->name('search-handle');
+
 
 // Feedback
 Route::post('/feedback', 'FeedbackController@create')->name('feedback');
@@ -277,6 +280,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
 
 
 
+Route::get('/ggg', 'Website_Statistics_Controller@dds')->name('ggg');
 
 
 
