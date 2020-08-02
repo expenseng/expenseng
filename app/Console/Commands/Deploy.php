@@ -63,9 +63,9 @@ class Deploy extends Command
         /**
          * Parse  and persist sheets for the budgets table
          */
-        $this->call('persist:budget 2018');
-        $this->call('persist:budget 2019');
-        $this->call('persist:budget 2020');
+        $this->call('persist:budget', ['year' => '2018']);
+        $this->call('persist:budget', ['year' => '2019']);
+        $this->call('persist:budget', ['year' => '2020']);
 
         $this->info("All done! This app has been returned to a clean slate 🔰🧰");
 
