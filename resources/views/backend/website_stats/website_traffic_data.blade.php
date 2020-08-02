@@ -27,6 +27,41 @@
 @section('content')
     <div class="content">
         <div class="container-fluid">
+                       <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 mb-3">
+                    <div class="card p-3">
+                        <div class="d-flex justify-content-between ">
+                            <div class="card-icon section-card-icon p-3">
+                            </div>
+                            <div class="card-write-up ">
+                                <p class="card-category">Total Visitors</p>
+                            </div>
+                        </div>
+                        <div class="card-number">
+                            <h3 class=""> {{$total_users}}
+
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 mb-3">
+                    <div class="card p-3">
+                        <div class="d-flex justify-content-between">
+                            <div class="card-icon section-card-icon p-3">
+                               
+                            </div>
+                            <div class="card-write-up">
+                                <p class="card-category">New Visitors</p>
+                            </div>
+                        </div>
+                        <div class="card-number">
+                            <h3 class="">{{ $new_users }}</h3>
+                        </div>
+                    </div>
+                </div>
+               
+                
+            </div>
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 mb-3">
                     <div class="card p-2">
@@ -52,67 +87,77 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 mb-3">
                     <div class="card p-2">
-                        <iframe width="431" height="271" seamless frameborder="0" scrolling="no"
-                            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRWouT153P7RbTf7p10550JSzFGqn5tOmQBRm8zDarEgTRmanZ4rhCSTLoartHIU42pgJEBH2lE_BHm/pubchart?oid=1112613727&amp;format=interactive"></iframe>
+                        <p>Top used Operating systems</p>
+
+
+                        <iframe width="472" height="291" seamless frameborder="0" scrolling="no"
+                            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRWouT153P7RbTf7p10550JSzFGqn5tOmQBRm8zDarEgTRmanZ4rhCSTLoartHIU42pgJEBH2lE_BHm/pubchart?oid=1049308531&amp;format=interactive"></iframe>
                     </div>
                 </div>
+                       <div class="col-lg-6 col-md-6 col-sm-6 mb-3">
+                <div class="card p-2">
+                    <iframe width="477" height="295" seamless frameborder="0" scrolling="no"
+                        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRWouT153P7RbTf7p10550JSzFGqn5tOmQBRm8zDarEgTRmanZ4rhCSTLoartHIU42pgJEBH2lE_BHm/pubchart?oid=70848&amp;format=interactive"></iframe>
+                </div>
+
             </div>
+            </div>
+     
         </div>
-    </div>
-@endsection
+    @endsection
 
-@section('js')
-
-
-    <!-- main js -->
-    <script src="{{ asset('js/main-js.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/dashboard-ecommerce.js') }}" type="text/javascript"></script>
-
-    <!-- bootstap bundle js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
-    <!-- slimscroll js -->
+    @section('js')
 
 
-    <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    labels: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
+        <!-- main js -->
+        <script src="{{ asset('js/main-js.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/dashboard-ecommerce.js') }}" type="text/javascript"></script>
+
+        <!-- bootstap bundle js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.js"></script>
+        <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+        <!-- slimscroll js -->
+
+
+        <script>
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                    datasets: [{
+                        labels: '# of Votes',
+                        data: [12, 19, 3, 5, 2, 3],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
                     }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
                 }
-            }
-        });
+            });
 
-    </script>
-@endsection
+        </script>
+    @endsection
