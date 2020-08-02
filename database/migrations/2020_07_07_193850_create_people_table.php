@@ -22,7 +22,7 @@ class CreatePeopleTable extends Migration
             $table->string('facebook')->nullable();
             $table->string('linkedin')->nullable();
             $table->string('avatar')->nullable();
-            $table->string('email', 191)->unique();
+            $table->string('email', 191)->unique()->nullable();
             $table->timestamps();
 
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
