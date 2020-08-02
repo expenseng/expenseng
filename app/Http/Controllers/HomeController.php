@@ -21,7 +21,7 @@ class HomeController extends Controller
         $collection['education'] = Budget::where('org_name', 'Education')->get();
         $collection['defence'] = Budget::where('org_name', 'Defence')->get();
         $collection['housing'] = Budget::where('org_name', 'Housing and Community Amenities')->get();
-        $expenses = DB::select('select * from expenses');
+        $expenses = $this->latestExpenditure();
         $companies = DB::select('select * from companies limit 3');
         $ministries = Ministry::select('*')
                     ->orderby('shortname', 'asc')
