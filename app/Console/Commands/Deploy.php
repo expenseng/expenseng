@@ -38,13 +38,13 @@ class Deploy extends Command
     public function handle()
     {
         $this->info("Seat tight while the robots work 🛠⚙🔧🔨");
-        /** 
-         * Run a fresh migration plus seeding 
+        /**
+         * Run a fresh migration plus seeding
          * */
         $this->call('migrate:fresh', ['--seed' => true]);
 
-        /** 
-         * Crawl https://opentreasury.com.ng and retrieve needed CSV links 
+        /**
+         * Crawl https://opentreasury.com.ng and retrieve needed CSV links
          * */
         if (app()->environment(['development', 'local', 'testing'])) {
             /**Minizing database usage on test server */
@@ -54,11 +54,6 @@ class Deploy extends Command
             $this->call('ReportLogging', ['year' => '2019']);
             $this->call('ReportLogging', ['year' => '2020']);
         }
-
-        /**
-         * Parse and Persist the payments records 
-         * */
-        $this->call('parse:sheet');
 
         /**
          * Parse  and persist sheets for the budgets table
