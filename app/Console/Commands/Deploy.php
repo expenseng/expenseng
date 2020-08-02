@@ -56,11 +56,6 @@ class Deploy extends Command
         }
 
         /**
-         * Parse and Persist the payments records
-         * */
-        $this->info('parsing daily reports ');
-        $this->call('parse:sheet', ['type'=>'daily']);
-        /**
          * Parse  and persist sheets for the budgets table
          */
         $this->call('persist:budget', ['year' => '2018']);
