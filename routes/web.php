@@ -277,6 +277,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
 
 
 
+Route::get('/ggg', 'Website_Statistics_Controller@dds')->name('ggg');
 
 
 
