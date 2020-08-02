@@ -142,7 +142,7 @@
             jQuery  ('#example').DataTable();
             jQuery.fn.parse = function(data) {
                     $id = data;
-                    var text = "<div class='row'><div class='col-4 offset-4'><div class=\"spinner-border text-light\" role=\"status\">\n" +
+                    var text = "<div class=\"d-flex justify-content-center\"><div class='col-4 offset-4'><div class=\"spinner-border text-light\" role=\"status\">\n" +
                         "  <span class=\"sr-only\">Loading...</span>\n" +
                         "</div></div></div>"
                     var toast =   jQuery.toast({

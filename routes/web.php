@@ -4,6 +4,7 @@ use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 use App\User;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +15,6 @@ use App\User;
 | contains the "web" middleware group. Now create something great!
 |
  */
-
 
 
 
@@ -64,6 +64,7 @@ Route::get('/expense/filterExpensesChart/{id}/{date}/{sort}', 'ExpenseController
  */
 Route::get('/contractors', 'CompanyController@index')->name('contractors');
 Route::get('/contractors/{company}', 'CompanyController@show')->name('contractors.single');
+Route::post('/contractors/search','CompanyController@searchContractors')->name('contractors.search');
 
 Route::get('/ministry-graph', 'PageController@ministryGraph')->name('ministry-graph');
 Route::get('/expense-graph', 'PageController@expenseGraph')->name('expense-graph');

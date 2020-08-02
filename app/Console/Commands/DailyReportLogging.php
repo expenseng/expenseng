@@ -13,7 +13,7 @@ class DailyReportLogging extends Command
      *
      * @var string
      */
-    protected $signature = 'ReportLogging';
+    protected $signature = 'ReportLogging {year?}';
 
     /**
      * The console command description.
@@ -41,7 +41,7 @@ class DailyReportLogging extends Command
     {
         try {
             $scrapping = new Scrapping();
-            $year = ''.Carbon::now()->year;
+            $year = $this->argument('year') ?? Carbon::now()->year;
             $payment = $scrapping->openTreasury($year)->latest()->initialLogToDatabase();
             $budget_funcCat = $scrapping->openTreasury($year, Scrapping::monthlyBudgetPattern)->initialLogToDatabase();
             $budget_qfuncCat = $scrapping->openTreasury($year, Scrapping::quarterlyBudgetPattern)->initialLogToDatabase();

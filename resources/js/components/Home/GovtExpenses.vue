@@ -56,7 +56,7 @@ export default {
 
     mounted() {
         this.loading = true;
-        axios.get('/api/expense/health')
+        axios.get('/api/expense/budget')
             .then(response => {
                 this.loading = false;
                 response.data.forEach(element => {
