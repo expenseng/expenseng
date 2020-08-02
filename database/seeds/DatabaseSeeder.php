@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(ExpenseSeeder::class);
         // $this->call(BudgetSeeder::class);
         $this->call(MinistrySeeder::class);
-        $this->call(CabinetSeeder::class);
+        // $this->call(CabinetSeeder::class);
         $this->call(StatusSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
