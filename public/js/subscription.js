@@ -1,4 +1,4 @@
-const close = document.getElementById("close");
+/**const close = document.getElementById("close");
 const open = document.getElementById("open");
 const modal = document.getElementById("modal");
 
@@ -18,3 +18,4 @@ window.addEventListener("click", (e) => {
 
 // height: 100vh;
 // overflow-y: hidden;
+*/
