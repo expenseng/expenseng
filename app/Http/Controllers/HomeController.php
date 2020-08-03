@@ -126,7 +126,8 @@ class HomeController extends Controller
                     ->select(DB::raw('SUM(amount) as amount, Month(payment_date) as month'))
                     ->where('payment_code', 'LIKE', "$code%")
                     ->whereYear('payment_date', '=', "$currentYr")
-                    ->groupBy(DB::raw('Month(payment_date) ASC'))
+                    ->groupBy('month')
+                    ->orderBy('month', 'asc')
                     ->get();
         $annualSum = $chartData->sum('amount');
         foreach($chartData as $data){
