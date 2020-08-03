@@ -6,7 +6,8 @@ use App\Http\Controllers\TwitterBot;
 use App\Tweet;
 use Illuminate\Console\Command;
 
-class budgetTweet extends Command
+class
+budgetTweet extends Command
 {
     /**
      * The name and signature of the console command.

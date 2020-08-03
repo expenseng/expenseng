@@ -18,6 +18,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Twitter;
+use function GuzzleHttp\Psr7\str;
 
 class TwitterBot extends Controller
 {
@@ -113,7 +114,50 @@ class TwitterBot extends Controller
             ', Payed The Sum of ₦'.$amount." to ".$benefactor.' '.$company_handle.' for the '.$description;
         return $tweet;
     }
-
+    public function tweetPayment(Request $request)
+    {
+        if ($request->ajax()) {
+            try {
+                $payment = Payment::whereId($request->id)->first();
+                $date = Carbon::createFromFormat('Y-m-d', $payment->payment_date)->format('l \\T\\h\\e jS \\of F Y');
+                $ministry = Ministry::whereCode(substr($payment->payment_code, 0, 4))->first();
+                if (empty($ministry)) {
+                    $tweet = $this->style1($payment, $date);
+                } else {
+                    $tweet = $this->style2($payment, $date, $ministry);
+                }
+                $twitter = new Tweet(trim($tweet));
+                $twitter->HashTag('expenseng')->send();
+                Payment::whereId($request->id)->update(['tweeted' => true]);
+                return Response("tweet sent");
+            } catch (\Exception $e) {
+                return response()->json(array('msg'=> $e->getMessage()), 422);
+            }
+        }
+    }
+    private function style1($payment, $date)
+    {
+        if (strlen($payment->description) > 4) {
+            $last = " for ".$payment->description;
+        } else {
+            $last = " ";
+        }
+        return "On ".$date.", ".$payment->organization." paid the sum of ₦".number_format($payment->amount, 2)
+            ." to ".$payment->beneficiary.$last;
+    }
+    private function style2($payment, $date, $ministry)
+    {
+        if (strlen($payment->description) > 4) {
+            $last = " for  ". $payment->description;
+        } else {
+            $last = " ";
+        }
+        $part = isset($ministry->twitter) ? $ministry->twitter : "";
+        return "On ".$date.", From the Ministry of ".$ministry->name." "
+            .$part.", "
+            .$payment->organization." paid the sum of ₦".number_format($payment->amount, 2)
+            ." to ".$payment->beneficiary.$last;
+    }
     public function budgetTweet()
     {
         $budget = Budget::inRandomOrder()->first();
