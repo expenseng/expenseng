@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Subscription;
 use App\Activites;
 use App\Mail\SendSubNotification;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -32,20 +33,34 @@ class SubscriptionController extends Controller
             $details = "Your subscription to" ;
             $subscription = "recieve latest updates";
             $last = " has been confirmed";
+            //check if detail exist before
+            $check = Subscription::where('email', $request->email)->orWhere('subscription_type', $request->sub_type)->get();
 
-            $sendEmail = Mail::to($request->email)
-            ->send(new SendSubNotification($request->name, $details, $subscription, $last));
-            //send email
-            
-            if ($sendEmail) {
+            if (count($check) > 1) {
+                try{
+                    //send email
+                    $sendEmail = Mail::to($request->email)
+                    ->send(new SendSubNotification($request->name, $details, $subscription, $last));
+                    if ($sendEmail) {
 
-                toastr()
-                ->success('You have successfully subscribed for regular updates!');
-                return  back();
-            } else {
+                        toastr()
+                        ->success('You have successfully subscribed for regular updates!');
+                        return  back();
+                    }
+                    
+                }catch(Exception $e){
+
+                    toastr()->error($e . ' An error has occurred please try again later.');
+                    return back();
+                }
+
+                    
+                    
+            }  else {
                 toastr()->error('An error has occurred please try again later.');
                 return back();
             }
+
         } else {
             toastr()->error('An error has occurred please try again later.');
             return back();
