@@ -165,20 +165,18 @@
 <body>
     <div class="div1">
         <div class="div2">
-            <div class="div3"><img src="{{ asset('/img/Logo.png') }}" alt="Logo"></div>
-            <div class="div4"><img src="{{ asset('/img/Emoji.png') }}" alt=""></div>
+            <div class="div3"><img src="{{ asset('img/Logo.png') }}" alt="Logo"></div>
+            <div class="div4"><img src="{{ asset('img/Emoji.png') }}" alt=""></div>
             <h1 class="hh1 text">Congratulations!</h1>
-            <p class="hh2 text"> Your subscription to <span class="hh3 text">Ministry Expense report</span>
-                has been confirmed. You will hereby be receiving emails from us 
-                anytime there’s an update on the report.
-            </p>
+            <p class="hh2 text">Dear {{$name}}, {{$details}} <span class='hh3 text'>{{$subscription}}</span>{{$last ?? ''}}. You will hereby be receiving emails from us 
+            anytime there’s an update on the report.</p>
             <p class="hh4 text">
                 If you didn’t request for this subscription or you want to opt-out, 
                 you can <a href="#" class="link1">Unsubscribe here</a>
             </p>
             <div class="div5">
                 <div class="div7">
-                    <a href="#"><button class="div6"><img src="{{ asset('/img/twitter.png') }}" alt="">&nbsp; @expenseng</button></a>
+                    <a href="https://twitter.com/expenseng"><button class="div6"><img src="{{ asset('/img/twitter.png') }}" alt="">&nbsp; @expenseng</button></a>
                 </div> 
                 <h2 class="hh5 text"><a href="twitter.com/expenseng" class="link2">Join the conversation on Twitter</a></h2>
             </div>
