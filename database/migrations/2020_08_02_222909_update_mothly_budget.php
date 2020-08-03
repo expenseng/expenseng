@@ -28,7 +28,7 @@ class UpdateMothlyBudget extends Migration
     {
         Schema::table('monthly_budgets', function (Blueprint $table) {
             //
-            $table->drop('year');
+            $table->dropColumn('year');
         });
     }
 }
