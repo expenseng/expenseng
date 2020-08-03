@@ -32,15 +32,15 @@ class SubscriptionController extends Controller
 
             $details = "Your subscription to" ;
             $subscription = "recieve latest updates";
-            $last = " has been confirmed";
+            $last = " has been confirmed.";
             //check if detail exist before
             $check = Subscription::where('email', $request->email)->orWhere('subscription_type', $request->sub_type)->get();
 
-            if (count($check) > 1) {
+            if (count($check) < 1) {
                 try{
                     //send email
                     $sendEmail = Mail::to($request->email)
-                    ->send(new SendSubNotification($request->name, $details, $subscription, $last));
+                    ->send(new SendSubNotification($request->name, $details, $subscription, $last, false));
                     if ($sendEmail) {
 
                         toastr()
@@ -56,7 +56,7 @@ class SubscriptionController extends Controller
 
                     
                     
-            }  else {
+            } else {
                 toastr()->error('An error has occurred please try again later.');
                 return back();
             }

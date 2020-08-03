@@ -14,19 +14,21 @@ class SendSubNotification extends Mailable
     public $subscription;
     public $last;
     public $details;
+    public $delete;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($name, $details, $subscription, $last)
+    public function __construct($name, $details, $subscription, $last, $delete)
     {
         //
         $this->name = $name;
         $this->details = $details;
         $this->subscription = $subscription;
         $this->last = $last;
+        $this->delete = $delete;
     }
 
     /**
@@ -44,6 +46,7 @@ class SendSubNotification extends Mailable
                 'details' => $this->details,
                 'subscription' => $this->subscription,
                 'last' => $this->last,
+                'delete' => this->delete,
             ]);
     }
 }

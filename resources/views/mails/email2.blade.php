@@ -168,11 +168,20 @@
             <div class="div3"><img src="/img/Logo.svg" alt=""></div>
             <div class="div4"><img src="/img/Emoji.png" alt=""></div>
             <h1 class="hh1 text">Dear {{$name ?? "Subcriber"}},</h1>
-            <p class="hh2 text">{{$details}} <span class='hh3 text'>{{$subscription}}</span>{{$last ?? ''}}. You will hereby be receiving emails from us 
+            <p class="hh2 text">{{$details}} <span class='hh3 text'>{{$subscription}}</span>{{$last ?? ''}}.
+            @if (isset($delete) && $delete == true)
+            You will no longer be receiving emails from us 
+            regarding updates on the report.
+            
+            @else
+            You will hereby be receiving emails from us 
             anytime there’s an update on the report.</p>
+            @endif
             <p class="hh4 text">
+                @if (!(isset($delete)) && $delete === true)
                 If you didn’t request for this subscription or you want to opt-out, 
                 you can <a href="#" class="link1">Unsubscribe here</a>
+                @endif
             </p>
             <div class="div5">
                 <div class="div7">
