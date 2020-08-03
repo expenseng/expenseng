@@ -74,7 +74,7 @@
 											<tr>
 												<td>{{$cabinet->role}}</td>
 												<td>{{$cabinet->name}}</td>
-												<td class="table-overflow"> <a href="" target="_blank">{{$cabinet->twitter_handle}}</a></td>
+												<td class="table-overflow"> <a href=" https://twitter.com/{{$cabinet->twitter_handle}}" target="_blank">{{$cabinet->twitter_handle}}</a></td>
 											<tr>
 										@endforeach
 									
@@ -121,7 +121,7 @@
                                 @foreach ($ministries as $ministry)
                                     <tr>
                                         <td>{{$ministry->name}}</td>
-                                        <td><a href="" target="_blank">{{$ministry->twitter}}</a></td>
+                                        <td><a href="https://twitter.com/{{$ministry->twitter}}" target="_blank">{{$ministry->twitter}}</a></td>
                                         <td class="table-overflow"></td>
                                     <tr>
                                 @endforeach
@@ -220,7 +220,7 @@
                     $('#dynamic-row').html('');
 
                     $.each(res, function(index, value){
-                        tableRow = '<tr><td>'+value.role+'</td><td>'+value.name+'</td><td class="table-overflow"> <a href="" target="_blank">'
+                        tableRow = '<tr><td>'+value.role+'</td><td>'+value.name+'</td><td class="table-overflow"> <a href="https://twitter.com/{{$cabinet->twitter_handle}}" target="_blank">'
                             +value.twitter_handle+'</a></td><tr>';
 
                         $('#dynamic-row').append(tableRow);
@@ -251,7 +251,7 @@
                     $('#dynamic-rows').html('');
 
                     $.each(res, function(index, value){
-                        tableRow = '<tr><td>'+value.name+'</td><td><a href="" target="_blank">'+value.twitter+'</a></td><td class="table-overflow"></td><tr>';
+                        tableRow = '<tr><td>'+value.name+'</td><td><a href="https://twitter.com/{{$ministry->twitter}}" target="_blank">'+value.twitter+'</a></td><td class="table-overflow"></td><tr>';
 
                         $('#dynamic-rows').append(tableRow);
                         
