@@ -90,17 +90,17 @@ class CommentService{
         })
     }
 
-    storeComments(origin, comment, email, name){
+    storeComments(origin, comment, email, name, anon=false){
 
-        if(!this.cookieExists()){
+        if(!this.cookieExists() && !anon){
             this.firstComment(email, name)
         }
 
         return axios.post('/api/comments', {
             origin: origin,
             content: comment,
-            ownerId: this.email,
-            refId: this.name,
+            ownerId: anon ? "anonymous" : this.email,
+            refId: anon ? this.anonymousName : this.name,
         }).then(response => {
             return response.data;
         })

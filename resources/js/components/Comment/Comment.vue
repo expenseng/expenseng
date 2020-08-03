@@ -112,7 +112,7 @@ export default {
         },
 
         send(){
-            this.busy = true;
+
             if(this.firstComment()){
                 if(!this.name){
                     this.errors.push("Dear friend, we'll love to know your name")
@@ -134,6 +134,8 @@ export default {
                 this.errors.push("Let your voice be heard today, join thousands of civil Nigerians in the journey to hold the leadership responsible.")
                 return false;
             }
+
+            this.busy = true;
 
             if(this.isReply){
                 this.commentService.storeReply(this.comment, this.email, this.name, this.commentId)
