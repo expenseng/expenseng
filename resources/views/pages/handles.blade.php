@@ -45,7 +45,7 @@
 </div>
 
 <div class="container bg-white pt-5 bg-inner">
-        <div class="heading pt-5">
+        <div class="heading">
             <h1>Government Twitter Handles.</h1>
             <p>Get the Twitter handles of Federal Mininstries in Nigeria and the twitter handles of incumbent ministers of Federal Republic of Nigeria.</p>
         </div>
@@ -57,6 +57,8 @@
         </div>
     <div class="table-data collapse show" id="collapseExample2">
 					<div style="overflow-x: auto;">
+                        <input type="text" id="search-handles" class="  form-control " placeholder="type a minister-name">
+                        <br>
 						<table id="Table" cell-spacing="0" data-pagination="true" data-page-size="10" class="table table-striped table-responsive-sm">
 							<thead class="text-left">
 								<tr>
@@ -65,14 +67,14 @@
 									<th class="row-company text-left table-overflow">Twitter Handles</th>
                                 </tr>
                             </thead>
-							<tbody class="t-body text-left">
+							<tbody id='dynamic-row' class="t-body text-left">
 								
 									
 										@foreach ($cabinet as $cabinet)
 											<tr>
 												<td>{{$cabinet->role}}</td>
 												<td>{{$cabinet->name}}</td>
-												<td class="table-overflow"> <a href="https://twitter.com/{{$cabinet->twitter_handle}}" target="_blank">{{$cabinet->twitter_handle}}</a></td>
+												<td class="table-overflow"> <a href="" target="_blank">{{$cabinet->twitter_handle}}</a></td>
 											<tr>
 										@endforeach
 									
@@ -102,6 +104,9 @@
         </div>
             <div class="table-data collapse in" id="collapseExample">
 					<div style="overflow-x: auto;">
+                        <input type="text" id="search-handle" class=" float-left form-control" placeholder="type a ministry-name">
+                        <br>
+                        <br>
 						<table id="Tables" cell-spacing="0" data-pagination="true" data-page-size="10" class="table table-striped table-responsive-sm">
 							<thead class="text-left">
 								<tr>
@@ -110,16 +115,16 @@
 									<th class="row-company"></th>
 								</tr>
 							</thead>
-							<tbody class="t-body text-left">
+							<tbody id='dynamic-rows' class="t-body text-left">
 
 
-							@foreach ($ministries as $ministry)
-								<tr>
-									<td>{{$ministry->name}}</td>
-									<td><a href="https://twitter.com/{{$ministry->twitter}}" target="_blank">{{$ministry->twitter}}</a></td>
-									<td class="table-overflow"></td>
-								<tr>
-							@endforeach
+                                @foreach ($ministries as $ministry)
+                                    <tr>
+                                        <td>{{$ministry->name}}</td>
+                                        <td><a href="" target="_blank">{{$ministry->twitter}}</a></td>
+                                        <td class="table-overflow"></td>
+                                    <tr>
+                                @endforeach
 
 							</tbody>
 						</table>
@@ -170,7 +175,7 @@
     </script>
     
 <script>
-        $(document).ready(function(){
+    $(document).ready(function(){
     $('#Table').after('<div id="nav" style="float:right"></div>');
     var rowsShown = 20;
     var rowsTotal = $('#Table tbody tr').length;
@@ -194,6 +199,68 @@
     });
 });
 
+    </script>
+
+    <script type="text/javascript">
+         $('body').on('keyup','#search-handles',function(){
+             var searchQuest = $(this).val();
+             
+             $.ajax({
+                method: 'POST',
+                url: '{{ route("search-handles") }}',
+                dataType: 'json',
+                data: {
+                    '_token': '{{ csrf_token() }}',
+                    searchQuest: searchQuest,
+                },
+                success: function(res){
+                    
+                    var tableRow = '';
+
+                    $('#dynamic-row').html('');
+
+                    $.each(res, function(index, value){
+                        tableRow = '<tr><td>'+value.role+'</td><td>'+value.name+'</td><td class="table-overflow"> <a href="" target="_blank">'
+                            +value.twitter_handle+'</a></td><tr>';
+
+                        $('#dynamic-row').append(tableRow);
+                        
+
+                    });
+                    
+                }
+             });
+         });
+    </script>
+     <script type="text/javascript">
+         $('body').on('keyup','#search-handle',function(){
+             var searchQuests = $(this).val();
+             
+             $.ajax({
+                method: 'POST',
+                url: '{{ route("search-handle") }}',
+                dataType: 'json',
+                data: {
+                    '_token': '{{ csrf_token() }}',
+                    searchQuests: searchQuests,
+                },
+                success: function(res){
+                    
+                    var tableRow = '';
+
+                    $('#dynamic-rows').html('');
+
+                    $.each(res, function(index, value){
+                        tableRow = '<tr><td>'+value.name+'</td><td><a href="" target="_blank">'+value.twitter+'</a></td><td class="table-overflow"></td><tr>';
+
+                        $('#dynamic-rows').append(tableRow);
+                        
+
+                    });
+                    
+                }
+             });
+         });
     </script>
 
 

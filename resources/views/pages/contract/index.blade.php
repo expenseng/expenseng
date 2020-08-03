@@ -70,7 +70,7 @@
                 <div class="card-body">
                     <chart label="myVueChart"
                             v-bind:data="[{amount: {{round($contractor->total_amount / 12)}}, year: {{$contractor->year}} }, {amount:{{$contractor->total_amount}}, year:{{$contractor->year}} }]"
-                            element="{{ \Str::slug($contractor->beneficiary, '-') . $loop->index }}"></chart>
+                            element="{{ 'id-'. \Str::slug($contractor->beneficiary, '-') . $loop->index }}"></chart>
                     <div class="contractor mb-2">
                         <!-- <img src="{{ asset('images/image 13.png') }}" height="30" class="mr-3" alt=""> -->
                         <a href="{{ route('contractors.single', ['company' => str_replace(' ', '-', $contractor->beneficiary) ]) }}">

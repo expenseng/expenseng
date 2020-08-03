@@ -17,10 +17,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $collection['health'] = Budget::where('project_name', 'Health')->get();
-        $collection['education'] = Budget::where('project_name', 'Education')->get();
-        $collection['defence'] = Budget::where('project_name', 'Defence')->get();
-        $collection['housing'] = Budget::where('project_name', 'Housing and Community Amenities')->get();
+        $collection['health'] = Budget::where('org_name', 'Health')->get();
+        $collection['education'] = Budget::where('org_name', 'Education')->get();
+        $collection['defence'] = Budget::where('org_name', 'Defence')->get();
+        $collection['housing'] = Budget::where('org_name', 'Housing and Community Amenities')->get();
         $expenses = $this->latestExpenditure();
         $companies = DB::select('select * from companies limit 3');
         $ministries = Ministry::select('*')
@@ -139,34 +139,39 @@ class HomeController extends Controller
         $payments['sum'] = $annualSum;
         return $payments;
     }
-    
+
     public function getTopBeneficiaries($code="0215")
     {
         $currentYr = date("Y");
-        $beneficiaries = DB::table('payments')
-        ->select(
+        $beneficiaries = Payment::select(
             DB::raw(
                 'beneficiary, SUM(amount) as amount, YEAR(payment_date) as year'
             )
         )
         ->where('payment_code', 'LIKE', "$code%")
         ->whereYear('payment_date', '=', "$currentYr")
-        ->groupBy(DB::raw('(amount) DESC, (beneficiary) DESC, YEAR(payment_date) DESC'))
+        ->groupBy(DB::raw('beneficiary'))
+        ->orderBy('amount', 'desc')
         ->limit(10)
         ->get();
-
+        
         $amounts = array();
         $companies = array();
-       
+
+        $index = 0;
         foreach($beneficiaries as $beneficiary){
-            array_push($amounts, $beneficiary->amount);
+            if($index == 0){
+                $topCompany = $beneficiary->company() ?? 'N/A';
+            }
+            array_push($amounts, round($beneficiary->amount, 2));
             array_push($companies, $beneficiary->beneficiary);
+            $index++;
         }
 
         $chartThree['amounts'] = $amounts;
         $chartThree['companies'] = $companies;
-        $chartThree['topCompany'] = $companies[0];
-        $chartThree['topAmount'] = $amounts[0];
+        $chartThree['topCompany'] = $companies[0] ?? 'N/A';
+        $chartThree['topAmount'] = $amounts[0] ?? 'N/A';
         $chartThree['year'] = $currentYr;
         return $chartThree;
     }

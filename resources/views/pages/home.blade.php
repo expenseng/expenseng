@@ -73,11 +73,11 @@
 <section id="main" class="">
    <!-- Expenses section -->
    <div id="expenses">
-    <p class="label">Latest Government Expenses</p>
+    <p class="label">Ministry Budgets</p>
     <div class="container">
          <div class="expenses">
-             <govt-expense></govt-expense>
-             <a href="{{route('expense.reports')}}" class="mt-4 mb-5 mx-auto" target="_blank">View Expenditure Report</a>
+             <ministry-budgets></ministry-budgets>
+             <a href="{{route('expense.reports')}}" class="mt-4 mb-5 mx-auto">View Expenditure Report</a>
          </div>
     </div>
    </div>

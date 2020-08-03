@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/expense/health', 'BudgetController@health');
+Route::get('/expense/budget', 'BudgetController@yearlyBudgets');
 
 /***
  * Comment Instantiation
