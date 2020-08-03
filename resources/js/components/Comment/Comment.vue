@@ -20,7 +20,14 @@
                 @keyup.enter.exact.native="send"
             />
             <button class="btn btn-primary" type="submit" v-if="showName">Comment</button>
-            <small class="text-muted" v-if="!busy">Press enter to send</small>
+            <div class="col-md-12 p-0">
+                <small class="text-muted p-0 col-md-6 pull-left" v-if="!busy">Press enter to send</small>
+                <div class="col-md-6 form-check pull-right text-right" v-if="showName">
+                    <input type="checkbox" @change="anonymous" class="form-check-input" id="anonymousCommenter">
+                    <label class="text-muted" for="anonymousCommenter">Comment as an anonymouse citizen</label>
+                </div>
+            </div>
+
             <div class="spinner-border spinner-border-sm float-right" v-if="busy" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
