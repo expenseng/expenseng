@@ -144,7 +144,7 @@ export default {
                     })
             }else{
                 const response = this.commentService
-                .storeComments(this.origin, this.comment, this.email, this.name)
+                .storeComments(this.origin, this.comment, this.email, this.name, this.isAnon)
                 .then(response => {
                     this.busy = false;
                     this.$emit('newComment', response);

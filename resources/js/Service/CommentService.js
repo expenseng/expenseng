@@ -90,6 +90,16 @@ class CommentService{
         })
     }
 
+    anonymousName(){
+        var Chance = require('chance');
+
+        var chance = new Chance();
+        
+        const name = chance.first();
+
+        return name + " of Lagos";
+    }
+
     storeComments(origin, comment, email, name, anon=false){
 
         if(!this.cookieExists() && !anon){
@@ -100,7 +110,7 @@ class CommentService{
             origin: origin,
             content: comment,
             ownerId: anon ? "anonymous" : this.email,
-            refId: anon ? this.anonymousName : this.name,
+            refId: anon ? this.anonymousName() : this.name,
         }).then(response => {
             return response.data;
         })

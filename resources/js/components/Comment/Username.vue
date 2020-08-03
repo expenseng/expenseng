@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p class="green-text">{{ username.name }}</p>
+        <p class="green-text">{{ username.name }} <span v-if="anonymous" title="Comment from an anonymous user" class="badge badge-secondary">Anon</span> </p>
     </div>
 </template>
 
@@ -12,13 +12,20 @@ export default {
         return {
             commentService: new CommentService,
             username: '',
+            anonymous: false,
         }
     },
 
     mounted() {
         this.commentService.getUsername(this.ownerId)
             .then(response => {
-                this.username = response;
+                if(response == ""){
+                    //anonymous user won't be registered in the DB
+                    this.anonymous = true;
+                    this.username = {name: this.commentService.anonymousName()}
+                }else{
+                    this.username = response;
+                }
             })
     },
 
