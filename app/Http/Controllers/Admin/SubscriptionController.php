@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use GuzzleHttp\Client;
+
 use App\Mail\SendSubNotification;
 use App\Subscription;
 use Illuminate\Http\Request;
@@ -12,45 +12,35 @@ use Illuminate\Support\Facades\Session;
 use App\Activites;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
-use function GuzzleHttp\json_decode;
+
 
 class SubscriptionController extends Controller
 {
-    private $http;
-    private $baseUri = "https://email.microapi.dev/v1/";
+
+    /**
+     * Display all expenses
+     */
     
-    public function __construct()
-    {
-
-        $this->baseUri = "https://email.microapi.dev/v1/";
-        
-        $this->http = new Client([
-            'base_uri' => $this->baseUri,
-            'headers' => [
-                'debug' => true,
-                'Content-Type' => 'application/json',
-            ]
-        ]);
-    }
-
-    // display all expenses
     public function index(Request $request)
     {
         if (Gate::denies('active', 'manage')) {
             return redirect(route('profile'));
         }
-        $recent_activites = Activites::where('status', 'pending')->orderBY('id', 'DESC')
+        $recent_activites = Activites::where('status', 'pending')
+            ->orderBY('id', 'DESC')
             ->limit(7)
             ->get();
         $total_activity = count(Activites::all()->where('status', 'pending'));
         $count = 0;
         $subscribe = Subscription::paginate(10);
-        return view('backend.subscription.index')->with([
+        return view('backend.subscription.index')->with(
+            [
             'subscribe' => $subscribe,
             'count' => $count,
             'recent_activites' => $recent_activites,
             'total_activity' => $total_activity,
-        ]);
+            ]
+        );
     }
 
     /**
@@ -86,8 +76,10 @@ class SubscriptionController extends Controller
         ->orWhere('subscription_type', $request->sub_type)->get();
 
         if (count($check) > 0 ) {
-            Session::flash('error_message', 'A subscription with '. $request->email.
-            ' has been created initially!!');
+            Session::flash(
+                'error_message', 'A subscription with '.
+                $request->email.' has been created initially!!'
+            );
             return redirect()->back();
         }
 
@@ -105,7 +97,8 @@ class SubscriptionController extends Controller
             //send email
             Activites::create(
                 [
-                'description' =>$request->name . ' subscribed to recieve latest updates',
+                'description' =>$request->name . 
+                ' subscribed to recieve latest updates',
                 'username' => $request->name,
                 'privilage' => 'subscriber',
                 'status' => 'pending'
@@ -150,22 +143,29 @@ class SubscriptionController extends Controller
 
     /**
      * Edits Subscription
+     * @param $request, $id
+     * @return view
      */
     public function editSub(Request $request, $id)
     {
-        validator([
+        validator(
+            [
             'name' => 'required',
             'email' => 'required',
             'sub_type' => 'required',
-        ]);
+            ]
+        );
 
         $oldEmail = Subscription::findOrFail($id)->email;
 
-        $update = Subscription::where('id', $id)->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'subscription_type' => $request->sub_type,
-        ]);
+        $update = Subscription::where('id', $id)
+            ->update(
+                [
+                'name' => $request->name,
+                'email' => $request->email,
+                'subscription_type' => $request->sub_type,
+                ]
+            );
 
 
         if ($update) {
