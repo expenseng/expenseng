@@ -138,7 +138,7 @@ export default {
             this.busy = true;
 
             if(this.isReply){
-                this.commentService.storeReply(this.comment, this.email, this.name, this.commentId)
+                this.commentService.storeReply(this.comment, this.email, this.name, this.commentId, this.isAnon)
                     .then(response => {
                         this.busy = false;
                     })

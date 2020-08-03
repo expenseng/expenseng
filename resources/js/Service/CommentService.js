@@ -116,14 +116,14 @@ class CommentService{
         })
     }
 
-    storeReply(comment, email, name, commentId){
-        if(!this.cookieExists()){
+    storeReply(comment, email, name, commentId, anon = false){
+        if(!this.cookieExists() && !anon){
             this.firstComment(email, name)
         }
 
         return axios.post('/api/comments/' + commentId + '/replies', {
             content: comment,
-            email: this.email,
+            email: anon ? this.anonymousName() : this.email,
         }).then(response => {
             return response.data;
         })
