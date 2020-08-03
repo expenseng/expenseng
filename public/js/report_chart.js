@@ -57,7 +57,10 @@ let options = {
         },
         labels:{
             minWidth: 0,
-            maxWidth: 160
+            maxWidth: 160,
+            formatter: function(val){
+                return val.toFixed(2)
+            }
         }
     },
     noData: {
