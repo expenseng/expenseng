@@ -90,14 +90,25 @@ class CommentService{
         })
     }
 
+    /**
+     * Generate a name and store in this browser
+     * Next time use this name instead of generating 
+     * a new one.
+     */
     anonymousName(){
-        var Chance = require('chance');
+        if(document.cookie.indexOf("comment_slug") > -1){
+            return this.getCookieValue("comment_slug"); //return stored name
+        }else{
+            var Chance = require('chance');
+            var chance = new Chance();
+            
+            const name = chance.first()  + " of Lagos";
+            
+            //store in cookie for future use.
+            document.cookie = "comment_slug="+name;
 
-        var chance = new Chance();
-        
-        const name = chance.first();
-
-        return name + " of Lagos";
+            return name;
+        }
     }
 
     storeComments(origin, comment, email, name, anon=false){
