@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddYearToReportsTable extends Migration
+class UpdateQuarterlyTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddYearToReportsTable extends Migration
      */
     public function up()
     {
-        Schema::table('reports', function (Blueprint $table) {
+        Schema::table('quaterly_budgets', function (Blueprint $table) {
             $table->string('year');
         });
     }
@@ -25,8 +25,7 @@ class AddYearToReportsTable extends Migration
      */
     public function down()
     {
-        Schema::table('reports', function (Blueprint $table) {
-            //
+        Schema::table('quaterly_budgets', function (Blueprint $table) {
             $table->dropColumn('year');
         });
     }
