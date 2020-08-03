@@ -25,7 +25,8 @@ class Scrapping
     private $economic_cat = array();
     private $function_cat = array();
     private $allLatest = array();
-    private $_2020 = false;
+    private $_2018 = false;
+    private $year = ' ';
 
     /**
      * @param string $year
@@ -35,13 +36,14 @@ class Scrapping
 
     public function openTreasury(string $year, string $searchPattern = Scrapping::dailyPaymentPattern)
     {
+        $this->year = $year;
         if (($year == '2018') && ($searchPattern  == '/-fgn-monthly/i')) {
             $searchPattern =  '/monthly-budget-performance-fgn-total/i';
-            $this->_2020 = true;
+            $this->_2018 = true;
         }
         if (($year == '2018') && ($searchPattern  == '/-fgn-quarterly/i')) {
             $searchPattern = '/523-quarterly-budget-performance-fgn/i';
-            $this->_2020 = true;
+            $this->_2018 = true;
         };
         switch ($searchPattern) {
             case Scrapping::dailyPaymentPattern:
@@ -274,17 +276,17 @@ class Scrapping
 
     public function filterUrl(string $url)
     {
-        if ($this->_2020 == true) {
+        if ($this->_2018 == true) {
             if (preg_match('/quart/i', $url)) {
-                return ['link'=>$url ,'type' => 'quarterlyBudget2018','parsed'=>false];
+                return ['link'=>$url ,'type' => 'quarterlyBudget2018','parsed'=>false,'year'=>$this->year];
             } else {
-                return ['link'=>$url ,'type' => 'monthlyBudget2018','parsed'=>false];
+                return ['link'=>$url ,'type' => 'monthlyBudget2018','parsed'=>false,'year'=>$this->year];
             }
         }
         if (preg_match('/2018/', $url)) {
-            return ['link'=>$url ,'type' => explode('/', $url)[4],'parsed'=>false, 'year' => explode('/', $url)[5] ];
+            return ['link'=>$url ,'type' => explode('/', $url)[4],'parsed'=>false,'year'=>$this->year ];
         }
-        return ['link'=>$url ,'type' => explode('/', $url)[5],'parsed'=>false, 'year' => explode('/', $url)[4] ];
+        return ['link'=>$url ,'type' => explode('/', $url)[5],'parsed'=>false, 'year'=>$this->year ];
     }
 
     /**

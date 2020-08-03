@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class NewQuarterTable extends Migration
+class UpdateMothlyBudget extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class NewQuarterTable extends Migration
      */
     public function up()
     {
-        //
-        Schema::table('quaterly_budgets', function (Blueprint $table) {
-            $table->string('categories');
+        Schema::table('monthly_budgets', function (Blueprint $table) {
+            //
             $table->string('year');
         });
     }
@@ -27,10 +26,9 @@ class NewQuarterTable extends Migration
      */
     public function down()
     {
-        //
-        Schema::table('quaterly_budgets', function (Blueprint $table) {
-            $table->dropColumn('categories');
-            $table->dropColumn('year');
+        Schema::table('monthly_budgets', function (Blueprint $table) {
+            //
+            $table->drop('year');
         });
     }
 }

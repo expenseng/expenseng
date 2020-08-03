@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddYearToReportsTable extends Migration
+class UpdateReportTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddYearToReportsTable extends Migration
     public function up()
     {
         Schema::table('reports', function (Blueprint $table) {
-            $table->string('year');
+            $table->string('year')->nullable();
         });
     }
 
@@ -27,6 +27,7 @@ class AddYearToReportsTable extends Migration
     {
         Schema::table('reports', function (Blueprint $table) {
             //
+            $table->dropColumn('year');
         });
     }
 }
