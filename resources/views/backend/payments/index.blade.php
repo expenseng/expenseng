@@ -1,12 +1,13 @@
 @extends('layouts.home')
 @push('css')
     <link rel="stylesheet" href="{{ asset('css/dash-table.css') }}">
-    
+
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="/extras/datatables/css/buttons.bootstrap4.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/extras/datatables/css/fixedHeader.bootstrap4.css">
-    
+    <link rel="stylesheet" href="{{asset('css/jquery.toast.min.css')}}">
+
     <!-- causes toggle error in navbar -->
     <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
 
@@ -15,11 +16,11 @@
 
     <style type="text/css">
 
-        .dataTable>tbody>tr>td, 
-        .dataTable>tbody>tr>th, 
-        .dataTable>tfoot>tr>td, 
-        .dataTable>tfoot>tr>th, 
-        .dataTable>thead>tr>td, 
+        .dataTable>tbody>tr>td,
+        .dataTable>tbody>tr>th,
+        .dataTable>tfoot>tr>td,
+        .dataTable>tfoot>tr>th,
+        .dataTable>thead>tr>td,
         .dataTable>thead>tr>th {
             padding: 12px!important;
         }
@@ -36,7 +37,7 @@
             margin: .5rem .5rem;
         }
 
-    </style> 
+    </style>
     <title>ExpenseNg - Payments</title>
 @endpush
 
@@ -73,8 +74,8 @@
                                         @endcan
                                         </tr>
                                     </thead>
-                                    
-                                    
+
+
                                     <tbody>
                                     @if (count($payments ) > 0)
                                      @foreach ($payments as $payment)
@@ -88,26 +89,37 @@
                                             <td>{{$payment->beneficiary}}</td>
                                             @can('manage')
                                             <td>
-                                                @can('edit')
-                                                <a href="{{'/admin/payments/edit/' . $payment->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
-                                                @endcan
+                                                <div class="row">
+                                                    <div class="col">
+                                                        @can('edit')
+                                                            <a href="{{'/admin/payments/edit/' . $payment->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
+                                                        @endcan
 
-                                                @can('delete')
-                                                <form method="POST" style="display: inline-flex;" action="{{'/admin/payments/delete/'. $payment->id}}">
-                                                    {{ csrf_field() }}
-                                                    {{ method_field('DELETE') }}
-                                                    <a type="submit" class="trash delete-payment">
-                                                        <i class="fa fa-trash" style="color: red"></i>
-                                                    </a>
-                                                </form>   
-                                                @endcan       
+                                                        @can('delete')
+                                                            <form method="POST" style="display: inline-flex;" action="{{'/admin/payments/delete/'. $payment->id}}">
+                                                                {{ csrf_field() }}
+                                                                {{ method_field('DELETE') }}
+                                                                <a type="submit" class="trash delete-payment">
+                                                                    <i class="fa fa-trash" style="color: red"></i>
+                                                                </a>
+                                                            </form>
+                                                        @endcan
+                                                    </div>
+                                                    @if($payment->tweeted == false)
+                                                        <div class="col py-3 px-0" id="{{'div'.$payment->id}}">
+                                                            <a type="submit" onclick='event.preventDefault(); jQuery.fn.tweet({{$payment->id}})'>
+                                                                <i class="fa fa-twitter" style="color: #6a0094"></i>
+                                                            </a>
+                                                        </div>
+                                                    @endif
+                                                </div>
                                             </td>
                                             @endcan
                                     </tr>
                                         @endforeach
                                     @endif
                                     </tbody>
-                                   
+
                                     <tfoot>
                                         <tr>
                                             <p>Note: You can search and sort payments by payment_no and payment_code</p>
@@ -127,27 +139,62 @@
                 <!-- end data table  -->
                 <!-- ============================================================== -->
             </div>
-            
+
         </div>
     </div>
 @endsection
 
 @section('js')
 
-    
+
     <!-- main js -->
     <script src="{{ asset('js/main-js.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/dashboard-ecommerce.js') }}" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="{{asset('js/jquery.toast.min.js')}}"></script>
 
-  
+
     <script>
         jQuery(document).ready(function() {
-    $('#example').DataTable({
-        "order": [[ 2, "desc" ]],
-        "paging": false
-    });
-    } );
+            jQuery('#example').DataTable({
+                "order": [[ 2, "desc" ]],
+                "paging": false
+            });
+            jQuery.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            jQuery.fn.tweet = function(data) {
+                $id = data;
+                var div = '#div'+$id
+                jQuery.ajax({
+                    url: "{{ URL::to('tweet_payment') }}",
+                    type: "post",
+                    data: {
+                        'id': $id
+                    },
+                }).done(function(data){
+                    jQuery.toast({
+                        text: data,
+                        showHideTransition: 'slide',
+                        icon: 'success',
+                        position: 'top-center',
+                        hideAfter: 5000
+                    });
+                    jQuery(div).hide();
+                }).fail(function(data) {
+                    jQuery.toast({
+                        text: data.msg,
+                        showHideTransition: 'slide',
+                        icon: 'error',
+                        position: 'top-center',
+                        hideAfter: 5000
+                    });
+                })
+            };
+
+         });
     </script>
     <script>
         $('.delete-payment').click(function(e){
@@ -158,7 +205,7 @@
             }
         });
     </script>
-    
+
 
 
 @endsection
