@@ -22,7 +22,7 @@
             <button class="btn btn-primary" type="submit" v-if="showName">Comment</button>
             <div class="col-md-12 p-0">
                 <small class="text-muted p-0 col-md-6 pull-left" v-if="!busy">Press enter to send</small>
-                <div class="col-md-6 form-check pull-right text-right" v-if="showName">
+                <div class="col-md-6 form-check pull-right text-right" v-if="started">
                     <input type="checkbox" @change="anonymous" class="form-check-input" id="anonymousCommenter">
                     <label class="text-muted" for="anonymousCommenter">Comment as an anonymouse citizen</label>
                 </div>
@@ -46,7 +46,9 @@ export default {
             comment: "",
             email: "",
             busy: false,
+            started: false,
             name: "",
+            isAnon: false,
             errors: [],
             commentService: new Comment(),
             origin: document.location.pathname, //we are using this as the origin/resourcename
@@ -85,6 +87,7 @@ export default {
             if(this.firstComment()){
                 this.showName = true;
                 this.hideSmallComment = true;
+                this.started = true; //this tells us the user has focused on comment box
             }
         },
 
@@ -94,12 +97,18 @@ export default {
          * And so we won't have to show them the {name} & {email} fields
          */
         firstComment(){
-            if(document.cookie.indexOf("commentatorName") > -1){
+            if(document.cookie.indexOf("commentatorName") > -1 || this.isAnon == true){
                 //then name and email must exist in the cookie
                 return false; //don't show the name & email form
             }else{
                 return true;
             }
+        },
+
+        anonymous(){
+            //don't ask for name
+            this.showName = !this.showName;
+            this.isAnon = !this.isAnon; //toggle.
         },
 
         send(){
