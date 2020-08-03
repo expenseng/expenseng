@@ -26,8 +26,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-         $schedule->command('SendTweet')->monthly();
-         $schedule->command('budgetTweet')->weekly()->mondays()->at('13:00');
+//         $schedule->command('SendTweet')->monthly();
+//         $schedule->command('budgetTweet')->weekly()->mondays()->at('13:00');
          $schedule->command('ReportLogging')->daily();
          $schedule->command('parse:sheet')
              ->daily();
