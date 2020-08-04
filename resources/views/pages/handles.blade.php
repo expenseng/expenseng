@@ -232,7 +232,7 @@
                             } 
                             else 
                             {
-                                tableRow += '<tr><td>'+value.name+'</td><td>'+value.name+'</td><td class="table-overflow"><a href="https://twitter.com/'+value.twitter_handle+'" target="_blank">'+value.twitter_handle+'</a></td><tr>';
+                                tableRow += '<tr><td>'+value.role+'</td><td>'+value.name+'</td><td class="table-overflow"><a href="https://twitter.com/'+value.twitter_handle+'" target="_blank">'+value.twitter_handle+'</a></td><tr>';
                             }
                            
 
