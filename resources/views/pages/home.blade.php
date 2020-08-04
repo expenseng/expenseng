@@ -180,8 +180,11 @@
         </div>
         <div class="profile">
           <p>Company twitter handle</p>
-          <a target="_blank" href = "https://twitter.com/{{$company -> twitter}}" id="handle">{{$company->twitter ?? 'N/A'}}</a>
-          
+          @if($company->twitter)
+          <a target="_blank" href = "https://twitter.com/{{$company->twitter}}" id="handle">{{$company->twitter}}</a>
+          @else
+          <p>N/A</p>
+          @endif
         </div>
       </div>
     </div>
