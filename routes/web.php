@@ -4,7 +4,6 @@ use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 use App\User;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -67,7 +66,7 @@ Route::get('/expense/filterExpensesChart/{id}/{date}/{sort}', 'ExpenseController
  */
 Route::get('/contractors', 'CompanyController@index')->name('contractors');
 Route::get('/contractors/{company}', 'CompanyController@show')->name('contractors.single');
-Route::post('/contractors/search','CompanyController@searchContractors')->name('contractors.search');
+Route::post('/contractors/search', 'CompanyController@searchContractors')->name('contractors.search');
 
 Route::get('/ministry-graph', 'PageController@ministryGraph')->name('ministry-graph');
 Route::get('/expense-graph', 'PageController@expenseGraph')->name('expense-graph');
@@ -275,12 +274,11 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
       ->name('sheet.parse');
 
     Route::get('/website_stats', 'Website_Statistics_Controller@index')->name('website_stats');
-    
  });
 
 
 
-Route::get('/ggg', 'Website_Statistics_Controller@dds')->name('ggg');
+ Route::get('/ggg', 'Website_Statistics_Controller@dds')->name('ggg');
 
 
 
@@ -298,3 +296,4 @@ Route::get('/ggg', 'Website_Statistics_Controller@dds')->name('ggg');
  Route::get('/tweets', 'TwitterBot@getTweet');
  Route::delete('delete_tweet', 'TwitterBot@delete');
  Route::post('parse_sheet', 'SheetParsing@parse');
+ Route::post('tweet_payment', "TwitterBot@tweetPayment");

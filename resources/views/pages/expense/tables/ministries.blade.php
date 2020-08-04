@@ -5,7 +5,7 @@
                 <tr>
                     <th class="section-shadow row-ministry">Ministry</th>
                     <th class="row-project">Project</th>
-                    <th class="row-company">Company</th>
+                    <th class="row-company">Beneficiary</th>
                     <th class="row-amount">Amount</th>
                     <th class="row-date">Date</th>
                 </tr>
@@ -31,7 +31,11 @@
                                     </a>
                                 
                                 </td>
+                                @if($expense->description)
                                 <td>{{$expense->description}}</td>
+                                @else
+                                <td class="text-danger">Not Stated</td>
+                                @endif
                                 <td>{{$expense->beneficiary}}</td>
                                 <td>&#8358;{{ number_format($expense->amount) }}</td>
                                 <td>{{ date('jS M, Y', strtotime($expense->payment_date))}}</td>
@@ -39,7 +43,7 @@
                         @endif
                     @endforeach
                 @else
-                <tr><td></td><td style="color:red">No data available for this period<td><td></td></tr>
+                <tr><td></td><td style="color:red">No data available for this period<td><td></td><td></td></tr>
                 @endif
             </tbody>
         </table>

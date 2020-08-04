@@ -15,8 +15,7 @@ class ExpenseController extends Controller
     public function report()
     {
         $today = date('Y-m-d');
-        $collection['daily'] = Payment::where('description', '!=', '')
-                                ->whereDate('payment_date', '=', $today)
+        $collection['daily'] = Payment::whereDate('payment_date', '=', $today)
                                 ->orderby('payment_date', 'desc')
                                 ->paginate(20)->onEachSide(1);
         $miniTableData['all'] = $this->ministriesFiveYear();
@@ -33,8 +32,7 @@ class ExpenseController extends Controller
                                         ->whereYear('payment_date', '=', $year)
                                         ->orderby('payment_date', 'desc')
                                         ->paginate(20)->onEachSide(1);
-        $collection['summary'] = Payment::where('description', '!=', '')
-                                ->whereYear('payment_date', '=', $year)
+        $collection['summary'] = Payment::whereYear('payment_date', '=', $year)
                                 ->orderby('payment_date', 'desc')
                                 ->paginate(20)->onEachSide(1);
         $miniTableData['all'] = $this->ministriesFiveYear();
@@ -88,7 +86,8 @@ class ExpenseController extends Controller
         $day_pattern = '/(\d{4})-(\d{2})-(\d{2})/';
         $mth_pattern = '/([A-Za-z]+)\s(\d{4})/';
         $yr_pattern = '/\d{4}/';
-        $data = Payment::where('description', $option, '');
+        // $data = Payment::where('description', $option, '');
+        $data = Payment::select('*');
         if (preg_match($mth_pattern, $givenTime, $match)) {
             $m = date_parse($match[1]);
             $month = $m['month'];
