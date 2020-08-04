@@ -96,7 +96,6 @@ $(document).ready(function() {
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
-    console.log('connected')
      $('.tabs').click(function() {
             $('.tabs.active').removeClass("active");
             $(this).addClass("active");
@@ -132,7 +131,6 @@ $(document).ready(function() {
             date = "undefined";
             sort = undefined;
             const data = {id, date, sort};
-           console.log('data: ', data);
             $(this).closest('.modal-content').find('.byDatePicker').val('')
             $(this).closest('.modal-content').find('.monthYearPicker').val('')
             $(this).closest('.modal-content').find('.yearPicker').val('')
@@ -151,7 +149,6 @@ $(document).ready(function() {
                     // console.log(data)
                     const table = e.target.closest('#modal').nextElementSibling;
                     const tableDate = table.closest('.main-table').querySelector('.said-date-caption');
-                    console.log('tabledate', tableDate)
                     table.innerHTML = data;
                     tableDate.innerHTML = `Date: ${defaultTableDate}`;
                     tableOneIsModified = false;         
@@ -165,8 +162,6 @@ $(document).ready(function() {
         $('#apply-filter').on('click', function(e){
             const id = $(this).attr("data-id");
             const idjs = e.target.dataset.id;
-            console.log('id: ', id)
-            console.log('idjs: ', idjs)
             let invalid = false;
             
            
@@ -235,7 +230,7 @@ $(document).ready(function() {
             if(sort !== undefined){
                 data.sort = sort;
             }
-           console.log('data: ', data);
+           
             $.ajax({
                     url: "/ministry/filterExpenses",
                     method: "GET",
@@ -244,7 +239,6 @@ $(document).ready(function() {
                         
                         $('#tbl').html(data)
                         const tableDate = document.querySelector('.said-date-caption')
-                        console.log('table', tableDate)
                         if(date !== 'undefined'){
                             let reportDate = /\d{4}-\d{2}-\d{2}/.test(date)? formatDate(date) : date;
                             tableDate.innerHTML = `Showing expenses for <span style="color:#1e7e34">${reportDate}</span>`;
