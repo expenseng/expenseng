@@ -60,5 +60,10 @@ class AuthServiceProvider extends ServiceProvider
         /**
          * Admin privilages end
          */
+
+        Gate::define(\WebDevEtc\BlogEtc\Gates\GateTypes::MANAGE_BLOG_ADMIN, static function ($user) {  
+             return $user->hasAnyRoles(['admin', 'manager', 'editor']);
+        });
+
     }
 }
