@@ -51,7 +51,7 @@
             <small>{{date('Y')}}</small>
         </div>
         <div class="col">
-            <p>Total Number of Projects</p>
+            <p>Total Number of Payouts</p>
             <h4><span class="text-success">{{$count}}</span></h4>
             <small>{{date('Y')}}</small>
         </div>
@@ -74,13 +74,13 @@
         <!--1-->
         <div id="expense" class="tab-pane fade show active">
 
-            <div>
+            <div class="main-table">
                 <div id="table-border" class="container pt-3 mt-4 pb-3">
                     <div class="container pb-3 pt-1 py-4">
                         <div class="row centerize">
                             <div class="col">
                             <!-- Test -->
-                                <h3 id="said-date" class="index">Showing Expenses For {{date("jS F, Y")}}</h3>
+                                <h3 class="said-date-caption" class="align-self-center">Date: <span class="said-date">{{ date("dS, M Y") }}</span></h3>
                             </div>
 
                             <div class="col">
@@ -124,7 +124,7 @@
                                         <section class="row">
                                             <div class="col-12" >
                                             <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            <input placeholder="Select Date" name="select-date" id="select-date"  class="form-control">
+                                            <input placeholder="Select Date" name="select-date" id="select-date"  class="byDatePicker form-control">
                                             <input placeholder="Select Month" name="select-month" id="select-month" class="monthYearPicker form-control" />
                                             <input placeholder="Select Year" name="select-year" id="select-year" class="yearPicker form-control" />
                                             <small id="date-format-err"></small>
@@ -140,6 +140,7 @@
                                     </div>
                                     <!-- Footer -->
                                     <div class="modal-footer">
+                                    <button type="button" data-id="{{$ministry->id}}" id="reset" class="btn btn-block active mx-5 reset btn-danger">Reset</button>
                                     <button type="button" data-id="{{$ministry->id}}" id="apply-filter" class="btn btn-block active mx-5" data-dismiss="modal">Apply Filter</button>
                                     </div>
                                 </div>
@@ -287,26 +288,14 @@
     <div class="form-group">
       <label for="ministry">Select Cabinet</label>
       <select id="inputState" class="form-control" name="ministry_id">
-        <option selected value="1">Works</option>
-        <option value="Housing">Housing</option>
-        <option value="Interior">Interior</option>
-        <option value="Petroleum">Petroleum</option>
-        <option value="Finance">Finance</option>
-        <option value="Power">Power</option>
-        <option value="Health">Health</option>
-        <option value="Labour">Labour</option>
-        <option value="Environment">Environment</option>
-        <option value="Water Resouirces">Water Resouirces</option>
-        <option value="Communication">Communication</option>
-        <option value="Aviation">Aviation</option>
-        <option value="Defense">Defense</option>
-        <option value="Information">Information</option>
-        <option value="Youths and Sports">Youths and Sports</option>
-        <option value="Police Affairs">Police Affairs</option>
-        <option value="Education">Education</option>
-        <option value="Justice">Justice</option>
-        <option value="Agriculture">Agriculture</option>
-        <option value="Women Affairs">Women Affairs</option>
+        {{-- <option class="mb-1" value="{{$ministry->id}}">{{$ministry->shortname}}</option> --}}
+        @foreach ($ministries as $current)
+            @if($ministry->id == $current->id)
+                <option class="mb-1" selected value="{{$current->id}}">{{$current->shortname}}</option>
+            @else
+                <option class="mb-1" value="{{$current->id}}">{{$current->shortname}}</option>
+            @endif
+        @endforeach
       </select>
     </div>
    <center>

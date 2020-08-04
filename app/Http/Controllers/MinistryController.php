@@ -139,13 +139,16 @@ class MinistryController extends Controller
     {
         $code = $ministry->code;
         $cabinets = $ministry->cabinet;
-        $date = date('Y-m-d');
-
+        // $date = date('Y-m-d');
+        $date = date('Y');
+        $ministries = Ministry::select('id', 'shortname')
+                    ->orderby('shortname', 'asc')
+                    ->get();
         $payments = DB::table('payments')
             ->where('payment_code', 'LIKE', "$code%")
-            ->whereDate('payment_date', '=', "$date")
+            ->whereYear('payment_date', '=', "$date")
             ->orderby('payment_date', 'desc')
-            ->paginate(2);
+            ->paginate(10);
 
         $data = $this->fiveYearTrend($code);
         return view('pages.ministry.single')->with([
@@ -154,6 +157,7 @@ class MinistryController extends Controller
             'payments' => $payments,
             'trend' => $data[1],
             'count' => $data[0],
+            'ministries' => $ministries
         ]);
     }
 
