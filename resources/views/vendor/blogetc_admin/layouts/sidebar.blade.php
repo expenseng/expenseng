@@ -1,26 +1,20 @@
-
+ <?php
+    use WebDevEtc\BlogEtc\Models\Category;
+    use WebDevEtc\BlogEtc\Models\Comment;
+?>
+<style type="text/css">
+    .list-group-item+.list-group-item {
+    border-top-width: 1px;
+}
+</style>
 <ul class="list-group mb-3">
-    <li class="list-group-item justify-content-between lh-condensed">
-        <div>
-            <h6 class="my-0"><a href="{{ route("blogetc.admin.index") }}">BlogEtc Admin Home</a>
-                <span class="text-muted">(<?php
-                    use WebDevEtc\BlogEtc\Models\Category;
-                    use WebDevEtc\BlogEtc\Models\Comment;
-
-                    $categoryCount = \WebDevEtc\BlogEtc\Models\Post::count();
-
-                    echo $categoryCount . ' ' . str_plural('Post', $categoryCount);
-
-                    ?>)</span>
-            </h6>
-            <small class="text-muted">Overview of your posts</small>
-
-            <div class="list-group ">
-
+    <li class="list-group-item justify-content-between lh-condensed mb-3 p-0">
+        <div>  
+            <div class="">
                 <a href="{{ route('blogetc.admin.index') }}"
-                   class="list-group-item list-group-item-action @if(Request::route()->getName() === 'blogetc.admin.index') active @endif  ">
+                   class="list-group-item list-group-item-action @if(Request::route()->getName() === 'blogetc.admin.index') active @endif" style="background: #6c757d">
                     <i class="fa fa-th fa-fw" aria-hidden="true"></i>
-                    All Posts
+                    All Posts - {{\WebDevEtc\BlogEtc\Models\Post::count()}}
                 </a>
                 <a href="{{ route('blogetc.admin.create_post') }}"
                    class="list-group-item list-group-item-action  @if(Request::route()->getName() === 'blogetc.admin.create_post') active @endif">
@@ -31,21 +25,20 @@
         </div>
     </li>
 
-    <li class="list-group-item justify-content-between lh-condensed">
+
+    <li class="list-group-item justify-content-between lh-condensed mb-3 p-0">
         <div>
-            <h6 class="my-0">
-                <a href="{{ route('blogetc.admin.comments.index') }}">Comments</a>
+            <a class="list-group-item list-group-item-action text-white"  href="{{ route('blogetc.admin.comments.index') }}" style="background: #6c757d">Comments - 
                 <span class="text-muted">
                     @php
                         $commentCount = Comment::withoutGlobalScopes()->count();
                     @endphp
 
-                    {{'('.$commentCount.' '.str_plural('Comment', $commentCount).')'}}
-                            </span>
-            </h6>
-            <small class="text-muted">Manage your comments</small>
-
-            <div class="list-group ">
+                    {{ $commentCount}}   
+                </span>
+            </a>
+           
+            <div class="">
                 <a href="{{ route('blogetc.admin.comments.index') }}"
                    class="list-group-item list-group-item-action  @if(Request::route()->getName() === 'blogetc.admin.comments.index' && !Request::get("waiting_for_approval")) active @endif   ">
                     <i class="fa  fa-fw fa-comments" aria-hidden="true"></i>
@@ -65,16 +58,19 @@
         </div>
     </li>
 
-    <li class="list-group-item  justify-content-between lh-condensed">
+    <li class="list-group-item justify-content-between lh-condensed mb-3 p-0">
         <div>
-            <h6 class="my-0"><a href="{{ route('blogetc.admin.categories.index') }}">Categories</a>
+            <a class="list-group-item list-group-item-action text-white"  href="{{ route('blogetc.admin.categories.index') }}" style="background: #6c757d">Categories - 
                 <span class="text-muted">
-                        <?php $postCount = Category::count(); ?>
-                    {{ '(' . $postCount.' '.str_plural('Category', $postCount) . ')' }}
-                    </span>
-            </h6>
-            <small class="text-muted">Blog post categories</small>
-            <div class="list-group ">
+                    @php
+                        $postCount = Category::count();
+                    @endphp
+
+                    {{ $postCount}}   
+                </span>
+            </a>
+            
+            <div class=" ">
                 <a href="{{ route('blogetc.admin.categories.index') }}"
                    class="list-group-item list-group-item-action  @if(Request::route()->getName() === 'blogetc.admin.categories.index') active @endif">
                     <i class="fa fa-object-group fa-fw" aria-hidden="true"></i>
@@ -91,10 +87,11 @@
     </li>
 
     @if(config("blogetc.image_upload_enabled"))
-        <li class="list-group-item  justify-content-between lh-condensed">
+        <li class="list-group-item justify-content-between lh-condensed mb-3 p-0">
             <div>
-                <h6 class="my-0"><a href="{{ route('blogetc.admin.images.upload') }}">Upload images</a></h6>
-                <div class="list-group ">
+                <a class="list-group-item list-group-item-action text-white" href="{{ route('blogetc.admin.images.upload') }}" style="background: #6c757d">Upload images</a>
+                 
+                <div class=" ">
 
                     <a href="{{ route('blogetc.admin.images.all') }}"
                        class="list-group-item list-group-item-action  @if(Request::route()->getName() === 'blogetc.admin.images.all') active @endif  ">

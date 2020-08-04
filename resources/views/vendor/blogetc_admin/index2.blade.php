@@ -1,4 +1,7 @@
 @extends("blogetc_admin::layouts.home")
+@push('css')
+    <title>ExpenseNg - Blog</title>
+@endpush
 @section("content")
 <div class="content" id="app">
     <div class="container-fluid">
@@ -10,6 +13,7 @@
 
 
                     <div class="col-md-8">
+
                          @forelse($posts as $post)
                             <div class="card m-4">
                                 <div class="card-body">
