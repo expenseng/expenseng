@@ -102,6 +102,15 @@
             </a>
           </li>
 
+           <li class="{{Route::is('blogetc.admin.index')
+          ? 'nav-item active' : 'nav-item'}} ">
+            <a class="nav-link" href="{{ route('blogetc.admin.index') }}">
+              <i class="material-icons">Blog</i>
+              <p>Blog</p>
+            </a>
+          </li>
+
+
           <li class="{{Route::is('comments')
           ? 'nav-item active' : 'nav-item'}} ">
             <a class="nav-link" href="{{route('comments')}}">
