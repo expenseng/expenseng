@@ -140,14 +140,10 @@ class MinistryController extends Controller
     {
         $code = $ministry->code;
         $cabinets = $ministry->cabinet;
-        // $date = date('Y-m-d');
-        $date = date('Y');
-        $ministries = Ministry::select('id', 'shortname')
-                    ->orderby('shortname', 'asc')
-                    ->get();
+        $date = date('Y-m-d');
         $payments = DB::table('payments')
             ->where('payment_code', 'LIKE', "$code%")
-            ->whereYear('payment_date', '=', "$date")
+            ->whereDate('payment_date', '=', "$date")
             ->orderby('payment_date', 'desc')
             ->paginate(10);
 
@@ -158,7 +154,6 @@ class MinistryController extends Controller
             'payments' => $payments,
             'trend' => $data[1],
             'count' => $data[0],
-            'ministries' => $ministries
         ]);
     }
 

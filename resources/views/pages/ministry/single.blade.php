@@ -286,16 +286,9 @@
     </div>
 
     <div class="form-group">
-      <label for="ministry">Select Cabinet</label>
-      <select id="inputState" class="form-control" name="ministry_id">
-        {{-- <option class="mb-1" value="{{$ministry->id}}">{{$ministry->shortname}}</option> --}}
-        @foreach ($ministries as $current)
-            @if($ministry->id == $current->id)
-                <option class="mb-1" selected value="{{$current->id}}">{{$current->shortname}}</option>
-            @else
-                <option class="mb-1" value="{{$current->id}}">{{$current->shortname}}</option>
-            @endif
-        @endforeach
+      <label for="ministry">Ministry</label>
+      <select id="inputState" readonly class="form-control" name="ministry_id">
+        <option class="mb-1"  value="{{$ministry->id}}">{{$ministry->shortname}}</option>
       </select>
     </div>
    <center>

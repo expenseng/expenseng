@@ -11,7 +11,7 @@ class MinistrySearchController extends Controller
     public function filterExpenses(Request $request)
     {
         $id = $request->query('id');
-        $today = date("Y");
+        $today = date("Y-m-d");
         $givenTime = null;
         if ($request->has('date')) {
             $givenTime = $request->query('date');
@@ -43,7 +43,7 @@ class MinistrySearchController extends Controller
         } else {
             $payments = DB::table('payments')
                     ->where('payment_code', 'LIKE', "$code%")
-                    ->whereYear('payment_date', '>=', $today);
+                    ->whereDate('payment_date', '>=', $today);
         };
 
         if ($request->has('sort')) {
