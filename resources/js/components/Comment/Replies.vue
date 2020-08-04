@@ -18,7 +18,7 @@
                         <div class="col-sm-11 ">
                             <div class="d-flex justify-content-between ">
                                 <div class="d-flex no-show">
-                                    <username :ownerId="reply.ownerId"></username>
+                                    <username :object="reply"></username>
                                     <p class="ml-3 grey-text small mt-1">{{ reply.createdAt | ago }}</p>
                                 </div>
                                 <div class="dropdown">
