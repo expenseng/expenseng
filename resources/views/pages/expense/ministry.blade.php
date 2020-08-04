@@ -53,12 +53,12 @@
 		<div class="section-button">
 			<div class="container">
 				<div class="row px-1">
-					<div class="btn-group col-lg-10 col-md-12 d-flex justify-content-between responsive-button nav nav-tabs">
+					<div class="btn-group col-lg-10 col-md-12 d-flex responsive-button nav nav-tabs">
 						<a class="btn-marg text-left active button" data-toggle="tab" role="tab" href="#table">Expense Summary</a>
-						{{-- Commenting the below out as we don't have data for them yyet --}}
+						{{-- Commenting the below out as we don't have data for them yet --}}
 						{{-- <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Project Summary</a>
 						<a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Purchases Summary</a> --}}
-						<a class="btn-marg text-left button" data-toggle="tab" role="tab" href="#description">No Description</a>
+						{{-- <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="#description">No Description</a> --}}
 						<a class="btn-marg text-left button" data-toggle="tab" role="tab" href="#comments">Comments</a>
 					</div>
 				</div>
@@ -153,7 +153,7 @@
 				</div>
 			</section>
 		</div>
-		<div class="section-2 tab-pane fade" id="description" role="tabpanel">
+		{{-- <div class="section-2 tab-pane fade" id="description" role="tabpanel">
 			<section class="container bordered">
 				<div class="table-section reponsive-div">
 					<div class="main-table">
@@ -222,8 +222,7 @@
 						<div id="main-table2" data-id="apply-filter2" class="table-data">
 							@include('pages.expense.tables.ministries_nodesc')
 						</div>
-						<!---PAGINATION--->
-						{{-- @include('partials.pagination', ['data' => $collection['nondescriptive']]) --}}
+						
 					</div>
 				</div>
 			</section>
@@ -236,7 +235,7 @@
 					</div>
 				</div>
 			</section>
-		</div>
+		</div> --}}
 		<div class="section-2 tab-pane fade" id="comments" role="tabpanel">
 			@include('partials.comments')
 		</div>
