@@ -154,33 +154,37 @@
     <div class="comp-card comp-card-1">
         <div class="awarded">
           <div class="graph-cont">
-              <div id="chart{{$company -> id + 3}}"></div>
+              {{-- <div id="chart{{$company -> id + 3}}"></div>$loop->index --}}
+              <div id="chart{{$loop->index + 4}}"></div>
           </div>
           <div class="ml-1 mr-2">
-             <p class="exp-card1">Total amount Awarded</p>
-             <p class="exp-card2">&#8358;123,446,332</p>
-             <p class="exp-card3">2019</p>
+             <p class="exp-card1">Total amount Received</p>
+             <p class="exp-card2">₦{{ number_format($company->amount, 2) }}</p>
+             <p class="exp-card3 text-muted">{{$company->year}}</p>
           </div>
         </div>
       <div class="ml-3 ">
         <div class="d-flex align-items-center mb-3">
           <img src="{{asset('/images/berger.jpg')}}" alt="">
-          <p class="mt-3"><a href="/contractors/{{$company-> shortname}}">{{$company -> name}}</a></p>
+          <p class="mt-3"><a href="/contractors/{{$company->shortname}}">{{$company->name}}</a></p>
         </div>
         <div class="profile">
-          <p>Total number of contracts awarded</p>
-          <p>37</p>
-          <p>2019</p>
+          <p>Total number of payouts</p>
+          <p>{{count($company->payments)}}</p>
+          <p class="text-muted">{{$company->year}}</p>
         </div>
-        <div class="profile my-3">
+        <div class="profile my-4">
           <p>Name of CEO</p>
-          <p>{{$company -> ceo}}</p>
-          <p>2020</p>
+          <p>{{$company->ceo ?? 'N/A'}}</p>
+          
         </div>
         <div class="profile">
           <p>Company twitter handle</p>
-          <a target="_blank" href = "https://twitter.com/{{$company -> twitter}}" id="handle">{{$company -> twitter}}</p>
-          <p>2019</p>
+          @if($company->twitter)
+          <a target="_blank" href = "https://twitter.com/{{$company->twitter}}" id="handle">{{$company->twitter}}</a>
+          @else
+          <p>N/A</p>
+          @endif
         </div>
       </div>
     </div>

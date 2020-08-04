@@ -69,7 +69,7 @@
                             </thead>
 							<tbody id='dynamic-row' class="t-body text-left">
 								
-									
+                                
 										@foreach ($cabinet as $cabinet)
 											<tr>
 												<td>{{$cabinet->role}}</td>
@@ -77,8 +77,8 @@
 												<td class="table-overflow"> <a href=" https://twitter.com/{{$cabinet->twitter_handle}}" target="_blank">{{$cabinet->twitter_handle}}</a></td>
 											<tr>
 										@endforeach
-									
-								
+                            
+                                                                    
 
 							</tbody>
 						</table>
@@ -201,6 +201,8 @@
 
     </script>
 
+
+    
     <script type="text/javascript">
          $('body').on('keyup','#search-handles',function(){
              var searchQuest = $(this).val();
@@ -216,21 +218,32 @@
                 success: function(res){
                     
                     var tableRow = '';
-
-                    $('#dynamic-row').html('');
-
-                    $.each(res, function(index, value){
-                        tableRow = '<tr><td>'+value.role+'</td><td>'+value.name+'</td><td class="table-overflow"> <a href="https://twitter.com/{{$cabinet->twitter_handle}}" target="_blank">'
+                    if(res.length >0){
+                        
+                        $.each(res, function(index, value){
+                        tableRow += '<tr><td>'+value.role+'</td><td>'+value.name+'</td><td class="table-overflow"> <a href="https://twitter.com/{{$cabinet->twitter_handle}}" target="_blank">'
                             +value.twitter_handle+'</a></td><tr>';
 
-                        $('#dynamic-row').append(tableRow);
-                        
+                        $('#dynamic-row').html(tableRow);
+                            
 
-                    });
+                        });
+                    }
+                    else
+                    {
+                        tableRow += '<tr>';
+                        tableRow += '<td colspan="5">No minister_handle with name found</td>';
+                        tableRow += '</tr>';
+                        $('#dynamic-row').html(tableRow);
+                       
+                    }
+
+                
                     
                 }
-             });
-         });
+                
+            });
+        });
     </script>
      <script type="text/javascript">
          $('body').on('keyup','#search-handle',function(){
@@ -247,16 +260,26 @@
                 success: function(res){
                     
                     var tableRow = '';
-
-                    $('#dynamic-rows').html('');
-
-                    $.each(res, function(index, value){
-                        tableRow = '<tr><td>'+value.name+'</td><td><a href="https://twitter.com/{{$ministry->twitter}}" target="_blank">'+value.twitter+'</a></td><td class="table-overflow"></td><tr>';
-
-                        $('#dynamic-rows').append(tableRow);
+                    if(res.length >0){
                         
+                        $('#dynamic-rows').html('');
+                        $.each(res, function(index, value){
+                            tableRow += '<tr><td>'+value.name+'</td><td><a href="https://twitter.com/{{$ministry->twitter}}" target="_blank">'+value.twitter+'</a></td><td class="table-overflow"></td><tr>';
 
-                    });
+                            $('#dynamic-rows').html(tableRow);
+                            
+
+                        });
+                    }
+                    else
+                    {
+                        tableRow += '<tr>';
+                        tableRow += '<td colspan="5">NO ministry_handle with name found</td>';
+                        tableRow += '</tr>';
+                        $('#dynamic-rows').html(tableRow);
+                       
+                    }
+                    
                     
                 }
              });
