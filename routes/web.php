@@ -16,6 +16,7 @@ use App\User;
  */
 
 
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contactUs')->name('contact');
@@ -25,6 +26,9 @@ Route::get('/privacy', 'PageController@privacy')->name('privacy');
 Route::get('/search', 'PageController@search')->name('search');
 Route::get('/handles', 'PageController@handles')->name('handles');
 Route::get('/changeMinistryCharts/{ministry}', 'HomeController@MinistryCharts')->name('ministry_expenses_charts');
+Route::post('/handles', 'PageController@SearchHandles')->name('search-handles');
+Route::post('/handles/search', 'PageController@SearchHandle')->name('search-handle');
+
 
 // Feedback
 Route::post('/feedback', 'FeedbackController@create')->name('feedback');
@@ -39,7 +43,7 @@ Route::get('/contactEmail', 'PageController@contactEmail')->name('contactEmail')
  * Reports Endpoints
  */
 Route::get('/expense/report', 'ExpenseController@report')->name('expense.reports');
-Route::post('/subscribe', 'SubscriptionController@store');
+Route::post('/subscribe', 'SubscriptionController@store')->name('subscribe');
 
 Route::get('/expense/ministry', 'ExpenseController@ministry')->name('expense.ministry');
 
@@ -55,12 +59,14 @@ Route::patch('/ministries/{ministry}', 'MinistryController@update')->name('minis
 Route::delete('/ministries/{ministry}', 'MinistryController@destroy')->name('ministry_destroy');
 Route::post('/ministries/autocomplete', 'MinistryController@autocomplete')->name('ministry_autocomplete');
 Route::get('/expense/filterExpensesAll/{id}/{date}/{sort}', 'ExpenseController@filterExpensesAll')->name('all_ministries_filter_expenses');
+Route::get('/expense/filterExpensesChart/{id}/{date}/{sort}', 'ExpenseController@chartReport')->name('all_ministries_filter_chart');
 
 /**
  * Contractor Endpoints
  */
 Route::get('/contractors', 'CompanyController@index')->name('contractors');
 Route::get('/contractors/{company}', 'CompanyController@show')->name('contractors.single');
+Route::post('/contractors/search', 'CompanyController@searchContractors')->name('contractors.search');
 
 Route::get('/ministry-graph', 'PageController@ministryGraph')->name('ministry-graph');
 Route::get('/expense-graph', 'PageController@expenseGraph')->name('expense-graph');
@@ -119,7 +125,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
  //    Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); // Matches The "/admin/dashboard" URL
 
 
- Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function(){
+ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
      Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
       // Matches The "/admin/dashboard" URL
      Route::delete('/activity/delete/{activity_id}', 'DashboardController@deleteActivity')->name('activity.delete');
@@ -161,6 +167,20 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
       Route::delete('/ministry/delete/{ministry_id}', 'Admin\MinistryController@deleteMinistry')
       ->name('ministry.delete');
 
+      // SECTOR CRUD
+      Route::get('/sector/create', 'SectorController@viewCreateSector')
+      ->name('sector.create');
+      Route::post('/sector/create', 'SectorController@createSector')
+      ->name('create.sector');
+      Route::get('/sector/view', 'SectorController@viewSectors')
+      ->name('sector.view');
+      Route::get('/sector/edit/{sector_id}', 'SectorController@showEditForm')
+      ->name('sector.view.edit');
+      Route::put('/sector/edit/{sector_id}', 'SectorController@editSector')
+      ->name('sector.edit');
+      Route::delete('/sector/delete/{sector_id}', 'Admin\SectorController@deleteSector')
+      ->name('sector.delete');
+
       //People CRUD
       Route::get('/admin/{company}/{people}', 'CompanyController@showPeople');
 
@@ -176,9 +196,9 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
      //Profile Page
      Route::get('/profile', 'ProfileController@viewProfile')->name('profile');
      Route::get('/user/profile', 'ProfileController@index')->name('users.profile');
-     Route::get('/profile/edit/{user_id}', 'ProfileController@edit')->name('users.edit');
-     Route::put('/profile/edit/{user_id}', 'ProfileController@update')->name('users.update');
-     Route::put('/profile/change_password/{user_id}', 'ProfileController@updatePassword')->name('users.change_password');
+     Route::get('/profile/edit/{user_id}', 'ProfileController@edit')->name('profile.edit');
+     Route::put('/profile/edit/{user_id}', 'ProfileController@update')->name('profile.update');
+     Route::put('/profile/change_password/{user_id}', 'ProfileController@updatePassword')->name('profile.change_password');
 
      //Settings Page
      Route::get('/user/settings', 'SettingsController@index')->name('users.settings');
@@ -231,6 +251,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
      Route::get('/feedback/ignore/{id}', 'FeedbackController@ignore')
      ->name('feedback.ignore');
 
+
      // COMMENTS ROUTES
     Route::get('/comments', 'Admin\CommentController@index')->name('comments');  //Displays the index page for all comments
 
@@ -249,15 +270,15 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
 
       //Sheets
       Route::get('/sheets', 'Admin\SheetController@viewSheets')->name('sheets');
+      Route::get('/sheet/parse/{sheet_id}', 'Admin\SheetController@parseSheet')
+      ->name('sheet.parse');
 
-
-
-
-
+    Route::get('/website_stats', 'Website_Statistics_Controller@index')->name('website_stats');
  });
 
 
 
+ Route::get('/ggg', 'Website_Statistics_Controller@dds')->name('ggg');
 
 
 
@@ -274,3 +295,5 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
  Route::post('/post_tweet', 'TwitterBot@sendTweet');
  Route::get('/tweets', 'TwitterBot@getTweet');
  Route::delete('delete_tweet', 'TwitterBot@delete');
+ Route::post('parse_sheet', 'SheetParsing@parse');
+ Route::post('tweet_payment', "TwitterBot@tweetPayment");

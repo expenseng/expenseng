@@ -66,6 +66,15 @@
             </a>
           </li>
 
+          <li class="{{Route::is('sector.view') || Route::is('sector.create') || Route::is('sector.edit')
+           ? 'nav-item active' : 'nav-item'}} ">
+            <a class="nav-link" href="{{Route::is('sector.view') || Route::is('sector.create') || Route::is('sector.edit')
+             ? '#' : route('sector.view')}}">
+              <i class="material-icons">work</i>
+              <p>Sector</p>
+            </a>
+          </li>
+
           <li class="{{Route::is('subscribe.view') || Route::is('subscribe.create') || Route::is('subscribe.edit')
            ? 'nav-item active' : 'nav-item'}} ">
             <a class="nav-link" href="{{Route::is('subscribe.view')? '#' :route('subscribe.view')}}">
@@ -106,6 +115,13 @@
           <a class="nav-link" href="{{route('sheets')}}">
           <i class="material-icons">attachment</i>
               <p>Sheets</p>
+          </a>
+          </li>
+
+            <li class="{{Route::is('website_stats')? 'active nav-item' : 'nav-item' }}">
+          <a class="nav-link" href="{{route('website_stats')}}">
+          <i class="material-icons">assessment</i>
+              <p>Website Statistics</p>
           </a>
           </li>
 

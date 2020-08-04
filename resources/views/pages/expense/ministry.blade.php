@@ -8,6 +8,16 @@
 	<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
 	<script src="https://kit.fontawesome.com/8f691340fb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174166304-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-174166304-1');
+</script>
+
 @endpush
 
 @section('content')
@@ -43,12 +53,12 @@
 		<div class="section-button">
 			<div class="container">
 				<div class="row px-1">
-					<div class="btn-group col-lg-10 col-md-12 d-flex justify-content-between responsive-button nav nav-tabs">
+					<div class="btn-group col-lg-10 col-md-12 d-flex responsive-button nav nav-tabs">
 						<a class="btn-marg text-left active button" data-toggle="tab" role="tab" href="#table">Expense Summary</a>
-						{{-- Commenting the below out as we don't have data for them yyet --}}
+						{{-- Commenting the below out as we don't have data for them yet --}}
 						{{-- <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Project Summary</a>
 						<a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Purchases Summary</a> --}}
-						<a class="btn-marg text-left button" data-toggle="tab" role="tab" href="#description">No Description</a>
+						{{-- <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="#description">No Description</a> --}}
 						<a class="btn-marg text-left button" data-toggle="tab" role="tab" href="#comments">Comments</a>
 					</div>
 				</div>
@@ -63,7 +73,7 @@
 				<div class="table-section reponsive-div">
 					<div class="main-table">
 						<div class="table-top p-3 d-flex justify-content-between align-items-center">
-							<h3 class="align-self-center">Date: <span class="said-date">{{ date("dS, M Y") }}</span></h3>
+							<h3 class="said-date-caption" class="align-self-center">Date: <span class="said-date">{{ date("dS, M Y") }}</span></h3>
 							<button class="nav-button" data-toggle="modal" data-target="#filterModal">Filter<i class="fas fa-filter px-1" style="font-size: var(--fs-reg);"></i></button>
 						</div>
 						<!-- Filter Modal -->
@@ -143,12 +153,12 @@
 				</div>
 			</section>
 		</div>
-		<div class="section-2 tab-pane fade" id="description" role="tabpanel">
+		{{-- <div class="section-2 tab-pane fade" id="description" role="tabpanel">
 			<section class="container bordered">
 				<div class="table-section reponsive-div">
 					<div class="main-table">
 						<div class="table-top p-3 d-flex justify-content-between align-items-center">
-							<h3 class="align-self-center">Payments without description: <span class="said-date"></span></h3>
+							<h3 class="said-date-caption" class="align-self-center">Payments without description: <span class="said-date"></span></h3>
 							<button type="button"  data-toggle="modal" data-target="#filterModal2">Filter <i class="fas fa-filter px-1"></i></button>
 						</div>
 						<!-- Filter Modal -->
@@ -170,7 +180,7 @@
                                             <p id="view" class="font-weight-bold">View by</p>
                                             <div id="date-btn" class="row">
                                                 <div class="col-4">
-                                                <button id="day" class="btn btn-block btn-date day active">Day</button>
+                                                <button id="day2" class="btn btn-block btn-date day active">Day</button>
                                                 </div>
                                                 <div class="col-4">
                                                 <button id="month" class="btn btn-block month btn-date">Month</button>
@@ -212,8 +222,7 @@
 						<div id="main-table2" data-id="apply-filter2" class="table-data">
 							@include('pages.expense.tables.ministries_nodesc')
 						</div>
-						<!---PAGINATION--->
-						{{-- @include('partials.pagination', ['data' => $collection['nondescriptive']]) --}}
+						
 					</div>
 				</div>
 			</section>
@@ -226,7 +235,7 @@
 					</div>
 				</div>
 			</section>
-		</div>
+		</div> --}}
 		<div class="section-2 tab-pane fade" id="comments" role="tabpanel">
 			@include('partials.comments')
 		</div>

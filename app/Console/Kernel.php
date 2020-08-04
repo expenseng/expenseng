@@ -26,11 +26,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-         $schedule->command('SendTweet')->monthly();
-         $schedule->command('budgetTweet')->weekly()->mondays()->at('13:00');
-         $schedule->command('ReportLogging')->daily();
-         $schedule->command('parse:daily')->everyMinute();
-         $schedule->command('parse:sheet')->everyMinute();
+//         $schedule->command('SendTweet')->monthly();
+//         $schedule->command('budgetTweet')->weekly()->mondays()->at('13:00');
+         $schedule->command('ReportLogging')->daily()->at('02:00');
+         $schedule->command('parse:sheet')
+             ->daily();
+         $schedule->command('queue:work --once --queue=ceSearch')->everyFourHours();
+         $schedule->command('queue:work  --queue=default --stop-when-empty')->daily();
     }
 
     /**

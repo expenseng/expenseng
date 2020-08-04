@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css" />
 <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
     <link rel="stylesheet" href="{{asset('css/dash.css')}}">
+<!-- Global site tag (gtag.js) - Google Analytics -->
 
 @endpush
 <title>
@@ -41,7 +42,7 @@
                             </div>
                         </div>
                         <div class="card-number">
-                            <h3 class="">0
+                            <h3 class=""> {{$comments}}
 
                             </h3>
                         </div>

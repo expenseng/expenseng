@@ -10,7 +10,7 @@
         </div>
         <div v-if="showReply">
             <div class="container p-2" v-for="reply in replies" :key="reply.replyId">
-                <div class="container">
+                <div class="container" v-if="reply.numOfFlags < 1">
                     <div class="row container occupy">
                         <div class="col-sm-1 mt-1 row d-flex container">
                             <user-image :isSmall="true" :ownerId="reply.ownerId"></user-image>
@@ -18,7 +18,7 @@
                         <div class="col-sm-11 ">
                             <div class="d-flex justify-content-between ">
                                 <div class="d-flex no-show">
-                                    <username :ownerId="reply.ownerId"></username>
+                                    <username :object="reply"></username>
                                     <p class="ml-3 grey-text small mt-1">{{ reply.createdAt | ago }}</p>
                                 </div>
                                 <div class="dropdown">

@@ -2,7 +2,7 @@
 @push('css')
 <link rel="stylesheet" href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2">
   
-<title>ExpenseNg - Edit Cabinet</title>
+<title>ExpenseNg - Create Cabinet</title>
 @endpush
 
 @section('content')
@@ -20,7 +20,7 @@
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="section-block" id="basicform">
-                                    <h3 class="section-title">Edit Cabinet</h3>
+                                    <h3 class="section-title">Create New Cabinet</h3>
                                     <p></p>
                                 </div>
                                 <div class="card">
@@ -52,14 +52,14 @@
                                                 class="form-control">
                                             </div>
                                             <div class="form-group">
-                                                <label for="inputPassword">Ministry Code</label>
+                                                <label for="inputPassword">Ministry</label>
                                                 <select name="code" class="form-control" >
 
-                                                <option value="">Select Ministry Code</option>
+                                                <option value="">Select Ministry </option>
                                                 @foreach($ministry_codes as $ministry_code)
                                                 <option name="code" class="form-control" 
                                                 value="{{$ministry_code->code}}" required>
-                                                    {{$ministry_code->code}}
+                                                    {{$ministry_code->name}}
                                                 </option>
                                                 @endforeach
                                                 </select>

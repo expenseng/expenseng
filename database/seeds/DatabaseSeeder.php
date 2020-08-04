@@ -11,8 +11,6 @@ include 'CabinetSeeder.php';
 include 'StatusSeeder.php';
 include 'RoleSeeder.php';
 include 'UserSeeder.php';
-include 'FeedbackSeeder.php';
-include 'ActivitySeeder.php';
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,16 +21,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(SectorSeeder::class);
-        $this->call(CompanySeeder::class);
-        $this->call(ExpenseSeeder::class);
-        $this->call(PaymentSeeder::class);
-        $this->call(BudgetSeeder::class);
+        // $this->call(CompanySeeder::class);
+        // $this->call(ExpenseSeeder::class);
+        // $this->call(BudgetSeeder::class);
         $this->call(MinistrySeeder::class);
-        $this->call(CabinetSeeder::class);
+        // $this->call(CabinetSeeder::class);
         $this->call(StatusSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
-        $this->call(FeedbackSeeder::class);
-        $this->call(ActivitySeeder::class);
     }
 }

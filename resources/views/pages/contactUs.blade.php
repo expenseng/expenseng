@@ -3,6 +3,15 @@
   <title>FG Expense - Contact</title>
   <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
   <link rel="stylesheet" href="{{ asset('css/contactUs.css') }}">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174166304-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-174166304-1');
+</script>
 @endpush
 
 @section('content')
@@ -40,7 +49,10 @@
                 <div class="form-group col-md-12 second">
                     <input type="email" name="email" class="form-control col-md-5" id="email" placeholder="Email Address" required>
 
-                    <input type="tel" name="phone" class="form-control col-md-5" id="phone" placeholder="Phone number" required>
+                    <input type="tel" name="phone" class="form-control col-md-5" id="phone" placeholder="Phone number">
+                </div>
+                <div class="form-group col-md-12">
+                    <input type="text"  name="subject" class="form-control" id="subject" placeholder="Subject" required>
                 </div>
                 <div class="form-group col-md-12">
                     <textarea type="text" class="form-control" id="message" name="message" placeholder="Your message" rows="5" required></textarea>

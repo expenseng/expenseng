@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.2">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
     <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="{{asset('css/jquery.toast.min.css')}}">
 <title>ExpenseNg - Sheets</title>
 @endpush
 
@@ -26,7 +27,7 @@
          @include('backend.partials.flash')
         </div>
          {{-- Flash message end--}}
-      
+
         <div class="row">
                     <div class="col-xl-12">
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -53,7 +54,7 @@
                                         </thead>
 
                                         <tbody>
-                                        
+
                                         @if (count($sheets) > 0)
 
                                             <tr>
@@ -63,56 +64,33 @@
                                                 </td>
                                                 <td>{{$sheet->type}}</td>
                                                 <td>{{$sheet->link}}</td>
-                                                <td>{{$sheet->parsed ? 'Parsed' : 'New' }}</td>
+                                                <td id="{{$sheet->id}}">{{$sheet->parsed ? 'Parsed' : 'New' }}</td>
                                                 @can('manage')
                                                 <td>
                                                     <div class="row">
                                                         <div class="col-md-6">
-                                                            
-                                                            <a target="_blank" href="{{$sheet->link}}"><i class="fa fa-download" style="color: #00945E"></i></a>
-                                                            
-                                                        </div>
-                                                        <!--modal begin-->
-                                                        
-                                                            <!-- <div class="col-md-6">
-                                                            @can('delete')
-                                                            <i class="fa fa-trash" data-toggle="modal" data-target="{{'#exampleModal'. $sheet->id}}" style="color: red"></i>
-                                                            @endcan
 
-                                                            <div class="modal fade" id="{{'exampleModal' . $sheet->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog" role="document">
-                                                                <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Are you sure???</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                Deleting <strong>{{$sheet->name}}</strong> from Sheets?
-                                                                </div>
-                                                                {{'/admin/sheet/delete/'. $sheet->id}}
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                    <form action="#" method="post" >
-                                                                @method('delete')
-                                                                @csrf
-                                                                <button type="" class="btn btn-danger">Delete</button>
-                                                                </form>
-                                                                </div>
-                                                                </div>
-                                                                </div>
-                                                                </div>
-                                                    </div>-->
+                                                            <a target="_blank" href="{{$sheet->link}}"><i class="fa fa-download" style="color: #00945E"></i></a>
+
+                                                        </div>
+                                                        @if(!$sheet->parsed)
+                                                        <div class="col-md-6" id={{"button-".$sheet->id}}>
+
+
+
+                                                         <a href="{{$sheet->parsed ? '#' : 'admin/sheet/parse/'. $sheet->id}}" onclick='event.preventDefault(); jQuery.fn.parse({{$sheet->id}})' ><i class="fa fa-database"></i></a>
+
+                                                        </div>
+                                                        @endif
                                                     </div>
 
-                                                    
+
                                                 </td>
                                                 @endcan
                                             </tr>
                                         @endforeach
                                         @endif
-                                        
+
                                         </tbody>
                                         <tfoot>
                                             <tr>
@@ -147,17 +125,59 @@
     <!-- bootstap bundle js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.js"></script>
-    
+
     <!-- slimscroll js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/slimscroll/jquery.slim.min.js"></script>
-    
+
     <!-- datatable  js -->
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-    
+        <script src="{{asset('js/jquery.toast.min.js')}}"></script>
     <script>
         jQuery(document).ready(function() {
-    $('#example').DataTable();
-    } );
+            jQuery.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            jQuery  ('#example').DataTable();
+            jQuery.fn.parse = function(data) {
+                    $id = data;
+                    var text = "<div class=\"d-flex justify-content-center\"><div class='col-4 offset-4'><div class=\"spinner-border text-light\" role=\"status\">\n" +
+                        "  <span class=\"sr-only\">Loading...</span>\n" +
+                        "</div></div></div>"
+                    var toast =   jQuery.toast({
+                        heading: 'parsing',
+                        text: text,
+                        showHideTransition: 'slide',
+                        icon: 'info',
+                        position: 'top-center',
+                        hideAfter: false
+                    });
+                    jQuery.ajax({
+                        url: "{{ URL::to('parse_sheet') }}",
+                        type: "post",
+                        data: {
+                            'id': $id
+                        },
+                    }).done(function(data) {
+                        toast.update({
+                            heading: 'Parsed',
+                            text: data,
+                            icon: 'success',
+                        });
+                        jQuery("#"+$id).empty().html("parsed");
+                        jQuery("#button-"+$id).hide();
+                    }).fail(function(data) {
+                        toast.update({
+                            heading: 'Error',
+                            text: 'sheet not parses',
+                            icon: 'error',
+
+                        });
+                    })
+                };
+
+            });
     </script>
 
 

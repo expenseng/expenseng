@@ -13,7 +13,7 @@ class Scrapping
 
     public const dailyPaymentPattern = '/-daily-payment/i';
     public const monthlyBudgetPattern = '/-fgn-monthly/i';
-    public const quarterlyBudgetPattern = '/-fgn-quarterly/';
+    public const quarterlyBudgetPattern = '/-fgn-quarterly/i';
     public const uri = 'https://opentreasury.gov.ng';
     public const ADMIN = "ADMIN";
     public const ECONOMIC = "ECONOMIC";
@@ -25,6 +25,9 @@ class Scrapping
     private $economic_cat = array();
     private $function_cat = array();
     private $allLatest = array();
+    private $_2018 = false;
+    private $year = ' ';
+
     /**
      * @param string $year
      * @param string $searchPattern
@@ -33,13 +36,24 @@ class Scrapping
 
     public function openTreasury(string $year, string $searchPattern = Scrapping::dailyPaymentPattern)
     {
+        $this->year = $year;
+        if (($year == '2018') && ($searchPattern  == '/-fgn-monthly/i')) {
+            $searchPattern =  '/monthly-budget-performance-fgn-total/i';
+            $this->_2018 = true;
+        }
+        if (($year == '2018') && ($searchPattern  == '/-fgn-quarterly/i')) {
+            $searchPattern = '/523-quarterly-budget-performance-fgn/i';
+            $this->_2018 = true;
+        };
         switch ($searchPattern) {
             case Scrapping::dailyPaymentPattern:
                 $this->pathPrefix = '/daily/';
                 break;
+            case '/monthly-budget-performance-fgn-total/i':
             case Scrapping::monthlyBudgetPattern:
                 $this->pathPrefix = '/monthly/';
                 break;
+            case '/523-quarterly-budget-performance-fgn/i':
             case Scrapping::quarterlyBudgetPattern:
                 $this->pathPrefix = '/quarterly/';
                 break;
@@ -50,13 +64,13 @@ class Scrapping
         $test =  HttpClient::create(['verify_peer' => false,
             'verify_host' => false,]);
         $client = new Client($test);
-        $crawler = $client->request('GET', 'https://opentreasury.gov.ng');
+        $crawler = $client->request('GET', 'https://opentreasury.gov.ng', ['timeout'=> 20]);
         $crawler->selectLink($year)->each(function ($node) use ($searchPattern, $client) {
             $array = $node->extract(array('href'));
             if ($array[0] != "#") {
                 if (preg_match($searchPattern, $array[0])) {
                     $client->click($node->link())->selectLink('download')->each(function ($node) {
-                        if (preg_match('/\.xlsx/i', $node->extract(array('href'))[0])) {
+                        if (preg_match('/\.xls/i', $node->extract(array('href'))[0])) {
                             array_push($GLOBALS['return'], Scrapping::uri.$node->extract(array('href'))[0]);
                         };
                     });
@@ -262,10 +276,17 @@ class Scrapping
 
     public function filterUrl(string $url)
     {
-        if(preg_match('/2018/',$url)){
-            return ['link'=>$url ,'type' => explode('/', $url)[4],'parsed'=>false];
+        if ($this->_2018 == true) {
+            if (preg_match('/quart/i', $url)) {
+                return ['link'=>$url ,'type' => 'quarterlyBudget2018','parsed'=>false,'year'=>$this->year];
+            } else {
+                return ['link'=>$url ,'type' => 'monthlyBudget2018','parsed'=>false,'year'=>$this->year];
+            }
         }
-        return ['link'=>$url ,'type' => explode('/', $url)[5],'parsed'=>false];
+        if (preg_match('/2018/', $url)) {
+            return ['link'=>$url ,'type' => explode('/', $url)[4],'parsed'=>false,'year'=>$this->year ];
+        }
+        return ['link'=>$url ,'type' => explode('/', $url)[5],'parsed'=>false, 'year'=>$this->year ];
     }
 
     /**
@@ -322,5 +343,61 @@ class Scrapping
         array_push($array, end($this->admin_cat));
         $this->allLatest = $array;
         return $this;
+    }
+
+    /**
+     * @param $string
+     * @return array|bool
+     */
+    public static function checkCompany($string)
+    {
+        try {
+            $string = explode('LIMITED', $string)[0];
+            $string = explode('LTD', $string)[0];
+            $GLOBALS['array'] = array();
+            $header = ['user-agent' => "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/W.X.Y.Z Safari/537.36"];
+            $test = HttpClient::create(['headers' => $header]);
+            $client = new Client($test);
+            $crawler = $client->request('GET', 'https://ng-check.com/');
+            $form = $crawler->filter('form')->form();
+            $test = $crawler->selectLink('Search');
+            $crawler = $client->submit($form, ['query'=>$string]);
+            $crawler->filter('a')->each(function ($node) use ($string, $client) {
+                $name = $node->html();
+                if ($name  == $string) {
+                    $page2  = $client->click($node->link());
+                    $page2->filter('table')->eq(2)->each(function ($node) {
+                        $node->filter('td')->each(function ($node) {
+                            array_push($GLOBALS['array'], $node->html());
+                        });
+                    });
+                } else {
+                    $string1 = explode(" ", implode('\.', explode('.', $string)));
+                    $string = implode('\.', explode('.', $string));
+                    if (preg_match('/'.$string.'/i', $name)) {
+                        $page2  = $client->click($node->link());
+                        $page2->filter('table')->eq(2)->each(function ($node) {
+                            $node->filter('td')->each(function ($node) {
+                                array_push($GLOBALS['array'], $node->html());
+                            });
+                        });
+                    } elseif (preg_match('/'.$string1[0].'/i', $name)) {
+                        $page2  = $client->click($node->link());
+                        $page2->filter('table')->eq(2)->each(function ($node) {
+                            $node->filter('td')->each(function ($node) {
+                                array_push($GLOBALS['array'], $node->html());
+                            });
+                        });
+                    }
+                }
+            });
+            $array = array();
+            for ($i = 0; $i < count($GLOBALS['array']); $i+=2) {
+                array_push($array, ['name'=> $GLOBALS['array'][$i],'role' => $GLOBALS['array'][$i+1]]);
+            }
+            return $array;
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 }

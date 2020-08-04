@@ -20,7 +20,7 @@
     font-size: 36px;
     line-height: 152%;
     color: #353A45;
-    margin-bottom: 32px;
+    margin-top: -100px;
 }
 
 .heading p {
@@ -38,6 +38,8 @@
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
     height: 20vh;
+    margin-top: -60px;
+    margin-bottom: 2rem !important;
 }
 
 .bd-2 {
@@ -109,7 +111,7 @@ th{
 }
 
 .table-overflow {
-    text-indent: 7vw;
+    text-indent: 3vw;
 }
 .clear {
     clear: both;
@@ -160,14 +162,35 @@ select {
     border-radius: 3px
 }
 
-.bg-inner {
-    padding-bottom: 38.59375vh
-}
+
 
 .port-row {
     width: 30vw
 }
 
+
+@media screen and (max-width: 1440px) {
+.table-overflow {
+    text-indent: 8vw;
+}
+}
+
+@media screen and (max-width: 1085px) {
+    .table-overflow {
+        text-indent: 13vw;
+    }
+    }
+
+@media screen and (max-width: 1024px) {
+    .table-overflow {
+        text-indent: 13vw;
+    }
+    }
+    @media screen and (max-width: 991px) {
+    .table-overflow {
+        text-indent: 8vw;
+    }
+}
 
 
 @media screen and (max-width: 850px) {
@@ -188,7 +211,17 @@ select {
 
 
     }
+
+.table-overflow {
+    text-indent: 8vw;
 }
+}
+
+@media screen and (max-width: 768px) {
+    .table-overflow {
+        text-indent: 10vw;
+    }
+    }
 
 @media screen and (max-width: 461px) {
 .bd-1 h2, .bd-2 h2 {

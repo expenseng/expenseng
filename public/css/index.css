@@ -202,20 +202,23 @@ p.tag{
     width: 70%;
     height: 100%;
     border: white 0.7px solid;
-    transition: ease-in-out all 0.5s;
+    /* transition: ease-in-out all 0.5s; */
     padding: 0rem;
 }
 .card1{
     background: url(../images/card2.jpg);
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 .card2{
     background: url(../images/road.svg);
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 .card3{
     background: url(../images/oil-rig.jpg);
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 /* Carousel Styling */
@@ -283,8 +286,8 @@ p.tag{
     font-weight: 500;
 }
 .project p#cost{
-    font-size: var(--fs-h3);
-    font-weight: 700;
+    font-size: var(--fs-reg);
+    font-weight: 600;
 }
 .warning{
     font-size: 1rem;
@@ -307,18 +310,21 @@ p.label{
     background: #353A45;
     width: 65%;
     left: 0;
-    padding: 0.8rem;
+    padding: 0.5rem 1rem;
     color: white;
     font-size: var(--fs-h3);
     line-height: 190%;
     /* margin-top: -3rem; */
     text-align: end;
 }
+p a{
+    color: #33A97E;
+}
 div.expenses{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 .expenses a{
     color: #33A97E;
@@ -327,10 +333,13 @@ div.expenses{
 }
 .exp-card{
     width: 100%;
-    margin: 2%;
-    padding: 1.1rem;
+    /* margin: 2%; */
+    /* padding: 1.1rem; */
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04);
     box-sizing: border-box;
+    /* -ms-flex: 0 0 25%; */
+    flex: 0 0 24%;
+    max-width: 24%;
 }
  div.graph-cont{
    position: relative;
@@ -342,11 +351,11 @@ div.graph-cont img:nth-child(1){
     position: absolute;
 }
 p.exp-card1{
-     font-size: var(--fs-reg);
+     font-size: calc( var(--fs-reg) - 0.5) ;
      font-weight: 700;
 }
 p.exp-card2{
-     font-size: var(--fs-reg);
+     font-size: calc(var(--fs-reg) - 0.6);
      color: #33A97E;
      font-weight: 700;
 }
@@ -384,7 +393,12 @@ p.profile{
     flex-direction: column;
     padding: 1.5rem;
     min-height: 450px;
+    margin-top: 3rem;
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04)
+}
+.ministry-stat:hover{
+    cursor: pointer;
+    box-shadow: 0 .7rem 1.4rem rgba(0,0,0,.15) !important;
 }
 .ministry-stat .exp-card{
     height: auto;
@@ -428,6 +442,18 @@ p.profile{
    border: none;
    border-radius: 0.3rem;
 }
+#ministry_list{
+	position:absolute;
+    margin-bottom: 2rem;
+    z-index: 1;
+}
+.select-holder {
+	display:inline-block;
+	position:relative;
+	width:200px;
+	height:1.5em;
+	background:#f9f9f9;
+}
 .companies{
    display: flex;
    flex-wrap: wrap;
@@ -438,7 +464,12 @@ p.profile{
     display: flex;
     flex-direction: column;
     padding: 2rem;
+    align-items: center;
     box-shadow: 0px 0px 1.01639px rgba(0, 0, 0, 0.04), 0px 4.06557px 8.13115px rgba(0, 0, 0, 0.04), 0px 16.2623px 24.3934px rgba(0, 0, 0, 0.04), 0px 24.3934px 32.5246px rgba(0, 0, 0, 0.04);
+}
+.comp-card:hover{
+    cursor: pointer;
+    box-shadow: 0 .7rem 1.4rem rgba(0,0,0,.15) !important;
 }
 .companies .comp-card:nth-child(even){
     margin: 2rem 0rem;
@@ -449,7 +480,7 @@ p.profile{
 .awarded{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 2rem;
+    align-items: center;
 }
 .profile p:nth-child(1){
     font-size: var(--fs-h5);
@@ -473,8 +504,7 @@ p.profile{
 }
 .vll{
     align-items: center;
-    /* margin-left: 10rem;
-    margin: 50px; */
+    
 }
 .convo-background{
     background-image: linear-gradient(to bottom, rgba(49, 139, 108, 0.89), rgba(49, 139, 108, 0.89), rgba(49, 139, 108, 0.89)),url(../images/twitter1.png);
@@ -516,7 +546,7 @@ p.profile{
 
 }
 #open{ 
-    /* margin: 1rem auto; */
+    margin: 1rem 0;
     width: 10rem;
     padding: 0.4rem 3rem;
 }
@@ -541,7 +571,16 @@ p.profile{
 .accessibility-text a:active{
     color: #005938;
 }
-
+.subscribe-button{
+    background-color: #33A97E;
+}
+.subscribe-form{
+    color: #353A45;
+}
+.company-data{
+    align-items: center;
+    margin-top: 4.3rem;
+}
 
 /* Responsiveness */
 
@@ -709,6 +748,14 @@ p.profile{
     .twt-handle a{
         font-size: var(--fs-h5);
     }
+    .flex-wrap{
+        justify-content: space-between;
+    }
+    .exp-card{
+        flex: 0 0 48%;
+        max-width: 48%;
+        margin-top: 2%;
+    }
 }
 @media only screen and (min-width: 768px) {
     .target{
@@ -723,9 +770,6 @@ p.profile{
     }
     p.label{
         width: 47%;
-    }
-    .exp-card{
-        width: 44%;
     }
     .ministry-heading{
         flex-direction: row;
@@ -843,6 +887,14 @@ p.profile{
         font-weight: 200;
         text-align: left;
     }
+    .flex-wrap{
+        justify-content: space-between;
+    }
+    .exp-card{
+        flex: 0 0 48%;
+        max-width: 48%;
+        margin-top: 2%;
+    }
     #compu{
         font-size: 15px;
     }
@@ -880,7 +932,12 @@ p.profile{
         text-align: center;
     }
 }
-
+@media only screen and (max-width:460px){
+    .exp-card{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
 @media all and (max-width: 425px){
     :root{
         --fs-h1: 2.45rem;

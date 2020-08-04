@@ -166,3 +166,35 @@ jQuery($=> {
       })
   }
 });
+
+// slider
+// $(document).ready(() =>{
+//     $('.slick').slick({
+//         autoplay: true,
+//         speed: 2000,
+//     })
+// })
+
+
+//make cards clickable
+$(".comp-card").click(function() {
+    window.location = $(this).find("a").attr("href"); 
+    return false;
+});
+
+$(".ministry-stat").click(function(e) {
+    console.log(e.target)
+    let link = document.getElementById('link');
+    if(e.target.id !== 'top-company'){
+        let ministry_list = document.getElementById('ministry_list');
+        let ministry = ministry_list.value;           
+        link.href = `/ministries/${ministry}`;
+    }else{
+        let topCoy = $('#top-company').text()
+        let routeName = topCoy.replace(/\s/g, '-')
+        link.href = `/contractors/${routeName}`
+    }
+    window.location = $(this).find("a").attr("href");
+    return false;
+});
+

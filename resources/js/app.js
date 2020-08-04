@@ -8,7 +8,6 @@ require('./bootstrap');
 import VueApexCharts from 'vue-apexcharts';
 import TextareaAutosize from 'vue-textarea-autosize'
 import VueSweetalert2 from 'vue-sweetalert2';
-
 window.Vue = require('vue');
 Vue.use(TextareaAutosize);
 Vue.use(VueSweetalert2);
@@ -30,6 +29,7 @@ Vue.component('chart', require('./components/Payments/Chart.vue').default);
 Vue.component('govt-expense', require('./components/Home/GovtExpenses.vue').default);
 Vue.component('admin-comments', require('./components/Backend/AdminComments.vue').default);
 Vue.component('ministry-expense', require('./components/Home/MinistryExpense.vue').default);
+Vue.component('ministry-budgets', require('./components/Home/MinistryBudget.vue').default);
 
 
 /**

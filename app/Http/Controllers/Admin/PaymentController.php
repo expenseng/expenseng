@@ -33,9 +33,9 @@ class PaymentController extends Controller
         if (Gate::denies('manage-user')) {
             return redirect(route('ministry.view'));
         }
-       
 
-        $payments = Payment::all();
+
+        $payments = Payment::paginate(20);
         return view('backend.payments.index')->with([
             'payments' => $payments,
         ]);
@@ -62,7 +62,7 @@ class PaymentController extends Controller
         $other_beneficiaries = array('name'=>'Others');
         array_push($beneficiaries, $other_beneficiaries);
 
-            
+
         //dump($organizations);
 
         return view('backend.payments.create')->with([
@@ -184,7 +184,7 @@ class PaymentController extends Controller
         $auth = Auth::user();
 
         if ($update) {
-           
+
             Activites::create([
             'description' =>$auth->name.' Updated payment' . $request->payment_no . 'on payments table',
                 'username' => $auth->name,
@@ -213,7 +213,7 @@ class PaymentController extends Controller
         if (Gate::denies('delete')) {
             return redirect(route('payments.view'));
         }
-        
+
         $payment = Payment::findOrFail($id);
         $payment->delete();
 

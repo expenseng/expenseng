@@ -4,11 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Budget;
 use App\Ministry;
+use App\Cabinet;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        if (Gate::denies('manage-user')) {
+            return redirect(route('ministry.view'));
+        }
+       
 
+        $cabinet = Cabinet::paginate(20);
+        dump($cabinet);
+        //return view('backend.cabinet.view')->with([
+            //'cabinet' => $cabinet,
+        
+    }
     public function contactUs()
     {
         return view('pages.contactUs');
@@ -102,8 +120,9 @@ class PageController extends Controller
     }
 
     public function handles()
-    {
-        return view('pages.handles');
+    {   $ministries = Ministry::all();
+        $cabinet = Cabinet::all();
+        return view('pages.handles',compact('ministries','cabinet'));
     }
 
     public function contactEmail()
@@ -153,5 +172,18 @@ class PageController extends Controller
     public function accessibility()
     {
         return view('pages.terms.accessibility');
+    }
+
+    public function SearchHandles( Request $request){
+       
+        $handles = Cabinet::where('name', 'LIKE', '%' . $request -> get('searchQuest'). '%')->get();
+      
+        return json_encode( $handles);
+    }
+    public function SearchHandle( Request $request){
+        
+         
+        $handle = Ministry::where('name', 'LIKE', '%' . $request -> get('searchQuests'). '%')->get();
+        return json_encode( $handle);
     }
 }

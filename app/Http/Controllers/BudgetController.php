@@ -83,29 +83,17 @@ class BudgetController extends Controller
         //
     }
 
-    public function health()
+    public function yearlyBudgets()
     {
-        $response = [
-            [
-                'label' => 'Health',
-                'data' => Budget::where('project_name', 'Health')->get()
-            ],
-            [
-                'label' => 'Defence',
-                'data' => Budget::where('project_name', 'Defence')->get(),
-            ],
-            [
-                'label' => 'Housing',
-                'data' => Budget::where('project_name', 'Housing and Community Amenities')
-                                ->get(),
-            ],
-            [
-                'label' => 'Education',
-                'data' => Budget::where('project_name', 'Education')
-                                ->get(),
-            ]
-        ];
+        //we are fetching only columns where {org_name} matches ministry
+        $budget = Budget::where('org_name', 'LIKE', '%Ministry%')->get();
+
+        $trend = [];
         
-        return $response;
+        foreach($budget as $chart){
+            $trend[$chart->org_name]['data'][] = ["year" => $chart->year, "amount" => $chart->amount];
+        }
+        
+        return $trend;
     }
 }
