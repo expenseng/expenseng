@@ -221,10 +221,10 @@
                     if(res.length >0){
                         
                         $.each(res, function(index, value){
-                        tableRow = '<tr><td>'+value.role+'</td><td>'+value.name+'</td><td class="table-overflow"> <a href="https://twitter.com/{{$cabinet->twitter_handle}}" target="_blank">'
+                        tableRow += '<tr><td>'+value.role+'</td><td>'+value.name+'</td><td class="table-overflow"> <a href="https://twitter.com/{{$cabinet->twitter_handle}}" target="_blank">'
                             +value.twitter_handle+'</a></td><tr>';
 
-                        
+                        $('#dynamic-row').html(tableRow);
                             
 
                         });
@@ -232,22 +232,13 @@
                     else
                     {
                         tableRow += '<tr>';
-                        tableRow += '<td colspan="5">NO ministry with name found</td>';
+                        tableRow += '<td colspan="5">No minister_handle with name found</td>';
                         tableRow += '</tr>';
-                        
+                        $('#dynamic-row').html(tableRow);
                        
                     }
 
-                    $('#dynamic-row').html('');
-               
-                    $.each(res, function(index, value){
-                        tableRow = '<tr><td>'+value.role+'</td><td>'+value.name+'</td><td class="table-overflow"> <a href="https://twitter.com/{{$cabinet->twitter_handle}}" target="_blank">'
-                            +value.twitter_handle+'</a></td><tr>';
-
-                        $('#dynamic-row').append(tableRow);
-                        
-
-                    });
+                
                     
                 }
                 
@@ -283,7 +274,7 @@
                     else
                     {
                         tableRow += '<tr>';
-                        tableRow += '<td colspan="5">NO ministry with name found</td>';
+                        tableRow += '<td colspan="5">NO ministry_handle with name found</td>';
                         tableRow += '</tr>';
                         $('#dynamic-rows').html(tableRow);
                        
