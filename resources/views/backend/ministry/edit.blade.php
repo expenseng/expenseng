@@ -81,7 +81,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword">Ministry Head</label>
-                                                <input id="inputPassword" name="ministry_head" type="text" 
+                                                <input id="inputPassword" name="head" type="text" 
                                                 value="{{$details->head}}"placeholder="e.g Audu Ogbe" class="form-control" required />
                                             </div>
                                             <div class="form-group">
