@@ -12,7 +12,7 @@
         <div>  
             <div class="">
                 <a href="{{ route('blogetc.admin.index') }}"
-                   class="list-group-item list-group-item-action @if(Request::route()->getName() === 'blogetc.admin.index') active @endif" style="background: #6c757d">
+                   class="list-group-item list-group-item-action @if(Request::route()->getName() === 'blogetc.admin.index') active @endif text-white" style="background: #6c757d">
                     <i class="fa fa-th fa-fw" aria-hidden="true"></i>
                     All Posts - {{\WebDevEtc\BlogEtc\Models\Post::count()}}
                 </a>
