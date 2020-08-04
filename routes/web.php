@@ -273,7 +273,10 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
       Route::get('/sheet/parse/{sheet_id}', 'Admin\SheetController@parseSheet')
       ->name('sheet.parse');
 
-    Route::get('/website_stats', 'Website_Statistics_Controller@index')->name('website_stats');
+      Route::get('/website_stats', 'Website_Statistics_Controller@index')->name('website_stats');
+
+      // BLOG
+       Route::get('/blog', 'Admin\ManagePostsController@index')->name('blogetc.admin.index');
  });
 
 
