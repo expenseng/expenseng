@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddYearToReportsTable extends Migration
+class UpdatePaymentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddYearToReportsTable extends Migration
      */
     public function up()
     {
-        Schema::table('reports', function (Blueprint $table) {
-            $table->string('year');
+        Schema::table('payments', function (Blueprint $table) {
+            //
+            $table->boolean('tweeted')->default(false);
         });
     }
 
@@ -25,9 +26,9 @@ class AddYearToReportsTable extends Migration
      */
     public function down()
     {
-        Schema::table('reports', function (Blueprint $table) {
+        Schema::table('payments', function (Blueprint $table) {
             //
-            $table->dropColumn('year');
+            $table->dropColumn('tweeted');
         });
     }
 }

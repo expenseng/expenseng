@@ -90,30 +90,51 @@ class CommentService{
         })
     }
 
-    storeComments(origin, comment, email, name){
+    /**
+     * Generate a name and store in this browser
+     * Next time use this name instead of generating 
+     * a new one.
+     */
+    anonymousName(){
+        if(document.cookie.indexOf("comment_slug") > -1){
+            return this.getCookieValue("comment_slug"); //return stored name
+        }else{
+            var Chance = require('chance');
+            var chance = new Chance();
+            
+            const name = chance.first()  + " of Lagos";
+            
+            //store in cookie for future use.
+            document.cookie = "comment_slug="+name;
 
-        if(!this.cookieExists()){
+            return name;
+        }
+    }
+
+    storeComments(origin, comment, email, name, anon=false){
+
+        if(!this.cookieExists() && !anon){
             this.firstComment(email, name)
         }
 
         return axios.post('/api/comments', {
             origin: origin,
             content: comment,
-            ownerId: this.email,
-            refId: this.name,
+            ownerId: anon ? "anonymous" : this.email,
+            refId: anon ? this.anonymousName() : this.name,
         }).then(response => {
             return response.data;
         })
     }
 
-    storeReply(comment, email, name, commentId){
-        if(!this.cookieExists()){
+    storeReply(comment, email, name, commentId, anon = false){
+        if(!this.cookieExists() && !anon){
             this.firstComment(email, name)
         }
 
         return axios.post('/api/comments/' + commentId + '/replies', {
             content: comment,
-            email: this.email,
+            email: anon ? this.anonymousName() : this.email,
         }).then(response => {
             return response.data;
         })

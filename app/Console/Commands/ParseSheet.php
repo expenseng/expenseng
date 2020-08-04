@@ -2,10 +2,9 @@
 
 namespace App\Console\Commands;
 
-
 use App\ParsingSheet;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
-
 
 class ParseSheet extends Command
 {
@@ -42,22 +41,47 @@ class ParseSheet extends Command
     {
         $type = $this->argument('type');
         if ($type == 'daily') {
-            $this->info('Parsing daily Sheets ');
-            $daily = new ParsingSheet();
-            $daily->dailyReport();
-            $this->info('Parsing done');
+            $this->parseDaily();
         } elseif ($type == 'monthly') {
-            $this->info('Parsing monthly Sheets ');
-            $daily = new ParsingSheet();
-            $daily->monthlyBudget();
-            $this->info('Parsing done');
-            return 0;
+            $this->parseMonthly();
         } elseif ($type == 'quarterly') {
-            $this->info('Parsing quarterly Sheets ');
-            $daily = new ParsingSheet();
-            $daily->quarterlyBudget();
-            $this->info('Parsing done');
+            $this->parseQuarterly();
+        } else {
+            $day = (int) Carbon::now()->format('d');
+            $month = (int) Carbon::now()->format('m');
+            $end = (int) Carbon::now()->endOfMonth()->format('d');
+            $this->parseDaily();
+            if ($day == $end) {
+                $this->parseMonthly();
+            }
+            if ((($month  % 4) == 0)  && ($day == $end)) {
+                $this->parseQuarterly();
+            }
+            $this->info('done');
         }
         return 0;
+    }
+    public function parseDaily()
+    {
+        $this->info('Parsing daily Sheets ');
+        $parse = new ParsingSheet();
+        $parse->dailyReport();
+        $this->info('Parsing done');
+    }
+
+    public function parseMonthly()
+    {
+        $this->info('Parsing monthly Sheets ');
+        $parse = new ParsingSheet();
+        $parse->monthlyBudget();
+        $this->info('Parsing done');
+    }
+
+    public function parseQuarterly()
+    {
+        $this->info('Parsing monthly Sheets ');
+        $parse = new ParsingSheet();
+        $parse->quarterlyBudget();
+        $this->info('Parsing done');
     }
 }

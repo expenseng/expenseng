@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Budget;
 use App\Payment;
 use App\Ministry;
+use App\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -22,7 +23,7 @@ class HomeController extends Controller
         $collection['defence'] = Budget::where('org_name', 'Defence')->get();
         $collection['housing'] = Budget::where('org_name', 'Housing and Community Amenities')->get();
         $expenses = $this->latestExpenditure();
-        $companies = DB::select('select * from companies limit 3');
+        $companies = $this->companyRecipients();
         $ministries = Ministry::select('*')
                     ->orderby('shortname', 'asc')
                     ->get();
@@ -32,6 +33,37 @@ class HomeController extends Controller
             'expenses' => $expenses,
             'companies' => $companies
             ]);
+    }
+
+    public function companyRecipients(){
+       $companies = Company::with('payments')
+                    ->inRandomOrder()
+                    ->limit(3)
+                    ->get();
+        
+       foreach($companies as $company){
+            $this->calcAmountReceived($company);
+       }       
+        return $companies;
+    }
+
+    public function calcAmountReceived($company){
+        $currentYr = date("Y");
+        $name = $company->name;
+        $beneficiary = Payment::select(
+            DB::raw(
+                'beneficiary, SUM(amount) as amount, YEAR(payment_date) as year'
+            )
+        )
+        ->where('beneficiary', $name)
+        ->whereYear('payment_date', '=', "$currentYr")
+        ->groupBy('beneficiary')
+        ->get();
+
+        $company->amount = $beneficiary[0]->amount;
+        $company->year = $beneficiary[0]->year;
+        
+        return $company;
     }
 
     public function fiveYearTrend($code="0215")
@@ -126,7 +158,8 @@ class HomeController extends Controller
                     ->select(DB::raw('SUM(amount) as amount, Month(payment_date) as month'))
                     ->where('payment_code', 'LIKE', "$code%")
                     ->whereYear('payment_date', '=', "$currentYr")
-                    ->groupBy(DB::raw('Month(payment_date) ASC'))
+                    ->groupBy('month')
+                    ->orderBy('month', 'asc')
                     ->get();
         $annualSum = $chartData->sum('amount');
         foreach($chartData as $data){
