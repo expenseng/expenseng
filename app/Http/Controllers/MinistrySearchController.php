@@ -11,12 +11,13 @@ class MinistrySearchController extends Controller
     public function filterExpenses(Request $request)
     {
         $id = $request->query('id');
+        $today = date("Y-m-d");
         $givenTime = null;
         if ($request->has('date')) {
             $givenTime = $request->query('date');
         }
 
-        $yr = date("Y");
+       
         $ministry = Ministry::find($id);
         $code = $ministry->code;
         $day_pattern = '/(\d{4})-(\d{2})-(\d{2})/';
@@ -42,7 +43,7 @@ class MinistrySearchController extends Controller
         } else {
             $payments = DB::table('payments')
                     ->where('payment_code', 'LIKE', "$code%")
-                    ->whereYear('payment_date', '>=', "$yr");
+                    ->whereDate('payment_date', '>=', $today);
         };
 
         if ($request->has('sort')) {
@@ -51,7 +52,7 @@ class MinistrySearchController extends Controller
             $payments = $payments->orderby('payment_date', 'desc');
         }
         
-        $payments = $payments->paginate(2);
+        $payments = $payments->paginate(10);
        
         return view('pages.ministry.pagination')
         ->with(['ministry'=> $ministry,

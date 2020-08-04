@@ -141,12 +141,11 @@ class MinistryController extends Controller
         $code = $ministry->code;
         $cabinets = $ministry->cabinet;
         $date = date('Y-m-d');
-
         $payments = DB::table('payments')
             ->where('payment_code', 'LIKE', "$code%")
             ->whereDate('payment_date', '=', "$date")
             ->orderby('payment_date', 'desc')
-            ->paginate(2);
+            ->paginate(10);
 
         $data = $this->fiveYearTrend($code);
         return view('pages.ministry.single')->with([

@@ -27,6 +27,7 @@
         "spatie/laravel-analytics": "^3.10",
         "squizlabs/php_codesniffer": "*",
         "thujohn/twitter": "^2.2",
+        "webdevetc/blogetc": "^8.1",
         "yoeunes/toastr": "^1.2"
     },
     "repositories": [

@@ -22,7 +22,11 @@
                 $shade = $back ? 'back': '';
                 @endphp
                     <tr  class="{{$shade}}">
-                        <td> {{$payment->description}}</td>
+                        @if($payment->description)
+                        <td>{{$payment->description}}</td>
+                        @else
+                        <td class="text-danger">Not Stated</td>
+                        @endif
                         <td> {{$payment->beneficiary}}</td>
                         <td> ₦{{number_format($payment->amount, 2)}}</td>
                         <td> {{date('jS, M Y', strtotime($payment->payment_date))}}</td>
