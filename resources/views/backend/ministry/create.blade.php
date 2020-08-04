@@ -48,6 +48,12 @@
                                                 
                                             </div>
                                             <div class="form-group">
+                                                <label for="inputEmail">Ministry Head</label>
+                                                <input id="inputEmail" name="head" type="text" 
+                                                placeholder="john" class="form-control" required />
+                                                
+                                            </div>
+                                            <div class="form-group">
                                                 <label for="sector_id">Sector</label>
                                                 
                                                 <select name="sector_id" class="form-control">
