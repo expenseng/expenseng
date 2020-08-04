@@ -27,7 +27,11 @@
                         </a>
                     </td>
                     <td>{{$expense->beneficiary}}</td>
+                    @if($expense->description)
                     <td>{{$expense->description}}</td>
+                    @else
+                    <td class="text-danger">Not Stated</td>
+                    @endif
                     <td>&#8358;{{ number_format($expense->amount) }}</td>
                     <td>{{ date('jS M, Y', strtotime($expense->payment_date))}}</td>
                 </tr>
