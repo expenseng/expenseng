@@ -5,7 +5,7 @@
                 <tr>
                     <th class="section-shadow row-ministry">Ministry</th>
                     <th class="row-project">Project</th>
-                    <th class="row-company">Benficiary</th>
+                    <th class="row-company">Beneficiary</th>
                     <th class="row-amount">Amount</th>
                     <th class="row-date">Date</th>
                 </tr>
@@ -43,7 +43,7 @@
                         @endif
                     @endforeach
                 @else
-                <tr><td></td><td style="color:red">No data available for this period<td><td></td></tr>
+                <tr><td></td><td style="color:red">No data available for this period<td><td></td><td></td></tr>
                 @endif
             </tbody>
         </table>
