@@ -74,7 +74,7 @@ chartThree.render();
 
 var options = {
   chart: {
-    height: 280,
+    height: 210,
     type: "area",
     toolbar: {
       show:false
