@@ -41,12 +41,14 @@ class SendSubNotification extends Mailable
         
         return $this->subject('EXPENSENG SUBSCRIPTION')
             ->markdown('mails.email2')
-            ->with([
+            ->with(
+                [
                 'name' => $this->name,
                 'details' => $this->details,
                 'subscription' => $this->subscription,
                 'last' => $this->last,
-                'delete' => this->delete,
-            ]);
+                'delete' => $this->delete,
+                ]
+            );
     }
 }
