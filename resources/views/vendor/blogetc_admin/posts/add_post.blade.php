@@ -13,8 +13,8 @@
 				    </form>
             </div>
             <div class="col-md-3">
-                    @include("blogetc_admin::layouts.sidebar")
-                </div>
+                @include("blogetc_admin::layouts.sidebar")
+            </div>
       	</div>
     </main>
 </div>

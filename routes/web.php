@@ -290,7 +290,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
         Route::get('/edit_post/{blogPostId}', 'Admin\ManagePostsController@edit')->name('blogetc.admin.edit_post');
         Route::patch('/edit_post/{blogPostId}', 'Admin\ManagePostsController@update')->name('blogetc.admin.update_post');
 
-        Route::group(['prefix' => 'image_uploads'], static function () {
+        Route::group(['prefix' => 'image_uploads', 'middleware' => 'auth'], static function () {
             Route::get('/', 'Admin\ManageUploadsController@index')->name('blogetc.admin.images.all');
 
             Route::get('/upload', 'Admin\ManageUploadsController@create')->name('blogetc.admin.images.upload');
@@ -302,7 +302,14 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
 
         Route::post('/delete_post/{blogPostId}', 'Admin\ManagePostsController@destroy')->name('blogetc.admin.destroy_post');
 
-        Route::group(['prefix' => 'categories'], static function () {
+        Route::group(['prefix' => 'comments'], static function () {
+            Route::get('/', 'Admin\ManageCommentsController@index')->name('blogetc.admin.comments.index');
+            Route::patch('/{commentId}', 'Admin\ManageCommentsController@approve')->name('blogetc.admin.comments.approve');
+
+            Route::delete('/{commentId}', 'Admin\ManageCommentsController@destroy')->name('blogetc.admin.comments.delete');
+        });
+
+        Route::group(['prefix' => 'categories', 'middleware' => 'auth'], static function () {
             Route::get('/', 'Admin\ManageCategoriesController@index')->name('blogetc.admin.categories.index');
 
             Route::get('/add_category', 'Admin\ManageCategoriesController@create')->name('blogetc.admin.categories.create_category');
