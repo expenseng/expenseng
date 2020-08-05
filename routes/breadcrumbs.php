@@ -93,5 +93,5 @@ Breadcrumbs::for('handles', function ($trail) {
 //Home > Blog
 Breadcrumbs::for('blog', function ($trail) {
     $trail->parent('home');
-    $trail->push('Blog', route('handles'));
+    $trail->push('Blog', route('blogetc.index'));
 });

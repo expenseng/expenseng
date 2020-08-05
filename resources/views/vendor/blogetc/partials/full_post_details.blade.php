@@ -7,12 +7,12 @@
     </a>
 @endcan
 
-<h2 class="blog_title">{{$post->title}}</h2>
-<h5 class="blog_subtitle">{{$post->subtitle}}</h5>
+<h2 class="blog_title col-md-9">{{$post->title}}</h2>
+<h5 class="blog_subtitle mb-5">{{$post->subtitle}}</h5>
 
-{!! $post->imageTag('medium', false, 'd-block mx-auto') !!}
+{!! $post->imageTag('medium', false, 'd-block mx-autov float-right m-3 shadow-sm border rounded') !!}
 
-<p class="blog_body_content">
+<p class="blog_body_content text-justify">
     {!! $post->renderBody() !!}
 
     {{--@if(config("blogetc.use_custom_view_files")  && $post->use_view_file)--}}

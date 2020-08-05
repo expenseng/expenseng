@@ -30,7 +30,7 @@
 
     <div class="row">
         <div class="col-md-6">
-            <h5 class="para">Read Inside news from Ministries Agencies and Departments on topics, ranging from Economy, Finance, FG/MDAs Projects, Politics etc.</h5>
+            <h5 class="para">Read inside news from Ministries Agencies and Departments on topics, ranging from Economy, Finance, FG/MDAs Projects, Politics etc.</h5>
         </div>
      </div>
 

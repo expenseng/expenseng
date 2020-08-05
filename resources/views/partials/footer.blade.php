@@ -23,6 +23,9 @@
                             <li class="section-footer-links">
                                 <a href="{{ route('contractors') }}">Contractors</a>
                             </li>
+                            <li class="section-footer-links">
+                                <a href="{{ route('blogetc.index') }}">Blog</a>
+                            </li>
                         </ul>
 
                     </div>

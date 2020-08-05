@@ -30,6 +30,10 @@
                     <li class="nav-item">
                         <a class="nav-link section-nav-link" href="{{ route('contractors') }}">Contractors</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link section-nav-link" href="{{ route('blogetc.index') }}">Blog</a>
+                    </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link section-nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Reference</a>
                         <div class="dropdown-menu">

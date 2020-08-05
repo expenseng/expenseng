@@ -70,9 +70,9 @@
     <textarea style="min-height:600px;" class="form-control" id="blog_post_body" aria-describedby="blog_post_body_help"
               name="post_body">{{old("post_body",$post->post_body)}}</textarea>
 
-    <div class="alert alert-danger">
-        Please note that any HTML (including any JS code) that is entered here will be
-        echoed (without escaping)
+    <div class="alert alert-default">
+       <!--  Please note that any HTML (including any JS code) that is entered here will be
+        echoed (without escaping) -->
     </div>
 </div>
 
