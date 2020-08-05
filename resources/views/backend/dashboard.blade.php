@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css" />
 <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
     <link rel="stylesheet" href="{{asset('css/dash.css')}}">
+    <link rel="stylesheet" href="{{asset('css/jquery.toast.min.css')}}">
 <!-- Global site tag (gtag.js) - Google Analytics -->
 
 @endpush
@@ -446,8 +447,6 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="alert2">
-                    </div>
                     <div class="" id="tweets">
 
                     </div>
@@ -508,6 +507,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
         integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
         crossorigin="anonymous"></script>
+    <script src="{{asset('js/jquery.toast.min.js')}}"></script>
 
 <script>
 $(document).ready( function () {
@@ -563,21 +563,22 @@ $(document).ready( function () {
                         },
                         success: function(data) {
                             jQuery('.tweet').val('');
-                            jQuery('.alert1').removeClass('alert-danger');
-                            jQuery('.alert1').fadeIn(5000);
-                            jQuery('.alert1').addClass(
-                                'alert alert-success text-white');
-                            jQuery('.alert1').html('tweet sent ');
-                            jQuery('.alert1').fadeOut(5000);
-                            // $('#savingsStatus').html(data);
+                            jQuery.toast({
+                                text: data,
+                                showHideTransition: 'slide',
+                                icon: 'success',
+                                position: 'top-center',
+                                hideAfter: 5000
+                            });
                         },
                         error: function(data) {
-                            jQuery('.tweet').val('');
-                            jQuery('.alert1').removeClass('alert-success');
-                            jQuery('.alert1').fadeIn(5000);
-                            jQuery('.alert1').addClass('alert alert-danger text-white');
-                            jQuery('.alert1').html('tweet not sent');
-                            jQuery('.alert1').fadeOut(5000);
+                            jQuery.toast({
+                                text: 'unable to tweet try again',
+                                showHideTransition: 'slide',
+                                icon: 'danger',
+                                position: 'top-center',
+                                hideAfter: 5000
+                            });
 
                         }
                     });
@@ -637,22 +638,55 @@ $(document).ready( function () {
                                 'id': $id
                             },
                         }).done(function(data) {
+                            jQuery.toast({
+                                text: data,
+                                showHideTransition: 'slide',
+                                icon: 'success',
+                                position: 'top-center',
+                                hideAfter: 5000
+                            });
                             jQuery($div).fadeOut(4000);
-                            jQuery('.alert2').removeClass('alert-danger');
-                            jQuery('.alert2').fadeIn(4000);
-                            jQuery('.alert2').addClass('alert alert-success text-white');
-                            jQuery('.alert2').html('tweet deleted');
-                            jQuery('.alert2').fadeOut(4000);
-
                         }).fail(function(data) {
-                            jQuery('.alert2').removeClass('alert-success');
-                            jQuery('.alert2').fadeIn(4000);
-                            jQuery('.alert2').addClass('alert alert-danger text-white');
-                            jQuery('.alert2').html('tweet not deleted');
-                            jQuery('.alert2').fadeOut(4000);
+                            jQuery.toast({
+                                text: 'unable to delete',
+                                showHideTransition: 'slide',
+                                icon: 'danger',
+                                position: 'top-center',
+                                hideAfter: 5000
+                            });
                         })
                     }
 
+                }
+                jQuery.fn.retweet = function(data) {
+                    $id = data;
+                    $div = '#' + $id
+                    let button = 'button'+$id
+                    jQuery.ajax({
+                        url: "{{ URL::to('retweet') }}",
+                        type: "post",
+                        data: {
+                            'id': $id
+                        },
+                    }).done(function(data) {
+                        jQuery.toast({
+                            text: data,
+                            showHideTransition: 'slide',
+                            icon: 'success',
+                            position: 'top-center',
+                            hideAfter: 5000
+                        });
+                        jQuery(button).hide();
+
+                    }).fail(function(data) {
+                        jQuery.toast({
+                            text: 'already retweeted',
+                            showHideTransition: 'slide',
+                            icon: 'error',
+                            position: 'top-center',
+                            hideAfter: 5000
+                        });
+                    })
                 }
 
                 jQuery('.fixed-plugin .active-color span').click(function() {

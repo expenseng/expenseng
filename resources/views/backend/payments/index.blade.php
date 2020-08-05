@@ -105,13 +105,11 @@
                                                             </form>
                                                         @endcan
                                                     </div>
-                                                    @if($payment->tweeted == false)
-                                                        <div class="col py-3 px-0" id="{{'div'.$payment->id}}">
-                                                            <a type="submit" onclick='event.preventDefault(); jQuery.fn.tweet({{$payment->id}})'>
-                                                                <i class="fa fa-twitter" style="color: #6a0094"></i>
-                                                            </a>
-                                                        </div>
-                                                    @endif
+                                                    <div class="col py-3 px-0" id="{{'div'.$payment->id}}">
+                                                        <a type="submit" onclick='event.preventDefault();jQuery.fn.tweet({{$payment->id}})'>
+                                                            <i  id="{{'button'.$payment->id}}" class="fa fa-twitter text-success" style="color: #6a0094"></i>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </td>
                                             @endcan
@@ -167,7 +165,7 @@
             });
             jQuery.fn.tweet = function(data) {
                 $id = data;
-                var div = '#div'+$id
+                let button = 'button'+$id
                 jQuery.ajax({
                     url: "{{ URL::to('tweet_payment') }}",
                     type: "post",
@@ -182,10 +180,12 @@
                         position: 'top-center',
                         hideAfter: 5000
                     });
-                    jQuery(div).hide();
+                    jQuery(button).removeClass('text-success');
+                    jQuery(button).addClass('text-warning');
+                    jQuery(button).attr("onclick", jQuery.fn.retweet($id));
                 }).fail(function(data) {
                     jQuery.toast({
-                        text: data.msg,
+                        text: 'can be tweeted or retweeted',
                         showHideTransition: 'slide',
                         icon: 'error',
                         position: 'top-center',
@@ -193,7 +193,6 @@
                     });
                 })
             };
-
          });
     </script>
     <script>

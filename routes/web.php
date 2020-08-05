@@ -267,7 +267,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
 
 
       Route::delete('/payments/delete/{payment_id}', 'Admin\PaymentController@destroy')->name('payments.delete');
-      
+
       // Team CRUD
       Route::get('/team/create', 'TeamController@viewCreateTeam')
       ->name('team.create');
@@ -289,14 +289,12 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
       ->name('sheet.parse');
 
       Route::get('/website_stats', 'Website_Statistics_Controller@index')->name('website_stats');
-
-       
  });
 
 
 /* Admin backend routes - CRUD for posts, categories, and approving/deleting submitted comments */
     Route::group(['prefix' => 'admin/blog', 'middleware' => 'auth'], static function () {
-       
+
         Route::get('/', 'Admin\ManagePostsController@index')->name('blogetc.admin.index');
 
         Route::get('/add_post', 'Admin\ManagePostsController@create')->name('blogetc.admin.create_post');
@@ -341,22 +339,23 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
 
 
 
- Route::get('/ggg', 'Website_Statistics_Controller@dds')->name('ggg');
+    Route::get('/ggg', 'Website_Statistics_Controller@dds')->name('ggg');
 
 
 
- Auth::routes();
+    Auth::routes();
 
 
 //admin route
- Route::get('/admin', function () {
-     return redirect(route('dashboard'));
- });
+    Route::get('/admin', function () {
+        return redirect(route('dashboard'));
+    });
 
- Route::get('/startRT', 'TwitterBot@startLiveRetweet');
- Route::get('/stopRT', 'TwitterBot@stopLiveRetweet');
- Route::post('/post_tweet', 'TwitterBot@sendTweet');
- Route::get('/tweets', 'TwitterBot@getTweet');
- Route::delete('delete_tweet', 'TwitterBot@delete');
- Route::post('parse_sheet', 'SheetParsing@parse');
- Route::post('tweet_payment', "TwitterBot@tweetPayment");
+    Route::get('/startRT', 'TwitterBot@startLiveRetweet');
+    Route::get('/stopRT', 'TwitterBot@stopLiveRetweet');
+    Route::post('/post_tweet', 'TwitterBot@sendTweet');
+    Route::post('/retweet', 'TwitterBot@retweet');
+    Route::get('/tweets', 'TwitterBot@getTweet');
+    Route::delete('delete_tweet', 'TwitterBot@delete');
+    Route::post('parse_sheet', 'SheetParsing@parse');
+    Route::post('tweet_payment', "TwitterBot@tweetPayment");
