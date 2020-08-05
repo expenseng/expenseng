@@ -552,8 +552,20 @@ $(document).ready( function () {
                         }
                     }
                 });
+                jQuery.fn.getTweets = function(){
+                    jQuery.ajax({
+                        url: "{{ URL::to('tweets') }}",
+                        type: "get",
+                        datatype: "html"
+                    }).done(function(data) {
+                        $("#tweets").empty().html(data);
+                    }).fail(function(jqXHR, ajaxOptions, thrownError) {
+                        $("#tweets").empty().html(
+                            '<div class="alert alert-danger"> failed to load tweets </div>'
+                        )
+                    });
+                }
                 jQuery(".sendTweet").click(function() {
-                    var token = $('input[name="_token"]').attr('value');
                     $tweet = jQuery('.tweet').val();
                     jQuery.ajax({
                         type: 'POST',
@@ -582,8 +594,6 @@ $(document).ready( function () {
 
                         }
                     });
-
-
                 });
                 if ($(window).width() < 960) {
                     $('#tweetButton').removeClass('fixed-plugin');
@@ -614,17 +624,7 @@ $(document).ready( function () {
                     }
                 });
                 jQuery('#B2').click(function() {
-                    jQuery.ajax({
-                        url: "{{ URL::to('tweets') }}",
-                        type: "get",
-                        datatype: "html"
-                    }).done(function(data) {
-                        $("#tweets").empty().html(data);
-                    }).fail(function(jqXHR, ajaxOptions, thrownError) {
-                        $("#tweets").empty().html(
-                            '<div class="alert alert-danger"> failed to load tweets </div>'
-                        )
-                    });
+                    jQuery.fn.getTweets();
                 });
                 jQuery.fn.delete = function(data) {
                     $id = data;
@@ -661,7 +661,6 @@ $(document).ready( function () {
                 jQuery.fn.retweet = function(data) {
                     $id = data;
                     $div = '#' + $id
-                    let button = 'button'+$id
                     jQuery.ajax({
                         url: "{{ URL::to('retweet') }}",
                         type: "post",
@@ -676,8 +675,7 @@ $(document).ready( function () {
                             position: 'top-center',
                             hideAfter: 5000
                         });
-                        jQuery(button).hide();
-
+                        jQuery.fn.getTweets();
                     }).fail(function(data) {
                         jQuery.toast({
                             text: 'already retweeted',
