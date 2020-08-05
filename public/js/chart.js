@@ -74,7 +74,7 @@ chartThree.render();
 
 var options = {
   chart: {
-    height: 280,
+    height: 210,
     type: "area",
     toolbar: {
       show:false
@@ -143,17 +143,19 @@ const insertCommas = amount =>{
   return parts.join(".");
 }
 
-window.addEventListener('load', renderChartsByMonths)
+window.addEventListener('load', function(event){
+      let ministryName = $('#ministry_list').val()
+      renderChartsByMonths(event, ministryName)
+})
+
 $('#ministry_list').on('change', renderChartsByMonths)
 
-function renderChartsByMonths(event){
-  let ministry = event.target.value || "agriculture";
-  console.log(ministry)
+function renderChartsByMonths(event, ministryName){
+  let ministry = event.target.value || ministryName;
   $.ajax({
       url: `/changeMinistryCharts/${ministry}`,
       method: "GET",
       success: function(data){
-        console.log(data)
         const {byMonths, byYears, byCompanies} = data;
           $('#annual-sum').html(insertCommas(byMonths.sum.toFixed(2)))
           $('.year-in-focus').html(byMonths.year) 

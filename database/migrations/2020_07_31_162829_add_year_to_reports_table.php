@@ -27,6 +27,7 @@ class AddYearToReportsTable extends Migration
     {
         Schema::table('reports', function (Blueprint $table) {
             //
+            $table->dropColumn('year');
         });
     }
 }

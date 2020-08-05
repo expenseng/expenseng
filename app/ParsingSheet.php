@@ -123,8 +123,8 @@ class ParsingSheet
                                 "budget_amount"=>$data2[2],
                                 "budget_balance"=>$data2[5],
                                 "percentage"=>$data2[6],
-                                "categories"=>$cat
-
+                                "categories"=>$cat,
+                                'year' => $report->year
                             ]);
                         }
 //                        update report to parsed
@@ -194,7 +194,8 @@ class ParsingSheet
                                 "budget_amount"=>$data2[2],
                                 "budget_balance"=>$data2[5],
                                 "percentage"=>$data2[6],
-                                "categories"=>$cat
+                                "categories"=>$cat,
+                                "year"=>$report->year
 
                             ]);
                         }
@@ -431,8 +432,8 @@ class ParsingSheet
                         "budget_amount"=>$data2[2],
                         "budget_balance"=>$data2[5],
                         "percentage"=>$data2[6],
-                        "categories"=>$cat
-
+                        "categories"=>$cat,
+                        'year' => $report->year
                     ]);
                 }
 //                        update report to parsed
@@ -591,7 +592,8 @@ class ParsingSheet
                         "budget_amount"=>$data2[2],
                         "budget_balance"=>$data2[5],
                         "percentage"=>$data2[6],
-                        "categories"=>$cat
+                        "categories"=>$cat,
+                        'year' => $report->year
 
                     ]);
                 }

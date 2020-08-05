@@ -1,5 +1,8 @@
 $(document).ready(function() {
         
+    const defaultTableDate = $('.said-date').text();
+    let tableOneIsModified = false;
+    
     ///////////////////////////////////////////////////////////////////////
     //                  Date-Picker                               //
     /////////////////////////////////////////////////////////////////////
@@ -93,7 +96,6 @@ $(document).ready(function() {
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
-
      $('.tabs').click(function() {
             $('.tabs.active').removeClass("active");
             $(this).addClass("active");
@@ -124,11 +126,42 @@ $(document).ready(function() {
 
         let date, sort, active;
 
+        $('.reset').on('click', function(e){
+            const id = $(this).attr("data-id");
+            date = "undefined";
+            sort = undefined;
+            const data = {id, date, sort};
+            $(this).closest('.modal-content').find('.byDatePicker').val('')
+            $(this).closest('.modal-content').find('.monthYearPicker').val('')
+            $(this).closest('.modal-content').find('.yearPicker').val('')
+            $('.btn-amount.active').removeClass("active");
+            $('#day').click()
+            
+            if(tableOneIsModified == false){
+                return
+            }
+            
+            $.ajax({
+                url: `/ministry/filterExpenses`,
+                method: "GET",
+                data: data,
+                success: function(data){
+                    // console.log(data)
+                    const table = e.target.closest('#modal').nextElementSibling;
+                    const tableDate = table.closest('.main-table').querySelector('.said-date-caption');
+                    table.innerHTML = data;
+                    tableDate.innerHTML = `Date: ${defaultTableDate}`;
+                    tableOneIsModified = false;         
+                },
+                error: function(error){
+                    console.log(error)
+                }
+            })
+        })
+
         $('#apply-filter').on('click', function(e){
             const id = $(this).attr("data-id");
             const idjs = e.target.dataset.id;
-            console.log('id: ', id)
-            console.log('idjs: ', idjs)
             let invalid = false;
             
            
@@ -150,11 +183,15 @@ $(document).ready(function() {
                 sort = 'desc'
             }
            
-            if(date === ''){
+            if(sort === undefined && date === ''){
                 invalid = true;
-                $('#date-format-err').hide().html('Please select a date or click <b style="color:black; font-size:12px">&times;</b> to exit')
-                .fadeIn().delay(3000).fadeOut('slow')
-            }else{
+                $('#date-format-err').hide().html('Select a filter/sort option or click <b style="color:black; font-size:12px">&times;</b> to exit')
+                .fadeIn().delay(3000).fadeOut('slow');
+            }
+            else if(sort !== undefined && date === ''){
+                date = undefined;
+            }
+            else if(date !== ''){
                 if(active === 'day'){
                     if(!/^(\d{2})-(\d{2})-(\d{4})$/.test(date)){
                         invalid = true;
@@ -184,12 +221,16 @@ $(document).ready(function() {
              });
             
             if(invalid) return;
-            date = reverseDateFormat(date);
+            if(date !== undefined){
+                date = reverseDateFormat(date);
+            }else{
+                date = 'undefined'
+            }
             const data = {id, date};
             if(sort !== undefined){
                 data.sort = sort;
             }
-           console.log('data: ', data);
+           
             $.ajax({
                     url: "/ministry/filterExpenses",
                     method: "GET",
@@ -197,9 +238,12 @@ $(document).ready(function() {
                     success: function(data){
                         
                         $('#tbl').html(data)
-                        let reportDate = /\d{4}-\d{2}-\d{2}/.test(date)? formatDate(date) : date
-                        $('#said-date').html(`Date: <span style="color:#1e7e34">${reportDate}</span>`)
-                       
+                        const tableDate = document.querySelector('.said-date-caption')
+                        if(date !== 'undefined'){
+                            let reportDate = /\d{4}-\d{2}-\d{2}/.test(date)? formatDate(date) : date;
+                            tableDate.innerHTML = `Showing expenses for <span style="color:#1e7e34">${reportDate}</span>`;
+                        }
+                        tableOneIsModified = true;                                             
                     },
                     error: function(error){
                         console.log(error)

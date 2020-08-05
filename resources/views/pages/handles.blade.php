@@ -69,16 +69,18 @@
                             </thead>
 							<tbody id='dynamic-row' class="t-body text-left">
 								
-									
+                                @if (count($cabinet) >0)
 										@foreach ($cabinet as $cabinet)
 											<tr>
 												<td>{{$cabinet->role}}</td>
 												<td>{{$cabinet->name}}</td>
-												<td class="table-overflow"> <a href="" target="_blank">{{$cabinet->twitter_handle}}</a></td>
+												<td class="table-overflow"> <a href=" https://twitter.com/{{$cabinet->twitter_handle}}" target="_blank">{{$cabinet->twitter_handle}}</a></td>
 											<tr>
 										@endforeach
-									
-								
+                                @else
+                                    <tr><td></td><td style="color:red">No data available for this period<td><td></td></tr>  
+                                @endif
+                                                                    
 
 							</tbody>
 						</table>
@@ -117,15 +119,17 @@
 							</thead>
 							<tbody id='dynamic-rows' class="t-body text-left">
 
-
+                            @if (count($ministries ) > 0)
                                 @foreach ($ministries as $ministry)
                                     <tr>
                                         <td>{{$ministry->name}}</td>
-                                        <td><a href="" target="_blank">{{$ministry->twitter}}</a></td>
+                                        <td><a href="https://twitter.com/{{$ministry->twitter}}" target="_blank">{{$ministry->twitter}}</a></td>
                                         <td class="table-overflow"></td>
                                     <tr>
                                 @endforeach
-
+                            @else
+                                <tr><td></td><td style="color:red">No data available for this period<td><td></td></tr>  
+                            @endif
 							</tbody>
 						</table>
                     <div class="row float-right results">
@@ -201,6 +205,8 @@
 
     </script>
 
+
+    
     <script type="text/javascript">
          $('body').on('keyup','#search-handles',function(){
              var searchQuest = $(this).val();
@@ -216,21 +222,37 @@
                 success: function(res){
                     
                     var tableRow = '';
+                    if(res.length >0){
 
-                    $('#dynamic-row').html('');
+                        $('#dynamic-row').html('');
+                
+                        $.each(res, function(index, value){
+                            if(!value.twitter_handle){
+                                tableRow += '<tr><td>'+value.role+'</td><td>'+value.name+'</td><td class="table-overflow"></td><tr>';
+                            } 
+                            else 
+                            {
+                                tableRow += '<tr><td>'+value.role+'</td><td>'+value.name+'</td><td class="table-overflow"><a href="https://twitter.com/'+value.twitter_handle+'" target="_blank">'+value.twitter_handle+'</a></td><tr>';
+                            }
+                           
 
-                    $.each(res, function(index, value){
-                        tableRow = '<tr><td>'+value.role+'</td><td>'+value.name+'</td><td class="table-overflow"> <a href="" target="_blank">'
-                            +value.twitter_handle+'</a></td><tr>';
+                            $('#dynamic-row').html(tableRow);
+                            
 
-                        $('#dynamic-row').append(tableRow);
-                        
-
-                    });
-                    
+                        });
+                    }
+                    else
+                    {
+                        tableRow += '<tr>';
+                        tableRow += '<td colspan="5">No minister_handle found</td>';
+                        tableRow += '</tr>';
+                        $('#dynamic-row').html(tableRow);
+                       
+                    }    
                 }
-             });
-         });
+                
+            });
+        });
     </script>
      <script type="text/javascript">
          $('body').on('keyup','#search-handle',function(){
@@ -247,16 +269,33 @@
                 success: function(res){
                     
                     var tableRow = '';
-
-                    $('#dynamic-rows').html('');
-
-                    $.each(res, function(index, value){
-                        tableRow = '<tr><td>'+value.name+'</td><td><a href="" target="_blank">'+value.twitter+'</a></td><td class="table-overflow"></td><tr>';
-
-                        $('#dynamic-rows').append(tableRow);
+                    if(res.length >0){
                         
+                        $('#dynamic-rows').html('');
+                        $.each(res, function(index, ministry){
+                            if(!ministry.twitter){
+                                tableRow += '<tr><td>'+ministry.name+'</td><td></td><td class="table-overflow"></td><tr>';
+                            }
+                            else 
+                            {
+                                tableRow += '<tr><td>'+ministry.name+'</td><td><a href="https://twitter.com/'+ministry.twitter+'" target="_blank">'+ministry.twitter+'</a></td><td class="table-overflow"></td><tr>';
+                            }
+                            
 
-                    });
+                            $('#dynamic-rows').html(tableRow);
+                            
+
+                        });
+                    }
+                    else
+                    {
+                        tableRow += '<tr>';
+                        tableRow += '<td colspan="5">No ministry_handle found</td>';
+                        tableRow += '</tr>';
+                        $('#dynamic-rows').html(tableRow);
+                       
+                    }
+                    
                     
                 }
              });

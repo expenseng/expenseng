@@ -47,4 +47,11 @@ class Payment extends Model
         }
         return $organization; //return array keyed ['name' => '', 'shortname' => '']
     }
+
+    public function company(){
+        $company = Company::select('*')
+                   ->where('name', $this->beneficiary)
+                   ->get();
+        return $company;
+    }
 }

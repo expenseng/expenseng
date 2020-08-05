@@ -88,3 +88,10 @@ Breadcrumbs::for('handles', function ($trail) {
     $trail->parent('home');
     $trail->push('Handles', route('handles'));
 });
+
+
+//Home > Blog
+Breadcrumbs::for('blog', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Blog', route('handles'));
+});
