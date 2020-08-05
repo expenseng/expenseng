@@ -21,7 +21,7 @@
                             <div class="card-header d-md-flex justify-content-between">
                                 <h3 class="mb-0">All Team Members </h3>
                                 @can('add')
-                                <a href="{{route('team.create')}}" class="btn btn-primary mt-3 section-btn-margin" style="float:right">CREATE A CABINET MEMBER</a>
+                                <a href="{{route('team.create')}}" class="btn btn-primary mt-3 section-btn-margin" style="float:right">CREATE A TEAM MEMBER</a>
                                 @endcan
                             </div>
                             <div class="card-body">
