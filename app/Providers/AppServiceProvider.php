@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\TwitterStream;
 use Illuminate\Support\ServiceProvider;
 use Phirehose;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
