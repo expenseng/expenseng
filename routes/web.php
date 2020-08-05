@@ -267,6 +267,21 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
 
 
       Route::delete('/payments/delete/{payment_id}', 'Admin\PaymentController@destroy')->name('payments.delete');
+      
+      // Team CRUD
+      Route::get('/team/create', 'TeamController@viewCreateTeam')
+      ->name('team.create');
+      Route::post('/team/create', 'TeamController@createTeam')
+      ->name('create.team');
+      Route::get('/team/view', 'TeamController@viewTeam')
+      ->name('team.view');
+      Route::get('/team/edit/{team_id}', 'TeamController@showEditForm')
+      ->name('team.view.edit');
+      Route::put('/team/edit/{team_id}', 'TeamController@editTeam')
+      ->name('team.edit');
+      Route::delete('/team/delete/{team_id}', 'TeamController@deleteTeam')
+      ->name('team.delete');
+
 
       //Sheets
       Route::get('/sheets', 'Admin\SheetController@viewSheets')->name('sheets');
