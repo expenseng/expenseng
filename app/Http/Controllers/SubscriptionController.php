@@ -18,25 +18,29 @@ class SubscriptionController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        //check if detail exist before
+        $check = Subscription::where('email', $request->email)->orWhere('subscription_type', $request->subscription_type)->get();
 
-        $user = Subscription::create($data);
-        if ($user) {
-            Activites::create(
-                [
-                    'description' => $request->name.' subscribed to recieve latest updates',
-                    'username' => $request->name,
-                    'privilage' => 'subscriber',
-                    'status' => 'pending'
-                ]
-            );
+        if (count($check) > 0) {
+            toastr()->error( ' Subscription Already exist.');
+                    return back();
+        } else {
+            $user = Subscription::create($data);
+            if ($user) {
+                Activites::create(
+                    [
+                        'description' => $request->name.' subscribed to recieve latest updates',
+                        'username' => $request->name,
+                        'privilage' => 'subscriber',
+                        'status' => 'pending'
+                    ]
+                );
 
-            $details = "Your subscription to" ;
-            $subscription = "recieve latest updates";
-            $last = " has been confirmed.";
-            //check if detail exist before
-            $check = Subscription::where('email', $request->email)->orWhere('subscription_type', $request->sub_type)->get();
-
-            if (count($check) < 1) {
+                $details = "Your subscription to" ;
+                $subscription = "recieve latest updates";
+                $last = " has been confirmed.";
+                
+                
                 try{
                     //send email
                     $sendEmail = Mail::to($request->email)
@@ -54,16 +58,15 @@ class SubscriptionController extends Controller
                     return back();
                 }
 
-                    
-                    
+                        
+                        
+                
+
             } else {
                 toastr()->error('An error has occurred please try again later.');
                 return back();
             }
-
-        } else {
-            toastr()->error('An error has occurred please try again later.');
-            return back();
         }
+        
     }
 }

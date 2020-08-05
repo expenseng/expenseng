@@ -62,10 +62,16 @@ class CabinetController extends Controller
         if (Gate::denies('active', 'manage')) {
             return redirect(route('profile'));
         }
-
-        $cabinets = DB::table('ministries')
-        ->leftJoin('cabinets', 'cabinets.ministry_code', '=', 'ministries.code')
-        ->get();
+        
+        $check = Cabinet::all();
+        if (count($check) > 0 ) {
+            $cabinets = DB::table('ministries')
+            ->leftJoin('cabinets', 'cabinets.ministry_code', '=', 'ministries.code')
+            ->get();
+        } else {
+            $cabinets = [];
+        }
+        
         
         
         $recent_activites = Activites::where('status', 'pending')->orderBY('id', 'DESC')
