@@ -105,11 +105,19 @@
                                                             </form>
                                                         @endcan
                                                     </div>
-                                                    <div class="col py-3 px-0" id="{{'div'.$payment->id}}">
-                                                        <a type="submit" onclick='event.preventDefault();jQuery.fn.tweet({{$payment->id}})'>
-                                                            <i  id="{{'button'.$payment->id}}" class="fa fa-twitter text-success" style="color: #6a0094"></i>
-                                                        </a>
-                                                    </div>
+                                                    @if($payment->tweeted == false)
+                                                        <div class="col py-3 px-0" id="{{'div'.$payment->id}}">
+                                                            <a type="submit" onclick='event.preventDefault();jQuery.fn.tweet({{$payment->id}})'>
+                                                                <i  id="{{'button'.$payment->id}}" class="fa fa-twitter text-success"></i>
+                                                            </a>
+                                                        </div>
+                                                    @else
+                                                        <div class="col py-3 px-0" id="{{'div'.$payment->id}}">
+                                                            <a type="submit " onclick='event.preventDefault(); jQuery.fn.tweet({{$payment->id}})'>
+                                                                <i  id="{{'button'.$payment->id}}" class="fa fa-twitter text-warning" ></i>
+                                                            </a>
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             </td>
                                             @endcan
@@ -165,7 +173,7 @@
             });
             jQuery.fn.tweet = function(data) {
                 $id = data;
-                let button = 'button'+$id
+                let button = '#button'+$id
                 jQuery.ajax({
                     url: "{{ URL::to('tweet_payment') }}",
                     type: "post",
@@ -182,7 +190,6 @@
                     });
                     jQuery(button).removeClass('text-success');
                     jQuery(button).addClass('text-warning');
-                    jQuery(button).attr("onclick", jQuery.fn.retweet($id));
                 }).fail(function(data) {
                     jQuery.toast({
                         text: 'can be tweeted or retweeted',
