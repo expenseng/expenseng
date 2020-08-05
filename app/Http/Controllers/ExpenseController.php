@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Sector;
 use App\Expense;
 use App\Payment;
 use App\Ministry;
@@ -28,17 +29,14 @@ class ExpenseController extends Controller
     public function ministry()
     {
         $year = date('Y');
-        $collection['nondescriptive'] = Payment::where('description', '')
-                                        ->whereYear('payment_date', '=', $year)
-                                        ->orderby('payment_date', 'desc')
-                                        ->paginate(20)->onEachSide(1);
+        $sectors = Sector::all();
         $collection['summary'] = Payment::whereYear('payment_date', '=', $year)
                                 ->orderby('payment_date', 'desc')
                                 ->paginate(20)->onEachSide(1);
         $miniTableData['all'] = $this->ministriesFiveYear();
-        $miniTableData['nondescriptive'] = $this->ministriesFiveYearNoDescription();
         return view('pages.expense.ministry')->with(['collection' => $collection,
-                                                     'miniTableData' => $miniTableData
+                                                     'miniTableData' => $miniTableData,
+                                                     'sectors' => $sectors
                                                     ]);
     }
 
@@ -55,29 +53,31 @@ class ExpenseController extends Controller
         return $payments;
     }
 
-    public function ministriesFiveYearNoDescription()
+    public function sectorFiveYear($sector='all', $codes=0)
     {
-        
-        $payments = DB::table('payments')
-        ->select(DB::raw('SUM(amount) as total, YEAR(payment_date) as year'))
-        ->where('description', '')
-        ->groupBy(DB::raw('YEAR(payment_date)'))
-        ->orderBy('year', 'desc')
-        ->take(5)
-        ->get();
-    
-        return $payments;
+        if($sector !== 'all'){
+            $totals = DB::table('payments')
+            ->select(DB::raw('SUM(amount) as total, YEAR(payment_date) as year'))
+            ->Where(function ($query) use($codes) {
+                for ($i = 0; $i < count($codes); $i++){
+                    $query->orwhere('payment_code', 'LIKE',  $codes[$i]. '%');
+                }
+            })
+            ->groupBy(DB::raw('YEAR(payment_date)'))
+            ->orderBy('year', 'desc')
+            ->take(5)
+            ->get();
+            
+        }else{
+            $totals = $this->ministriesFiveYear();
+        }
+        return $totals;
     }
 
-    public function filterExpensesAll($id, $date, $sort)
+    public function filterExpensesAll($id, $date, $sort, $sector="all")
     { 
        
         $givenTime = ($id === 'apply-filter-exp')? date('Y-m-d'): date('Y');
-        if($id === 'apply-filter2'){
-            $option = "=";
-        }else{
-            $option = "!=";
-        }
         
         if ($date != 'undefined'){
             $givenTime = $date;
@@ -86,7 +86,7 @@ class ExpenseController extends Controller
         $day_pattern = '/(\d{4})-(\d{2})-(\d{2})/';
         $mth_pattern = '/([A-Za-z]+)\s(\d{4})/';
         $yr_pattern = '/\d{4}/';
-        // $data = Payment::where('description', $option, '');
+        
         $data = Payment::select('*');
         if (preg_match($mth_pattern, $givenTime, $match)) {
             $m = date_parse($match[1]);
@@ -102,6 +102,30 @@ class ExpenseController extends Controller
             $data = $data->where('payment_date', '=', "$givenTime"); 
         };
 
+        if($sector != null){
+            // $code = 0;
+            if($sector !== 'all'){
+                $sector = intval($sector);
+                if($sector != 0){
+                    $codes = Sector::with('ministry')
+                    ->where('id', $sector)
+                    ->get()
+                    ->pluck('ministry.*.code')
+                    ->collapse();
+                    $data = $data->Where(function ($query) use($codes) {
+                                for ($i = 0; $i < count($codes); $i++){
+                                    $query->orwhere('payment_code', 'LIKE',  $codes[$i]. '%');
+                                }
+                            });
+                    $miniTableData['all'] = $this->sectorFiveYear($sector, $codes);
+                } 
+            }else{
+                    $miniTableData['all'] = $this->sectorFiveYear();
+            }
+            // echo 'code: '. $code;
+            // echo 'sector:'. $sector;
+        }
+       
         if ($sort != "undefined") {
             $data = $data->orderby('amount', $sort);
         } else {
@@ -113,12 +137,14 @@ class ExpenseController extends Controller
         if($id === 'apply-filter'){
             $collection['summary'] = $data;
             return view('pages.expense.tables.ministries')->with('collection', $collection);
-        }else if($id === 'apply-filter2'){
-            $collection['nondescriptive'] = $data;
-            return view('pages.expense.tables.ministries_nodesc')->with('collection', $collection);
         }else if($id === 'apply-filter-exp'){
             $collection['daily'] = $data;
             return view('pages.expense.tables.dailyExpenditure')->with('collection', $collection);
+        }else if($id === 'apply-filter-sector'){
+            $collection['summary'] = $data;
+            return view('pages.expense.tables.combo')->with(['collection' => $collection,
+                                                                'miniTableData' => $miniTableData,
+                                                            ]);
         }
     }
 
