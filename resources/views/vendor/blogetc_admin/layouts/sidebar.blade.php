@@ -12,7 +12,7 @@
         <div>  
             <div class="">
                 <a href="{{ route('blogetc.admin.index') }}"
-                   class="list-group-item list-group-item-action @if(Request::route()->getName() === 'blogetc.admin.index') active @endif" style="background: #6c757d">
+                   class="list-group-item list-group-item-action @if(Request::route()->getName() === 'blogetc.admin.index') active @endif text-white" style="background: #6c757d">
                     <i class="fa fa-th fa-fw" aria-hidden="true"></i>
                     All Posts - {{\WebDevEtc\BlogEtc\Models\Post::count()}}
                 </a>
@@ -29,7 +29,7 @@
     <li class="list-group-item justify-content-between lh-condensed mb-3 p-0">
         <div>
             <a class="list-group-item list-group-item-action text-white"  href="{{ route('blogetc.admin.comments.index') }}" style="background: #6c757d">Comments - 
-                <span class="text-muted">
+                <span class="">
                     @php
                         $commentCount = Comment::withoutGlobalScopes()->count();
                     @endphp
@@ -61,7 +61,7 @@
     <li class="list-group-item justify-content-between lh-condensed mb-3 p-0">
         <div>
             <a class="list-group-item list-group-item-action text-white"  href="{{ route('blogetc.admin.categories.index') }}" style="background: #6c757d">Categories - 
-                <span class="text-muted">
+                <span class="">
                     @php
                         $postCount = Category::count();
                     @endphp
