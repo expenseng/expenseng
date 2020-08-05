@@ -11,6 +11,7 @@ use WebDevEtc\BlogEtc\Helpers;
 use WebDevEtc\BlogEtc\Middleware\UserCanManageBlogPosts;
 use WebDevEtc\BlogEtc\Requests\CategoryRequest;
 use WebDevEtc\BlogEtc\Services\CategoriesService;
+use Illuminate\Support\Facades\Session;
 
 /**
  * Class ManageCategoriesController.
@@ -61,8 +62,8 @@ class ManageCategoriesController extends Controller
     {
         $this->service->create($request->validated());
 
-        Helpers::flashMessage('Saved new category');
-
+        //Helpers::flashMessage('Saved new category');
+        Session::flash('flash_message', 'Category added successfully !');
         return redirect(route('blogetc.admin.categories.index'));
     }
 
@@ -122,9 +123,10 @@ class ManageCategoriesController extends Controller
     {
         $category = $this->service->update($categoryID, $request->validated());
 
-        Helpers::flashMessage('Updated category');
+        //Helpers::flashMessage('Updated category');
 
-        return redirect($category->editUrl());
+        Session::flash('flash_message', 'Category updated successfully !');
+        return redirect(route('blogetc.admin.categories.index'));
     }
 
     /**
@@ -141,7 +143,7 @@ class ManageCategoriesController extends Controller
     public function destroy(/** @scrutinizer ignore-unused */ CategoryRequest $request, $categoryID)
     {
         $this->service->delete($categoryID);
-
-        return view('blogetc_admin::categories.deleted_category');
+        Session::flash('flash_message', 'Category deleted successfully !');
+        return redirect(route('blogetc.admin.categories.index'));
     }
 }

@@ -29,7 +29,7 @@
     <li class="list-group-item justify-content-between lh-condensed mb-3 p-0">
         <div>
             <a class="list-group-item list-group-item-action text-white"  href="{{ route('blogetc.admin.comments.index') }}" style="background: #6c757d">Comments - 
-                <span class="text-muted">
+                <span class="">
                     @php
                         $commentCount = Comment::withoutGlobalScopes()->count();
                     @endphp
@@ -61,7 +61,7 @@
     <li class="list-group-item justify-content-between lh-condensed mb-3 p-0">
         <div>
             <a class="list-group-item list-group-item-action text-white"  href="{{ route('blogetc.admin.categories.index') }}" style="background: #6c757d">Categories - 
-                <span class="text-muted">
+                <span class="">
                     @php
                         $postCount = Category::count();
                     @endphp

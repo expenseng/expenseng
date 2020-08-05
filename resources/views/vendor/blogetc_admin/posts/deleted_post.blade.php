@@ -1,4 +1,7 @@
 @extends("blogetc_admin::layouts.home")
+@push('css')
+    <title>ExpenseNg - Blog</title>
+@endpush
 @section("content")
 <div class="content" id="app">
     <div class="container-fluid">
