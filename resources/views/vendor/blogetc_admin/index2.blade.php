@@ -49,13 +49,13 @@
                                                     @endif
                                                     </td>
                                                     <td>
-                                                         <button title="view" style="border: 0" href="{{$post->url()}}" class="">
+                                                         <a title="view" style="border: 0" href="{{$post->url()}}" class="btn">
                                                             <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                                                         </button>
+                                                         </a>
 
-                                                        <button title="edit" style="border: 0" href="{{$post->edit_url()}}" class="card-link">
+                                                        <a title="edit" style="border: 0" href="{{$post->edit_url()}}" class="btn">
                                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                        </button>
+                                                        </a>
                                             
 
                                                         
