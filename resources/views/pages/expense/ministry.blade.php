@@ -54,7 +54,7 @@
 			<div class="container">
 				<div class="row px-1">
 					<div class="btn-group col-lg-10 col-md-12 d-flex responsive-button nav nav-tabs">
-						<a class="btn-marg text-left active button" data-toggle="tab" role="tab" href="#table">Expense Summary</a>
+						<a class="btn-marg text-left active button" data-toggle="tab" role="tab" href="#table">Sector Summary</a>
 						{{-- Commenting the below out as we don't have data for them yet --}}
 						{{-- <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Project Summary</a>
 						<a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Purchases Summary</a> --}}
@@ -70,6 +70,12 @@
 	<div class="tab-content">
 		<div class="section-2 tab-pane show fade active" id="table" role="tabpanel">
 			<section class="container bordered px-0">
+				<select data-id="apply-filter-sector" style="width:170px;" class="sectors form-control ml-2">
+					<option value='all'>All</option>
+					@foreach($sectors as $sector)
+				<option value={{$sector->id}}>{{$sector->name}}</option>
+					@endforeach
+				</select>
 				<div class="table-section reponsive-div">
 					<div class="main-table">
 						<div class="table-top p-3 d-flex justify-content-between align-items-center">
@@ -125,7 +131,7 @@
 										</div>
 										<!-- Footer -->
 										<div class="modal-footer">
-										<button type="button" data-id="apply-filter" id="reset" class="btn btn-block active mx-5 reset btn-danger">Reset</button>
+										<button type="button" data-id="apply-filter-sector" id="reset" class="btn btn-block active mx-5 reset btn-danger">Reset</button>
 										<button type="button" data-id="apply-filter" id="apply-filter" class="btn btn-block active mx-5 apply-filter" data-dismiss="modal">Apply Filter</button>
 										</div>
 									</div>
@@ -147,95 +153,10 @@
 						<div id="mini-table" class="table-data">
 							@include('pages.expense.tables.ministries_annual_totals_all')
 						</div>
-						<!---PAGINATION--->
-
 					</div>
 				</div>
 			</section>
 		</div>
-		{{-- <div class="section-2 tab-pane fade" id="description" role="tabpanel">
-			<section class="container bordered">
-				<div class="table-section reponsive-div">
-					<div class="main-table">
-						<div class="table-top p-3 d-flex justify-content-between align-items-center">
-							<h3 class="said-date-caption" class="align-self-center">Payments without description: <span class="said-date"></span></h3>
-							<button type="button"  data-toggle="modal" data-target="#filterModal2">Filter <i class="fas fa-filter px-1"></i></button>
-						</div>
-						<!-- Filter Modal -->
-						<div id="modal" class="row justify-content-center modals">
-                        <div class="col-md-8">
-                            <div class="modal fade" id="filterModal2" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <!-- Header -->
-                                    <div class="modal-header">
-                                    <h5 class="modal-title" id="filterModalLabel">Filter</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    </div>
-                                    <!-- Body -->
-                                    <div class="modal-body">
-                                        <section>
-                                            <p id="view" class="font-weight-bold">View by</p>
-                                            <div id="date-btn" class="row">
-                                                <div class="col-4">
-                                                <button id="day2" class="btn btn-block btn-date day active">Day</button>
-                                                </div>
-                                                <div class="col-4">
-                                                <button id="month" class="btn btn-block month btn-date">Month</button>
-                                                </div>
-                                                <div class="col-4">
-                                                <button id="year" class="btn btn-block year btn-date">Year</button>
-                                                </div>
-                                            </div>
-                                        </section>
-                                        <br>
-                                        <section class="row">
-                                            <div class="col-12" >
-                                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            <input placeholder="Select Date" name="select-date" id="select-date2"  class="byDatePicker form-control">
-                                            <input placeholder="Select Month" name="select-month" id="select-month2" class="monthYearPicker form-control" autocomplete="false" />
-                                            <input placeholder="Select Year" name="select-year" id="select-year2" class="yearPicker form-control" />
-                                            <small id="date-format-err"></small>
-                                        </section>
-                                        <br>
-                                        <section id="sort-options">
-                                            <p class="font-weight-bold">Sort by</p>
-                                            <div>
-                                                <button id="desc" class="btn btn-block btn-amount">Amount (Highest to Lowest)</button>
-                                                <button id="asc" class="btn btn-block btn-amount">Amount (Lowest to Highest)</button>
-                                            </div>
-                                        </section>
-                                    </div>
-                                    <!-- Footer -->
-                                    <div class="modal-footer">
-									<button type="button" data-id="apply-filter2" id="reset2" class="btn btn-block active mx-5 reset btn-danger">Reset</button>
-                                    <button type="button" data-id="apply-filter2" id="apply-filter2" class="btn btn-block active mx-5 apply-filter" data-dismiss="modal">Apply Filter</button>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                     <!-- End of Filter Modal -->
-						<div id="main-table2" data-id="apply-filter2" class="table-data">
-							@include('pages.expense.tables.ministries_nodesc')
-						</div>
-						
-					</div>
-				</div>
-			</section>
-			<section class="container">
-				<div class="row">
-					<div class="col-md-8 offset-md-2 pb-5">
-						<div class="table-data">
-							@include('pages.expense.tables.ministries_annual_totals_nodesc')
-						</div>
-					</div>
-				</div>
-			</section>
-		</div> --}}
 		<div class="section-2 tab-pane fade" id="comments" role="tabpanel">
 			@include('partials.comments')
 		</div>
@@ -246,7 +167,7 @@
 @section('js')
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="{{ asset('js/main.js') }}"></script>
-	<script src="{{ asset('js/filter.js') }}"></script>
+	<script src="{{ asset('js/filterBySector.js') }}"></script>
 	<script src="{{ asset('js/ExpenditureScript.js') }}"></script>
 	<script src="{{ asset('js/index.js') }}"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
