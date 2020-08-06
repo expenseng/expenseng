@@ -176,7 +176,7 @@
         <div class="profile my-4">
           <p>Name of CEO</p>
           <p>{{$company->ceo ?? 'N/A'}}</p>
-          
+
         </div>
         <div class="profile">
           <p>Company twitter handle</p>
@@ -213,7 +213,17 @@
           </div>
       </div>
   </div>
+    <div class="fixed-bottom py-4 px-1">
+        <a  class="rounded-circle" id="open" data-toggle="modal" data-target="#exampleModaltweets">
+            <i class="fa fa-twitter bg-white text-success rounded-circle p-3" ></i>
+        </ a>
+    </div>
 </section>
+
+
+
+
+
 
 @endsection
 @section('js')<script src="{{asset('js/index.js')}}"></script>
@@ -221,6 +231,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
 <script src="{{asset('js/chart.js')}}"></script>
+<<<<<<< HEAD
 <script src="{{asset('/js/subscription.js')}}"></script><script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous">
+=======
+<script src="{{asset('/js/subscription.js')}}"></script>
+<script>
+    jQuery(document).ready(function(){
+
+
+    }
+    );
+>>>>>>> 6db4aa6a80bee9875df0c66074cd0d7acc3cabeb
 </script>
 @endsection

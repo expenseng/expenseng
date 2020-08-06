@@ -192,7 +192,7 @@
                     jQuery(button).addClass('text-warning');
                 }).fail(function(data) {
                     jQuery.toast({
-                        text: 'can be tweeted or retweeted',
+                        text: 'can\'t be tweeted or retweeted',
                         showHideTransition: 'slide',
                         icon: 'error',
                         position: 'top-center',

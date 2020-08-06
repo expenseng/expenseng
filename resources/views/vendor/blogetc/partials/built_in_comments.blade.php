@@ -2,7 +2,7 @@
     /** @var \WebDevEtc\BlogEtc\Models\Comment[] $comments */
 @endphp
 @forelse($comments as $comment)
-    <div class="card bg-light mb-3">
+    <div class="card bg-light mb-3" style="font-size: 14px">
         <div class="card-header">
             {{ $comment->author() }}
             @if(config('blogetc.comments.ask_for_author_website') && $comment->author_website)
