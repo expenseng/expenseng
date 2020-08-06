@@ -176,7 +176,7 @@
         <div class="profile my-4">
           <p>Name of CEO</p>
           <p>{{$company->ceo ?? 'N/A'}}</p>
-          
+
         </div>
         <div class="profile">
           <p>Company twitter handle</p>
@@ -213,7 +213,17 @@
           </div>
       </div>
   </div>
+    <div class="fixed-bottom py-4 px-1">
+        <a  class="rounded-circle" id="open" data-toggle="modal" data-target="#exampleModaltweets">
+            <i class="fa fa-twitter bg-white text-success rounded-circle p-3" ></i>
+        </ a>
+    </div>
 </section>
+
+
+
+
+
 
 @endsection
 @section('js')
@@ -223,4 +233,11 @@
 <script src="{{asset('js/index.js')}}"></script>
 <script src="{{asset('js/chart.js')}}"></script>
 <script src="{{asset('/js/subscription.js')}}"></script>
+<script>
+    jQuery(document).ready(function(){
+
+
+    }
+    );
+</script>
 @endsection
