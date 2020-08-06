@@ -1,3 +1,4 @@
+/*Filter*/
 .btn-date,
 .btn-amount {
     border: 1px solid#00945E;
@@ -79,3 +80,59 @@ margin-top: 16px;
     color: red;
 }
 
+/*radio buttons*/
+.containers {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .containers input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+  
+  .containers:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  .containers input:checked ~ .checkmark {
+    background-color: #00945E;
+  }
+  
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  .containers input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  .containers .checkmark:after {
+       top: 9px;
+      left: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: white;
+  }
