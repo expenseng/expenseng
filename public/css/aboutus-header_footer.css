@@ -46,7 +46,7 @@ ul.links li a::before{
 .gradient-bg {
     -webkit-background-size: 200% auto;
     background-size: 200% auto;
-    background-image: -webkit-gradient(linear, left top, right top, from(#51e188), color-stop(51%, #22553d), to(#51e19e));
+    background-color: #1c2b1c;
 }
 
 

@@ -142,7 +142,7 @@
         <div class="row">
             <aside class="col-md-7">
                 <img class="twitter-back" src="{{ asset('/images/Vector.png') }}" alt="twitter background">
-                <button class="button button-tw"><i class="fab fa-twitter"></i> @ExpenseNG</button>
+                <button class="button button-tw"><a href="https://twitter.com/expenseng" target="_blank">@expenseNG</a></button>
             </aside>
             <aside class="col-md-5">
                 <h2 class="pt-5 pb-4 mb-5">Join the conversation</h2>
