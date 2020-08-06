@@ -261,7 +261,7 @@ class TeamController extends Controller
                 'linkedin_handle' => $request->linkedin,
                 'role' => $request->position,
                 'avatar' => $base_url. '/uploads'. '/'. $imageName,
-                'ministry_code' => $request->code,
+                
                 ]
             );
             $auth = Auth::user();

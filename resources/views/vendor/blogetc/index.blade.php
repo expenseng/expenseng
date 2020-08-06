@@ -28,9 +28,12 @@
     <div class="container">
         {{ Breadcrumbs::render('blog') }}
 
-    <div class="row">
-        <div class="col-md-6">
-            <h5 class="para">Read inside news from Ministries Agencies and Departments on topics, ranging from Economy, Finance, FG/MDAs Projects, Politics etc.</h5>
+    <div class="row mb-4">
+        <div class="col-md-5">
+            <h6 class="para px-3">Read inside news from Ministries Agencies and Departments on topics, ranging from Economy, Finance, FG/MDAs Projects, Politics etc.</h6>
+        </div>
+        <div class="col-md-7">
+            @include("blogetc::sitewide.show_categories")
         </div>
      </div>
 
