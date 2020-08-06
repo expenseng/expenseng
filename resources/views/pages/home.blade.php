@@ -226,21 +226,19 @@
 
 
 @endsection
-@section('js')<script src="{{asset('js/index.js')}}"></script>
-
+@section('js')
+<script src="{{asset('js/index.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
 <script src="{{asset('js/chart.js')}}"></script>
-<<<<<<< HEAD
-<script src="{{asset('/js/subscription.js')}}"></script><script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous">
-=======
 <script src="{{asset('/js/subscription.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous">
+</script>
 <script>
     jQuery(document).ready(function(){
 
 
     }
     );
->>>>>>> 6db4aa6a80bee9875df0c66074cd0d7acc3cabeb
 </script>
 @endsection
