@@ -216,10 +216,9 @@
     <div class="fixed-bottom py-4 px-1">
         <a  class="rounded-circle" id="open" data-toggle="modal" data-target="#exampleModaltweets">
             <i class="fa fa-twitter bg-white text-success rounded-circle p-3" ></i>
-        </ a>
+        </a>
     </div>
 </section>
-
 
 
 
