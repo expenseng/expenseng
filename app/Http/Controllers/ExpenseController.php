@@ -252,10 +252,10 @@ class ExpenseController extends Controller
         
         if(count($days) == 0){
             if($type == 'Daily'){
-                array_push($days, date("d-m-Y"));
+                array_push($days, $day.'-'.$mth.'-'.$yr);
                 array_push($amounts, 0);
             }else if($type == 'Monthly'){
-                $result = $this->getDays($days, $amounts);
+                $result = $this->getDays($days, $amounts, $mth, $yr);
                 $days = $result['days'];
                 $amounts = $result['amounts'];
             }else if($type == 'Yearly'){
@@ -270,15 +270,13 @@ class ExpenseController extends Controller
         return ['days' => $days, 'amounts' => $amounts];
     }
     
-    public function getDays($days, $amounts){
-        $year = date('Y');
-        $month = date('m');
-    
-        $dayCount = cal_days_in_month(CAL_GREGORIAN,$month,$year);
+    public function getDays($days, $amounts, $mth, $yr){
+        
+        $dayCount = cal_days_in_month(CAL_GREGORIAN,$mth,$yr);
     
         for ($i = 1; $i <= $dayCount; $i++)
         {
-            array_push($days, $i."-".$month."-".$year);
+            array_push($days, $i."-".$mth."-".$yr);
             array_push($amounts, 0);
         }
         return ['days'=> $days, 'amounts'=> $amounts];
