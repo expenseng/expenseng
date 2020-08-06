@@ -42,9 +42,7 @@
                             <a class="dropdown-item section-reference-dropdown" href="{{ route('handles') }}">Government Twitter Handle</a>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link section-nav-link" href="{{ route('teams') }}">Our Team</a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link section-nav-link" href="{{ route('search') }}"><i class="fa fa-search inp"></i></a>
                     </li>
