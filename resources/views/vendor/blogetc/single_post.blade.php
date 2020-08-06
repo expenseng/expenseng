@@ -13,7 +13,7 @@
       text-align: justify;
     }
 
-    @media screen and (max-width: 410px){
+    @media screen and (max-width: 480px){
       h5 {
           font-size: 16px;
           margin-left: 0px; 
@@ -21,7 +21,7 @@
       }
 
       .blog-body .featured-image{
-          max-width: 300px;
+          max-width: 100%;
           margin: 20px auto !important;
       }
 

@@ -5,6 +5,10 @@
 @section('content')
 <div class="content" id="app">
     <div class="container-fluid">
+        <!-- flash messages  -->
+        @include('backend.partials.flash')
+        <!-- ======================================== -->
+        
         <main class="py-4">
             <div class="row">
                 <div class="col-md-9">
