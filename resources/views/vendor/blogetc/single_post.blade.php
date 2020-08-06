@@ -11,6 +11,8 @@
 </style>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174166304-1"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="{{ asset('js/share.js') }}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -35,6 +37,7 @@
                              @include("blogetc::sitewide.recent_posts")
                         </div>
                    </div>
+                   {!! Share::currentPage() ->facebook() ->twitter() ->whatsapp(); !!}
                     @if(config("blogetc.comments.type_of_comments_to_show","built_in") !== 'disabled')
                         <div class="mt-4">
                             <div id="maincommentscontainer">

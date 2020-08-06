@@ -8,6 +8,8 @@
 	<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
 	<script src="https://kit.fontawesome.com/8f691340fb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="{{ asset('js/share.js') }}"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174166304-1"></script>
 <script>
@@ -165,6 +167,8 @@
 @endsection
 	<!---TABLE ENDS--->
 @section('js')
+	<!-- Go to www.addthis.com/dashboard to customize your tools -->
+	<!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f2c15345fb5fc05"></script> -->
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="{{ asset('js/main.js') }}"></script>
 	<script src="{{ asset('js/filterBySector.js') }}"></script>
