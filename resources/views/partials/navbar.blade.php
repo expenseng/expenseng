@@ -43,8 +43,12 @@
                         </div>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link section-nav-link" href="{{ route('teams') }}">Our Team</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link section-nav-link" href="{{ route('search') }}"><i class="fa fa-search inp"></i></a>
                     </li>
+                    
                 </ul>
             </div>
             <!--side menu open button-->
@@ -106,6 +110,7 @@
                     <li class="nav-item">
                         <a class="nav-link section-nav-link" href=""><i class="fa fa-search inp"></i></a>
                     </li>
+                    
                 </ul>
             </nav>
         </div>
