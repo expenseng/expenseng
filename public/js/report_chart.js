@@ -122,7 +122,7 @@ chart.render();
     })
 
     $('#reset-chart').on('click', function(e){
-        // const id = $(this).attr("data-id");
+        
         sort = undefined;
         date = undefined;
         $(this).closest('.modal-content').find('.byDatePicker').val('')
@@ -200,12 +200,11 @@ chart.render();
             date = reverseDateFormat(date);
         }
 
-        console.log(id, date, sort)
         renderChartData(id, date, sort)
     })
 
     function renderChartData(id, date, sort){
-        // console.log('Reset was here')
+        
         chartType = $('input[name="chartType"]:checked').attr('id');
         $.ajax({
             url: `/expense/filterExpensesChart/${id}/${date}/${sort}/${chartType}`,
