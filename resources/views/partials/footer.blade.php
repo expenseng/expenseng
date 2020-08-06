@@ -26,6 +26,10 @@
                             <li class="section-footer-links">
                                 <a href="{{ route('blogetc.index') }}">Blog</a>
                             </li>
+                            <li class="section-footer-links">
+                                <a href="{{ route('teams') }}">Our Team</a>
+                            </li>
+
                         </ul>
 
                     </div>

@@ -1,5 +1,5 @@
-<nav aria-label="...">
-	  <ul class="pagination pagination-lg">
+<nav aria-label="..." class="table-responsive">
+	  <ul class="pagination pagination-md">
 	  		<li class=page-item">
 	            <a class="page-link" href="/blog">All</a>
 	        </li>

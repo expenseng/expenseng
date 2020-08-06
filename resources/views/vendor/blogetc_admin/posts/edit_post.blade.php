@@ -9,11 +9,16 @@
 @section('content')
 <div class="content" id="app">
     <div class="container-fluid">
+                <!-- flash messages  -->
+        @include('backend.partials.flash')
+        <!-- ======================================== -->
+
         <main class="py-4">
             <div class="row">
                 <div class="col-md-9">
-                    <h4>Admin - Editing post
-                        <a target="_blank" href="{{ $post->url() }}" class="float-right btn btn-primary">
+
+                   <h4 class="text-center p-4 text-white" style="background: #6c757d">Edit Post
+                        <a target="_blank" href="{{ $post->url() }}" class="float-right btn btn-default">
                             View post
                         </a>
                     </h4>
