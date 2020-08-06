@@ -138,7 +138,7 @@
                     </div>
                 @endif
 
-                <label for="blog_{{$imageSizeKey}}">Image - {{$imageSizeAttributes['name']}} (optional)</label>
+                <label class="btn btn-sm" for="blog_{{$imageSizeKey}}">Image - {{$imageSizeAttributes['name']}} (optional)</label>
                 <small id="blog_{{$imageSizeKey}}_help" class="form-text text-muted">
                     Upload {{$imageSizeAttributes['name']}} image -
                     <code>{{$imageSizeAttributes['w']}}&times;{{$imageSizeAttributes['h']}}px</code> - it will

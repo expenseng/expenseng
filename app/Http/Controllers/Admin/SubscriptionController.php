@@ -73,7 +73,7 @@ class SubscriptionController extends Controller
         );
         //check if detail exist before
         $check = Subscription::where('email', $request->email)
-        ->orWhere('subscription_type', $request->sub_type)->get();
+        ->where('subscription_type', $request->sub_type)->get();
 
         if (count($check) > 0 ) {
             Session::flash(

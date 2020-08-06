@@ -56,6 +56,11 @@ class PageController extends Controller
         return view('pages.aboutus');
     }
 
+    public function ourteam()
+    {
+        return view('pages.ourteams');
+    }
+
     public function FOIA() {
         return view('pages.freedomofact');
     }

@@ -68,7 +68,7 @@
             <div class="col-md-4 col-lg-3 mb-3 card-col">
               <div class="card shadow">
                 <div class="card-body">
-                    <chart label="myVueChart"
+                    <chart label=""
                             v-bind:data="[{amount: {{round($contractor->total_amount / 12)}}, year: {{$contractor->year}} }, {amount:{{$contractor->total_amount}}, year:{{$contractor->year}} }]"
                             element="{{ 'id-'. \Str::slug($contractor->beneficiary, '-') . $loop->index }}"></chart>
                     <div class="contractor mb-2">

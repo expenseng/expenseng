@@ -2,7 +2,7 @@
 <button type="button" class="btn btn-outline-light toggle" id="open" data-toggle="modal" data-target="#exampleModalCenter">
     Subscribe
   </button>
-  
+
   <!-- Modal -->
   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -29,9 +29,30 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-outline-light subscribe-button" 
+          <button type="button" class="btn btn-outline-light subscribe-button"
           onclick="event.preventDefault(); document.getElementById('subscribe-form').submit();">Subscribe</button>
         </div>
       </div>
     </div>
   </div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModaltweets" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                            <div class="overflow-auto" style="max-height:300px; width: 100%">
+                                <a class="twitter-timeline" data-theme="light" href="https://twitter.com/expenseng?ref_src=twsrc%5Etfw"  data-chrome="nofooter noheader noborders transparent">Tweets by expenseng</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                            </div>
+
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
