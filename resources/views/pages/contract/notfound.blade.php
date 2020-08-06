@@ -46,7 +46,7 @@
            
           </div>
           <div class="col-sm-4">
-            <p class="font-weight-bold">Total number contracts awarded</p>
+            <p class="font-weight-bold">Total contracts awarded</p>
             <p class="contract-number">
              {{ count($contracts)}}
             </p>

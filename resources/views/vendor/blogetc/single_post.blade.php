@@ -8,6 +8,26 @@
     #main {
         margin: 1rem 0;
     }
+    .blog-body p{
+      font-size: 14px;
+      text-align: justify;
+    }
+
+    @media screen and (max-width: 480px){
+      h5 {
+          font-size: 16px;
+          margin-left: 0px; 
+          color: black;
+      }
+
+      .blog-body .featured-image{
+          max-width: 100%;
+          margin: 20px auto !important;
+      }
+
+
+    }
+
 </style>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174166304-1"></script>
@@ -29,7 +49,10 @@
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     @include("blogetc::partials.show_errors")
-                    @include("blogetc::partials.full_post_details")
+                    <div class="col-md-12 blog-body">
+                       @include("blogetc::partials.full_post_details")
+                    </div>
+                   
                    <div class="row mt-4">     
                         <div class="col-md-12">
                              @include("blogetc::sitewide.recent_posts")

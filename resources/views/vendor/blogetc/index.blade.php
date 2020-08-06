@@ -10,6 +10,23 @@
     #main {
         margin: 1rem 0;
     }
+    p.blog-excerpt{
+        font-size: 15px;
+    }
+
+    .blog-title {
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #353A45;
+    }
+    .blog-read-more{
+        font-size: 15px;
+    }
+
 </style>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174166304-1"></script>
@@ -28,11 +45,11 @@
     <div class="container">
         {{ Breadcrumbs::render('blog') }}
 
-    <div class="row mb-4">
+    <div class="row mb-3">
         <div class="col-md-5">
-            <h6 class="para px-3">Read inside news from Ministries Agencies and Departments on topics, ranging from Economy, Finance, FG/MDAs Projects, Politics etc.</h6>
+            <h6 class="para px-3">Read inside on topics ranging from Economy, Business, Finance, FG Projects, Politics etc.</h6>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-7 mt-2">
             @include("blogetc::sitewide.show_categories")
         </div>
      </div>
