@@ -25,7 +25,15 @@ class SubscriptionController extends Controller
             toastr()->error( ' Subscription Already exist.');
                     return back();
         } else {
-            $user = Subscription::create($data);
+            $newSub = new Subscription();
+            $newSub->name = $request->name;
+            
+            $newSub->email = $request->email;
+
+            $newSub->subscription_type = $request->subscription_type;
+
+            $user = $newSub->save();
+
             if ($user) {
                 Activites::create(
                     [
