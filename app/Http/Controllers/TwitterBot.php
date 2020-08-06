@@ -119,19 +119,30 @@ class TwitterBot extends Controller
         if ($request->ajax()) {
             try {
                 $payment = Payment::whereId($request->id)->first();
-                $date = Carbon::createFromFormat('Y-m-d', $payment->payment_date)->format('l \\T\\h\\e jS \\of F Y');
-                $ministry = Ministry::whereCode(substr($payment->payment_code, 0, 4))->first();
-                if (empty($ministry)) {
-                    $tweet = $this->style1($payment, $date);
+                if (isset($payment->tweet_id)) {
+                    $id = $payment->tweet_id;
+                    if (isset($id)) {
+                        $tweets =  Twitter::postRt(''.$id);
+                        return  Response('retweeted');
+                    } else {
+                        return Response::json(array('msg'=> 'not tweeted'), 422);
+                    }
                 } else {
-                    $tweet = $this->style2($payment, $date, $ministry);
+                    $date = Carbon::createFromFormat('Y-m-d', $payment->payment_date)->format('l \\T\\h\\e jS \\of F Y');
+                    $ministry = Ministry::whereCode(substr($payment->payment_code, 0, 4))->first();
+                    if (empty($ministry)) {
+                        $tweet = $this->style1($payment, $date);
+                    } else {
+                        $tweet = $this->style2($payment, $date, $ministry);
+                    }
+                    $twitter = new Tweet(trim($tweet));
+                    $tweet = $twitter->HashTag('expenseng')->send();
+                    Payment::whereId($request->id)->update(['tweeted' => true ,'tweet_id'=>
+                        json_decode($tweet)->id]);
+                    return Response("tweet sent ");
                 }
-                $twitter = new Tweet(trim($tweet));
-                $twitter->HashTag('expenseng')->send();
-                Payment::whereId($request->id)->update(['tweeted' => true]);
-                return Response("tweet sent");
             } catch (\Exception $e) {
-                return response()->json(array('msg'=> $e->getMessage()), 422);
+                return Response($e->getMessage(), 422);
             }
         }
     }
@@ -221,8 +232,19 @@ class TwitterBot extends Controller
     {
         if ($request ->ajax()) {
             try {
-                $tweets=  Twitter::getUserTimeline();
+                $tweets=  Twitter::getUserTimeline(['count'=> 30]);
                 return view('backend.tweets', compact('tweets'));
+            } catch (\Exception $exception) {
+                return Response::json(array("errors" => 'error occured'), 422);
+            }
+        }
+    }
+    public function retweet(Request $request)
+    {
+        if ($request ->ajax()) {
+            try {
+                $tweets=  Twitter::postRt(''.($request->id));
+                return  Response('retweeted');
             } catch (\Exception $exception) {
                 return Response::json(array("errors" => 'error occured'), 422);
             }

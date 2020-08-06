@@ -44,35 +44,37 @@
                                         
                                         <tbody>
                                         @if (count($ministries ) > 0)
+
                                             <tr>
                                                 
                                                 @foreach ($ministries as $ministry)
+                                                
                                                 <td>
                                                     {{++$count}}
                                                 </td>
-                                                <td>{{$ministry->name}}</td>
-                                                <td>{{$ministry->shortname}}</td>
-                                                <td>{{$ministry->code}}</td>
-                                                <td>{{$ministry->head}}</td>
-                                                <td>{{$ministry->twitter}}</td>
+                                                <td>Ministry of {{$ministry['ministry']->name}}</td>
+                                                <td>{{$ministry['ministry']->shortname}}</td>
+                                                <td>{{$ministry['ministry']->code}}</td>
+                                                <td>{{$ministry['head']}}</td>
+                                                <td>{{$ministry['ministry']->twitter}}</td>
                                                 <td>
-                                                    {{$ministry->website}}
+                                                    {{$ministry['ministry']->website}}
                                                 </td>
                                                 @can('manage')
                                                 <td>
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             @can('edit')
-                                                            <a href="{{'/admin/ministry/edit/' . $ministry->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
+                                                            <a href="{{'/admin/ministry/edit/' . $ministry['ministry']->id}}"><i class="fa fa-edit" style="color: #00945E"></i></a>
                                                             @endcan
                                                         </div>
                                                         
                                                         <div class="col-md-6">
                                                             @can('delete')
-                                                            <i class="fa fa-trash" data-toggle="modal" data-target="{{'#exampleModal'.$ministry->id}}" style="color: red"></i>
+                                                            <i class="fa fa-trash" data-toggle="modal" data-target="{{'#exampleModal'.$ministry['ministry']->id}}" style="color: red"></i>
                                                             @endcan
                                                         <!-- Modal -->
-                                                        <div class="modal fade" id="{{'exampleModal'. $ministry->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal fade" id="{{'exampleModal'. $ministry['ministry']->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                             <div class="modal-header">
@@ -82,11 +84,11 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                Deleting <strong>{{$ministry->name}}</strong> from Ministry
+                                                                Deleting <strong>{{$ministry['ministry']->name}}</strong> from Ministry
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                <form action="{{'/admin/ministry/delete/'. $ministry->id}}" method="post" >
+                                                                <form action="{{'/admin/ministry/delete/'. $ministry['ministry']->id}}" method="post" >
                                                                 @method('delete')
                                                                 @csrf
                                                                 <button type="" class="btn btn-danger">Delete</button>

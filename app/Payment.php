@@ -9,9 +9,7 @@ use App\Ministry;
 class Payment extends Model
 {
 
-
-    public $fillable = ['payment_no'	,'payment_code'	,'organization'	,'beneficiary'	,'amount','description', 'payment_date'];
-    // public $fillable = ['name', 'shortname', 'industry', 'ceo', 'twitter'];
+protected $guarded = ['id'];
 
     public function amount(){
         return number_format($this->amount, 2, '.', ',');
