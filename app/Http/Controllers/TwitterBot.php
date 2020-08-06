@@ -85,7 +85,7 @@ class TwitterBot extends Controller
      */
     public function paymentTweets()
     {
-        $payments = Payment::where('payment_date', '>=', Carbon::now()->subMonth())->get();
+        $payments = Payment::where('payment_date', '>=', Carbon::now()->subDays())->get();
         foreach ($payments as $payment) {
             array_push($this->tweets, $this->filterPaymentTweet($payment));
         }
