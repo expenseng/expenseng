@@ -239,7 +239,7 @@ class MinistryController extends Controller
                 $head = Cabinet::where('ministry_code', $ministry->code)
                 ->where('role', 'Minister')->get();
                 if ($head) {
-                    $headArray = array("head" => $head[0]->name ? $head[0]->name : 'Minister\'s Detail not Available yet');
+                    $headArray = array("head" => count($head) > 0 ? $head[0]->name : 'Minister\'s Detail not Available yet');
                     $newData = array_merge($headArray, array("ministry" => $ministry));
                     
                     $ministries->push($newData);
