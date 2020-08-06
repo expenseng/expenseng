@@ -37,9 +37,9 @@
         </div>
 
 
-        <h1>Disclaimer</h1>
+        <h1 id='disclaimer'>Disclaimer</h1>
 
-        <div class="conditions">
+        <div class="conditions" >
             <p>
                 Disclaimer
             </p>
@@ -56,8 +56,12 @@
 
             <p>No consequential damages can be sought against Expenseng, as it is a voluntary association of individuals formed to create freely licensed online educational, cultural and informational resources. This information is being given to you gratuitously and there is no agreement or understanding between you and Expenseng regarding your use or modification of this information beyond the Creative Commons Attribution-Sharealike 3.0 Unported License (CC BY-SA) and the GNU Free Documentation License (GFDL).</p><br>
 
-            <p>DO NOT RELY UPON ANY INFORMATION FOUND IN Expenseng WITHOUT INDEPENDENT VERIFICATION.</p><br>
-               
+            <p>DO NOT RELY UPON ANY INFORMATION FOUND IN EXPENSENG WITHOUT INDEPENDENT VERIFICATION.</p><br>
+              
+            <p>
+                If your Report request is related to information concerning the Department of the Treasury, Bureau of the Fiscal Service,
+                please visit the <a href="https://opentreasury.gov.ng " class="link">CBN FOIA site</a>
+            </p>
         </div>
     </div>
   </div>
