@@ -103,7 +103,7 @@ class ExpenseController extends Controller
         };
 
         if($sector != null){
-            // $code = 0;
+            
             if($sector !== 'all'){
                 $sector = intval($sector);
                 if($sector != 0){
@@ -122,8 +122,6 @@ class ExpenseController extends Controller
             }else{
                     $miniTableData['all'] = $this->sectorFiveYear();
             }
-            // echo 'code: '. $code;
-            // echo 'sector:'. $sector;
         }
        
         if ($sort != "undefined") {
@@ -183,7 +181,7 @@ class ExpenseController extends Controller
         return ['ministries' => $mdas, 'amounts' => $amounts];
     }
 
-    public function chartReport($id, $date, $sort)
+    public function chartReport($id, $date, $sort, $chartType="ministry")
     {
         $givenTime = date('Y-m-d');
         if ($date != 'undefined'){
@@ -212,14 +210,77 @@ class ExpenseController extends Controller
             $type = $userdate == true ?  'Yearly': 'Daily';
         } 
         
-        $ministries = Ministry::select('*')
+        if($chartType === 'ministries'){
+            $ministries = Ministry::select('*')
                     ->orderby('shortname', 'asc')
                     ->get();
-        $result = $this->getChartData($ministries, $yr, $mth, $day, $sort);
+            $result = $this->getChartData($ministries, $yr, $mth, $day, $sort);
+        }else if($chartType === 'days'){
+            $result = $this->getDailyTotals($yr, $mth, $day, $sort, $type);
+        }
+        
         $result['type'] = $type;
         $result['date'] = $givenTime;
         return $result;
+    }
+
+    public function getDailyTotals($yr="2020", $mth=6, $day=null, $sort="desc", $type='t'){
         
+        $amounts = array();
+        $days = array();
+        $payments = Payment::select(
+            DB::raw(
+                'SUM(amount) as amount, payment_date'
+            )
+        )
+        ->whereYear('payment_date', '=', $yr);
+        if($mth != null){
+            $payments = $payments->whereMonth('payment_date', $mth);
+        }if($day != null){
+            $payments = $payments->whereDay('payment_date', $day);
+        }
+            $payments = $payments->groupby('payment_date');
+        if ($sort == "asc" OR $sort == "desc" ){
+            $payments = $payments->orderby('amount', $sort);
+        }
+            $payments = $payments->get();
+                    
+        foreach($payments as $payment){
+            array_push($days,  date("d-m-Y", strtotime($payment->payment_date)));
+            array_push($amounts, $payment->amount);
+        }
+        
+        if(count($days) == 0){
+            if($type == 'Daily'){
+                array_push($days, date("d-m-Y"));
+                array_push($amounts, 0);
+            }else if($type == 'Monthly'){
+                $result = $this->getDays($days, $amounts);
+                $days = $result['days'];
+                $amounts = $result['amounts'];
+            }else if($type == 'Yearly'){
+                for ($i = 1; $i <= 12; $i++) {
+                    $timestamp = mktime(0, 0, 0, $i);
+                    array_push($days, date("M", $timestamp));
+                    array_push($amounts, 0);
+                }
+            }
+        }
+       
+        return ['days' => $days, 'amounts' => $amounts];
     }
     
+    public function getDays($days, $amounts){
+        $year = date('Y');
+        $month = date('m');
+    
+        $dayCount = cal_days_in_month(CAL_GREGORIAN,$month,$year);
+    
+        for ($i = 1; $i <= $dayCount; $i++)
+        {
+            array_push($days, $i."-".$month."-".$year);
+            array_push($amounts, 0);
+        }
+        return ['days'=> $days, 'amounts'=> $amounts];
+    }
 }

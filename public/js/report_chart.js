@@ -1,11 +1,36 @@
 $(document).ready(function() {
+///////////////////////////////////////////////////////////////////////////////////       
+//////////                 Utilities                                //////////////
+/////////////////////////////////////////////////////////////////////////////////
+    
+const insertCommas = amount =>{
+    const parts = amount.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
+}
+
+const reverseDateFormat= date => {
+    
+    let splitDate = date.split('-'); 
+    let reverseArray = splitDate.reverse(); 
+    let joinArray = reverseArray.join('-'); 
+    return joinArray; 
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////       
+//////////                 Initialize Chart                          /////////////
+/////////////////////////////////////////////////////////////////////////////////
+
 let options = {
     chart: {
+        type: 'area',
         height: 330,
-        type: "area",
-        toolbar: {
-        show:false
-    }
+    },
+    plotOptions: {
+        bar: {
+        horizontal: false,
+        }
     },
 
     dataLabels: {
@@ -59,7 +84,8 @@ let options = {
             minWidth: 0,
             maxWidth: 160,
             formatter: function(val){
-                return val.toFixed(2)
+                val = val.toFixed(2);
+                return insertCommas(val)
             }
         }
     },
@@ -70,10 +96,8 @@ let options = {
         enabled: true,
         y: {
             formatter: function (val, opts) {
-                const parts = val.toString().split(".");
-                parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                val = parts.join(".")        
-                return ("₦" + val)
+                val = val.toFixed(2);
+                return( "₦" + insertCommas(val));
             },
             title: {
                 formatter: (seriesName) => seriesName,
@@ -86,30 +110,16 @@ var chart = new ApexCharts(document.querySelector("#chart"), options);
 
 chart.render();
 
-///////////////////////////////////////////////////////////////////////////////////       
-//////////                 Utilities                                //////////////
-/////////////////////////////////////////////////////////////////////////////////
-    
-const insertCommas = amount =>{
-    const parts = amount.toString().split(".");
-    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return parts.join(".");
-}
+ 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+    let id, date, sort, active;
+    let chartIsModified = false;
+    let chartType = 'ministries';
 
-const reverseDateFormat= date => {
-    
-    let splitDate = date.split('-'); 
-    let reverseArray = splitDate.reverse(); 
-    let joinArray = reverseArray.join('-'); 
-    return joinArray; 
-}
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////// 
-
-
-let id, date, sort, active;
-let chartIsModified = false;
+    $(document).on('change', 'input[name="chartType"]', function(){
+        renderChartData(id, date, sort);
+    })
 
     $('#reset-chart').on('click', function(e){
         // const id = $(this).attr("data-id");
@@ -123,7 +133,6 @@ let chartIsModified = false;
         if(chartIsModified == false){
             return
         }
-       
         renderChartData(id, date, sort)
     })
 
@@ -196,38 +205,36 @@ let chartIsModified = false;
     })
 
     function renderChartData(id, date, sort){
-        console.log('Reset was here')
+        // console.log('Reset was here')
+        chartType = $('input[name="chartType"]:checked').attr('id');
         $.ajax({
-            url: `/expense/filterExpensesChart/${id}/${date}/${sort}`,
+            url: `/expense/filterExpensesChart/${id}/${date}/${sort}/${chartType}`,
             method: "GET",
             success: function(data){
-                console.log(data)
-                let {ministries, amounts, type, date} = data;
+                // console.log(data)
+                let {amounts, type, date} = data;
                 if(/^(\d{4})-(\d{2})-(\d{2})$/.test(date)){
                     date = reverseDateFormat(date);
                 }
                 $('#report-type').html(`(${type}):`)
                 $('#report-date').html(date) 
                 chart.updateSeries([{
-                name: `${type} Expenses per ministry`,
+                name: `${type} Expenses by ${chartType}`,
                 data: amounts
                 }])             
                 chart.updateOptions({
-                xaxis: {
-                    show: true,
-                    categories: ministries,
-                    labels: {
-                        show: true
-                    }
-                },
                 chart: {
                     type: 'bar',
-                    height: 330
                 },
-                plotOptions: {
-                    bar: {
-                    horizontal: false,
-                    }
+                xaxis: {
+                    show: true,
+                    categories:data[chartType],
+                    labels: {
+                        show: true
+                    },
+                    title:{
+                        text: chartType,
+                    },
                 },
                 })
                 chartIsModified = true;                       
