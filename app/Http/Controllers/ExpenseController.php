@@ -224,7 +224,7 @@ class ExpenseController extends Controller
         return $result;
     }
 
-    public function getDailyTotals($yr="2020", $mth=6, $day=null, $sort="desc", $type='t'){
+    public function getDailyTotals($yr="2020", $mth=6, $day=null, $sort="desc", $type){
         
         $amounts = array();
         $days = array();
