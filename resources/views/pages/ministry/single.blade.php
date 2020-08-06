@@ -232,7 +232,64 @@
                 @endforeach
             @endif
         </div>
+        {{-- cabinet member --}}
 
+        <h3 style='color: #353A45; text-align:center;margin-top: 15px'>Suggest Cabinet Members</h3>
+
+        <center>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" style="background: 353A45;margin-bottom: 20px;">
+        Suggest a Cabinet Member
+        </button>
+        </center>
+
+        <!-- Modal -->
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" class="text-light">Suggestion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form  action=" {!! url('/feedback') !!}" method="POST">
+            {{csrf_field()}}
+            <div class="form-group">
+            <label for="firstName">Firstname</label>
+            <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Firstname">
+            </div>
+            <div class="form-group">
+            <label for="lastName">Lastname</label>
+            <input type="text" name="lastName" class="form-control" id="exampleInputPassword1" placeholder="Lastname">
+            </div>
+
+            <div class="form-group">
+            <label for="ministry">Ministry</label>
+            <select id="inputState" readonly class="form-control" name="ministry_id">
+                <option class="mb-1"  value="{{$ministry->id}}">{{$ministry->shortname}}</option>
+            </select>
+            </div>
+        <center>
+            <button type="submit" class="btn btn-success ">Submit</button>
+        </center>
+
+        </form>
+            </div>
+            </div>
+        </div>
+        </div>
     </div>
 
     <!--3-->
@@ -242,64 +299,7 @@
     </div>
 </div>
 
-{{-- cabinet member --}}
 
-<h3 style='color: #353A45; text-align:center;margin-top: 15px'>Suggest Cabinet Members</h3>
-
-<center>
-<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" style="background: 353A45;margin-bottom: 20px;">
-  Suggest a Cabinet Member
-</button>
-</center>
-
-<!-- Modal -->
-@if ($errors->any())
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" class="text-light">Suggestion</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form  action=" {!! url('/feedback') !!}" method="POST">
-    {{csrf_field()}}
-    <div class="form-group">
-      <label for="firstName">Firstname</label>
-      <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Firstname">
-    </div>
-    <div class="form-group">
-      <label for="lastName">Lastname</label>
-      <input type="text" name="lastName" class="form-control" id="exampleInputPassword1" placeholder="Lastname">
-    </div>
-
-    <div class="form-group">
-      <label for="ministry">Ministry</label>
-      <select id="inputState" readonly class="form-control" name="ministry_id">
-        <option class="mb-1"  value="{{$ministry->id}}">{{$ministry->shortname}}</option>
-      </select>
-    </div>
-   <center>
-    <button type="submit" class="btn btn-success ">Submit</button>
-  </center>
-
-  </form>
-      </div>
-    </div>
-  </div>
-</div>
 @endsection
 
 
