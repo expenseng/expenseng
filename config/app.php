@@ -161,6 +161,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Yoeunes\Toastr\ToastrServiceProvider::class,
         Thujohn\Twitter\TwitterServiceProvider::class,
+        Jorenvh\Share\Providers\ShareServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -229,5 +230,6 @@ return [
         'Twitter' => Thujohn\Twitter\Facades\Twitter::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
+        'Share' => Jorenvh\Share\ShareFacade::class,
     ],
 ];
