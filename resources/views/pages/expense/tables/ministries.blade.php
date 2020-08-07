@@ -17,15 +17,7 @@
                         @if($expense->ministry())
                             <tr>
                                 <td class="section-shadow">
-                                    {{-- @empty($expense->ministry())
-                                        {{ "null" }}
-                                    @else
-                                    <a href="{{ route('ministries.single', ['ministry' => strtolower($expense->ministry()['shortname']) ]) }}" class="text-success">
-                                        {{ ucfirst($expense->ministry()['name']) }}
-
-                                    </a>
-                                    @endempty --}}
-                                
+                                    
                                     <a href="{{ route('ministries.single', ['ministry' => strtolower($expense->ministry()['shortname']) ]) }}" class="text-success">
                                         {{ ucfirst($expense->ministry()['name']) }}
 

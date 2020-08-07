@@ -53,6 +53,30 @@ class ExpenseController extends Controller
         return $payments;
     }
 
+    public function searchExpenses(Request $request)
+    {
+        // echo Input::get('query');
+        
+        if ($request->get('query')) {
+            $query = $request->get('query');
+            $id = $request->get('id');
+            $date = $request->get('date');
+            $sort = $request->get('sort');
+            $sector = $request->get('sector');
+            // echo $query;
+            // echo "<br/>";
+            // echo $id;
+            // echo "<br/>";
+            // echo $date;
+            // echo "<br/>";
+            // echo $sort;
+            // echo "<br/>";
+            // echo $sector;
+            $response = $this->filterExpensesAll($id, $date, $sort, $sector, $query);
+            return $response;
+        }
+    }
+
     public function sectorFiveYear($sector='all', $codes=0)
     {
         if($sector !== 'all'){
@@ -74,9 +98,8 @@ class ExpenseController extends Controller
         return $totals;
     }
 
-    public function filterExpensesAll($id, $date, $sort, $sector="all")
+    public function filterExpensesAll(Request $request, $id, $date, $sort, $sector="all")
     { 
-       
         $givenTime = ($id === 'apply-filter-exp')? date('Y-m-d'): date('Y');
         
         if ($date != 'undefined'){
@@ -101,6 +124,11 @@ class ExpenseController extends Controller
         } else {
             $data = $data->where('payment_date', '=', "$givenTime"); 
         };
+
+        if ($request->has('query')) {
+            $query = $request->get('query');
+            $data = $data->where('description', 'LIKE', "%$query%");
+        }
 
         if($sector != null){
             
@@ -129,7 +157,7 @@ class ExpenseController extends Controller
         } else {
             $data = $data->orderby('payment_date', 'desc');
         }
-        
+
         $data = $data->paginate(20)->onEachSide(1);
         
         if($id === 'apply-filter'){

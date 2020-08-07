@@ -130,8 +130,38 @@ $(document).ready(function() {
 
         let date, sort, active;
 
+       
+      
+        $('#expense_search').on('search', searchProject)
+    
+        $('#expense_search').on('keyup', searchProject)
+
+        function searchProject(){
+            const id = $(this).attr("data-id");
+            let query = $(this).val();
+            sector = $('.sectors').val();
+            
+                let _token = $('input[name="_token"]').val();
+                let request = {query, _token, id, date, sort, sector}
+                $.ajax({
+                    url:  `/expense/filterExpensesAll/${id}/${date}/${sort}/${sector}`,
+                    method: "POST",
+                    data: request,
+                    success: function(data){
+                    //   console.log(data)
+                      const table = document.querySelector('#main-table');
+                      renderTable(id,table,data,query)
+                       
+                    },
+                    error: function(error){
+                      console.log(error)
+                    }
+                })
+        }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
         $('.reset').on('click', function(e){
             const id = $(this).attr("data-id");
+            $('#expense_search').val('');
             sort = undefined;
             date = undefined;
             $(this).closest('.modal-content').find('.byDatePicker').val('');
@@ -154,7 +184,7 @@ $(document).ready(function() {
                     const minitable = document.querySelector('#mini-table');
                     const tableDate = table.closest('.main-table').querySelector('.said-date-caption');
                     table.innerHTML = payload[0];
-                    tableDate.innerHTML = `Date: ${defaultTableDate}`;
+                    tableDate.innerHTML = `Showing expenses for: ${defaultTableDate}`;
                      id === 'apply-filter' ? tableOneIsModified = false  : tableTwoIsModified = false;
                      $('.sectors').val('all');
                      minitable.innerHTML = payload[1];
@@ -230,15 +260,15 @@ $(document).ready(function() {
             if(date !== undefined){
                 date = reverseDateFormat(date);
             }
-            
+            let query = $('#expense_search').val();
             $.ajax({
                     url: `/expense/filterExpensesAll/${id}/${date}/${sort}/${sector}`,
                     method: "GET",
+                    data: {query},
                     success: function(data){
                         // console.log(data)
                         const table = e.target.closest('#modal').nextElementSibling;
-                        console.log(table);
-                        renderTable(id, table, data);    
+                        renderTable(id, table, data, query);    
                     },
                     error: function(error){
                         console.log(error)
@@ -249,15 +279,18 @@ $(document).ready(function() {
         $(document).on('change', '.sectors', function(e){
             sector = $(this).val();
             const id = $(this).attr("data-id");
+            let query = $('#expense_search').val();
+            console.log('date', date)
             $.ajax({
                 url: `/expense/filterExpensesAll/${id}/${date}/${sort}/${sector}`,
                 method: "GET",
+                data: {query},
                 success: function(data){
                     // console.log(data)
                     let payload = data.split('<br/>');
                     const table = document.querySelector('#main-table');
                     const minitable = document.querySelector('#mini-table');
-                    renderTable(id, table, payload[0]); 
+                    renderTable(id, table, payload[0], query); 
                     minitable.innerHTML = payload[1];             
                 },
                 error: function(error){
@@ -276,11 +309,15 @@ $(document).ready(function() {
         })
 
         function fetch_data(e, id, table, page, date, sort){
-            console.log(e, id, table, page, date, sort);
+           
+            let query = $('#expense_search').val();
+            console.log(e, id, table, page, date, sort, query);
             $.ajax({
                 url: `/expense/filterExpensesAll/${id}/${date}/${sort}/${sector}?page=${page}`,
                 method: "GET",
+                data: {query},
                 success: function(data){
+                    // console.log(data)
                     table.innerHTML = data;          
                 },
                 error: function(error){
@@ -289,13 +326,21 @@ $(document).ready(function() {
             })
         }
 
-        function renderTable(id,table,data){
+        function renderTable(id,table,data,query){
+            console.log(data)
             const tableDate = table.closest('.main-table').querySelector('.said-date-caption');
-            table.innerHTML = data;         
+            table.innerHTML = data;
+            let msg = '';
+            if(query != ''){
+                 msg = `containing <b>"${query}"</b>`
+            }        
             if(date !== undefined){
                 let reportDate = /\d{4}-\d{2}-\d{2}/.test(date)? formatDate(date) : date;
-                tableDate.innerHTML = `Showing expenses for <span style="color:#1e7e34">${reportDate}</span>`;
+                tableDate.innerHTML = `Showing expenses for <span class="said-date">${reportDate}</span> ${msg}`;
+            }else{
+                tableDate.innerHTML = `Showing expenses for <span class="said-date">${defaultTableDate}</span> ${msg}`;
             }
+            
             id === 'apply-filter2' ? tableTwoIsModified = true  : tableOneIsModified = true;                     
         }
     });
