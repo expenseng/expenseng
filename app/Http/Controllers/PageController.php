@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Budget;
 use App\Ministry;
+use App\Teams;
 use App\Cabinet;
 use Illuminate\Http\Request;
 
@@ -58,7 +59,8 @@ class PageController extends Controller
 
     public function ourteam()
     {
-        return view('pages.ourteams');
+        $team = Teams::all();
+        return view('pages.ourteams',compact('team'));
     }
 
     public function FOIA() {

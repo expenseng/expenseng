@@ -47,19 +47,19 @@
                                             <div class="form-group">
                                                 <label for="inputEmail">Facebook Handle</label>
                                                 <input id="inputEmail" name="facebook" value="{{$team->facebook_handle}}"
-                                                type="text" placeholder="e.g @example" class="form-control">
+                                                type="text" placeholder="e.g otenaike" class="form-control">
                                                 
                                             </div>
                                             <div class="form-group">
-                                                <label for="inputEmail">Email</label>
-                                                <input id="inputEmail" name="email" value="{{$team->email}}"
-                                                type="text" placeholder="e.g @example" class="form-control">
+                                                <label for="inputEmail">Instagram Handle</label>
+                                                <input id="inputEmail" name="instagram" value="{{$team->instagram}}"
+                                                type="text" placeholder="e.g otenaike" class="form-control">
                                                 
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">linkedin Handle</label>
                                                 <input id="inputEmail" name="linkedin" value="{{$team->twitter_handle}}"
-                                                type="text" placeholder="e.g @example" class="form-control">
+                                                type="text" placeholder="e.g otenaike" class="form-control">
                                                 
                                             </div>
                                             <div class="form-group">
