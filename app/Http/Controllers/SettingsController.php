@@ -20,12 +20,16 @@ class SettingsController extends Controller
             ->limit(7)
             ->get();
         $total_activity = count(Activites::all()->where('status', 'pending'));
-        $user = Auth::user();
+        $user = Auth::user(); 
+
+        $sidebar_items = DB::table('sidebar_arrangement')->orderBy('position')->get();
+        
         return view('backend.settings.index')->with(
             [
                 'user' => $user,
                 'recent_activites' => $recent_activites,
                 'total_activity' => $total_activity,
+                'sidebar_items' => $sidebar_items,
             ]
         );
     }
@@ -45,5 +49,11 @@ class SettingsController extends Controller
         ]);
         Session::flash('flash_message', 'Password changed succesfully');
         return redirect()->back();
+    }
+
+    public function updateSidebar(Request $request){
+    $some=$request->request->get('data');
+    echo($some);   
+
     }
 }

@@ -204,7 +204,10 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
      //Settings Page
      Route::get('/user/settings', 'SettingsController@index')->name('users.settings');
      Route::put('/settings/change_password/{user_id}', 'SettingsController@ChangePassword')->name('settings.change_password');
+     Route::post('/user/settings/update', 'SettingsController@updateSidebar')->name('sidebar.settings');
 
+
+    
      // Cabinet CRUD
      Route::get('/cabinet/create', 'CabinetController@create')
      ->name('cabinet.create');
