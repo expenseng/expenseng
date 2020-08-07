@@ -62,18 +62,4 @@ class Payment extends Model
                    ->get();
         return $company;
     }
-
-    /**
-     * Load realtionships into the search
-     * results
-     */
-    public function toSearchableArray(){
-        $array = $this->toArray();
-
-        $array = $this->transform($array);
-
-        // $array['ministry'] = $this->ministry();
-
-        return $array;
-    }
 }
