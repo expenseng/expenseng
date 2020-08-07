@@ -33,7 +33,7 @@
                                                 <th>Name</th>
                                                 <th>Twitter Handle</th>
                                                 <th>Facebook Handle</th>
-                                                <th>Email</th>
+                                                <th>Instagram</th>
                                                 <th>linkden Handle</th>
                                                 <th>Role</th>
                                                 <th>Image</th>
@@ -55,7 +55,7 @@
                                                 <td>{{$team->name}}</td>
                                                 <td>{{$team->twitter_handle}}</td>
                                                 <td>{{$team->facebook_handle}}</td>
-                                                <td>{{$team->email}}</td>
+                                                <td>{{$team->instagram}}</td>
                                                 <td>{{$team->linkedIn_handle}}</td>
                                                 <td>{{$team->role}}</td>
                                                 <td><img src="{{$team->avatar}}" alt="{{$team->name . '\'s image'}}" style="height: 50px; width:50px; border-radius: 50%"></td>
@@ -116,7 +116,7 @@
                                                 <th>Name</th>
                                                 <th>Twitter Handle</th>
                                                 <th>Facebook Handle</th>
-                                                <th>Email</th>
+                                                <th>Instagram</th>
                                                 <th>linkden Handle</th>
                                                 <th>Role</th>
                                                 <th>Image</th>

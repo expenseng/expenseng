@@ -176,7 +176,7 @@ button.btn.scroll-down::after{
 .gallery::-webkit-scrollbar {
     display: none;
   }
-  
+
   /* Hide scrollbar for IE, Edge and Firefox */
   .gallery {
     -ms-overflow-style: none;  /* IE and Edge */
@@ -231,7 +231,7 @@ p.tag{
     margin-right: 10px;
     border-radius: 5px;
   }
-  
+
   /* cell number */
   .carousel-cell:before {
     display: block;
@@ -256,7 +256,7 @@ p.tag{
     width: 30px !important;
     height: 30px !important;
   }
-  
+
   .flickity-prev-next-button img{
       width: 100%;
   }
@@ -504,7 +504,7 @@ p.profile{
 }
 .vll{
     align-items: center;
-    
+
 }
 .convo-background{
     background-image: linear-gradient(to bottom, rgba(49, 139, 108, 0.89), rgba(49, 139, 108, 0.89), rgba(49, 139, 108, 0.89)),url(../images/twitter1.png);
@@ -545,7 +545,7 @@ p.profile{
    font-size: var(--fs-h5);
 
 }
-#open{ 
+#open{
     margin: 1rem 0;
     width: 10rem;
     padding: 0.4rem 3rem;
@@ -616,7 +616,7 @@ p.profile{
     .twt-handle{
         padding: 0.5rem 1.3rem;
         margin: auto;
-        
+
     }
 }
 
@@ -824,8 +824,8 @@ p.profile{
     }
 
     .card1{
-        
-    background:linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(../images/card2.jpg); 
+
+    background:linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(../images/card2.jpg);
     }
     .vll{
         margin: 3rem auto;
@@ -904,16 +904,16 @@ p.profile{
     .convo-background{
         background: linear-gradient(to bottom, rgba(49, 139, 108, 0.9), rgba(49, 139, 108, 0.9), rgba(49, 139, 108, 0.9));
     }
-    .tweet{	
+    .tweet{
         background: linear-gradient(to bottom, rgba(49, 139, 108, 0.89), rgba(49, 139, 108, 0.89), rgba(49, 139, 108, 0.89)), url(../images/twitter1.png);
         height: 200px;
-        width: 100%;	
-        display: flex;	
-        margin: auto;	
-        background-size: contain;	
-        background-position: center;	
-        background-repeat: no-repeat;	
-    }	
+        width: 100%;
+        display: flex;
+        margin: auto;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
     .twt-handle a{
         margin-left: -15px;
     }
@@ -959,4 +959,16 @@ p.profile{
         margin: auto;
     }
 }
-
+.tweet_icon{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+}
+@media (min-width: 1063px) {
+    .banner {
+        height: auto;
+        padding-bottom: 15em;
+    }
+    .fixed-bottom .fa-twitter {
+    box-shadow: 1px 1px 7px #28a745;
+    }
+}

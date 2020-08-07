@@ -26,7 +26,6 @@ body {
 }
 .input1{
     background: #FFFFFF;
-    border: 1.01354px solid #717276;
     box-sizing: border-box;
     border-radius: 10px;
     outline: none;
@@ -72,10 +71,14 @@ body {
     margin-top: 50px;
 }
 .input2:hover{
+    outline: none;
+    border: none;
     background: #017248;
 }
 .input2:active{
     background: #00945E;
+    outline: none;
+    border: none;
 }
 .div2{
     text-align: center;
@@ -139,9 +142,7 @@ body {
 }
 
 .div4{
-    padding-left: 7.32%;
     padding-top: 60px;
-    padding-right: 7.32%;
 }
 .hh5{
     font-style: normal;

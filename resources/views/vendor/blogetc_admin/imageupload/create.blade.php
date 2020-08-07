@@ -19,7 +19,7 @@
                                        aria-describedby="image_title_help">
                             </div>
                             <div class="form-group mb-4 p-2">
-                                <label class="btn form-control-file" for="upload">Upload image</label>
+                                <label class="btn btn-sm" for="upload">Upload image</label>
                                 
                                 <input required class="form-control" type="file" name="upload" id="upload"
                                        aria-describedby="upload_help">

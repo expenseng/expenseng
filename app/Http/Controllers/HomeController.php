@@ -58,10 +58,12 @@ class HomeController extends Controller
         ->where('beneficiary', $name)
         ->whereYear('payment_date', '=', "$currentYr")
         ->groupBy('beneficiary')
-        ->get();
+        ->first();
 
-        $company->amount = $beneficiary[0]->amount;
-        $company->year = $beneficiary[0]->year;
+        if($beneficiary){
+             $company->amount = $beneficiary->amount;
+            $company->year = $beneficiary->year;
+        }
         
         return $company;
     }

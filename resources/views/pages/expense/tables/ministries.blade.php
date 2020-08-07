@@ -8,6 +8,7 @@
                     <th class="row-company">Beneficiary</th>
                     <th class="row-amount">Amount</th>
                     <th class="row-date">Date</th>
+                    <th>Share</th>
                 </tr>
             </thead>
             <tbody>
@@ -16,15 +17,7 @@
                         @if($expense->ministry())
                             <tr>
                                 <td class="section-shadow">
-                                    {{-- @empty($expense->ministry())
-                                        {{ "null" }}
-                                    @else
-                                    <a href="{{ route('ministries.single', ['ministry' => strtolower($expense->ministry()['shortname']) ]) }}" class="text-success">
-                                        {{ ucfirst($expense->ministry()['name']) }}
-
-                                    </a>
-                                    @endempty --}}
-                                
+                                    
                                     <a href="{{ route('ministries.single', ['ministry' => strtolower($expense->ministry()['shortname']) ]) }}" class="text-success">
                                         {{ ucfirst($expense->ministry()['name']) }}
 
@@ -39,6 +32,9 @@
                                 <td>{{$expense->beneficiary}}</td>
                                 <td>&#8358;{{ number_format($expense->amount) }}</td>
                                 <td>{{ date('jS M, Y', strtotime($expense->payment_date))}}</td>
+                                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                                <!-- <td class="addthis_inline_share_toolbox"></td> -->
+                                <td>{!! Share::page(route('ministries.single', ['ministry' => strtolower($expense->ministry()['shortname']) ]))->facebook() ->twitter() ->whatsapp(); !!}</td>
                             </tr>
                         @endif
                     @endforeach

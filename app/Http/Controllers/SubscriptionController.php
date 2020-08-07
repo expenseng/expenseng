@@ -25,7 +25,15 @@ class SubscriptionController extends Controller
             toastr()->error( ' Subscription Already exist.');
                     return back();
         } else {
-            $user = Subscription::create($data);
+            $newSub = new Subscription();
+            $newSub->name = $request->name;
+            
+            $newSub->email = $request->email;
+
+            $newSub->subscription_type = $request->subscription_type;
+
+            $user = $newSub->save();
+
             if ($user) {
                 Activites::create(
                     [
@@ -43,14 +51,14 @@ class SubscriptionController extends Controller
                 
                 try{
                     //send email
-                    $sendEmail = Mail::to($request->email)
+                    Mail::to($request->email)
                     ->send(new SendSubNotification($request->name, $details, $subscription, $last, false));
-                    if ($sendEmail) {
+                    
 
                         toastr()
                         ->success('You have successfully subscribed for regular updates!');
                         return  back();
-                    }
+                    
                     
                 }catch(Exception $e){
 

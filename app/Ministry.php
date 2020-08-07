@@ -3,12 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Ministry extends Model
 {
-    //
+    use Searchable;
 
-    
     protected $fillable = [
         'code',
         'name',

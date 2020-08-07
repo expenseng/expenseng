@@ -66,9 +66,11 @@ jQuery($=> {
   
   /*Menu Onclick*/
   let sideMenuToggle = $("#sidemenu_toggle");
+
   let sideMenu = $(".side-menu");
   if (sideMenuToggle.length) {
       sideMenuToggle.on("click", function () {
+            
           $("body").addClass("overflow-hidden");
           sideMenu.addClass("side-menu-active");
           $(function () {

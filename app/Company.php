@@ -3,10 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 use stdClass;
 
 class Company extends Model
 {
+    use Searchable;
+
     public $fillable = ['name', 'shortname', 'industry', 'ceo', 'twitter'];
     public function expense()
     {

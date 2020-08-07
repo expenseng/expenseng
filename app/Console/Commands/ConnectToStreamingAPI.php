@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Ministry;
 use App\TwitterStream;
 use Illuminate\Console\Command;
 
@@ -46,7 +47,16 @@ class ConnectToStreamingAPI extends Command
 
         $this->twitterStream->consumerKey = $twitter_consumer_key;
         $this->twitterStream->consumerSecret = $twitter_consumer_secret;
-        $this->twitterStream->setTrack(array('expenseng ', '@expenseng','#expenseg'));
+        $ministries = Ministry::all();
+        $array = array('expenseng ', '@expenseng','#expenseng');
+        foreach ($ministries as $ministry) {
+            if (isset($ministry->twitter)) {
+                array_push($array, "".$ministry->twitter);
+                $hashtag = '#'.explode('@', "".$ministry->twitter)[1];
+                array_push($array,$hashtag);
+            }
+        }
+        $this->twitterStream->setTrack($array);
         $this->twitterStream->consume();
     }
 }

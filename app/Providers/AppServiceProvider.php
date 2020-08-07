@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Search\SiteWideSearch;
 use App\TwitterStream;
 use Illuminate\Support\ServiceProvider;
 use Phirehose;
@@ -37,5 +38,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
+        SiteWideSearch::bootSearchable();
     }
 }
