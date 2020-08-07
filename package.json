@@ -16,6 +16,7 @@
         "npm": "6.x"
     },
     "devDependencies": {
+        "@babel/preset-env": "^7.11.0",
         "axios": "^0.19",
         "bootstrap": "^4.0.0",
         "cross-env": "^7.0",
@@ -37,6 +38,7 @@
         "apexcharts": "^3.19.3",
         "chance": "^1.1.6",
         "chart.js": "^2.9.3",
+        "element-ui": "^2.13.2",
         "express": "^4.17.1",
         "flickity": "^2.2.1",
         "instantsearch.css": "^7.4.2",

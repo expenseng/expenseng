@@ -9,11 +9,17 @@ import VueApexCharts from 'vue-apexcharts';
 import TextareaAutosize from 'vue-textarea-autosize'
 import VueSweetalert2 from 'vue-sweetalert2';
 import VueInstantSearch from 'vue-instantsearch';
+import { Input, Select, Button, Option } from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
 window.Vue = require('vue');
 Vue.use(TextareaAutosize);
 Vue.use(VueSweetalert2);
 Vue.use(VueInstantSearch);
+Vue.use(Input.name);
+Vue.use(Select.name);
+Vue.use(Select.name);
+Vue.use(Option.name);
 
 /**
  * The following block of code may be used to automatically register your
@@ -34,7 +40,10 @@ Vue.component('admin-comments', require('./components/Backend/AdminComments.vue'
 Vue.component('ministry-expense', require('./components/Home/MinistryExpense.vue').default);
 Vue.component('ministry-budgets', require('./components/Home/MinistryBudget.vue').default);
 Vue.component('search', require('./components/Search.vue').default);
-
+Vue.component(Input.name, Input);
+Vue.component(Select.name, Select);
+Vue.component(Button.name, Button);
+Vue.component(Option.name, Option);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
