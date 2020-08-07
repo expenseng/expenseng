@@ -20,6 +20,7 @@
         "fruitcake/laravel-cors": "^2.0",
         "fzaninotto/faker": "^1.9.1",
         "guzzlehttp/guzzle": "^6.3",
+        "jorenvanhocht/laravel-share": "^3.2",
         "laravel/framework": "^7.0",
         "laravel/scout": "^8.2",
         "laravel/tinker": "^2.0",

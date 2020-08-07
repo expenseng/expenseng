@@ -66,34 +66,7 @@
             <aside class="banner contact-green">
                 <h4 class="pt-3">Keep in touch with us</h4>
                 <hr class="banner-hr">
-                <div class="row">
-                    <div class="align col-sm-4">
-                        <span class="fa-stack fa-sm">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-map-marker fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </div>
-                    <div class="align col-sm-8 text-left">
-                        <p>Plot 234, Bowo Avenue,</p>
-                        <p>Victoria Island,</p>
-                        <p>Lagos, Nigeria.</p>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="align col-sm-4">
-                        <span class="fa-stack fa-sm">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-phone fa-stack-1x"></i>
-                        </span>
-                    </div>
-                    <div class="align col-sm-8 text-left">
-                        <p>+234 904 234 5678</p>
-                        <p>+234 904 234 5678</p>
-                        <p>+234 904 234 5678</p>
-                    </div>
-                </div>
-                <hr>
+     
                 <div class="row">
                     <div class="align col-sm-4">
                         <span class="fa-stack fa-sm">
@@ -142,7 +115,7 @@
         <div class="row">
             <aside class="col-md-7">
                 <img class="twitter-back" src="{{ asset('/images/Vector.png') }}" alt="twitter background">
-                <button class="button button-tw"><i class="fab fa-twitter"></i> @ExpenseNG</button>
+                <button class="button button-tw"> <a href="https://twitter.com/expenseng" target="_blank">@expenseNG</a></button>
             </aside>
             <aside class="col-md-5">
                 <h2 class="pt-5 pb-4 mb-5">Join the conversation</h2>

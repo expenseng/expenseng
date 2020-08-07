@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+
+.test {
+    color:red;
+}
+
+h1 {
+
+font-family: Lato;
+font-style: normal;
+font-weight: bold;
+font-size: 56px;
+line-height: 152%;
+color: #353A45;
+}
+
+.heading-cont {
+    background-color: ;
+}
+
+.heading-text {
+font-family: Lato;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 35px;
+/* or 146% */
+color: #353A45;
+}
+
+
+.team-img {
+background-color: #C4C4C4;
+}
+
+.team-name {
+font-family: Lato;
+font-style: normal;
+font-weight: bold;
+font-size: 20px;
+line-height: 24px;
+/* identical to box height */
+
+display: flex;
+align-items: center;
+text-align: center;
+letter-spacing: 0.05em;
+
+color: #353A45;
+}
+
+
+.team-role {
+font-family: Lato;
+font-style: normal;
+font-weight: bold;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+
+display: flex;
+align-items: center;
+text-align: center;
+letter-spacing: 0.05em;
+
+color: #005D3B;
+}
+
+.team-frame {
+background: white;
+    box-shadow: 1px 1px 6px 0px #0000001a;
+    max-width: 224px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.team-frame * + * {
+   margin-top: 1em;
+    margin-bottom: 0;
+}
+
+.social-icons {
+    margin-bottom: 1em;
+}
+
+.social-icons img {
+width: 25px;
+height: 25px;
+}
+
+.social-icons img:hover {
+    background-color: #005D3B;
+    border-radius: 100%;
+    
+}

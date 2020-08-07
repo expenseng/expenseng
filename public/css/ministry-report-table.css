@@ -596,3 +596,29 @@ button.nav-chart{
 		margin-right: 2rem;
 	}
 }
+
+#social-links ul{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	list-style: none;
+}
+
+#social-links .fa:hover, #social-links .fa:focus {
+    color: rgba(0,148,94,0.7) !important;
+}
+
+#social-links a {
+    border-bottom: none;
+}
+.said-date{
+	color:#1e7e34;
+}
+@media all and (max-width: 768px){
+	#search-tools{
+		flex-direction: column;
+	}
+	#search-tools select{
+		margin-left: 15px !important;
+	}
+}

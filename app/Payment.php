@@ -11,7 +11,7 @@ class Payment extends Model
 {
     use Searchable;
 
-    public $fillable = ['payment_no','payment_code'	,'organization'	,'beneficiary'	,'amount','description', 'payment_date'];
+protected $guarded = ['id'];
 
     public function amount(){
         return number_format($this->amount, 2, '.', ',');

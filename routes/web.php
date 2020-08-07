@@ -20,6 +20,7 @@ use App\User;
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contactUs')->name('contact');
+Route::get('/teams', 'PageController@ourteam')->name('teams');
 Route::get('/report', 'PageController@error404')->name('error404');
 Route::get('/faq', 'PageController@faq')->name('faq');
 Route::get('/privacy', 'PageController@privacy')->name('privacy');
@@ -59,8 +60,8 @@ Route::patch('/ministries/{ministry}', 'MinistryController@update')->name('minis
 Route::delete('/ministries/{ministry}', 'MinistryController@destroy')->name('ministry_destroy');
 Route::post('/ministries/autocomplete', 'MinistryController@autocomplete')->name('ministry_autocomplete');
 Route::get('/expense/filterExpensesAll/{id}/{date}/{sort}/{sector?}', 'ExpenseController@filterExpensesAll')->name('all_ministries_filter_expenses');
-Route::get('/expense/filterExpensesChart/{id}/{date}/{sort}', 'ExpenseController@chartReport')->name('all_ministries_filter_chart');
-
+Route::get('/expense/filterExpensesChart/{id}/{date}/{sort}/{chartType?}', 'ExpenseController@chartReport')->name('all_ministries_filter_chart');
+Route::post('/expense/filterExpensesAll/{id}/{date}/{sort}/{sector?}', 'ExpenseController@filterExpensesAll')->name('all_ministries_search_expenses');
 
 /**
  * Contractor Endpoints
@@ -268,7 +269,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
 
 
       Route::delete('/payments/delete/{payment_id}', 'Admin\PaymentController@destroy')->name('payments.delete');
-      
+
       // Team CRUD
       Route::get('/team/create', 'TeamController@viewCreateTeam')
       ->name('team.create');
@@ -290,14 +291,12 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
       ->name('sheet.parse');
 
       Route::get('/website_stats', 'Website_Statistics_Controller@index')->name('website_stats');
-
-       
  });
 
 
 /* Admin backend routes - CRUD for posts, categories, and approving/deleting submitted comments */
     Route::group(['prefix' => 'admin/blog', 'middleware' => 'auth'], static function () {
-       
+
         Route::get('/', 'Admin\ManagePostsController@index')->name('blogetc.admin.index');
 
         Route::get('/add_post', 'Admin\ManagePostsController@create')->name('blogetc.admin.create_post');
@@ -342,22 +341,23 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
 
 
 
- Route::get('/ggg', 'Website_Statistics_Controller@dds')->name('ggg');
+    Route::get('/ggg', 'Website_Statistics_Controller@dds')->name('ggg');
 
 
 
- Auth::routes();
+    Auth::routes();
 
 
 //admin route
- Route::get('/admin', function () {
-     return redirect(route('dashboard'));
- });
+    Route::get('/admin', function () {
+        return redirect(route('dashboard'));
+    });
 
- Route::get('/startRT', 'TwitterBot@startLiveRetweet');
- Route::get('/stopRT', 'TwitterBot@stopLiveRetweet');
- Route::post('/post_tweet', 'TwitterBot@sendTweet');
- Route::get('/tweets', 'TwitterBot@getTweet');
- Route::delete('delete_tweet', 'TwitterBot@delete');
- Route::post('parse_sheet', 'SheetParsing@parse');
- Route::post('tweet_payment', "TwitterBot@tweetPayment");
+    Route::get('/startRT', 'TwitterBot@startLiveRetweet');
+    Route::get('/stopRT', 'TwitterBot@stopLiveRetweet');
+    Route::post('/post_tweet', 'TwitterBot@sendTweet');
+    Route::post('/retweet', 'TwitterBot@retweet');
+    Route::get('/tweets', 'TwitterBot@getTweet');
+    Route::delete('delete_tweet', 'TwitterBot@delete');
+    Route::post('parse_sheet', 'SheetParsing@parse');
+    Route::post('tweet_payment', "TwitterBot@tweetPayment");

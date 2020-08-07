@@ -26,11 +26,15 @@
                             <li class="section-footer-links">
                                 <a href="{{ route('blogetc.index') }}">Blog</a>
                             </li>
+                            <li class="section-footer-links">
+                                <a href="{{ route('teams') }}">Our Team</a>
+                            </li>
+
                         </ul>
 
                     </div>
                     <div class="footer-second mr-4 mr-lg-5">
-                        <h6>Profile</h6>
+                        <h6>Reports</h6>
                         <ul>
                             <li class="section-footer-links">
                                 <a  href="{{ route('expense.reports') }}">Expenditure Report</a>
@@ -68,6 +72,7 @@
                     <a href="/accessibility">Accessibility</a>
                     <a href="/privacy"> | Privacy Policy</a>
                     <a href="/FOIA"> | Freedom of Information Act</a>
+                    <a href="/FOIA#disclaimer"> | Disclaimer</a>
                     <a href="/faq"> | FAQ</a>
                 </div>
                 <div class="col-md-3">

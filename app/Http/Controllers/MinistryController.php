@@ -224,12 +224,30 @@ class MinistryController extends Controller
             return redirect(route('home'));
         }
 
-        $ministries = Ministry::all();
+        
         $recent_activites = Activites::where('status', 'pending')->orderBY('id', 'DESC')
             ->limit(7)
             ->get();
         $total_activity = count(Activites::all()->where('status', 'pending'));
+        $ministries = collect([]); //initialize array
 
+        //query
+        $getMinistries = Ministry::all();
+        //get head
+        if (count($getMinistries) > 0) {
+            foreach ($getMinistries as $ministry) {
+                $head = Cabinet::where('ministry_code', $ministry->code)
+                ->where('role', 'Minister')->get();
+                if ($head) {
+                    $headArray = array("head" => count($head) > 0 ? $head[0]->name : 'Minister\'s Detail not Available yet');
+                    $newData = array_merge($headArray, array("ministry" => $ministry));
+                    
+                    $ministries->push($newData);
+                }
+            }
+        }
+        
+        
         return view('backend.ministry.view')->with([
             'ministries' => $ministries,
             'recent_activites' => $recent_activites,

@@ -8,6 +8,8 @@
 	<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
 	<script src="https://kit.fontawesome.com/8f691340fb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="{{ asset('js/share.js') }}"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174166304-1"></script>
 <script>
@@ -24,16 +26,6 @@
 	<!-- Breadcrumb start -->
 	<header class="container">
 		{{ Breadcrumbs::render('expense.ministry') }}
-
-		{{-- <nav aria-label="breadcrumb">
-			<ol class="breadcrumb list bg-white">
-				<li class="breadcrumb-item not-active"><a href="{{ url('/') }}">HOME</a></li>
-				<span>&#8226;</span>
-				<li class="breadcrumb-item not-active"><a href="#">EXPENSE</a></li>
-				<span>&#8226;</span>
-				<li class="breadcrumb-item active" aria-current="page"><a href="{{ url('/expense/ministry') }}">MINISTRY SPENDING</a></li>
-			</ol>
-		</nav> --}}
 	</header>
 	<section>
 		<div class="container ">
@@ -70,16 +62,22 @@
 	<div class="tab-content">
 		<div class="section-2 tab-pane show fade active" id="table" role="tabpanel">
 			<section class="container bordered px-0">
-				<select data-id="apply-filter-sector" style="width:170px;" class="sectors form-control ml-2">
-					<option value='all'>All</option>
-					@foreach($sectors as $sector)
-				<option value={{$sector->id}}>{{$sector->name}}</option>
-					@endforeach
-				</select>
+				<div id="search-tools" class="d-flex justify-content-between">
+					<select data-id="apply-filter-sector" style="width:170px;" class="sectors form-control ml-2">
+						<option value='all'>All</option>
+						@foreach($sectors as $sector)
+					<option value={{$sector->id}}>{{$sector->name}}</option>
+						@endforeach
+					</select>
+					<div id="search-area" class="offset-md-1 col-md-5 col-lg-4 mt-3 mt-md-0">
+					<input type="search" id="expense_search" data-id="apply-filter" class="form-control form-control-lg mb-2" style="font-family:Arial, FontAwesome; height:38px;" placeholder="&#xf002; Search for a project">
+						@csrf
+					</div>
+				</div>
 				<div class="table-section reponsive-div">
 					<div class="main-table">
 						<div class="table-top p-3 d-flex justify-content-between align-items-center">
-							<h3 class="said-date-caption" class="align-self-center">Date: <span class="said-date">{{ date("dS, M Y") }}</span></h3>
+							<h3 class="said-date-caption" class="align-self-center">Showing expenses for: <span class="said-date">{{ date("Y") }}</span></h3>
 							<button class="nav-button" data-toggle="modal" data-target="#filterModal">Filter<i class="fas fa-filter px-1" style="font-size: var(--fs-reg);"></i></button>
 						</div>
 						<!-- Filter Modal -->
@@ -165,6 +163,8 @@
 @endsection
 	<!---TABLE ENDS--->
 @section('js')
+	<!-- Go to www.addthis.com/dashboard to customize your tools -->
+	<!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f2c15345fb5fc05"></script> -->
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="{{ asset('js/main.js') }}"></script>
 	<script src="{{ asset('js/filterBySector.js') }}"></script>

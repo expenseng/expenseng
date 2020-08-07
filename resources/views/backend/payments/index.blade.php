@@ -107,8 +107,14 @@
                                                     </div>
                                                     @if($payment->tweeted == false)
                                                         <div class="col py-3 px-0" id="{{'div'.$payment->id}}">
-                                                            <a type="submit" onclick='event.preventDefault(); jQuery.fn.tweet({{$payment->id}})'>
-                                                                <i class="fa fa-twitter" style="color: #6a0094"></i>
+                                                            <a type="submit" onclick='event.preventDefault();jQuery.fn.tweet({{$payment->id}})'>
+                                                                <i  id="{{'button'.$payment->id}}" class="fa fa-twitter text-success"></i>
+                                                            </a>
+                                                        </div>
+                                                    @else
+                                                        <div class="col py-3 px-0" id="{{'div'.$payment->id}}">
+                                                            <a type="submit " onclick='event.preventDefault(); jQuery.fn.tweet({{$payment->id}})'>
+                                                                <i  id="{{'button'.$payment->id}}" class="fa fa-twitter text-warning" ></i>
                                                             </a>
                                                         </div>
                                                     @endif
@@ -167,7 +173,7 @@
             });
             jQuery.fn.tweet = function(data) {
                 $id = data;
-                var div = '#div'+$id
+                let button = '#button'+$id
                 jQuery.ajax({
                     url: "{{ URL::to('tweet_payment') }}",
                     type: "post",
@@ -182,10 +188,11 @@
                         position: 'top-center',
                         hideAfter: 5000
                     });
-                    jQuery(div).hide();
+                    jQuery(button).removeClass('text-success');
+                    jQuery(button).addClass('text-warning');
                 }).fail(function(data) {
                     jQuery.toast({
-                        text: data.msg,
+                        text: 'can\'t be tweeted or retweeted',
                         showHideTransition: 'slide',
                         icon: 'error',
                         position: 'top-center',
@@ -193,7 +200,6 @@
                     });
                 })
             };
-
          });
     </script>
     <script>

@@ -21,7 +21,7 @@
 
   gtag('config', 'UA-174035666-1');
 </script>
-
+    <script src="{{ asset('js/index.js') }}"></script>
     @yield('js')
   </body>
 </html>

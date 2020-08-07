@@ -73,10 +73,30 @@
         </div>
 
         <div class="container col-sm-12 col-md-7">
+          {{-- <div>
+            <label class="containers">Ministry
+              <input type="radio" checked="checked" name="chartType" id="ministry">
+              <span class="checkmark"></span>
+            </label>
+            <label class="containers">Day
+              <input type="radio" name="chartType" id="day">
+              <span class="checkmark"></span>
+            </label>
+          </div> --}}
           <div class="table-top d-flex justify-content-between align-items-center">
             <h4>Graph<span id="report-type">(Daily):</span> <span id="report-date"></span></h4>
             <button class="nav-button" data-toggle="modal" data-target="#filterModalChart">Filter<i class="fas fa-filter px-1" style="font-size: var(--fs-reg);"></i></button>
-						</div>
+          </div>
+          <div class="d-flex justify-content-center pt-5" style="line-height: 1.5rem;">
+            <label class="containers">Ministries
+              <input type="radio" checked="checked" name="chartType" id="ministries">
+              <span class="checkmark"></span>
+            </label>
+            <label class="containers ml-4">Days
+              <input type="radio" name="chartType" id="days">
+              <span class="checkmark"></span>
+            </label>
+          </div>
 						<!-- Filter Modal -->
                 <div id="modal" class="row justify-content-center modals">
                   <div class="col-md-8">
@@ -85,10 +105,10 @@
                       <div class="modal-content">
                         <!-- Header -->
                         <div class="modal-header">
-                        <h5 class="modal-title" id="filterModalLabel">Filter</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
+                          <h5 class="modal-title" id="filterModalLabel">Filter</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
                         </div>
                         <!-- Body -->
                         <div class="modal-body">
@@ -109,11 +129,12 @@
                           <br>
                           <section class="row">
                             <div class="col-12" >
-                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                            <input placeholder="Select Date" name="select-date" id="select-date-chart"  class="byDatePicker form-control">
-                            <input placeholder="Select Month" name="select-month" id="select-month-chart" class="monthYearPicker form-control" />
-                            <input placeholder="Select Year" name="select-year" id="select-year-chart" class="yearPicker form-control" />
-                            <small id="date-format-err"></small>
+                              <i class="fa fa-calendar" aria-hidden="true"></i>
+                              <input placeholder="Select Date" name="select-date" id="select-date-chart"  class="byDatePicker form-control">
+                              <input placeholder="Select Month" name="select-month" id="select-month-chart" class="monthYearPicker form-control" />
+                              <input placeholder="Select Year" name="select-year" id="select-year-chart" class="yearPicker form-control" />
+                              <small id="date-format-err"></small>
+                            </div>
                           </section>
                           <br>
                           <section id="sort-options">
@@ -139,6 +160,7 @@
             <div id ="chart">
 
             </div>
+
           </div>
         </div>
       </div>
@@ -178,7 +200,6 @@
 <script type="text/javascript" src="/js/filter.js"></script>
 <script type="text/javascript" src="/js/report_chart.js"></script>
 <script src="{{ asset('js/index.js') }}"></script>
-{{-- @jquery --}}{{--Is this necessary? jquery already installed via npm--}}
 @toastr_js
 @toastr_render
 

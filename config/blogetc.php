@@ -31,7 +31,7 @@ return [
     // This should be in public_path() (i.e. /public/blog_images), and should be writable
     // (be sure this directory is writable!)
     // Default: blog_images
-    'blog_upload_dir' => 'images/blog',
+    'blog_upload_dir' => 'uploads/blog',
 
     // Set the memory limit (used only when processing images) via ini_set().
     'memory_limit' => '2048M',

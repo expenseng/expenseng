@@ -10,7 +10,7 @@ class Teams extends Model
         'name', 
         'twitter_handle',
         'facebook_handle',
-        'email',
+        'instagram',
         'linkedIn_handle',
         'role',
         'avatar', 

@@ -16,6 +16,7 @@ use WebDevEtc\BlogEtc\Requests\CreateBlogEtcPostRequest;
 use WebDevEtc\BlogEtc\Requests\DeleteBlogEtcPostRequest;
 use WebDevEtc\BlogEtc\Requests\UpdateBlogEtcPostRequest;
 use WebDevEtc\BlogEtc\Services\UploadsService;
+use Illuminate\Support\Facades\Session;
 
 /**
  * Class BlogEtcAdminController.
@@ -82,6 +83,9 @@ class ManagePostsController extends Controller
     {
         $editUrl = $this->uploadsService->legacyStorePost($request);
 
+        
+        Session::flash('flash_message', 'Post added successfully !');
+        //return redirect(route('blogetc.admin.categories.index'));
         return redirect($editUrl);
     }
 
@@ -129,6 +133,7 @@ class ManagePostsController extends Controller
     public function update(UpdateBlogEtcPostRequest $request, $blogPostId)
     {
         $editUrl = $this->uploadsService->legacyUpdatePost($request, $blogPostId);
+        Session::flash('flash_message', 'Post updated successfully !');
 
         return redirect($editUrl);
     }
