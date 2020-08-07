@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Activites;
+use App\Sidebar;
 
 class SettingsController extends Controller
 {
@@ -52,8 +53,15 @@ class SettingsController extends Controller
     }
 
     public function updateSidebar(Request $request){
-    $some=$request->request->get('data');
-    echo($some);   
+    $data=$request->request->get('data');
+    parse_str($data, $str);
+    $menu = $str['item'];
+    $sidebar = Sidebar::all();
+    dd($sidebar);
+    foreach ($menu as $key => $value) {
+    DB::update('update sidebar_arrangement set position=? where name=?',[$key,$value]);
+    }
+    print_R("success");
 
     }
 }

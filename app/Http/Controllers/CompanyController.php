@@ -158,6 +158,7 @@ class CompanyController extends Controller
        $recent_activites = Activites::where('status', 'pending')->orderBY('id', 'DESC')
             ->limit(7)
             ->get();
+        $sidebar = DB::table('sidebar_activities')->all();
         $total_activity = count(Activites::all()->where('status', 'pending'));
 
         $companies = Company::all();
@@ -167,6 +168,7 @@ class CompanyController extends Controller
             'recent_activites' => $recent_activites,
             'total_activity' => $total_activity,
             'count' => 0,
+            'sidebar' => $sidebar,
         ]);
     }
 

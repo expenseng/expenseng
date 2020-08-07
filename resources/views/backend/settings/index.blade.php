@@ -106,7 +106,7 @@
                                     <i class="fas fa-arrows-alt-v"></i>
                                     </div>
                                     <div class="col-8">
-                                    <p>{{$sidebar_item->position}}{{ $sidebar_item->name }}</p>
+                                    <p>{{ $sidebar_item->name }}</p>
                                     
                                     </div>
                                     <div class="col-1 hide-button-card text-muted">
@@ -345,7 +345,7 @@
     $( "#sortable" ).disableSelection();
     
     $("#savemebtn").click(function(){
-        var data = $( "#sortable" ).sortable('serialize');
+      var data = $( "#sortable" ).sortable('serialize');
       $.ajaxSetup({
 
         headers: {
@@ -361,7 +361,7 @@
                dataType: 'text',
                data: {data:data},
                success: function (response) {
-                    console.log(response);
+                    alert(response);
                }
             });
     });
