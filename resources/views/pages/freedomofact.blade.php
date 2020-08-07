@@ -60,7 +60,7 @@
               
             <p>
                 If your Report request is related to information concerning the Department of the Treasury, Bureau of the Fiscal Service,
-                please visit the <a href="https://opentreasury.gov.ng " class="link">CBN FOIA site</a>
+                please visit the <a href="https://opentreasury.gov.ng " class="link">Federal Government Opentreasury site</a>
             </p>
         </div>
     </div>
