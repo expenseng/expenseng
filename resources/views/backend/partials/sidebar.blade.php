@@ -11,12 +11,14 @@
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class=" {{Route::is('dashboard')? 'nav-item active' : 'nav-item '}}  ">
-            <a class="nav-link" href="{{Route::is('dashboard')? '#' :route('dashboard')}}">
+            
+          <li class=' {{Route::is('dashboard')? 'nav-item active' : 'nav-item '}}  ''>
+            <a class='nav-link' href='{{Route::is('dashboard')? '#' :route('dashboard')}}'>
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
-          </li>
+          </li> 
+
           @can('manage-user')
           <li class="{{Route::is('users.view') || Route::is('users.create') || Route::is('users.edit')
           ? 'nav-item active' : 'nav-item'}} ">
@@ -98,11 +100,8 @@
             </a>
           </li>
 
-          <!-- <li class="nav-item "> -->
           <li class="{{Route::is('importExcel')
           ? 'nav-item active' : 'nav-item'}} ">
-            <!-- <a class="nav-link" href="#">
-             -->
             <a class="nav-link" href="{{Route::is('importExcel')? '#' :route('importExcel')}}">
 
             <i class="material-icons">note_add</i>
@@ -110,8 +109,8 @@
             </a>
           </li>
 
-           <li class="{{Route::is('blogetc.admin.index')
-          ? 'nav-item active' : 'nav-item'}} ">
+           <li class='{{Route::is('blogetc.admin.index')
+          ? 'nav-item active' : 'nav-item'}} '>
             <a class="nav-link" href="{{ route('blogetc.admin.index') }}">
               <i class="material-icons">Blog</i>
               <p>Blog</p>

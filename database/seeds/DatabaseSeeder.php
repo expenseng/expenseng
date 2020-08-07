@@ -11,6 +11,7 @@ include 'CabinetSeeder.php';
 include 'StatusSeeder.php';
 include 'RoleSeeder.php';
 include 'UserSeeder.php';
+include 'SidebarArrangementSeeder.php';
 
 class DatabaseSeeder extends Seeder
 {
@@ -29,5 +30,6 @@ class DatabaseSeeder extends Seeder
         $this->call(StatusSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(SidebarArrangementSeeder::class);
     }
 }

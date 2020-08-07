@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Activites;
+use App\Sidebar;
 
 class SettingsController extends Controller
 {
@@ -20,12 +21,16 @@ class SettingsController extends Controller
             ->limit(7)
             ->get();
         $total_activity = count(Activites::all()->where('status', 'pending'));
-        $user = Auth::user();
+        $user = Auth::user(); 
+
+        $sidebar_items = DB::table('sidebar_arrangement')->orderBy('position')->get();
+        
         return view('backend.settings.index')->with(
             [
                 'user' => $user,
                 'recent_activites' => $recent_activites,
                 'total_activity' => $total_activity,
+                'sidebar_items' => $sidebar_items,
             ]
         );
     }
@@ -45,5 +50,18 @@ class SettingsController extends Controller
         ]);
         Session::flash('flash_message', 'Password changed succesfully');
         return redirect()->back();
+    }
+
+    public function updateSidebar(Request $request){
+    $data=$request->request->get('data');
+    parse_str($data, $str);
+    $menu = $str['item'];
+    $sidebar = Sidebar::all();
+    dd($sidebar);
+    foreach ($menu as $key => $value) {
+    DB::update('update sidebar_arrangement set position=? where name=?',[$key,$value]);
+    }
+    print_R("success");
+
     }
 }
