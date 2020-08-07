@@ -105,20 +105,17 @@ class SubscriptionController extends Controller
                 ]
             );
          try {
-            $sendEmail = Mail::to($request->email)
+            Mail::to($request->email)
                 ->send(new SendSubNotification($request->name, $details, $subscription, $last, false));
             
 
             
-            if ($sendEmail) {
+
 
                 Session::flash('flash_message', $request->name. ' added to Subscription Successfully!');
                 return redirect(route('subscribe.view'));
-            } else {
-                Session::flash('error_message', 'Cannot send  Subscription email!!');
-                return redirect()->back();
-            }
-            } catch (\Exception $e) {
+            
+             } catch (\Exception $e) {
              Session::flash('error_message', 'Email was not sent ' . $e);
              }
         } else {
