@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.2.5",
         "algolia/algoliasearch-client-php": "^2.7",
+        "algolia/scout-extended": "^1.9",
         "cyber-duck/laravel-excel": "^2.1",
         "davejamesmiller/laravel-breadcrumbs": "5.3.2",
         "doctrine/dbal": "^2.10",

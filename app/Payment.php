@@ -5,19 +5,19 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use NumberFormatter;
 use App\Ministry;
+use Laravel\Scout\Searchable;
 
 class Payment extends Model
 {
+    use Searchable;
 
-
-    public $fillable = ['payment_no'	,'payment_code'	,'organization'	,'beneficiary'	,'amount','description', 'payment_date'];
-    // public $fillable = ['name', 'shortname', 'industry', 'ceo', 'twitter'];
+    public $fillable = ['payment_no','payment_code'	,'organization'	,'beneficiary'	,'amount','description', 'payment_date'];
 
     public function amount(){
         return number_format($this->amount, 2, '.', ',');
     }
 
-/**
+    /**
      * Return ministry name;
      */
     public function ministry(){
@@ -29,6 +29,14 @@ class Payment extends Model
             $ministry = null;
         }
         return $ministry; //return array keyed ['name' => '', 'shortname' => '']
+    }
+
+    /**
+     * Get related ministry
+     */
+    public function getRelatedMinistry(){
+        $ministryCode = substr($this->payment_code, 0, 4); //ministry code is first 4 digits in a payment code
+        // return $this->belongsTo(Ministry::class)->where('');
     }
 
 
@@ -53,5 +61,19 @@ class Payment extends Model
                    ->where('name', $this->beneficiary)
                    ->get();
         return $company;
+    }
+
+    /**
+     * Load realtionships into the search
+     * results
+     */
+    public function toSearchableArray(){
+        $array = $this->toArray();
+
+        $array = $this->transform($array);
+
+        // $array['ministry'] = $this->ministry();
+
+        return $array;
     }
 }

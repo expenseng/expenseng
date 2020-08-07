@@ -8,9 +8,12 @@ require('./bootstrap');
 import VueApexCharts from 'vue-apexcharts';
 import TextareaAutosize from 'vue-textarea-autosize'
 import VueSweetalert2 from 'vue-sweetalert2';
+import VueInstantSearch from 'vue-instantsearch';
+
 window.Vue = require('vue');
 Vue.use(TextareaAutosize);
 Vue.use(VueSweetalert2);
+Vue.use(VueInstantSearch);
 
 /**
  * The following block of code may be used to automatically register your
@@ -30,7 +33,7 @@ Vue.component('govt-expense', require('./components/Home/GovtExpenses.vue').defa
 Vue.component('admin-comments', require('./components/Backend/AdminComments.vue').default);
 Vue.component('ministry-expense', require('./components/Home/MinistryExpense.vue').default);
 Vue.component('ministry-budgets', require('./components/Home/MinistryBudget.vue').default);
-
+Vue.component('search', require('./components/Search.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

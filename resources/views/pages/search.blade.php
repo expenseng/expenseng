@@ -21,7 +21,6 @@
     </div>
 
     <div class="divpadd">
-
     <div class="div1">
         <h1 class="hh1">Search</h1>
         <h6 class="hh2">Use this tool to search through our site for
@@ -29,13 +28,7 @@
     </div>
 
     <div class="div2">
-        <form action="" method="get">
-            <div class="input1">
-                <img class="img1" src="{{ asset('/img/search-icon.png') }}" alt="icon">
-                <input type="text" name="stext"  class="input3" id="" placeholder="Search for reports, profiles and projects">
-            </div>
-                <input type="button" value="search" class="input2">
-        </form>
+        <search></search>
     </div>
 
     <div class="">
