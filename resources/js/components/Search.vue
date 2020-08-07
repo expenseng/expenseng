@@ -5,7 +5,7 @@
                 <div slot-scope="{ currentRefinement, indices, refine }">
                     <div class="input1">
                         <el-input placeholder="Search" v-model="search" class="input-with-select">
-                            <el-select v-model="selected_index" slot="prepend" placeholder="Select">
+                            <el-select @change="updateIndex" v-model="selected_index" slot="prepend" placeholder="Select">
                                 <el-option label="All" value="site_wide_search" selected></el-option>
                                 <el-option label="Payments" value="payments"></el-option>
                                 <el-option label="Companies" value="companies"></el-option>
@@ -61,6 +61,10 @@ export default {
     methods: {
         refine(){
             this.searchClient.refine(this.search);
+        },
+
+        updateIndex(){
+            this.selected_index
         }
     },
 
