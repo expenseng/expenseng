@@ -89,13 +89,7 @@ class TeamController extends Controller
             'name' => 'required',
             'twitter' => 'required',
             'facebook' => 'required',
-            'email' => [
-                'required',
-                'string',
-                'email',
-                'max:255',
-                'unique:users',
-            ],
+            'instagram' => 'required',
             'linkedin' => 'required',
             'position' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -108,7 +102,7 @@ class TeamController extends Controller
             $new_team->name = $request->name;
             $new_team->twitter_handle = $request->twitter;
             $new_team->facebook_handle = $request->facebook;
-            $new_team->email = $request->email;
+            $new_team->instagram = $request->instagram;
             $new_team->linkedIn_handle = $request->linkedin;
             $new_team->role = $request->position;
             $new_team->avatar = $request->image;
@@ -150,7 +144,7 @@ class TeamController extends Controller
             $new_team->name = $request->name;
             $new_team->twitter_handle = $request->twitter;
             $new_team->facebook_handle = $request->facebook;
-            $new_team->email = $request->email;
+            $new_team->instagram = $request->instagram;
             $new_team->linkedIn_handle = $request->linkedin;
             $new_team->role = $request->position;
             $new_team->avatar = $base_url.'/uploads'. '/'.$imageName;
@@ -201,7 +195,7 @@ class TeamController extends Controller
             'name' => 'required',
             'twitter' => 'required',
             'facebook' => 'required',
-            'email' => 'required',
+            'instagram' => 'required',
             'linkedin' => 'required',
             'position' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -217,7 +211,7 @@ class TeamController extends Controller
                 'name' => $request->name,
                 'twitter_handle' => $request->twitter,
                 'facebook_handle' => $request->facebook,
-                'email' => $request->email,
+                'instagram' => $request->instagram,
                 'linkedin_handle' => $request->linkedin,
                 'role' => $request->position,
                 //'avatar' => $request->image,
@@ -256,8 +250,8 @@ class TeamController extends Controller
                 [
                 'name' => $request->name,
                 'twitter_handle' => $request->twitter,
-                'facebook_handle' => $request->facebook,
-                'email' => $request->email,
+                'facebook_handle' => $request->instagram,
+                'instagram' => $request->instagram,
                 'linkedin_handle' => $request->linkedin,
                 'role' => $request->position,
                 'avatar' => $base_url. '/uploads'. '/'. $imageName,

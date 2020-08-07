@@ -44,19 +44,19 @@
                                             <div class="form-group">
                                                 <label for="inputEmail">Facebook Handle</label>
                                                 <input id="inputEmail" name="facebook"
-                                                type="text" placeholder="e.g @example" required class="form-control">
+                                                type="text" placeholder="e.g otenaike" required class="form-control">
                                                 
                                             </div>
                                             <div class="form-group">
-                                                <label for="inputEmail">Email</label>
-                                                <input id="inputEmail" name="email" 
-                                                type="text" placeholder="e.g tobi@example.com" required class="form-control">
+                                                <label for="inputEmail">Instagram Handle</label>
+                                                <input id="inputEmail" name="instagram" 
+                                                type="text" placeholder="e.g otenaike" required class="form-control">
                                                 
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">linkedin Handle</label>
                                                 <input id="inputEmail" name="linkedin" 
-                                                type="text" placeholder="e.g @example" required class="form-control">
+                                                type="text" placeholder="e.g otenaike" required class="form-control">
                                                 
                                             </div>
                                             <div class="form-group">

@@ -24,168 +24,31 @@
       <p class="heading-text">ExpenseNG.com wouldn't have been possible without a set of dedicated Engineers and Project manager. Meet our team listed below with their position and quick contacts.</p>
      
       </div>
-
-       <div class="teamimg-cont row">
-        <div class="col-md-3 mb-5">
-          <div class="team-frame">
-              <img src="{{ asset('/images/teamimg.png') }}" alt="" class="img-fluid team-img">
-              <h2 class="team-name">Ephraim Aigbefo</h2>
-              <p class="team-role">Project Manager</p>
-              <div class="social-icons">
-                <a href="#"><img src="{{ asset('/images/facebook-circle.svg') }}" alt="" class="team-fb"></a>
-                <a href="#"><img src="{{ asset('/images/twitter-circle.svg') }}" alt="" class="team-twitter"></a>
-                <a href="#"><img src="{{ asset('/images/linkedin-circle.svg') }}" alt="" class="team-linkedin"></a>
-                <a href="#"><img src="{{ asset('/images/insta-circle.svg') }}" alt="" class="team-insta"></a>
+    <div class="teamimg-cont row">
+      @if (count($team) >0)
+          @foreach ($team as $team)
+            
+              <div class="col-md-3 mb-5">
+                <div class="team-frame">
+                  <img src="{{$team->avatar}}" alt="" class="img-fluid team-img">
+                  <h2 class="team-name">{{$team->name}}</h2>
+                  <p class="team-role">{{$team->role}}</p>
+                   
+                  <div class="social-icons">
+                    <a href="https://facebook.com/{{$team->facebook_handle}}"><img src="{{ asset('/images/facebook-circle.svg') }}" alt="" class="team-fb"></a>
+                    <a href="https://twitter.com/{{$team->twitter_handle}}"><img src="{{ asset('/images/twitter-circle.svg') }}" alt="" class="team-twitter"></a>
+                    <a href="https://linkedin.com/in/{{$team->linkedIn_handle}}"><img src="{{ asset('/images/linkedin-circle.svg') }}" alt="" class="team-linkedin"></a>
+                    <a href="https://instagram.com/{{$team->instagram}}"><img src="{{ asset('/images/insta-circle.svg') }}" alt="" class="team-insta"></a>
+                  </div>
+                </div>
               </div>
-            </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="team-frame">
-              <img src="{{ asset('/images/teamimg.png') }}" alt="" class="img-fluid team-img">
-              <h2 class="team-name">Ephraim Aigbefo</h2>
-              <p class="team-role">Project Manager</p>
-              <div class="social-icons">
-                <a href="#"><img src="{{ asset('/images/facebook-circle.svg') }}" alt="" class="team-fb"></a>
-                <a href="#"><img src="{{ asset('/images/twitter-circle.svg') }}" alt="" class="team-twitter"></a>
-                <a href="#"><img src="{{ asset('/images/linkedin-circle.svg') }}" alt="" class="team-linkedin"></a>
-                <a href="#"><img src="{{ asset('/images/insta-circle.svg') }}" alt="" class="team-insta"></a>
-              </div>
-            </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="team-frame">
-              <img src="{{ asset('/images/teamimg.png') }}" alt="" class="img-fluid team-img">
-              <h2 class="team-name">Ephraim Aigbefo</h2>
-              <p class="team-role">Project Manager</p>
-              <div class="social-icons">
-                <a href="#"><img src="{{ asset('/images/facebook-circle.svg') }}" alt="" class="team-fb"></a>
-                <a href="#"><img src="{{ asset('/images/twitter-circle.svg') }}" alt="" class="team-twitter"></a>
-                <a href="#"><img src="{{ asset('/images/linkedin-circle.svg') }}" alt="" class="team-linkedin"></a>
-                <a href="#"><img src="{{ asset('/images/insta-circle.svg') }}" alt="" class="team-insta"></a>
-              </div>
-            </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="team-frame">
-              <img src="{{ asset('/images/teamimg.png') }}" alt="" class="img-fluid team-img">
-              <h2 class="team-name">Ephraim Aigbefo</h2>
-              <p class="team-role">Project Manager</p>
-              <div class="social-icons">
-                <a href="#"><img src="{{ asset('/images/facebook-circle.svg') }}" alt="" class="team-fb"></a>
-                <a href="#"><img src="{{ asset('/images/twitter-circle.svg') }}" alt="" class="team-twitter"></a>
-                <a href="#"><img src="{{ asset('/images/linkedin-circle.svg') }}" alt="" class="team-linkedin"></a>
-                <a href="#"><img src="{{ asset('/images/insta-circle.svg') }}" alt="" class="team-insta"></a>
-              </div>
-            </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="team-frame">
-              <img src="{{ asset('/images/teamimg.png') }}" alt="" class="img-fluid team-img">
-              <h2 class="team-name">Ephraim Aigbefo</h2>
-              <p class="team-role">Project Manager</p>
-              <div class="social-icons">
-                <a href="#"><img src="{{ asset('/images/facebook-circle.svg') }}" alt="" class="team-fb"></a>
-                <a href="#"><img src="{{ asset('/images/twitter-circle.svg') }}" alt="" class="team-twitter"></a>
-                <a href="#"><img src="{{ asset('/images/linkedin-circle.svg') }}" alt="" class="team-linkedin"></a>
-                <a href="#"><img src="{{ asset('/images/insta-circle.svg') }}" alt="" class="team-insta"></a>
-              </div>
-            </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="team-frame">
-              <img src="{{ asset('/images/teamimg.png') }}" alt="" class="img-fluid team-img">
-              <h2 class="team-name">Ephraim Aigbefo</h2>
-              <p class="team-role">Project Manager</p>
-              <div class="social-icons">
-                <a href="#"><img src="{{ asset('/images/facebook-circle.svg') }}" alt="" class="team-fb"></a>
-                <a href="#"><img src="{{ asset('/images/twitter-circle.svg') }}" alt="" class="team-twitter"></a>
-                <a href="#"><img src="{{ asset('/images/linkedin-circle.svg') }}" alt="" class="team-linkedin"></a>
-                <a href="#"><img src="{{ asset('/images/insta-circle.svg') }}" alt="" class="team-insta"></a>
-              </div>
-            </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="team-frame">
-              <img src="{{ asset('/images/teamimg.png') }}" alt="" class="img-fluid team-img">
-              <h2 class="team-name">Ephraim Aigbefo</h2>
-              <p class="team-role">Project Manager</p>
-              <div class="social-icons">
-                <a href="#"><img src="{{ asset('/images/facebook-circle.svg') }}" alt="" class="team-fb"></a>
-                <a href="#"><img src="{{ asset('/images/twitter-circle.svg') }}" alt="" class="team-twitter"></a>
-                <a href="#"><img src="{{ asset('/images/linkedin-circle.svg') }}" alt="" class="team-linkedin"></a>
-                <a href="#"><img src="{{ asset('/images/insta-circle.svg') }}" alt="" class="team-insta"></a>
-              </div>
-            </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="team-frame">
-              <img src="{{ asset('/images/teamimg.png') }}" alt="" class="img-fluid team-img">
-              <h2 class="team-name">Ephraim Aigbefo</h2>
-              <p class="team-role">Project Manager</p>
-              <div class="social-icons">
-                <a href="#"><img src="{{ asset('/images/facebook-circle.svg') }}" alt="" class="team-fb"></a>
-                <a href="#"><img src="{{ asset('/images/twitter-circle.svg') }}" alt="" class="team-twitter"></a>
-                <a href="#"><img src="{{ asset('/images/linkedin-circle.svg') }}" alt="" class="team-linkedin"></a>
-                <a href="#"><img src="{{ asset('/images/insta-circle.svg') }}" alt="" class="team-insta"></a>
-              </div>
-            </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="team-frame">
-              <img src="{{ asset('/images/teamimg.png') }}" alt="" class="img-fluid team-img">
-              <h2 class="team-name">Ephraim Aigbefo</h2>
-              <p class="team-role">Project Manager</p>
-              <div class="social-icons">
-                <a href="#"><img src="{{ asset('/images/facebook-circle.svg') }}" alt="" class="team-fb"></a>
-                <a href="#"><img src="{{ asset('/images/twitter-circle.svg') }}" alt="" class="team-twitter"></a>
-                <a href="#"><img src="{{ asset('/images/linkedin-circle.svg') }}" alt="" class="team-linkedin"></a>
-                <a href="#"><img src="{{ asset('/images/insta-circle.svg') }}" alt="" class="team-insta"></a>
-              </div>
-            </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="team-frame">
-              <img src="{{ asset('/images/teamimg.png') }}" alt="" class="img-fluid team-img">
-              <h2 class="team-name">Ephraim Aigbefo</h2>
-              <p class="team-role">Project Manager</p>
-              <div class="social-icons">
-                <a href="#"><img src="{{ asset('/images/facebook-circle.svg') }}" alt="" class="team-fb"></a>
-                <a href="#"><img src="{{ asset('/images/twitter-circle.svg') }}" alt="" class="team-twitter"></a>
-                <a href="#"><img src="{{ asset('/images/linkedin-circle.svg') }}" alt="" class="team-linkedin"></a>
-                <a href="#"><img src="{{ asset('/images/insta-circle.svg') }}" alt="" class="team-insta"></a>
-              </div>
-            </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="team-frame">
-              <img src="{{ asset('/images/teamimg.png') }}" alt="" class="img-fluid team-img">
-              <h2 class="team-name">Ephraim Aigbefo</h2>
-              <p class="team-role">Project Manager</p>
-              <div class="social-icons">
-                <a href="#"><img src="{{ asset('/images/facebook-circle.svg') }}" alt="" class="team-fb"></a>
-                <a href="#"><img src="{{ asset('/images/twitter-circle.svg') }}" alt="" class="team-twitter"></a>
-                <a href="#"><img src="{{ asset('/images/linkedin-circle.svg') }}" alt="" class="team-linkedin"></a>
-                <a href="#"><img src="{{ asset('/images/insta-circle.svg') }}" alt="" class="team-insta"></a>
-              </div>
-            </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="team-frame">
-              <img src="{{ asset('/images/teamimg.png') }}" alt="" class="img-fluid team-img">
-              <h2 class="team-name">Ephraim Aigbefo</h2>
-              <p class="team-role">Project Manager</p>
-              <div class="social-icons">
-                <a href="#"><img src="{{ asset('/images/facebook-circle.svg') }}" alt="" class="team-fb"></a>
-                <a href="#"><img src="{{ asset('/images/twitter-circle.svg') }}" alt="" class="team-twitter"></a>
-                <a href="#"><img src="{{ asset('/images/linkedin-circle.svg') }}" alt="" class="team-linkedin"></a>
-                <a href="#"><img src="{{ asset('/images/insta-circle.svg') }}" alt="" class="team-insta"></a>
-              </div>
-            </div>
-        </div>
-        
-        
+              
+        @endforeach
+      @else
+          <tr><td></td><td style="color:red">No team data available for this period<td><td></td></tr>  
+      @endif
       </div>
-   </div>    
+    </div>    
 
 @endsection
 @section('js')

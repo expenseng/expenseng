@@ -175,7 +175,7 @@
         </div>
         <div class="profile my-4">
           <p>Name of CEO</p>
-          <p>{{$company->ceo ?? 'N/A'}}</p>
+          <p>{{$company->ceo}}</p>
 
         </div>
         <div class="profile">
