@@ -31,7 +31,7 @@ class Kernel extends ConsoleKernel
          $schedule->command('ReportLogging')->daily()->at('02:00');
          $schedule->command('parse:sheet')
              ->daily();
-         $schedule->command('queue:work --once --queue=ceSearch')->everyFourHours();
+         $schedule->command('queue:work --once --queue=ceoSearch')->everyFourHours();
          $schedule->command('queue:work  --queue=default --stop-when-empty')->daily();
     }
 
