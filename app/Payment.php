@@ -5,9 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use NumberFormatter;
 use App\Ministry;
+use Laravel\Scout\Searchable;
 
 class Payment extends Model
 {
+    use Searchable;
 
 protected $guarded = ['id'];
 
@@ -15,7 +17,7 @@ protected $guarded = ['id'];
         return number_format($this->amount, 2, '.', ',');
     }
 
-/**
+    /**
      * Return ministry name;
      */
     public function ministry(){
@@ -27,6 +29,14 @@ protected $guarded = ['id'];
             $ministry = null;
         }
         return $ministry; //return array keyed ['name' => '', 'shortname' => '']
+    }
+
+    /**
+     * Get related ministry
+     */
+    public function getRelatedMinistry(){
+        $ministryCode = substr($this->payment_code, 0, 4); //ministry code is first 4 digits in a payment code
+        // return $this->belongsTo(Ministry::class)->where('');
     }
 
 

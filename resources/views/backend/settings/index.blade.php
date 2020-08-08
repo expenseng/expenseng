@@ -91,20 +91,23 @@
                         <div class = "card">
                             <div class="card-header security-header">
                                 <h4>Appearance</h4>
-                                <a class= "save-link" href="#"><button class= "save-btn">Save</button></a>
+                               <button class="save-btn" id="savemebtn">Save</button>
                             </div>    
                         <hr>
                         <div class="card-body">
                             <h4 class = "mb-4 font-size-reduce">Dashboard Menu Arrangement</h4>
                             <ul id="sortable">
-                                <li class="group">
+                                 @if (count($sidebar_items) > 0)
+                                                    @foreach ($sidebar_items as $sidebar_item)
+                                                          <li class="group" id="item_{{ $sidebar_item->name}}">
                                 <div class="col-md-10 col-12">
                                 <div class="row appearance-box">
                                     <div class="col-1">
                                     <i class="fas fa-arrows-alt-v"></i>
                                     </div>
                                     <div class="col-8">
-                                    <p>Users</p>
+                                    <p>{{ $sidebar_item->name }}</p>
+                                    
                                     </div>
                                     <div class="col-1 hide-button-card text-muted">
                                     <i class="fas fa-eye-slash"></i> <p class = "font-weight-normal ">Hide</p>
@@ -112,162 +115,16 @@
                                 </div>
                                 </div>
                                 </li>
-                                
-                                <li class="group">
-                                    <div class="col-md-10 col-12">
-                                    <div class="row appearance-box">
-                                        <div class="col-1">
-                                        <i class="fas fa-arrows-alt-v"></i>
-                                        </div>
-                                        <div class="col-8">
-                                        <p>Company</p>
-                                        </div>
-                                        <div class="col-1 hide-button-card text-muted">
-                                        <i class="fas fa-eye-slash"></i> <p class = "font-weight-normal ">Hide</p>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </li>
-
-                                <li class="group">
-                                    <div class="col-md-10 col-12">
-                                    <div class="row appearance-box">
-                                        <div class="col-1">
-                                        <i class="fas fa-arrows-alt-v"></i>
-                                        </div>
-                                        <div class="col-8">
-                                        <p>Ministry</p>
-                                        </div>
-                                        <div class="col-1 hide-button-card text-muted">
-                                        <i class="fas fa-eye-slash"></i> <p class = "font-weight-normal ">Hide</p>
-                                        </div>
-                                    </div>
-                                    </div>
-                               </li>
-                               
-                               <li class="group">
-                                    <div class="col-md-10 col-12">
-                                        <div class="row appearance-box">
-                                                <div class="col-1">
-                                                    <i class="fas fa-arrows-alt-v"></i>
-                                                </div>
-                                                <div class="col-8">
-                                                    <p>Expense</p>
-                                                </div>
-                                                <div class="col-1 hide-button-card text-muted">
-                                                    <i class="fas fa-eye-slash"></i> <p class = "font-weight-normal ">Hide</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                               </li>
-
-                               <li class="group">
-                                    <div class="col-md-10 col-12">
-                                    <div class="row appearance-box">
-                                        <div class="col-1">
-                                        <i class="fas fa-arrows-alt-v"></i>
-                                        </div>
-                                        <div class="col-8">
-                                        <p>Cabinet</p>
-                                        </div>
-                                        <div class="col-1 hide-button-card text-muted">
-                                        <i class="fas fa-eye-slash"></i> <p class = "font-weight-normal ">Hide</p>
-                                        </div>
-                                    </div>
-                                    </div>
-                               </li>
-
-                               <li class="group">
-                                    <div class="col-md-10 col-12">
-                                    <div class="row appearance-box">
-                                        <div class="col-1">
-                                        <i class="fas fa-arrows-alt-v"></i>
-                                        </div>
-                                        <div class="col-8">
-                                        <p>Subscription</p>
-                                        </div>
-                                        <div class="col-1 hide-button-card text-muted">
-                                        <i class="fas fa-eye-slash"></i> <p class = "font-weight-normal ">Hide</p>
-                                        </div>
-                                    </div>
-                                    </div>
-                               </li>
-
-                               <li class="group">
-                                    <div class="col-md-10 col-12">
-                                    <div class="row appearance-box">
-                                        <div class="col-1">
-                                        <i class="fas fa-arrows-alt-v"></i>
-                                        </div>
-                                        <div class="col-8">
-                                        <p>People</p>
-                                        </div>
-                                        <div class="col-1 hide-button-card text-muted">
-                                        <i class="fas fa-eye-slash"></i> <p class = "font-weight-normal ">Hide</p>
-                                        </div>
-                                    </div>
-                                    </div>
-                               </li>
-
-                               <li class="group">
-                                    <div class="col-md-10 col-12">
-                                    <div class="row appearance-box">
-                                        <div class="col-1">
-                                        <i class="fas fa-arrows-alt-v"></i>
-                                        </div>
-                                        <div class="col-8">
-                                        <p>Upload Screenshot</p>
-                                        </div>
-                                        <div class="col-1 hide-button-card text-muted">
-                                        <i class="fas fa-eye-slash"></i> <p class = "font-weight-normal ">Hide</p>
-                                        </div>
-                                    </div>
-                                    </div>
-                               </li>
-
-                               <li class="group">
-                                    <div class="col-md-10 col-12">
-                                    <div class="row appearance-box">
-                                        <div class="col-1">
-                                        <i class="fas fa-arrows-alt-v"></i>
-                                        </div>
-                                        <div class="col-8">
-                                        <p>Comments</p>
-                                        </div>
-                                        <div class="col-1 hide-button-card text-muted">
-                                        <i class="fas fa-eye-slash"></i> <p class = "font-weight-normal ">Hide</p>
-                                        </div>
-                                    </div>
-                                    </div>
-                               </li>
+                                                    @endforeach
+                                                @endif
+                             
 
                             </ul>   
                         </div>
                         </div>
 
 
-                        <div class = "card">
-                            <div class="card-header security-header">
-                                <h4>Language</h4>
-                                <a class= "save-link" href="#"><button class= "save-btn">Save</button></a>
-                            </div>    
-                        <hr>
-                        <div class="card-body">
-                            <select name="language" id="languageselect" class = "custom-select p-2 col-9 mt-2">
-                                <option>English (United States)</option>
-                                <option>English (United Kingdom)</option>
-                                <option>French</option>
-                                <option>Hausa</option>
-                                <option>Igbo</option>
-                                <option value="yoruba">Yoruba</option>
-                            </select>
-                        </div>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        </div>
+                     
                     </div>
 
                     
@@ -484,8 +341,30 @@
 <script>
     console.log("Hi");
   $("document").ready(function() {
-    $( "#sortable" ).sortable();
+    $( "#sortable" ).sortable({connectWith:"ul"});
     $( "#sortable" ).disableSelection();
+    
+    $("#savemebtn").click(function(){
+      var data = $( "#sortable" ).sortable('serialize');
+      $.ajaxSetup({
+
+        headers: {
+
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+
+        }
+
+    });
+     $.ajax({
+               url: '/admin/user/settings/update',
+               method: 'POST',
+               dataType: 'text',
+               data: {data:data},
+               success: function (response) {
+                    alert(response);
+               }
+            });
+    });
   });
   </script>
   
