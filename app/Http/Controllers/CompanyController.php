@@ -24,22 +24,22 @@ class CompanyController extends Controller
     public function searchContractors(Request $request){
         $query = $request->q;
         $contractors = $this->getAllYearlyTotal($query);
-        
+
         //$contractor = Payment::where('beneficiary','LIKE','%'.$request->q.'%')->get();
         if(count($contractors) > 0)
             //dump($contractor);
            return view('pages.contract.search')->with(['contractors' => $contractors, 'query' => $query]);
         else{
             return view('pages.contract.search')->with(['contractors' => $contractors, 'query' => $query]);
-        } 
+        }
          //dump($request->q);
     }
 
 
     // show a detials of given contractor, beneficiary or organization
     public function show($com)
-    {  
-        $contractor =   ucwords(str_replace('-', ' ', $com)); 
+    {
+        $contractor =   ucwords(str_replace('-', ' ', $com));
         $total_amount = 0;
         $company = Company::where('shortname', $contractor)->orWhere('name', 'LIKE', "$contractor%")->first();
         if(isset($company)){
@@ -47,7 +47,7 @@ class CompanyController extends Controller
                 $yearlyTotals = $this->getContractorYearlyTotal($contractor);
                  foreach($contracts as $contract){
                      $total_amount = $total_amount + $contract->amount;
-                } 
+                }
                 return view('pages.contract.single')->with(['company' => $company, 'contracts' => $contracts, 'total_amount' => $total_amount, 'yearlyTotals' => $yearlyTotals]);
 
                 // dump($yearlyTotals);
@@ -58,7 +58,7 @@ class CompanyController extends Controller
                 $company = $contracts[0];
                 foreach($contracts as $contract){
                      $total_amount = $total_amount + $contract->amount;
-                } 
+                }
                 return view('pages.contract.notfound')->with(['company' => $company, 'contracts' => $contracts,  'total_amount' => $total_amount ]);
 
         }else{
@@ -77,7 +77,7 @@ class CompanyController extends Controller
             )->where('beneficiary','LIKE','%'.$query.'%')
             ->groupBy(DB::raw('(beneficiary) ASC, YEAR(payment_date) ASC'))
             ->paginate(12);
-            
+
         return $yearlyTotals;
         }
         $yearlyTotals = Payment::select(
@@ -87,7 +87,7 @@ class CompanyController extends Controller
             )
             ->groupBy(DB::raw('(beneficiary) ASC, YEAR(payment_date) ASC'))
             ->paginate(12);
-            
+
         return $yearlyTotals;
     }
 
@@ -109,7 +109,7 @@ class CompanyController extends Controller
     }
 
 
-    //  get yearly contract sum 
+    //  get yearly contract sum
     public function getContractorYearlyTotal($contractor)
     {
         $yearlyTotals = Payment::where('beneficiary', 'like', '%' . ( strtolower($contractor) ) . '%')
@@ -158,7 +158,7 @@ class CompanyController extends Controller
        $recent_activites = Activites::where('status', 'pending')->orderBY('id', 'DESC')
             ->limit(7)
             ->get();
-        $sidebar = DB::table('sidebar_activities')->all();
+        $sidebar = DB::table('sidebar_activities')->get();
         $total_activity = count(Activites::all()->where('status', 'pending'));
 
         $companies = Company::all();
