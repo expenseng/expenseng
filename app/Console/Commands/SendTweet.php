@@ -16,7 +16,7 @@ class SendTweet extends Command
      *
      * @var string
      */
-    protected $signature = 'SendTweet';
+    protected $signature = 'SendTweet {type?}';
 
     /**
      * The console command description.
@@ -42,15 +42,48 @@ class SendTweet extends Command
      */
     public function handle()
     {
-        $bot = new TwitterBot();
-        $tweets = $bot->paymentTweets();
-//        dd($tweets);
-        foreach ($tweets as $tweet) {
-            try {
-                $tweet = new Tweet($tweet);
-                $tweet->HashTag('expenseng')->send();
-            } catch (\Exception $e) {
-                continue;
+        $type = $this->argument('type');
+        if ($type == 'daily') {
+            $bot = new TwitterBot();
+            $tweets = $bot->dailyTweets();
+            foreach ($tweets as $key => $tweet) {
+                try {
+                    $tweet = new Tweet($tweet);
+                    $tweet = $tweet->HashTag('expenseng')->status('more updates at more updates at https://expenseng.com/')->send();
+                    if ($tweet) {
+                        Payment::whereId($key)->update(['tweeted' => true,'tweet_id'=> json_decode($tweet)->id]);
+                    }
+                } catch (\Exception $e) {
+                    continue;
+                }
+            }
+        } elseif ($type == 'past') {
+            $bot = new TwitterBot();
+            $tweets = $bot->pastTweets();
+            foreach ($tweets as $key => $tweet) {
+                try {
+                    $tweet = new Tweet($tweet);
+                    $tweet = $tweet->HashTag('expenseng')->status('more updates at https://expenseng.com/')->send();
+                    if ($tweet) {
+                        Payment::whereId($key)->update(['tweeted' => true,'tweet_id'=> json_decode($tweet)->id]);
+                    }
+                } catch (\Exception $e) {
+                    continue;
+                }
+            }
+        } else {
+            $bot = new TwitterBot();
+            $tweets = $bot->dailyTweets();
+            foreach ($tweets as $key => $tweet) {
+                try {
+                    $tweet = new Tweet($tweet);
+                    $tweet = $tweet->HashTag('expenseng')->status('more updates at https://expenseng.com/')->send();
+                    if ($tweet) {
+                        Payment::whereId($key)->update(['tweeted' => true,'tweet_id'=> json_decode($tweet)->id]);
+                    }
+                } catch (\Exception $e) {
+                    continue;
+                }
             }
         }
     }

@@ -26,7 +26,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-//         $schedule->command('SendTweet')->monthly();
+         $schedule->command('SendTweet daily')->everyThirtyMinutes()->between('12:00', '13:59');
+         $schedule->command('SendTweet daily')->everyThirtyMinutes()->between('9:00', '10:40');
+         $schedule->command('SendTweet past')->everyThirtyMinutes()->weekends()->between('2:00', '6:00');
 //         $schedule->command('budgetTweet')->weekly()->mondays()->at('13:00');
          $schedule->command('ReportLogging')->daily()->at('02:00');
          $schedule->command('parse:sheet')
