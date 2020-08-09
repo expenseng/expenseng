@@ -11,11 +11,6 @@ Breadcrumbs::for('about', function ($trail) {
     $trail->push('About Us', route('about'));
 });
 
-// Home > Teams
-Breadcrumbs::for('teams', function ($trail) {
-    $trail->parent('home');
-    $trail->push('Our Team', route('teams'));
-});
 
 // Home > Contact
 Breadcrumbs::for('contact', function ($trail) {

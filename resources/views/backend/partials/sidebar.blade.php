@@ -77,13 +77,7 @@
             </a>
           </li>
 
-          <li class="{{Route::is('team.view') || Route::is('team.create') || Route::is('team.edit')
-           ? 'nav-item active' : 'nav-item'}}  ">
-            <a class="nav-link" href="{{route('team.view')}}">
-              <i class="material-icons">people</i>
-              <p>Teams</p>
-            </a>
-          </li>
+          
 
           <li class="{{Route::is('subscribe.view') || Route::is('subscribe.create') || Route::is('subscribe.edit')
            ? 'nav-item active' : 'nav-item'}} ">
