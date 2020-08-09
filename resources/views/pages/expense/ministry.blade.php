@@ -31,7 +31,7 @@
 		<div class="container ">
 			<div class="row">
 				<div class="col-md-12 section-heading">
-					<h1 class="section-heading-title">Ministry Spending</h1>
+					<h1 class="section-heading-title">All Expenses</h1>
                     <p class="section-heading-paragraph">ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities across Nigeria.</p>
 
                     <h5>Subscribe to daily  Report</h5>
@@ -145,7 +145,7 @@
 					</div>
 				</div>
 			</section>
-			<section class="container">
+			{{-- <section class="container">
 				<div class="row">
 					<div class="col-md-12 pb-5">
 						<div id="mini-table" class="table-data">
@@ -153,7 +153,7 @@
 						</div>
 					</div>
 				</div>
-			</section>
+			</section> --}}
 		</div>
 		<div class="section-2 tab-pane fade" id="comments" role="tabpanel">
 			@include('partials.comments')

@@ -97,11 +97,11 @@ class MinistryController extends Controller
             $ministry_name = $request->get('ministry');
             $result = DB::table('ministries')
                 ->where('name', '=', "$ministry_name")
-                ->paginate(8);
+                ->get();
             $ministries = $this->getMinistries($result);
             $ministries = $this->getChartData($ministries);
         } else {
-            $data = Ministry::paginate(8);
+            $data = Ministry::all();
             $ministries = $this->getMinistries($data);
             $ministries = $this->getChartData($ministries);
         }
@@ -138,12 +138,18 @@ class MinistryController extends Controller
      */
     public function show(Ministry $ministry)
     {
+    
         $code = $ministry->code;
+
+        $latestExpenses = Payment::select('*')
+                        ->where('payment_code', 'LIKE', "$code%")
+                        ->orderby('payment_date', 'desc')
+                        ->first();
+        $latestDate = $latestExpenses->payment_date;
         $cabinets = $ministry->cabinet;
-        $date = date('Y-m-d');
         $payments = DB::table('payments')
             ->where('payment_code', 'LIKE', "$code%")
-            ->whereDate('payment_date', '=', "$date")
+            ->whereDate('payment_date', '=', "$latestDate")
             ->orderby('payment_date', 'desc')
             ->paginate(10);
 
@@ -154,6 +160,7 @@ class MinistryController extends Controller
             'payments' => $payments,
             'trend' => $data[1],
             'count' => $data[0],
+            'latestDate' => $latestDate
         ]);
     }
 
@@ -187,7 +194,7 @@ class MinistryController extends Controller
                 ->get();
             $data = DB::table('ministries')
                 ->where('name', 'LIKE', "%$query%")
-                ->paginate(8);
+                ->get();
             $ministries = $this->getMinistries($data);
             $ministries = $this->getChartData($ministries);
             echo $lists . '?';

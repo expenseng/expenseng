@@ -62,7 +62,7 @@
 <div class="list">
     <!--Tabs Header-->
     <ul class="nav container nav-tabs switch-list py-3 mb-3">
-        <li class="ml-3 tabs active"><a data-toggle="tab" class="active" href="#expense">Expense Summary</a></li>
+        <li class="ml-3 tabs active"><a data-toggle="tab" class="active" href="#expense">Expenses</a></li>
         <li class="tabs"><a data-toggle="tab" href="#board">Cabinet</a></li>
         <li class="tabs"><a data-toggle="tab" href="#comments">Comments</a></li>
     </ul>
@@ -73,17 +73,22 @@
 
         <!--1-->
         <div id="expense" class="tab-pane fade show active">
-
+            <div id="search-tools" class="container d-flex justify-content-end mt-4 pr-0">
+                <div id="search-area" class="col-md-5 col-lg-4 mt-3 mt-md-0 px-0">
+                    <input type="search" data-id="{{$ministry->id}}" id="expense_search" class="form-control form-control-lg mb-2" style="font-family:Arial, FontAwesome; height:38px;" placeholder="&#xf002; Search for a project">
+                        @csrf
+                </div>
+            </div>
             <div class="main-table">
-                <div id="table-border" class="container pt-3 mt-4 pb-3">
+                <div id="table-border" class="container pt-3 mt-3 pb-3">
                     <div class="container pb-3 pt-1 py-4">
                         <div class="row centerize">
-                            <div class="col">
+                            <div class="col-9">
                             <!-- Test -->
-                                <h3 class="said-date-caption" class="align-self-center">Date: <span class="said-date">{{ date("dS, M Y") }}</span></h3>
+                                <h4 class="said-date-caption" class="align-self-center">Showing expenses for <span class="said-date">{{  date("dS, M Y", strtotime($latestDate)) }}</span></h4>
                             </div>
 
-                            <div class="col">
+                            <div class="col-3">
 
                                 <button type="button"  data-toggle="modal" data-target="#filterModal" class="btn btn-success filter"> Select Date <img
                                         src="/img/vector__2_.png"></button>
@@ -96,54 +101,55 @@
                         <div class="col-md-8">
                             <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <!-- Header -->
-                                    <div class="modal-header">
-                                    <h5 class="modal-title" id="filterModalLabel">Filter</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    </div>
-                                    <!-- Body -->
-                                    <div class="modal-body">
-                                        <section>
-                                            <p id="view" class="font-weight-bold">View by</p>
-                                            <div id="date-btn" class="row">
-                                                <div class="col-4">
-                                                <button id="day" class="btn btn-block btn-date active">Day</button>
+                                    <div class="modal-content">
+                                        <!-- Header -->
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="filterModalLabel">Filter</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <!-- Body -->
+                                        <div class="modal-body">
+                                            <section>
+                                                <p id="view" class="font-weight-bold">View by</p>
+                                                <div id="date-btn" class="row">
+                                                    <div class="col-4">
+                                                    <button id="day" class="btn btn-block btn-date active">Day</button>
+                                                    </div>
+                                                    <div class="col-4">
+                                                    <button id="month" class="btn btn-block btn-date">Month</button>
+                                                    </div>
+                                                    <div class="col-4">
+                                                    <button id="year" class="btn btn-block btn-date">Year</button>
+                                                    </div>
                                                 </div>
-                                                <div class="col-4">
-                                                <button id="month" class="btn btn-block btn-date">Month</button>
+                                            </section>
+                                            <br>
+                                            <section class="row">
+                                                <div class="col-12" >
+                                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                    <input placeholder="Select Date" name="select-date" id="select-date"  class="byDatePicker form-control">
+                                                    <input placeholder="Select Month" name="select-month" id="select-month" class="monthYearPicker form-control" />
+                                                    <input placeholder="Select Year" name="select-year" id="select-year" class="yearPicker form-control" />
+                                                    <small id="date-format-err"></small>
                                                 </div>
-                                                <div class="col-4">
-                                                <button id="year" class="btn btn-block btn-date">Year</button>
+                                            </section>
+                                            <br>
+                                            <section id="sort-options">
+                                                <p class="font-weight-bold">Sort by</p>
+                                                <div>
+                                                    <button id="desc" class="btn btn-block btn-amount">Amount (Highest to Lowest)</button>
+                                                    <button id="asc" class="btn btn-block btn-amount">Amount (Lowest to Highest)</button>
                                                 </div>
-                                            </div>
-                                        </section>
-                                        <br>
-                                        <section class="row">
-                                            <div class="col-12" >
-                                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            <input placeholder="Select Date" name="select-date" id="select-date"  class="byDatePicker form-control">
-                                            <input placeholder="Select Month" name="select-month" id="select-month" class="monthYearPicker form-control" />
-                                            <input placeholder="Select Year" name="select-year" id="select-year" class="yearPicker form-control" />
-                                            <small id="date-format-err"></small>
-                                        </section>
-                                        <br>
-                                        <section id="sort-options">
-                                            <p class="font-weight-bold">Sort by</p>
-                                            <div>
-                                                <button id="desc" class="btn btn-block btn-amount">Amount (Highest to Lowest)</button>
-                                                <button id="asc" class="btn btn-block btn-amount">Amount (Lowest to Highest)</button>
-                                            </div>
-                                        </section>
+                                            </section>
+                                        </div>
+                                        <!-- Footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" data-id="{{$ministry->id}}" id="reset" class="btn btn-block active mx-5 reset btn-danger">Reset</button>
+                                            <button type="button" data-id="{{$ministry->id}}" id="apply-filter" class="btn btn-block active mx-5" data-dismiss="modal">Apply Filter</button>
+                                        </div>
                                     </div>
-                                    <!-- Footer -->
-                                    <div class="modal-footer">
-                                    <button type="button" data-id="{{$ministry->id}}" id="reset" class="btn btn-block active mx-5 reset btn-danger">Reset</button>
-                                    <button type="button" data-id="{{$ministry->id}}" id="apply-filter" class="btn btn-block active mx-5" data-dismiss="modal">Apply Filter</button>
-                                    </div>
-                                </div>
                                 </div>
                             </div>
                         </div>
@@ -156,39 +162,10 @@
 
                 </div>
 
-                <div class="mt-5 mb-5">
-                    <div class="container mt-5">
-                        <div class="min-tab">
-                            <div class="row">
-                                <table class="minitable table-bordered">
-                                    <thead class="thead">
-                                        <th class="first-th text-white"> YEAR</th>
-
-                                        @foreach($trend as $key => $value)
-                                            <th>{{$key}}</th>
-                                        @endforeach
-
-                                    </thead>
-
-                                    <tbody>
-                                        <tr>
-                                            <td class="text-success"> TOTAL<br>AMOUNT </td>
-
-                                            @foreach($trend as $key => $value)
-                                             <td>₦{{ number_format($value, 2) }}</td>
-                                            @endforeach
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                
             </div>
         </div>
-
+    
 
     <!--2-->
     <div id="board" class="tab-pane fade">

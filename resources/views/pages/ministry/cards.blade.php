@@ -27,7 +27,7 @@
     <p style="color:red; font-size:24px"> Oops! No Ministry matches your search </p>
 @endif
 
-<div class="row centeri mzet-3 align-items-center">
+{{-- <div class="row centeri mzet-3 align-items-center">
     <span class="col-md result text-muted">{{ $ministries->firstItem() }} - {{ $ministries->lastItem() }} of {{ $ministries->total() }} results</span>
     {{ $ministries->links() }}
-</div>
+</div> --}}
