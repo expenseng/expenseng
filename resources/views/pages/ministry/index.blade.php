@@ -3,7 +3,7 @@
 @push('css')
   <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
   <link rel="stylesheet" href="{{asset('css/ministry_list.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/contract_page.css') }}">
+  {{-- <link rel="stylesheet" href="{{ asset('css/contract_page.css') }}"> --}}
  <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174166304-1"></script>
 <script>

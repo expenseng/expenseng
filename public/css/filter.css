@@ -12,6 +12,9 @@
     background-color: #00945E;
     color: #FFFFFF;
 }
+.btn-subscribe:hover{
+  background-color: rgba(4, 124, 80, 1);
+}
 .btn.active {
     background-color: #00945E;
     color: #FFFFFF;
@@ -53,7 +56,7 @@ padding-right: 20px !important;
     background-color: rgba(0, 148, 94, 1)
 }
 #apply-filter:hover{
-background-color: rgba(4, 124, 80)
+  background-color: rgba(4, 124, 80)
 }
 
 #sort-options{
