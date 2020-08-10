@@ -125,7 +125,9 @@ class CompanyController extends Controller
 
    // Get all contracts  awarded to a given contractor
     public function getContractorContracts($contractor){
-        $contracts = Payment::where('beneficiary', 'like', '%' . ( strtolower($contractor) ) . '%')->select(['id','beneficiary as name', 'amount', 'payment_date', 'description', 'organization', 'payment_code', 'payment_no'])->get();
+        $contracts = Payment::where('beneficiary', 'like', '%' . ( strtolower($contractor) ) . '%')->select(['id','beneficiary as name', 'amount', 'payment_date', 'description', 'organization', 'payment_code', 'payment_no'])
+        ->orderby('payment_date', 'desc')
+        ->paginate(20)->onEachSide(1);
         return $contracts;
     }
 

@@ -46,9 +46,9 @@
            
           </div>
           <div class="col-sm-4">
-            <p class="font-weight-bold">Total contracts awarded</p>
+            <p class="font-weight-bold">Total Number of Payouts</p>
             <p class="contract-number">
-             {{ count($contracts)}}
+              {{ $contracts->total() }}
             </p>
            
           </div>
@@ -81,7 +81,7 @@
             <tbody>
             @foreach($contracts as $contract)
               <tr>
-                <td>{{$loop->iteration }}</td>
+                <td>{{($contracts->currentPage() - 1) * $contracts->perPage() + $loop->iteration }}</td>
                 <td>{{$contract->description}}</td>
                 <td>{{$contract->organization()}}</td>
                 <td>&#8358;{{ number_format($contract->amount, 2) }}</td>
@@ -91,12 +91,10 @@
             </tbody>
           </table>
         </div>
-
+        
         <!-- Pagination -->
         <div class="">
-            <div class="pagination">
-               <!-- -->
-            </div>
+            @include('partials.pagination_contracts')
         </div>
 
       </div>

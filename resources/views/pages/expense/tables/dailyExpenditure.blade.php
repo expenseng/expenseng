@@ -26,7 +26,7 @@
                             {{ucfirst($expense->ministry()['name'])}} 
                         </a>
                     </td>
-                    <td>{{$expense->beneficiary}}</td>
+                    <td><a href="{{ route('contractors.single', ['company' => str_replace(' ', '-', $expense->beneficiary) ]) }}">{{$expense->beneficiary}}</a></td>
                     @if($expense->description)
                     <td>{{$expense->description}}</td>
                     @else
