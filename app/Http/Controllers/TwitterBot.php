@@ -4,14 +4,12 @@ namespace App\Http\Controllers;
 
 use App\BackgroundProcess;
 use App\Budget;
-use App\Console\Commands\ConnectToStreamingAPI;
 use App\Ministry;
 use App\Payment;
 use App\ProcessId;
 use App\Sector;
 use App\Tweet;
 use App\Activites;
-use App\Tweets;
 use Carbon\Carbon;
 use http\Env\Response;
 use Illuminate\Http\Request;
@@ -152,25 +150,35 @@ class TwitterBot extends Controller
     }
     private function style1($payment, $date)
     {
+        if (strlen($payment->organization) > 20) {
+            $organization = substr($payment->organization, 0, 20)."...";
+        } else {
+            $organization = $payment->organization;
+        }
         if (strlen($payment->description) > 4) {
-            $last = " for ".$payment->description;
+            $last = " for  ". substr($payment->description, 0, 20)."..";
         } else {
             $last = " ";
         }
-        return "On ".$date.", ".$payment->organization." paid the sum of ₦".number_format($payment->amount, 2)
+        return "On ".$date.", ".$organization." paid the sum of ₦".number_format($payment->amount, 2)
             ." to ".$payment->beneficiary.$last;
     }
     private function style2($payment, $date, $ministry)
     {
         if (strlen($payment->description) > 4) {
-            $last = " for  ". $payment->description;
+            $last = " for  ". substr($payment->description, 0, 20)."..";
         } else {
             $last = " ";
+        }
+        if (strlen($payment->organization) > 20) {
+            $organization = substr($payment->organization, 0, 20)."...";
+        } else {
+            $organization = $payment->organization;
         }
         $part = isset($ministry->twitter) ? $ministry->twitter : "";
         return "On ".$date.", From the Ministry of ".$ministry->name." "
             .$part.", "
-            .$payment->organization." paid the sum of ₦".number_format($payment->amount, 2)
+            .$organization." paid the sum of ₦".number_format($payment->amount, 2)
             ." to ".$payment->beneficiary.$last;
     }
     public function budgetTweet()
@@ -188,15 +196,20 @@ class TwitterBot extends Controller
             $ministry = Ministry::where('shortname', 'LIKE', "{$ministry_code}%")->first();
             $sector = Sector::whereId($sector_code)->first();
             if (is_null($sector)) {
-                return 'The amount of ₦'.$budget->amount." was allocated for ".$budget->project_name." in the ".$budget->year ." budget";
+                return 'The amount of ₦'.$budget->amount." was allocated for ".
+                    $budget->project_name." in the ".$budget->year ." budget";
             } else {
                 if (is_null($ministry)) {
-                    return 'The amount of ₦'.$budget->amount." was allocated for ".$budget->project_name." in the ".$budget->year ." budget";
+                    return 'The amount of ₦'.$budget->amount." was allocated for ".
+                        $budget->project_name." in the ".$budget->year ." budget";
                 }
-                return "From the " . $sector->name . " sector, The " . $ministry->name . " was allocated ₦" . $budget->amount . " in the " . $budget->year . " budget,for " . $budget->project_name;
+                return "From the " . $sector->name . " sector, The " . $ministry->name .
+                    " was allocated ₦" . $budget->amount . " in the " . $budget->year .
+                    " budget,for " . $budget->project_name;
             }
         } else {
-            return 'The amount of ₦'.$budget->amount." was allocated for ".$budget->project_name." in the ".$budget->year ." budget";
+            return 'The amount of ₦'.$budget->amount." was allocated for ".
+                $budget->project_name." in the ".$budget->year ." budget";
         }
     }
 
