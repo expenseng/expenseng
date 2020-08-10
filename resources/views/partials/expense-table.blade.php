@@ -1,6 +1,4 @@
-@push('css')
-	<link rel="stylesheet" href="{{ asset('css/ministry-report-table') }}">
-@endpush
+
 
 	<!---TABLE BEGINS--->
 	<section class="bordered container">

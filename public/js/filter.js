@@ -2,8 +2,7 @@ $(document).ready(function() {
 
     const defaultTableDate = $('.said-date').text();
     let tableOneIsModified = false;
-    let tableTwoIsModified = false;
-        
+    
     ///////////////////////////////////////////////////////////////////////
     //                  Date-Picker                               //
     /////////////////////////////////////////////////////////////////////
@@ -128,8 +127,36 @@ $(document).ready(function() {
 
         let date, sort, active;
 
+        $('#expense_search').on('search', searchProject)
+    
+        $('#expense_search').on('keyup', searchProject)
+
+        function searchProject(){
+            const id = $(this).attr("data-id");
+            let query = $(this).val();
+            let _token = $('input[name="_token"]').val();
+            let request = {query, _token, id, date, sort}
+            console.log(request)
+            $.ajax({
+                url:  `/expense/filterExpensesAll/${id}/${date}/${sort}`,
+                method: "POST",
+                data: request,
+                success: function(data){
+                //   console.log(data)
+                    const table = document.querySelector('.table-data');
+                    console.log(table)
+                    renderTable(id,table,data,query)
+                    
+                },
+                error: function(error){
+                    console.log(error)
+                }
+            })
+        }
+
         $('.reset').on('click', function(e){
             const id = $(this).attr("data-id");
+            $('#expense_search').val('');
             sort = undefined;
             date = undefined;
             $(this).closest('.modal-content').find('.byDatePicker').val('')
@@ -141,13 +168,10 @@ $(document).ready(function() {
             }else{
                 $('#day2').click()
             }
-            
-            if(id === 'apply-filter' && tableOneIsModified == false){
+            if(tableOneIsModified == false){
                 return
             }
-            else if(id === 'apply-filter2' && tableTwoIsModified == false){
-                return
-            }
+
             $.ajax({
                 url: `/expense/filterExpensesAll/${id}/${date}/${sort}`,
                 method: "GET",
@@ -156,8 +180,8 @@ $(document).ready(function() {
                     const table = e.target.closest('#modal').nextElementSibling;
                     const tableDate = table.closest('.main-table').querySelector('.said-date-caption');
                     table.innerHTML = data;
-                    tableDate.innerHTML = `Date: ${defaultTableDate}`;
-                     id === 'apply-filter' ? tableOneIsModified = false  : tableTwoIsModified = false;           
+                    tableDate.innerHTML = `Showing Expenses for <span class="said-date">${defaultTableDate}</span>`;
+                    tableOneIsModified = false;           
                 },
                 error: function(error){
                     console.log(error)
@@ -228,20 +252,15 @@ $(document).ready(function() {
             if(date !== undefined){
                 date = reverseDateFormat(date);
             }
-            
+            let query =  $('#expense_search').val();
             $.ajax({
                     url: `/expense/filterExpensesAll/${id}/${date}/${sort}`,
                     method: "GET",
+                    data: {query},
                     success: function(data){
                         // console.log(data)
                         const table = e.target.closest('#modal').nextElementSibling;
-                        const tableDate = table.closest('.main-table').querySelector('.said-date-caption');
-                        table.innerHTML = data;         
-                        if(date !== undefined){
-                            let reportDate = /\d{4}-\d{2}-\d{2}/.test(date)? formatDate(date) : date;
-                            tableDate.innerHTML = `Showing expenses for <span style="color:#1e7e34">${reportDate}</span>`;
-                        }
-                        id === 'apply-filter2' ? tableTwoIsModified = true  : tableOneIsModified = true;                             
+                        renderTable(id, table, data, query)
                     },
                     error: function(error){
                         console.log(error)
@@ -255,14 +274,15 @@ $(document).ready(function() {
             let table = e.target.closest('.table-data');
             let id = table.dataset.id
             fetch_data(e, id, table, page, date, sort)
-
         })
 
         function fetch_data(e, id, table, page, date, sort){
             console.log(e, id, table, page, date, sort);
+            let query =  $('#expense_search').val();
             $.ajax({
                 url: `/expense/filterExpensesAll/${id}/${date}/${sort}?page=${page}`,
                 method: "GET",
+                data: {query},
                 success: function(data){
                     console.log(data)
                     table.innerHTML = data;          
@@ -272,6 +292,21 @@ $(document).ready(function() {
                 }
             })
         }
-    });
 
-    //"/expense/filterExpensesAll?page="+page
+        function renderTable(id, table, data, query){
+            const tableDate = table.closest('.main-table').querySelector('.said-date-caption');
+            table.innerHTML = data;      
+            let msg = '';
+            if(query != ''){
+                 msg = `containing <b>"${query}"</b>`
+            }           
+            if(date !== undefined){
+                let reportDate = /\d{4}-\d{2}-\d{2}/.test(date)? formatDate(date) : date;
+                tableDate.innerHTML = `Showing expenses for <span class="said-date">${reportDate}</span> ${msg}`;
+            }else{
+                tableDate.innerHTML = `Showing expenses for <span class="said-date">${defaultTableDate}</span> ${msg}`;
+            }
+            tableOneIsModified = true;         
+        }                
+        
+    });
