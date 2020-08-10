@@ -83,12 +83,15 @@
             <a class="dropdown-item not" data-toggle="tab" role="tab" href="#navchart">Chart</a>
             <a class="dropdown-item" data-toggle="tab" role="tab" href="#table">Table</a>
           </div> --}}
+          <div id="search-tools" class="container d-flex justify-content-end mt-1 px-4">
+            <div id="search-area" class="col-md-5 col-lg-4 mt-3 mt-md-0 px-0">
+                <input type="search" data-id="apply-filter-exp" id="expense_search" class="form-control form-control-lg mb-2" style="font-family:Arial, FontAwesome; height:38px; border: 1px solid var(--clr-dark);" placeholder="&#xf002; Search for a project">
+                    @csrf
+            </div>
+          </div>
           @include('partials.expense-table')
         </div>
       </div>
-      {{-- <div class="container tab-pane fade" id="comments" role="tabpanel">
-        @include('partials.comments')
-      </div> --}}
     </div>
 </div>
 
@@ -99,8 +102,8 @@
 @section('js')
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="/js/filter.js"></script>
-<script type="text/javascript" src="/js/report_chart.js"></script>
-<script src="{{ asset('js/index.js') }}"></script>
+{{-- <script type="text/javascript" src="/js/report_chart.js"></script> --}}
+{{-- <script src="{{ asset('js/index.js') }}"></script> --}}
 @toastr_js
 @toastr_render
 
