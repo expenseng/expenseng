@@ -5,9 +5,7 @@ namespace App\Console\Commands;
 use App\Http\Controllers\TwitterBot;
 use App\Payment;
 use App\Tweet;
-use Carbon\Carbon;
 use Illuminate\Console\Command;
-use mysql_xdevapi\Exception;
 
 class SendTweet extends Command
 {
@@ -38,7 +36,7 @@ class SendTweet extends Command
     /**
      * Execute the console command.
      *
-     * @return int
+     * @return void
      */
     public function handle()
     {
@@ -49,11 +47,17 @@ class SendTweet extends Command
             foreach ($tweets as $key => $tweet) {
                 try {
                     $tweet = new Tweet($tweet);
-                    $tweet = $tweet->HashTag('expenseng')->status('more updates at more updates at https://expenseng.com/')->send();
+                    $tweet = $tweet->HashTag('expenseng')
+                        ->status(' https://expenseng.com/')->send();
                     if ($tweet) {
                         Payment::whereId($key)->update(['tweeted' => true,'tweet_id'=> json_decode($tweet)->id]);
                     }
+                    $this->info('done');
                 } catch (\Exception $e) {
+                    if ($e->getMessage() == '[187] Status is a duplicate.') {
+                        Payment::whereId($key)->update(['tweeted' => true]);
+                        $this->info('done');
+                    }
                     continue;
                 }
             }
@@ -63,11 +67,16 @@ class SendTweet extends Command
             foreach ($tweets as $key => $tweet) {
                 try {
                     $tweet = new Tweet($tweet);
-                    $tweet = $tweet->HashTag('expenseng')->status('more updates at https://expenseng.com/')->send();
+                    $tweet = $tweet->HashTag('expenseng')->status(' https://expenseng.com/')->send();
                     if ($tweet) {
                         Payment::whereId($key)->update(['tweeted' => true,'tweet_id'=> json_decode($tweet)->id]);
                     }
+                    $this->info('done');
                 } catch (\Exception $e) {
+                    if ($e->getMessage() == '[187] Status is a duplicate.') {
+                        Payment::whereId($key)->update(['tweeted' => true]);
+                        $this->info('done');
+                    }
                     continue;
                 }
             }
@@ -77,11 +86,16 @@ class SendTweet extends Command
             foreach ($tweets as $key => $tweet) {
                 try {
                     $tweet = new Tweet($tweet);
-                    $tweet = $tweet->HashTag('expenseng')->status('more updates at https://expenseng.com/')->send();
+                    $tweet = $tweet->HashTag('expenseng')->status(' https://expenseng.com/')->send();
                     if ($tweet) {
                         Payment::whereId($key)->update(['tweeted' => true,'tweet_id'=> json_decode($tweet)->id]);
                     }
+                    $this->info('done');
                 } catch (\Exception $e) {
+                    if ($e->getMessage() == '[187] Status is a duplicate.') {
+                        Payment::whereId($key)->update(['tweeted' => true]);
+                        $this->info('done');
+                    }
                     continue;
                 }
             }

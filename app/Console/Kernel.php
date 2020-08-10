@@ -21,12 +21,13 @@ class Kernel extends ConsoleKernel
     /**
      * Define the application's command schedule.
      *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @param Schedule $schedule
      * @return void
      */
     protected function schedule(Schedule $schedule)
     {
-         $schedule->command('SendTweet daily')->everyThirtyMinutes()->between('12:00', '13:59');
+         $schedule->command('SendTweet daily')->everyThirtyMinutes()
+             ->between('12:00', '13:59');
          $schedule->command('SendTweet daily')->everyThirtyMinutes()->between('9:00', '10:40');
          $schedule->command('SendTweet past')->everyThirtyMinutes()->weekends()->between('2:00', '6:00');
 //         $schedule->command('budgetTweet')->weekly()->mondays()->at('13:00');
