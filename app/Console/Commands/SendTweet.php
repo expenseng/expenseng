@@ -67,7 +67,7 @@ class SendTweet extends Command
             foreach ($tweets as $key => $tweet) {
                 try {
                     $tweet = new Tweet($tweet);
-                    $tweet = $tweet->HashTag('expenseng')->status('https://expenseng.com/')->send();
+                    $tweet = $tweet->HashTag('expenseng')->status(' https://expenseng.com/')->send();
                     if ($tweet) {
                         Payment::whereId($key)->update(['tweeted' => true,'tweet_id'=> json_decode($tweet)->id]);
                     }
@@ -86,7 +86,7 @@ class SendTweet extends Command
             foreach ($tweets as $key => $tweet) {
                 try {
                     $tweet = new Tweet($tweet);
-                    $tweet = $tweet->HashTag('expenseng')->status('https://expenseng.com/')->send();
+                    $tweet = $tweet->HashTag('expenseng')->status(' https://expenseng.com/')->send();
                     if ($tweet) {
                         Payment::whereId($key)->update(['tweeted' => true,'tweet_id'=> json_decode($tweet)->id]);
                     }
