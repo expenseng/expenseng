@@ -27,7 +27,7 @@
                         @else
                         <td class="text-danger">Not Stated</td>
                         @endif
-                        <td> {{$payment->beneficiary}}</td>
+                        <td><a class="text-success" href="{{ route('contractors.single', ['company' => str_replace(' ', '-', $payment->beneficiary) ]) }}"><u>{{$payment->beneficiary}}</u></a></td>
                         <td> ₦{{number_format($payment->amount, 2)}}</td>
                         <td> {{date('jS, M Y', strtotime($payment->payment_date))}}</td>
                     </tr>
