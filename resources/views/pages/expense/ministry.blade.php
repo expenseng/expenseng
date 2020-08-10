@@ -77,7 +77,7 @@
 				<div class="table-section reponsive-div">
 					<div class="main-table">
 						<div class="table-top p-3 d-flex justify-content-between align-items-center">
-							<h3 class="said-date-caption" class="align-self-center">Showing expenses for: <span class="said-date">{{ date("Y") }}</span></h3>
+							<h3 class="said-date-caption" class="align-self-center">Showing All expenses<span class="said-date"></span></h3>
 							<button class="nav-button" data-toggle="modal" data-target="#filterModal">Filter<i class="fas fa-filter px-1" style="font-size: var(--fs-reg);"></i></button>
 						</div>
 						<!-- Filter Modal -->
