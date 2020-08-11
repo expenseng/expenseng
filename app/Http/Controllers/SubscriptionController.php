@@ -51,14 +51,14 @@ class SubscriptionController extends Controller
                 
                 try{
                     //send email
-                    $sendEmail = Mail::to($request->email)
+                    Mail::to($request->email)
                     ->send(new SendSubNotification($request->name, $details, $subscription, $last, false));
-                    if ($sendEmail) {
+                    
 
                         toastr()
                         ->success('You have successfully subscribed for regular updates!');
                         return  back();
-                    }
+                    
                     
                 }catch(Exception $e){
 

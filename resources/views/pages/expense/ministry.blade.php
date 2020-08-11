@@ -31,7 +31,7 @@
 		<div class="container ">
 			<div class="row">
 				<div class="col-md-12 section-heading">
-					<h1 class="section-heading-title">Ministry Spending</h1>
+					<h1 class="section-heading-title">All Expenses</h1>
                     <p class="section-heading-paragraph">ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities across Nigeria.</p>
 
                     <h5>Subscribe to daily  Report</h5>
@@ -77,7 +77,7 @@
 				<div class="table-section reponsive-div">
 					<div class="main-table">
 						<div class="table-top p-3 d-flex justify-content-between align-items-center">
-							<h3 class="said-date-caption" class="align-self-center">Showing expenses for: <span class="said-date">{{ date("Y") }}</span></h3>
+							<h3 class="said-date-caption" class="align-self-center">Showing All expenses<span class="said-date"></span></h3>
 							<button class="nav-button" data-toggle="modal" data-target="#filterModal">Filter<i class="fas fa-filter px-1" style="font-size: var(--fs-reg);"></i></button>
 						</div>
 						<!-- Filter Modal -->
@@ -145,7 +145,7 @@
 					</div>
 				</div>
 			</section>
-			<section class="container">
+			{{-- <section class="container">
 				<div class="row">
 					<div class="col-md-12 pb-5">
 						<div id="mini-table" class="table-data">
@@ -153,7 +153,7 @@
 						</div>
 					</div>
 				</div>
-			</section>
+			</section> --}}
 		</div>
 		<div class="section-2 tab-pane fade" id="comments" role="tabpanel">
 			@include('partials.comments')

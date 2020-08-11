@@ -184,7 +184,7 @@ $(document).ready(function() {
                     const minitable = document.querySelector('#mini-table');
                     const tableDate = table.closest('.main-table').querySelector('.said-date-caption');
                     table.innerHTML = payload[0];
-                    tableDate.innerHTML = `Showing expenses for: ${defaultTableDate}`;
+                    tableDate.innerHTML = `Showing All Expenses`;
                      id === 'apply-filter' ? tableOneIsModified = false  : tableTwoIsModified = false;
                      $('.sectors').val('all');
                      minitable.innerHTML = payload[1];
@@ -338,7 +338,7 @@ $(document).ready(function() {
                 let reportDate = /\d{4}-\d{2}-\d{2}/.test(date)? formatDate(date) : date;
                 tableDate.innerHTML = `Showing expenses for <span class="said-date">${reportDate}</span> ${msg}`;
             }else{
-                tableDate.innerHTML = `Showing expenses for <span class="said-date">${defaultTableDate}</span> ${msg}`;
+                tableDate.innerHTML = `Showing All Expenses`;
             }
             
             id === 'apply-filter2' ? tableTwoIsModified = true  : tableOneIsModified = true;                     

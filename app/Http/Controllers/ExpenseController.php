@@ -15,14 +15,13 @@ class ExpenseController extends Controller
 
     public function report()
     {
-        $today = date('Y-m-d');
-        $collection['daily'] = Payment::whereDate('payment_date', '=', $today)
+        $latestDate = $this->latestDate();
+        $collection['daily'] = Payment::whereDate('payment_date', '=', $latestDate)
                                 ->orderby('payment_date', 'desc')
                                 ->paginate(20)->onEachSide(1);
-        $miniTableData['all'] = $this->ministriesFiveYear();
         return view('pages.expense.index')
         ->with(['collection' => $collection,
-                'miniTableData' => $miniTableData
+                'latestDate' => $latestDate
                 ]);
     }
 
@@ -33,16 +32,21 @@ class ExpenseController extends Controller
         $collection['summary'] = Payment::whereYear('payment_date', '=', $year)
                                 ->orderby('payment_date', 'desc')
                                 ->paginate(20)->onEachSide(1);
-        $miniTableData['all'] = $this->ministriesFiveYear();
         return view('pages.expense.ministry')->with(['collection' => $collection,
-                                                     'miniTableData' => $miniTableData,
                                                      'sectors' => $sectors
                                                     ]);
     }
 
+    public function latestDate(){
+        $latestExpenses = Payment::select('*')
+        ->orderby('payment_date', 'desc')
+        ->first();
+
+        return $latestExpenses->payment_date;
+    }
+
     public function ministriesFiveYear()
     {
-        
         $payments = DB::table('payments')
         ->select(DB::raw('SUM(amount) as total, YEAR(payment_date) as year'))
         ->groupBy(DB::raw('YEAR(payment_date)'))
@@ -51,30 +55,6 @@ class ExpenseController extends Controller
         ->get();
     
         return $payments;
-    }
-
-    public function searchExpenses(Request $request)
-    {
-        // echo Input::get('query');
-        
-        if ($request->get('query')) {
-            $query = $request->get('query');
-            $id = $request->get('id');
-            $date = $request->get('date');
-            $sort = $request->get('sort');
-            $sector = $request->get('sector');
-            // echo $query;
-            // echo "<br/>";
-            // echo $id;
-            // echo "<br/>";
-            // echo $date;
-            // echo "<br/>";
-            // echo $sort;
-            // echo "<br/>";
-            // echo $sector;
-            $response = $this->filterExpensesAll($id, $date, $sort, $sector, $query);
-            return $response;
-        }
     }
 
     public function sectorFiveYear($sector='all', $codes=0)
@@ -100,7 +80,8 @@ class ExpenseController extends Controller
 
     public function filterExpensesAll(Request $request, $id, $date, $sort, $sector="all")
     { 
-        $givenTime = ($id === 'apply-filter-exp')? date('Y-m-d'): date('Y');
+        $latestDate = $this->latestDate();
+        $givenTime = ($id === 'apply-filter-exp')?  $latestDate : date('Y');
         
         if ($date != 'undefined'){
             $givenTime = $date;
@@ -211,7 +192,7 @@ class ExpenseController extends Controller
 
     public function chartReport($id, $date, $sort, $chartType="ministry")
     {
-        $givenTime = date('Y-m-d');
+        $givenTime = $this->latestDate();
         if ($date != 'undefined'){
             $givenTime = $date;
             $userdate = true;

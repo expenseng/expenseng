@@ -76,6 +76,7 @@ Route::get('/project-modal', 'PageController@projectModal')->name('project-modal
 
 Route::get('/ministry/getUrl', 'PageController@ministryGetUrl')->name('ministry_get_url');
 Route::get('/ministry/filterExpenses', 'MinistrySearchController@filterExpenses')->name('ministry_filter_expenses');
+Route::post('ministry/filterExpenses', 'MinistrySearchController@filterExpenses')->name('ministry_search_expenses');
 
 /**
  * Email sending API
@@ -205,7 +206,10 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
      //Settings Page
      Route::get('/user/settings', 'SettingsController@index')->name('users.settings');
      Route::put('/settings/change_password/{user_id}', 'SettingsController@ChangePassword')->name('settings.change_password');
+     Route::post('/user/settings/update', 'SettingsController@updateSidebar')->name('sidebar.settings');
 
+
+    
      // Cabinet CRUD
      Route::get('/cabinet/create', 'CabinetController@create')
      ->name('cabinet.create');

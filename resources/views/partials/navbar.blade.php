@@ -16,10 +16,10 @@
                             <a  class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Expense</a>
                             <div class="dropdown-menu">
 
-                                    <a href="{{ route('expense.reports') }}" class="dropdown-item">Expenditure Reports</a>
+                                    <a href="{{ route('expense.reports') }}" class="dropdown-item">Daily Report</a>
 
 
-                                    <a href="{{ route('expense.ministry') }}" class="dropdown-item">Ministry Expense</a>
+                                    <a href="{{ route('expense.ministry') }}" class="dropdown-item">All Expenses</a>
 
                             </div>
 

@@ -5,9 +5,7 @@ namespace App\Console\Commands;
 use App\Http\Controllers\TwitterBot;
 use App\Payment;
 use App\Tweet;
-use Carbon\Carbon;
 use Illuminate\Console\Command;
-use mysql_xdevapi\Exception;
 
 class SendTweet extends Command
 {
@@ -16,7 +14,7 @@ class SendTweet extends Command
      *
      * @var string
      */
-    protected $signature = 'SendTweet';
+    protected $signature = 'SendTweet {type?}';
 
     /**
      * The console command description.
@@ -38,19 +36,68 @@ class SendTweet extends Command
     /**
      * Execute the console command.
      *
-     * @return int
+     * @return void
      */
     public function handle()
     {
-        $bot = new TwitterBot();
-        $tweets = $bot->paymentTweets();
-//        dd($tweets);
-        foreach ($tweets as $tweet) {
-            try {
-                $tweet = new Tweet($tweet);
-                $tweet->HashTag('expenseng')->send();
-            } catch (\Exception $e) {
-                continue;
+        $type = $this->argument('type');
+        if ($type == 'daily') {
+            $bot = new TwitterBot();
+            $tweets = $bot->dailyTweets();
+            foreach ($tweets as $key => $tweet) {
+                try {
+                    $tweet = new Tweet($tweet);
+                    $tweet = $tweet->HashTag('expenseng')
+                        ->status(' https://expenseng.com/')->send();
+                    if ($tweet) {
+                        Payment::whereId($key)->update(['tweeted' => true,'tweet_id'=> json_decode($tweet)->id]);
+                    }
+                    $this->info('done');
+                } catch (\Exception $e) {
+                    if ($e->getMessage() == '[187] Status is a duplicate.') {
+                        Payment::whereId($key)->update(['tweeted' => true]);
+                        $this->info('done');
+                    }
+                    continue;
+                }
+            }
+        } elseif ($type == 'past') {
+            $bot = new TwitterBot();
+            $tweets = $bot->pastTweets();
+            foreach ($tweets as $key => $tweet) {
+                try {
+                    $tweet = new Tweet($tweet);
+                    $tweet = $tweet->HashTag('expenseng')->status(' https://expenseng.com/')->send();
+                    if ($tweet) {
+                        Payment::whereId($key)->update(['tweeted' => true,'tweet_id'=> json_decode($tweet)->id]);
+                    }
+                    $this->info('done');
+                } catch (\Exception $e) {
+                    if ($e->getMessage() == '[187] Status is a duplicate.') {
+                        Payment::whereId($key)->update(['tweeted' => true]);
+                        $this->info('done');
+                    }
+                    continue;
+                }
+            }
+        } else {
+            $bot = new TwitterBot();
+            $tweets = $bot->dailyTweets();
+            foreach ($tweets as $key => $tweet) {
+                try {
+                    $tweet = new Tweet($tweet);
+                    $tweet = $tweet->HashTag('expenseng')->status(' https://expenseng.com/')->send();
+                    if ($tweet) {
+                        Payment::whereId($key)->update(['tweeted' => true,'tweet_id'=> json_decode($tweet)->id]);
+                    }
+                    $this->info('done');
+                } catch (\Exception $e) {
+                    if ($e->getMessage() == '[187] Status is a duplicate.') {
+                        Payment::whereId($key)->update(['tweeted' => true]);
+                        $this->info('done');
+                    }
+                    continue;
+                }
             }
         }
     }
