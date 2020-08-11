@@ -16,10 +16,6 @@ class PageUpTest extends TestCase
     {
         $response = $this->get('/contractors');
 
-        $response->dumpHeaders();
-
-        $response->dumpSession();
-
         $response->assertStatus(200);
     }
 
