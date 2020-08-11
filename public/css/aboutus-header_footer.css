@@ -164,9 +164,9 @@ ul.links li a::before{
     margin-left: 30px !important;
 }
 
-li.dropdown:hover div{
+/* li.dropdown:hover div{
     display: block;
-}
+} */
 
 .static.dropdown {
     position: static;
