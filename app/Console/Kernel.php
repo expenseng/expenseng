@@ -29,12 +29,10 @@ class Kernel extends ConsoleKernel
     {
          $schedule->command('SendTweet daily')
              ->hourly()
-             ->timezone('Africa/Lagos')
              ->between('08:01', '11:30');
          $schedule->command('SendTweet past')
              ->hourly()
              ->weekends()
-             ->timezone('Africa/Lagos')
              ->between('2:00', '6:00');
 //         $schedule->command('budgetTweet')->weekly()->mondays()->at('13:00');
          $schedule->command('ReportLogging')->daily()->at('02:00');
