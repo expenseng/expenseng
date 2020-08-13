@@ -184,8 +184,9 @@ button.btn.scroll-down::after{
   }
 .ministry-top{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
+
 p.tag{
     padding: 0.3rem 1rem;
     color: #005938;

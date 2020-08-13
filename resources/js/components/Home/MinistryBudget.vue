@@ -4,8 +4,8 @@
         <flickity ref="flickity" :options="flickityOptions" class="d-flex flex-wrap justify-content-md-between col-sm-12 w-100 main-carousel" v-else>
             <div class="exp-card carousel-cell" v-for="card in this.series" :key="card.label">
                     <div class="graph-cont">
-                        <chart :element="card.label.substring(0, 25).replace(/ /g, '').toLowerCase()" 
-                                label="Amount budgeted" 
+                        <chart :element="card.label.substring(0, 20).replace(/ /g, '').replace(',', '').toLowerCase()" 
+                                label="5 year expenses trend" 
                                 :data="card.data"></chart>
                     </div>
                     <p class="exp-card1 pl-2">{{ card.label }}</p>
@@ -14,7 +14,7 @@
                             "₦" + Number(card.total).toLocaleString()
                         }}
                     </p>
-                    <p class="exp-card3 pl-2">{{ card.data.find(i => i.year == currentYear ? i.year : '0').year }}</p>
+                    <p class="exp-card3 pl-2 text-muted">Total spent over the past 5 years</p>
             </div>
         </flickity>
     </div>
@@ -40,7 +40,6 @@ export default {
                 cellAlign: 'left',
                 contain: true,
                 autoPlay: true,
-                // wrapAround: true
             }
         }
     },    
@@ -53,34 +52,37 @@ export default {
     mounted() {
 
         this.loading = true;
-        axios.get('/api/expense/budget')
+        axios.get('/api/ministries/expenses')
             .then(response => {
-
                 this.loading = false;
                 this.cards = response.data;
                 for (const key in this.cards) {
                     if (this.cards.hasOwnProperty(key)) {
                         const element = this.cards[key];
-                        
-                        const total = element.data.find( el => {
-                            return el.year == this.currentYear
-                        });
+                       
+                        var object = [];
+                        var total = "";
 
-                        var totalAmount = "";
+                        for (const key in element.yearbyyear) {
+                            if (element.yearbyyear.hasOwnProperty(key)) {
+                                const money = element.yearbyyear[key];
 
-                        if(total){
-                            totalAmount = total.amount;
+                                object.push({
+                                    amount: money,
+                                    year: key
+                                });
+
+                                total += money;
+                            }
                         }
 
                         this.series.push(
                             { 
                                 label: key,    
-                                data: element.data, 
-                                total: totalAmount,  
+                                data: object,
+                                total: total,  
                             }
                         )
-
-                        console.log( this.currentYear + " " + totalAmount);
                     }
                 }
             }).catch(err => {

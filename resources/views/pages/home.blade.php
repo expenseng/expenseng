@@ -63,78 +63,18 @@
     </button>
   </div>
 </div>
-<div class="scroll-down">
-  <a href="#compu">
-  <img src="{{asset('img\min_comment_img\mdi_arrow-right-drop-circle.png')}}" alt="arrow">
-  </a>
-</div>
 @endsection
 @section('content')
 <section id="main" class="">
-   <!-- Expenses section -->
-   <div id="expenses">
-    <p class="label">Ministry Budgets</p>
-    <div class="container">
-         <div class="expenses">
-             <ministry-budgets></ministry-budgets>
-             <a href="{{route('expense.reports')}}" class="mt-4 mb-5 mx-auto">View Expenditure Report</a>
-         </div>
-    </div>
-   </div>
 
 <!-- Ministry section -->
    <div>
     <p class="label mb-3 specific">Ministry Expenditures</p>
     <div class="ministry container mt-4">
         <div class="ministry-top">
-          <div class="ministry-heading">
-            <span class="select-holder">
-            <select id="ministry_list"  onmousedown="if(this.options.length>6){this.size=6;}"  onchange='this.size=0;' onblur="this.size=0;"  class="ministry-head form-control">
-              @if(count($ministries)>0)
-               @foreach ($ministries as $ministry)
-                 <option class="mb-1" value="{{$ministry->shortname}}">{{$ministry->shortname}}</option>
-               @endforeach
-             @endif
-           </select>
-           </span>
-          </div>
            <a href="{{ route('ministries') }}" class="profile" target="_blank">View all profiles</a>
         </div>
-        <div class="ministry-stat ">
-          <a href="#" id="link"></a>
-          <div id="ministry-chart" class="stat-a p-4">
-            <div class="graph-cont">
-                <div id="chartOne"></div>
-            </div>
-            <div class="pt-5">
-              <p class="exp-card1">Total amount spent (YTD)</p>
-              <p class="exp-card2">&#8358;<span id="annual-sum"></span></p>
-              <p class="exp-card3 year-in-focus"></p>
-            </div>
-          </div>
-              <div class="stat-b">
-                <div class="d-flex p-2 justify-content-between">
-                  <div class="graph-cont">
-                    <div id="chartTwo"></div>
-                  </div>
-                  <div class="ml-5 pt-5 w-50">
-                    <p class="exp-card1">Average amount spent</p>
-                    <p class="exp-card2">&#8358;<span id="average"></span></p>
-                    <p id="years-in-focus" class="exp-card3"></p>
-                  </div>
-                </div>
-                <div class="d-flex p-2 justify-content-between">
-                  <div class="graph-cont">
-                    <div id="chartThree"></div>
-                  </div>
-                  <div class="ml-5 pt-5 w-50">
-                    <p class="exp-card1">Top Beneficiary</p>
-                    <p class="exp-card2"><span id="top-company"></span></p>
-                    <p class="exp-card3 year-in-focus"></p>
-                  </div>
-                </div>
-              </div>
-        </div>
+        <ministry-budgets></ministry-budgets>
     </div>
    </div>
    <!-- Explore section -->

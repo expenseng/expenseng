@@ -220,6 +220,26 @@ class HomeController extends Controller
     }
 
     /**
+     * Method to fetch the five year trend
+     * for each ministry in the database
+     * 
+     * @return Array
+     */
+    public function ministriesTrend(){
+        //get all ministries
+        $ministries = Ministry::all();
+
+        $records = [];
+
+        //get their payment records
+        foreach($ministries as $ministry){
+            $records[$ministry->name] = $this->fiveYearTrend($ministry->code);
+        }
+
+        return $records;
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
