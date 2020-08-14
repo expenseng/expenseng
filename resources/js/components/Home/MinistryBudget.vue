@@ -61,7 +61,7 @@ export default {
                         const element = this.cards[key];
                        
                         var object = [];
-                        var total = "";
+                        var total = [];
 
                         for (const key in element.yearbyyear) {
                             if (element.yearbyyear.hasOwnProperty(key)) {
@@ -72,7 +72,7 @@ export default {
                                     year: key
                                 });
 
-                                total += money;
+                                total.push(money);
                             }
                         }
 
@@ -80,7 +80,7 @@ export default {
                             { 
                                 label: key,    
                                 data: object,
-                                total: total,  
+                                total: total.reduce( (a, b) => { return a + b; }),  
                             }
                         )
                     }
