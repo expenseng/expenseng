@@ -16,14 +16,14 @@ class CompanyController extends Controller
 
     public function index()
     {
-        $contractors = $this->getAllYearlyTotal($query = null);
+        $contractors = $this->getAllPayouts($query = null);
         return view('pages.contract.index')->with(['contractors' => $contractors]);
 
     }
 
     public function searchContractors(Request $request){
         $query = $request->q;
-        $contractors = $this->getAllYearlyTotal($query);
+        $contractors = $this->getAllPayouts($query);
 
         //$contractor = Payment::where('beneficiary','LIKE','%'.$request->q.'%')->get();
         if(count($contractors) > 0)
@@ -65,6 +65,54 @@ class CompanyController extends Controller
             return redirect('errors.404_error');
         }
     }
+
+
+    // get contractor total payouts  and details
+    public function getAllPayouts()
+    {
+        if(isset($query)){
+            $totalPayouts = Payment::select(
+                DB::raw(
+                    'beneficiary, SUM(amount) as total_amount'
+                )
+            )->where('beneficiary','LIKE','%'.$query.'%')
+            ->groupBy(DB::raw('(beneficiary) ASC'))
+            ->orderBy('total_amount', 'DESC')
+            ->paginate(12);
+
+            foreach($totalPayouts as $totalPayout){
+            $totalPayout['year'] = Payment::select(DB::raw(
+                        'YEAR(payment_date) as year'
+                        )
+                    )
+                    ->where('beneficiary','LIKE','%'.$totalPayout->beneficiary.'%')
+                ->distinct('year')->limit(4)->pluck('year');
+            }
+
+        return $totalPayouts;
+        }
+        $totalPayouts = Payment::select(
+                DB::raw(
+                    'beneficiary, SUM(amount) as total_amount'
+                )
+            )
+            ->groupBy(DB::raw('beneficiary'))
+            ->orderBy('total_amount', 'DESC')
+            ->paginate(12);
+
+
+        foreach($totalPayouts as $totalPayout){
+            $totalPayout['year'] = Payment::select(DB::raw(
+                        'YEAR(payment_date) as year'
+                        )
+                    )
+                    ->where('beneficiary','LIKE','%'.$totalPayout->beneficiary.'%')
+                ->distinct('year')->limit(4)->pluck('year');
+        }
+
+        return $totalPayouts;
+    }
+
 
     // get all contracts sum and details grouped by year
     public function getAllYearlyTotal($query)
