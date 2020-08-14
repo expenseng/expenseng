@@ -15,7 +15,7 @@ use App\User;
 |
  */
 
-
+Route::get('/test', 'CompanyController@getAllPayouts')->name('test');
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'PageController@about')->name('about');

@@ -69,7 +69,7 @@
               <div class="card shadow">
                 <div class="card-body">
                     <chart label=""
-                            v-bind:data="[{amount: {{round($contractor->total_amount / 12)}}, year: {{$contractor->year}} }, {amount:{{$contractor->total_amount}}, year:{{$contractor->year}} }]"
+                            v-bind:data="[{amount: {{round($contractor->total_amount / 12)}}, year: {{$contractor->year->last()}} }, {amount:{{$contractor->total_amount}}, year:{{$contractor->year->first()}} }]"
                             element="{{ 'id-'. \Str::slug($contractor->beneficiary, '-') . $loop->index }}"></chart>
                     <div class="contractor mb-2">
                         <!-- <img src="{{ asset('images/image 13.png') }}" height="30" class="mr-3" alt=""> -->
@@ -81,7 +81,7 @@
                     </div>
                     <h5>Total amount Awarded</h5>
                     <h5 class="text-success">&#8358;{{ number_format($contractor->total_amount, 2) }}</h5>
-                    <h6 class="m-0 mb-0 text-sm-left text-black-50">{{$contractor->year}}</h6>
+                    <h6 class="m-0 mb-0 text-sm-left text-black-50">{{ $contractor->year->implode(' , ') }}</h6>
                 </div>
               </div>
             </div>
