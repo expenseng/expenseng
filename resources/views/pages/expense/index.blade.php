@@ -3,6 +3,7 @@
 @push('css')
   {{-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> --}}
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="{{asset('css/expense-summary.css') }}">
   <link rel="stylesheet" href="{{asset('css/index.blade.css')}}">
   <link rel="stylesheet" href="{{ asset('css/ministry-report-table.css') }}">
   <link rel="stylesheet" href="{{ asset('css/filter.css') }}">

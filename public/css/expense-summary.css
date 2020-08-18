@@ -1,0 +1,117 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body{
+    font-size: 1rem;
+    font-family: 'Lato', sans-serif;
+    color: #1F2430;
+}
+
+a,
+a:hover,
+a:active{
+	text-decoration: none;
+}
+
+p{
+    margin: 0;
+    padding: 0;
+}
+
+.section-images-wrapper{
+    min-height: 10rem;
+}
+
+.grid-img-1{
+    background-image: url("../img/summary.svg");
+    background-size: cover;
+}
+
+.section-images-grid{
+    padding-left: 0.25rem;
+    padding-right: 0;
+}
+
+.project-name{
+    color: #00945E;
+}
+
+.section-twitter-contractors{
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.text-bold{
+    font-weight: bold;
+}
+
+.link-bold{
+    font-weight: 600;
+    color: #6765EC;
+}
+
+.copy-button{
+    color: #ffffff;
+    background-color: #00945E;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15), 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    border-radius: 0.25rem;
+    font-size: 1rem;
+}
+
+
+/* Responsiveness */
+
+@media all and (max-width: 1400px){
+    body{
+        font-size: 1.3rem;
+    }
+    .copy-button{
+        font-size: 1.3rem;
+    }
+}
+
+@media all and (max-width: 1199px) and (min-width: 992px){
+    body{
+        font-size: 1rem;
+    }
+    .copy-button{
+        font-size: 1rem;
+    }
+}
+
+@media all and (max-width: 991px) and (min-width: 768px){
+    body{
+        font-size: 0.8rem;
+    }
+    .section-images-wrapper{
+        min-height: 0rem;
+    }
+    .copy-button{
+        font-size: 0.8rem;
+    }
+}
+
+@media all and (max-width: 767px){
+    body{
+        font-size: 0.7rem;
+    }
+    .copy-button{
+        font-size: 0.7rem;
+    }
+    .section-project-amount,
+    .section-twitter-contractors{
+        flex-direction: column !important;
+    }
+}
+
+@media all and (max-width: 600px){
+    body{
+        font-size: 0.65rem;
+    }
+    .copy-button{
+        font-size: 0.65rem;
+    }
+}
