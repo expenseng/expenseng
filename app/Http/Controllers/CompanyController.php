@@ -17,7 +17,13 @@ class CompanyController extends Controller
     public function index()
     {
         $contractors = $this->getAllPayouts($query = null);
+        foreach ($contractors as $contractor) {
+           $yearlyTotal = $this->getContractorYearlyTotal($contractor->beneficiary);
+           $contractor['yearlyTotals'] = $yearlyTotal;
+        }
+        
         return view('pages.contract.index')->with(['contractors' => $contractors]);
+         // dump($contractors);
 
     }
 
@@ -66,7 +72,7 @@ class CompanyController extends Controller
 
 
     // get contractor total payouts  and details
-    public function getAllPayouts()
+    public function getAllPayouts($query)
     {
         if(isset($query)){
             $totalPayouts = Payment::select(
