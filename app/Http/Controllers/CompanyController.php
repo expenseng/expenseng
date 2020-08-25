@@ -37,7 +37,7 @@ class CompanyController extends Controller
 
 
     // show a detials of a given contractor, beneficiary or organization
-    public function show(Request $request, $com)
+    public function show($com)
     {
         $contractor =   str_replace('-', ' ', $com);
         $total_amount = 0;
