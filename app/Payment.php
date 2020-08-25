@@ -74,10 +74,10 @@ protected $guarded = ['id'];
         // If any of the these characters is found from the right - a substring is created which is now use as the slug
         $chars = strtok($this->beneficiary, '(\'-');
         if ($chars){
-             return strtolower(preg_replace('~[^A-Za-z0-9?.!]~','-', $chars));
+             return strtolower(preg_replace('~[^A-Za-z0-9?.:!]~','-', $chars));
         }
 
-        $slug = preg_replace('~[^A-Za-z0-9?.!]~','-', $this->beneficiary);
+        $slug = preg_replace('~[^A-Za-z0-9?.:!]~','-', $this->beneficiary);
         return strtolower($slug);
     }
 }

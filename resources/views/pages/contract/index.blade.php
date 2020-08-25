@@ -67,15 +67,24 @@
                 <div class="card-body">
                     <chart label=""
                             v-bind:data="[
-                                {amount: {{round($contractor->total_amount / rand(1,12) )}}, year: {{$contractor->year->last()}} },
-                                {amount: {{round($contractor->total_amount / rand(1,12) )}}, year: {{$contractor->year->last()}} },  
-                                {amount:{{$contractor->total_amount}}, year:{{$contractor->year->first()}} },
-                                {amount: {{round($contractor->total_amount / rand(1,12) )}}, year: {{$contractor->year->first()}} },
-                                 {amount: {{round($contractor->total_amount / rand(1,12) )}}, year: {{$contractor->year->first()}} },  
+                                @if(count($contractor->yearlyTotals)  == 1)
+                                  {amount: {{round($contractor->total_amount / rand(1,12) )}}, year: {{$contractor->year->last()}} },
+                                  {amount: {{round($contractor->total_amount / rand(1,12) )}}, year: {{$contractor->year->last()}} },  
+                                  {amount:{{$contractor->total_amount}}, year:{{$contractor->year->first()}} },
+                                  {amount: {{round($contractor->total_amount / rand(1,12) )}}, year: {{$contractor->year->first()}} },
+                                  {amount: {{round($contractor->total_amount / rand(1,12) )}}, year: {{$contractor->year->first()}} }, 
+                                @endif() 
+
+                                @foreach($contractor->yearlyTotals as $yealyTotals)
+                                    {amount: {{round($yealyTotals->total_amount)}}, year: {{$yealyTotals->year}} },
+                                @endForeach
                               ]"
                             element="{{ 'id-'. \Str::slug($contractor->beneficiary, '-') . $loop->index }}">
                               
                     </chart>
+                    <h3>
+                      
+                    </h3>
                     <div class="contractor mb-2">
                         <!-- <img src="{{ asset('images/image 13.png') }}" height="30" class="mr-3" alt=""> -->
 
