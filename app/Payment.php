@@ -62,4 +62,9 @@ protected $guarded = ['id'];
                    ->get();
         return $company;
     }
+
+    public function getRouteKeyName()
+    {
+        return 'payment_no';
+    }
 }
