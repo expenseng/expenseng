@@ -24,10 +24,19 @@
                                     </a>
                                 
                                 </td>
+                               
                                 @if($expense->description)
-                                <td>{{$expense->description}}</td>
+                                    <td>
+                                        <a href="{{ route('expenses.single', $expense->payment_no) }}" class="text-success">
+                                            {{$expense->description}}
+                                        </a>
+                                    </td>
                                 @else
-                                <td class="text-danger">Not Stated</td>
+                                    <td class="text-danger">
+                                        <a href="{{ route('expenses.single', $expense->payment_no) }}" class="text-success">
+                                            Not Stated
+                                        </a>
+                                    </td>
                                 @endif
                                 <td><a href="{{ route('contractors.single', ['company' => str_replace(' ', '-', $expense->beneficiary) ]) }}">{{$expense->beneficiary}}</a></td>
                                 <td>&#8358;{{ number_format($expense->amount) }}</td>

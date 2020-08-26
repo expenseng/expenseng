@@ -37,6 +37,22 @@ class ExpenseController extends Controller
                                                     ]);
     }
 
+    public function show(Payment $payment){
+
+        $payment->ministry = $payment->ministry()['name'];
+        $payment->ministry_twitter = $payment->ministry()['twitter'];
+        $payment->minister = $payment->ministry()['cabinet'][0]->name;
+        $payment->minister_twitter = $payment->ministry()['cabinet'][0]->twitter_handle;
+        if(count($payment->company()) > 0){
+            $payment->company = $payment->company()[0]->name;
+            $payment->company_twitter = $payment->company()[0]->twitter;
+        }else{
+            $payment->company = $payment->beneficiary;
+        }
+        
+        return view('pages.expense_summary')->with(['payment' => $payment]);
+    }
+
     public function latestDate(){
         $latestExpenses = Payment::select('*')
         ->orderby('payment_date', 'desc')

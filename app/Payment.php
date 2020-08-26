@@ -80,4 +80,9 @@ protected $guarded = ['id'];
         $slug = preg_replace('~[^A-Za-z0-9?.:!]~','-', $this->beneficiary);
         return strtolower($slug);
     }
+
+    public function getRouteKeyName()
+    {
+        return 'payment_no';
+    }
 }
