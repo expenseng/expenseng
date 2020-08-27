@@ -148,6 +148,10 @@ class TwitterBot extends Controller
             }
         }
     }
+    private function link($string)
+    {
+        return 'https://expenseng.com/expenses/'.$string;
+    }
     private function style1($payment, $date)
     {
         if (strlen($payment->organization) > 20) {
@@ -161,7 +165,7 @@ class TwitterBot extends Controller
             $last = " ";
         }
         return "On ".$date.", ".$organization." paid the sum of ₦".number_format($payment->amount, 2)
-            ." to ".$payment->beneficiary.$last;
+            ." to ".$payment->beneficiary.$last.' '.$this->link($payment->slug);
     }
     private function style2($payment, $date, $ministry)
     {
@@ -179,7 +183,7 @@ class TwitterBot extends Controller
         return "On ".$date.", From the Ministry of ".$ministry->name." "
             .$part.", "
             .$organization." paid the sum of ₦".number_format($payment->amount, 2)
-            ." to ".$payment->beneficiary.$last;
+            ." to ".$payment->beneficiary.$last.' '.$this->link($payment->slug);
     }
     public function budgetTweet()
     {
