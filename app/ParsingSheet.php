@@ -115,7 +115,7 @@ class ParsingSheet
                             $data2 = array_values($data);
 //                            save to database
                             $create = MonthlyBudget::create([
-                               "Name" => $data2[1],
+                                "Name" => $data2[1],
                                 "code"=>$data2[0],
                                 "year_payments_till_date"=>$data2[4],
                                 "month"=>$month,
@@ -270,7 +270,8 @@ class ParsingSheet
                                 'beneficiary' => $keys[3],
                                 'amount' =>$keys[4],
                                 'payment_date'=> $date,
-                                'description' => substr(isset($keys[5]) ? $keys[5] : "null", 0, 225)
+                                'slug' => $this->slugify(isset($keys[5]) ? $keys[5] : "null", $keys[0]),
+                                    'description' => substr(isset($keys[5]) ? $keys[5] : "null", 0, 225)
                                 ]);
                             }
                         }
@@ -284,6 +285,7 @@ class ParsingSheet
                                     'beneficiary' => $keys[4],
                                     'amount' =>$keys[5],
                                     'payment_date'=> $date,
+                                    'slug' => $this->slugify(isset($keys[6]) ? $keys[6] : "null", $keys[0]),
                                     'description' => isset($keys[6]) ? $keys[6] : "null"
                                 ]);
                             }
@@ -332,15 +334,19 @@ class ParsingSheet
         }
         $check_company = Payment::whereBeneficiary(isset($response2["beneficiary name"])? $response2["beneficiary name"]
             :$response3[3])->first();
+        $description = isset($response2["description"])? $response2["description"]
+            : (isset($response3[5]) ? $response3[5]   : "not stated");
+        $code = isset($response2["payer code"])?$response2["payer code"] :$response3[1];
+        $payment_no = isset($response2["payment no"])?$response2["payment no"] : $response3[0];
         $create = Payment::create(array(
-            'payment_no' => isset($response2["payment no"])?$response2["payment no"] : $response3[0],
-            'payment_code' => isset($response2["payer code"])?$response2["payer code"] :$response3[1],
+            'payment_no' => $payment_no,
+            'payment_code' => $code,
             'organization' => isset($response2["organisation name"])? $response2["organisation name"] : $response3[2],
             'beneficiary' => isset($response2["beneficiary name"])? $response2["beneficiary name"] :$response3[3],
             'amount' => isset($response2["amount"])? $response2["amount"] :$response3[4],
             'payment_date'=> $date,
-            'description' => isset($response2["description"])? $response2["description"]
-                : (isset($response3[5]) ? $response3[5]   : "not stated")
+            'slug' => $this->slugify($description, $payment_no),
+            'description' => $description
         ));
         if (empty($check_company)) {
 //            queue a job to save comanpn name
@@ -363,15 +369,19 @@ class ParsingSheet
         }
         $check_company = Payment::whereBeneficiary(isset($response2["beneficiary name"])? $response2["beneficiary name"]
             :$response3[4])->first();
+        $description =  isset($response2["description"])?$response2["description"]
+            :(isset($response3[6]) ? $response3[6]   : "not stated");
+        $code = isset($response2["payer code"])?$response2["payer code"] :$response3[2];
+        $payment_no = isset($response2["payment no"])?$response2["payment no"] : $response3[0];
         $create = Payment::create([
-            'payment_no' => isset($response2["payment no"])?$response2["payment no"] : $response3[0],
-            'payment_code' => isset($response2["payer code"])?$response2["payer code"] :$response3[2],
+            'payment_no' => $payment_no,
+            'payment_code' => $code,
             'organization' => isset($response2["organisation name"])? $response2["organisation name"] : $response3[3],
             'beneficiary' => isset($response2["beneficiary name"])? $response2["beneficiary name"] :$response3[4],
             'amount' => isset($response2["amount"])? $response2["amount"] :$response3[5],
             'payment_date'=> $date,
-            'description' => isset($response2["description"])?$response2["description"]
-                :(isset($response3[6]) ? $response3[6]   : "not stated")
+            'slug' => $this->slugify($description, $payment_no),
+            'description' => $description
         ]);
         if (empty($check_company)) {
             SaveCompanyName::dispatch($create->id);
@@ -499,6 +509,7 @@ class ParsingSheet
                             'beneficiary' => $keys[3],
                             'amount' =>$keys[4],
                             'payment_date'=> $date,
+                            'slug' => $this->slugify(isset($keys[5]) ? $keys[5] : "null", $keys[1]),
                             'description' => substr(isset($keys[5]) ? $keys[5] : "null", 0, 225)
                         ]);
                     }
@@ -513,6 +524,7 @@ class ParsingSheet
                             'beneficiary' => $keys[4],
                             'amount' =>$keys[5],
                             'payment_date'=> $date,
+                            'slug' => $this->slugify(isset($keys[6]) ? $keys[6] : "null", $keys[2]),
                             'description' => isset($keys[6]) ? $keys[6] : "null"
                         ]);
                     }
@@ -605,6 +617,15 @@ class ParsingSheet
             }
         } catch (\Exception $e) {
             return Response::json(array("errors" => 'server error'), 422);
+        }
+    }
+
+    private function slugify($description, $code)
+    {
+        if (!empty($description)) {
+            return $code .'-'.str_slug($description);
+        } else {
+            return $code;
         }
     }
 }

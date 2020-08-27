@@ -57,13 +57,13 @@
             $companyTwitterHandle = substr($payment->company_twitter, 1);
             $ministryTwitterHandle = substr($payment->ministry_twitter, 1);
             $ministerTwitterHandle = substr($payment->minister_twitter, 1);
-            
+
             if(count($payment->company()) > 0){
                 $recipientType = 'Company';
             }else{
                 $recipientType = 'Beneficiary';
             }
-            
+
         @endphp
         <div class="section-twitter-contractors d-flex justify-content-between flex-md-row">
             <div class="section-contracted-company">
@@ -119,9 +119,15 @@
                     <p class="minister-handle">
                         Minister’s Twitter Handle
                     </p>
+                    @if($payment->minister_twitter)
                     <a href="{!! url("https://twitter.com/$ministerTwitterHandle") !!}" class="minister-twitter-handle link-bold">
                         {{ $payment->minister_twitter }}
                     </a>
+                        @else
+                    <strong>
+                        N/A
+                    </strong>
+                    @endif
                 </div>
             </div>
         </div>
@@ -129,7 +135,7 @@
         <div style="position:relative; background:white; overflow:hidden">
             <input type="text" style="position: absolute; z-index: -1" id="page-link" value={{Request::url()}}>
         </div>
-    
+
         <div class="section-copy-button my-3">
             <button type="button" onclick="copyLink('page-link')" class="btn copy-button">
                 <i class="fa fa-copy mr-2"></i>Copy Page Link

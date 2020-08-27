@@ -85,4 +85,8 @@ protected $guarded = ['id'];
     {
         return 'payment_no';
     }
+    public function files()
+    {
+        return $this->morphMany('App\Files', 'owner');
+    }
 }

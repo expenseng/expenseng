@@ -46,7 +46,7 @@ Route::get('/expense/report', 'ExpenseController@report')->name('expense.reports
 Route::post('/subscribe', 'SubscriptionController@store')->name('subscribe');
 
 Route::get('/expense/ministry', 'ExpenseController@ministry')->name('expense.ministry');
-Route::get('/expenses/{payment}', 'ExpenseController@show' )->name('expenses.single');
+Route::get('/expenses/{slug}', 'ExpenseController@show' )->name('expenses.single');
 
 
 
@@ -209,7 +209,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
      Route::post('/user/settings/update', 'SettingsController@updateSidebar')->name('sidebar.settings');
 
 
-    
+
      // Cabinet CRUD
      Route::get('/cabinet/create', 'CabinetController@create')
      ->name('cabinet.create');
@@ -356,6 +356,8 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
     Route::get('/admin', function () {
         return redirect(route('dashboard'));
     });
+
+    Route::get('/summary','PageController@expense');
 
     Route::get('/startRT', 'TwitterBot@startLiveRetweet');
     Route::get('/stopRT', 'TwitterBot@stopLiveRetweet');

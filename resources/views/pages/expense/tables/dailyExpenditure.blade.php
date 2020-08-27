@@ -19,17 +19,17 @@
                                 {{ "null" }}
                         @else
                         <a href="{{ route('ministries.single', ['ministry' => strtolower($expense->ministry()['shortname']) ]) }}" class="text-success">
-                            {{ucfirst($expense->ministry()['name'])}} 
+                            {{ucfirst($expense->ministry()['name'])}}
                         </a>
                         @endempty --}}
                         <a href="{{ route('ministries.single', ['ministry' => strtolower($expense->ministry()['shortname']) ]) }}" class="text-success">
-                            {{ucfirst($expense->ministry()['name'])}} 
+                            {{ucfirst($expense->ministry()['name'])}}
                         </a>
                     </td>
                     <td><a href="{{ route('contractors.single', ['company' => str_replace(' ', '-', $expense->beneficiary) ]) }}">{{$expense->beneficiary}}</a></td>
                     @if($expense->description)
                         <td>
-                            <a href="{{ route('expenses.single', $expense->payment_no) }}" class="text-success">
+                            <a href="{{ route('expenses.single', $expense->slug) }}" class="text-success">
                                 {{$expense->description}}
                             </a>
                         </td>

@@ -17,17 +17,17 @@
                         @if($expense->ministry())
                             <tr>
                                 <td class="section-shadow">
-                                    
+
                                     <a href="{{ route('ministries.single', ['ministry' => strtolower($expense->ministry()['shortname']) ]) }}" class="text-success">
                                         {{ ucfirst($expense->ministry()['name']) }}
 
                                     </a>
-                                
+
                                 </td>
-                               
+
                                 @if($expense->description)
                                     <td>
-                                        <a href="{{ route('expenses.single', $expense->payment_no) }}" class="text-success">
+                                        <a href="{{ route('expenses.single', $expense->slug) }}" class="text-success">
                                             {{$expense->description}}
                                         </a>
                                     </td>
@@ -56,4 +56,4 @@
         {{ $collection['summary']->links() }}
     </div>
 
-    
+

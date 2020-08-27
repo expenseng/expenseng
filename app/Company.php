@@ -29,18 +29,21 @@ class Company extends Model
         explode(" ", $this->shortname)[0] : strtolower(str_replace(" ", "", $this->shortname));
     }
 
-    public function twitterUrl(){
+    public function twitterUrl()
+    {
         return "https://twitter.com/" . substr($this->twitter, 1);
     }
 
-    public function contract($year){
+    public function contract($year)
+    {
         $response = new stdClass();
         $response->amount = 1232345;
 
         return $response;
     }
 
-    public function people(){
+    public function people()
+    {
         return $this->hasMany(People::class);
     }
 
@@ -49,7 +52,8 @@ class Company extends Model
         return 'shortname';
     }
 
-    public function payments(){
+    public function payments()
+    {
         return $this->hasMany(Payment::class, 'beneficiary', 'name');
     }
 
