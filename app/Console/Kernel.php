@@ -41,8 +41,7 @@ class Kernel extends ConsoleKernel
          $schedule->command('download:reports')->everyTwoMinutes();
          $schedule->command('queue:work --once --queue=ceoSearch')->everyFourHours();
          $schedule->command('queue:work  --queue=default --stop-when-empty')->daily();
-         $schedule->command('make:slugs 200')->everyThirtyMinutes();
-
+         $schedule->command('make:slugs')->daily();
     }
 
 
