@@ -208,7 +208,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
      Route::post('/user/settings/update', 'SettingsController@updateSidebar')->name('sidebar.settings');
 
 
-    
+
      // Cabinet CRUD
      Route::get('/cabinet/create', 'CabinetController@create')
      ->name('cabinet.create');
@@ -355,6 +355,8 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
     Route::get('/admin', function () {
         return redirect(route('dashboard'));
     });
+
+    Route::get('/summary','PageController@expense');
 
     Route::get('/startRT', 'TwitterBot@startLiveRetweet');
     Route::get('/stopRT', 'TwitterBot@stopLiveRetweet');

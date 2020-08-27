@@ -1,3 +1,8 @@
+@extends('layouts.master')
+@push('css')
+    <link rel="stylesheet" href="{{asset('/css/expense-summary.css')}}">
+@endpush
+@section('content')
 <div class="container">
     <div class="expense-container">
 
@@ -106,3 +111,4 @@
         </div>
     </div>
 </div>
+@endsection

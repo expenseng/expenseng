@@ -20,13 +20,12 @@ class PageController extends Controller
         if (Gate::denies('manage-user')) {
             return redirect(route('ministry.view'));
         }
-       
+
 
         $cabinet = Cabinet::paginate(20);
         dump($cabinet);
         //return view('backend.cabinet.view')->with([
             //'cabinet' => $cabinet,
-        
     }
     public function contactUs()
     {
@@ -60,10 +59,11 @@ class PageController extends Controller
     public function ourteam()
     {
         $team = Teams::all();
-        return view('pages.ourteams',compact('team'));
+        return view('pages.ourteams', compact('team'));
     }
 
-    public function FOIA() {
+    public function FOIA()
+    {
         return view('pages.freedomofact');
     }
 
@@ -127,9 +127,10 @@ class PageController extends Controller
     }
 
     public function handles()
-    {   $ministries = Ministry::all();
+    {
+        $ministries = Ministry::all();
         $cabinet = Cabinet::all();
-        return view('pages.handles',compact('ministries','cabinet'));
+        return view('pages.handles', compact('ministries', 'cabinet'));
     }
 
     public function contactEmail()
@@ -181,16 +182,20 @@ class PageController extends Controller
         return view('pages.terms.accessibility');
     }
 
-    public function SearchHandles( Request $request){
-       
+    public function SearchHandles(Request $request)
+    {
+
         $handles = Cabinet::where('name', 'LIKE', '%' . $request -> get('searchQuest'). '%')->get();
-      
-        return json_encode( $handles);
+
+        return json_encode($handles);
     }
-    public function SearchHandle( Request $request){
-        
-         
+    public function SearchHandle(Request $request)
+    {
         $handle = Ministry::where('name', 'LIKE', '%' . $request -> get('searchQuests'). '%')->get();
-        return json_encode( $handle);
+        return json_encode($handle);
+    }
+    public function expense()
+    {
+        return view('pages.expense_summary');
     }
 }
