@@ -13,7 +13,7 @@ class MakeSlugs extends Command
      *
      * @var string
      */
-    protected $signature = 'make:slugs';
+    protected $signature = 'make:slugs {amount?}';
 
     /**
      * The console command description.
@@ -39,8 +39,13 @@ class MakeSlugs extends Command
      */
     public function handle()
     {
+        $amount = (int) $this->argument('amount');
         $this->info('creating slug for payments');
-        $payments = Payment::where('slug', null)->get();
+        if ($amount > 0) {
+            $payments = Payment::where('slug', null)->take($amount)->get();
+        } else {
+            $payments = Payment::where('slug', null)->take(1000)->get();
+        }
         foreach ($payments as $payment) {
             $payment_no = $payment->payment_no;
             $description = $payment->description;
