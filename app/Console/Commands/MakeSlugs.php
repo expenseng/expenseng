@@ -42,9 +42,12 @@ class MakeSlugs extends Command
         $amount = (int) $this->argument('amount');
         $this->info('creating slug for payments');
         if ($amount > 0) {
-            $payments = Payment::where('slug', null)->take($amount)->get();
+            $payments = Payment::where('slug', null)
+                ->orderBy('payment_date', "DESC")
+                ->take($amount)->get();
         } else {
-            $payments = Payment::where('slug', null)->take(1000)->get();
+            $payments = Payment::where('slug', null)
+                ->orderBy('payment_date', "DESC")->get();
         }
         foreach ($payments as $payment) {
             $payment_no = $payment->payment_no;

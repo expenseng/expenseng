@@ -28,11 +28,19 @@
                     </td>
                     <td><a href="{{ route('contractors.single', ['company' => str_replace(' ', '-', $expense->beneficiary) ]) }}">{{$expense->beneficiary}}</a></td>
                     @if($expense->description)
+                        @if($expense->slug)
                         <td>
                             <a href="{{ route('expenses.single', $expense->slug) }}" class="text-success">
                                 {{$expense->description}}
                             </a>
                         </td>
+                    @else
+                        <td>
+                            <a href="#" class="text-success">
+                                {{$expense->description}}
+                            </a>
+                        </td>
+                        @endif
                     @else
                         <td class="text-danger">
                             <a href="{{ route('expenses.single', $expense->payment_no) }}" class="text-success">
