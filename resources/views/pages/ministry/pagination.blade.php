@@ -22,10 +22,23 @@
                 $shade = $back ? 'back': '';
                 @endphp
                     <tr  class="{{$shade}}">
-                        @if($payment->description)
+                        {{-- @if($payment->description)
                         <td>{{$payment->description}}</td>
                         @else
                         <td class="text-danger">Not Stated</td>
+                        @endif --}}
+                        @if($payment->description)
+                            <td>
+                                <a href="{{ route('expenses.single', $payment->payment_no) }}" class="text-success">
+                                    <u>{{$payment->description}}</u>
+                                </a>
+                            </td>
+                        @else
+                            <td class="text-danger">
+                                <a href="{{ route('expenses.single', $payment->payment_no) }}" class="text-success">
+                                    <u>Not Stated</u>
+                                </a>
+                            </td>
                         @endif
                         <td><a class="text-success" href="{{ route('contractors.single', ['company' => str_replace(' ', '-', $payment->beneficiary) ]) }}"><u>{{$payment->beneficiary}}</u></a></td>
                         <td> ₦{{number_format($payment->amount, 2)}}</td>

@@ -198,7 +198,7 @@ $(document).ready(function() {
         $('.apply-filter').on('click', function(e){
             const id = $(this).attr("data-id");
             sector = $('.sectors').val();
-            console.log(sector)
+            // console.log(sector)
             let invalid = false;
            
             if($('.btn-date.active').hasClass('day')){
@@ -280,7 +280,7 @@ $(document).ready(function() {
             sector = $(this).val();
             const id = $(this).attr("data-id");
             let query = $('#expense_search').val();
-            console.log('date', date)
+            // console.log('date', date)
             $.ajax({
                 url: `/expense/filterExpensesAll/${id}/${date}/${sort}/${sector}`,
                 method: "GET",
@@ -311,7 +311,7 @@ $(document).ready(function() {
         function fetch_data(e, id, table, page, date, sort){
            
             let query = $('#expense_search').val();
-            console.log(e, id, table, page, date, sort, query);
+            // console.log(e, id, table, page, date, sort, query);
             $.ajax({
                 url: `/expense/filterExpensesAll/${id}/${date}/${sort}/${sector}?page=${page}`,
                 method: "GET",
@@ -327,7 +327,7 @@ $(document).ready(function() {
         }
 
         function renderTable(id,table,data,query){
-            console.log(data)
+            // console.log(data)
             const tableDate = table.closest('.main-table').querySelector('.said-date-caption');
             table.innerHTML = data;
             let msg = '';

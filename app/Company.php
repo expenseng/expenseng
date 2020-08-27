@@ -56,4 +56,5 @@ class Company extends Model
     {
         return $this->hasMany(Payment::class, 'beneficiary', 'name');
     }
+
 }
