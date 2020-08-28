@@ -344,7 +344,8 @@ class CompanyController extends Controller
             [
                 'name' => 'required|unique:people,name',
                 'email' => 'required|unique:people,email',
-                'position' => 'required'
+                'position' => 'required',
+                'avatar' => 'required',
             ]
         );
         

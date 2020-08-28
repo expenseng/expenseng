@@ -48,7 +48,7 @@ class Company extends Model
     }
 
     public function approvedPeople(){
-        return $this->people()->where('approved', '1');
+        return $this->people()->where('approved', '1')->get();
     }
 
     public function getRouteKeyName()

@@ -1,13 +1,19 @@
 <template>
-    <div class="col-md-9">
+    <div class="row col-md-9 mt-5">
+        <div v-if="success" class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Thank you!</strong> Your suggestion has been received for processing.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         <p class="text-left float-left">
             Help us populate this company's section 
-            <a href="#" @click="show = !show"> by suggesting a board member </a> 
+            <a @click="show = !show"> by suggesting a board member </a> 
             that may be missing on this page.
         </p>
         <div class="card col-md-12 py-4 d-flex flex-row" v-if="show">
             <div class="col-md-3">
-                <label for="picture">Profile Picture</label>
+                <label for="picture">Profile Picture *</label>
                 <div class="picture-area border-info">
                     <input type="file" accept="image/*" id="avatar" v-if="uploadImage" @change="preview" class="form-control">
                     <img :src="previewAvatar" alt="" v-if="!uploadImage">
@@ -87,6 +93,7 @@ export default {
             uploadImage: true,
             avatar: '',
             previewAvatar: '',
+            success: false,
             show: false,
         }
     },
@@ -111,6 +118,9 @@ export default {
         },
 
         submit(){
+            //busyyyyyyyyy
+            this.busy = true;
+
             //target the form element
             const person = document.querySelector("form");
             //FormData magically extracts all form elements 
@@ -122,13 +132,20 @@ export default {
             form.append('company_id', this.company); 
 
             axios.post('/api/companies/board/suggest', form).then((result) => {
+                //done with processing
+                this.busy = false;
+
                 console.log(result);
-                //empty the form
+
+                //remove uploaded image preview
                 this.previewAvatar = null;
-                this.uploadImage = false;
+                this.uploadImage = true; //hide cancel button
                 
                 //empty all form values
                 person.reset();
+
+                //show success message
+                this.success = true;
             }).catch((err) => {
                 console.log(err);
             });

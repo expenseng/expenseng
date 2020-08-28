@@ -129,28 +129,28 @@
 
   <!--Board of Directors-->
   <div class="container tab-pane fade" id="board" role="tabpanel">
-    <div class="container-fluid padding"  >
+    <div class="container-fluid padding">
       <!-- cards -->
       <div class="row padding">
-        @foreach($company->people() as $people)
+        @foreach($company->approvedPeople() as $people)
           <div class="col-md-3">
               <div class="card">
-                <img src="{{ $people->avatar }}" alt="{{ $people->name }}" class="img-fluid">
+                <img src="{{ asset($people->avatar) }}" alt="{{ $people->name }}" class="img-fluid">
                   <div class="card-body">
-                      <h1 class="card-title director-name mt-2">Mutiu Sunmonu</h1>
-                      <p class="director-title">Chairman of the board</p>
+                      <h1 class="card-title director-name mt-2">{{ $people->name }}</h1>
+                      <p class="director-title">{{ $people->position }}</p>
                       <div class="socials d-flex justify-content-center align-items-center mt-2">
-                          <a href="#"><i class="fab fa-facebook"></i></a>
-                          <a href="#"><i class="fab fa-twitter"></i></a>
-                          <a href="#"><i class="fab fa-linkedin"></i></a>
-                          <a href="#"><i class="fab fa-instagram"></i></a>
+                          <a href="{{ $people->facebook }}"><i class="fab fa-facebook"></i></a>
+                          <a href="{{ $people->twitter }}"><i class="fab fa-twitter"></i></a>
+                          <a href="{{ $people->linkedin }}"><i class="fab fa-linkedin"></i></a>
+                          <a href="{{ $people->website }}"><i class="fab fa-globe"></i></a>
                       </div>
                   </div>
               </div>
           </div>
         @endforeach  
-        <suggest-members company="{{ $company->id }}"></suggest-members>
       </div>
+      <suggest-members company="{{ $company->id }}"></suggest-members>
   </div>
 </div>
 
