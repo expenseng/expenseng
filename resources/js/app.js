@@ -40,6 +40,7 @@ Vue.component('admin-comments', require('./components/Backend/AdminComments.vue'
 Vue.component('ministry-expense', require('./components/Home/MinistryExpense.vue').default);
 Vue.component('ministry-budgets', require('./components/Home/MinistryBudget.vue').default);
 Vue.component('search', require('./components/Search.vue').default);
+Vue.component('suggest-members', require('./components/Board/Suggest.vue').default);
 Vue.component(Input.name, Input);
 Vue.component(Select.name, Select);
 Vue.component(Button.name, Button);
