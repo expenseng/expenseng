@@ -335,18 +335,35 @@ class CompanyController extends Controller
         }
     }
 
+    /**
+     * Store a suggested member of a company
+     */
     public function suggest(Request $request)
     {
         $request->validate(
             [
-                'name' => 'required',
+                'name' => 'required|unique:people,name',
+                'email' => 'required|unique:people,email',
                 'position' => 'required'
             ]
         );
+        
+        //store the image with a unique name in the public folder
+        $path = $request->avatar->store('images', 'public'); 
 
-        $avatar = $request->file('avatar');
-
-        $people = \App\People::create($request->all());
+        $people = \App\People::create(
+            [
+                'name' => $request->name,
+                'email' => $request->email,
+                'position' => $request->position,
+                'avatar' => $path,
+                'facebook' => $request->facebook,
+                'linkedin' => $request->linkedin,
+                'twitter' => $request->twitter,
+                'website' => $request->website,
+                'approved' => '0'
+            ]
+        );
 
         return $people;
     }
