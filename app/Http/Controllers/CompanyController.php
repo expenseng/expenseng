@@ -319,17 +319,54 @@ class CompanyController extends Controller
 
         if ($delete) {
 
-            Activites::create([
-            'description' => $auth->name.' deleted '.$name.' from the companies table',
-            'username' => $auth->name,
-            'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
-            'status' => 'pending'
-        ]);
+            Activites::create(
+                [
+                    'description' => $auth->name.' deleted '.$name.' from the companies table',
+                    'username' => $auth->name,
+                    'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+                    'status' => 'pending'
+                ]
+            );
              Session::flash('flash_message', 'Company  deleted successfully!');
              return redirect('/admin/company/view');
         } else {
             Session::flash('error_message', ' Company was not deleted!');
             return redirect()->back();
         }
+    }
+
+    /**
+     * Store a suggested member of a company
+     */
+    public function suggest(Request $request)
+    {
+        $request->validate(
+            [
+                'name' => 'required|unique:people,name',
+                'email' => 'required|unique:people,email',
+                'position' => 'required',
+                'avatar' => 'required',
+            ]
+        );
+        
+        //store the image with a unique name in the public folder
+        $path = $request->avatar->store('images', 'public'); 
+
+        $people = \App\People::create(
+            [
+                'name' => $request->name,
+                'email' => $request->email,
+                'position' => $request->position,
+                'avatar' => $path,
+                'facebook' => $request->facebook,
+                'linkedin' => $request->linkedin,
+                'twitter' => $request->twitter,
+                'website' => $request->website,
+                'approved' => '0',
+                'company_id' => $request->company_id
+            ]
+        );
+
+        return $people;
     }
 }

@@ -39,3 +39,6 @@ window.Echo = new Echo({
     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
     forceTLS: true
 });
+
+window.Errors = require('./Helpers/Errors');
+window.Form = require('./Helpers/Form');
