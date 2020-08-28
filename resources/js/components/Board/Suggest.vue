@@ -8,7 +8,7 @@
         </div>
         <p class="text-left float-left">
             Help us populate this company's section 
-            <a @click="show = !show"> by suggesting a board member </a> 
+            <a @click="show = !show" style="cursor: pointer; color: blue;"> by suggesting a board member </a> 
             that may be missing on this page.
         </p>
         <div class="card col-md-12 py-4 d-flex flex-row" v-if="show">
