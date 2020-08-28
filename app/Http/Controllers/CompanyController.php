@@ -361,7 +361,8 @@ class CompanyController extends Controller
                 'linkedin' => $request->linkedin,
                 'twitter' => $request->twitter,
                 'website' => $request->website,
-                'approved' => '0'
+                'approved' => '0',
+                'company_id' => $request->company_id
             ]
         );
 

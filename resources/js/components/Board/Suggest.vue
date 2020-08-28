@@ -56,7 +56,12 @@
                     </div>
                 </div>
                     <!-- Submit -->
-                    <input type="submit" class="form-control" value="Submit">
+                    <button type="submit" :disabled="busy" class="form-control">
+                        Submit
+                        <div class="spinner-border spinner-border-sm" v-if="busy" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </button>
                 </form>
             </div>
         </div>
@@ -78,6 +83,7 @@ export default {
     data() {
         return {
             fileReader: new FileReader(),
+            busy: false,
             uploadImage: true,
             avatar: '',
             previewAvatar: '',
@@ -117,6 +123,12 @@ export default {
 
             axios.post('/api/companies/board/suggest', form).then((result) => {
                 console.log(result);
+                //empty the form
+                this.previewAvatar = null;
+                this.uploadImage = false;
+                
+                //empty all form values
+                person.reset();
             }).catch((err) => {
                 console.log(err);
             });
