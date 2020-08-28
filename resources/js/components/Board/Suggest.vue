@@ -10,7 +10,7 @@
                 <label for="picture">Profile Picture</label>
                 <div class="picture-area border-info">
                     <input type="file" accept="image/*" id="avatar" v-if="uploadImage" @change="preview" class="form-control">
-                    <img :src="form.avatar" alt="" v-if="!uploadImage">
+                    <img :src="previewAvatar" alt="" v-if="!uploadImage">
                 </div>
                 <button class="mt-2 btn btn-danger btn-sm" v-if="!uploadImage" @click="changeImage">Change</button>
 
@@ -22,37 +22,37 @@
                 <div class="row pb-4">
                     <div class="col">
                         <label for="name">Full Name *</label>
-                        <input type="text" v-model="form.name" required class="form-control" id="name" placeholder="First name">
+                        <input type="text" name="name" required class="form-control" id="name" placeholder="First name">
                     </div>
                     <div class="col">
                         <label for="position">Position *</label>
-                        <input type="text" v-model="form.position" required class="form-control" placeholder="Position" id="position">
+                        <input type="text" name="position" required class="form-control" placeholder="Position" id="position">
                     </div>
                 </div>
                 <!-- Socials -->
                 <div class="row pb-4">
                     <div class="col">
                         <label for="linkedin">LinkedIn</label>
-                        <input type="text" v-model="form.linkedin" class="form-control" placeholder="LinkedIn" id="linkedin">
+                        <input type="text" name="linkedin" class="form-control" placeholder="LinkedIn" id="linkedin">
                     </div>
                     <div class="col">
                         <label for="email">Email *</label>
-                        <input type="email" v-model="form.email" class="form-control" id="email" placeholder="Email address">
+                        <input type="email" name="email" class="form-control" id="email" placeholder="Email address">
                     </div>
                 </div>
                 <!-- More socials -->
                 <div class="row pb-4">
                     <div class="col">
                         <label for="twitter">Twitter</label>
-                        <input type="text" v-model="form.twitter" class="form-control" placeholder="Twitter URL" id="twitter">
+                        <input type="text" name="twitter" class="form-control" placeholder="Twitter URL" id="twitter">
                     </div>
                     <div class="col">
                         <label for="website">Website</label>
-                        <input type="url" v-model="form.website" class="form-control" id="website" placeholder="Website URL">
+                        <input type="url" name="website" class="form-control" id="website" placeholder="Website URL">
                     </div>
                     <div class="col">
                         <label for="facebook">Facebook</label>
-                        <input type="url" v-model="form.facebook" class="form-control" id="facebook" placeholder="Facebook URL">
+                        <input type="url" name="facebook" class="form-control" id="facebook" placeholder="Facebook URL">
                     </div>
                 </div>
                     <!-- Submit -->
@@ -64,7 +64,6 @@
 </template>
 
 <script>
-import Form from '../../Helpers/Form';
 
 export default {
     name: "Suggest",
@@ -80,17 +79,8 @@ export default {
         return {
             fileReader: new FileReader(),
             uploadImage: true,
-            form: new Form({
-                name: '',
-                email: '',
-                avatar: '',
-                position: '',
-                linkedin: '',
-                facebook: '',
-                twitter: '',
-                website: '',
-                company_id: this.company,
-            }),
+            avatar: '',
+            previewAvatar: '',
             show: false,
         }
     },
@@ -100,19 +90,32 @@ export default {
             this.uploadImage = false;
 
             this.fileReader.onload = () => {
-                this.form.avatar = this.fileReader.result;
+                this.previewAvatar = this.fileReader.result;
             }
+            //set the raw file to avatar for form upload
+            this.avatar = event.target.files[0];
 
+            //stream the file preview 
             this.fileReader.readAsDataURL(event.target.files[0]);
         },
 
         changeImage(){
             this.uploadImage = true;
-            this.form.avatar = null;
+            this.previewAvatar = null;
         },
 
         submit(){
-            this.form.post('/api/companies/'+this.company+'/board/suggest').then((result) => {
+            //target the form element
+            const person = document.querySelector("form");
+            //FormData magically extracts all form elements 
+            const form = new FormData(person);
+
+            //append extra values
+            form.append('avatar', this.avatar);
+            //set the company id from the prop
+            form.append('company_id', this.company); 
+
+            axios.post('/api/companies/board/suggest', form).then((result) => {
                 console.log(result);
             }).catch((err) => {
                 console.log(err);

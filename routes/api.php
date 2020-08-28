@@ -89,4 +89,4 @@ Route::get('/ministries/expenses', 'HomeController@ministriesTrend');
 /**
  * Suggest board members of a company
  */
-Route::post('/companies/{companyId}/board/suggest', 'CompanyController@suggest');
+Route::post('/companies/board/suggest', 'CompanyController@suggest');

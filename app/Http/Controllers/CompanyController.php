@@ -335,7 +335,7 @@ class CompanyController extends Controller
         }
     }
 
-    public function suggest(Request $request, $companyId)
+    public function suggest(Request $request)
     {
         $request->validate(
             [
@@ -343,6 +343,8 @@ class CompanyController extends Controller
                 'position' => 'required'
             ]
         );
+
+        $avatar = $request->file('avatar');
 
         $people = \App\People::create($request->all());
 
