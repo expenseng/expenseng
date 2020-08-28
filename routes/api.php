@@ -85,3 +85,8 @@ Route::post('/sendmail', 'EmailController@sendMail')->name('sendmail');
  * Get the expenses of each ministry
  */
 Route::get('/ministries/expenses', 'HomeController@ministriesTrend');
+
+/**
+ * Suggest board members of a company
+ */
+Route::post('/companies/{companyId}/board/suggest', 'CompanyController@suggest');

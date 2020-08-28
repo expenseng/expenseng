@@ -319,17 +319,33 @@ class CompanyController extends Controller
 
         if ($delete) {
 
-            Activites::create([
-            'description' => $auth->name.' deleted '.$name.' from the companies table',
-            'username' => $auth->name,
-            'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
-            'status' => 'pending'
-        ]);
+            Activites::create(
+                [
+                    'description' => $auth->name.' deleted '.$name.' from the companies table',
+                    'username' => $auth->name,
+                    'privilage' => implode(' ', $auth->roles->pluck('name')->toArray()),
+                    'status' => 'pending'
+                ]
+            );
              Session::flash('flash_message', 'Company  deleted successfully!');
              return redirect('/admin/company/view');
         } else {
             Session::flash('error_message', ' Company was not deleted!');
             return redirect()->back();
         }
+    }
+
+    public function suggest(Request $request, $companyId)
+    {
+        $request->validate(
+            [
+                'name' => 'required',
+                'position' => 'required'
+            ]
+        );
+
+        $people = \App\People::create($request->all());
+
+        return $people;
     }
 }

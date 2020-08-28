@@ -47,6 +47,10 @@ class Company extends Model
         return $this->hasMany(People::class);
     }
 
+    public function approvedPeople(){
+        return $this->people()->where('approved', '1');
+    }
+
     public function getRouteKeyName()
     {
         return 'shortname';

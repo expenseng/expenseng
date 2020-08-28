@@ -149,7 +149,7 @@
               </div>
           </div>
         @endforeach  
-        <suggest-members></suggest-members>
+        <suggest-members company="{{ $company->id }}"></suggest-members>
       </div>
   </div>
 </div>

@@ -36,8 +36,8 @@
                         <input type="text" v-model="form.linkedin" class="form-control" placeholder="LinkedIn" id="linkedin">
                     </div>
                     <div class="col">
-                        <label for="facebook">Facebook</label>
-                        <input type="url" v-model="form.facebook" class="form-control" id="facebook" placeholder="Facebook URL">
+                        <label for="email">Email *</label>
+                        <input type="email" v-model="form.email" class="form-control" id="email" placeholder="Email address">
                     </div>
                 </div>
                 <!-- More socials -->
@@ -49,6 +49,10 @@
                     <div class="col">
                         <label for="website">Website</label>
                         <input type="url" v-model="form.website" class="form-control" id="website" placeholder="Website URL">
+                    </div>
+                    <div class="col">
+                        <label for="facebook">Facebook</label>
+                        <input type="url" v-model="form.facebook" class="form-control" id="facebook" placeholder="Facebook URL">
                     </div>
                 </div>
                     <!-- Submit -->
@@ -64,18 +68,28 @@ import Form from '../../Helpers/Form';
 
 export default {
     name: "Suggest",
+    
+    props:{
+        company:{
+            type: String,
+            required: true,
+        }
+    },
+
     data() {
         return {
             fileReader: new FileReader(),
             uploadImage: true,
             form: new Form({
                 name: '',
+                email: '',
                 avatar: '',
                 position: '',
                 linkedin: '',
                 facebook: '',
                 twitter: '',
                 website: '',
+                company_id: this.company,
             }),
             show: false,
         }
@@ -98,7 +112,7 @@ export default {
         },
 
         submit(){
-            form.submit('').then((result) => {
+            this.form.post('/api/companies/'+this.company+'/board/suggest').then((result) => {
                 console.log(result);
             }).catch((err) => {
                 console.log(err);
