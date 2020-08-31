@@ -32,10 +32,6 @@ class DashboardController extends Controller
         $this->token = \env("COMMENTS_TOKEN");
         $this->baseUri = "https://comment.microapi.dev/v1/";
 
-        if (!$this->token) {
-            $this->token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBsaWNhdGlvbklkIjoiNWYxMmI4NDI2MzVmM2UwMDE0MmJjOWE2IiwiYWRtaW5JZCI6IjVmMTJiN2UyNjM1ZjNlMDAxNDJiYzlhNSIsImlhdCI6MTU5NTA2MjMzOSwiZXhwIjoxNTk3NjU0MzM5fQ.B6o9MmBZ8GMUFsSnrlrOlq4NlDu7gTrtT17MXGKXS7c";
-        }
-
         try {
             $this->http = new Client([
                 'base_uri' => $this->baseUri,
@@ -68,7 +64,8 @@ class DashboardController extends Controller
             ->orderBY('id', 'DESC')
             ->limit(7)
             ->get();
-        
+
+        try{
             $response = $this->http->get('comments', [
                 'query' => []
             ]);
@@ -83,6 +80,11 @@ class DashboardController extends Controller
                 Log::error("Error from fetching details from comments" . $data);
 
             }
+        }catch(Throwable $th){
+            //set commetnst count to 0
+            $comments = 0;
+            Log::error("Error from connecting to comments service" . $th);
+        }
     
 
         $recent_activities = Activites::orderBY('id', 'DESC')->get();
