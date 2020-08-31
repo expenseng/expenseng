@@ -52,7 +52,7 @@
     </div>
 
     <div class="nav content-navigator nav-tabs">
-      <a href="#contract" class="active" data-toggle="tab" role="tab">Contiosidosract awards</a>
+      <a href="#contract" class="active" data-toggle="tab" role="tab">Contract awards</a>
       <a href="#board" data-toggle="tab" role="tab">Board of Directors</a>
       <a href="#comments" data-toggle="tab" role="tab">Comments</a>
     </div>
