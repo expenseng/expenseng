@@ -28,14 +28,18 @@ class CommentController extends Controller
             $this->token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBsaWNhdGlvbklkIjoiNWYxMmI4NDI2MzVmM2UwMDE0MmJjOWE2IiwiYWRtaW5JZCI6IjVmMTJiN2UyNjM1ZjNlMDAxNDJiYzlhNSIsImlhdCI6MTU5NTA2MjMzOSwiZXhwIjoxNTk3NjU0MzM5fQ.B6o9MmBZ8GMUFsSnrlrOlq4NlDu7gTrtT17MXGKXS7c";
         }
 
-        $this->http = new Client([
-            'base_uri' => $this->baseUri,
-            'headers' => [
-                'Authorization' => 'Bearer ' .$this->token,
-                'debug' => true,
-                'Content-Type' => 'application/json',
-            ]
-        ]);
+        try {
+            $this->http = new Client([
+                'base_uri' => $this->baseUri,
+                'headers' => [
+                    'Authorization' => 'Bearer ' .$this->token,
+                    'debug' => true,
+                    'Content-Type' => 'application/json',
+                ]
+            ]);
+        } catch (\Throwable $th) {
+            Log::emergency("Can't connet to comments microservice" . $th);
+        }
     }
 
     /**

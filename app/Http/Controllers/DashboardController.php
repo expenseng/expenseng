@@ -68,13 +68,9 @@ class DashboardController extends Controller
             ->orderBY('id', 'DESC')
             ->limit(7)
             ->get();
-
+        
             $response = $this->http->get('comments', [
-                'query' => [
-                    // 'limit'  => 2,
-                    // 'page' => 2
-                    //'sort' => 'ascending',
-                ]
+                'query' => []
             ]);
     
             $data = json_decode($response->getBody(), true);
