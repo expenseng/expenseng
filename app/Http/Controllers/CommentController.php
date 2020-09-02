@@ -21,7 +21,7 @@ class CommentController extends Controller
 
     public function __construct()
     {
-        $this->token = \env("COMMENTS_TOKEN");
+        $this->token = \env("COMMENTS_TOKEN") ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBsaWNhdGlvbklkIjoiNWYxMmI4NDI2MzVmM2UwMDE0MmJjOWE2IiwiYWRtaW5JZCI6IjVmMTJiN2UyNjM1ZjNlMDAxNDJiYzlhNSIsImlhdCI6MTU5ODg4MTA3OSwiZXhwIjoxNjAxNDczMDc5fQ.8bXf6Ldn7ly6QDrDdvimE0Rs6kHsa2AWGjUUf4XpXW4";
         $this->baseUri = "https://comment.microapi.dev/v1/";
 
         try {
