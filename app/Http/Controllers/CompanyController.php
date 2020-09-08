@@ -16,7 +16,8 @@ class CompanyController extends Controller
 
     public function index()
     {
-        $contractors = $this->getAllPayouts($query = null);
+        // $contractors = $this->getAllPayouts($query = null);
+        $contractors = Company::all();
         foreach ($contractors as $contractor) {
            $yearlyTotal = $this->getContractorYearlyTotal($contractor->beneficiary);
            $contractor['yearlyTotals'] = $yearlyTotal;
