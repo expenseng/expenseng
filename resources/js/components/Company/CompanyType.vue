@@ -14,6 +14,14 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <!-- Feedback -->
+                    <div class="alert alert-dismissible fade show" :class="feedback.status == 'success' ? 'alert-success' : 'alert-error' " role="alert" v-if="feedback.message != ''">
+                        <span v-html="feedback.message"></span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!-- End Feedback -->
                     <span class="text-muted">Select one of options below which best describes this contractor:</span>
                     <br/>
                     <div class="custom-control custom-radio custom-control-inline">
@@ -54,6 +62,10 @@ export default {
             visible: false,
             loading: false,
             companyType: '',
+            feedback: {
+                message: '',
+                status: ''
+            },
         }
     },
 
@@ -82,10 +94,15 @@ export default {
 
             axios.post('/api/companies/vote/'+this.companyId, {   type: this.companyType  })
             .then(res => {
-                console.log(res);
+                // console.log(res);
+                this.feedback.message = "<strong>Thank you, comrade! 🙋🏽‍♀️🙋🏽‍♂️</strong> Your answer has been saved successfully.";
+                this.feedback.status = "success";
+                // a certain user can only vote once so we will keep the submit button disabled
             })
             .catch(err => {
-                alert(err);
+                this.feedback.message = "<strong>Sorry, an error occured</strong> We couldn't save your response because.." + err;
+                this.feedback.status = "error";
+                console(err);
             })
         }
     },
