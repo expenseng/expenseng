@@ -97,6 +97,7 @@ export default {
                 // console.log(res);
                 this.feedback.message = "<strong>Thank you, comrade! 🙋🏽‍♀️🙋🏽‍♂️</strong> Your answer has been saved successfully.";
                 this.feedback.status = "success";
+                this.companyType = ''; //remove user selection
                 // a certain user can only vote once so we will keep the submit button disabled
             })
             .catch(err => {
