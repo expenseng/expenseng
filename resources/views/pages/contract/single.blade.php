@@ -22,6 +22,8 @@
 </div>
 <section id="main" class="">
 
+  <vote-company-type></vote-company-type>
+
   <!-- Start here -->
   <!-- Section 1 -->
   <div class="section-1 container">
@@ -162,6 +164,7 @@
 </div>
 </section>
 
+<vote-company-type></vote-company-type>
 <!-- Main body end -->
 @endsection
 

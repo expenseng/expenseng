@@ -18,11 +18,10 @@
 <!-- Main body start -->
 <div class="container">
        {{ Breadcrumbs::render('contractor', $company) }}
-       
-      
 </div>
-<section id="main">
 
+<section id="main">
+  <vote-company-type></vote-company-type>
   <!-- Start here -->
   <!-- Section 1 -->
   <div class="section-1 container">
