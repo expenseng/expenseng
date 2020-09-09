@@ -16,16 +16,13 @@ class CompanyController extends Controller
 
     public function index()
     {
-        // $contractors = $this->getAllPayouts($query = null);
-        $contractors = Company::all();
+        $contractors = $this->getAllPayouts($query = null);
         foreach ($contractors as $contractor) {
            $yearlyTotal = $this->getContractorYearlyTotal($contractor->beneficiary);
            $contractor['yearlyTotals'] = $yearlyTotal;
         }
         
         return view('pages.contract.index')->with(['contractors' => $contractors]);
-         // dump($contractors);
-
     }
 
     public function searchContractors(Request $request){
