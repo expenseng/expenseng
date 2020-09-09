@@ -164,7 +164,6 @@
 </div>
 </section>
 
-<vote-company-type></vote-company-type>
 <!-- Main body end -->
 @endsection
 

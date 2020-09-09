@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- Show button to trigger this pop up -->
-        <a href="#" @click="show">Help us improve this page</a>
+        <a href="#" @click="show">Help us improve this page <i class="far fa-edit"></i></a>
 
         <!-- Modal -->
         <div class="modal fade" id="voteModal" tabindex="-1" role="dialog" aria-labelledby="vote" aria-hidden="true">
@@ -15,30 +15,30 @@
                 </div>
                 <div class="modal-body">
                     <span class="text-muted">Select one of options below which best describes this contractor:</span>
-                    <br>
+                    <br/>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" name="company_type" class="custom-control-input" id="govtparastatal">
+                        <input type="radio" v-model="companyType" value="govtparastatal" class="custom-control-input" id="govtparastatal">
                         <label class="custom-control-label" for="govtparastatal">Government Parastatal</label>
                     </div>
 
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" name="company_type" class="custom-control-input" id="privatecompany">
+                        <input type="radio" v-model="companyType" value="privatecompany" class="custom-control-input" id="privatecompany">
                         <label class="custom-control-label" for="privatecompany">Private Contractor (Company)</label>
                     </div>
 
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" name="company_type" class="custom-control-input" id="privatecontractor">
+                        <input type="radio" v-model="companyType" value="privatecontractor" class="custom-control-input" id="privatecontractor">
                         <label class="custom-control-label" for="privatecontractor">Private Contractor (Individual)</label>
                     </div>
 
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" name="company_type" class="custom-control-input" id="govtofficial">
+                        <input type="radio" v-model="companyType" value="govtofficial" class="custom-control-input" id="govtofficial">
                         <label class="custom-control-label" for="govtofficial">Government Official</label>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" @click="save" :disabled="loading" class="btn btn-primary">Save changes</button>
                 </div>
                 </div>
             </div>
@@ -52,21 +52,46 @@ export default {
     data() {
         return {
             visible: false,
+            loading: false,
+            companyType: '',
+        }
+    },
+
+    props:{
+        companyId: {
+            required: true,
+            type: String
         }
     },
 
     methods: {
-        show(){
+        show(e){
+            e.preventDefault(); //prevent button default action
+            
             $('#voteModal').modal('show');
             //inform the component when the modal is shown
             this.visible = true;
+        },
+
+        save(){
+            this.loading = true;
+            //exit if no option is selected
+            if(!this.companyType) return false;
+
+            axios.post('/api/company/vote/'+this.companyId, {   type: this.companyType  })
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => {
+                alert(err);
+            })
         }
     },
 
     mounted() {
         setTimeout(() => {
             this.show();
-        }, 3000);
+        }, 5000);
     },
 }
 </script>
