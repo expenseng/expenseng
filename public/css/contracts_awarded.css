@@ -7,6 +7,12 @@ body {
   color: #00945E;
 } */
 
+.header-block{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .page-link {
   color: #00945E;
 }

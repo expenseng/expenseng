@@ -17,12 +17,12 @@
 
 @section('content')
 <!-- Main body start -->
-<div class="container">
+<div class="container header-block">
     {{ Breadcrumbs::render('contractor', $company) }}
+    <vote-company-type></vote-company-type>
 </div>
 <section id="main" class="">
 
-  <vote-company-type></vote-company-type>
 
   <!-- Start here -->
   <!-- Section 1 -->

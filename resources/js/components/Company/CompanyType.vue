@@ -15,6 +15,7 @@
                 </div>
                 <div class="modal-body">
                     <span class="text-muted">Select one of options below which best describes this contractor:</span>
+                    <br>
                     <div class="custom-control custom-radio custom-control-inline">
                         <input type="radio" name="company_type" class="custom-control-input" id="govtparastatal">
                         <label class="custom-control-label" for="govtparastatal">Government Parastatal</label>
