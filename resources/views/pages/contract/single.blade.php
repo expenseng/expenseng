@@ -19,7 +19,7 @@
 <!-- Main body start -->
 <div class="container header-block">
     {{ Breadcrumbs::render('contractor', $company) }}
-    <vote-company-type></vote-company-type>
+    <vote-company-type company-id="{{ $company->id }}"></vote-company-type>
 </div>
 <section id="main" class="">
 

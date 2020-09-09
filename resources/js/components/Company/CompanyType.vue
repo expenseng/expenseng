@@ -66,7 +66,9 @@ export default {
 
     methods: {
         show(e){
-            e.preventDefault(); //prevent button default action
+            if(e){
+                e.preventDefault(); //prevent button default action
+            }
             
             $('#voteModal').modal('show');
             //inform the component when the modal is shown
@@ -78,7 +80,7 @@ export default {
             //exit if no option is selected
             if(!this.companyType) return false;
 
-            axios.post('/api/company/vote/'+this.companyId, {   type: this.companyType  })
+            axios.post('/api/companies/vote/'+this.companyId, {   type: this.companyType  })
             .then(res => {
                 console.log(res);
             })
