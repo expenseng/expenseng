@@ -42,6 +42,6 @@ class CompanyTypeController extends Controller
     }
 
     public function type($companyId){
-        return CompanyType::where('contractor_id', $companyId);
+        return CompanyType::where('contractor_id', $companyId)->first();
     }
 }
