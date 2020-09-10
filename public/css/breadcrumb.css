@@ -9,6 +9,11 @@
     font-size: 1.1rem !important;
     text-transform: uppercase;
     padding-left: 0 !important;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width: 70%;
 }
 
 .breadcrumb li a{

@@ -23,8 +23,6 @@ class CompanyController extends Controller
         }
         
         return view('pages.contract.index')->with(['contractors' => $contractors]);
-         // dump($contractors);
-
     }
 
     public function searchContractors(Request $request){
@@ -56,7 +54,7 @@ class CompanyController extends Controller
                 }
                 return view('pages.contract.single')->with(['company' => $company, 'contracts' => $contracts, 'total_amount' => $total_amount, 'yearlyTotals' => $yearlyTotals]);
 
-            }elseif(count($this->getContractorContracts($contractor)) > 0 ){
+        }elseif(count($this->getContractorContracts($contractor)) > 0 ){
 
                 $contracts = $this->getContractorContracts($contractor);
                 $company = $contracts[0];
