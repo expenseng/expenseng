@@ -145,4 +145,9 @@ export default {
     input{
         cursor: pointer;
     }
+
+    a, i{
+        color: green;
+        font-size: small;
+    }
 </style>

@@ -31,7 +31,6 @@ export default {
                     govtOfficial = parseInt(res.data.govt_official);
                     govtOrganization = parseInt(res.data.govt_organization);
                 }
-                    console.log(privateContractor, individualContractor, govtOrganization, govtOfficial);
 
                 if( Math.max(privateContractor, individualContractor, govtOfficial, govtOrganization) == 0){
                     this.title = 'Vote at the top right corner to show this organizations classification';
