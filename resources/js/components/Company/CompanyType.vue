@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- Show button to trigger this pop up -->
-        <a href="#" @click="show">Help us improve this page <i class="far fa-edit"></i></a>
+        <a href="#" @click="show" v-if="!alreadyVoted()">Help us improve this page <i class="far fa-edit"></i></a>
 
         <!-- Modal -->
         <div class="modal fade" id="voteModal" tabindex="-1" role="dialog" aria-labelledby="vote" aria-hidden="true">
@@ -94,7 +94,9 @@ export default {
 
             axios.post('/api/companies/vote/'+this.companyId, {   type: this.companyType  })
             .then(res => {
-                // console.log(res);
+                //set cookie for this company
+                this.createCookie();
+
                 this.feedback.message = "<strong>Thank you, comrade! 🙋🏽‍♀️🙋🏽‍♂️</strong> Your answer has been saved successfully.";
                 this.feedback.status = "success";
                 this.companyType = ''; //remove user selection
@@ -105,13 +107,35 @@ export default {
                 this.feedback.status = "error";
                 console(err);
             })
+        },
+
+        /**
+         * Check if the company ID is stored in cookie
+         */
+        alreadyVoted(){
+            const cookieValue = document.cookie.split('; ')
+                                .find(row => row.startsWith('votedCompany'))
+                                .split('=')[1];
+
+            return cookieValue && cookieValue == this.companyId;
+        },
+
+        /**
+         * Store the company ID in cookie
+         */
+        createCookie(){
+            document.cookie = "votedCompany="+this.companyId+";max-age="+(31536000 * 12);
         }
+
     },
 
     mounted() {
-        setTimeout(() => {
-            this.show();
-        }, 5000);
+        if(!this.alreadyVoted()){
+            setTimeout(() => {
+                this.show();
+            }, 5000);
+        }
+        
     },
 }
 </script>
