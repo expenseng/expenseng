@@ -40,4 +40,8 @@ class CompanyTypeController extends Controller
 
         return $company;
     }
+
+    public function type($companyId){
+        return CompanyType::where('contractor_id', $companyId);
+    }
 }
