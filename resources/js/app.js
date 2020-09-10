@@ -42,6 +42,7 @@ Vue.component('ministry-budgets', require('./components/Home/MinistryBudget.vue'
 Vue.component('search', require('./components/Search.vue').default);
 Vue.component('suggest-members', require('./components/Company/Suggest.vue').default);
 Vue.component('vote-company-type', require('./components/Company/CompanyType.vue').default);
+Vue.component('company-type-badge', require('./components/Company/CompanyBadge.vue').default);
 Vue.component(Input.name, Input);
 Vue.component(Select.name, Select);
 Vue.component(Button.name, Button);

@@ -27,6 +27,7 @@
   <div class="section-1 container">
 
     <div class="user-profile">
+      <company-type-badge company-id="{{ $company->id }}"></company-type-badge>
       <h3 class="name brand-name">
         {{ $company->name }}
         <!-- <img src="{{ asset('images/image 13.png') }}" alt="Berger logo"> -->

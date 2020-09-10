@@ -28,6 +28,7 @@
   <!-- Section 1 -->
   <div class="section-1 container">
     <div class="user-profile">
+      <company-type-badge company-id="{{ $company->id }}"></company-type-badge>
       <h3 class="name brand-name">
         {{ $company->name }}
       </h3>
