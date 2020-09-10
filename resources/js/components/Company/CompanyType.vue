@@ -113,18 +113,19 @@ export default {
          * Check if the company ID is stored in cookie
          */
         alreadyVoted(){
-            const cookieValue = document.cookie.split('; ')
-                                .find(row => row.startsWith('votedCompany'))
-                                .split('=')[1];
-
-            return cookieValue && cookieValue == this.companyId;
+            return document.cookie.indexOf("votedCompany") > -1 && this.getCookieValue("votedCompany") == this.companyId;
         },
 
         /**
          * Store the company ID in cookie
          */
         createCookie(){
-            document.cookie = "votedCompany="+this.companyId+";max-age="+(31536000 * 12);
+            document.cookie = "votedCompany="+this.companyId+";max-age="+(31536000 * 12)+";";
+        },
+
+        getCookieValue(a) {
+            var b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
+            return b ? b.pop() : '';
         }
 
     },
