@@ -3,8 +3,7 @@
 <link rel="stylesheet" href="{{ asset('css/contracts_awarded.css') }}">
 <link rel="stylesheet" href="{{ asset('css/director_board.css') }}">
 <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
-
-<title>FG Expense - Contracts</title>
+<title>Money Received by {{ $company->name }} from Nigerian Government - ExpenseNG</title>
 <style type="text/css">
   .content-navigator {
    

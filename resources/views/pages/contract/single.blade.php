@@ -12,7 +12,7 @@
 
     gtag('config', 'UA-174166304-1');
   </script>
-  <title>FG Expense - Contracts</title>
+  <title>Money Received by {{ $company->name }} from Nigerian Government - ExpenseNG</title>
 @endpush
 
 @section('content')
