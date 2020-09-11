@@ -72,6 +72,10 @@ class Company extends Model
 
     public function isGovtEntity()
     {
+        if(!$this->type){
+            return false;
+        } 
+
         $data = $this->type->first();
 
         $govt = $data->govt_official;
