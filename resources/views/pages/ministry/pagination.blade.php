@@ -29,13 +29,13 @@
                         @endif --}}
                         @if($payment->description)
                             <td>
-                                <a href="{{ route('expenses.single', $payment->payment_no) }}" class="text-success">
+                                <a href="{{ route('expenses.single', $payment->slug) }}" class="text-success">
                                     <u>{{$payment->description}}</u>
                                 </a>
                             </td>
                         @else
                             <td class="text-danger">
-                                <a href="{{ route('expenses.single', $payment->payment_no) }}" class="text-success">
+                                <a href="{{ route('expenses.single', $payment->slug) }}" class="text-success">
                                     <u>Not Stated</u>
                                 </a>
                             </td>
