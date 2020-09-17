@@ -12,14 +12,24 @@
   gtag('config', 'UA-174166304-1');
 </script>
 
-<title>FG Expense - Contracts Page</title>
+<title>Federal Government Contractors - ExpenseNG</title>
 @endpush
 
 
 @section('content')
 	<section>
-      <div class="container">
+      <div class="container header-block">
       {{ Breadcrumbs::render('contractors') }}
+      <div class="dropdown d-inline">
+        <a class="dropdown-toggle text-secondary" href="#" id="entities-shown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Showing government and private entities
+        </a>
+        <div class="dropdown-menu" aria-labelledby="entities-shown">
+          <a class="dropdown-item" href="#">Show private (individual) entities</a>
+          <a class="dropdown-item" href="#">Show private (company) entities</a>
+          <a class="dropdown-item" href="#">Show public (government) entities</a>
+        </div>
+      </div>
         <h1 class="ws-10 font-weight-bold">Companies and Organizations Contracted</h1>
         <br />
         <div class="row">
@@ -27,10 +37,9 @@
                 <p class="para">ExpenseNG gives an insight to how much is being dispensed to contracted companies.</p>
             </div>
         </div>
-        </div>
-        <br>
-        <br>
-        <br><div class="contract-awarded">
+      </div>
+      <br><br><br>
+      <div class="contract-awarded">
       <div class="container">
         <div class="row">
           <div class="col-md-6 pt-2 paragraph">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Activites;
 use Illuminate\Support\Facades\Gate;
 use App\Company;
+use App\CompanyType;
 use App\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -23,6 +24,11 @@ class CompanyController extends Controller
         }
         
         return view('pages.contract.index')->with(['contractors' => $contractors]);
+    }
+
+    public function privateIndividualEntities()
+    {
+        // $matched = CompanyType::where('individual' '>', '0')->get();
     }
 
     public function searchContractors(Request $request){
