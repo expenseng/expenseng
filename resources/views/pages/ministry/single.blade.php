@@ -17,7 +17,7 @@
 
 
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-<title>FG Expense - Profile</title>
+<title>Ministry of {{ $ministry->name }} - ExpenseNG</title>
 @endpush
 
 @section('content')
@@ -166,110 +166,109 @@
             </div>
         </div>
     
+        <!--2-->
+        <div id="board" class="tab-pane fade">
+            <div class="d-flex justify-content-sm-start mx-5 my-5 pl-3 row">
+                @if ($cabinets)
+                    @foreach($cabinets as $cabinet)
+                    @php
+                        $ministerTwitterHandle = substr($cabinet->twitter_handle, 1);
+                        $ministerFacebookHandle = substr($cabinet->facebook_handle, 1);
+                        $ministerLinkedInHandle = substr($cabinet->linkedIn_handle, 1);
+                        $ministerInstagramHandle = substr($cabinet->Instagram_handle, 1);
+                    @endphp
 
-    <!--2-->
-    <div id="board" class="tab-pane fade">
-        <div class="row my-5 pl-3 d-flex justify-content-lg-around">
-            @if ($cabinets)
-                @foreach($cabinets as $cabinet)
-                @php
-                    $ministerTwitterHandle = substr($cabinet->twitter_handle, 1);
-                    $ministerFacebookHandle = substr($cabinet->facebook_handle, 1);
-                    $ministerLinkedInHandle = substr($cabinet->linkedIn_handle, 1);
-                    $ministerInstagramHandle = substr($cabinet->Instagram_handle, 1);
-                @endphp
-
-            <div class="col-lg-3 card border-top-0 border-left-0 border-right-0">
-                <div class="card-img" style="display:flex; justify-content: center; padding:1.25rem 1.25rem 0;">
-                    <img src="{{$cabinet->avatar}}" class="img-fluid" alt="{{$cabinet->name}}">
-                </div>
-                <div class="card-body">
-                    <div class="card-title">
-                    <p id="minister-name" class="text-center font-weight-bold">{{$cabinet->name}}</p>
-                    <p class="text-success text-center">{{$cabinet->role}}</p>
+                <div class="col-lg-3 mr-4 card border-top-0 border-left-0 border-right-0">
+                    <div class="card-img" style="display:flex; justify-content: center; padding:1.25rem 1.25rem 0;">
+                        <img src="{{$cabinet->avatar}}" class="img-fluid" alt="{{$cabinet->name}}">
                     </div>
+                    <div class="card-body">
+                        <div class="card-title">
+                        <p id="minister-name" class="text-center font-weight-bold">{{$cabinet->name}}</p>
+                        <p class="text-success text-center">{{$cabinet->role}}</p>
+                        </div>
 
-                    <div class="social-handle text-center">
-                        @if($ministerFacebookHandle)
-                        <a href="#" class="link"><i class="fab fa-facebook" aria-hidden="true" target="_blank"></i></a>
-                        @endif
-                        @if($ministerTwitterHandle)
-                        <a href="{!! url("https://twitter.com/$ministerTwitterHandle") !!}" class="link ml-2" target="_blank"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-                        @endif
-                        @if($ministerLinkedInHandle)
-                        <a href="#" class="link ml-2"><i class="fab fa-linkedin" aria-hidden="true" target="_blank"></i></a>
-                        @endif
-                        @if($ministerInstagramHandle)
-                        <a href="#" class="link ml-2"><i class="fab fa-instagram" aria-hidden="true" target="_blank"></i></a>
-                        @endif
+                        <div class="social-handle text-center">
+                            @if($ministerFacebookHandle)
+                            <a href="#" class="link"><i class="fab fa-facebook" aria-hidden="true" target="_blank"></i></a>
+                            @endif
+                            @if($ministerTwitterHandle)
+                            <a href="{!! url("https://twitter.com/$ministerTwitterHandle") !!}" class="link ml-2" target="_blank"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                            @endif
+                            @if($ministerLinkedInHandle)
+                            <a href="#" class="link ml-2"><i class="fab fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+                            @endif
+                            @if($ministerInstagramHandle)
+                            <a href="#" class="link ml-2"><i class="fab fa-instagram" aria-hidden="true" target="_blank"></i></a>
+                            @endif
+                        </div>
                     </div>
                 </div>
+
+                    @endforeach
+                @endif
             </div>
+            {{-- cabinet member --}}
 
-                @endforeach
+            <h3 style='color: #353A45; text-align:center;margin-top: 15px'>Suggest Cabinet Members</h3>
+
+            <center>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" style="background: 353A45;margin-bottom: 20px;">
+            Suggest a Cabinet Member
+            </button>
+            </center>
+
+            <!-- Modal -->
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
             @endif
-        </div>
-        {{-- cabinet member --}}
 
-        <h3 style='color: #353A45; text-align:center;margin-top: 15px'>Suggest Cabinet Members</h3>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" class="text-light">Suggestion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form  action=" {!! url('/feedback') !!}" method="POST">
+                {{csrf_field()}}
+                <div class="form-group">
+                <label for="firstName">Firstname</label>
+                <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Firstname">
+                </div>
+                <div class="form-group">
+                <label for="lastName">Lastname</label>
+                <input type="text" name="lastName" class="form-control" id="exampleInputPassword1" placeholder="Lastname">
+                </div>
 
-        <center>
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" style="background: 353A45;margin-bottom: 20px;">
-        Suggest a Cabinet Member
-        </button>
-        </center>
+                <div class="form-group">
+                <label for="ministry">Ministry</label>
+                <select id="inputState" readonly class="form-control" name="ministry_id">
+                    <option class="mb-1"  value="{{$ministry->id}}">{{$ministry->shortname}}</option>
+                </select>
+                </div>
+            <center>
+                <button type="submit" class="btn btn-success ">Submit</button>
+            </center>
 
-        <!-- Modal -->
-        @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel" class="text-light">Suggestion</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form  action=" {!! url('/feedback') !!}" method="POST">
-            {{csrf_field()}}
-            <div class="form-group">
-            <label for="firstName">Firstname</label>
-            <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Firstname">
-            </div>
-            <div class="form-group">
-            <label for="lastName">Lastname</label>
-            <input type="text" name="lastName" class="form-control" id="exampleInputPassword1" placeholder="Lastname">
-            </div>
-
-            <div class="form-group">
-            <label for="ministry">Ministry</label>
-            <select id="inputState" readonly class="form-control" name="ministry_id">
-                <option class="mb-1"  value="{{$ministry->id}}">{{$ministry->shortname}}</option>
-            </select>
-            </div>
-        <center>
-            <button type="submit" class="btn btn-success ">Submit</button>
-        </center>
-
-        </form>
+            </form>
+                </div>
+                </div>
             </div>
             </div>
         </div>
-        </div>
-    </div>
 
-    <!--3-->
+        <!--3-->
         <div id="comments" class="tab-pane fade">
             @include('partials.comments')
         </div>
