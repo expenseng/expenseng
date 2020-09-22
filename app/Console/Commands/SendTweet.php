@@ -57,6 +57,8 @@ class SendTweet extends Command
                     if ($e->getMessage() == '[187] Status is a duplicate.') {
                         Payment::whereId($key)->update(['tweeted' => true]);
                         $this->info('done');
+                    } else {
+                        $this->info('unable to send '.$e->getMessage());
                     }
                     continue;
                 }

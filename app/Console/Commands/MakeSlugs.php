@@ -46,7 +46,7 @@ class MakeSlugs extends Command
                 ->orderBy('payment_date', "DESC")
                 ->take($amount)->get();
         } else {
-            $payments = Payment::where('slug', null)
+            $payments = Payment::where('slug','!=', null)
                 ->orderBy('payment_date', "DESC")->get();
         }
         foreach ($payments as $payment) {
