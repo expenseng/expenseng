@@ -90,3 +90,9 @@ Route::get('/ministries/expenses', 'HomeController@ministriesTrend');
  * Suggest board members of a company
  */
 Route::post('/companies/board/suggest', 'CompanyController@suggest');
+
+/**
+ * Vote on the type of a company
+ */
+Route::post('/companies/vote/{companyId}', 'CompanyTypeController@vote');
+Route::get('/companies/type/{companyId}', 'CompanyTypeController@type');

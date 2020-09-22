@@ -1,6 +1,9 @@
 @extends('layouts.master')
 @push('css')
 <link rel="stylesheet" href="{{asset('css/expense-summary.css') }}">
+<title>
+    {{ $payment->company }} received &#8358;{{ number_format($payment->amount, 2) }} for {{ $payment->description }}. - ExpenseNG
+</title>
 @endpush
 
 

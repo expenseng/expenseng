@@ -3,8 +3,7 @@
 <link rel="stylesheet" href="{{ asset('css/contracts_awarded.css') }}">
 <link rel="stylesheet" href="{{ asset('css/director_board.css') }}">
 <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
-
-<title>FG Expense - Contracts</title>
+<title>Money Received by {{ $company->name }} from Nigerian Government - ExpenseNG</title>
 <style type="text/css">
   .content-navigator {
    
@@ -16,18 +15,18 @@
 
 @section('content')
 <!-- Main body start -->
-<div class="container">
-       {{ Breadcrumbs::render('contractor', $company) }}
-       
-      
+<div class="container header-block">
+  {{ Breadcrumbs::render('contractor', $company) }}
+  <vote-company-type company-id="{{ $company->id }}"></vote-company-type>
 </div>
-<section id="main">
 
+<section id="main">
   <!-- Start here -->
   <!-- Section 1 -->
   <div class="section-1 container">
 
     <div class="user-profile">
+      <company-type-badge company-id="{{ $company->id }}"></company-type-badge>
       <h3 class="name brand-name">
         {{ $company->name }}
         <!-- <img src="{{ asset('images/image 13.png') }}" alt="Berger logo"> -->
@@ -57,7 +56,13 @@
     </div>
 
     <div class="nav content-navigator nav-tabs">
-      <a href="#contract" class="active" data-toggle="tab" role="tab">Contract awards</a>
+      <a href="#contract" class="active" data-toggle="tab" role="tab">
+        @if($company->isGovtEntity())
+          Money Transfer
+        @else
+          Contract awards
+        @endif
+      </a>
       <a href="#comments" data-toggle="tab" role="tab">Comments</a>
     </div>
   </div>

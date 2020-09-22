@@ -12,20 +12,23 @@
 
     gtag('config', 'UA-174166304-1');
   </script>
-  <title>FG Expense - Contracts</title>
+  <title>Money Received by {{ $company->name }} from Nigerian Government - ExpenseNG</title>
 @endpush
 
 @section('content')
 <!-- Main body start -->
-<div class="container">
+<div class="container header-block">
     {{ Breadcrumbs::render('contractor', $company) }}
+    <vote-company-type company-id="{{ $company->id }}"></vote-company-type>
 </div>
 <section id="main" class="">
+
 
   <!-- Start here -->
   <!-- Section 1 -->
   <div class="section-1 container">
     <div class="user-profile">
+      <company-type-badge company-id="{{ $company->id }}"></company-type-badge>
       <h3 class="name brand-name">
         {{ $company->name }}
       </h3>
@@ -52,7 +55,13 @@
     </div>
 
     <div class="nav content-navigator nav-tabs">
-      <a href="#contract" class="active" data-toggle="tab" role="tab">Contract awards</a>
+      <a href="#contract" class="active" data-toggle="tab" role="tab">
+        @if($company->isGovtEntity())
+          Money Transfer
+        @else
+          Contract awards
+        @endif
+      </a>
       <a href="#board" data-toggle="tab" role="tab">Board of Directors</a>
       <a href="#comments" data-toggle="tab" role="tab">Comments</a>
     </div>

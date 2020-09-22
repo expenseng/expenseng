@@ -61,4 +61,29 @@ class Company extends Model
         return $this->hasMany(Payment::class, 'beneficiary', 'name');
     }
 
+    /**
+     * Define relationship for a 
+     * company type
+     */
+    public function type()
+    {
+        return $this->hasOne(CompanyType::class, 'contractor_id', 'id');
+    }
+
+    public function isGovtEntity()
+    {
+        if(!$this->type){
+            return false;
+        } 
+
+        $data = $this->type->first();
+
+        $govt = $data->govt_official;
+        $govtOrg = $data->govt_organization;
+        $person = $data->individual;
+        $company = $data->company;
+
+        //if any of the govt labels have a higher vote than private labels
+        return $govt > max($person, $company) || $govtOrg > max($person, $company);    
+    }
 }
