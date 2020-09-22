@@ -1,6 +1,6 @@
 <!-------------Footer starts here-------------->
-<footer class="my-footer">
-    <div class="footer">
+<footer class="my-footer ">
+    <div class="footer  m-auto" style="max-width: 1700px">
         <div class="container">
             <div class="row d-flex justify-content-between">
                 <div class="col-md-3 footer-brand pt-2 d-flex flex-column">
@@ -65,7 +65,7 @@
             </div>
         </div>
     </div>
-    <div class="footer-2">
+    <div class="footer-2  m-auto" style="max-width: 1700px">
         <div class="container">
             <div class="row footer-last p-2">
                 <div class="col-md-9">

@@ -26,7 +26,7 @@
 @section('banner')
 <!-- banner -->
 <!-- banner -->
-<div class=" background">
+<div class=" background m-auto" style="max-width: 1700px">
   <div class="banner">
     <div class="carets" id="caret">
       <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left">
@@ -66,10 +66,11 @@
 @endsection
 @section('content')
 <section id="main" class="">
-
 <!-- Ministry section -->
    <div>
-    <p class="label mb-3 specific">Ministry Expenditures</p>
+       <div class="m-auto" style="max-width: 1700px">
+           <p class="label mb-3 specific">Ministry Expenditures</p>
+       </div>
     <div class="ministry container mt-4">
         <div class="ministry-top">
            <a href="{{ route('ministries') }}" class="profile" target="_blank">View all profiles</a>
@@ -78,7 +79,7 @@
     </div>
    </div>
    <!-- Explore section -->
-   <div class="explore">
+   <div class="explore  m-auto" style="max-width: 1700px">
      <div class="container">
       <p>A big-picture view of the daily spending <br> of the federal government</p>
       <p>Use our explorer to view how government spends our money daily</p>
@@ -88,7 +89,9 @@
 
 
    <!-- Company section -->
-   <p class="label mt-3 mb-3 " id="compu">Companies that received money</p>
+    <div class="m-auto" style="max-width: 1700px">
+        <p class="label mt-3 mb-3 " id="compu">Companies that received money</p>
+    </div>
    <div class="companies container d-flex justify-content-between">
      @foreach ($companies as $company)
     <div class="comp-card comp-card-1">
@@ -136,7 +139,7 @@
 
 </div>
    <!-- conversation section -->
-   <div class="convo-background">
+   <div class="convo-background  m-auto" style="max-width: 1700px">
       <div class="convo container d-flex  justify-content-between mb-3">
             <div class="tweet col-md-5 col-lg-5 d-flex align-items-center justify-content-start">
                <div class="twt-handle">
