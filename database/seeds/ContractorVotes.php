@@ -12,7 +12,7 @@ class ContractorVotes extends Seeder
      */
     public function run()
     {
-        AppContractorVotes::create(
+        AppContractorVotes::insert(
             [
                 [
                     'type' => 'Private Contractor (Individual)',
