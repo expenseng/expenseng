@@ -46,7 +46,7 @@ Route::get('/expense/report', 'ExpenseController@report')->name('expense.reports
 Route::post('/subscribe', 'SubscriptionController@store')->name('subscribe');
 
 Route::get('/expenses/{slug}', 'ExpenseController@show')->name('expenses.single');
-Route::get('/expense/ministry', 'ExpenseController@ministry')->name('expense.ministry');
+Route::get('/expenses', 'ExpenseController@ministry')->name('expense.ministry');
 
 /***
  * Ministry Endpoints
