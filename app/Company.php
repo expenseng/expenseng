@@ -12,6 +12,7 @@ class Company extends Model
 
     public $fillable = ['name', 'shortname', 'industry', 'ceo', 'twitter'];
 
+    //table name is now contractors
     protected $table = 'contractors';
 
     public function expense()
@@ -35,14 +36,6 @@ class Company extends Model
     public function twitterUrl()
     {
         return "https://twitter.com/" . substr($this->twitter, 1);
-    }
-
-    public function contract($year)
-    {
-        $response = new stdClass();
-        $response->amount = 1232345;
-
-        return $response;
     }
 
     public function people()
@@ -70,7 +63,8 @@ class Company extends Model
      */
     public function type()
     {
-        return $this->hasOne(CompanyType::class, 'contractor_id', 'id');
+        //type column is an integer 
+        return $this->hasOne(CompanyType::class, 'id', 'type');
     }
 
     public function isGovtEntity()
