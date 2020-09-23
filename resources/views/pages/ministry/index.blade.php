@@ -52,7 +52,19 @@
 
 
     <div class="last-section">
+   
       <div class="container">
+        <div class="row mb-3 filter-options">
+          <div class="col-2 pr-0">
+           <h5><span id="lastMth" class="badge badge-secondary badge-success px-3 py-1">Last Month</span></h5>
+          </div>
+          <div class="col-2 pl-0">
+            <h5><span id="currrentYr" class="badge badge-secondary px-3 py-1">Year-to-date</span></h5>
+          </div>
+          <div class="col-2 pl-0">
+            <h5><span id="allTime" class="badge badge-secondary px-4 py-1">All-time</span></h5>
+          </div>
+        </div>
         <div id="cards-container" class="row d-flex sec-card" style="min-height: 300px">
 
           @include('pages.ministry.cards')
@@ -68,11 +80,5 @@
 @section('js')
 <script src="{{ asset('js/index.js') }}"></script>
 <script src="{{ asset('js/ministry_list.js') }}" type="text/javascript"></script>
-<script>
-  $(".ministry-cards").click(function() {
-    window.location = $(this).find("a").attr("href");
-    return false;
-});
-</script>
 @endsection
 

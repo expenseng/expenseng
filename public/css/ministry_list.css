@@ -80,6 +80,16 @@ body{
 /*content-3 */
 
 /* last section with cards */
+h5.badge{
+  width: auto;
+}
+.badge{
+  cursor:pointer;
+  user-select: none;
+}
+.badge:hover{
+  opacity: 0.85;
+}
 .coat{
   text-align:center;
   padding:0rem 0;
