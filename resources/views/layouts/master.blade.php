@@ -5,6 +5,7 @@
         <!-- navbar -->
         @include('partials.navbar')
         @yield('banner')
+
         <!-- content -->
         @yield('content')
         <!-- footer -->
