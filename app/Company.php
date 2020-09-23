@@ -11,6 +11,9 @@ class Company extends Model
     use Searchable;
 
     public $fillable = ['name', 'shortname', 'industry', 'ceo', 'twitter'];
+
+    protected $table = 'contractors';
+
     public function expense()
     {
         return $this->hasMany(Expense::class);
