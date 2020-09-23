@@ -1,7 +1,7 @@
 <!-- Header -->
-<header class="site-header" id="header">
+<header class="site-header m-auto" id="header" style="max-width: 1700px">
     <nav class="navbar navbar-expand-lg transparent-bg bg-transparent darkcolor static-nav ">
-        <div class="container bg-white">
+        <div class="container-fluid bg-white">
             <a class="navbar-brand pl-2 section-navbar-logo" href="{{route('home')}}">
                 <img src="{{asset('images/Logo.svg')}}" alt="logo" class="logo-default">
                 <img src="{{asset('images/Logo.svg')}}" class="logo-scrolled">
@@ -42,11 +42,11 @@
                             <a class="dropdown-item section-reference-dropdown" href="{{ route('handles') }}">Government Twitter Handle</a>
                         </div>
                     </li>
-                    
+
                     <li class="nav-item">
                         <a class="nav-link section-nav-link" href="{{ route('search') }}"><i class="fa fa-search inp"></i></a>
                     </li>
-                    
+
                 </ul>
             </div>
             <!--side menu open button-->
@@ -108,7 +108,7 @@
                     <li class="nav-item">
                         <a class="nav-link section-nav-link" href=""><i class="fa fa-search inp"></i></a>
                     </li>
-                    
+
                 </ul>
             </nav>
         </div>

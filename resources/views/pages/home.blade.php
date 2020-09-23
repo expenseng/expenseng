@@ -26,7 +26,7 @@
 @section('banner')
 <!-- banner -->
 <!-- banner -->
-<div class=" background m-auto" style="max-width: 1700px">
+<div class="background m-auto" style="max-width: 1700px">
   <div class="banner">
     <div class="carets" id="caret">
       <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left">
