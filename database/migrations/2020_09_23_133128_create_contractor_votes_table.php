@@ -19,7 +19,7 @@ class CreateContractorVotesTable extends Migration
             //the contractor types which may increase in future
             $table->string('type');
             $table->integer('count');
-            $table->integer('contractor_id');
+            $table->integer('contractor_id')->nullable();
             $table->timestamps();
         });
     }

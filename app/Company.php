@@ -72,7 +72,7 @@ class Company extends Model
 
         $data = $this->contractorType->first();
 
-        return $data->name == "Government Official (Person)" || 
+        return $data->name == "Government Official" || 
                 $data->name == "Government Parastatal";
 
     }
