@@ -61,7 +61,7 @@ class Company extends Model
      * Define relationship for a 
      * company type
      */
-    public function type()
+    public function contractorType()
     {
         //type column is an integer 
         return $this->hasOne(CompanyType::class, 'id', 'type');
@@ -69,18 +69,11 @@ class Company extends Model
 
     public function isGovtEntity()
     {
-        if(!$this->type){
-            return false;
-        } 
 
-        $data = $this->type->first();
+        $data = $this->contractorType->first();
 
-        $govt = $data->govt_official;
-        $govtOrg = $data->govt_organization;
-        $person = $data->individual;
-        $company = $data->company;
+        return $data->name == "Government Official (Person)" || 
+                $data->name == "Government Parastatal";
 
-        //if any of the govt labels have a higher vote than private labels
-        return $govt > max($person, $company) || $govtOrg > max($person, $company);    
     }
 }
