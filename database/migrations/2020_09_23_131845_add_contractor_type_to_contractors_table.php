@@ -15,7 +15,8 @@ class AddContractorTypeToContractorsTable extends Migration
     {
         Schema::table('contractors', function (Blueprint $table) {
             $table->string('type')->nullable();
-
+            //setting to allow admin restrict voting on the contractor
+            $table->integer('restrict_vote')->default(0);
             $table->foreign('type')->references('id')->on('contractor_types');
         });
     }
@@ -28,7 +29,7 @@ class AddContractorTypeToContractorsTable extends Migration
     public function down()
     {
         Schema::table('contractors', function (Blueprint $table) {
-            $table->removeColumn('type')
+            $table->removeColumn('type');
         });
     }
 }
