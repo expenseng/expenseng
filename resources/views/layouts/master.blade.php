@@ -3,6 +3,7 @@
   <body>
     <div id="app">
         <!-- navbar -->
+        <div>
         @include('partials.navbar')
         @yield('banner')
 
