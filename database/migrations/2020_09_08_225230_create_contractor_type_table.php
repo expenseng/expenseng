@@ -13,13 +13,12 @@ class CreateContractorTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('contractor_type', function (Blueprint $table) {
+        /**
+         * Table to store all the types of contractors we have
+         */
+        Schema::create('contractor_types', function (Blueprint $table) {
             $table->id();
-            $table->integer('contractor_id');
-            $table->integer('company')->default(0);
-            $table->integer('govt_official')->default(0);
-            $table->integer('individual')->default(0);
-            $table->integer('govt_organization')->default(0);
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateContractorTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contractor_type');
+        Schema::dropIfExists('contractor_types');
     }
 }
