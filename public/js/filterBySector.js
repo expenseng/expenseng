@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     const defaultTableDate = $('.said-date').text();
     let tableOneIsModified = false;
-    let sector = $('.sectors').val();
+    let ministry = $('.ministries').val();
         
     ///////////////////////////////////////////////////////////////////////
     //                  Date-Picker                               //
@@ -139,12 +139,12 @@ $(document).ready(function() {
         function searchProject(){
             const id = $(this).attr("data-id");
             let query = $(this).val();
-            sector = $('.sectors').val();
+            ministry = $('.ministries').val();
             
                 let _token = $('input[name="_token"]').val();
-                let request = {query, _token, id, date, sort, sector}
+                let request = {query, _token, id, date, sort, ministry}
                 $.ajax({
-                    url:  `/expense/filterExpensesAll/${id}/${date}/${sort}/${sector}`,
+                    url:  `/expense/filterExpensesAll/${id}/${date}/${sort}/${ministry}`,
                     method: "POST",
                     data: request,
                     success: function(data){
@@ -186,7 +186,7 @@ $(document).ready(function() {
                     table.innerHTML = payload[0];
                     tableDate.innerHTML = `Showing All Expenses`;
                      id === 'apply-filter' ? tableOneIsModified = false  : tableTwoIsModified = false;
-                     $('.sectors').val('all');
+                     $('.ministries').val('all');
                      minitable.innerHTML = payload[1];
                 },
                 error: function(error){
@@ -197,8 +197,8 @@ $(document).ready(function() {
 
         $('.apply-filter').on('click', function(e){
             const id = $(this).attr("data-id");
-            sector = $('.sectors').val();
-            // console.log(sector)
+            ministry = $('.ministries').val();
+            // console.log(ministry)
             let invalid = false;
            
             if($('.btn-date.active').hasClass('day')){
@@ -262,7 +262,7 @@ $(document).ready(function() {
             }
             let query = $('#expense_search').val();
             $.ajax({
-                    url: `/expense/filterExpensesAll/${id}/${date}/${sort}/${sector}`,
+                    url: `/expense/filterExpensesAll/${id}/${date}/${sort}/${ministry}`,
                     method: "GET",
                     data: {query},
                     success: function(data){
@@ -276,22 +276,18 @@ $(document).ready(function() {
                 })
         })
 
-        $(document).on('change', '.sectors', function(e){
-            sector = $(this).val();
+        $(document).on('change', '.ministries', function(e){
+            ministry = $(this).val();
             const id = $(this).attr("data-id");
             let query = $('#expense_search').val();
             // console.log('date', date)
             $.ajax({
-                url: `/expense/filterExpensesAll/${id}/${date}/${sort}/${sector}`,
+                url: `/expense/filterExpensesAll/${id}/${date}/${sort}/${ministry}`,
                 method: "GET",
                 data: {query},
                 success: function(data){
-                    // console.log(data)
-                    let payload = data.split('<br/>');
                     const table = document.querySelector('#main-table');
-                    const minitable = document.querySelector('#mini-table');
-                    renderTable(id, table, payload[0], query); 
-                    minitable.innerHTML = payload[1];             
+                    renderTable(id, table, data, query); 
                 },
                 error: function(error){
                     console.log(error)
@@ -300,7 +296,7 @@ $(document).ready(function() {
         })
 
         $(document).on('click', '.pagination a', function(e){
-            event.preventDefault();
+            e.preventDefault();
             let page = $(this).attr('href').split('page=')[1]
             let table = e.target.closest('.table-data');
             let id = table.dataset.id
@@ -313,12 +309,13 @@ $(document).ready(function() {
             let query = $('#expense_search').val();
             // console.log(e, id, table, page, date, sort, query);
             $.ajax({
-                url: `/expense/filterExpensesAll/${id}/${date}/${sort}/${sector}?page=${page}`,
+                url: `/expense/filterExpensesAll/${id}/${date}/${sort}/${ministry}?page=${page}`,
                 method: "GET",
                 data: {query},
                 success: function(data){
                     // console.log(data)
-                    table.innerHTML = data;          
+                    // table.innerHTML = data;
+                    renderTable(id,table,data,query)          
                 },
                 error: function(error){
                     console.log(error)
@@ -328,6 +325,8 @@ $(document).ready(function() {
 
         function renderTable(id,table,data,query){
             // console.log(data)
+            let selectedText = $(".ministries option:selected").html()
+            let prefix = selectedText === 'All'? '' : 'Ministry of'
             const tableDate = table.closest('.main-table').querySelector('.said-date-caption');
             table.innerHTML = data;
             let msg = '';
@@ -336,9 +335,9 @@ $(document).ready(function() {
             }        
             if(date !== undefined){
                 let reportDate = /\d{4}-\d{2}-\d{2}/.test(date)? formatDate(date) : date;
-                tableDate.innerHTML = `Showing expenses for <span class="said-date">${reportDate}</span> ${msg}`;
+                tableDate.innerHTML = `Showing ${prefix} ${selectedText} expenses for <span class="said-date">${reportDate}</span> ${msg}`;
             }else{
-                tableDate.innerHTML = `Showing All Expenses`;
+                tableDate.innerHTML = `Showing ${prefix} ${selectedText} expenses ${msg}`;
             }
             
             id === 'apply-filter2' ? tableTwoIsModified = true  : tableOneIsModified = true;                     

@@ -46,14 +46,14 @@
 		<div class="section-button">
 			<div class="container">
 				<div class="row px-1">
-					<div class="btn-group col-lg-10 col-md-12 d-flex responsive-button nav nav-tabs">
+					{{-- <div class="btn-group col-lg-10 col-md-12 d-flex responsive-button nav nav-tabs">
 						<a class="btn-marg text-left active button" data-toggle="tab" role="tab" href="#table">Sector Summary</a>
-						{{-- Commenting the below out as we don't have data for them yet --}}
-						{{-- <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Project Summary</a>
-						<a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Purchases Summary</a> --}}
-						{{-- <a class="btn-marg text-left button" data-toggle="tab" role="tab" href="#description">No Description</a> --}}
+						Commenting the below out as we don't have data for them yet
+						<a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Project Summary</a> 
+						<a class="btn-marg text-left button" data-toggle="tab" role="tab" href="">Purchases Summary</a>
+						<a class="btn-marg text-left button" data-toggle="tab" role="tab" href="#description">No Description</a>
 						<a class="btn-marg text-left button" data-toggle="tab" role="tab" href="#comments">Comments</a>
-					</div>
+					</div> --}}
 				</div>
 			</div>
 		</div>
@@ -64,12 +64,20 @@
 		<div class="section-2 tab-pane show fade active" id="table" role="tabpanel">
 			<section class="container bordered px-0">
 				<div id="search-tools" class="d-flex justify-content-between">
-					<select data-id="apply-filter-sector" style="width:170px;" class="sectors form-control ml-2">
+					{{-- <select data-id="apply-filter-sector" style="width:170px;" class="sectors form-control ml-2">
 						<option value='all'>All</option>
 						@foreach($sectors as $sector)
 					<option value={{$sector->id}}>{{$sector->name}}</option>
 						@endforeach
-					</select>
+					</select> --}}
+					<select id="ministry_list"  data-id="apply-filter-ministry" style="width:170px;" class="ministries form-control ml-2" onmousedown="if(this.options.length>6){this.size=6;}"  onchange='this.size=0;' onblur="this.size=0;" >
+						<option value='all'>All</option>
+						@if(count($ministries)>0)
+						 @foreach ($ministries as $ministry)
+						   <option class="mb-1" value="{{$ministry->code}}">{{$ministry->shortname}}</option>
+						 @endforeach
+					   @endif
+					 </select>
 					<div id="search-area" class="offset-md-1 col-md-5 col-lg-4 mt-3 mt-md-0">
 					<input type="search" id="expense_search" data-id="apply-filter" class="form-control form-control-lg mb-2" style="font-family:Arial, FontAwesome; height:38px;" placeholder="&#xf002; Search for a project">
 						@csrf
@@ -156,9 +164,9 @@
 				</div>
 			</section> --}}
 		</div>
-		<div class="section-2 tab-pane fade" id="comments" role="tabpanel">
+		{{-- <div class="section-2 tab-pane fade" id="comments" role="tabpanel">
 			@include('partials.comments')
-		</div>
+		</div> --}}
 	</div>
 </div>
 @endsection
