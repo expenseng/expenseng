@@ -34,7 +34,7 @@ class SaveCompanyName implements ShouldQueue
     public function handle()
     {
         //get company name from the payment table
-        $payment = Payment::whereId($this->id)->first();
+        $payment = Payment::whereId($this->_id)->first();
         $beneficiary = $payment->beneficiary;
         
         if (Company::whereShortname(Str::slug($beneficiary))->count() == 0) {
