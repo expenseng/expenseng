@@ -4,7 +4,6 @@ namespace App\Jobs;
 
 use App\Company;
 use App\ContractorVotes;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -43,14 +42,10 @@ class UpdateContractorType implements ShouldQueue
             200, function ($contractors) {
                 foreach ($contractors as $contractor) {
                     //fetch the highest value for the contractor on the votes table
-                    $vote = DB::select(
-                        "select max(count) as votes, type, contractor_id 
-                        from contractor_votes where contractor_id = ? 
-                        order by contractor_id",
-                        $contractor->id
-                    );
+                    $vote = ContractorVotes::whereContractorId($contractor->id)
+                            ->orderBy('count', 'desc')->first();
 
-                    $contractor->type = $vote->type->id;
+                    $contractor->type = $vote->parent->id;
                     $contractor->save();
                 }
             }

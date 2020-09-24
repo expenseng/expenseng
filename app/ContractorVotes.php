@@ -13,7 +13,7 @@ class ContractorVotes extends Model
      * Relationship to fetch the full details
      * of the voted contractor type
      */
-    public function type()
+    public function parent()
     {
         return $this->belongsTo(CompanyType::class, 'type', 'name');
     }
