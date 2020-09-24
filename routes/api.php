@@ -94,5 +94,5 @@ Route::post('/companies/board/suggest', 'CompanyController@suggest');
 /**
  * Vote on the type of a company
  */
-Route::post('/companies/vote/{companyId}', 'CompanyTypeController@vote');
-Route::get('/companies/type/{companyId}', 'CompanyTypeController@type');
+Route::post('/companies/vote/{companyId}', 'ContractorVotesController@vote');
+Route::get('/companies/type/{companyId}', 'ContractorVotesController@type');
