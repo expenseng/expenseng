@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Company;
 use App\Payment;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -39,6 +40,7 @@ class PopulateContractors implements ShouldQueue
         /**
          * Empty the contractors table
          */
+        Schema::disableForeignKeyConstraints();
         Company::truncate();
 
         /**
@@ -75,15 +77,13 @@ class PopulateContractors implements ShouldQueue
 
     /**
      * Check if company exists
-     * @param $shortname shortname of the compayn
+     * @param $name shortname of the compayn
      * @return bool 
      */
-    public function companyExists($shortname)
+    public function companyExists($name)
     {
         return Company::whereShortname(
-            $this->uniqueShortName($shortname)
-        )->count() > 0;
+            $this->uniqueShortName($name)
+        )->orWhere('name', $name)->count() > 0;
     }
 }
-
-PopulateContractors::dispatch()->onQueue('contractors');

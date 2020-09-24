@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Jobs\UpdateContractorType;
 use App\Report;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -42,6 +43,11 @@ class Kernel extends ConsoleKernel
          $schedule->command('queue:work --once --queue=ceoSearch')->everyFourHours();
          $schedule->command('queue:work  --queue=default --stop-when-empty')->daily();
          $schedule->command('make:slugs')->daily();
+
+         /**
+          * Update the contractor's type value based on votes
+          */
+         $schedule->job(new UpdateContractorType)->daily();
     }
 
 

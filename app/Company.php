@@ -70,6 +70,10 @@ class Company extends Model
     public function isGovtEntity()
     {
 
+        if (! $this->contractorType){
+            return false;
+        }
+        
         $data = $this->contractorType->first();
 
         return $data->name == "Government Official" || 
