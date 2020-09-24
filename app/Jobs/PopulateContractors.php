@@ -85,3 +85,5 @@ class PopulateContractors implements ShouldQueue
         )->count() > 0;
     }
 }
+
+PopulateContractors::dispatch()->onQueue('contractors');
