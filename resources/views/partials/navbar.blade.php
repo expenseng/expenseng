@@ -11,18 +11,8 @@
                     <li class="nav-item">
                         <a class="nav-link section-nav-link" href="{{ route('home') }}">Home</a>
                     </li>
-                    <li class="nav-item dropdown position-relative">
-
-                            <a  class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Expense</a>
-                            <div class="dropdown-menu">
-
-                                    <a href="{{ route('expense.reports') }}" class="dropdown-item">Daily Report</a>
-
-
-                                    <a href="{{ route('expense.ministry') }}" class="dropdown-item">All Expenses</a>
-
-                            </div>
-
+                    <li class="nav-item">
+                        <a href="{{ route('expense.ministry') }}" class="nav-link section-nav-link">All Expenses</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link section-nav-link" href="{{ route('ministries') }}">Ministries</a>

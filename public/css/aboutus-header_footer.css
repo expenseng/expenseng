@@ -199,12 +199,12 @@ a.dropdown-toggle::after {
     font-weight: bold;
 }
 
-.navbar-nav .nav-link:hover,
+/* .navbar-nav .nav-link:hover,
 .navbar .dropdown:hover .dropdown-toggle,
 .dropdown-menu .dropdown-item:hover,
 .dropdown-menu.megamenu .dropdown-item:hover {
     font-weight: bold;
-}
+} */
 
 .dropdown-menu .dropdown-title {
     margin: 1.5rem 0 0.5rem 1rem;

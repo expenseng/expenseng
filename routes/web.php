@@ -57,9 +57,9 @@ Route::post('/ministries', 'MinistryController@store')->name('ministry_store');
 Route::patch('/ministries/{ministry}', 'MinistryController@update')->name('ministry_update');
 Route::delete('/ministries/{ministry}', 'MinistryController@destroy')->name('ministry_destroy');
 Route::post('/ministries/autocomplete', 'MinistryController@autocomplete')->name('ministry_autocomplete');
-Route::get('/expense/filterExpensesAll/{id}/{date}/{sort}/{sector?}', 'ExpenseController@filterExpensesAll')->name('all_ministries_filter_expenses');
 Route::get('/expense/filterExpensesChart/{id}/{date}/{sort}/{chartType?}', 'ExpenseController@chartReport')->name('all_ministries_filter_chart');
-Route::post('/expense/filterExpensesAll/{id}/{date}/{sort}/{sector?}', 'ExpenseController@filterExpensesAll')->name('all_ministries_search_expenses');
+Route::get('/expense/filterExpensesAll/{id}/{date}/{sort}/{ministry?}', 'ExpenseController@filterExpensesAll')->name('all_ministries_filter_expenses');
+Route::post('/expense/filterExpensesAll/{id}/{date}/{sort}/{ministry?}', 'ExpenseController@filterExpensesAll')->name('all_ministries_search_expenses');
 
 /**
  * Contractor Endpoints

@@ -15,19 +15,67 @@ use Illuminate\Support\Facades\Auth;
 
 class MinistryController extends Controller
 {
-    public function getMinistries($ministries)
+    public function getMinistries($ministries=null, $period='lastMth', $yr=null)
     {
-        $currentYr = date('Y');
+        // $ministries = Ministry::all();
+        // $time = date('Y');
+        // $currentYr = $yr ? $yr : date('Y');
+        if($period == 'lastMth'){
+            $lastPaymentDate = $this->lastPaymentDate();
+            $monthNum = $this->lastCompleteMonth($lastPaymentDate);
+            $month = date('M', mktime(0,0,0,$monthNum));
+            $timeframe = $month .' '. date('Y');
+        }else if($period == 'currrentYr'){
+            $timeframe = date('Y');
+        }else if($period == 'allTime'){
+            $timeframe = 'All time';
+        }
+        
+    
         foreach ($ministries as $ministry) {
             $code = $ministry->code;
             $payments = DB::table('payments')
-                ->where('payment_code', 'LIKE', "$code%")
-                ->whereYear('payment_date', '=', "$currentYr")
-                ->get();
+                ->where('payment_code', 'LIKE', "$code%");
+            if(!$yr){
+                $payments = $payments->whereYear('payment_date', '=', date('Y'));
+            }
+            if($period == 'lastMth'){
+                $payments = $payments->whereMonth('payment_date', '=', "$monthNum");
+            }
+            $payments = $payments->get();      
             $total = $payments->sum('amount');
             $ministry->total = $total;
+            $ministry->timeframe = $timeframe;
         }
-        return $ministries;
+        
+        $sorted = $ministries->sortByDesc(function($ministry)
+        {
+            return  $ministry->total;
+        });
+        
+        return $sorted;
+    }
+
+    public function lastPaymentDate(){
+        $lastPymtDate = Payment::select('*')
+                        ->orderby('payment_date', 'desc')
+                        ->pluck('payment_date')
+                        ->first();
+                        
+        return $lastPymtDate;
+    }
+
+    public function lastCompleteMonth($lastPaymentDate)
+    {
+        $lastDayOfMonth = date("yy-m-t", strtotime($lastPaymentDate));
+        $pattern = '/(\d{4})-(\d{2})-(\d{2})/';
+        if (preg_match($pattern, $lastPaymentDate, $match)) {
+            $currentMonth = $match[2];
+            $m = intval($currentMonth) - 1;
+            $prevMonth = "0".$m;
+        }
+        $month = $lastPaymentDate === $lastDayOfMonth ? $currentMonth : $prevMonth;
+        return $month;
     }
 
     /**
@@ -92,17 +140,21 @@ class MinistryController extends Controller
      */
     public function profile(Request $request)
     {
-
+        if($request->has('period')){
+            $period = $request->get('period');
+        }else{
+            $period = 'lastMth';
+        }
         if ($request->has('ministry')) {
             $ministry_name = $request->get('ministry');
-            $result = DB::table('ministries')
+            $data = DB::table('ministries')
                 ->where('name', '=', "$ministry_name")
                 ->get();
-            $ministries = $this->getMinistries($result);
+            $ministries = $this->getMinistries($data, $period);
             $ministries = $this->getChartData($ministries);
-        } else {
+        }else {
             $data = Ministry::all();
-            $ministries = $this->getMinistries($data);
+            $ministries = $this->getMinistries($data, $period);
             $ministries = $this->getChartData($ministries);
         }
 

@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+  let period = $('#lastMth').attr('id');
   const insertCommas = amount =>{
       const parts = amount.toString().split(".");
       parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -73,9 +74,9 @@ $(document).ready(function(){
       $.ajax({
               url: "/ministries",
               method: "GET",
-              data: {ministry},
+              data: {ministry, period},
               success: function(data){
-                console.log(data)
+                // console.log(data)
                 $('#cards-container').html(data)
               },
               error: function(error){
@@ -83,4 +84,27 @@ $(document).ready(function(){
               }
           })
   })
+
+  
+  $('.filter-options').on('click', '.badge', function(e){
+    // let period = $('').hasClass('badge-success');
+    $('.badge').removeClass('badge-success');
+    $(this).addClass('badge-success');
+    console.log(period);
+    period = $(this).attr('id');
+    console.log(period)
+    $.ajax({
+      url: "/ministries",
+      method: "GET",
+      data: {period},
+      success: function(data){
+        // console.log(data)
+        $('#cards-container').html(data)
+      },
+      error: function(error){
+        console.log(error)
+      }
+    })
+  })
+
 })

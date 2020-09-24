@@ -18,7 +18,7 @@
             <div class="texts d-flex flex-column text-center">
             <p>Total amount Spent</p>
             <p class="num">₦{{number_format($ministry->total,2)}}</p>
-            <p class="year">{{date('Y')}}</p>
+            <p class="year">{{$ministry->timeframe}}</p>
             </div>
         </div>
     </div>
