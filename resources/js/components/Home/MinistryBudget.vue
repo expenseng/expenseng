@@ -4,17 +4,17 @@
         <flickity ref="flickity" :options="flickityOptions" class="d-flex flex-wrap justify-content-md-between col-sm-12 w-100 main-carousel" v-else>
             <div class="exp-card carousel-cell" v-for="card in this.series" :key="card.label">
                     <div class="graph-cont">
-                        <chart :element="card.label.substring(0, 20).replace(/ /g, '').replace(',', '').toLowerCase()" 
-                                label="5 year expenses trend" 
-                                :data="card.data"></chart>
+                        <monthly-chart :element="card.label.substring(0, 20).replace(/ /g, '').replace(',', '').toLowerCase()"
+                                label="last month expenses trend"
+                                :data="card.data"></monthly-chart>
                     </div>
                     <p class="exp-card1 pl-2">{{ card.label }}</p>
                     <p class="exp-card2 pl-2">
-                        {{ 
+                        {{
                             "₦" + Number(card.total).toLocaleString()
                         }}
                     </p>
-                    <p class="exp-card3 pl-2 text-muted">Total spent over the past 5 years</p>
+                    <p class="exp-card3 pl-2 text-muted">Total spent last month</p>
             </div>
         </flickity>
     </div>
@@ -42,7 +42,7 @@ export default {
                 autoPlay: true,
             }
         }
-    },    
+    },
 
     components:{
         Chart,
@@ -59,17 +59,17 @@ export default {
                 for (const key in this.cards) {
                     if (this.cards.hasOwnProperty(key)) {
                         const element = this.cards[key];
-                       
+
                         var object = [];
                         var total = [];
 
-                        for (const key in element.yearbyyear) {
-                            if (element.yearbyyear.hasOwnProperty(key)) {
-                                const money = element.yearbyyear[key];
+                        for (const key in element.monthly) {
+                            if (element.monthly.hasOwnProperty(key)) {
+                                const money = element.monthly[key];
 
                                 object.push({
                                     amount: money,
-                                    year: key
+                                    date: key
                                 });
 
                                 total.push(money);
@@ -77,10 +77,10 @@ export default {
                         }
 
                         this.series.push(
-                            { 
-                                label: key,    
+                            {
+                                label: key,
                                 data: object,
-                                total: total.reduce( (a, b) => { return a + b; }),  
+                                total: total.reduce( (a, b) => { return a + b; }),
                             }
                         )
                     }

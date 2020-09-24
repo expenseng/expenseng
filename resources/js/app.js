@@ -6,7 +6,7 @@
 
 require('./bootstrap');
 import VueApexCharts from 'vue-apexcharts';
-import TextareaAutosize from 'vue-textarea-autosize'
+import TextareaAutosize from 'vue-textarea-autosize';
 import VueSweetalert2 from 'vue-sweetalert2';
 import VueInstantSearch from 'vue-instantsearch';
 import { Input, Select, Button, Option } from 'element-ui';
@@ -35,6 +35,7 @@ Vue.component('apexchart', VueApexCharts);
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('comments', require('./components/Comment/Comments.vue').default);
 Vue.component('chart', require('./components/Payments/Chart.vue').default);
+Vue.component('monthly-chart', require('./components/Payments/monthlyChart.vue').default);
 Vue.component('govt-expense', require('./components/Home/GovtExpenses.vue').default);
 Vue.component('admin-comments', require('./components/Backend/AdminComments.vue').default);
 Vue.component('ministry-expense', require('./components/Home/MinistryExpense.vue').default);

@@ -13,7 +13,7 @@
 
   gtag('config', 'UA-174166304-1');
 </script>
-  <title>FG Expense - Ministry List</title>
+  <title>Expenses of Government Ministries in Nigeria</title>
 @endpush
 
 

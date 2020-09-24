@@ -33,7 +33,7 @@ class Kernel extends ConsoleKernel
          $schedule->command('SendTweet past')
              ->hourly()
              ->weekends()
-             ->between('2:00', '6:00');
+             ->between('14:00', '18:00');
 //         $schedule->command('budgetTweet')->weekly()->mondays()->at('13:00');
          $schedule->command('ReportLogging')->daily()->at('02:00');
          $schedule->command('parse:sheet')

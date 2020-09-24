@@ -45,8 +45,8 @@ Route::get('/contactEmail', 'PageController@contactEmail')->name('contactEmail')
 Route::get('/expense/report', 'ExpenseController@report')->name('expense.reports');
 Route::post('/subscribe', 'SubscriptionController@store')->name('subscribe');
 
-Route::get('/expenses/{slug}', 'ExpenseController@show' )->name('expenses.single');
-Route::get('/expense/ministry', 'ExpenseController@ministry')->name('expense.ministry');
+Route::get('/expenses/{slug}', 'ExpenseController@show')->name('expenses.single');
+Route::get('/expenses', 'ExpenseController@ministry')->name('expense.ministry');
 
 /***
  * Ministry Endpoints
@@ -355,7 +355,7 @@ Route::get('/accessibility', 'PageController@accessibility')->name('accessibilit
         return redirect(route('dashboard'));
     });
 
-    Route::get('/summary','PageController@expense');
+    Route::get('/summary', 'PageController@expense');
 
     Route::get('/startRT', 'TwitterBot@startLiveRetweet');
     Route::get('/stopRT', 'TwitterBot@stopLiveRetweet');
