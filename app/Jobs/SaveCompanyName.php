@@ -5,6 +5,7 @@ namespace App\Jobs;
 use App\Company;
 use App\Payment;
 use App\Scrapping;
+use Illuminate\Support\Str;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -15,7 +16,7 @@ class SaveCompanyName implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    private $id;
+    private $_id;
 
     /**
      * Create a new job instance.
@@ -24,69 +25,50 @@ class SaveCompanyName implements ShouldQueue
      */
     public function __construct($id)
     {
-        $this->id = $id;
-        //
+        $this->_id = $id;
     }
 
     /**
      * Execute the job.
-     *
-     * @return int
      */
     public function handle()
     {
-        //
-//        get company name from the payment table
+        //get company name from the payment table
         $payment = Payment::whereId($this->id)->first();
         $beneficiary = $payment->beneficiary;
-//        check if the name already exist if not log to database
-        if ($this->check($beneficiary)) {
-            /** @var TYPE_NAME $beneficiary */
-            switch ($beneficiary) {
-//                check for specific type of company name
-                case preg_match("/LIMITED/i", $beneficiary)  != false:
-                case preg_match("/LTD/i", $beneficiary)  != false:
-                case (preg_match("/SERVICES/i", $beneficiary)  != false) &&
-                (preg_match("/FEDERAL/i", $beneficiary) == false):
-                case preg_match("/AGENCY/i", $beneficiary)  != false:
-                case preg_match("/CONSULT/i", $beneficiary)  != false:
-                    $this->logToDb($beneficiary); // log to database
-                    return 0;
-                    break;
-                default:
-                    return -1;
-            }
-        }
-        return -1;
-    }
-    public function shortName($name)
-    {
-        $check_exist = Company::whereShortname(strtolower(explode(" ", $name)[0]))->first();
-        if (empty($check_exist)) {
-            return strlen($name) > 10 ?
-                strtolower(explode(" ", $name)[0]) : strtolower(str_replace(" ", "", $name));
-        } else {
-            return strlen($name) > 10 ?
-                strtolower(explode(" ", $name)[0]."-".explode(" ", $name)[1]) : strtolower(str_replace(" ", "", $name));
+        
+        if (Company::whereShortname(Str::slug($beneficiary))->count() == 0) {
+            $this->logToDb($beneficiary);
         }
     }
+
+    /**
+     * Create a new company from the payments record
+     * 
+     * @param string $beneficiary the payment beneficiary name
+     */
     public function logToDb($beneficiary)
     {
 
-        $create = Company::create([
+        $create = Company::create(
+            [
                 'name' => $beneficiary,
-                'shortname' => $this->shortName($beneficiary),
-         ]);
+                'shortname' => $this->uniqueShortName($beneficiary),
+            ]
+        );
+
         // send a job to the queue Ceo search to get name of ceo for the company
         CeoNameSearch::dispatch($create->id)->onQueue('ceoSearch');
     }
 
-    public function check($name)
+    /**
+     * Generate a unique shortname for each company
+     * 
+     * @param $name name of company
+     * @return string the unique url stringified version of name
+     */
+    public function uniqueShortName($name)
     {
-        $check = Company::whereName($name)->first();
-        if (empty($check)) {
-            return true;
-        }
-        return false;
+        return Str::slug($name). "-" . rand(1000, 9999);
     }
 }
