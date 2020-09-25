@@ -76,7 +76,7 @@
               <div class="card shadow">
                 <div class="card-body">
                     <chart label=""
-                            v-bind:data="{{ $contractor->payments->map(function($item){ return array('amount' => $item['amount'],
+                            v-bind:data="{{ $contractor->payments->map(function($item){ return array('amount' => number_format($item['amount'], 2),
                                             'date' => date('Y', strtotime($item['payment_date'])) ); })->toJson() }}"
                             element="{{ 'contractor-'.$contractor->id }}">
                               
@@ -96,7 +96,7 @@
                     <h6 class="m-0 mb-0 text-sm-left text-black-50">
                       {{ 
                         $contractor->payments->pluck('payment_date')->transform(function($date){ 
-                          return date("M, Y", strtotime($date)); 
+                          return date("F, Y", strtotime($date)); 
                         })->unique()->implode(", ")
                       }}
                     </h6>

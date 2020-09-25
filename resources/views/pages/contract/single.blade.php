@@ -84,7 +84,7 @@
                 </tr>
               </thead>
               <tbody>
-              @foreach($company->payments()->paginate(20) as $payment)
+              @foreach($payments = $company->payments()->paginate(10) as $payment)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
                   <td>{{$payment->description}}</td>
@@ -99,7 +99,7 @@
 
           <!-- Pagination -->
           <div>
-            {{-- @include('partials.pagination_contracts') --}}
+            @include('partials.pagination_contracts')
           </div>
         
         </div>

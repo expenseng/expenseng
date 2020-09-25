@@ -34,7 +34,7 @@ class CompanyController extends Controller
             ->whereBetween('payment_date', [$monthStart, $monthEnd])
         ])->orderBy('total', 'desc')->with(['payments' => function ($query) use ($monthStart, $monthEnd) {
             $query->whereBetween('payment_date', [$monthStart, $monthEnd]);
-        }])->paginate(10);
+        }])->paginate(20);
 
         return view('pages.contract.index')->with(['contractors' => $contractors]);
     }
