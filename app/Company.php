@@ -70,7 +70,8 @@ class Company extends Model
     public function isGovtEntity()
     {
 
-        if (! $this->contractorType) {
+        //the name property may be missing if results are returned for type (0)
+        if (! $this->contractorType || ! $this->contractorType->name) {
             return false;
         }
         
