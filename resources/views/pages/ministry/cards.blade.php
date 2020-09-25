@@ -12,7 +12,7 @@
             <div class="coat">
             <img src="{{ asset('images/image 7.png') }}" alt="">
             <div class="text-center   ministry">
-                <a title="Click to view profile" class="text-green" href="{{ route('ministries.single', $ministry->shortname) }}">{{$ministry->name}}</a>
+                <a title="Click to view profile" class="text-green" href="{{ route('ministries.single', strtolower($ministry->shortname)) }}">{{$ministry->name}}</a>
             </div>
             </div>
             <div class="texts d-flex flex-column text-center">

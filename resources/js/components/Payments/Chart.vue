@@ -57,6 +57,7 @@ export default {
                     enabled: true,
                     y: {
                         formatter: function (val, opts) {
+                            val = val.toFixed(2);
                             const parts = val.toString().split(".");
                             parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                             val = parts.join(".")        
@@ -88,7 +89,6 @@ export default {
     },
 
     mounted() {       
-
         //try and see if this can set the element
         this.options.chart.id = this.element;
 
