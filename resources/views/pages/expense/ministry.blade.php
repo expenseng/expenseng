@@ -64,12 +64,6 @@
 		<div class="section-2 tab-pane show fade active" id="table" role="tabpanel">
 			<section class="container bordered px-0">
 				<div id="search-tools" class="d-flex justify-content-between">
-					{{-- <select data-id="apply-filter-sector" style="width:170px;" class="sectors form-control ml-2">
-						<option value='all'>All</option>
-						@foreach($sectors as $sector)
-					<option value={{$sector->id}}>{{$sector->name}}</option>
-						@endforeach
-					</select> --}}
 					<select id="ministry_list"  data-id="apply-filter-ministry" style="width:170px;" class="ministries form-control ml-2" onmousedown="if(this.options.length>6){this.size=6;}"  onchange='this.size=0;' onblur="this.size=0;" >
 						<option value='all'>All</option>
 						@if(count($ministries)>0)

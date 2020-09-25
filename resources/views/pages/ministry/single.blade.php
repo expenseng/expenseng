@@ -159,7 +159,20 @@
                     <div id="tbl" class="container">
                         @include('pages.ministry.pagination')
                     </div>
-
+                    <div>
+                        <select data-id="apply-limit" style="width:170px;" class="limit form-control ml-2">
+                            <option value='10'>10</option>
+                            <option selected value='20'>20</option>
+                            <option value='50'>50</option>
+                            <option value='100'>100</option>
+                            <option value='all'>All</option>
+                        </select>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                              <input id="allTime" type="checkbox" class="form-check-input" value="allTime">Show All Expenses
+                            </label>
+                        </div>
+                    </div>
                 </div>
 
                 
@@ -241,27 +254,26 @@
                 </div>
                 <div class="modal-body">
                     <form  action=" {!! url('/feedback') !!}" method="POST">
-                {{csrf_field()}}
-                <div class="form-group">
-                <label for="firstName">Firstname</label>
-                <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Firstname">
-                </div>
-                <div class="form-group">
-                <label for="lastName">Lastname</label>
-                <input type="text" name="lastName" class="form-control" id="exampleInputPassword1" placeholder="Lastname">
-                </div>
+                        {{csrf_field()}}
+                        <div class="form-group">
+                        <label for="firstName">Firstname</label>
+                        <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Firstname">
+                        </div>
+                        <div class="form-group">
+                        <label for="lastName">Lastname</label>
+                        <input type="text" name="lastName" class="form-control" id="exampleInputPassword1" placeholder="Lastname">
+                        </div>
 
-                <div class="form-group">
-                <label for="ministry">Ministry</label>
-                <select id="inputState" readonly class="form-control" name="ministry_id">
-                    <option class="mb-1"  value="{{$ministry->id}}">{{$ministry->shortname}}</option>
-                </select>
-                </div>
-            <center>
-                <button type="submit" class="btn btn-success ">Submit</button>
-            </center>
-
-            </form>
+                        <div class="form-group">
+                        <label for="ministry">Ministry</label>
+                        <select id="inputState" readonly class="form-control" name="ministry_id">
+                            <option class="mb-1"  value="{{$ministry->id}}">{{$ministry->shortname}}</option>
+                        </select>
+                        </div>
+                        <center>
+                            <button type="submit" class="btn btn-success ">Submit</button>
+                        </center>
+                    </form>
                 </div>
                 </div>
             </div>
@@ -269,9 +281,9 @@
         </div>
 
         <!--3-->
-        <div id="comments" class="tab-pane fade">
+        {{-- <div id="comments" class="tab-pane fade">
             @include('partials.comments')
-        </div>
+        </div> --}}
     </div>
 </div>
 
