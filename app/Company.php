@@ -71,13 +71,12 @@ class Company extends Model
     {
 
         if (! $this->contractorType) {
-            return false;
+            return "be like say";
         }
         
-        $data = $this->contractorType->first();
+        $data = $this->contractorType;
 
-        return $data->name == "Government Official" || 
-                $data->name == "Government Parastatal";
+        return $data->name == "Government Official" || $data->name == "Government Parastatal";
 
     }
 }

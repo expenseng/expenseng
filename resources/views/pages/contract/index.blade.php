@@ -25,9 +25,10 @@
           Showing government and private entities
         </a>
         <div class="dropdown-menu" aria-labelledby="entities-shown">
-          <a class="dropdown-item" href="#">Show private (individual) entities</a>
-          <a class="dropdown-item" href="#">Show private (company) entities</a>
-          <a class="dropdown-item" href="#">Show public (government) entities</a>
+          <a class="dropdown-item" href="{{ url('/contractors?type=private') }}">Show private (individual) entities</a>
+          <a class="dropdown-item" href="{{ url('/contractors?type=company') }}">Show private (company) entities</a>
+          <a class="dropdown-item" href="{{ url('/contractors?type=govt-official') }}">Show public (govt. official) entities</a>
+          <a class="dropdown-item" href="{{ url('/contractors?type=govt-parastatals') }}">Show public (govt. parastatals) entities</a>
         </div>
       </div>
         <h1 class="ws-10 font-weight-bold">Companies and Organizations Contracted</h1>

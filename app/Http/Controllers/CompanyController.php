@@ -16,25 +16,56 @@ use Illuminate\Support\Facades\Auth;
 class CompanyController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
 
-        $latestDate = $this->getLatestPaymentDate();
+        if (isset($request)) {
+            
+            switch ($request->query('type')) {
+                case 'private':
+                    $type = 1;
+                    break;
 
-        $carbon = new Carbon($latestDate);
+                case 'company':
+                    $type = 2;
+                    break;
 
-        $monthStart = $carbon->startOfMonth()->format("Y-m-d");
-        $monthEnd = $carbon->endOfMonth()->format("Y-m-d");
+                case 'govt-parastatals':
+                    $type = 4;
+                    break;
 
-        /**
-         * Sort by the highest paid contractor in the last month
-         */
-        $contractors = Company::addSelect(['total' => Payment::selectRaw('SUM(amount)')
-            ->whereColumn('beneficiary', 'contractors.name')
-            ->whereBetween('payment_date', [$monthStart, $monthEnd])
-        ])->orderBy('total', 'desc')->with(['payments' => function ($query) use ($monthStart, $monthEnd) {
-            $query->whereBetween('payment_date', [$monthStart, $monthEnd]);
-        }])->paginate(20);
+                case 'govt-official':
+                    $type = 3;
+                    break;
+
+                default:
+                    $type = null;
+                    break;
+            }
+            
+            $contractors = Company::addSelect(['total' => Payment::selectRaw('SUM(amount)')
+                ->whereColumn('beneficiary', 'contractors.name')
+            ])->where('type', $type)->orderBy('total', 'desc')->paginate(20);
+        
+        }else{
+            
+            $latestDate = $this->getLatestPaymentDate();
+
+            $carbon = new Carbon($latestDate);
+    
+            $monthStart = $carbon->startOfMonth()->format("Y-m-d");
+            $monthEnd = $carbon->endOfMonth()->format("Y-m-d");
+
+            /**
+             * Sort by the highest paid contractor in the last month
+             */
+            $contractors = Company::addSelect(['total' => Payment::selectRaw('SUM(amount)')
+                ->whereColumn('beneficiary', 'contractors.name')
+                ->whereBetween('payment_date', [$monthStart, $monthEnd])
+            ])->with(['payments' => function ($query) use ($monthStart, $monthEnd) {
+                $query->whereBetween('payment_date', [$monthStart, $monthEnd]);
+            }])->paginate(20);
+        }
 
         return view('pages.contract.index')->with(['contractors' => $contractors]);
     }
@@ -65,32 +96,7 @@ class CompanyController extends Controller
     // show a detials of a given contractor, beneficiary or organization
     public function show(Company $company)
     {
-
         return view('pages.contract.single')->with(['company' => $company]);
-
-        $contractor =   str_replace('-', ' ', $com);
-        $total_amount = 0;
-        $company = Company::Where('name', 'LIKE', '%'.$contractor.'%')->orwhere('shortname', $contractor)->first();
-        if(isset($company)){
-                $contracts = $this->getContractorContracts($contractor);
-                $yearlyTotals = $this->getContractorYearlyTotal($contractor);
-                 foreach($contracts as $contract){
-                     $total_amount = $total_amount + $contract->amount;
-                }
-                return view('pages.contract.single')->with(['company' => $company, 'contracts' => $contracts, 'total_amount' => $total_amount, 'yearlyTotals' => $yearlyTotals]);
-
-        }elseif(count($this->getContractorContracts($contractor)) > 0 ){
-
-                $contracts = $this->getContractorContracts($contractor);
-                $company = $contracts[0];
-                foreach($contracts as $contract){
-                     $total_amount = $total_amount + $contract->amount;
-                }
-                return view('pages.contract.notfound')->with(['company' => $company, 'contracts' => $contracts,  'total_amount' => $total_amount ]);
-
-        }else{
-            return redirect('errors.404_error');
-        }
     }
 
 

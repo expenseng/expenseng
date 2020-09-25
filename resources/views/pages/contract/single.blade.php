@@ -84,6 +84,7 @@
                 </tr>
               </thead>
               <tbody>
+
               @foreach($payments = $company->payments()->paginate(10) as $payment)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
@@ -93,9 +94,9 @@
                     </a>
                   </td>
                   <td>
-                    <a class="text-success" href="{{ route('ministries.single', $payment->organization()['shortname'] ) }}">
-                      <u>{{ $payment->organization()['name'] }}</u>
-                    </a>
+                    <a class="text-success" href="{{ route('ministries.single', $payment->ministry()->shortname ) }}">
+                      <u>{{ $payment->ministry()->name }}</u>
+                    </a> 
                   </td>
                   <td>&#8358;{{ number_format($payment->amount, 2) }}</td>
                   <td title="{{ date('F j, Y', strtotime($payment->payment_date)) }}"> 
