@@ -6,6 +6,7 @@ use App\Activites;
 use Illuminate\Support\Facades\Gate;
 use App\Company;
 use App\CompanyType;
+use Illuminate\Support\Carbon;
 use App\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +18,15 @@ class CompanyController extends Controller
 
     public function index()
     {
-        $contractors = Company::paginate(12);
+        $carbon = new Carbon();
+
+        $monthStart = $carbon->startOfMonth()->format("Y-m-d");
+        $monthEnd = $carbon->endOfMonth()->format("Y-m-d");
+
+        $contractors = Company::addSelect(['total' => Payment::selectRaw('SUM(amount)')
+            ->whereColumn('beneficiary', 'contractors.name')
+            ->whereBetween('payment_date', [$monthStart, $monthEnd])
+        ])->orderBy('total', 'desc')->paginate(20);
 
         return view('pages.contract.index')->with(['contractors' => $contractors]);
     }

@@ -92,7 +92,7 @@
                         </a>
                     </div>
                     <h5>Total amount received</h5>
-                    <h5 class="text-success">&#8358;{{ number_format($contractor->payments->sum('amount'), 2) }}</h5>
+                    <h5 class="text-success">&#8358;{{ number_format($contractor->total, 2) }}</h5>
                     <h6 class="m-0 mb-0 text-sm-left text-black-50">
                       {{ 
                         $contractor->payments->pluck('payment_date')->transform(function($date){ 
@@ -115,7 +115,6 @@
 @endsection
 
 @section('js')
-<script src="{{ asset('js/contract_page.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/index.js') }}"></script>
 <script>
   $(".card-col").click(function() {
