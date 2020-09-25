@@ -14,7 +14,7 @@ class AddContractorTypeToContractorsTable extends Migration
     public function up()
     {
         Schema::table('contractors', function (Blueprint $table) {
-            $table->unsignedBigInteger('type')->nullable();
+            $table->unsignedBigInteger('type')->default(0);
             //setting to allow admin restrict voting on the contractor
             $table->integer('restrict_vote')->default(0);
             $table->foreign('type')->references('id')->on('contractor_types');
