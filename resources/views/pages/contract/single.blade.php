@@ -73,7 +73,7 @@
       <div class="card">
         <div class="card-body">
           <div class="table-responsive">
-            <table id="example" class="table table-borderless">
+            <table id="table-contractors" class="table table-striped">
               <thead>
                 <tr>
                   <td>SN</td>
@@ -87,8 +87,16 @@
               @foreach($payments = $company->payments()->paginate(10) as $payment)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
-                  <td>{{$payment->description}}</td>
-                  <td>{{$payment->organization()}}</td>
+                  <td>
+                    <a class="text-success" href="{{ route('expenses.single', $payment->slug) }}">
+                      <u>{{ $payment->description }}</u>
+                    </a>
+                  </td>
+                  <td>
+                    <a class="text-success" href="{{ route('ministries.single', $payment->organization()['shortname'] ) }}">
+                      <u>{{ $payment->organization()['name'] }}</u>
+                    </a>
+                  </td>
                   <td>&#8358;{{ number_format($payment->amount, 2) }}</td>
                   <td>{{$payment->payment_date}}</td>
                 </tr>

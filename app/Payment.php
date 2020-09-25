@@ -46,14 +46,9 @@ protected $guarded = ['id'];
      */
     public function organization(){
         $ministryCode = substr($this->payment_code, 0, 4); //ministry code is first 4 digits in a payment code
-        $ministry_check = Ministry::where('code', 'LIKE', "$ministryCode%")->get()->first();
+        $ministry = Ministry::where('code', 'LIKE', "$ministryCode%")->get()->first();
 
-        if($ministry_check){
-            $organization = $ministry_check['name'];
-        }else{
-            $organization = $this->organization;
-        }
-        return $organization; //return array keyed ['name' => '', 'shortname' => '']
+        return $ministry; //return array keyed ['name' => '', 'shortname' => '']
     }
 
     public function company(){
