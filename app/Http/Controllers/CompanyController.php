@@ -32,13 +32,11 @@ class CompanyController extends Controller
         $contractors = Company::addSelect(['total' => Payment::selectRaw('SUM(amount)')
             ->whereColumn('beneficiary', 'contractors.name')
             ->whereBetween('payment_date', [$monthStart, $monthEnd])
-        ])->orderBy('total', 'desc')->paginate(20);
-
-        $payments = Company::with(['payments' => function ($query) {
+        ])->orderBy('total', 'desc')->with(['payments' => function ($query) use ($monthStart, $monthEnd) {
             $query->whereBetween('payment_date', [$monthStart, $monthEnd]);
-        }])->get();
+        }])->paginate(10);
 
-        return view('pages.contract.index')->with(['contractors' => $contractors, 'payments' => $payments]);
+        return view('pages.contract.index')->with(['contractors' => $contractors]);
     }
 
     /**
