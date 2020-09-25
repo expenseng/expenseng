@@ -17,18 +17,9 @@ class CompanyController extends Controller
 
     public function index()
     {
-        $contractors = $this->getAllPayouts($query = null);
-        foreach ($contractors as $contractor) {
-           $yearlyTotal = $this->getContractorYearlyTotal($contractor->beneficiary);
-           $contractor['yearlyTotals'] = $yearlyTotal;
-        }
-        
-        return view('pages.contract.index')->with(['contractors' => $contractors]);
-    }
+        $contractors = Company::paginate(12);
 
-    public function privateIndividualEntities()
-    {
-        // $matched = CompanyType::where('individual' '>', '0')->get();
+        return view('pages.contract.index')->with(['contractors' => $contractors]);
     }
 
     public function searchContractors(Request $request){
@@ -47,8 +38,11 @@ class CompanyController extends Controller
 
 
     // show a detials of a given contractor, beneficiary or organization
-    public function show($com)
+    public function show(Company $company)
     {
+
+        return view('pages.contract.single')->with(['company' => $company]);
+
         $contractor =   str_replace('-', ' ', $com);
         $total_amount = 0;
         $company = Company::Where('name', 'LIKE', '%'.$contractor.'%')->orwhere('shortname', $contractor)->first();
