@@ -19,7 +19,7 @@ class CompanyController extends Controller
     public function index(Request $request)
     {
 
-        if (isset($request)) {
+        if ( $request->query('type') ) {
             
             switch ($request->query('type')) {
                 case 'private':
@@ -47,7 +47,7 @@ class CompanyController extends Controller
                 ->whereColumn('beneficiary', 'contractors.name')
             ])->where('type', $type)->orderBy('total', 'desc')->paginate(20);
         
-        }else{
+        } else {
             
             $latestDate = $this->getLatestPaymentDate();
 
@@ -62,7 +62,8 @@ class CompanyController extends Controller
             $contractors = Company::addSelect(['total' => Payment::selectRaw('SUM(amount)')
                 ->whereColumn('beneficiary', 'contractors.name')
                 ->whereBetween('payment_date', [$monthStart, $monthEnd])
-            ])->with(['payments' => function ($query) use ($monthStart, $monthEnd) {
+            ])->orderBy('total', 'desc')
+            ->with(['payments' => function ($query) use ($monthStart, $monthEnd) {
                 $query->whereBetween('payment_date', [$monthStart, $monthEnd]);
             }])->paginate(20);
         }

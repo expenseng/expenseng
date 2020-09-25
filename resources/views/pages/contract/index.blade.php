@@ -25,6 +25,7 @@
           Showing government and private entities
         </a>
         <div class="dropdown-menu" aria-labelledby="entities-shown">
+          <a class="dropdown-item" href="{{ url('/contractors') }}">Show all entities</a>
           <a class="dropdown-item" href="{{ url('/contractors?type=private') }}">Show private (individual) entities</a>
           <a class="dropdown-item" href="{{ url('/contractors?type=company') }}">Show private (company) entities</a>
           <a class="dropdown-item" href="{{ url('/contractors?type=govt-official') }}">Show public (govt. official) entities</a>
@@ -76,9 +77,9 @@
             <div class="col-md-4 col-lg-3 mb-3 card-col">
               <div class="card shadow">
                 <div class="card-body">
-                    <chart label=""
-                            v-bind:data="{{ $contractor->payments->map(function($item){ return array('amount' => number_format($item['amount'], 2),
-                                            'date' => date('Y', strtotime($item['payment_date'])) ); })->toJson() }}"
+                    <chart label="{{ $contractor->name }}"
+                            v-bind:data="{{ json_encode($contractor->payments->map(function($item){ return array('amount' => $item['amount'],
+                                            'year' => date('F j, Y', strtotime($item['payment_date'])) ); })->toArray()) }}"
                             element="{{ 'contractor-'.$contractor->id }}">
                               
                     </chart>
