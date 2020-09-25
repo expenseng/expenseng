@@ -17,9 +17,6 @@ class MinistryController extends Controller
 {
     public function getMinistries($ministries=null, $period='lastMth', $yr=null)
     {
-        // $ministries = Ministry::all();
-        // $time = date('Y');
-        // $currentYr = $yr ? $yr : date('Y');
         if($period == 'lastMth'){
             $lastPaymentDate = $this->lastPaymentDate();
             $monthNum = $this->lastCompleteMonth($lastPaymentDate);
@@ -36,8 +33,8 @@ class MinistryController extends Controller
             $code = $ministry->code;
             $payments = DB::table('payments')
                 ->where('payment_code', 'LIKE', "$code%");
-            if(!$yr){
-                $payments = $payments->whereYear('payment_date', '=', date('Y'));
+            if(!$yr && $period !== "allTime"){
+                $payments = $payments->whereYear('payment_date', '=', date('Y')); 
             }
             if($period == 'lastMth'){
                 $payments = $payments->whereMonth('payment_date', '=', "$monthNum");

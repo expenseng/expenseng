@@ -17,7 +17,7 @@
 
 
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-<title>Ministry of {{ $ministry->name }} - ExpenseNG</title>
+<title>Expenses of the {{ $ministry->name }} Ministry, Nigeria</title>
 @endpush
 
 @section('content')

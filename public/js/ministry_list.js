@@ -90,9 +90,7 @@ $(document).ready(function(){
     // let period = $('').hasClass('badge-success');
     $('.badge').removeClass('badge-success');
     $(this).addClass('badge-success');
-    console.log(period);
     period = $(this).attr('id');
-    console.log(period)
     $.ajax({
       url: "/ministries",
       method: "GET",
