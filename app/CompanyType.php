@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CompanyType extends Model
 {
-    protected $table = 'contractor_type';
+    protected $table = 'contractor_types';
 
     protected $guarded = [];
 

@@ -25,22 +25,22 @@
                     <span class="text-muted">Select one of options below which best describes this contractor:</span>
                     <br/>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" v-model="companyType" value="govtparastatal" class="custom-control-input" id="govtparastatal">
+                        <input type="radio" v-model="companyType" value="Government Parastatal" class="custom-control-input" id="govtparastatal">
                         <label class="custom-control-label" for="govtparastatal">Government Parastatal</label>
                     </div>
 
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" v-model="companyType" value="privatecompany" class="custom-control-input" id="privatecompany">
+                        <input type="radio" v-model="companyType" value="Private Contractor (Company)" class="custom-control-input" id="privatecompany">
                         <label class="custom-control-label" for="privatecompany">Private Contractor (Company)</label>
                     </div>
 
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" v-model="companyType" value="privatecontractor" class="custom-control-input" id="privatecontractor">
+                        <input type="radio" v-model="companyType" value="Private Contractor (Individual)" class="custom-control-input" id="privatecontractor">
                         <label class="custom-control-label" for="privatecontractor">Private Contractor (Individual)</label>
                     </div>
 
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" v-model="companyType" value="govtofficial" class="custom-control-input" id="govtofficial">
+                        <input type="radio" v-model="companyType" value="Government Official" class="custom-control-input" id="govtofficial">
                         <label class="custom-control-label" for="govtofficial">Government Official</label>
                     </div>
                 </div>

@@ -11,6 +11,10 @@ class Company extends Model
     use Searchable;
 
     public $fillable = ['name', 'shortname', 'industry', 'ceo', 'twitter'];
+
+    //table name is now contractors
+    protected $table = 'contractors';
+
     public function expense()
     {
         return $this->hasMany(Expense::class);
@@ -34,14 +38,6 @@ class Company extends Model
         return "https://twitter.com/" . substr($this->twitter, 1);
     }
 
-    public function contract($year)
-    {
-        $response = new stdClass();
-        $response->amount = 1232345;
-
-        return $response;
-    }
-
     public function people()
     {
         return $this->hasMany(People::class);
@@ -58,32 +54,29 @@ class Company extends Model
 
     public function payments()
     {
-        return $this->hasMany(Payment::class, 'beneficiary', 'name');
+        return $this->hasMany(Payment::class, 'beneficiary', 'name')->orderBy('payment_date', 'desc');
     }
 
     /**
      * Define relationship for a 
      * company type
      */
-    public function type()
+    public function contractorType()
     {
-        return $this->hasOne(CompanyType::class, 'contractor_id', 'id');
+        //type column is an integer 
+        return $this->hasOne(CompanyType::class, 'id', 'type');
     }
 
     public function isGovtEntity()
     {
-        if(!$this->type){
+
+        if (! $this->contractorType) {
             return false;
-        } 
+        }
+        
+        $data = $this->contractorType;
 
-        $data = $this->type->first();
+        return ($data->name == "Government Official") || ($data->name == "Government Parastatal");
 
-        $govt = $data->govt_official;
-        $govtOrg = $data->govt_organization;
-        $person = $data->individual;
-        $company = $data->company;
-
-        //if any of the govt labels have a higher vote than private labels
-        return $govt > max($person, $company) || $govtOrg > max($person, $company);    
     }
 }

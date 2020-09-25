@@ -6,6 +6,7 @@ use App\Activites;
 use Illuminate\Support\Facades\Gate;
 use App\Company;
 use App\CompanyType;
+use Illuminate\Support\Carbon;
 use App\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,20 +16,67 @@ use Illuminate\Support\Facades\Auth;
 class CompanyController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $contractors = $this->getAllPayouts($query = null);
-        foreach ($contractors as $contractor) {
-           $yearlyTotal = $this->getContractorYearlyTotal($contractor->beneficiary);
-           $contractor['yearlyTotals'] = $yearlyTotal;
-        }
+
+        if ( $request->query('type') ) {
+            
+            switch ($request->query('type')) {
+                case 'private':
+                    $type = 1;
+                    break;
+
+                case 'company':
+                    $type = 2;
+                    break;
+
+                case 'govt-parastatals':
+                    $type = 4;
+                    break;
+
+                case 'govt-official':
+                    $type = 3;
+                    break;
+
+                default:
+                    $type = null;
+                    break;
+            }
+            
+            $contractors = Company::addSelect(['total' => Payment::selectRaw('SUM(amount)')
+                ->whereColumn('beneficiary', 'contractors.name')
+            ])->where('type', $type)->orderBy('total', 'desc')->paginate(20);
         
+        } else {
+            
+            $latestDate = $this->getLatestPaymentDate();
+
+            $carbon = new Carbon($latestDate);
+    
+            $monthStart = $carbon->startOfMonth()->format("Y-m-d");
+            $monthEnd = $carbon->endOfMonth()->format("Y-m-d");
+
+            /**
+             * Sort by the highest paid contractor in the last month
+             */
+            $contractors = Company::addSelect(['total' => Payment::selectRaw('SUM(amount)')
+                ->whereColumn('beneficiary', 'contractors.name')
+                ->whereBetween('payment_date', [$monthStart, $monthEnd])
+            ])->orderBy('total', 'desc')
+            ->with(['payments' => function ($query) use ($monthStart, $monthEnd) {
+                $query->whereBetween('payment_date', [$monthStart, $monthEnd]);
+            }])->paginate(20);
+        }
+
         return view('pages.contract.index')->with(['contractors' => $contractors]);
     }
 
-    public function privateIndividualEntities()
+    /**
+     * Returns the last payment date 
+     */
+    public function getLatestPaymentDate()
     {
-        // $matched = CompanyType::where('individual' '>', '0')->get();
+        return Payment::latest()->limit(1)->get()[0]->payment_date;
     }
 
     public function searchContractors(Request $request){
@@ -47,31 +95,9 @@ class CompanyController extends Controller
 
 
     // show a detials of a given contractor, beneficiary or organization
-    public function show($com)
+    public function show(Company $company)
     {
-        $contractor =   str_replace('-', ' ', $com);
-        $total_amount = 0;
-        $company = Company::Where('name', 'LIKE', '%'.$contractor.'%')->orwhere('shortname', $contractor)->first();
-        if(isset($company)){
-                $contracts = $this->getContractorContracts($contractor);
-                $yearlyTotals = $this->getContractorYearlyTotal($contractor);
-                 foreach($contracts as $contract){
-                     $total_amount = $total_amount + $contract->amount;
-                }
-                return view('pages.contract.single')->with(['company' => $company, 'contracts' => $contracts, 'total_amount' => $total_amount, 'yearlyTotals' => $yearlyTotals]);
-
-        }elseif(count($this->getContractorContracts($contractor)) > 0 ){
-
-                $contracts = $this->getContractorContracts($contractor);
-                $company = $contracts[0];
-                foreach($contracts as $contract){
-                     $total_amount = $total_amount + $contract->amount;
-                }
-                return view('pages.contract.notfound')->with(['company' => $company, 'contracts' => $contracts,  'total_amount' => $total_amount ]);
-
-        }else{
-            return redirect('errors.404_error');
-        }
+        return view('pages.contract.single')->with(['company' => $company]);
     }
 
 
