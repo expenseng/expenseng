@@ -18,17 +18,31 @@ class CompanyController extends Controller
 
     public function index()
     {
-        $carbon = new Carbon();
+
+        $latestDate = $this->getLatestPaymentDate();
+
+        $carbon = new Carbon($latestDate);
 
         $monthStart = $carbon->startOfMonth()->format("Y-m-d");
         $monthEnd = $carbon->endOfMonth()->format("Y-m-d");
 
+        /**
+         * Sort by the highest paid contractor in the last month
+         */
         $contractors = Company::addSelect(['total' => Payment::selectRaw('SUM(amount)')
             ->whereColumn('beneficiary', 'contractors.name')
             ->whereBetween('payment_date', [$monthStart, $monthEnd])
         ])->orderBy('total', 'desc')->paginate(20);
 
         return view('pages.contract.index')->with(['contractors' => $contractors]);
+    }
+
+    /**
+     * Returns the last payment date 
+     */
+    public function getLatestPaymentDate()
+    {
+        return Payment::latest()->limit(1)->get()[0]->payment_date;
     }
 
     public function searchContractors(Request $request){
