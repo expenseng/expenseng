@@ -1,6 +1,8 @@
 <!-------------Footer starts here-------------->
 <footer class="my-footer ">
-    <div class="footer  m-auto" style="max-width: 1700px">
+    <div class="mx-lg-4">
+        <div class=" container-lg-fluid  container-xl px-0 px-lg-5  " style="max-width: 1600px" >
+    <div class="footer  m-auto">
         <div class="container">
             <div class="row d-flex justify-content-between">
                 <div class="col-md-3 footer-brand pt-2 d-flex flex-column">
@@ -79,6 +81,8 @@
                     <a href=""><span>&#169</span>2020EXPENSENG.com</a>
                 </div>
             </div>
+        </div>
+    </div>
         </div>
     </div>
 </footer>
