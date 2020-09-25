@@ -1,8 +1,9 @@
 <!-- Header -->
-<header class="site-header m-auto" id="header" style="max-width: 1700px">
-    <nav class="navbar navbar-expand-lg transparent-bg bg-transparent darkcolor static-nav ">
-        <div class="container-fluid bg-white">
-            <a class="navbar-brand pl-2 section-navbar-logo" href="{{route('home')}}">
+<header class="site-header m-auto p-0" id="header" style="max-width: 1650px">
+    <div class="mx-lg-4 px-lg-5">
+    <nav class="navbar navbar-expand-lg transparent-bg bg-transparent darkcolor static-nav px-0">
+        <div class="container-fluid px-0 bg-white">
+            <a class="navbar-brand section-navbar-logo " href="{{route('home')}}">
                 <img src="{{asset('images/Logo.svg')}}" alt="logo" class="logo-default">
                 <img src="{{asset('images/Logo.svg')}}" class="logo-scrolled">
             </a>
@@ -44,6 +45,7 @@
             </a>
         </div>
     </nav>
+    </div>
 
      <!-- side menu -->
     <div class="side-menu opacity-0 gradient-bg">
