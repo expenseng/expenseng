@@ -96,7 +96,7 @@
                     <h6 class="m-0 mb-0 text-sm-left text-black-50">
                       {{ 
                         $contractor->payments->pluck('payment_date')->transform(function($date){ 
-                          return date("Y", strtotime($date)); 
+                          return date("M, Y", strtotime($date)); 
                         })->unique()->implode(", ")
                       }}
                     </h6>
