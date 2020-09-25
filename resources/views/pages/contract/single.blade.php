@@ -98,7 +98,9 @@
                     </a>
                   </td>
                   <td>&#8358;{{ number_format($payment->amount, 2) }}</td>
-                  <td>{{$payment->payment_date}}</td>
+                  <td title="{{ date('F j, Y', strtotime($payment->payment_date)) }}"> 
+                    {{date('jS, M Y', strtotime($payment->payment_date))}}
+                  </td>
                 </tr>
               @endforeach
               </tbody>
