@@ -58,25 +58,16 @@
                         <a class="nav-link section-nav-link" href="{{ route('home') }}" target="_blank">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages1">
-                            Expense <i class="fas fa-chevron-down"></i>
-                        </a>
-                        <div id="sideNavPages1" class="collapse sideNavPages">
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a href="{{ route('expense.reports') }}" class="nav-link">Expenditure Reports</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('expense.ministry') }}" class="nav-link">Ministry Expense</a>
-                                </li>
-                            </ul>
-                        </div>
+                        <a href="{{ route('expense.ministry') }}" class="nav-link">Ministry Expense</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link section-nav-link" href="{{ route('ministries') }}">Ministries</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link section-nav-link" href="{{ route('contractors') }}">Contractors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link section-nav-link" href="{{ route('blogetc.index') }}">Blog</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages2">
@@ -89,9 +80,6 @@
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('contact') }}" class="nav-link">Contact Us</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">Government Twitter Handle</a>
                                 </li>
                             </ul>
                         </div>
