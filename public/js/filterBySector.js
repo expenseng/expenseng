@@ -161,6 +161,7 @@ $(document).ready(function() {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         $('.reset').on('click', function(e){
             const id = $(this).attr("data-id");
+            console.log(id)
             $('#expense_search').val('');
             sort = undefined;
             date = undefined;
@@ -179,15 +180,16 @@ $(document).ready(function() {
                 method: "GET",
                 success: function(data){
                     // console.log(data)
-                    let payload = data.split('<br/>');
+                    // let payload = data.split('<br/>');
                     const table = e.target.closest('#modal').nextElementSibling;
                     const minitable = document.querySelector('#mini-table');
                     const tableDate = table.closest('.main-table').querySelector('.said-date-caption');
-                    table.innerHTML = payload[0];
+                    console.log(data)
+                    table.innerHTML = data;
                     tableDate.innerHTML = `Showing All Expenses`;
                      id === 'apply-filter' ? tableOneIsModified = false  : tableTwoIsModified = false;
                      $('.ministries').val('all');
-                     minitable.innerHTML = payload[1];
+                    //  minitable.innerHTML = payload[1];
                 },
                 error: function(error){
                     console.log(error);
@@ -300,8 +302,8 @@ $(document).ready(function() {
             let page = $(this).attr('href').split('page=')[1]
             let table = e.target.closest('.table-data');
             let id = table.dataset.id
+            console.log('pagination', id)
             fetch_data(e, id, table, page, date, sort)
-
         })
 
         function fetch_data(e, id, table, page, date, sort){

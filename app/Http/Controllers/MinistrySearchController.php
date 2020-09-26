@@ -20,42 +20,50 @@ class MinistrySearchController extends Controller
 
     public function filterExpenses(Request $request)
     {
-
         $id = $request->get('id');
         $ministry = Ministry::find($id);
         $code = $ministry->code;
         $latestDate =  $this->latestDate($code);
-        $givenTime = null;
-        if ($request->has('date')) {
-            $givenTime = $request->get('date');
+        $records = '';
+        if ($request->has('records')) {
+            $records = $request->get('records');
         }
        
-        $day_pattern = '/(\d{4})-(\d{2})-(\d{2})/';
-        $mth_pattern = '/([A-Za-z]+)\s(\d{4})/';
-        $yr_pattern = '/\d{4}/';
+        if($records !== 'all'){
+            $givenTime = null;
+            if ($request->has('date')) {
+                $givenTime = $request->get('date');
+            }
+        
+            $day_pattern = '/(\d{4})-(\d{2})-(\d{2})/';
+            $mth_pattern = '/([A-Za-z]+)\s(\d{4})/';
+            $yr_pattern = '/\d{4}/';
 
-        if (preg_match($mth_pattern, $givenTime, $match)) {
-            $m = date_parse($match[1]);
-            $month = $m['month'];
-            $year = $match[2];
-            $payments = DB::table('payments')
-                    ->where('payment_code', 'LIKE', "$code%")
-                    ->whereMonth('payment_date', '=', $month)
-                    ->whereYear('payment_date', '=', $year);
-        } elseif (preg_match($day_pattern, $givenTime, $match)) {
-            $payments = DB::table('payments')
-                    ->where('payment_code', 'LIKE', "$code%")
-                    ->where('payment_date', '=', "$givenTime");
-        } elseif (preg_match($yr_pattern, $givenTime, $match)) {
-            $payments = DB::table('payments')
-                    ->where('payment_code', 'LIKE', "$code%")
-                    ->whereYear('payment_date', '=', "$givenTime");
-        } else {
-            $payments = DB::table('payments')
-                    ->where('payment_code', 'LIKE', "$code%")
-                    ->whereDate('payment_date', $latestDate);
-        };
-
+            if (preg_match($mth_pattern, $givenTime, $match)) {
+                $m = date_parse($match[1]);
+                $month = $m['month'];
+                $year = $match[2];
+                $payments = DB::table('payments')
+                        ->where('payment_code', 'LIKE', "$code%")
+                        ->whereMonth('payment_date', '=', $month)
+                        ->whereYear('payment_date', '=', $year);
+            } elseif (preg_match($day_pattern, $givenTime, $match)) {
+                $payments = DB::table('payments')
+                        ->where('payment_code', 'LIKE', "$code%")
+                        ->where('payment_date', '=', "$givenTime");
+            } elseif (preg_match($yr_pattern, $givenTime, $match)) {
+                $payments = DB::table('payments')
+                        ->where('payment_code', 'LIKE', "$code%")
+                        ->whereYear('payment_date', '=', "$givenTime");
+            } else {
+                $payments = DB::table('payments')
+                        ->where('payment_code', 'LIKE', "$code%")
+                        ->whereDate('payment_date', $latestDate);
+            };
+        }else{
+                $payments = DB::table('payments');
+        }
+        
         if ($request->has('query')) {
             $query = $request->get('query');
             $payments = $payments->where('description', 'LIKE', "%$query%");
@@ -66,8 +74,12 @@ class MinistrySearchController extends Controller
         } else {
             $payments = $payments->orderby('payment_date', 'desc');
         }
+
+        if ($request->has('limit')) {
+            $limit = $request->get('limit');
+        }
         
-        $payments = $payments->paginate(10);
+        $payments = $payments->paginate($limit);
        
         return view('pages.ministry.pagination')
         ->with(['ministry'=> $ministry,
