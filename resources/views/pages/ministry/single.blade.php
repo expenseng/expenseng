@@ -159,23 +159,23 @@
                     <div id="tbl" class="container">
                         @include('pages.ministry.pagination')
                     </div>
-                    <div>
-                        <select data-id="apply-limit" style="width:170px;" class="limit form-control ml-2">
-                            <option value='10'>10</option>
-                            <option selected value='20'>20</option>
-                            <option value='50'>50</option>
-                            <option value='100'>100</option>
-                            <option value='all'>All</option>
-                        </select>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                              <input id="allTime" type="checkbox" class="form-check-input" value="allTime">Show All Expenses
+                    <div class="d-flex align-items-center justify-content-between px-3 mt-3">
+                        <div >
+                            <label class="checkbox mt-2">Show expenses for all years
+                                <input id="allTime" name="allTime" type="checkbox">
+                                <span class="checkmark mt-1"></span>
                             </label>
                         </div>
+                        <select data-id="apply-limit" style="width:100px;" class="limit form-control ml-2">
+                            <option value='5'>5</option>
+                            <option selected value='10'>10</option>
+                            <option value='20'>20</option>
+                            <option value='50'>50</option>
+                            <option value='100'>100</option>
+                            <option value='999999999'>All</option>
+                        </select>
                     </div>
                 </div>
-
-                
             </div>
         </div>
     
