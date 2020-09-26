@@ -2,6 +2,8 @@ $(document).ready(function() {
         
     const defaultTableDate = $('.said-date').text();
     let tableOneIsModified = false;
+    let limit = $('.limit').val();
+    let records = $('input[name="allTime"]:checked').length ? 'all' : '';
     
     ///////////////////////////////////////////////////////////////////////
     //                  Date-Picker                               //
@@ -135,13 +137,13 @@ $(document).ready(function() {
         function searchProject(){
             const id = $(this).attr("data-id");
             let query = $(this).val();
-           
-                if(date === undefined){
-                    date = 'undefined';
-                }
+
+            if(date === undefined){
+                date = 'undefined';
+            }
                 
             let _token = $('input[name="_token"]').val();
-            let data = {query, _token, id, date, sort}
+            let data = {query, _token, id, date, sort, limit, records}
             
             $.ajax({
                 url:  `/ministry/filterExpenses`,
@@ -162,8 +164,12 @@ $(document).ready(function() {
             const id = $(this).attr("data-id");
             date = "undefined";
             sort = undefined;
+            limit = 10;
+            $('.limit').val(limit)
+            document.querySelector('input[name="allTime"]').checked = false;
+            records = '';
             $('#expense_search').val('')
-            const data = {id, date, sort};
+            const data = {id, date, sort, records, limit};
             $(this).closest('.modal-content').find('.byDatePicker').val('')
             $(this).closest('.modal-content').find('.monthYearPicker').val('')
             $(this).closest('.modal-content').find('.yearPicker').val('')
@@ -264,6 +270,10 @@ $(document).ready(function() {
             }
             query = $('#expense_search').val();
             data.query = query;
+            data.limit = limit;
+            // console.log($(all))
+            document.querySelector('input[name="allTime"]').checked = false;
+            records = '';
             $.ajax({
                     url: "/ministry/filterExpenses",
                     method: "GET",
@@ -286,7 +296,7 @@ $(document).ready(function() {
         function fetch_data(page, date, sort){
             const id = $('#apply-filter').attr("data-id");
             let query = $('#expense_search').val()
-            const data = {id, date, sort, query};
+            const data = {id, date, sort, query, records, limit};
             $.ajax({
                 url: "/ministry/filterExpenses?page="+page,
                 method: "GET",
@@ -299,9 +309,50 @@ $(document).ready(function() {
                 }
             })
         }
+        
+        $('.limit').on('change', function(e){
+            limit = $(this).val();
+            const id = $('#apply-filter').attr("data-id");
+            let query = $('#expense_search').val()
+            if(date === undefined){
+                date = 'undefined';
+            }
+            const data = {id, date, sort, query, limit, records};
+            $.ajax({
+              url: "/ministry/filterExpenses",
+              method: "GET",
+              data: data,
+              success: function(data){
+                renderTable(data, date, query)
+              },
+              error: function(error){
+                console.log(error)
+              }
+            })
+          })
 
-        function renderTable(data, date,query){
-            console.log('query', query)
+          $('#allTime').on('change', function(e){
+            records = $('input[name="allTime"]:checked').length ? 'all' : '';
+            const id = $('#apply-filter').attr("data-id");
+            let query = $('#expense_search').val()
+            if(date === undefined){
+                date = 'undefined';
+            }
+            const data = {id, date, sort, query, limit, records};
+            $.ajax({
+              url: "/ministry/filterExpenses",
+              method: "GET",
+              data: data,
+              success: function(data){
+                renderTable(data, date, query, records)
+              },
+              error: function(error){
+                console.log(error)
+              }
+            })
+          })
+
+        function renderTable(data, date, query, records=''){
             $('#tbl').html(data)
             const tableDate = document.querySelector('.said-date-caption')
             let msg = '';
@@ -309,10 +360,12 @@ $(document).ready(function() {
                  msg = `containing <b>"${query}"</b>`
             }        
             if(date !== 'undefined'){
-                let reportDate = /\d{4}-\d{2}-\d{2}/.test(date)? formatDate(date) : date;
-                tableDate.innerHTML = `Showing expenses for <span class="said-date">${reportDate}</span> ${msg}`;
+                let checkDate = /\d{4}-\d{2}-\d{2}/.test(date)? formatDate(date) : date;
+                let reportDate = records ? '' : `for <span class="said-date">${checkDate}</span>`
+                tableDate.innerHTML = `Showing ${records} expenses ${reportDate} ${msg}`;
             }else{
-                tableDate.innerHTML = `Showing expenses for <span class="said-date">${defaultTableDate}</span> ${msg}`;
+                let reportDate = records ? '' : `for <span class="said-date">${defaultTableDate}</span>`
+                tableDate.innerHTML = `Showing ${records} expenses ${reportDate} ${msg}`;
             }
             tableOneIsModified = true;         
         }

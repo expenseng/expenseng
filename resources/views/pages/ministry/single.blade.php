@@ -159,10 +159,23 @@
                     <div id="tbl" class="container">
                         @include('pages.ministry.pagination')
                     </div>
-
+                    <div class="d-flex align-items-center justify-content-between px-3 mt-3">
+                        <div >
+                            <label class="checkbox mt-2">Show expenses for all years
+                                <input id="allTime" name="allTime" type="checkbox">
+                                <span class="checkmark mt-1"></span>
+                            </label>
+                        </div>
+                        <select data-id="apply-limit" style="width:100px;" class="limit form-control ml-2">
+                            <option value='5'>5</option>
+                            <option selected value='10'>10</option>
+                            <option value='20'>20</option>
+                            <option value='50'>50</option>
+                            <option value='100'>100</option>
+                            <option value='999999999'>All</option>
+                        </select>
+                    </div>
                 </div>
-
-                
             </div>
         </div>
     
@@ -241,27 +254,26 @@
                 </div>
                 <div class="modal-body">
                     <form  action=" {!! url('/feedback') !!}" method="POST">
-                {{csrf_field()}}
-                <div class="form-group">
-                <label for="firstName">Firstname</label>
-                <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Firstname">
-                </div>
-                <div class="form-group">
-                <label for="lastName">Lastname</label>
-                <input type="text" name="lastName" class="form-control" id="exampleInputPassword1" placeholder="Lastname">
-                </div>
+                        {{csrf_field()}}
+                        <div class="form-group">
+                        <label for="firstName">Firstname</label>
+                        <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Firstname">
+                        </div>
+                        <div class="form-group">
+                        <label for="lastName">Lastname</label>
+                        <input type="text" name="lastName" class="form-control" id="exampleInputPassword1" placeholder="Lastname">
+                        </div>
 
-                <div class="form-group">
-                <label for="ministry">Ministry</label>
-                <select id="inputState" readonly class="form-control" name="ministry_id">
-                    <option class="mb-1"  value="{{$ministry->id}}">{{$ministry->shortname}}</option>
-                </select>
-                </div>
-            <center>
-                <button type="submit" class="btn btn-success ">Submit</button>
-            </center>
-
-            </form>
+                        <div class="form-group">
+                        <label for="ministry">Ministry</label>
+                        <select id="inputState" readonly class="form-control" name="ministry_id">
+                            <option class="mb-1"  value="{{$ministry->id}}">{{$ministry->shortname}}</option>
+                        </select>
+                        </div>
+                        <center>
+                            <button type="submit" class="btn btn-success ">Submit</button>
+                        </center>
+                    </form>
                 </div>
                 </div>
             </div>

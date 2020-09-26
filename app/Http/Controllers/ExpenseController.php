@@ -26,11 +26,11 @@ class ExpenseController extends Controller
 
     public function ministry()
     {
-        $year = date('Y');
+        // $year = date('Y');
         $ministries = Ministry::select('*')
                     ->orderby('shortname', 'asc')
                     ->get();
-        $collection['summary'] = Payment::whereYear('payment_date', '=', $year)
+        $collection['summary'] = Payment::select('*')
                                 ->orderby('payment_date', 'desc')
                                 ->paginate(20)->onEachSide(1);
         return view('pages.expense.ministry')->with(['collection' => $collection,
@@ -105,8 +105,8 @@ class ExpenseController extends Controller
     public function filterExpensesAll(Request $request, $id, $date, $sort, $ministry = "all")
     {
         $latestDate = $this->latestDate();
-        $givenTime = ($id === 'apply-filter-exp')?  $latestDate : date('Y');
-
+        $givenTime = ($id === 'apply-filter-exp')?  $latestDate : 'all' ;
+       
         if ($date != 'undefined') {
             $givenTime = $date;
         }
@@ -126,9 +126,7 @@ class ExpenseController extends Controller
             $data = $data->where('payment_date', '=', "$givenTime");
         } elseif (preg_match($yr_pattern, $givenTime, $match)) {
             $data = $data->whereYear('payment_date', '=', "$givenTime");
-        } else {
-            $data = $data->where('payment_date', '=', "$givenTime");
-        };
+        }
 
         if ($request->has('query')) {
             $query = $request->get('query');
