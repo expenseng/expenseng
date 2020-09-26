@@ -6,6 +6,8 @@ use App\Search\SiteWideSearch;
 use App\TwitterStream;
 use Illuminate\Support\ServiceProvider;
 use Phirehose;
+use App\Jobs\PopulateContractors;
+use App\Jobs\UpdateContractorType;
 use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
             $twitter_access_token_secret = env('TWITTER_ACCESS_TOKEN_SECRET', null);
             return new TwitterStream($twitter_access_token, $twitter_access_token_secret, Phirehose::METHOD_FILTER);
         });
+
         if (app()->environment(['local', 'testing'])) {
             $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
             $this->app->register(TelescopeServiceProvider::class);
@@ -39,6 +42,15 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        SiteWideSearch::bootSearchable();
+        SiteWideSearch::bootSearchable();   
+
+        /**
+         * Dispatch the jobs to populate contractors tables
+         */
+        PopulateContractors::dispatch()->onQueue('contractors');
+
+        //dispatched by the scheduler every midnight
+        UpdateContractorType::dispatch()->onQueue('contractors');
+
     }
 }

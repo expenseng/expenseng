@@ -57,11 +57,7 @@
 
     <div class="nav content-navigator nav-tabs">
       <a href="#contract" class="active" data-toggle="tab" role="tab">
-        @if($company->isGovtEntity())
           Money Transfer
-        @else
-          Contract awards
-        @endif
       </a>
       <a href="#comments" data-toggle="tab" role="tab">Comments</a>
     </div>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContractorTypeTable extends Migration
+class CreateContractorVotesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateContractorTypeTable extends Migration
      */
     public function up()
     {
-        /**
-         * Table to store all the types of contractors we have
-         */
-        Schema::create('contractor_types', function (Blueprint $table) {
+        Schema::create('contractor_votes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            //here we can insert the names of 
+            //the contractor types which may increase in future
+            $table->string('type');
+            $table->integer('count');
+            $table->integer('contractor_id')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateContractorTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contractor_types');
+        Schema::dropIfExists('contractor_votes');
     }
 }

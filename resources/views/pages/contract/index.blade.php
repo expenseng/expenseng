@@ -25,9 +25,11 @@
           Showing government and private entities
         </a>
         <div class="dropdown-menu" aria-labelledby="entities-shown">
-          <a class="dropdown-item" href="#">Show private (individual) entities</a>
-          <a class="dropdown-item" href="#">Show private (company) entities</a>
-          <a class="dropdown-item" href="#">Show public (government) entities</a>
+          <a class="dropdown-item" href="{{ url('/contractors') }}">Show all entities</a>
+          <a class="dropdown-item" href="{{ url('/contractors?type=private') }}">Show private (individual) entities</a>
+          <a class="dropdown-item" href="{{ url('/contractors?type=company') }}">Show private (company) entities</a>
+          <a class="dropdown-item" href="{{ url('/contractors?type=govt-official') }}">Show public (govt. official) entities</a>
+          <a class="dropdown-item" href="{{ url('/contractors?type=govt-parastatals') }}">Show public (govt. parastatals) entities</a>
         </div>
       </div>
         <h1 class="ws-10 font-weight-bold">Companies and Organizations Contracted</h1>
@@ -70,45 +72,36 @@
     <div class="row" id="contractor-div">
 
         @foreach ($contractors as $contractor)
-          <a href="{{ route('contractors.single', ['company' => $contractor->slug() ]) }}">
+        
+          <a href="{{ route('contractors.single', ['company' => $contractor->shortname ]) }}">
             <div class="col-md-4 col-lg-3 mb-3 card-col">
               <div class="card shadow">
                 <div class="card-body">
-                    <chart label=""
-                            v-bind:data="[
-                                @if(count($contractor->yearlyTotals)  == 1)
-                                  {amount: {{round($contractor->total_amount / rand(1,12) )}}, year: {{$contractor->year->last()}} },
-                                  {amount: {{round($contractor->total_amount / rand(1,12) )}}, year: {{$contractor->year->last()}} },  
-                                  {amount:{{$contractor->total_amount}}, year:{{$contractor->year->first()}} },
-                                  {amount: {{round($contractor->total_amount / rand(1,12) )}}, year: {{$contractor->year->first()}} },
-                                  {amount: {{round($contractor->total_amount / rand(1,12) )}}, year: {{$contractor->year->first()}} }, 
-                                @endif() 
-
-                                @foreach($contractor->yearlyTotals as $yealyTotals)
-                                    {amount: {{round($yealyTotals->total_amount)}}, year: {{$yealyTotals->year}} },
-                                @endForeach
-                              ]"
-                            element="{{ 'id-'. \Str::slug($contractor->beneficiary, '-') . $loop->index }}">
+                    <chart label="{{ $contractor->name }}"
+                            v-bind:data="{{ json_encode($contractor->payments->map(function($item){ return array('amount' => $item['amount'],
+                                            'year' => date('F j, Y', strtotime($item['payment_date'])) ); })->toArray()) }}"
+                            element="{{ 'contractor-'.$contractor->id }}">
                               
                     </chart>
                     <h3>
                       
                     </h3>
-                    <div class="contractor mb-2">
-                        <!-- <img src="{{ asset('images/image 13.png') }}" height="30" class="mr-3" alt=""> -->
-
-                        <!-- <a href="{{ route('contractors.single', ['company' => str_replace(' ', '-', $contractor->beneficiary) ]) }}"> -->
-                        <!-- <a href="{{ route('contractors.single', ['company' => \Str::slug($contractor->beneficiary, '-') ]) }}"> -->
-                        
-                          <a href="{{ route('contractors.single', ['company' => \Str::slug($contractor->beneficiary, '-') ]) }}">
+                    <div class="contractor mb-2">                        
+                        <a href="{{ route('contractors.single', ['company' => $contractor->shortname]) }}">
                           <h5 class="card-title mb-0" class="contractor-beneficiary">
-                            {{ $contractor->beneficiary }}
+                            {{ $contractor->name }}
                           </h5>
                         </a>
                     </div>
                     <h5>Total amount received</h5>
-                    <h5 class="text-success">&#8358;{{ number_format($contractor->total_amount, 2) }}</h5>
-                    <h6 class="m-0 mb-0 text-sm-left text-black-50">{{ $contractor->year->implode(' , ') }}</h6>
+                    <h5 class="text-success">&#8358;{{ number_format($contractor->total, 2) }}</h5>
+                    <h6 class="m-0 mb-0 text-sm-left text-black-50">
+                      {{ 
+                        $contractor->payments->pluck('payment_date')->transform(function($date){ 
+                          return date("F, Y", strtotime($date)); 
+                        })->unique()->implode(", ")
+                      }}
+                    </h6>
                 </div>
               </div>
             </div>
@@ -124,7 +117,6 @@
 @endsection
 
 @section('js')
-<script src="{{ asset('js/contract_page.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/index.js') }}"></script>
 <script>
   $(".card-col").click(function() {

@@ -41,13 +41,13 @@
           <div class="col-sm-4">
             <p class="font-weight-bold">Total amount received</p>
             <p class="amount-rewarded">
-               &#8358;{{ number_format($total_amount, 2) }}
+               &#8358;{{ number_format($company->payments->sum('amount'), 2) }}
             </p>
           </div>
           <div class="col-sm-4">
             <p class="font-weight-bold">Total Number of Payouts</p>
             <p class="contract-number">
-              {{ $contracts->total() }}
+              {{ $company->payments->count() }}
             </p> 
           </div>
         </div>
@@ -73,7 +73,7 @@
       <div class="card">
         <div class="card-body">
           <div class="table-responsive">
-            <table id="example" class="table table-borderless">
+            <table id="table-contractors" class="table table-striped">
               <thead>
                 <tr>
                   <td>SN</td>
@@ -84,13 +84,24 @@
                 </tr>
               </thead>
               <tbody>
-              @foreach($contracts as $contract)
+
+              @foreach($payments = $company->payments()->paginate(10) as $payment)
                 <tr>
-                  <td>{{($contracts->currentPage() - 1) * $contracts->perPage() + $loop->iteration }}</td>
-                  <td>{{$contract->description}}</td>
-                  <td>{{$contract->organization()}}</td>
-                  <td>&#8358;{{ number_format($contract->amount, 2) }}</td>
-                  <td>{{$contract->payment_date}}</td>
+                  <td>{{ $loop->iteration }}</td>
+                  <td>
+                    <a class="text-success" href="{{ route('expenses.single', $payment->slug) }}">
+                      <u>{{ $payment->description }}</u>
+                    </a>
+                  </td>
+                  <td>
+                    <a class="text-success" href="{{ route('ministries.single', $payment->ministry()->shortname ) }}">
+                      <u>{{ $payment->ministry()->name }}</u>
+                    </a> 
+                  </td>
+                  <td>&#8358;{{ number_format($payment->amount, 2) }}</td>
+                  <td title="{{ date('F j, Y', strtotime($payment->payment_date)) }}"> 
+                    {{date('jS, M Y', strtotime($payment->payment_date))}}
+                  </td>
                 </tr>
               @endforeach
               </tbody>
@@ -108,7 +119,7 @@
     <div class="section-3 container mt-4">
       <div class="summary">
         <div class="table-responsive">
-          <table class="table table-bordered">
+          {{-- <table class="table table-bordered">
             <thead>
               <tr>
                 <th scope="col">YEAR</th>
@@ -126,7 +137,7 @@
                 
               </tr>
             </tbody>
-          </table>
+          </table> --}}
         </div>
         <!-- Pagination -->
         <div class="table-pagination .card-text mt-4">
