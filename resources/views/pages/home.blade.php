@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @push('css')
-<title>Government Expenses in Nigeria</title>
+<title>Open Government Expenses in Nigeria</title>
 <link rel="stylesheet" href="{{ asset('css/index.css')}}">
 
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">

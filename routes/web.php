@@ -42,7 +42,7 @@ Route::get('/contactEmail', 'PageController@contactEmail')->name('contactEmail')
 /**
  * Reports Endpoints
  */
-Route::get('/expense/report', 'ExpenseController@report')->name('expense.reports');
+// Route::get('/expense/report', 'ExpenseController@report')->name('expense.reports');
 Route::post('/subscribe', 'SubscriptionController@store')->name('subscribe');
 
 Route::get('/expenses/{slug}', 'ExpenseController@show')->name('expenses.single');
