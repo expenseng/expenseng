@@ -281,9 +281,9 @@
         </div>
 
         <!--3-->
-        {{-- <div id="comments" class="tab-pane fade">
+        <div id="comments" class="tab-pane fade">
             @include('partials.comments')
-        </div> --}}
+        </div>
     </div>
 </div>
 
