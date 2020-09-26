@@ -26,7 +26,9 @@
 @section('banner')
 <!-- banner -->
 <!-- banner -->
-<div class="background m-auto" style="max-width: 1700px">
+<div class="mx-lg-4">
+    <div class="container-lg-fluid container-xl px-0 px-lg-5 " style="max-width: 1600px" >
+<div class="background ">
   <div class="banner">
     <div class="carets" id="caret">
       <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left">
@@ -63,22 +65,31 @@
     </button>
   </div>
 </div>
+    </div>
+</div>
 @endsection
 @section('content')
+
 <section id="main" class="">
 <!-- Ministry section -->
+    <div class="mx-lg-4">
+        <div class="container-lg-fluid container-xl px-0 px-lg-5 " style="max-width: 1600px" >
    <div>
        <div class="m-auto" style="max-width: 1700px">
            <p class="label mb-3 specific">Ministry Expenditures</p>
        </div>
-    <div class="ministry container mt-4">
+    <div class="ministry mt-4">
         <div class="ministry-top">
            <a href="{{ route('ministries') }}" class="profile" target="_blank">View all profiles</a>
         </div>
         <ministry-budgets></ministry-budgets>
     </div>
    </div>
+        </div>
+    </div>
    <!-- Explore section -->
+    <div class="mx-lg-4">
+        <div class="container-lg-fluid container-xl px-0 px-lg-5 " style="max-width: 1600px" >
    <div class="explore  m-auto" style="max-width: 1700px">
      <div class="container">
       <p>A big-picture view of the daily spending <br> of the federal government</p>
@@ -86,6 +97,7 @@
       <a href="{{route('expense.reports')}}" target="_blank"><button>Explore</button></a>
      </div>
    </div>
+
 
 
    <!-- Company section -->
@@ -136,9 +148,13 @@
         <a href="{{ route('contractors') }}" class="profile">View all Contracts</a>
        </div>
   </div>
-
+        </div>
+    </div>
 </div>
+
    <!-- conversation section -->
+    <div class="mx-lg-4">
+        <div class="container-lg-fluid container-xl px-0 px-lg-5 " style="max-width: 1600px" >
    <div class="convo-background  m-auto" style="max-width: 1700px">
       <div class="convo container d-flex  justify-content-between mb-3">
             <div class="tweet col-md-5 col-lg-5 d-flex align-items-center justify-content-start">
@@ -159,7 +175,9 @@
     <div class="fixed-bottom py-4 px-1">
         <a  class="rounded-circle" id="open" data-toggle="modal" data-target="#exampleModaltweets">
             <i class="fa fa-twitter bg-white text-success rounded-circle p-3" ></i>
-        </ a>
+        </a>
+    </div>
+        </div>
     </div>
 </section>
 
