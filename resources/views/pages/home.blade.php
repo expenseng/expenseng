@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @push('css')
-<title>Government Expenses in Nigeria</title>
+<title>Open Government Expenses in Nigeria</title>
 <link rel="stylesheet" href="{{ asset('css/index.css')}}">
 
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -94,7 +94,7 @@
      <div class="container">
       <p>A big-picture view of the daily spending <br> of the federal government</p>
       <p>Use our explorer to view how government spends our money daily</p>
-      <a href="{{route('expense.reports')}}" target="_blank"><button>Explore</button></a>
+      <a href="{{route('expense.ministry')}}" target="_blank"><button>Explore</button></a>
      </div>
    </div>
 

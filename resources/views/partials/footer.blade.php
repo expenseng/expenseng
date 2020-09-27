@@ -38,9 +38,9 @@
                     <div class="footer-second mr-4 mr-lg-5">
                         <h6>Reports</h6>
                         <ul>
-                            <li class="section-footer-links">
+                            {{-- <li class="section-footer-links">
                                 <a  href="{{ route('expense.reports') }}">Expenditure Report</a>
-                            </li>
+                            </li> --}}
                             <li class="section-footer-links">
                                 <a href="{{ route('expense.ministry') }}">Ministry Spending</a>
                             </li>
