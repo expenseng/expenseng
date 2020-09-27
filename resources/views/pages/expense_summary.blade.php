@@ -13,7 +13,7 @@
 
         {{-- -------------Images Section--------------- --}}
 
-        <div class="section-images-wrapper d-flex">
+        {{-- <div class="section-images-wrapper d-flex">
             <div class="section-images-grid grid-img-1 col-md-7 col-sm-12">
                 <img src="" alt="" class="img-fluid">
             </div>
@@ -23,13 +23,13 @@
                     <img src="{{ asset('img/summary2.svg') }}" alt="" class="img-fluid">
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         {{-- -------------Date, Project Name and Amount Section------------------ --}}
 
         <div class="section-date-project-amount">
             <div class="section-date mt-4">
-                <p>{{  date("dS, M Y", strtotime($payment->payment_date)) }}</p>
+                <p><strong>{{  date("dS, M Y", strtotime($payment->payment_date)) }}</strong></p>
             </div>
             <div class="section-project-amount d-flex justify-content-between flex-md-row">
                 <div class="col-9 pl-0">
@@ -78,7 +78,7 @@
                         {{ $payment->company }}
                     </p>
                 </div>
-                <div class="section-company-handle my-md-4">
+                <div class="section-company-handle mt-md-5 mb-md-4">
                     <p class="company-handle">
                         {{ $recipientType }}’s Twitter Handle
                     </p>
@@ -100,7 +100,7 @@
                         Ministry of {{ $payment->ministry }}
                     </p>
                 </div>
-                <div class="section-ministry-handle my-md-4">
+                <div class="section-ministry-handle  mt-md-5 mb-md-4">
                     <p class="ministry-handle">
                         Ministry’s Twitter Handle
                     </p>
@@ -118,7 +118,7 @@
                         {{ $payment->minister }}
                     </p>
                 </div>
-                <div class="section-minister-handle my-4">
+                <div class="section-minister-handle  mt-md-5 mb-md-4">
                     <p class="minister-handle">
                         Minister’s Twitter Handle
                     </p>
@@ -150,10 +150,4 @@
 
 @section('js')
     <script src="{{ asset('js/expense_summary.js') }}" type="text/javascript"></script>
-    {{-- <script>
-    $(".ministry-cards").click(function() {
-        window.location = $(this).find("a").attr("href");
-        return false;
-    });
-    </script> --}}
 @endsection
