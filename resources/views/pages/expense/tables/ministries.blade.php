@@ -41,7 +41,8 @@
                                 <td><a href="{{ route('contractors.single', ['company' => str_replace(' ', '-', $expense->beneficiary) ]) }}">{{$expense->beneficiary}}</a></td>
                                 <td>&#8358;{{ number_format($expense->amount) }}</td>
                                 <td>{{ date('jS M, Y', strtotime($expense->payment_date))}}</td>
-                                <td>{!! Share::page(route('ministries.single', ['ministry' => strtolower($expense->ministry()['shortname']) ]))->facebook() ->twitter() ->whatsapp(); !!}</td>
+                                {{-- <td>{!! Share::page(route('ministries.single', ['ministry' => strtolower($expense->ministry()['shortname']) ]))->facebook() ->twitter() ->whatsapp(); !!}</td> --}}
+                                <td>{!! Share::page( route('expenses.single', $expense->slug ))->facebook() ->twitter() ->whatsapp(); !!}</td>
                             </tr>
                         @endif
                     @endforeach
