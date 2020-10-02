@@ -5,15 +5,6 @@
 <link rel="stylesheet" href="{{asset('/css/ministry_list_table.css')}}">
 <link rel="stylesheet" href="/css/modal/style.css">
 <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174166304-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-174166304-1');
-</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
