@@ -18,6 +18,7 @@ class Kernel extends ConsoleKernel
         //
         Commands\ConnectToStreamingAPI::class,
         Commands\ParseSheet::class,
+        Commands\JoinMinistryToPayment::class,
     ];
 
     /**
@@ -43,6 +44,7 @@ class Kernel extends ConsoleKernel
          $schedule->command('queue:work --once --queue=ceoSearch')->everyFourHours();
          $schedule->command('queue:work  --queue=default --stop-when-empty')->daily();
          $schedule->command('make:slugs')->daily();
+         $schedule->command('ministry:payment')->daily()->at('04:00');
 
          /**
           * Update the contractor's type value based on votes

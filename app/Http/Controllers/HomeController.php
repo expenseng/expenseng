@@ -6,8 +6,10 @@ use App\Budget;
 use App\Payment;
 use App\Ministry;
 use App\Company;
+use App\Utils\Utils;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 
 class HomeController extends Controller
 {
@@ -19,28 +21,50 @@ class HomeController extends Controller
     public function index()
     {
         $collection['health'] = Budget::where('org_name', 'Health')->get();
-        $collection['education'] = Budget::where('org_name', 'Education')->get();
-        $collection['defence'] = Budget::where('org_name', 'Defence')->get();
-        $collection['housing'] = Budget::where('org_name', 'Housing and Community Amenities')->get();
-        $expenses = $this->latestExpenditure();
+        // $collection['education'] = Budget::where('org_name', 'Education')->get();
+        // $collection['defence'] = Budget::where('org_name', 'Defence')->get();
+        // $collection['housing'] = Budget::where('org_name', 'Housing and Community Amenities')->get();
+        // $expenses = $this->latestExpenditure();
+        $lastMonthExpenses = $this->lastMonthExpenses();
+        $expenses = $lastMonthExpenses[0];
+
+        $startingdate = $lastMonthExpenses[2];
+        $finaldate = $lastMonthExpenses[1];
+
+        $day[0] = date('d', strtotime($startingdate));
+        $day[1] = date('d', strtotime($finaldate));
+
+        $month[0] = date('m', strtotime($startingdate));
+        $month[1] = date('m', strtotime($finaldate));
+
+        $year[0] = date('Y', strtotime($startingdate));
+        $year[1] = date('Y', strtotime($finaldate));
+
+        $period = $day[0].'.'.$month[0];
+
+        if($year[0] != $year[1]) $period .= '.' . $year[0];
+
+        $period .= '-' . $day[1].'.'.$month[1].'.'.$year[1];
+
         $companies = $this->companyRecipients();
         $ministries = Ministry::select('*')
-                    ->orderby('shortname', 'asc')
-                    ->get();
+            ->orderby('shortname', 'asc')
+            ->get();
         return view('pages.home')->with([
-            'charts'=> $collection,
+            'charts' => $collection,
             'ministries' => $ministries,
             'expenses' => $expenses,
-            'companies' => $companies
-            ]);
+            'companies' => $companies,
+            'period' => $period
+        ]);
     }
 
     public function companyRecipients()
     {
         $companies = Company::with('payments')
-                    ->inRandomOrder()
-                    ->limit(3)
-                    ->get();
+            ->inRandomOrder()
+            ->limit(3)
+            ->get();
 
         foreach ($companies as $company) {
             $this->calcAmountReceived($company);
@@ -57,13 +81,13 @@ class HomeController extends Controller
                 'beneficiary, SUM(amount) as amount, YEAR(payment_date) as year'
             )
         )
-        ->where('beneficiary', $name)
-        ->whereYear('payment_date', '=', "$currentYr")
-        ->groupBy('beneficiary')
-        ->first();
+            ->where('beneficiary', $name)
+            ->whereYear('payment_date', '=', "$currentYr")
+            ->groupBy('beneficiary')
+            ->first();
 
         if ($beneficiary) {
-             $company->amount = $beneficiary->amount;
+            $company->amount = $beneficiary->amount;
             $company->year = $beneficiary->year;
         }
 
@@ -72,7 +96,7 @@ class HomeController extends Controller
 
     public function fiveYearTrend($code = "0215")
     {
-     // TODO change logic to months
+        // TODO change logic to months
         $payments = DB::table('payments')
             ->where('payment_code', 'LIKE', "$code%")
             ->orderby('payment_date', 'desc')
@@ -101,30 +125,30 @@ class HomeController extends Controller
             $yearByYear[$years[$x]] = $sum;
         }
         $aggregate = array_sum($yearByYear);
-        $average = $aggregate/count($yearByYear);
+        $average = $aggregate / count($yearByYear);
         return ['yearbyyear' => $yearByYear, 'aggregate' => $aggregate, 'average' => $average];
     }
 
     public function monthlyTrends($code = "0215")
     {
-        $lastMonth = ''. date('m') - 1;
+        $lastMonth = (string)(date('m') - 1);
         $withinMonth = [
-            date('Y').'-'.str_pad($lastMonth, 2, "0", STR_PAD_LEFT).'-'. '01',
-            date('Y').'-'.str_pad($lastMonth, 2, "0", STR_PAD_LEFT).'-'. '07',
-            date('Y').'-'.str_pad($lastMonth, 2, "0", STR_PAD_LEFT).'-'. '14',
-            date('Y').'-'.str_pad($lastMonth, 2, "0", STR_PAD_LEFT).'-'. '29',
-            date('Y').'-'.str_pad($lastMonth, 2, "0", STR_PAD_LEFT).'-'. '30',
+            date('Y') . '-' . str_pad($lastMonth, 2, "0", STR_PAD_LEFT) . '-' . '01',
+            date('Y') . '-' . str_pad($lastMonth, 2, "0", STR_PAD_LEFT) . '-' . '07',
+            date('Y') . '-' . str_pad($lastMonth, 2, "0", STR_PAD_LEFT) . '-' . '14',
+            date('Y') . '-' . str_pad($lastMonth, 2, "0", STR_PAD_LEFT) . '-' . '29',
+            date('Y') . '-' . str_pad($lastMonth, 2, "0", STR_PAD_LEFT) . '-' . '30',
         ];
         $monthly = [];
         for ($x = 0; $x < count($withinMonth) - 1; $x++) {
             $quarter = Payment::where('payment_date', '>=', $withinMonth[$x])
-                ->where('payment_date', '<=', $withinMonth[$x+1])
+                ->where('payment_date', '<=', $withinMonth[$x + 1])
                 ->where('payment_code', 'LIKE', "$code%")
                 ->sum('amount');
             $monthly[$withinMonth[$x]] = $quarter;
         }
         $aggregate = array_sum($monthly);
-        $average = $aggregate/count($monthly);
+        $average = $aggregate / count($monthly);
         return ['monthly' => $monthly, 'aggregate' => $aggregate, 'average' => $average];
     }
 
@@ -184,12 +208,12 @@ class HomeController extends Controller
         $ministry = Ministry::where('code', $code)->get();
         $currentYr = date("Y");
         $chartData = DB::table('payments')
-                    ->select(DB::raw('SUM(amount) as amount, Month(payment_date) as month'))
-                    ->where('payment_code', 'LIKE', "$code%")
-                    ->whereYear('payment_date', '=', "$currentYr")
-                    ->groupBy('month')
-                    ->orderBy('month', 'asc')
-                    ->get();
+            ->select(DB::raw('SUM(amount) as amount, Month(payment_date) as month'))
+            ->where('payment_code', 'LIKE', "$code%")
+            ->whereYear('payment_date', '=', "$currentYr")
+            ->groupBy('month')
+            ->orderBy('month', 'asc')
+            ->get();
         $annualSum = $chartData->sum('amount');
         foreach ($chartData as $data) {
             $data->amount = intval($data->amount);
@@ -210,12 +234,12 @@ class HomeController extends Controller
                 'beneficiary, SUM(amount) as amount, YEAR(payment_date) as year'
             )
         )
-        ->where('payment_code', 'LIKE', "$code%")
-        ->whereYear('payment_date', '=', "$currentYr")
-        ->groupBy(DB::raw('beneficiary'))
-        ->orderBy('amount', 'desc')
-        ->limit(10)
-        ->get();
+            ->where('payment_code', 'LIKE', "$code%")
+            ->whereYear('payment_date', '=', "$currentYr")
+            ->groupBy(DB::raw('beneficiary'))
+            ->orderBy('amount', 'desc')
+            ->limit(10)
+            ->get();
 
         $amounts = array();
         $companies = array();
@@ -238,12 +262,49 @@ class HomeController extends Controller
         return $chartThree;
     }
 
+    public function lastMonthExpenses()
+    {
+        $lastdate = Payment::orderBy('payment_date', 'desc')->take(1)->get()[0]->payment_date;
+
+        $date = Utils::GetDate('30', $lastdate);
+
+        // $latestexpenses = Payment::where('payment_date', '>=', $date)->orderBy('payment_date', 'desc')->take(8)->get();
+        $latestexpenses = Payment::where('payment_date', '>=', $date)->whereNotNull('ministry_code')->get()->groupBy('ministry_code');
+
+        $sums = $latestexpenses->mapWithKeys(function ($group, $key) {
+            return [$key => $group->sum('amount')];
+        });
+
+        $new_array = array();
+        foreach ($sums as $key => $value) {
+            $ministry = Ministry::where('code', $key)->first();
+            $ministry['total_spent'] = $value;
+            array_push($new_array, $ministry);
+        }
+
+        usort($new_array, function ($item1, $item2) {
+            return $item2['total_spent'] <=> $item1['total_spent'];
+        });
+
+        $expense_array = array();
+        for ($i=0; $i < 8; $i++) { 
+            $expense = $new_array[$i];
+
+            array_push($expense_array, $expense);
+        }
+
+        // dd($expense_array);
+        return [$expense_array, $lastdate, $date];
+    }
+
+
+
     public function latestExpenditure()
     {
         $latestExpenses = Payment::select('*')
-                        ->orderby('payment_date', 'desc')
-                        ->take(3)
-                        ->get();
+            ->orderby('payment_date', 'desc')
+            ->take(3)
+            ->get();
         return $latestExpenses;
     }
 

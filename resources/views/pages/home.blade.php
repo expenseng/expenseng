@@ -17,159 +17,61 @@
 @section('banner')
 <!-- banner -->
 <!-- banner -->
-<div class="mx-lg-4">
-    <div class="container-lg-fluid container-xl px-0 px-lg-5 " style="max-width: 1600px" >
-<div class="background ">
-  <div class="banner">
-    <div class="carets" id="caret">
-      <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left">
-      <img src="{{asset('images/angle-right.svg')}}" alt="" class="arrow-right">
-    </div>
-    <div class="target">
-      <div class="summary col-md-7 col-sm-9">
+<!-- <div class="mx-lg-4"> -->
+<div class="container-lg-fluid container-xl px-0" style="max-width: 1600px">
+  <div class="background ">
+    <div class="banner">
+      <div class="carets" id="caret">
+        <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left">
+        <img src="{{asset('images/angle-right.svg')}}" alt="" class="arrow-right">
+      </div>
+      <div class="target">
+        <div class="summary text-center" style="width: 100%;">
           <h4 class="slightly-bold"> In 2019,<br> the government spent </h4>
           <h4 class="bolding"> &#8358;8.92 trillion.</h4>
           <div class="para">
-            <p>ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities across Nigeria.
+            <p style="font-weight: 600;">ExpenseNG tracks federal spending to ensure taxpayers can see how their money is being used in communities <br> across Nigeria.
               Learn more on how this money was spent with tools to help you navigate spending from top to bottom.</p>
           </div>
-      </div>
-      <div class="gallery p-3 slick"  data-flickity='{ "freeScroll": true }'>
-      @foreach ($expenses as $expense)
-        <div class="card1 carousel-cell card">
-             <p class="tag">New</p>
-          <div class="project">
-            <p class="slightly-bold">{{ $expense->description }}</p>
-              <div class="d-flex justify-content-between mt-2 align-items-center">
-                  <p class="slightly-bold">AMOUNT: </p>
-                  <p id="cost">₦{{ number_format($expense->amount, 2) }}</p>
-              </div>
-          </div>
         </div>
-      @endforeach
       </div>
+
+
+      <button class="btn scroll-down">
+        <a href="#expenses"></a>
+      </button>
     </div>
-
-
-    <button class="btn scroll-down" >
-      <a href="#expenses"></a>
-    </button>
   </div>
 </div>
-    </div>
-</div>
+<!-- </div> -->
 @endsection
 @section('content')
 
 <section id="main" class="">
-<!-- Ministry section -->
-    <div class="mx-lg-4">
-        <div class="container-lg-fluid container-xl px-0 px-lg-5 " style="max-width: 1600px" >
-   <div>
-       <div class="m-auto" style="max-width: 1700px">
-           <p class="label mb-3 specific">Ministry Expenditures</p>
-       </div>
-    <div class="ministry mt-4">
-        <div class="ministry-top">
-           <a href="{{ route('ministries') }}" class="profile" target="_blank">View all profiles</a>
+  <!-- Ministry section -->
+  <div class="mx-lg-4 px-lg-5 my-lg-4">
+    <div class="container-lg-fluid container-xl px-0 px-lg-5 " style="max-width: 1600px">
+      <div>
+        <div class="m-auto" style="max-width: 1700px">
+          <p class="mb-3 specific" style="color:#353A45; font-size:25px; font-weight:bold; text-align:center">Spent in the last reported 30 days</p>
         </div>
-        <ministry-budgets></ministry-budgets>
-    </div>
-   </div>
-        </div>
-    </div>
-   <!-- Explore section -->
-    <div class="mx-lg-4">
-        <div class="container-lg-fluid container-xl px-0 px-lg-5 " style="max-width: 1600px" >
-   <div class="explore  m-auto" style="max-width: 1700px">
-     <div class="container">
-      <p>A big-picture view of the daily spending <br> of the federal government</p>
-      <p>Use our explorer to view how government spends our money daily</p>
-      <a href="{{route('expense.ministry')}}" target="_blank"><button>Explore</button></a>
-     </div>
-   </div>
-
-
-
-   <!-- Company section -->
-    <div class="m-auto" style="max-width: 1700px">
-        <p class="label mt-3 mb-3 " id="compu">Companies that received money</p>
-    </div>
-   <div class="companies container d-flex justify-content-between">
-     @foreach ($companies as $company)
-    <div class="comp-card comp-card-1">
-        <div class="awarded">
-          <div class="graph-cont">
-              {{-- <div id="chart{{$company -> id + 3}}"></div>$loop->index --}}
-              <div id="chart{{$loop->index + 4}}"></div>
-          </div>
-          <div class="ml-1 mr-2">
-             <p class="exp-card1">Total amount Received</p>
-             <p class="exp-card2">₦{{ number_format($company->amount, 2) }}</p>
-             <p class="exp-card3 text-muted">{{$company->year}}</p>
-          </div>
-        </div>
-      <div class="ml-3 ">
-        <div class="d-flex align-items-center mb-3">
-          <img src="{{asset('/images/berger.jpg')}}" alt="">
-          <p class="mt-3"><a href="/contractors/{{$company->shortname}}">{{$company->name}}</a></p>
-        </div>
-        <div class="profile">
-          <p>Total number of payouts</p>
-          <p>{{count($company->payments)}}</p>
-          <p class="text-muted">{{$company->year}}</p>
-        </div>
-        <div class="profile my-4">
-          <p>Name of CEO</p>
-          <p>{{$company->ceo}}</p>
-
-        </div>
-        <div class="profile">
-          <p>Company twitter handle</p>
-          @if($company->twitter)
-          <a target="_blank" href = "https://twitter.com/{{$company->twitter}}" id="handle">{{$company->twitter}}</a>
-          @else
-          <p>N/A</p>
-          @endif
-        </div>
-      </div>
-    </div>
-      @endforeach
-      <div class="vll m-md-auto mx-sm-auto mt-sm-4">
-        <a href="{{ route('contractors') }}" class="profile">View all Contracts</a>
-       </div>
-  </div>
-        </div>
-    </div>
-</div>
-
-   <!-- conversation section -->
-    <div class="mx-lg-4">
-        <div class="container-lg-fluid container-xl px-0 px-lg-5 " style="max-width: 1600px" >
-   <div class="convo-background  m-auto" style="max-width: 1700px">
-      <div class="convo container d-flex  justify-content-between mb-3">
-            <div class="tweet col-md-5 col-lg-5 d-flex align-items-center justify-content-start">
-               <div class="twt-handle">
-                <a href="https://twitter.com/expenseng" target="_blank">@expenseNG</a>
-               </div>
+        <div class="row">
+          @foreach($expenses as $expense)
+          <div class="card col-lg-3 col-md-4 col-sm-6">
+            <img class="card-img-top" src="{{asset('img/map.svg')}}" alt="map">
+            <img class="" src="{{asset('img/coat.svg')}}" alt="Nigeria Coat of Arms" style="margin-top: -120px;">
+            <div class="card-body" style="padding-top: 0px;">
+              <h4 style="text-align: center;font-weight: 500;color: #1F2430;">{{$expense->shortname}}</h4>
+              <h6 class="mt-4 text-center" style="font-weight: 500;">SPENT</h6>
+              <p class="card-text text-center" style="color: #33A97E; margin-bottom: 5px">₦{{number_format($expense->total_spent)}}</p>
+              <p class="card-text text-center" style="color: #1F2430; font-size:12px; font-weight:300">Spent:{{$period}}</p>
             </div>
-           <div class="query col-md-7 col-xl-5 col-sm-12">
-                <p>Join the conversation</p>
-                <p>We want to know how we can serve you better.
-                Drop by our community page to ask questions,
-                propose new features, sign up for testing, and join the conversation about federal spending data.</p>
-                <p>Want to receive update in your inbox?</p>
-                @include('partials.modals.home-subscribe')
           </div>
-      </div>
-  </div>
-    <div class="fixed-bottom py-4 px-1">
-        <a  class="rounded-circle" id="open" data-toggle="modal" data-target="#exampleModaltweets">
-            <i class="fa fa-twitter bg-white text-success rounded-circle p-3" ></i>
-        </a>
-    </div>
+          @endforeach
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
 
@@ -187,10 +89,9 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous">
 </script>
 <script>
-    jQuery(document).ready(function(){
+  jQuery(document).ready(function() {
 
 
-    }
-    );
+  });
 </script>
 @endsection

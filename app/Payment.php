@@ -73,4 +73,6 @@ protected $guarded = ['id'];
     {
         return $this->morphMany('App\Files', 'owner');
     }
+
+    // public function
 }
