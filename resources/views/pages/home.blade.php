@@ -1,18 +1,17 @@
 @extends('layouts.master')
 @push('css')
-<title>Open Government Expenses in Nigeria</title>
-<link rel="stylesheet" href="{{ asset('css/index.css')}}">
+  <title>Open Government Expenses in Nigeria</title>
+  <link rel="stylesheet" href="{{ asset('css/index.css')}}">
 
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/modal/style.css">
-<!-- Flickity CSS -->
-<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-<!-- Flickity JavaScript -->
-<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/modal/style.css">
+  <!-- Flickity CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+  <!-- Flickity JavaScript -->
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 @endpush
 @section('banner')
 <!-- banner -->
@@ -45,6 +44,7 @@
 </div>
 <!-- </div> -->
 @endsection
+
 @section('content')
 
 <section id="main" class="">
@@ -73,11 +73,6 @@
     </div>
   </div>
 </section>
-
-
-
-
-
 
 @endsection
 @section('js')

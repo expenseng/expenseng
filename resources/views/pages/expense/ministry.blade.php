@@ -9,9 +9,6 @@
 	<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
 	<script src="https://kit.fontawesome.com/8f691340fb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="{{ asset('js/share.js') }}"></script>
-
 @endpush
 
 @section('content')
@@ -164,6 +161,7 @@
 	<script src="{{ asset('js/filterBySector.js') }}"></script>
 	<script src="{{ asset('js/ExpenditureScript.js') }}"></script>
 	<script src="{{ asset('js/index.js') }}"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+	<script src="{{ asset('js/share.js') }}"></script>
+	{{-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> --}}
 @endsection
 

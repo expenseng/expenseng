@@ -65,13 +65,19 @@ class MinistryController extends Controller
     public function lastCompleteMonth($lastPaymentDate)
     {
         $lastDayOfMonth = date("yy-m-t", strtotime($lastPaymentDate));
+        
         $pattern = '/(\d{4})-(\d{2})-(\d{2})/';
+        
+        $prevMonth = 0;
+
         if (preg_match($pattern, $lastPaymentDate, $match)) {
             $currentMonth = $match[2];
             $m = intval($currentMonth) - 1;
             $prevMonth = "0".$m;
         }
+
         $month = $lastPaymentDate === $lastDayOfMonth ? $currentMonth : $prevMonth;
+        
         return $month;
     }
 
@@ -194,6 +200,7 @@ class MinistryController extends Controller
                         ->where('payment_code', 'LIKE', "$code%")
                         ->orderby('payment_date', 'desc')
                         ->first();
+                        
         $latestDate = $latestExpenses->payment_date;
         $cabinets = $ministry->cabinet;
         $payments = DB::table('payments')
