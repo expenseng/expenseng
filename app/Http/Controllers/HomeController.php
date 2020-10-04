@@ -107,7 +107,7 @@ class HomeController extends Controller
 
     public function monthlyTrends($code = "0215")
     {
-        $lastMonth = ''. date('m') - 1;
+        $lastMonth = '' . (date('m') - 1);
         $withinMonth = [
             date('Y').'-'.str_pad($lastMonth, 2, "0", STR_PAD_LEFT).'-'. '01',
             date('Y').'-'.str_pad($lastMonth, 2, "0", STR_PAD_LEFT).'-'. '07',
