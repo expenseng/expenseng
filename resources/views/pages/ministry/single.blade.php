@@ -1,14 +1,14 @@
 @extends('layouts.master')
 @push('css')
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
-<link rel="stylesheet" href="{{asset('/css/ministry_list_table.css')}}">
-<link rel="stylesheet" href="/css/modal/style.css">
-<link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
+    <link rel="stylesheet" href="{{asset('/css/ministry_list_table.css')}}">
+    <link rel="stylesheet" href="/css/modal/style.css">
+    <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
 
 
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-<title>Expenses of the {{ $ministry->name }} Ministry, Nigeria</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <title>Expenses of the {{ $ministry->name }} Ministry, Nigeria</title>
 @endpush
 
 @section('content')
@@ -29,7 +29,6 @@
     <div class="row stats">
         <div class="col">
             <p>Ministry Twitter Handle</p>
-
             @php
                 $ministryHandle = substr($ministry->twitter, 1)
             @endphp
@@ -47,7 +46,6 @@
             <small>{{date('Y')}}</small>
         </div>
     </div>
-
 </div>
 
 <div class="list">
@@ -61,7 +59,6 @@
     <hr>
     <!--Tab Body-->
     <div class="tab-content">
-
         <!--1-->
         <div id="expense" class="tab-pane fade show active">
             <div id="search-tools" class="container d-flex justify-content-end mt-4 pr-0">
@@ -75,14 +72,12 @@
                     <div class="container pb-3 pt-1 py-4">
                         <div class="row centerize">
                             <div class="col-9">
-                            <!-- Test -->
                                 <h4 class="said-date-caption" class="align-self-center">Showing expenses for <span class="said-date">{{  date("dS, M Y", strtotime($latestDate)) }}</span></h4>
                             </div>
-
                             <div class="col-3">
-
-                                <button type="button"  data-toggle="modal" data-target="#filterModal" class="btn btn-success filter"> Select Date <img
-                                        src="/img/vector__2_.png"></button>
+                                <button type="button"  data-toggle="modal" data-target="#filterModal" class="btn btn-success filter"> 
+                                    Select Date <img src="/img/vector__2_.png">
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -273,7 +268,7 @@
 
         <!--3-->
         <div id="comments" class="tab-pane fade">
-            @include('partials.comments')
+            @include('partials.comments') 
         </div>
     </div>
 </div>

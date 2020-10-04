@@ -51,90 +51,95 @@
     </div>
 
 <!-- Company section -->
-    <div class="m-auto" style="max-width: 1700px">
-        <p class="label mt-3 mb-3 " id="compu">Companies that received money</p>
-    </div>
-    <div class="companies container d-flex justify-content-between">
-        @foreach ($companies as $company)
-          <div class="comp-card comp-card-1">
-            <div class="awarded">
-              <div class="graph-cont">
-                <div id="chart{{$loop->index + 4}}"></div>
+  <div class="mx-lg-4">
+    <div class="container-lg-fluid container-xl px-0 px-lg-5 " style="max-width: 1600px">
+      <div class="m-auto" style="max-width: 1700px">
+          <p class="label mt-3 mb-3 " id="compu">Companies that received money</p>
+      </div>
+      <div class="companies container d-flex justify-content-between">
+          @foreach ($companies as $company)
+            <div class="comp-card comp-card-1">
+              <div class="awarded">
+                <div class="graph-cont">
+                  <div id="chart{{$loop->index + 4}}"></div>
+                </div>
+                <div class="ml-1 mr-2">
+                  <p class="exp-card1">Total amount Received</p>
+                  <p class="exp-card2">₦{{ number_format($company->amount, 2) }}</p>
+                  <p class="exp-card3 text-muted">{{$company->year}}</p>
+                </div>
               </div>
-              <div class="ml-1 mr-2">
-                <p class="exp-card1">Total amount Received</p>
-                <p class="exp-card2">₦{{ number_format($company->amount, 2) }}</p>
-                <p class="exp-card3 text-muted">{{$company->year}}</p>
+              <div class="ml-3 ">
+                <div class="d-flex align-items-center mb-3">
+                  <img src="{{asset('/images/berger.jpg')}}" alt="">
+                  <p class="mt-3"><a href="/contractors/{{$company->shortname}}">{{$company->name}}</a></p>
+                </div>
+
+                <div class="profile">
+                  <p>Total number of payouts</p>
+                  <p>{{count($company->payments)}}</p>
+                  <p class="text-muted">{{$company->year}}</p>
+                </div>
+
+                <div class="profile my-4">
+                  <p>Name of CEO</p>
+                  <p>{{$company->ceo}}</p>
+                </div>
+
+                <div class="profile">
+                  <p>Company twitter handle</p>
+                  @if($company->twitter)
+                  <a target="_blank" href = "https://twitter.com/{{$company->twitter}}" id="handle">{{$company->twitter}}</a>
+                  @else
+                  <p>N/A</p>
+                  @endif
+                </div>
               </div>
             </div>
-            <div class="ml-3 ">
-              <div class="d-flex align-items-center mb-3">
-                <img src="{{asset('/images/berger.jpg')}}" alt="">
-                <p class="mt-3"><a href="/contractors/{{$company->shortname}}">{{$company->name}}</a></p>
-              </div>
-
-              <div class="profile">
-                <p>Total number of payouts</p>
-                <p>{{count($company->payments)}}</p>
-                <p class="text-muted">{{$company->year}}</p>
-              </div>
-
-              <div class="profile my-4">
-                <p>Name of CEO</p>
-                <p>{{$company->ceo}}</p>
-              </div>
-
-              <div class="profile">
-                <p>Company twitter handle</p>
-                @if($company->twitter)
-                <a target="_blank" href = "https://twitter.com/{{$company->twitter}}" id="handle">{{$company->twitter}}</a>
-                @else
-                <p>N/A</p>
-                @endif
-              </div>
-            </div>
+          @endforeach
+          <div class="vll m-md-auto mx-sm-auto mt-sm-4">
+            <a href="{{ route('contractors') }}" class="profile">View all Contracts</a>
           </div>
-        @endforeach
-        <div class="vll m-md-auto mx-sm-auto mt-sm-4">
-          <a href="{{ route('contractors') }}" class="profile">View all Contracts</a>
         </div>
       </div>
     </div>
+  </div>
 
    <!-- conversation section -->
     <div class="mx-lg-4">
-      <div class="convo-background  m-auto" style="max-width: 1700px">
-        <div class="convo container d-flex  justify-content-between mb-3">
-          <div class="tweet col-md-5 col-lg-5 d-flex align-items-center justify-content-start">
-            <div class="twt-handle">
-              <a href="https://twitter.com/expenseng" target="_blank">@expenseNG</a>
+      <div class="container-lg-fluid container-xl px-0 px-lg-5 " style="max-width: 1600px">
+        <div class="convo-background  m-auto" style="max-width: 1700px">
+          <div class="convo container d-flex  justify-content-between mb-3">
+            <div class="tweet col-md-5 col-lg-5 d-flex align-items-center justify-content-start">
+              <div class="twt-handle">
+                <a href="https://twitter.com/expenseng" target="_blank">@expenseNG</a>
+              </div>
+            </div>
+            <div class="query col-md-7 col-xl-5 col-sm-12">
+              <p>Join the conversation</p>
+              <p>We want to know how we can serve you better.
+              Drop by our community page to ask questions,
+              propose new features, sign up for testing, and join the conversation about federal spending data.</p>
+              <p>Want to receive update in your inbox?</p>
+              @include('partials.modals.home-subscribe')
             </div>
           </div>
-          <div class="query col-md-7 col-xl-5 col-sm-12">
-            <p>Join the conversation</p>
-            <p>We want to know how we can serve you better.
-            Drop by our community page to ask questions,
-            propose new features, sign up for testing, and join the conversation about federal spending data.</p>
-            <p>Want to receive update in your inbox?</p>
-            @include('partials.modals.home-subscribe')
-          </div>
         </div>
-      </div>
-      <div class="fixed-bottom py-4 px-1">
-        <a class="rounded-circle" id="open" data-toggle="modal" data-target="#exampleModaltweets">
-          <i class="fa fa-twitter bg-white text-success rounded-circle p-3" ></i>
-        </a>
+        <div class="fixed-bottom py-4 px-1">
+          <a class="rounded-circle" id="open" data-toggle="modal" data-target="#exampleModaltweets">
+            <i class="fa fa-twitter bg-white text-success rounded-circle p-3" ></i>
+          </a>
+        </div>
       </div>
     </div>
 </section>
 
 @endsection
 @section('js')
-  <script src="{{asset('js/index.js')}}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
   <script src="{{asset('js/chart.js')}}"></script>
   <script src="{{asset('/js/subscription.js')}}"></script>
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous">
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 @endsection
