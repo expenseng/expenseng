@@ -1,7 +1,7 @@
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-outline-light toggle" id="open" data-toggle="modal" data-target="#exampleModalCenter">
     Subscribe
-  </button>
+</button>
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -25,7 +25,7 @@
                   <input type="email" name='email' class="form-control" id="email-text" required />
                 </div>
                 <input type="hidden" name="subscription_type" value="latest updates" required />
-              </form>
+            </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -44,11 +44,10 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div class="row">
-                            <div class="overflow-auto" style="max-height:300px; width: 100%">
-                                <a class="twitter-timeline" data-theme="light" href="https://twitter.com/expenseng?ref_src=twsrc%5Etfw"  data-chrome="nofooter noheader noborders transparent">Tweets by expenseng</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                            </div>
-
-                    </div>
+                  <div class="overflow-auto" style="max-height:300px; width: 100%">
+                    <a class="twitter-timeline" data-theme="light" href="https://twitter.com/expenseng?ref_src=twsrc%5Etfw"  data-chrome="nofooter noheader noborders transparent">Tweets by expenseng</a> 
+                  </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
