@@ -45,11 +45,7 @@ class Kernel extends ConsoleKernel
          $schedule->command('queue:work  --queue=default --stop-when-empty')->daily();
          $schedule->command('make:slugs')->daily();
          $schedule->command('ministry:payment')->daily()->at('04:00');
-
-         /**
-          * Update the contractor's type value based on votes
-          */
-         $schedule->job(new UpdateContractorType)->daily();
+         $schedule->command('update:contractors')->daily()->at('04:00');
     }
 
 
