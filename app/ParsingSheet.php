@@ -263,6 +263,7 @@ class ParsingSheet
                         if (($check1 && $check2 && $check3 )) {
                             $check = Payment::where('payment_no', '=', $keys[0])->first();
                             if (empty($check)) {
+                                $ministry_code = substr($keys[1], 0, 4);
                                 Payment::create([
                                 'payment_no' =>  $keys[0],
                                 'payment_code' => $keys[1],
@@ -270,6 +271,7 @@ class ParsingSheet
                                 'beneficiary' => $keys[3],
                                 'amount' =>$keys[4],
                                 'payment_date'=> $date,
+                                'ministry_code' => $ministry_code,
                                 'slug' => $this->slugify(isset($keys[5]) ? $keys[5] : "null", $keys[0]),
                                     'description' => substr(isset($keys[5]) ? $keys[5] : "null", 0, 225)
                                 ]);
@@ -278,6 +280,7 @@ class ParsingSheet
                         if (($check1 && $check4 && $check5)) {
                             $check = Payment::where('payment_no', '=', $keys[0])->first();
                             if (empty($check)) {
+                                $ministry_code = substr($keys[2], 0, 4);
                                 Payment::create([
                                     'payment_no' =>  $keys[0],
                                     'payment_code' => $keys[2],
@@ -285,6 +288,7 @@ class ParsingSheet
                                     'beneficiary' => $keys[4],
                                     'amount' =>$keys[5],
                                     'payment_date'=> $date,
+                                    'ministry_code' => $ministry_code,
                                     'slug' => $this->slugify(isset($keys[6]) ? $keys[6] : "null", $keys[0]),
                                     'description' => isset($keys[6]) ? $keys[6] : "null"
                                 ]);
@@ -338,6 +342,8 @@ class ParsingSheet
             : (isset($response3[5]) ? $response3[5]   : "not stated");
         $code = isset($response2["payer code"])?$response2["payer code"] :$response3[1];
         $payment_no = isset($response2["payment no"])?$response2["payment no"] : $response3[0];
+        
+        $ministry_code = substr($code, 0, 4);
         $create = Payment::create(array(
             'payment_no' => $payment_no,
             'payment_code' => $code,
@@ -346,6 +352,7 @@ class ParsingSheet
             'amount' => isset($response2["amount"])? $response2["amount"] :$response3[4],
             'payment_date'=> $date,
             'slug' => $this->slugify($description, $payment_no),
+            'ministry_code' => $ministry_code,
             'description' => $description
         ));
         if (empty($check_company)) {
@@ -373,6 +380,7 @@ class ParsingSheet
             :(isset($response3[6]) ? $response3[6]   : "not stated");
         $code = isset($response2["payer code"])?$response2["payer code"] :$response3[2];
         $payment_no = isset($response2["payment no"])?$response2["payment no"] : $response3[0];
+        $ministry_code = substr($code, 0, 4);
         $create = Payment::create([
             'payment_no' => $payment_no,
             'payment_code' => $code,
@@ -380,6 +388,7 @@ class ParsingSheet
             'beneficiary' => isset($response2["beneficiary name"])? $response2["beneficiary name"] :$response3[4],
             'amount' => isset($response2["amount"])? $response2["amount"] :$response3[5],
             'payment_date'=> $date,
+            'ministry_code' => $ministry_code,
             'slug' => $this->slugify($description, $payment_no),
             'description' => $description
         ]);
@@ -502,6 +511,7 @@ class ParsingSheet
                 if (($check1 && $check2 && $check3 )) {
                     $check = Payment::where('payment_no', '=', $keys[0])->first();
                     if (empty($check)) {
+                        $ministry_code = substr($keys[1], 0, 4);
                         Payment::create([
                             'payment_no' =>  $keys[0],
                             'payment_code' => $keys[1],
@@ -509,6 +519,7 @@ class ParsingSheet
                             'beneficiary' => $keys[3],
                             'amount' =>$keys[4],
                             'payment_date'=> $date,
+                            'ministry_code' => $ministry_code,
                             'slug' => $this->slugify(isset($keys[5]) ? $keys[5] : "null", $keys[1]),
                             'description' => substr(isset($keys[5]) ? $keys[5] : "null", 0, 225)
                         ]);
@@ -517,6 +528,7 @@ class ParsingSheet
                 if (($check1 && $check4 && $check5)) {
                     $check = Payment::where('payment_no', '=', $keys[0])->first();
                     if (empty($check)) {
+                        $ministry_code = substr($keys[2], 0, 4);
                         Payment::create([
                             'payment_no' =>  $keys[0],
                             'payment_code' => $keys[2],
@@ -524,6 +536,7 @@ class ParsingSheet
                             'beneficiary' => $keys[4],
                             'amount' =>$keys[5],
                             'payment_date'=> $date,
+                            'ministry_code' => $ministry_code,
                             'slug' => $this->slugify(isset($keys[6]) ? $keys[6] : "null", $keys[2]),
                             'description' => isset($keys[6]) ? $keys[6] : "null"
                         ]);
