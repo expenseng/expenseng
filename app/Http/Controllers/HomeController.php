@@ -20,7 +20,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $collection['health'] = Budget::where('org_name', 'Health')->get();
+        // $collection['health'] = Budget::where('org_name', 'Health')->get();
         // $collection['education'] = Budget::where('org_name', 'Education')->get();
         // $collection['defence'] = Budget::where('org_name', 'Defence')->get();
         // $collection['housing'] = Budget::where('org_name', 'Housing and Community Amenities')->get();
@@ -40,19 +40,20 @@ class HomeController extends Controller
         $year[0] = date('Y', strtotime($startingdate));
         $year[1] = date('Y', strtotime($finaldate));
 
-        $period = $day[0].'.'.$month[0];
+        $period = $day[0] . '.' . $month[0];
 
-        if($year[0] != $year[1]) $period .= '.' . $year[0];
+        if ($year[0] != $year[1]) $period .= '.' . $year[0];
 
-        $period .= '-' . $day[1].'.'.$month[1].'.'.$year[1];
+        $period .= '-' . $day[1] . '.' . $month[1] . '.' . $year[1];
 
-        $companies = $this->companyRecipients();
-        $ministries = Ministry::select('*')
-            ->orderby('shortname', 'asc')
-            ->get();
+        $companies = $lastMonthExpenses[3];
+        // dd($companies);
+        // $ministries = Ministry::select('*')
+        //     ->orderby('shortname', 'asc')
+        //     ->get();
         return view('pages.home')->with([
-            'charts' => $collection,
-            'ministries' => $ministries,
+            // 'charts' => $collection,
+            // 'ministries' => $ministries,
             'expenses' => $expenses,
             'companies' => $companies,
             'period' => $period
@@ -275,6 +276,8 @@ class HomeController extends Controller
             return [$key => $group->sum('amount')];
         });
 
+        $companies = $this->topCompaniesPaidInTheLastMonth($latestexpenses);
+
         $new_array = array();
         foreach ($sums as $key => $value) {
             $ministry = Ministry::where('code', $key)->first();
@@ -289,17 +292,51 @@ class HomeController extends Controller
         });
 
         $expense_array = array();
-        for ($i=0; $i < 8; $i++) { 
+        $companies_array = array();
+        for ($i = 0; $i < 8; $i++) {
             $expense = $new_array[$i];
-
+            $company = $companies[$i];
             array_push($expense_array, $expense);
+            array_push($companies_array, $company);
         }
 
-        // dd($expense_array);
-        return [$expense_array, $lastdate, $date];
+        // dd($expense_array, $companies_array);
+        return [$expense_array, $lastdate, $date, $companies_array];
     }
 
 
+    public function topCompaniesPaidInTheLastMonth($latestexpenses){
+        $companies = array();
+        foreach ($latestexpenses as $payments) {
+            foreach ($payments as $payment) {
+                $companyData = $payment->company();
+                if ($companyData) {
+                    $name = $payment->company()[0]->name;
+                    $found = current(array_filter($companies, function ($item) use ($name, $payment) {
+                        $isTrue = isset($item['name']) && $name == $item['name'];
+
+                        if ($isTrue) {
+                            $item['amount'] += $payment->amount;
+                        }
+                        return $isTrue;
+                    }));
+                    if (!$found) {
+                        $company['name'] = $payment->company()[0]->name;
+                        $company['amount'] = $payment->amount;
+                        $company['slug'] = $payment->company()[0]->shortname;
+                        // dd($companies);
+                        array_push($companies, $company);
+                    }
+                }
+            }
+        }
+
+        usort($companies, function ($item1, $item2) {
+            return $item2['amount'] <=> $item1['amount'];
+        });
+        // dd($companies);
+        return $companies;
+    }
 
     public function latestExpenditure()
     {

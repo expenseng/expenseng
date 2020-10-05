@@ -77,6 +77,33 @@
       </div>
     </div>
   </div>
+
+  <div class="mx-lg-4 px-lg-5 my-lg-4">
+    <div class="container-lg-fluid container-xl px-0 px-lg-5 " style="max-width: 1600px">
+      <div>
+        <div class="m-auto" style="max-width: 1700px">
+          <p class="mb-3 specific" style="color:#353A45; font-size:25px; font-weight:bold; text-align:center">Who got the most money?</p>
+        </div>
+        <div class="row">
+          @foreach($companies as $company)
+          <div class="col-lg-3 col-md-4 col-sm-6 my-2">
+            <a href="/contractors/{{$company['slug']}}">
+              <div class="card" style="width: 100%; background-color: #FFFFFF; box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04)">
+                <div class="card-body" style="padding-top: 10px;">
+                  <h4 style="text-align: center;font-weight: 700;color: #1F2430; font-size: 0.9rem;">{{$company['name']}}</h4>
+                  <h6 class="mt-4 text-center" style="font-weight: normal; color:#1F2430; font-style:normal; font-size: 0.8rem">RECEIVED</h6>
+                  <p class="card-text text-center" style="color: #33A97E; margin-bottom: 5px">₦{{number_format($company['amount'])}}</p>
+                  <p class="card-text text-center" style="color: #1F2430; font-size:12px; font-weight:300">Spent:{{$period}}</p>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          @endforeach
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 @endsection
