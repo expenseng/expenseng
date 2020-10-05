@@ -305,27 +305,33 @@ class HomeController extends Controller
     }
 
 
-    public function topCompaniesPaidInTheLastMonth($latestexpenses){
+    public function topCompaniesPaidInTheLastMonth($latestexpenses)
+    {
         $companies = array();
         foreach ($latestexpenses as $payments) {
             foreach ($payments as $payment) {
                 $companyData = $payment->company();
                 if ($companyData) {
-                    $name = $payment->company()[0]->name;
-                    $found = current(array_filter($companies, function ($item) use ($name, $payment) {
-                        $isTrue = isset($item['name']) && $name == $item['name'];
+                    // dd($companyData);
+                    try {
+                        $name = $companyData[0]->name;
+                        $found = current(array_filter($companies, function ($item) use ($name, $payment) {
+                            $isTrue = isset($item['name']) && $name == $item['name'];
 
-                        if ($isTrue) {
-                            $item['amount'] += $payment->amount;
+                            if ($isTrue) {
+                                $item['amount'] += $payment->amount;
+                            }
+                            return $isTrue;
+                        }));
+                        if (!$found) {
+                            $company['name'] = $companyData[0]->name;
+                            $company['amount'] = $payment->amount;
+                            $company['slug'] = $companyData[0]->shortname;
+                            // dd($companies);
+                            array_push($companies, $company);
                         }
-                        return $isTrue;
-                    }));
-                    if (!$found) {
-                        $company['name'] = $payment->company()[0]->name;
-                        $company['amount'] = $payment->amount;
-                        $company['slug'] = $payment->company()[0]->shortname;
-                        // dd($companies);
-                        array_push($companies, $company);
+                    } catch (\Throwable $th) {
+                        //throw $th;
                     }
                 }
             }
