@@ -42,8 +42,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        SiteWideSearch::bootSearchable();   
-
         /**
          * Dispatch the jobs to populate contractors tables
          */
