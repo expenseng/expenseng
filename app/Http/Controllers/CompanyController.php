@@ -59,7 +59,7 @@ class CompanyController extends Controller
             /**
              * Sort by the highest paid contractor in the last month
              */
-            $contractors = Company::addSelect(['total' => Payment::selectRaw('SUM(amount)')
+            $contractors = Company::select(['name', 'shortname', 'id'])->addSelect(['total' => Payment::selectRaw('SUM(amount)')
                 ->whereColumn('beneficiary', 'contractors.name')
                 ->whereBetween('payment_date', [$monthStart, $monthEnd])
             ])->orderBy('total', 'desc')
