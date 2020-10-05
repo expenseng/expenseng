@@ -1,17 +1,17 @@
 @extends('layouts.master')
 @push('css')
-  <title>Open Government Expenses in Nigeria</title>
-  <link rel="stylesheet" href="{{ asset('css/index.css')}}">
+<title>Open Government Expenses in Nigeria</title>
+<link rel="stylesheet" href="{{ asset('css/index.css')}}">
 
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/modal/style.css">
-  <!-- Flickity CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-  <!-- Flickity JavaScript -->
-  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/modal/style.css">
+<!-- Flickity CSS -->
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<!-- Flickity JavaScript -->
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 @endpush
 @section('banner')
 <!-- banner -->
@@ -57,16 +57,21 @@
         </div>
         <div class="row">
           @foreach($expenses as $expense)
-          <div class="card col-lg-3 col-md-4 col-sm-6">
-            <img class="card-img-top" src="{{asset('img/map.svg')}}" alt="map">
-            <img class="" src="{{asset('img/coat.svg')}}" alt="Nigeria Coat of Arms" style="margin-top: -120px;">
-            <div class="card-body" style="padding-top: 0px;">
-              <h4 style="text-align: center;font-weight: 500;color: #1F2430;">{{$expense->shortname}}</h4>
-              <h6 class="mt-4 text-center" style="font-weight: 500;">SPENT</h6>
-              <p class="card-text text-center" style="color: #33A97E; margin-bottom: 5px">₦{{number_format($expense->total_spent)}}</p>
-              <p class="card-text text-center" style="color: #1F2430; font-size:12px; font-weight:300">Spent:{{$period}}</p>
-            </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 my-2">
+            <a href="/ministries/{{$expense->shortname}}">
+              <div class="card" style="width: 100%; background-color: #FFFFFF; box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04)">
+                <img class="card-img-top" src="{{asset('img/map.svg')}}" alt="map">
+                <img class="" src="{{asset('img/coat.svg')}}" alt="Nigeria Coat of Arms" style="margin-top: -120px;">
+                <div class="card-body" style="padding-top: 0px;">
+                  <h4 style="text-align: center;font-weight: 500;color: #1F2430; font-size: 1.1rem">Ministry of {{$expense->shortname}}</h4>
+                  <h6 class="mt-4 text-center" style="font-weight: normal; color:#1F2430; font-style:normal; font-size: 0.8rem">SPENT</h6>
+                  <p class="card-text text-center" style="color: #33A97E; margin-bottom: 5px">₦{{number_format($expense->total_spent)}}</p>
+                  <p class="card-text text-center" style="color: #1F2430; font-size:12px; font-weight:300">Spent:{{$period}}</p>
+                </div>
+              </div>
+            </a>
           </div>
+
           @endforeach
         </div>
       </div>
