@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use App\ContractorVotes;
 use Illuminate\Http\Request;
 
@@ -38,6 +39,6 @@ class ContractorVotesController extends Controller
     }
 
     public function type($companyId){
-        return ContractorVotes::where('contractor_id', $companyId)->first();
+        return Company::find($companyId)->contractorType;
     }
 }

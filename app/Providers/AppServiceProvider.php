@@ -41,16 +41,5 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-
-        SiteWideSearch::bootSearchable();   
-
-        /**
-         * Dispatch the jobs to populate contractors tables
-         */
-        PopulateContractors::dispatch()->onQueue('contractors');
-
-        //dispatched by the scheduler every midnight
-        UpdateContractorType::dispatch()->onQueue('contractors');
-
     }
 }

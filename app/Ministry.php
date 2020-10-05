@@ -7,8 +7,6 @@ use Laravel\Scout\Searchable;
 
 class Ministry extends Model
 {
-    use Searchable;
-
     protected $fillable = [
         'code',
         'name',

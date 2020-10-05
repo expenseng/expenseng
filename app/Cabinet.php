@@ -8,7 +8,6 @@ use Laravel\Scout\Searchable;
 class Cabinet extends Model
 {
 
-    use Searchable;
     protected $fillable = [
         'name', 
         'twitter_handle',
