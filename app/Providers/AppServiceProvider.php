@@ -42,13 +42,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        /**
-         * Dispatch the jobs to populate contractors tables
-         */
-        PopulateContractors::dispatch()->onQueue('contractors');
-
         //dispatched by the scheduler every midnight
-        UpdateContractorType::dispatch()->onQueue('contractors');
+        // UpdateContractorType::dispatch()->onQueue('contractors');
 
     }
 }
