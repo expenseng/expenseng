@@ -278,8 +278,10 @@ class HomeController extends Controller
         $new_array = array();
         foreach ($sums as $key => $value) {
             $ministry = Ministry::where('code', $key)->first();
-            $ministry['total_spent'] = $value;
-            array_push($new_array, $ministry);
+            if ($ministry) {
+                $ministry['total_spent'] = $value;
+                array_push($new_array, $ministry);
+            }
         }
 
         usort($new_array, function ($item1, $item2) {
