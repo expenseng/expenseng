@@ -25,28 +25,34 @@ class HomeController extends Controller
         // $collection['defence'] = Budget::where('org_name', 'Defence')->get();
         // $collection['housing'] = Budget::where('org_name', 'Housing and Community Amenities')->get();
         // $expenses = $this->latestExpenditure();
+
         $lastMonthExpenses = $this->lastMonthExpenses();
-        $expenses = $lastMonthExpenses[0];
+        $expenses = null;
+        $period = null;
+        $companies = null;
+        if ($lastMonthExpenses) {
+            $expenses = $lastMonthExpenses[0];
 
-        $startingdate = $lastMonthExpenses[2];
-        $finaldate = $lastMonthExpenses[1];
+            $startingdate = $lastMonthExpenses[2];
+            $finaldate = $lastMonthExpenses[1];
 
-        $day[0] = date('d', strtotime($startingdate));
-        $day[1] = date('d', strtotime($finaldate));
+            $day[0] = date('d', strtotime($startingdate));
+            $day[1] = date('d', strtotime($finaldate));
 
-        $month[0] = date('m', strtotime($startingdate));
-        $month[1] = date('m', strtotime($finaldate));
+            $month[0] = date('m', strtotime($startingdate));
+            $month[1] = date('m', strtotime($finaldate));
 
-        $year[0] = date('Y', strtotime($startingdate));
-        $year[1] = date('Y', strtotime($finaldate));
+            $year[0] = date('Y', strtotime($startingdate));
+            $year[1] = date('Y', strtotime($finaldate));
 
-        $period = $day[0] . '.' . $month[0];
+            $period = $day[0] . '.' . $month[0];
 
-        if ($year[0] != $year[1]) $period .= '.' . $year[0];
+            if ($year[0] != $year[1]) $period .= '.' . $year[0];
 
-        $period .= '-' . $day[1] . '.' . $month[1] . '.' . $year[1];
+            $period .= '-' . $day[1] . '.' . $month[1] . '.' . $year[1];
 
-        $companies = $lastMonthExpenses[3];
+            $companies = $lastMonthExpenses[3];
+        }
         // dd($companies);
         // $ministries = Ministry::select('*')
         //     ->orderby('shortname', 'asc')
@@ -265,7 +271,12 @@ class HomeController extends Controller
 
     public function lastMonthExpenses()
     {
-        $lastdate = Payment::orderBy('payment_date', 'desc')->take(1)->get()[0]->payment_date;
+        // dd(Payment::orderBy('payment_date', 'desc')->take(1)->get());
+        $lastdate = Payment::orderBy('payment_date', 'desc')->first()->payment_date;
+        // dd($lastdate);
+        if (!$lastdate) {
+            return null;
+        }
 
         $date = Utils::GetDate('30', $lastdate);
 
@@ -277,6 +288,7 @@ class HomeController extends Controller
         });
 
         $companies = $this->topCompaniesPaidInTheLastMonth($latestexpenses);
+        // dd($companies);
 
         $new_array = array();
         foreach ($sums as $key => $value) {
@@ -295,9 +307,13 @@ class HomeController extends Controller
         $companies_array = array();
         for ($i = 0; $i < 8; $i++) {
             $expense = $new_array[$i];
-            $company = $companies[$i];
+            if (array_key_exists($i, $companies)) {
+                $company = $companies[$i];
+                array_push($companies_array, $company);
+            }
+            // if (count($companies) >= $i) {
+            // }
             array_push($expense_array, $expense);
-            array_push($companies_array, $company);
         }
 
         // dd($expense_array, $companies_array);
