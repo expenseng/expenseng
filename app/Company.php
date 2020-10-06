@@ -8,8 +8,6 @@ use stdClass;
 
 class Company extends Model
 {
-    use Searchable;
-
     public $fillable = ['name', 'shortname', 'industry', 'ceo', 'twitter'];
 
     //table name is now contractors

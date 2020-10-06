@@ -3,7 +3,7 @@
     <div class="mx-lg-4 px-lg-5">
     <nav class="navbar navbar-expand-lg transparent-bg bg-transparent darkcolor static-nav px-0">
         <div class="container-fluid px-0 bg-white">
-            <a class="navbar-brand section-navbar-logo " href="{{route('home')}}">
+            <a class="navbar-brand section-navbar-logo " href="{{route('home')}}" style="padding: 0px;">
                 <img src="{{asset('images/Logo.svg')}}" alt="logo" class="logo-default">
                 <img src="{{asset('images/Logo.svg')}}" class="logo-scrolled">
             </a>
@@ -13,7 +13,7 @@
                         <a class="nav-link section-nav-link" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('expense.ministry') }}" class="nav-link section-nav-link">All Expenses</a>
+                        <a href="{{ route('expense.ministry') }}" class="nav-link section-nav-link">Spending</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link section-nav-link" href="{{ route('ministries') }}">Ministries</a>

@@ -35,7 +35,7 @@ class PaymentController extends Controller
         }
 
 
-        $payments = Payment::paginate(20);
+        $payments = Payment::orderBy('id', 'desc')->paginate(20);
         return view('backend.payments.index')->with([
             'payments' => $payments,
         ]);

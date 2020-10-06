@@ -10,9 +10,8 @@ use Laravel\Scout\Searchable;
 
 class Payment extends Model
 {
-    use Searchable;
 
-protected $guarded = ['id'];
+    protected $guarded = ['id'];
 
     public function amount(){
         return number_format($this->amount, 2, '.', ',');
@@ -73,4 +72,6 @@ protected $guarded = ['id'];
     {
         return $this->morphMany('App\Files', 'owner');
     }
+
+    // public function
 }

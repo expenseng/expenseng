@@ -65,28 +65,29 @@ class DashboardController extends Controller
             ->limit(7)
             ->get();
 
-        try{
-            $response = $this->http->get('comments', [
-                'query' => []
-            ]);
+        // try{
+        //     $response = $this->http->get('comments', [
+        //         'query' => []
+        //     ]);
     
-            $data = json_decode($response->getBody(), true);
+        //     $data = json_decode($response->getBody(), true);
     
-            if($data['status'] == "success"){
-                $comments = isset($data['data']['records']) ?
-                count($data['data']['records']) : 0;
-            } else {
+        //     if($data['status'] == "success"){
+        //         $comments = isset($data['data']['records']) ?
+        //         count($data['data']['records']) : 0;
+        //     } else {
 
-                Log::error("Error from fetching details from comments" . $data);
+        //         Log::error("Error from fetching details from comments" . $data);
 
-            }
-        }catch(Throwable $th){
-            //set commetnst count to 0
-            $comments = 0;
-            Log::error("Error from connecting to comments service" . $th);
-        }
+        //     }
+        // }catch(Throwable $th){
+        //     //set commetnst count to 0
+        //     $comments = 0;
+        //     Log::error("Error from connecting to comments service" . $th);
+        // }
     
 
+        $comments = 0;
         $recent_activities = Activites::orderBY('id', 'DESC')->get();
         $total_ministry = count(Ministry::all());
         $total_company = count(Company::all());

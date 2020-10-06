@@ -31,5 +31,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(SidebarArrangementSeeder::class);
+        $this->call(ContractorTypeSeeder::class);
     }
 }

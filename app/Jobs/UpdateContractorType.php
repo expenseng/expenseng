@@ -49,7 +49,7 @@ class UpdateContractorType implements ShouldQueue
                      * If parent is null, then there is no vote record
                      * for this contractor yet
                      */
-                    if (!isNull($vote->parent)) {
+                    if (null !== $vote && null !== $vote->parent) {
                         $contractor->type = $vote->parent->id;
                         $contractor->save();
                     }
