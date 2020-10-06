@@ -5,10 +5,6 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/modal/style.css">
-<!-- Flickity CSS -->
-<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-<!-- Flickity JavaScript -->
-<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
@@ -53,6 +49,28 @@
     <div class="container-lg-fluid container-xl px-0 px-lg-5 " style="max-width: 1600px">
       <div>
         <div class="m-auto" style="max-width: 1700px">
+          <p class="mb-3 specific" style="color:#00945E; font-size:25px; font-weight:700; text-align:center">Search for a company or contract</p>
+        </div>
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-8">
+            <form action="/search" method="POST">
+            @csrf
+              <input class="ml-5" type="text" name="text" placeholder="Name of company or contract" style="width: 60%; padding:5px;">
+              <button type="submit" class="home-search-button">Start Search</button>
+            </form>
+          </div>
+          <div class="col-sm-2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ministry section -->
+  <div class="mx-lg-4 px-lg-5 my-lg-4">
+    <div class="container-lg-fluid container-xl px-0 px-lg-5 " style="max-width: 1600px; margin-top: 4rem">
+      <div>
+        <div class="m-auto" style="max-width: 1700px">
           <p class="mb-3 specific" style="color:#353A45; font-size:25px; font-weight:bold; text-align:center">Spent in the last reported 30 days</p>
         </div>
         <div class="row">
@@ -78,8 +96,9 @@
     </div>
   </div>
 
+  <!-- Contractors section -->
   <div class="mx-lg-4 px-lg-5 my-lg-4">
-    <div class="container-lg-fluid container-xl px-0 px-lg-5 " style="max-width: 1600px">
+    <div class="container-lg-fluid container-xl px-0 px-lg-5 " style="max-width: 1600px; margin-top: 4rem">
       <div>
         <div class="m-auto" style="max-width: 1700px">
           <p class="mb-3 specific" style="color:#353A45; font-size:25px; font-weight:bold; text-align:center">Who got the most money?</p>
@@ -109,7 +128,6 @@
 @endsection
 @section('js')
 <script src="{{asset('js/index.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
 <script src="{{asset('js/chart.js')}}"></script>
 <script src="{{asset('/js/subscription.js')}}"></script>

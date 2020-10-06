@@ -21,13 +21,14 @@ Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contactUs')->name('contact');
 Route::get('/teams', 'PageController@ourteam')->name('teams');
 Route::get('/report', 'PageController@error404')->name('error404');
-Route::get('/faq', 'PageController@faq')->name('faq');
+Route::get('/faq', 'PageController@faq')->name('faq'); 
 Route::get('/privacy', 'PageController@privacy')->name('privacy');
 Route::get('/search', 'PageController@search')->name('search');
 Route::get('/handles', 'PageController@handles')->name('handles');
 Route::get('/changeMinistryCharts/{ministry}', 'HomeController@MinistryCharts')->name('ministry_expenses_charts');
 Route::post('/handles', 'PageController@SearchHandles')->name('search-handles');
 Route::post('/handles/search', 'PageController@SearchHandle')->name('search-handle');
+Route::post('/search', 'SearchController@find')->name('company-contract-search');
 
 
 // Feedback
