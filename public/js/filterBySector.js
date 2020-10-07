@@ -3,6 +3,11 @@ $(document).ready(function() {
     const defaultTableDate = $('.said-date').text();
     let tableOneIsModified = false;
     let ministry = $('.ministries').val();
+
+    ////////////////////Select box//////////////////////////////////////////
+    $(document).ready(function() {
+        $('#ministry_list').select2();
+    });
         
     ///////////////////////////////////////////////////////////////////////
     //                  Date-Picker                               //
