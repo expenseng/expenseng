@@ -3,12 +3,13 @@
 	<title>Ministry Expenses</title>
 	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 	<link rel="stylesheet" href="{{asset('css/expense-summary.css') }}">
   	<link rel="stylesheet" href="{{ asset('css/ministry-report-table.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/filter.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/ministry_report_comments.css') }}">
 	<script src="https://kit.fontawesome.com/8f691340fb.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
+	<link rel="stylesheet" href="{{asset('css/breadcrumb.css') }}">
 @endpush
 
 @section('content')
@@ -52,7 +53,8 @@
 		<div class="section-2 tab-pane show fade active" id="table" role="tabpanel">
 			<section class="container bordered px-0">
 				<div id="search-tools" class="d-flex justify-content-between">
-					<select id="ministry_list"  data-id="apply-filter-ministry" style="width:170px;" class="ministries form-control ml-2" onmousedown="if(this.options.length>6){this.size=6;}"  onchange='this.size=0;' onblur="this.size=0;" >
+					{{-- <select id="ministry_list"  data-id="apply-filter-ministry" style="width:170px;" class="ministries form-control ml-2" onmousedown="if(this.options.length>6){this.size=6;}"  onchange='this.size=0;' onblur="this.size=0;" > --}}
+					<select id="ministry_list"  data-id="apply-filter-ministry" style="width:170px;" class="ministries form-control ml-2" >
 						<option value='all'>All</option>
 						@if(count($ministries)>0)
 						 @foreach ($ministries as $ministry)
@@ -162,6 +164,6 @@
 	<script src="{{ asset('js/ExpenditureScript.js') }}"></script>
 	<script src="{{ asset('js/index.js') }}"></script>
 	<script src="{{ asset('js/share.js') }}"></script>
-	{{-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> --}}
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 @endsection
 
