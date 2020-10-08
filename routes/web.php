@@ -28,7 +28,7 @@ Route::get('/handles', 'PageController@handles')->name('handles');
 Route::get('/changeMinistryCharts/{ministry}', 'HomeController@MinistryCharts')->name('ministry_expenses_charts');
 Route::post('/handles', 'PageController@SearchHandles')->name('search-handles');
 Route::post('/handles/search', 'PageController@SearchHandle')->name('search-handle');
-Route::post('/search', 'SearchController@find')->name('company-contract-search');
+// Route::post('/search', 'SearchController@find')->name('company-contract-search');
 
 
 // Feedback

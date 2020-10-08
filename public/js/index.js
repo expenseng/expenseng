@@ -200,3 +200,9 @@ $(".ministry-stat").click(function(e) {
     return false;
 });
 
+function startSearch() {
+    var text = document.getElementById('search_text').value;
+
+    window.location.href = '/search?text=' + text;
+    return;
+}

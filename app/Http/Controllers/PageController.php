@@ -6,6 +6,9 @@ use App\Budget;
 use App\Ministry;
 use App\Teams;
 use App\Cabinet;
+use App\Company;
+use App\Payment;
+use App\SearchHistory;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -25,15 +28,41 @@ class PageController extends Controller
         $cabinet = Cabinet::paginate(20);
         dump($cabinet);
         //return view('backend.cabinet.view')->with([
-            //'cabinet' => $cabinet,
+        //'cabinet' => $cabinet,
     }
     public function contactUs()
     {
         return view('pages.contactUs');
     }
 
-    public function search()
+    public function search(Request $request)
     {
+        $text = $request->query('text');
+        $contractors = null;
+        $contracts = null;
+        if ($text) {
+            $contractors = Company::where('name', 'like', '%' . $text . '%')
+                ->orderBy('id', 'desc')
+                ->get();
+            $contracts = Payment::where('organization', 'like', '%' . $text . '%')
+                ->orWhere('description', 'like', '%' . $text . '%')
+                ->orWhere('beneficiary', 'like', '%' . $text . '%')
+                ->orderBy('id', 'desc')
+                ->get();
+
+            $search_history = SearchHistory::where('text', $text)->first();
+
+            if ($search_history) {
+                $search_history->count += 1;
+            } else {
+                $search_history = new SearchHistory();
+                $search_history->text = $text;
+            }
+
+            $search_history->save();
+        }
+        $history = SearchHistory::orderBy('count', 'desc')->take(4)->get();
+        return view('pages.search', compact('contractors', 'contracts', 'history'));
         return view('pages.search');
     }
     public function ministryGraph()
@@ -102,7 +131,7 @@ class PageController extends Controller
     {
         if ($id) {
             $ministry = Ministry::where('id', $id)->first();
-            return view('pages.ministry.ministry_list_tables')->with(['ministry'=> $ministry]);
+            return view('pages.ministry.ministry_list_tables')->with(['ministry' => $ministry]);
         }
     }
 
@@ -185,13 +214,13 @@ class PageController extends Controller
     public function SearchHandles(Request $request)
     {
 
-        $handles = Cabinet::where('name', 'LIKE', '%' . $request -> get('searchQuest'). '%')->get();
+        $handles = Cabinet::where('name', 'LIKE', '%' . $request->get('searchQuest') . '%')->get();
 
         return json_encode($handles);
     }
     public function SearchHandle(Request $request)
     {
-        $handle = Ministry::where('name', 'LIKE', '%' . $request -> get('searchQuests'). '%')->get();
+        $handle = Ministry::where('name', 'LIKE', '%' . $request->get('searchQuests') . '%')->get();
         return json_encode($handle);
     }
     public function expense()

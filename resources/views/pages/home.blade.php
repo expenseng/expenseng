@@ -54,11 +54,11 @@
         <div class="row">
           <div class="col-sm-2"></div>
           <div class="col-sm-8">
-            <form action="/search" method="POST">
-            @csrf
-              <input class="ml-5" type="text" name="text" placeholder="Name of company or contract" style="width: 60%; padding:5px;">
-              <button type="submit" class="home-search-button">Start Search</button>
-            </form>
+            <!-- <form action="/search" method="POST">
+            @csrf -->
+              <input class="ml-5" type="text" name="text" placeholder="Name of company or contract" id="search_text" style="width: 60%; padding:5px;">
+              <button type="button" class="home-search-button" onclick="startSearch()">Start Search</button>
+            <!-- </form> -->
           </div>
           <div class="col-sm-2"></div>
         </div>
