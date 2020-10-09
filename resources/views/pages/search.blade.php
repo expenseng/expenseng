@@ -130,8 +130,8 @@
             html += '<div class="col-lg-3 col-md-4 col-sm-6 my-2">'
             html += '<a href="/expenses/' + item.slug + '"><div class="card" style="width: 100%; background-color: #FFFFFF; box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04)">'
             html += '<div class="card-body" style="padding-top: 10px;"><h4 style="text-align: center;font-weight: 700;color: #1F2430; font-size: 0.9rem;">'
-            html += item.description.substring(0, 30) + '...</h4><p class="mt-4 card-text text-center" style="color: #33A97E; margin-bottom: 5px">'
-            html += item.amount + '</p><p class="card-text text-center" style="color: #1F2430; font-size:12px; font-weight:300">Date:'
+            html += item.description.substring(0, 30) + '...</h4><p class="mt-4 card-text text-center" style="color: #33A97E; margin-bottom: 5px">₦'
+            html += item.amount.toLocaleString() + '</p><p class="card-text text-center" style="color: #1F2430; font-size:12px; font-weight:300">Date:'
             html += item.payment_date + '</p></div></div></a></div>';
         });
         return html;

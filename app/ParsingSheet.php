@@ -265,14 +265,14 @@ class ParsingSheet
                             if (empty($check)) {
                                 $ministry_code = substr($keys[1], 0, 4);
                                 Payment::create([
-                                'payment_no' =>  $keys[0],
-                                'payment_code' => $keys[1],
-                                'organization' => $keys[2],
-                                'beneficiary' => $keys[3],
-                                'amount' =>$keys[4],
-                                'payment_date'=> $date,
-                                'ministry_code' => $ministry_code,
-                                'slug' => $this->slugify(isset($keys[5]) ? $keys[5] : "null", $keys[0]),
+                                    'payment_no' =>  $keys[0],
+                                    'payment_code' => $keys[1],
+                                    'organization' => $keys[2],
+                                    'beneficiary' => $keys[3],
+                                    'amount' =>$keys[4],
+                                    'payment_date'=> $date,
+                                    'ministry_code' => $ministry_code,
+                                    'slug' => $this->slugify(isset($keys[5]) ? $keys[5] : "null", $keys[0]),
                                     'description' => substr(isset($keys[5]) ? $keys[5] : "null", 0, 225)
                                 ]);
                             }
@@ -636,7 +636,7 @@ class ParsingSheet
     private function slugify($description, $code)
     {
         if (!empty($description)) {
-            return $code .'-'.str_slug($description);
+            return $code .'-'. substr(str_slug($description), 0, 30);
         } else {
             return $code;
         }
