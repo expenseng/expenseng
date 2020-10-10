@@ -16,33 +16,35 @@ class ExpenseController extends Controller
     {
         $latestDate = $this->latestDate();
         $collection['daily'] = Payment::whereDate('payment_date', '=', $latestDate)
-                                ->orderby('payment_date', 'desc')
-                                ->paginate(20)->onEachSide(1);
+            ->orderby('payment_date', 'desc')
+            ->paginate(20)->onEachSide(1);
         return view('pages.expense.index')
-        ->with(['collection' => $collection,
+            ->with([
+                'collection' => $collection,
                 'latestDate' => $latestDate
-                ]);
+            ]);
     }
 
     public function ministry()
     {
         // $year = date('Y');
         $ministries = Ministry::select('*')
-                    ->orderby('shortname', 'asc')
-                    ->get();
+            ->orderby('shortname', 'asc')
+            ->get();
         $collection['summary'] = Payment::select('*')
-                                ->orderby('payment_date', 'desc')
-                                ->paginate(20)->onEachSide(1);
-        return view('pages.expense.ministry')->with(['collection' => $collection,
-                                                     'ministries' => $ministries
-                                                    ]);
+            ->orderby('payment_date', 'desc')
+            ->paginate(20)->onEachSide(1);
+        return view('pages.expense.ministry')->with([
+            'collection' => $collection,
+            'ministries' => $ministries
+        ]);
     }
 
     public function show(string $slug)
     {
         $payment = Payment::where('slug', $slug)->first();
-        if($payment){
-//            dd($payment->ministry()['cabinet']->toArray());
+        if ($payment) {
+            //            dd($payment->ministry()['cabinet']->toArray());
             $payment->ministry = $payment->ministry()['name'];
             $payment->ministry_twitter = $payment->ministry()['twitter'];
             $payment->minister = $payment->ministry()['cabinet']->toArray() ? $payment->ministry()['cabinet'][0]->name : 'N/A';
@@ -55,16 +57,23 @@ class ExpenseController extends Controller
             }
 
             return view('pages.expense_summary')->with(['payment' => $payment]);
-        }else{
+        } else {
             return  redirect('error404');
         }
+    }
+
+    public function social(string $code)
+    {
+        $slug = Payment::where('payment_no', base64_decode($code))->first()->slug;
+
+        return redirect('/expenses/'.$slug);
     }
 
     public function latestDate()
     {
         $latestExpenses = Payment::select('*')
-        ->orderby('payment_date', 'desc')
-        ->first();
+            ->orderby('payment_date', 'desc')
+            ->first();
 
         return $latestExpenses->payment_date;
     }
@@ -72,11 +81,11 @@ class ExpenseController extends Controller
     public function ministriesFiveYear()
     {
         $payments = DB::table('payments')
-        ->select(DB::raw('SUM(amount) as total, YEAR(payment_date) as year'))
-        ->groupBy(DB::raw('YEAR(payment_date)'))
-        ->orderBy('year', 'desc')
-        ->take(5)
-        ->get();
+            ->select(DB::raw('SUM(amount) as total, YEAR(payment_date) as year'))
+            ->groupBy(DB::raw('YEAR(payment_date)'))
+            ->orderBy('year', 'desc')
+            ->take(5)
+            ->get();
 
         return $payments;
     }
@@ -85,28 +94,28 @@ class ExpenseController extends Controller
     {
         if ($sector !== 'all') {
             $totals = DB::table('payments')
-            ->select(DB::raw('SUM(amount) as total, YEAR(payment_date) as year'))
-            ->Where(function ($query) use ($codes) {
-                for ($i = 0; $i < count($codes); $i++) {
-                    $query->orwhere('payment_code', 'LIKE', $codes[$i]. '%');
-                }
-            })
-            ->groupBy(DB::raw('YEAR(payment_date)'))
-            ->orderBy('year', 'desc')
-            ->take(5)
-            ->get();
+                ->select(DB::raw('SUM(amount) as total, YEAR(payment_date) as year'))
+                ->Where(function ($query) use ($codes) {
+                    for ($i = 0; $i < count($codes); $i++) {
+                        $query->orwhere('payment_code', 'LIKE', $codes[$i] . '%');
+                    }
+                })
+                ->groupBy(DB::raw('YEAR(payment_date)'))
+                ->orderBy('year', 'desc')
+                ->take(5)
+                ->get();
         } else {
             $totals = $this->ministriesFiveYear();
         }
         return $totals;
     }
 
-    
+
     public function filterExpensesAll(Request $request, $id, $date, $sort, $ministry = "all")
     {
         $latestDate = $this->latestDate();
-        $givenTime = ($id === 'apply-filter-exp')?  $latestDate : 'all' ;
-       
+        $givenTime = ($id === 'apply-filter-exp') ?  $latestDate : 'all';
+
         if ($date != 'undefined') {
             $givenTime = $date;
         }
@@ -121,7 +130,7 @@ class ExpenseController extends Controller
             $month = $m['month'];
             $year = $match[2];
             $data = $data->whereMonth('payment_date', '=', $month)
-                    ->whereYear('payment_date', '=', $year);
+                ->whereYear('payment_date', '=', $year);
         } elseif (preg_match($day_pattern, $givenTime, $match)) {
             $data = $data->where('payment_date', '=', "$givenTime");
         } elseif (preg_match($yr_pattern, $givenTime, $match)) {
@@ -133,8 +142,8 @@ class ExpenseController extends Controller
             $data = $data->where('description', 'LIKE', "%$query%");
         }
 
-        if($ministry !== null){
-            if($ministry !== 'all'){
+        if ($ministry !== null) {
+            if ($ministry !== 'all') {
                 $data = $data->where('payment_code', 'LIKE', "$ministry%");
             }
         }
@@ -216,13 +225,13 @@ class ExpenseController extends Controller
             $day = null;
             $mth = null;
             $yr = $match[1];
-            $type = $userdate == true ?  'Yearly': 'Daily';
+            $type = $userdate == true ?  'Yearly' : 'Daily';
         }
 
         if ($chartType === 'ministries') {
             $ministries = Ministry::select('*')
-                    ->orderby('shortname', 'asc')
-                    ->get();
+                ->orderby('shortname', 'asc')
+                ->get();
             $result = $this->getChartData($ministries, $yr, $mth, $day, $sort);
         } elseif ($chartType === 'days') {
             $result = $this->getDailyTotals($yr, $mth, $day, $sort, $type);
@@ -243,17 +252,18 @@ class ExpenseController extends Controller
                 'SUM(amount) as amount, payment_date'
             )
         )
-        ->whereYear('payment_date', '=', $yr);
+            ->whereYear('payment_date', '=', $yr);
         if ($mth != null) {
             $payments = $payments->whereMonth('payment_date', $mth);
-        }if ($day != null) {
+        }
+        if ($day != null) {
             $payments = $payments->whereDay('payment_date', $day);
         }
-            $payments = $payments->groupby('payment_date');
+        $payments = $payments->groupby('payment_date');
         if ($sort == "asc" or $sort == "desc") {
             $payments = $payments->orderby('amount', $sort);
         }
-            $payments = $payments->get();
+        $payments = $payments->get();
 
         foreach ($payments as $payment) {
             array_push($days, date("d-m-Y", strtotime($payment->payment_date)));
@@ -262,7 +272,7 @@ class ExpenseController extends Controller
 
         if (count($days) == 0) {
             if ($type == 'Daily') {
-                array_push($days, $day.'-'.$mth.'-'.$yr);
+                array_push($days, $day . '-' . $mth . '-' . $yr);
                 array_push($amounts, 0);
             } elseif ($type == 'Monthly') {
                 $result = $this->getDays($days, $amounts, $mth, $yr);
@@ -286,9 +296,9 @@ class ExpenseController extends Controller
         $dayCount = cal_days_in_month(CAL_GREGORIAN, $mth, $yr);
 
         for ($i = 1; $i <= $dayCount; $i++) {
-            array_push($days, $i."-".$mth."-".$yr);
+            array_push($days, $i . "-" . $mth . "-" . $yr);
             array_push($amounts, 0);
         }
-        return ['days'=> $days, 'amounts'=> $amounts];
+        return ['days' => $days, 'amounts' => $amounts];
     }
 }
