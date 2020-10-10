@@ -211,7 +211,7 @@ class MinistryController extends Controller
 
         $data = $this->fiveYearTrend($code);
         return view('pages.ministry.single')->with([
-            'ministry' => $ministry,
+            'ministry' => $ministry, 
             'cabinets' => $cabinets,
             'payments' => $payments,
             'trend' => $data[1],
