@@ -106,7 +106,7 @@
         <div class="row">
           @foreach($companies as $company)
           <div class="col-lg-3 col-md-4 col-sm-6 my-2">
-            <a href="/contractors/{{$company['slug']}}">
+            <a href="/contractors/{{$company['slug']}}/1">
               <div class="card" style="width: 100%; background-color: #FFFFFF; box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04)">
                 <div class="card-body" style="padding-top: 10px;">
                   <h4 style="text-align: center;font-weight: 700;color: #1F2430; font-size: 0.9rem;">{{$company['name']}}</h4>

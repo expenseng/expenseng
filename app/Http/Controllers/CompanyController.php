@@ -95,11 +95,10 @@ class CompanyController extends Controller
 
 
     // show a detials of a given contractor, beneficiary or organization
-    public function show(Company $company)
+    public function show(Company $company, $page)
     {
-        return view('pages.contract.single')->with(['company' => $company]);
+        return view('pages.contract.single')->with(['company' => $company, 'page' => $page]);
     }
-
 
     // get contractor total payouts  and details
     public function getAllPayouts($query)

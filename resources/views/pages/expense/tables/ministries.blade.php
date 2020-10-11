@@ -38,7 +38,11 @@
                                         </a>
                                     </td>
                                 @endif
-                                <td><a href="{{ route('contractors.single', ['company' => strtolower(str_replace(' ', '-', $expense->beneficiary)) ]) }}">{{$expense->beneficiary}}</a></td>
+                                @if(count($expense->company()) > 0)
+                                <td><a href="{{ route('contractors.single', ['company' => $expense->company()[0]->shortname, 'page' => '1' ]) }}">{{$expense->beneficiary}}</a></td>
+                                @else
+                                <td>{{$expense->beneficiary}}</td>
+                                @endif
                                 <td>&#8358;{{ number_format($expense->amount) }}</td>
                                 <td>{{ date('jS M, Y', strtotime($expense->payment_date))}}</td>
                                 {{-- <td>{!! Share::page(route('ministries.single', ['ministry' => strtolower($expense->ministry()['shortname']) ]))->facebook() ->twitter() ->whatsapp(); !!}</td> --}}

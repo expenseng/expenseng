@@ -75,8 +75,7 @@
                 </tr>
               </thead>
               <tbody>
-
-              @foreach($payments = $company->payments()->paginate(10) as $payment)
+              @foreach($payments = $company->payments()->paginate(10, ['*'], 'page', $page) as $payment)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
                   <td>

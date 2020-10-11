@@ -1,8 +1,6 @@
 <?php
 
-use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
-use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,7 +65,8 @@ Route::post('/expense/filterExpensesAll/{id}/{date}/{sort}/{ministry?}', 'Expens
  * Contractor Endpoints
  */
 Route::get('/contractors', 'CompanyController@index')->name('contractors');
-Route::get('/contractors/{company}', 'CompanyController@show')->name('contractors.single');
+Route::get('/contractors/{company}/{page}', 'CompanyController@show')->name('contractors.single');
+// Route::get('/contractors/{company}/{page}', 'CompanyController@currentPage')->name('contractors.page');
 Route::post('/contractors/search', 'CompanyController@searchContractors')->name('contractors.search');
 
 Route::get('/ministry-graph', 'PageController@ministryGraph')->name('ministry-graph');

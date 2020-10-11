@@ -62,7 +62,7 @@ Breadcrumbs::for('contractors', function ($trail) {
 // Home > Contractors > [Contractor]
 Breadcrumbs::for('contractor', function ($trail, $company) {
     $trail->parent('contractors');
-    $trail->push($company->name, route('contractors.single', $company->id));
+    $trail->push($company->name, route('contractors.single', ['company' => $company->shortname, 'page' => '1' ]));
 });
 
 //Home > FOIA

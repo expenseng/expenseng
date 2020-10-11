@@ -64,7 +64,7 @@
 
         @foreach ($contractors as $contractor)
         
-          <a href="{{ route('contractors.single', ['company' => $contractor->shortname ]) }}">
+          <a href="{{ route('contractors.single', ['company' => $contractor->shortname, 'page' => '1' ]) }}">
             <div class="col-md-4 col-lg-3 mb-3 card-col">
               <div class="card shadow">
                 <div class="card-body">
@@ -78,7 +78,7 @@
                       
                     </h3>
                     <div class="contractor mb-2">                        
-                        <a href="{{ route('contractors.single', ['company' => $contractor->shortname]) }}">
+                        <a href="{{ route('contractors.single', ['company' => $contractor->shortname, 'page' => '1']) }}">
                           <h5 class="card-title mb-0" class="contractor-beneficiary">
                             {{ $contractor->name }}
                           </h5>

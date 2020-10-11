@@ -40,7 +40,14 @@
                                 </a>
                             </td>
                         @endif
-                        <td><a class="text-success" href="{{ route('contractors.single', ['company' => strtolower(str_replace(' ', '-', $payment->beneficiary)) ]) }}"><u>{{$payment->beneficiary}}</u></a></td>
+                        @php
+                        $company = \App\Payment::find($payment->id)->company();
+                        @endphp
+                        @if(count($company) > 0)
+                        <td><a class="text-success" href="{{ route('contractors.single', ['company' => $company[0]->shortname, 'page' => '1' ]) }}"><u>{{$payment->beneficiary}}</u></a></td>
+                        @else
+                        <td><u>{{$payment->beneficiary}}</u></td>
+                        @endif
                         <td> ₦{{number_format($payment->amount, 2)}}</td>
                         <td> {{date('jS, M Y', strtotime($payment->payment_date))}}</td>
                     </tr>
