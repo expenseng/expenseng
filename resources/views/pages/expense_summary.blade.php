@@ -75,7 +75,11 @@
                         {{ $recipientType }}
                     </p>
                     <p class="contracted-company-name text-bold">
+                        @if(count($payment->company()) > 0)
+                        <a href="/contractors/{{$payment->company()[0]->shortname}}/1">{{ $payment->company }}</a>
+                        @else
                         {{ $payment->company }}
+                        @endif
                     </p>
                 </div>
                 <div class="section-company-handle mt-md-5 mb-md-4">
