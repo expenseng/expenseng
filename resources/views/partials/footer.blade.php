@@ -1,8 +1,8 @@
 <!-------------Footer starts here-------------->
 <footer class="my-footer ">
     <!-- <div class="mx-lg-4"> -->
-        <div class=" container-lg-fluid  container-xl px-0  " style="max-width: 1600px">
-            <div class="footer  m-auto">
+        <div class="">
+            <div class="footer m-auto">
                 <div class="container">
                     <div class="row d-flex justify-content-between">
                         <div class="col-md-3 footer-brand pt-2 d-flex flex-column">
@@ -42,7 +42,7 @@
                                 <a  href="{{ route('expense.reports') }}">Expenditure Report</a>
                                     </li> --}}
                                     <li class="section-footer-links">
-                                        <a href="{{ route('expense.ministry') }}">Ministry Spending</a>
+                                        <a href="{{ route('expense.ministry', ['page' => '1']) }}">Ministry Spending</a>
                                     </li>
                                 </ul>
                             </div>

@@ -13,7 +13,7 @@
                         <a class="nav-link section-nav-link" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('expense.ministry') }}" class="nav-link section-nav-link">Spending</a>
+                        <a href="{{ route('expense.ministry', ['page' => '1']) }}" class="nav-link section-nav-link">Spending</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link section-nav-link" href="{{ route('ministries') }}">Ministries</a>
@@ -58,7 +58,7 @@
                         <a class="nav-link section-nav-link" href="{{ route('home') }}" target="_blank">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('expense.ministry') }}" class="nav-link">Ministry Expense</a>
+                        <a href="{{ route('expense.ministry', ['page' => '1']) }}" class="nav-link">Ministry Expense</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link section-nav-link" href="{{ route('ministries') }}">Ministries</a>

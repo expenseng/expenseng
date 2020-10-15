@@ -57,8 +57,7 @@
         </table>
     </div>
     <div class="table-footer d-flex align-items-center pagination1">
-        <span>{{ $collection['summary']->firstItem() }} - {{ $collection['summary']->lastItem() }} of {{ $collection['summary']->total() }} results</span>
-        {{ $collection['summary']->links() }}
+    @include('partials.pagination_contracts', ['payments' => $collection['summary']])
     </div>
 
 

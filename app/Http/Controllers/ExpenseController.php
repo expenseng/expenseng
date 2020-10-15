@@ -25,7 +25,7 @@ class ExpenseController extends Controller
             ]);
     }
 
-    public function ministry()
+    public function ministry($page)
     {
         // $year = date('Y');
         $ministries = Ministry::select('*')
@@ -33,7 +33,7 @@ class ExpenseController extends Controller
             ->get();
         $collection['summary'] = Payment::select('*')
             ->orderby('payment_date', 'desc')
-            ->paginate(20)->onEachSide(1);
+            ->paginate(20, ['*'], 'page', $page)->onEachSide(1);
         return view('pages.expense.ministry')->with([
             'collection' => $collection,
             'ministries' => $ministries

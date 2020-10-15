@@ -38,7 +38,7 @@ Breadcrumbs::for('expense.reports', function ($trail) {
 // Home > Expense_Ministry
 Breadcrumbs::for('expense.ministry', function ($trail) {
     $trail->parent('home');
-    $trail->push('Ministry Expenses', route('expense.ministry'));
+    $trail->push('Ministry Expenses', route('expense.ministry', ['page' => '1']));
 });
 
 // Home > Ministries

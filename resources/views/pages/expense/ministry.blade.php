@@ -15,7 +15,7 @@
 @section('content')
 	<!-- Breadcrumb start -->
 	<header class="container">
-		{{ Breadcrumbs::render('expense.ministry') }}
+		{{ Breadcrumbs::render('expense.ministry', ['page' => '1']) }}
 	</header>
 	<section>
 		<div class="container ">
