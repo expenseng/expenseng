@@ -46,6 +46,7 @@ class Kernel extends ConsoleKernel
          $schedule->command('make:slugs')->daily();
          $schedule->command('ministry:payment')->daily()->at('04:00');
          $schedule->command('update:contractors')->daily()->at('04:00');
+         $schedule->command('sitemap:generate')->daily();
     }
 
 
