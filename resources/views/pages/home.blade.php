@@ -17,8 +17,8 @@
   <div class="background ">
     <div class="banner">
       <div class="carets" id="caret">
-        <img src="{{asset('images/angle-left.svg')}}" alt="" class="arrow-left">
-        <img src="{{asset('images/angle-right.svg')}}" alt="" class="arrow-right">
+        <img src="{{asset('images/angle-left.jpg')}}" alt="" class="arrow-left">
+        <img src="{{asset('images/angle-right.jpg')}}" alt="" class="arrow-right">
       </div>
       <div class="target">
         <div class="summary text-center" style="width: 100%;">
@@ -78,7 +78,7 @@
           <div class="col-lg-3 col-md-4 col-sm-6 my-2">
             <a href="/ministries/{{strtolower($expense->shortname)}}">
               <div class="card" style="width: 100%; background-color: #FFFFFF; box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04)">
-                <img class="card-img-top" src="{{asset('img/map.svg')}}" alt="map">
+                <img class="card-img-top" src="{{asset('img/map.jpg')}}" alt="map">
                 <img class="" src="{{asset('img/coat.svg')}}" alt="Nigeria Coat of Arms" style="margin-top: -120px;">
                 <div class="card-body" style="padding-top: 0px;">
                   <h4 style="text-align: center;font-weight: 500;color: #1F2430; font-size: 1.1rem">Ministry of {{$expense->shortname}}</h4>
@@ -127,16 +127,6 @@
 
 @endsection
 @section('js')
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <script src="{{asset('js/index.js')}}"></script>
-
-<script src="{{asset('js/chart.js')}}"></script>
-<script src="{{asset('/js/subscription.js')}}"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous">
-</script>
-<script>
-  jQuery(document).ready(function() {
-
-
-  });
-</script>
 @endsection

@@ -4,8 +4,8 @@
     <nav class="navbar navbar-expand-lg transparent-bg bg-transparent darkcolor static-nav px-0">
         <div class="container-fluid px-0 bg-white">
             <a class="navbar-brand section-navbar-logo " href="{{route('home')}}" style="padding: 0px;">
-                <img src="{{asset('images/Logo.svg')}}" alt="logo" class="logo-default">
-                <img src="{{asset('images/Logo.svg')}}" class="logo-scrolled">
+                <img src="{{asset('images/Logo.jpg')}}" alt="logo" class="logo-default">
+                <img src="{{asset('images/Logo.jpg')}}" class="logo-scrolled">
             </a>
             <div class="collapse navbar-collapse section-nav-items">
                 <ul class="navbar-nav ml-auto">
