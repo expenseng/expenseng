@@ -150,7 +150,7 @@ class TwitterBot extends Controller
     }
     private function link($string)
     {
-        return 'https://expenseng.com/expense/'.$string;
+        return route('expenses.single',['slug' => $string]);
     }
     private function style1($payment, $date)
     {
