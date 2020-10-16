@@ -16,7 +16,7 @@
 	<style type="text/css">
 body{font-family:Open Sans, sans-serif; font-size:16px; font-weight:300; }h1{font-family:Open Sans, sans-serif; font-size:25px; font-weight:800; }h3{font-family:Open Sans, sans-serif; font-size:20px; font-weight:normal; }
 	</style>
-	<script type="application/json" class="joomla-script-options new">{"csrf.token":"d7d62f7ffd2a6f582aed3cd9e8055e9b","system.paths":{"root":"","base":""}}</script>
+	<script type="application/json" class="joomla-script-options new">{"csrf.token":"7e528ee891872bca215b86ae855b186c","system.paths":{"root":"","base":""}}</script>
 	<script src="/media/jui/js/jquery.min.js?77539b17652902551caa2a332457c4f4" type="text/javascript"></script>
 	<script src="/media/jui/js/jquery-noconflict.js?77539b17652902551caa2a332457c4f4" type="text/javascript"></script>
 	<script src="/media/jui/js/jquery-migrate.min.js?77539b17652902551caa2a332457c4f4" type="text/javascript"></script>
