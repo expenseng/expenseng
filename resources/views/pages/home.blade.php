@@ -76,7 +76,7 @@
         <div class="row">
           @foreach($expenses as $expense)
           <div class="col-lg-3 col-md-4 col-sm-6 my-2">
-            <a href="/ministries/{{$expense->shortname}}">
+            <a href="/ministries/{{strtolower($expense->shortname)}}">
               <div class="card" style="width: 100%; background-color: #FFFFFF; box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04)">
                 <img class="card-img-top" src="{{asset('img/map.svg')}}" alt="map">
                 <img class="" src="{{asset('img/coat.svg')}}" alt="Nigeria Coat of Arms" style="margin-top: -120px;">
@@ -106,7 +106,7 @@
         <div class="row">
           @foreach($companies as $company)
           <div class="col-lg-3 col-md-4 col-sm-6 my-2">
-            <a href="/contractors/{{$company['slug']}}/1">
+            <a href="/contractors/{{strtolower($company['slug'])}}/1">
               <div class="card" style="width: 100%; background-color: #FFFFFF; box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04)">
                 <div class="card-body" style="padding-top: 10px;">
                   <h4 style="text-align: center;font-weight: 700;color: #1F2430; font-size: 0.9rem;">{{$company['name']}}</h4>
