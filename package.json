@@ -36,7 +36,7 @@
     "dependencies": {
         "ajax": "0.0.4",
         "all-the-cities": "^3.1.0",
-        "apexcharts": "^3.19.3",
+        "apexcharts": "^3.24.0",
         "chance": "^1.1.6",
         "chart.js": "^2.9.3",
         "element-ui": "^2.13.2",
